@@ -50,7 +50,7 @@ params:
 
   label:
     text: "Jeha00"
-    icon: /id_image.jpg
+    iconeUrl: 
     iconHeight: 35
 
   # profile-mode
@@ -74,23 +74,21 @@ params:
     Content: "
     \'' 선한 마음과 꾸준함이 비범함을 만든다 \''
 
-
-    Good backend developer를 향해서 한 걸음
     
 
-    함께 하고픈 개발자를 향해서 한 걸음
+    함께 일하고 싶은 개발자가 되고 싶어 한 걸음
 
 
     한 걸음 한 걸음 꾸준히
     "
 
   socialIcons:
-    - name: twitter
-      url: "https://twitter.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
     - name: github
       url: "https://github.com/jeha00"
+    - name: facebook
+      url: "https://stackoverflow.com"
+    # - name: twitter
+    #   url: "https://twitter.com/sseuppiyongsse1"
 
   analytics:
     google:
@@ -134,10 +132,10 @@ menu:
       name: tags
       url: /tags/
       weight: 20
-    # - identifier: example
-    #   name: example.org
-    #   url: https://example.org
-    #   weight: 30
+    - identifier: Search
+      name: Search
+      url: /Search/
+      weight: 30
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
 # markup:
