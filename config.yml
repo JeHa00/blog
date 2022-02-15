@@ -1,6 +1,6 @@
 baseURL: "http://jeha00.github.io/"
 title: Jeha00
-paginate: 5
+paginate: 10
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -70,8 +70,19 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Jeha's blog \U0001F44B"
-    Content: "선한 마음과 꾸준함이 비범함을 만든다."
+    Title: "Jeha Devlog"
+    Content: "
+    \'' 선한 마음과 꾸준함이 비범함을 만든다 \''
+
+
+    Good backend developer를 향해서 한 걸음
+    
+
+    함께 하고픈 개발자를 향해서 한 걸음
+
+
+    한 걸음 한 걸음 꾸준히
+    "
 
   socialIcons:
     - name: twitter
