@@ -50,7 +50,7 @@ params:
 
   label:
     text: "Jeha00"
-    iconeUrl: 
+    iconeUrl: https://github.com/JeHa00/blog/tree/master/resources/_gen/images/id_image.jpg
     iconHeight: 35
 
   # profile-mode
@@ -73,10 +73,12 @@ params:
     Title: "Jeha Devlog"
     Content: "
     \'' 선한 마음과 꾸준함이 비범함을 만든다 \''
-
     
 
     함께 일하고 싶은 개발자가 되고 싶어 한 걸음
+
+
+    Good server developer가 되고 싶어 한 걸음
 
 
     한 걸음 한 걸음 꾸준히
