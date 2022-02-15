@@ -42,35 +42,36 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "/static/favicon_io/favicon.ico"
-    favicon16x16:  "/static/favicon_io/favicon-16x16.png"
-    favicon32x32:  "/static/favicon_io/favicon-32x32.png"
-    apple_touch_icon:  "/static/favicon_io/apple-touch-icon.png"
-    safari_pinned_tab:  "/static/favicon_io/safari-pinned-tab.svg"
+    favicon: /favicon.ico
+    favicon16x16:  /favicon-16x16.png
+    favicon32x32:  /favicon-32x32.png
+    apple_touch_icon:  /apple-touch-icon.png
+    safari_pinned_tab:  /safari-pinned-tab.svg
 
   label:
     text: "Jeha00"
-    iconeUrl: "/static/favicon_io/favicon-32x32.png"
+    iconeUrl: /favicon.ico
     iconHeight: 35
 
   # profile-mode
   profileMode:
-    enabled: false # needs to be explicitly set
-    title: ExampleSite
-    subtitle: "This is subtitle"
-    imageUrl: "<img location>"
+    enabled: false
+     # needs to be explicitly set
+    title: Jeha00 devlog
+    subtitle: "선한 마음과 꾸준함이 비범함을 만든다"
+    imageUrl: /favicon.ico
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
     buttons:
-      - name: Posts
-        url: posts
-      - name: Tags
-        url: tags
+      - name: Archive
+        url: /archive
+      - name: Github
+        url: https://github.com/jeha00/
 
   # home-info mode
   homeInfoParams:
-    Title: "Jeha Devlog"
+    Title: "Jeha00 Devlog"
     Content: "
     \'' 선한 마음과 꾸준함이 비범함을 만든다 \''
     
@@ -138,6 +139,11 @@ menu:
       name: Search
       url: /Search/
       weight: 30
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
 # markup:
