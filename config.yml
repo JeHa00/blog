@@ -144,6 +144,11 @@ outputs:
         - HTML
         - RSS
         - JSON # is necessary
+
+taxonomies:
+  categories: categories
+  tags: tags
+
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
 # markup:
