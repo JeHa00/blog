@@ -73,17 +73,15 @@ params:
   homeInfoParams:
     Title: "Jeha00 DevLog"
     Content: "
-    \'' 선한 마음과 꾸준함이 비범함을 만든다 \''
-    
+  **' 선한 마음과 꾸준함이 비범함을 만든다 '**
 
-    함께 일하고 싶은 개발자가 되고 싶어 한 걸음
+    - 함께 일하고 싶은 개발자가 되고 싶어 한 걸음
 
+    - Good server developer가 되고 싶어 한 걸음
 
-    Good server developer가 되고 싶어 한 걸음
-
-
-    한 걸음 한 걸음 꾸준히
+    - 한 걸음 한 걸음 꾸준히
     "
+    
 
   socialIcons:
     - name: github
@@ -107,36 +105,32 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/<path_to_repo>/content"
+    URL: "https://github.com/JeHa00/blog/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    location: 0
-    distance: 1000
-    threshold: 0.4
-    minMatchCharLength: 0
-    keys: ["title", "permalink", "summary", "content"]
+  # fuseOpts:
+  #   isCaseSensitive: false
+  #   shouldSort: true
+  #   location: 0
+  #   distance: 1000
+  #   threshold: 0.4
+  #   minMatchCharLength: 0
+  #   keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: archives
-      name: Archive
+    - name: Archive
       url: /archives/
       weight: 10
-    - identifier: categories
-      name: Categories
+    - name: Categories
       url: /categories/
       weight: 10
-    - identifier: tags
-      name: Tags
+    - name: Tags
       url: /tags/
       weight: 20
-    - identifier: search
-      name: Search
+    - name: Search
       url: /search/
       weight: 30
 
