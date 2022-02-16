@@ -21,7 +21,7 @@ params:
   keywords: [Blog, Portfolio, PaperMod]
   author: Jeha00
   # author: ["Me", "You"] # multiple authors
-  images: ["</favicon.io, twitter-cards>"]
+  images: /favicon.io
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
