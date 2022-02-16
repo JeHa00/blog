@@ -128,11 +128,11 @@ menu:
       url: /Archive/
       weight: 10
     - identifier: Categories
-      name: categories
+      name: Categories
       url: /categories/
       weight: 10
     - identifier: Tags
-      name: tags
+      name: Tags
       url: /tags/
       weight: 20
     - identifier: Search
