@@ -1,6 +1,6 @@
 baseURL: "http://jeha00.github.io/"
-title: Jeha00
-paginate: 10
+title: Jeha00 DevLog
+paginate: 5
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -19,7 +19,7 @@ params:
   title: ExampleSite
   description: "ExampleSite description"
   keywords: [Blog, Portfolio, PaperMod]
-  author: Me
+  author: Jeha00
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
@@ -50,28 +50,28 @@ params:
 
   label:
     text: "Jeha00"
-    iconeUrl: /favicon.ico
+    iconeUrl: /apple-touch-icon.png
     iconHeight: 35
 
   # profile-mode
   profileMode:
-    enabled: false
+    enabled: True
      # needs to be explicitly set
-    title: Jeha00 devlog
+    title: Jeha00 DevLog
     subtitle: "선한 마음과 꾸준함이 비범함을 만든다"
-    imageUrl: /favicon.ico
+    imageUrl: /apple-touch-icon.png
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
     buttons:
       - name: Archive
-        url: /archive
+        url: /archives/
       - name: Github
         url: https://github.com/jeha00/
 
   # home-info mode
   homeInfoParams:
-    Title: "Jeha00 Devlog"
+    Title: "Jeha00 DevLog"
     Content: "
     \'' 선한 마음과 꾸준함이 비범함을 만든다 \''
     
@@ -123,31 +123,28 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: Archives
+    - identifier: archives
       name: Archive
-      url: /Archive/
+      url: /archives/
       weight: 10
-    - identifier: Categories
+    - identifier: categories
       name: Categories
       url: /categories/
       weight: 10
-    - identifier: Tags
+    - identifier: tags
       name: Tags
       url: /tags/
       weight: 20
-    - identifier: Search
+    - identifier: search
       name: Search
-      url: /Search/
+      url: /search/
       weight: 30
+
 outputs:
     home:
         - HTML
         - RSS
         - JSON # is necessary
-
-taxonomies:
-  categories: categories
-  tags: tags
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
