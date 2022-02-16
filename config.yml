@@ -21,7 +21,7 @@ params:
   keywords: [Blog, Portfolio, PaperMod]
   author: Jeha00
   # author: ["Me", "You"] # multiple authors
-  images: /favicon.io
+  images: /apple-touch-icon.png
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -111,14 +111,14 @@ params:
 
   # for search
   # https://fusejs.io/api/options.html
-  # fuseOpts:
-  #   isCaseSensitive: false
-  #   shouldSort: true
-  #   location: 0
-  #   distance: 1000
-  #   threshold: 0.4
-  #   minMatchCharLength: 0
-  #   keys: ["title", "permalink", "summary", "content"]
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
     - name: Archive
