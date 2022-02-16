@@ -1,7 +1,7 @@
 ---
 title: "Test 1"
 date: 2022-02-15T16:45:04+09:00
-# draft: true
+draft: true
 tags: ["python", "data"]
 categories: ["회고-memoirs"]
 summary: "사용설명서"
