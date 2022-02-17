@@ -53,10 +53,10 @@ Hugo
 
 그래서 4가지 이유로 Hugo를 선택했다.
 
-> - 남들이 안해본 걸 해보자.
-> - 한글 레퍼런스가 거의 없기 때문에, 내가 기여할 수 있는 부분이 다른 것보다 있을 것이다.
-> - 내가 원하는 디자인 대부분이 Hugo였다.
-> - 앞으로 계속해서 기술 블로그를 작성할 것이기 때문에, 빠른 빌드를 원했다.
+- 남들이 안해본 걸 해보자.
+- 한글 레퍼런스가 거의 없기 때문에, 내가 기여할 수 있는 부분이 다른 것보다 있을 것이다.
+- 내가 원하는 디자인 대부분이 Hugo였다.
+- 앞으로 계속해서 기술 블로그를 작성할 것이기 때문에, 빠른 빌드를 원했다.
 
 두 번째 이유의 경우, 맨 처음에 Hugo의 존재를 모른 상태에서 jekyll이 많이 사용된다고 하여, 처음에 jekyll로 github page를 만들었다. 그래서 Hugo와 비교했을 때, 훨씬 Jekyll이 한글 레퍼런스가 많다는 걸 알았다.
 
@@ -66,21 +66,70 @@ Hugo
 > - Visual Studio Code (VSC), Atom 같은 에디터를 설치한다.
 > - window 환경에 Hugo를 설치한다.
 
-첫 번째, github 가입은 [Github](https://github.com/) 에 들어가서 오른쪽 상단에 있는 `Sign up`을 클릭하여 진행한다. 그러면 최종적으로 `https://github.com/user-name/` 을 갖는다. 이것이 github blog다. github page는 `[user-name].github.io` 로 주소를 갖는다.
+첫 번째, github 가입은 [Github](https://github.com/) 에 들어가서 오른쪽 상단에 있는 `Sign up`을 클릭하여 진행한다. 그러면 최종적으로 `https://github.com/user-name/` 을 가진다. 이것이 github blog다. github page는 `[user-name].github.io` 로 가진다.
 
 두 번째, 나는 visual studio code를 사용한다. [visual studio code](https://code.visualstudio.com/) 여기에 들어가 설치한다.
 
 세 번째, window 환경에 hugo를 설치한다. [window에서 Hugo 설치하기](https://gohugo.io/getting-started/installing#windows) 이 영상 하나 따라하면 쉽다. 하지만, 글로 보고 싶은 분들을 위해 작성한다.
 
-> - [hugo 다운로드](https://gohugo.io/getting-started/installing#windows) 로 들어가서 아래로 scroll을 내리면 window 버전을 다운받아 `C:\Hugo\bin` 디렉토리를 생성해서 다운받은 압축 파일을 해제
->
-> - 어느 위치에서나 Hugo가 실행할 수 있도록 `윈도우 검색`으로 `시스템 환경 변수 편집`을 검색하여 들어간다. `고급` 탭의 `환경 변수` 로 들어간다. `사용자 변수` 란의 `path`를 클릭 후, `편집` 을 클릭한다. `새로 만들기`를 클릭하여 `C:\Hugo\bin` 경로를 추가한다.
-> - cmd에 `echo %PATH%` 를 입력하여 추가한 경로가 있는지 확인한다.
-> - 해제한 압축 파일에서 hugo를 실행하여 설치 후, cmd에 `hugo version` 으로 동작 환인한다.
+- [hugo 다운로드](https://gohugo.io/getting-started/installing#windows) 로 들어가서 아래로 scroll을 내리면 window 버전을 다운받아 `C:\Hugo\bin` 디렉토리를 생성해서 다운받은 압축 파일을 해제
+- 어느 위치에서나 Hugo가 실행할 수 있도록 `윈도우 검색`으로 `시스템 환경 변수 편집`을 검색하여 들어간다. `고급` 탭의 `환경 변수` 로 들어간다. `사용자 변수` 란의 `path`를 클릭 후, `편집` 을 클릭한다. `새로 만들기`를 클릭하여 `C:\Hugo\bin` 경로를 추가한다.
+- cmd에 `echo %PATH%` 를 입력하여 추가한 경로가 있는지 확인한다.
+- 해제한 압축 파일에서 hugo를 실행하여 설치 후, cmd에 `hugo version` 으로 동작 확인한다.
 
 ## 3. 2개의 github repo 와 local 연결
 
-> - github에 2개의 repository를 만든다.
+### 3.1 Submodule 개념 이해하기
+
+ 이 단계를 진행하기 전에 `submodule` 개념을 알아야 한다. 영어 독해가 가능하신 분들은 [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/) 이 링크에 들어가 보시기 바란다. submodule에 대해 그림과 함께 잘 설명되어있다.
+ 아래 내용은 위 블로그에서 submodule에 대한 부분을 번역한 내용이다. 오역이 있다면 댓글로 알려주시면 감사하겠다.
+
+![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/explain-submodules.jpg)
+
+출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/)
+
+ ```
+왜 Git submodule인가??
+ 
+모든 git project는 repository에 저장된다. 이 git submodule은 한 프로젝트 안에서 다른 레포를 참조하도록 해주기 때문에, 
+프로젝트 안에 프로젝트를 효과적으로 운영할 수 있다. 
+그리고, 이 submodule의 코드는 메인 프로젝트에 의해서 사용될 수 있다. 
+하지만 여기서 중요한 건 submodule은 main project와 달리 자신만의 commit과 branch histroy를 가진다는 것이다.
+그래서 프로젝트들을 분리시킬 수 있다. 이는 매우 강력한 도구다. 
+ 
+위 그림에서는 git project에서 submodule을 사용할 시, 어떻게 코드가 포함되는지를 보여준다. 
+이 hugo project에서 우리가 보는 데이터의 대부분은 source data로, site를 빌드하기 전에 우리가 만지는 raw data란 의미다. 
+site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or folder)에 넣는다. 
+메인 repository의 submodule로 `public` folder를 하위 폴더로 설정하여, 독립된 branch history를 갖는 개체로 대할 수 있다.
+
+출처: https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/ 
+```
+![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/submodules-diagram-with-public.jpg)
+
+출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/)
+
+그렇다면 `submodule`의 장점은 무엇인가?? 
+- 관리하기가 쉬워진다.   
+- 원하지 않는 배포를 막을 수도 있고, staging 상태에 머무를 수도 있고, main project와 submodule project는 독립된 상태이기 때문에 잘못되어도 퍼져나가지 않는다.  
+
+단점으로는 
+
+- submodule이 너무 많아지면 오히려 복잡성이 커진다고 한다.   
+- 이외에 다른 단점도 작성되어 있는데 현재 내 경험과 실력이 부족하여 완전히 틀린 번역이 될 듯하여 적지 않는다.  
+
+
+### 3.2 2개의 repo 만든 후, remote와 submodule로 local과 github 연결하기
+
+- 자신의 github에 2개의 repository를 만든다.   
+- 2개의 repository는 `public`과 `private` 중 `public`으로 만든다. `private` 으로 하면 site에 배포가 안될 수도 있다.
+- 또한, 두 repo 모두 README.md 파일을 추가하지 않는다. README.md가 있으면 history 충돌이 일어나기 때문이다.
+- 2개의 repository를 각각 A,B라고 하자. 
+- A는 `user-name/blog' 로, B는 'user-name/user-name.github.io` 로 명칭을 만든다.   
+  예시로 나의 경우, A의 url은 `github.com/JeHa00/blog` 이고, B의 url은 `github/JeHa00/JeHa00.github.io` 다.  
+- A repo는 source code를 보관하는 repo로서, remote로 local과 연결될 repo다. 
+- B repo는 나중에 github page에 publish 될 repo로서, submodule로 `public` folder와 연결할 repo다. 
+- B repo의 주소가 github page로 쓰일 url이다.  
+
 
 ## 4. Github page에 theme 적용
 
