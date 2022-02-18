@@ -25,7 +25,7 @@ window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.
 
 ## 1. Static Site Generator 로 Hugo를 선택한 이유
 
-`Github` page를 만들 때 SSG의 종류들로 `Jekyll`, `Hexo`, `Hugo` 가 많이 언급된다. 그러면 SSG란 무엇인가?? `정적 페이지(Static Site)`란 `HTML`,`CSS`,`JS`를 미리 올려서 서버가 바뀌지 않는 HTML page를 보여주는 것을 말한다. 이 정적 페이지를 보다 간편하게 만들어주는 것이 `SSG(Static Site Generator)`다. 이와 반대로 동적 페이지는 client에 반응하여 HTML page를 동적으로 만들어진 페이지를 말한다. 더 상세한 정보를 원하시는 분은 [정적 웹은 뭐고 동적 웹은 뭔가요?](https://www.youtube.com/watch?v=C06xRvXIAUk) 이 영상을 참고하시길 바란다.
+`Github` page를 만들 때 SSG의 종류들로 `Jekyll`, `Hexo`, `Hugo` 가 많이 언급된다. 그러면 SSG란 무엇인가?? `정적 페이지(Static Site)`란 `HTML`,`CSS`,`JS`를 미리 올려서 서버가 바뀌지 않는 HTML page를 보여주는 것을 말한다. 이 정적 페이지를 보다 간편하게 만들어주는 것이 `SSG(Static Site Generator)`다. 이와 반대로 동적 페이지는 client에 반응하여 HTML page를 동적으로 만들어진 페이지를 말한다. 더 상세한 정보를 원하시는 분은 [정적 웹은 뭐고 동적 웹은 뭔가요?](https://bit.ly/3gVLiIi) 이 영상을 참고하시길 바란다.
 
 hugo를 선택하기에 앞서 각 SSG의 특징들에 대해 알아야 하기 때문에, `Jekyll`, `Hexo`, `Hugo`의 각 특징들은 다음과 같다.
 
@@ -85,16 +85,16 @@ Hugo
 
 ### 3.1 Submodule 개념 이해하기
 
-이 단계를 진행하기 전에 `submodule` 개념을 알아야 한다. 영어 독해가 가능하신 분들은 [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/) 이 링크에 들어가 보시기 바란다. submodule에 대해 그림과 함께 잘 설명되어있다.
+이 단계를 진행하기 전에 `submodule` 개념을 알아야 한다. 영어 독해가 가능하신 분들은 [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw) 이 링크에 들어가 보시기 바란다. submodule에 대해 그림과 함께 잘 설명되어있다.
 아래 내용은 위 블로그에서 submodule에 대한 부분을 번역한 내용이다. 오역이 있다면 댓글로 알려주시면 감사하겠다.
 
 ![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/explain-submodules.jpg)
 
-출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/)
+출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
 
 ![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/submodules-diagram-with-public.jpg)
 
-출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/)
+출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
 
 ```
 왜 Git submodule인가??
@@ -298,7 +298,7 @@ Hugo/<project 명칭>
 테마 또한 `submodule`로 적용한다. 구조는 아래와 같다.
 ![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/submodules-diagram-with-theme.jpg)
 
-출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/)
+출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
 
 ```yml
 경로 C:\Hugo\<New Project 명칭>
