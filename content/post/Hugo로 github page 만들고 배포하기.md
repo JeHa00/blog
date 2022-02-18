@@ -7,6 +7,8 @@ tags: ["hugo", "github", "blog", "submodule"]
 categories: ["개발-dev"]
 ---
 
+<br>
+
 # Intro
 
 window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.github.io` 주소의 github page를 만들고 배포한 후, contents를 업로드하는 것까지 내용을 다룬다. 이를 위해 총 5단계를 거쳐서 진행한다.
@@ -22,6 +24,8 @@ window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.
 > 동일한 주제로 다룬 블로그들을 보면 3단계와 4단계의 순서를 바꿔서 진행한다. 4단계 진행 후, 3단계를 진행해도 무방하다. 다만, 나는 그 과정에서 헷갈린 부분이 있어서 마지막에 theme 적용을 하기로 선택했다.
 
 ---
+
+<br>
 
 ## 1. Static Site Generator 로 Hugo를 선택한 이유
 
@@ -79,7 +83,7 @@ Hugo
 - [hugo 다운로드](https://gohugo.io/getting-started/installing#windows) 로 들어가서 아래로 scroll을 내리면 window 버전을 다운받아 `C:\Hugo\bin` 디렉토리를 생성해서 다운받은 압축 파일을 해제
 - 어느 위치에서나 Hugo가 실행할 수 있도록 `윈도우 검색`으로 `시스템 환경 변수 편집`을 검색하여 들어간다. `고급` 탭의 `환경 변수` 로 들어간다. `사용자 변수` 란의 `path`를 클릭 후, `편집` 을 클릭한다. `새로 만들기`를 클릭하여 `C:\Hugo\bin` 경로를 추가한다.
 - cmd에 `echo %PATH%` 를 입력하여 추가한 경로가 있는지 확인한다.
-- 해제한 압축 파일에서 hugo를 실행하여 설치 후, cmd에 `hugo version` 으로 동작 확인한다.
+- 해제한 압축 파일에서 hugo 실행하여 설치 후, cmd에 `hugo version` 으로 동작 확인한다.
 
 ## 3. 새로운 2개 github repo 와 local 연결하기
 
