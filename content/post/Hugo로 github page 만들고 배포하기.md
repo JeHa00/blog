@@ -23,6 +23,11 @@ window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.
 
 ---
 
+
+<br>
+
+
+
 ## 1. Static Site Generator 로 Hugo를 선택한 이유
 
 `Github` page를 만들 때 SSG의 종류들로 `Jekyll`, `Hexo`, `Hugo` 가 많이 언급된다. 그러면 SSG란 무엇인가?? `정적 페이지(Static Site)`란 `HTML`,`CSS`,`JS`를 미리 올려서 서버가 바뀌지 않는 HTML page를 보여주는 것을 말한다. 이 정적 페이지를 보다 간편하게 만들어주는 것이 `SSG(Static Site Generator)`다. 이와 반대로 동적 페이지는 client에 반응하여 HTML page를 동적으로 만들어진 페이지를 말한다. 더 상세한 정보를 원하시는 분은 [정적 웹은 뭐고 동적 웹은 뭔가요?](https://bit.ly/3gVLiIi) 이 영상을 참고하시길 바란다.
@@ -64,6 +69,11 @@ Hugo
 
 ---
 
+
+<br>
+
+
+
 ## 2. Github page 만들기 위한 local 환경 조성
 
 > - git을 설치한다. 그리고, github 에 가입한다.
@@ -80,6 +90,11 @@ Hugo
 - 어느 위치에서나 Hugo가 실행할 수 있도록 `윈도우 검색`으로 `시스템 환경 변수 편집`을 검색하여 들어간다. `고급` 탭의 `환경 변수` 로 들어간다. `사용자 변수` 란의 `path`를 클릭 후, `편집` 을 클릭한다. `새로 만들기`를 클릭하여 `C:\Hugo\bin` 경로를 추가한다.
 - cmd에 `echo %PATH%` 를 입력하여 추가한 경로가 있는지 확인한다.
 - 해제한 압축 파일에서 hugo를 실행하여 설치 후, cmd에 `hugo version` 으로 동작 확인한다.
+
+
+<br>
+
+
 
 ## 3. 새로운 2개 github repo 와 local 연결하기
 
@@ -113,7 +128,9 @@ site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or 
 메인 repository의 submodule로 `public` folder를 하위 폴더로 설정하여, 독립된 branch history를 갖는 개체로 대할 수 있다.
 
 출처: https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/
+
 ```
+<br>
 
 ### 3.2 New repository 2개 만들기
 
@@ -130,6 +147,8 @@ site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or 
 - B repo는 나중에 github page에 publish 될 repo로서, submodule로 `public` folder의 상위 folder에 연결할 repo다. 즉, `public`의 remote로 local과 연결될 repo다.
 - `public` folder의 remote origin = `public` folder의 상위 폴더에 대한 submodule origin
 - B repo의 주소가 github page로 쓰일 url이다.
+
+<br>
 
 ### 3.3 Hugo new site 생성및 remote add origin A repo 실행
 
@@ -190,6 +209,7 @@ Hugo/project 명칭
 ├─archetypes
 └─config.toml
 ```
+<br>
 
 ### 3.4 B repo를 public 폴더에 submodule로 연결하기
 
@@ -234,6 +254,8 @@ Hugo/project 명칭
   `error: a git directory for 'public' is found locally with remote(s)`
 - 이렇게 뜨는 이유는 cach에 `public`이 아직 남아있기 때문이다. 그래서 이를 제거하고자 `git rm --cached public` 을 입력한다.
 - 그 후에 다시 submodule 명령어를 실행한다면 문제 없이 될 것이다.
+
+<br>
 
 ### 3.5 public directory와 project root directoy git push 단계
 
@@ -282,6 +304,11 @@ Hugo/<project 명칭>
   ![image](https://user-images.githubusercontent.com/78094972/154519110-95573fbf-29eb-4c8c-aff6-2d3f5a3c7c06.PNG)
 
 ---
+
+
+<br>
+
+
 
 ## 4. Github page에 theme 적용
 
@@ -366,6 +393,11 @@ url = 테마 url
 - terminal 작업을 다시 할려면 `Ctrl + C`를 눌러 중단한다.
 - `hugo server -D` 가 돌아가는 동안에는 글의 수정을 바로 확인할 수 있다.
 
+
+<br>
+
+
+
 ## 5. Contents 생성과 업로드, utterances로 댓글 기능 추가, deploy.sh로 자동화
 
 ### 5.1 Contents 생성과 업로드
@@ -405,6 +437,8 @@ url = 테마 url
 > git push origin master
 ```
 
+<br>
+
 ### 5.2 Utterances로 댓글 기능 추가
 
 > 사용 방법
@@ -415,6 +449,8 @@ url = 테마 url
 > 4. 2번 3번에 따라 [Utterance](https://utteranc.es/)에서 생성된 script를 복사하여 각자의 적절한 템플릿 위치가 추가한다. 추가 위치는 각 theme의 `README.md` 를 꼼꼼히 읽어본다.
 
 [아웃사이더님의 블로그 글](https://blog.outsider.ne.kr/1356?category=1)에서 보고 가져온다.
+
+<br>
 
 ### 5.3 deploy.sh로 자동화
 
@@ -464,12 +500,20 @@ git push origin master
 
 ---
 
+
+<br>
+
+
+
 ## To customize blog theme
 
 > - 커스텀마이징을 위한 제일 좋은 방법은 각자 선택한 테마 템플릿의 `README.md`를 꼼꼼히 읽어보는 게 제일 빠른 지름길이라 생각한다.
 > - 사용자가 원하는 기능들을 어떻게 추가하면 되는지 설명해논 템플릿이 많기 때문에, 반드시 `README.md` 를 `꼼꼼히` 읽기 바란다.
 
----
+
+<br>
+
+
 
 ## 후기
 
@@ -478,7 +522,10 @@ git push origin master
 > - gith page를 만들었으니, TIL부터 시작하여 꾸준히 공부하자. Hugo를 선택한 것이 처음 시도할 때는 매우 힘들었지만, 지금 와서는 잘한 선택임을 느낀다.
 > - 위에 언급된 error들 외의 것들은 'collecting git error' 제목으로 blog 글을 작성할 예정이다.
 
----
+
+<br>
+
+
 
 ## Reference
 
