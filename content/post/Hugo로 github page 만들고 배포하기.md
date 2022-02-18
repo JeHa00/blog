@@ -464,7 +464,7 @@ git push origin master
 
 ---
 
-## Blog theme customizing
+## To customize blog theme
 
 > - 커스텀마이징을 위한 제일 좋은 방법은 각자 선택한 테마 템플릿의 `README.md`를 꼼꼼히 읽어보는 게 제일 빠른 지름길이라 생각한다.
 > - 사용자가 원하는 기능들을 어떻게 추가하면 되는지 설명해논 템플릿이 많기 때문에, 반드시 `README.md` 를 `꼼꼼히` 읽기 바란다.
