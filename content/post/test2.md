@@ -1,7 +1,7 @@
 ---
 title: "Test2"
 date: 2022-02-16T03:25:25+09:00
-# draft: true
+draft: true
 categories: ["생각정리-essay"]
 summary: variables Front Matter
 ---
