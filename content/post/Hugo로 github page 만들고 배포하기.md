@@ -96,7 +96,7 @@ Hugo
 이 단계를 진행하기 전에 `submodule` 개념을 알아야 한다. 영어 독해가 가능하신 분들은 [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw) 이 링크에 들어가 보시기 바란다. submodule에 대해 그림과 함께 잘 설명되어있다.
 아래 내용은 위 블로그에서 submodule에 대한 부분을 번역한 내용이다. 오역이 있다면 댓글로 알려주시면 감사하겠다.
 
-> `public` folder는 [3.4 B repo를 public 폴더에 submodule로 연결하기] 파트에서 아래 명령어로 만들어진다.
+> `public` folder는 [3.4 B repo를 public 폴더에 submodule로 연결하기] 파트에서 아래 명령어로 만들어진다.  
 > 지금 이 명령어를 입력하지 않고, 이런 개념이 있구나 정도만 이해하기.
 >
 > ```yml
