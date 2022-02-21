@@ -137,8 +137,9 @@ site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or 
 
 - A는 `user-name/blog` 로, B는 `user-name/user-name.github.io` 로 명칭을 만든다.  
   ex) A의 url은 `github.com/JeHa00/blog` / B의 url은 `github/JeHa00/JeHa00.github.io`
-- A repo는 source code를 보관하는 repo로서, remote로 local과 연결될 repo다.
-- B repo는 나중에 github page에 publish 될 repo로서, submodule로 `public` folder의 상위 folder에 연결할 repo다. 즉, `public`의 remote로 local과 연결될 repo다.
+- A repo는 source code를 보관하는 repo로서, remote origin으로 local과 연결될 repo다.
+  `git remote add origin` 명령어로 연결될 repo
+- B repo는 나중에 github page에 publish 될 repo로서, submodule로서 `public` folder의 상위 folder에 연결할 repo다. 즉, `public`의 remote origin으로 local과 연결될 repo다.
 - `public` folder의 remote origin = `public` folder의 상위 폴더에 대한 submodule origin
 - B repo의 주소가 github page로 쓰일 url이다.
 
