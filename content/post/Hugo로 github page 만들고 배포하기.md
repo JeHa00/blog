@@ -82,7 +82,7 @@ Hugo
 
 세 번째, window 환경에 hugo를 설치한다. [window에서 Hugo 설치하기](https://gohugo.io/getting-started/installing#windows) 이 영상 하나 따라하면 쉽다. 하지만, 글로 보고 싶은 분들을 위해 작성한다.
 
-- [hugo 다운로드](https://gohugo.io/getting-started/installing#windows) 로 들어가서 아래로 scroll을 내리면 window 버전을 다운받아 `C:\Hugo\bin` 디렉토리를 생성해서 다운받은 압축 파일을 해제
+- [hugo 다운로드](https://github.com/gohugoio/hugo/releases) 로 들어가서 아래로 scroll을 내리면 window 버전을 다운받아 `C:\Hugo\bin` 디렉토리를 생성해서 다운받은 압축 파일을 해제
 - 어느 위치에서나 Hugo가 실행할 수 있도록 `윈도우 검색`으로 `시스템 환경 변수 편집`을 검색하여 들어간다. `고급` 탭의 `환경 변수` 로 들어간다. `사용자 변수` 란의 `path`를 클릭 후, `편집` 을 클릭한다. `새로 만들기`를 클릭하여 `C:\Hugo\bin` 경로를 추가한다.
 - cmd에 `echo %PATH%` 를 입력하여 추가한 경로가 있는지 확인한다.
 - 해제한 압축 파일에서 hugo 실행하여 설치 후, cmd에 `hugo version` 으로 동작 확인한다.
@@ -95,6 +95,15 @@ Hugo
 
 이 단계를 진행하기 전에 `submodule` 개념을 알아야 한다. 영어 독해가 가능하신 분들은 [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw) 이 링크에 들어가 보시기 바란다. submodule에 대해 그림과 함께 잘 설명되어있다.
 아래 내용은 위 블로그에서 submodule에 대한 부분을 번역한 내용이다. 오역이 있다면 댓글로 알려주시면 감사하겠다.
+
+> `public` folder는 [3.4 B repo를 public 폴더에 submodule로 연결하기] 파트에서 아래 명령어로 만들어진다.
+> 지금 이 명령어를 입력하지 않고, 이런 개념이 있구나 정도만 이해하기.
+>
+> ```yml
+> # blog 폴더의 submodule로 branch main에 B repo를 add 한다.
+> # sample: git submodule add https://github.com/JeHa00/JeHa00.github.io.git public
+> > git submodule add -b main https://github.com/<user-name>/<B repo 명칭>.git public
+> ```
 
 ![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/explain-submodules.jpg)
 
@@ -138,14 +147,16 @@ site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or 
 - A는 `user-name/blog` 로, B는 `user-name/user-name.github.io` 로 명칭을 만든다.  
   ex) A의 url은 `github.com/JeHa00/blog` / B의 url은 `github/JeHa00/JeHa00.github.io`
 - A repo는 source code를 보관하는 repo로서, remote origin으로 local과 연결될 repo다.
-  `git remote add origin` 명령어로 연결될 repo
+  > `git remote add origin` 명령어로 연결될 repo
 - B repo는 나중에 github page에 publish 될 repo로서, submodule로서 `public` folder의 상위 folder에 연결할 repo다. 즉, `public`의 remote origin으로 local과 연결될 repo다.
-- `public` folder의 remote origin = `public` folder의 상위 폴더에 대한 submodule origin
+  > `public` folder의 remote origin == `public` folder의 상위 폴더에 대한 submodule origin
 - B repo의 주소가 github page로 쓰일 url이다.
 
 <br>
 
 ### 3.3 Hugo new site 생성및 remote add origin A repo 실행
+
+Visual Studio Code의 terminal 또는 Window의 cmd에 입력한다.
 
 ```yml
 경로 C:\Hugo
