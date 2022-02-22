@@ -267,7 +267,7 @@ Hugo/project 명칭
 - 그 후에 다시 submodule 명령어를 실행하여, `.gitmodules` 에 위 코드가 생기는지 확인한다.
 - 그리고, `https://github.com/<user-name>/blog.git` 에 `public @` 폴더가 생겼는지 확인한다. 이 폴더가 생겼다면 submodule 등록이 확실하게 완료되었다는 것이다.
 
-- 만약, `Permission denied (publickey)` 오류가 뜬다면 SSH 보안키를 등록해야합니다.
+- 만약, `Permission denied (publickey)` 오류가 뜬다면 SSH 보안키를 등록해야한다.
 
 <br>
 
