@@ -141,10 +141,12 @@ site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or 
 
 > 자신의 github에 2개의 repository를 만든다.
 
-- 2개의 repository는 `public`과 `private` 중 `public`으로 만든다. `private` 으로 하면 site에 배포가 안될 수도 있다.
-- 또한, 두 repo 모두 README.md 파일을 추가하지 않는다. README.md가 있으면 history 충돌이 일어나기 때문이다.
-
 - 2개의 repository를 각각 A,B라고 하자.
+- 2개의 repository는 `public`과 `private` 중 `public`으로 만든다. `private` 으로 하면 site에 배포가 안될 수도 있다.
+
+  > 주의: 두 repo를 만들 때, A repo는 README.md를 만들지 않고, B repo는 README.md를 만든다.
+  > A repo에는 README.md를 만들지 말아야할 이유는 나중에 `git push`를 할 때 충돌이 일어난다.
+  > B repo에는 README.md를 만들어야 하는 이유는 repo가 비어있으면 submodule로 연결이 안된다.
 
 - A는 `user-name/blog` 로, B는 `user-name/user-name.github.io` 로 명칭을 만든다.  
   ex) A의 url은 `github.com/JeHa00/blog` / B의 url은 `github/JeHa00/JeHa00.github.io`
@@ -268,6 +270,8 @@ Hugo/project 명칭
 - 그리고, `https://github.com/<user-name>/blog.git` 에 `public @` 폴더가 생겼는지 확인한다. 이 폴더가 생겼다면 submodule 등록이 확실하게 완료되었다는 것이다.
 
 - 만약, `Permission denied (publickey)` 오류가 뜬다면 SSH 보안키를 등록해야한다.
+
+- 그럼에도 불구하고도 `public` 폴더와 B repo가 submodule 연결이 되지 않는다면, B repo에 아무런 file이 존재하지 않아서다. 그래서 B repo를 만들라고 할 때 README.md를 만들라고 한 것이다. B repo에 README.md를 만들고 나서 위에 첫 번째 과정부터 다시 진행해보라.
 
 <br>
 
