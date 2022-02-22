@@ -17,7 +17,7 @@ window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.
 > 2. [Github blog 만들기 위한 local 환경 조성](https://jeha00.github.io/post/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/#2-github-page-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%9C%84%ED%95%9C-local-%ED%99%98%EA%B2%BD-%EC%A1%B0%EC%84%B1)
 > 3. [새로운 2개 github repo 와 local 연결하기](https://jeha00.github.io/post/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/#3-%EC%83%88%EB%A1%9C%EC%9A%B4-2%EA%B0%9C-github-repo-%EC%99%80-local-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0)
 > 4. [Github page에 theme 적용](https://jeha00.github.io/post/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/#4-github-page%EC%97%90-theme-%EC%A0%81%EC%9A%A9)
-> 5. [Contents 생성과 업로드, utterances로 댓글 기능 추가, deploy.sh로 자동화](https://jeha00.github.io/post/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/#5-contents-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%97%85%EB%A1%9C%EB%93%9C-utterances%EB%A1%9C-%EB%8C%93%EA%B8%80-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80-deploysh%EB%A1%9C-%EC%9E%90%EB%8F%99%ED%99%94)
+> 5. [Contents 생성과 업로드, utterances로 댓글 기능 추가, deploy.sh로 자동화](https://jeha00.github.io/post/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/#5-contents-%EC%83%9D%EC%84%B1%EA%B3%BC-%EC%97%85%EB%A1%9C%EB%93%9C-utterances%EB%A1%9C-%EB%8C%93%EA%B8%80-%EA%B8%B0%EB%8A%A5-%EC%B6%94%EA%B0%80-deploysh%EB%A1%9C-%EC%9E%90%EB%8F%99%ED%99%94) > [To customize blog theme]() > [후기]()
 
 위 과정들에서 필요한 개념들, 부딪혔던 error 및 해결책도 각 단계 마지막 부분에 작성했다.
 
@@ -515,7 +515,7 @@ git push origin master
 > - git에 대해 더 숙지를 하고 나서 git page를 만들기 시작했다면 시간 소모를 줄일 수 있었을 것이다. 급한 마음에 github page를 시작하여 생각보다 많은 시행착오와 error들을 격었다. 이 error들은 대체로 git을 정확히 이해하지 못해서 발생하는 문제점들이다.
 > - 이번 일을 통해서 git이 개발자에게 사람의 숨쉬기와 같다는 걸 느껴서 [Pro git](https://book.naver.com/bookdb/book_detail.nhn?bid=7187291) 이란 책을 사서 꾸준히 공부하기로 결정했다.
 > - gith page를 만들었으니, TIL부터 시작하여 꾸준히 공부하자. Hugo를 선택한 것이 처음 시도할 때는 매우 힘들었지만, 지금 와서는 잘한 선택임을 느낀다.
-> - 위에 언급된 error들 외의 것들은 'collecting git error' 제목으로 blog 글을 작성할 예정이다.
+> - 진행하다가 부딪힌 error들에 대해서는 바로 바로 기록을 하자. 이는 반복적인 똑같은 삽질을 예방할 수 있다.
 
 <br>
 
