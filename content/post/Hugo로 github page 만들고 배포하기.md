@@ -314,7 +314,7 @@ Hugo/<project 명칭>
 └─config.toml
 ```
 
-- A repo의 directory는 아래와 같다.
+- A repo의 directory 내부 구성은 아래와 같다.
 - 아래 image처럼 `public@`가 떠야 한다. `submodule`이 잘 연결되었다는 의미다.
   ![image](https://user-images.githubusercontent.com/78094972/154519110-95573fbf-29eb-4c8c-aff6-2d3f5a3c7c06.PNG)
 
