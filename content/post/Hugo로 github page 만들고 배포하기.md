@@ -182,11 +182,13 @@ Visual Studio Code의 terminal 또는 Window의 cmd에 입력한다.
 > git add .
 
 # commit
-> git commit -m "committing our hugo template"
+> git commit -m "add origin"
 
 # the remote origin 에 push 하겠다. branch는 master로 하겠다.
 > git push origin master
 ```
+
+- `remote origin`이 잘 되었는지 확인하기 위해서는 `git remote -v`를 입력하면 뜬다.
 
 - `error: src refspec master does not match any` 가 뜬다면 이는 stage에 오른 파일이 없다는 의미이므로, `git add .` 를 했는지 확인하기
 - `hugo new site <project 명칭>` 명령으로 local에서 컨텐츠를 관리하기 위한 장소 생성
@@ -262,7 +264,10 @@ Hugo/project 명칭
   `error: 'public' already exists in the index`  
   `error: a git directory for 'public' is found locally with remote(s)`
 - 이렇게 뜨는 이유는 cach에 `public`이 아직 남아있기 때문이다. 그래서 이를 제거하고자 `git rm --cached public` 을 입력한다.
-- 그 후에 다시 submodule 명령어를 실행한다면 문제 없이 될 것이다.
+- 그 후에 다시 submodule 명령어를 실행하여, `.gitmodules` 에 위 코드가 생기는지 확인한다.
+- 그리고, `https://github.com/<user-name>/blog.git` 에 `public @` 폴더가 생겼는지 확인한다. 이 폴더가 생겼다면 submodule 등록이 확실하게 완료되었다는 것이다.
+
+- 만약, `Permission denied (publickey)` 오류가 뜬다면 SSH 보안키를 등록해야합니다.
 
 <br>
 
