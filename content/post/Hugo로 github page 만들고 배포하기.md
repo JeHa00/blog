@@ -27,8 +27,6 @@ window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.
 
 ---
 
-<br>
-
 ## 1. Static Site Generator 로 Hugo를 선택한 이유
 
 `Github` page를 만들 때 SSG의 종류들로 `Jekyll`, `Hexo`, `Hugo` 가 많이 언급된다. 그러면 SSG란 무엇인가?? `정적 페이지(Static Site)`란 `HTML`,`CSS`,`JS`를 미리 올려서 서버가 바뀌지 않는 HTML page를 보여주는 것을 말한다. 이 정적 페이지를 보다 간편하게 만들어주는 것이 `SSG(Static Site Generator)`다. 이와 반대로 동적 페이지는 client에 반응하여 HTML page를 동적으로 만들어진 페이지를 말한다. 더 상세한 정보를 원하시는 분은 [정적 웹은 뭐고 동적 웹은 뭔가요?](https://bit.ly/3gVLiIi) 이 영상을 참고하시길 바란다.
@@ -89,6 +87,8 @@ Hugo
 - cmd에 `echo %PATH%` 를 입력하여 추가한 경로가 있는지 확인한다.
 - 해제한 압축 파일에서 hugo 실행하여 설치 후, cmd에 `hugo version` 으로 동작 확인한다.
 
+---
+
 <br>
 
 ## 3. 새로운 2개 github repo 와 local 연결하기
@@ -111,29 +111,28 @@ Hugo
 
 출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
 
-![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/submodules-diagram-with-public.jpg)
-
-출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
-
 ```
 왜 Git submodule인가??
 
 모든 git project는 repository에 저장된다.
-이 git submodule은 한 프로젝트 안에서 다른 레포를 참조하도록 해준다.
-그래서프로젝트 안에 프로젝트를 효과적으로 운영할 수 있다.
-또한, 이 submodule의 코드는 메인 프로젝트에 의해서 사용될 수 있다.
-중요한 건 submodule은 main project와 달리 자신만의 commit과 branch histroy를 가진다.
-그래서 프로젝트들을 분리시킬 수 있다. 이는 매우 강력한 도구다.
+이 git submodule은 한 레포 안에서 다른 레포를 참조하도록 해준다.
+그래서 프로젝트 안에 프로젝트를 효과적으로 운영할 수 있다.
+중요한 건 submodule은 main project와 달리 자신만의 commit과 branch histroy를 가진다. 그래서 프로젝트들을 분리시킬 수 있다. 이는 매우 강력한 도구다.
 
-위 그림에서는 git project에서 submodule을 사용할 시, 어떻게 코드가 포함되는지를 보여준다.
-이 hugo project에서 우리가 보는 데이터의 대부분은 source data다.
-site를 빌드하기 전에 우리가 만지는 raw data란 의미다.
-site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or folder)에 넣는다.
+아래 그림에서는 git project에서 submodule을 사용할 시, 어떻게 코드가 포함되는지를 보여준다.
+....
 메인 repository의 submodule로 `public` folder를 하위 폴더로 설정하여, 독립된 branch history를 갖는 개체로 대할 수 있다.
 
 출처: https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/
 
 ```
+
+- A repo가 `blog` 에 `remote origin`으로 연결된다.
+- B repo가 `public` 폴더 형태로, `blog`의 submodule로 들어간다.
+
+![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/submodules-diagram-with-public.jpg)
+
+출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
 
 <br>
 
@@ -144,23 +143,20 @@ site를 빌드한 후, site에 보여지는 데이터는 `public` directory (or 
 - 2개의 repository를 각각 A,B라고 하자.
 - 2개의 repository는 `public`과 `private` 중 `public`으로 만든다. `private` 으로 하면 site에 배포가 안될 수도 있다.
 
-  > 주의: 두 repo를 만들 때, A repo는 README.md를 만들지 않고, B repo는 README.md를 만든다.
-  > A repo에는 README.md를 만들지 말아야할 이유는 나중에 `git push`를 할 때 충돌이 일어난다.
-  > B repo에는 README.md를 만들어야 하는 이유는 repo가 비어있으면 submodule로 연결이 안된다.
+  **주의: 두 repo를 만들 때 주의사항 **
+
+  - A repo에는 README.md 만들지 말기: README.md가 있다면 나중에 `git push` 시에 충돌이 일어난다.
+  - B repo에 README.md를 만들기: repo가 비어있으면 submodule로 연결이 안된다.
 
 - A는 `user-name/blog` 로, B는 `user-name/user-name.github.io` 로 명칭을 만든다.  
   ex) A의 url은 `github.com/JeHa00/blog` / B의 url은 `github/JeHa00/JeHa00.github.io`
-- A repo는 source code를 보관하는 repo로서, remote origin으로 local과 연결될 repo다.
-  > `git remote add origin` 명령어로 연결될 repo
-- B repo는 나중에 github page에 publish 될 repo로서, submodule로서 `public` folder의 상위 folder에 연결할 repo다. 즉, `public`의 remote origin으로 local과 연결될 repo다.
-  > `public` folder의 remote origin == `public` folder의 상위 폴더에 대한 submodule origin
-- B repo의 주소가 github page로 쓰일 url이다.
+- B repo의 이름이 github page로 쓰일 url.
 
 <br>
 
 ### 3.3 Hugo new site 생성및 remote add origin A repo 실행
 
-Visual Studio Code의 terminal 또는 Window의 cmd에 입력한다.
+> Visual Studio Code의 terminal 또는 Window의 cmd에 입력한다.
 
 ```yml
 경로 C:\Hugo
@@ -196,7 +192,7 @@ Visual Studio Code의 terminal 또는 Window의 cmd에 입력한다.
 - `hugo new site <project 명칭>` 명령으로 local에서 컨텐츠를 관리하기 위한 장소 생성
 
 - 이 때 경로는 `C:\Hugo` 인 상태에서 terminal에 입력한다.
-- 나는 A repo 명칭이 `blog`이기 때문에, `<project 명칭>`을 A repo 명칭과 동일하게 했다.
+- `<project 명칭>`을 A repo 이름과 똑같이 한다.
 - project를 새로 생성해서 project 파일 경로는 `C:\Hugo\<project 명칭>` 일 것이다.
 - 위 명령어로 생긴 tree는 다음과 같다.
 
@@ -266,12 +262,13 @@ Hugo/project 명칭
   `error: 'public' already exists in the index`  
   `error: a git directory for 'public' is found locally with remote(s)`
 - 이렇게 뜨는 이유는 cach에 `public`이 아직 남아있기 때문이다. 그래서 이를 제거하고자 `git rm --cached public` 을 입력한다.
-- 그 후에 다시 submodule 명령어를 실행하여, `.gitmodules` 에 위 코드가 생기는지 확인한다.
-- 그리고, `https://github.com/<user-name>/blog.git` 에 `public @` 폴더가 생겼는지 확인한다. 이 폴더가 생겼다면 submodule 등록이 확실하게 완료되었다는 것이다.
+- 그리고, 다시 submodule 명령어를 실행하여, `.gitmodules` 에 위 코드가 생기는지 확인한다.
+- 다시 `https://github.com/<user-name>/blog.git` 에 `public @` 폴더가 생겼는지 확인한다. 이 폴더가 생겼다면 submodule 등록이 확실하게 완료되었다.
 
 - 만약, `Permission denied (publickey)` 오류가 뜬다면 SSH 보안키를 등록해야한다.
 
-- 그럼에도 불구하고도 `public` 폴더와 B repo가 submodule 연결이 되지 않는다면, B repo에 아무런 file이 존재하지 않아서다. 그래서 B repo를 만들라고 할 때 README.md를 만들라고 한 것이다. B repo에 README.md를 만들고 나서 위에 첫 번째 과정부터 다시 진행해보라.
+- 위 방법대로 했지만 `public` 폴더와 B repo가 submodule 연결이 되지 않는다면, B repo에 아무런 file이 존재하지 않아서다.
+- [3.2 New repository 2개 만들기](https://jeha00.github.io/post/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/#32-new-repository-2%EA%B0%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0) 내용처럼 B repo에 README.md를 추가하여 empty repo로 만들지 말자.
 
 <br>
 
@@ -296,7 +293,7 @@ Hugo/project 명칭
 > git push origin master
 ```
 
-위 명령어로 생긴 tree는 다음과 같다.
+- 위 명령어로 생긴 tree는 다음과 같다.
 
 ```yml
 Hugo/<project 명칭>
@@ -329,16 +326,16 @@ Hugo/<project 명칭>
 
 > 원하는 테마 찾기
 
-[Hugo Theme Star Ranking](https://hugo-theme-ranking.oika.me/), [jamstackthemes](https://jamstackthemes.dev/ssg/hugo/) 그리고, [Hugo Themes: Complete List](https://master--hugothemes.netlify.app/) 이 3가지 사이트 정도라면 충분히 찾을 수 있다.
+- [Hugo Theme Star Ranking](https://hugo-theme-ranking.oika.me/), [jamstackthemes](https://jamstackthemes.dev/ssg/hugo/) 그리고, [Hugo Themes: Complete List](https://master--hugothemes.netlify.app/) 이 3가지 사이트 정도라면 충분히 찾을 수 있다.
 
-처음에 테마 찾는 데 많은 시간을 썼는데, 지금 생각해보면 기본 테마를 찾은 다음에 customizing 하는 방법이 더 빠른 방향이었다.
+- 처음에 테마 찾는 데 많은 시간을 썼는데, 지금 생각해보면 기본 테마를 찾은 다음에 customizing 하는 방법이 더 빠른 방향이었다.
 
 > submodule을 사용하여 테마 적용하기
 
 - `submodule`로 테마를 적용한 이유는 업데이트된 테마를 쉽게 가져올 수 있기 때문에, clone보다 submodule로 만드는 게 더 낫다고 한다. (by [submodule이 나은 이유](https://discourse.gohugo.io/t/adding-a-theme-as-a-submodule-or-clone/8789))
 
-테마 또한 `submodule`로 적용한다. 구조는 아래와 같다.
-![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/submodules-diagram-with-theme.jpg)
+- 테마 또한 `submodule`로 적용한다. 구조는 아래와 같다.
+  ![image](https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/img/submodules-diagram-with-theme.jpg)
 
 출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
 
@@ -407,6 +404,8 @@ url = 테마 url
 - 그러면 `https://localhost:1313/` 이 뜬다. 이를 클릭하면 테마가 적용되었는지 알 수 있다.
 - terminal 작업을 다시 할려면 `Ctrl + C`를 눌러 중단한다.
 - `hugo server -D` 가 돌아가는 동안에는 글의 수정을 바로 확인할 수 있다.
+
+---
 
 <br>
 
