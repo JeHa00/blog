@@ -16,7 +16,7 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: JeHa00
+  title: JeHa00 DevLog
   description: "선한 마음과 꾸준함이 비범함을 만든다"
   keywords: [Blog, Portfolio, PaperMod]
   author: Jeha00
@@ -36,8 +36,8 @@ params:
   comments: True
   hidemeta: false
   hideSummary: false
-  showtoc: true
-  tocopen: true
+  showtoc: false  # 글 안에 Table of Contents 표시
+  tocopen: false
 
   assets:
     # disableHLJS: true # to disable highlight.js
