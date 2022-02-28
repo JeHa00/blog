@@ -2,6 +2,7 @@
 title: "[TIL] Python basic 1: 변수 선언"
 date: 2022-02-28T18:47:51+09:00
 draft: false
+summary: 기본적인 선언 방법과 동시 선언, 재선언을 알아본다. 그리고 각 선언에 따른 id 값을 확인하여 파이썬 내부 원리를 이해한다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---

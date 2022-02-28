@@ -2,6 +2,7 @@
 title: "[TIL] Python basic 2: print 사용법"
 date: 2022-02-28T18:50:13+09:00
 draft: false
+summary: stirng type, numeric type을 print를 사용한 출력 방식을 알아보겠다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
