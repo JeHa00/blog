@@ -403,7 +403,7 @@ url = 테마 url
 
 <br>
 
-## 5. Contents 생성과 업로드, utterances로 댓글 기능 추가, deploy.sh로 자동화
+## 5. Contents 생성과 업로드, utterances로 댓글 기능 추가, 업로드 자동화
 
 ### 5.1 Contents 생성과 업로드
 
