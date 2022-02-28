@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Python basic 1 변수 선언"
+title: "[TIL] Python basic 1: 변수 선언"
 date: 2022-02-28T18:47:51+09:00
 draft: false
 tags: ["TIL", "python"]
