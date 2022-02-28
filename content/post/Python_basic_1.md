@@ -6,14 +6,6 @@ tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
 
-# Intro
-
-> 1. [변수 할당 설명]()
-> 2. [Object Identity]()
-> 3. [변수 네이밍 선언방법과 예약어]()
-
----
-
 <br>
 
 ## 1. 변수 할당 설명

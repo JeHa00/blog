@@ -6,17 +6,6 @@ tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
 
-# Intro
-
-> 1. [기본 출력]()
-> 2. [String 문자열 출력]()
-> 3. [Integer 정수형 출력]()
-> 4. [Float 실수형 출력]()
-
-<br>
-
-**formatting을 하면 특정 케이스에 원하는 형식대로 출력할 수 있고, 가독성이 높아진다.**
-
 <br>
 
 ## 1. 기본 출력
@@ -115,6 +104,7 @@ I love u
 - d는 정수, s는 string, f는 실수를 의미한다.
 - % 로 formatting 하는 방법과 .format 을 사용해서 formatting하는 방법이 있다.
 - 다 익숙해져야 하지만, 후자를 더 빈번히 사용한다.
+- **formatting을 하면 특정 케이스에 원하는 형식대로 출력할 수 있고, 가독성이 높아진다.**
 
 ```yml
 # 순서에 맞게 자동적으로 mapping 해준다.

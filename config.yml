@@ -36,7 +36,7 @@ params:
   comments: True
   hidemeta: false
   hideSummary: false
-  showtoc: false  # 글 안에 Table of Contents 표시
+  showtoc: True # 글 안에 Table of Contents 표시
   tocopen: false
 
   assets:
