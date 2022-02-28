@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Python basic 3: 숫자형 데이터"
+title: "[TIL] Python basic 3: numetic data type"
 date: 2022-02-28T18:51:39+09:00
 draft: false
 summary: python의 자료형 종류에는 무엇이 있는지 알아보고, 숫자형 데이터 타입의 선언, 연산, 그리고 형 변환에 대해 중점적으로 알아보겠다.
