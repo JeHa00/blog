@@ -7,15 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
 
-# Python basic 5: python list
-
 # Intro
-
-> 1. [List 선언](https://github.com/JeHa00/TIL/blob/master/Python/basic/basic_5_list.md#1-list-%EC%84%A0%EC%96%B8)
-> 2. [List indexing, slicing](https://github.com/JeHa00/TIL/blob/master/Python/basic/basic_5_list.md#2-list-indexing-slicing)
-> 3. [List 연산](https://github.com/JeHa00/TIL/blob/master/Python/basic/basic_5_list.md#3-list-%EC%97%B0%EC%82%B0)
-> 4. [List 함수](https://github.com/JeHa00/TIL/blob/master/Python/basic/basic_5_list.md#4-list-%ED%95%A8%EC%88%98)
-> 5. [List 수정, 삭제](https://github.com/JeHa00/TIL/blob/master/Python/basic/basic_5_list.md#5-list-%EC%88%98%EC%A0%95-%EC%82%AD%EC%A0%9C)
 
 <br>
 
