@@ -194,7 +194,8 @@ mikky is a firstdog
   - `instance`만의 공간도 있고, 공유하는 공간이 있다.
   - 그래서 `코드의 재사용성`이 좋다는 것이다.
   - `코드의 재사용성`이 좋다는 의미는 더 구체적으로 말하자면
-    - 객체지향에 입각하여 불필요한 중복을 방지하고, 깔끔한 코드를 통해 프로그램 개발을 할 수 있다.
+    - 객체지향에 입각하여 불필요한 중복을 방지한다.
+    - 깔끔한 코드를 통해 프로그램 개발을 할 수 있다.
     - 생산성이 향상되고, 성능도 코드에 따라 좋아진다.
 
 ---
@@ -330,7 +331,8 @@ objects>, '__weakref__': <attribute '__weakref__' of 'Warehouse' objects>, '__do
 ```
 
 - 파이썬은 object의 이름을 다음 순서로 찾는다.
-  - `instance`의 namespace -> `class`의 namespace -> `super`의 namespace (해당 class의 상위 class를 의미한다.)
+  - `instance`의 namespace -> `class`의 namespace -> `super`의 namespace
+  - super class: 해당 class의 상위 class를 의미
 
 <br>
 

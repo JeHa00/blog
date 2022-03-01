@@ -170,7 +170,7 @@ dict_values([100, 200, 300])
 123 456 789
 ```
 
-- `print` 함수처럼 함수가 받을 인자(argument)의 갯수를 유연하게 지정하기 위해 Python은 `packing`을 지원한다.
+- `print` 함수처럼 함수가 받을 인자의 갯수를 유연하게 지정하기 위해 Python은 `packing`을 지원한다.
 - `packing` 은
   - `arguments`를 `하나의 객체`로 합쳐서 받을 수 있도록 한다.
   - `positional argument` packing 과 `keyword argument` packing이 있다.
@@ -184,13 +184,13 @@ dict_values([100, 200, 300])
 <br>
 
 - `positional argument` packing을 사용하는 방법
-- parameter를 입력할 때, 입력되는 수만큼 (x, y, z, a, b)로 입력할 수 있다.
-- 하지만, `*args`를 사용하여 하나의 객체로서 packing 하여 간단히 관리할 수 있다.
-- `args`는 매개변수 명으로, 자유롭게 명명한다.
+  - parameter를 입력할 때, 입력되는 수만큼 (x, y, z, a, b)로 입력할 수 있다.
+  - 하지만, `*args`를 사용하여 하나의 객체로서 packing 하여 간단히 관리할 수 있다.
+  - `args`는 매개변수 명으로, 자유롭게 명명한다.
 
 <br>
 
-- `positional argument`에 대해 알아보기에 앞서, `enumerate ()` method에 대해 알아보겠다.
+- `positional argument`에 대해 알아보기에 앞서, `enumerate ()` 에 대해 알아보겠다.
 
 ```yml
 # enumerate()
@@ -275,7 +275,7 @@ name3 Choice
 
 - `Unpacking`은 `packing`과는 반대로 여러개의 객체를 포함하고 있는 하나의 객체를 푼다.
 - **`Unpacking` 시 해체되는 `인자의 수`와 매칭되는 `변수의 수`가 동일해야 가능하다.**
-- `packing` 시에는 `매개변수`에 `*`을 붙였지만, `unpacking` 시에는 `argument` 앞에 `*`를 붙여서 사용합니다.
+- `packing` 시에는 `매개변수`에 `*`을 붙였지만, `unpacking` 시에는 `argument` 앞에 `*`를 붙여서 사용한다.
 
 ```yml
 > def sum(a, b, c):
@@ -303,12 +303,10 @@ name3 Choice
 
 ## 4. 중첩 함수 (Nested function)
 
-- `중첩 함수`는 `함수형 프로그래밍`과 관련 있다.
-- `함수형 프로그래밍`에서 중첩함수로 많이 사용된다.
-- 함수 내부에 정의된 또 다른 함수를 말한다.
+- `중첩 함수`란 함수 내부에 정의된 또 다른 함수
+- `중첩 함수`는 `함수형 프로그래밍`에서 많이 사용된다.
 - 호출하는 함수는 `부모 함수` 이다.
-- `부모 함수`의 하위 함수를 호출할 수 없다.
-  - `부모 함수`의 매개변수를 받아서 사용한다.
+- `부모 함수`의 하위 함수를 호출할 수 없고,`부모 함수`의 매개변수를 받아서 사용한다.
 
 ```yml
 # 중첩 함수
@@ -401,7 +399,7 @@ NameError: name 'func_in_func' is not defined
 
 ## 6. 함수 Type Hint
 
-- 함수의 `매개변수`와 함수의 `결과값`이 `무슨 데이터 타입인지` 알려주기 위해 `python 3.5` 부터 나온 기능이다.
+- 함수의 `매개변수`와 함수의 `결과값`의 데이터 타입을 알려주기 위해 `python 3.5` 부터 나온 기능이다.
 - `def <function-name>(parameter1: <data type>) -> <함수 결과값의 data type>`
 
 ```yml
