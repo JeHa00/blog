@@ -1,6 +1,6 @@
 ---
 title: "[TIL] Python basic 11: 흐름 제어문 (while 반복문)"
-date: 2022-03-02T12:31:42+09:00
+date: 2022-03-02T00:49:59+09:00
 draft: false
 summary: While 반복문의 기본 사용, break & continue 문, While ~ else 구문, 무한 반복 구문에 대해 알아본다.
 tags: ["TIL", "python"]
@@ -8,11 +8,6 @@ categories: ["개발-dev"]
 ---
 
 ## Intro
-
-> 1. [While 기본 사용법](https://github.com/JeHa00/TIL/edit/master/Python/basic/basic_11_while.md#1-while-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95)
-> 2. [Break, continue](https://github.com/JeHa00/TIL/edit/master/Python/basic/basic_11_while.md#2-break-continue)
-> 3. [While ~ else 구문](https://github.com/JeHa00/TIL/edit/master/Python/basic/basic_11_while.md#3-while--else-%EA%B5%AC%EB%AC%B8)
-> 4. [무한 반복 구문](https://github.com/JeHa00/TIL/edit/master/Python/basic/basic_11_while.md#4-%EB%AC%B4%ED%95%9C-%EB%B0%98%EB%B3%B5-%EA%B5%AC%EB%AC%B8)
 
 - for, if, while 문을 `흐름 제어문` 이라 한다.
 - `for`문은 원하는 `<collection>`의 갯수만큼 반복한다면, `while` 문은 `if`처럼 조건을 만족할 때까지 계속 반복한다.
