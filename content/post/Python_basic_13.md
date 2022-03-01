@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 13: input"
 date: 2022-03-02T12:31:49+09:00
-draft: true
+draft: false
 summary: input을 통한 사용자 입력과 형 변환(type conversion) 입력을 알아본다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]

@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 15: module"
 date: 2022-03-02T12:32:16+09:00
-draft: true
+draft: false
 summary: Module이란 무엇인지, Module을 어떻게 사용하는지, Module 관련 함수에 대해 알아본다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]

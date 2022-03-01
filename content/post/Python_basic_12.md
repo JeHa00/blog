@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 12: Method"
 date: 2022-03-02T12:31:46+09:00
-draft: true
+draft: false
 summary: 함수의 중요성 및 선언, Packing & Unpacking, 중첩 함수(Nested function), 람바 함사(익명 함수), 함수 Type hint 에 대해 알아본다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
