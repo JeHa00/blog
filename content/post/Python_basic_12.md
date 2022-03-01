@@ -190,7 +190,7 @@ dict_values([100, 200, 300])
 
 <br>
 
-- `positional argument`에 대해 알아보기에 앞서, `enumerate ()` 에 대해 알아보겠다.
+- `positional argument`에 대해 앞서서 `enumerate ()` 에 대해 알아보겠다.
 
 ```yml
 # enumerate()
@@ -399,7 +399,7 @@ NameError: name 'func_in_func' is not defined
 
 ## 6. 함수 Type Hint
 
-- 함수의 `매개변수`와 함수의 `결과값`의 데이터 타입을 알려주기 위해 `python 3.5` 부터 나온 기능이다.
+- 함수의 매개변수와 함수의 결과값의 데이터 타입을 알려주기 위해 `python 3.5` 부터 나온 기능이다.
 - `def <function-name>(parameter1: <data type>) -> <함수 결과값의 data type>`
 
 ```yml
