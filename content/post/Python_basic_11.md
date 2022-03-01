@@ -16,8 +16,8 @@ categories: ["개발-dev"]
 - python 공식 사이트에서 `while` 의 구조는 다음과 같다.
 - `<expr>`은 expression을 의미한다.
 
-> - while <expr>:
-> -     <statement(s)>
+> while <expr>:
+> <statement(s)>
 
 <br>
 

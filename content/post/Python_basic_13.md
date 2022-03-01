@@ -25,7 +25,8 @@ Jeha A+ here
 
 ## 2. 형 변환 입력
 
-- `input` 함수는 `기본 타입`은 `string` 이므로, `string` 외의 원하는 형태가 있다면 반드시 `type conversion(형 변환)`을 해야 한다.
+- `input` 함수는 `기본 타입`은 `string` 이다.
+- 그래서 `string` 외의 원하는 형태가 있다면 반드시 `type conversion(형 변환)`을 해야 한다.
 
 <br>
 

@@ -26,7 +26,7 @@ categories: ["개발-dev"]
   - `class`를 통해 만들기 때문에 `코드의 재사용성`이 용이하다. => `경제적`이다.
     - 코드의 개선, 수정이 용이하다.
     - 버그가 발생했을 때 유지보수 또한 용이하다.
-- 하지만, `OOP`가 무조건 빠른 건 아니다. 경우에 따라서는 `객체 지향`보다 `절차 지향`이 더 빠른 퍼포먼스를 가질 수 있다. 그래서 `객체 지향`과 `절차 지향`을 적절히 섞어서 사용하자.
+- 하지만, `OOP`가 무조건 빠른 건 아니다. 경우에 따라서는 `객체 지향`보다 `절차 지향`이 더 빠른 퍼포먼스를 가질 수 있으므로, `객체 지향`과 `절차 지향`을 적절히 섞어서 사용하자.
   - `절차 지향` : 위에서부터 아래로 실행하는 것
 
 ---
@@ -203,7 +203,7 @@ mikky is a firstdog
 
 ## 3. Self 의 이해: class method, instance method
 
-- `__init__`이 없으면 파이썬이 내부적으로 알아서 클래스를 만들 때 내부적으로 실행한다.
+- `__init__`이 없으면 파이썬이 알아서 클래스를 만들 때 내부적으로 실행한다.
 - `instance 변수`를 만들지 않고 사용할 것이기 때문에 `__init__`을 만들지 않는다.
 - `dir()`로 변수 내부를 확인할 수 있다.
 - 매개변수에 `self` 가 있으면 `instance method`다.
@@ -270,7 +270,7 @@ Func2 called
 
 ## 4. class, instance variable
 
-- `class variable`은 `instance`의 공통된 변수라서, `instance`의 `namespace`에 있을 것 같지만 없다.
+- `class variable`은 `instance`의 공통된 변수이기 때문에, `instance`의 `namespace`에 있을 것 같지만 없다.
 - `class variable`은 `class`의 `namespace`에 있다.
 - 하지만, 인스턴스화된 변수를 통해서 `class variable`에 접근한다면 `namespace`에서 찾을 수 없어도 `class variable`만 출력할 수 있다.
 - `instance attribute`를 만들어서 사용할 것이기 때문에 `__init__` 생성자를 사용한다.
