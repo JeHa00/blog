@@ -14,11 +14,11 @@ categories: ["개발-dev"]
 - `While`문은 `if`문처럼 조건이 들어간다. 그런데, 무한 반복될 수도 있기 때문에, `조건의 변화`가 필요하다. 아니면 `break` 를 사용한다.
 - 조건을 만족하면 `while`문을 빠져나온다.
 - python 공식 사이트에서 `while` 의 구조는 다음과 같다.
-- `<expr>`은 expression을 의미한다.
+- `[expr]`은 expression을 의미한다.
 
 ```yml
-> while <expr>:
-> <statement(s)>
+> while [expr]:
+> [statement(s)]
 ```
 
 <br>
