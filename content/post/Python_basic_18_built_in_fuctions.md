@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Python basic 17: built-in functions"
+title: "[TIL] Python basic 18: built-in functions"
 date: 2022-03-03T01:33:46+09:00
 draft: False
 summary:

@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Python basic 17: external functions"
+title: "[TIL] Python basic 19: external functions"
 date: 2022-03-03T01:34:00+09:00
 draft: False
 summary: 외장 함수를 실행하는 방법과 외장 함수의 여러 종류들을 알아보겠다.
