@@ -2,7 +2,7 @@
 title: "[TIL] Python basic 18: built-in functions"
 date: 2022-03-03T01:33:46+09:00
 draft: False
-summary:
+summary: 내장 함수란 무엇이고, 내장 함수에서 자주 사용된 것들로 실습을 해보겠다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
