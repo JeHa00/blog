@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 20: with open as"
 date: 2022-03-04T14:32:38+09:00
-draft: true
+draft: false
 summary: with open() as 함수를 사용해서 외부 파일을 읽고, 작성하는 방법을 알아보겠다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]

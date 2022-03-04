@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 21: csv.read, write"
 date: 2022-03-04T14:31:38+09:00
-draft: true
+draft: false
 summary: with open as 를 사용하여 외부 csv 파일을 읽고, 쓰는 방법을 알아보자.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
