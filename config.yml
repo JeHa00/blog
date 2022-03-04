@@ -121,18 +121,21 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
+    # - name: About
+    #   url: /about/
+    #   weight: 10
     - name: Archive
       url: /archives/
-      weight: 10
+      weight: 20
     - name: Categories
       url: /categories/
-      weight: 10
+      weight: 30
     - name: Tags
       url: /tags/
-      weight: 20
+      weight: 40
     - name: Search
       url: /search/
-      weight: 30
+      weight: 50
 
 outputs:
     home:
