@@ -7,6 +7,8 @@ tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
 
+## 1. Error 종류와 원인
+
 - Python basic 과정 강의를 끝내고, 간단한 프로젝트로 Hangman game 만들기를 해봤다.
 - 그 과정에서 발생한 오류를 기록하고자 한다.
 - 만드는 과정에서 모르는 에러가 발생했다.
@@ -35,6 +37,8 @@ categories: ["개발-dev"]
 ```
 
 <br>
+
+## 2. Error 해결과정
 
 위 코드를 작성한 이유는 words 의 성분들을 섞은 상태로 다른 변수에 할당하고 나서, Hangman game의 답을 random으로 q에서 뽑아내고자 했다. 지금 보면 터무니 없는 코드로 당연히 오류날만한 부분이었고, 너무 어렵게 생각했다. 왜 이렇게 작성한 것인지 원인을 생각해보았고, 어떻게 접근해야할지 생각해 보았다.
 
@@ -89,3 +93,11 @@ random.shuffle(x) 은 list x의 성분들의 순서를 섞지만, 아무것도 �
 **- `TypeError: 'NoneType' object is not subscriptable` : data type error의 종류이며, NoneType 객체는 인덱싱에 사용할 수 없다.**
 
 **- 구글 번역도 좋지만 보다 직접 번역하며 분석하는 게 훨씬 공부에 도움이 된다.**
+
+---
+
+<br>
+
+## Reference
+
+- [What does it mean if a Python object is "subscriptable" or not?](https://stackoverflow.com/questions/216972/what-does-it-mean-if-a-python-object-is-subscriptable-or-not)
