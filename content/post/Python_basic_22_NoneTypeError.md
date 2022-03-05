@@ -88,4 +88,4 @@ random.shuffle(x) 은 list x의 성분들의 순서를 섞지만, 아무것도 �
 
 **- `TypeError: 'NoneType' object is not subscriptable` : data type error의 종류이며, NoneType 객체는 인덱싱에 사용할 수 없다.**
 
-**- 구글 번역도 좋지만 보다 직접 번역하며 분석하는 게 훨씬 공부에 도움이 된다는 걸 느낀다.**
+**- 구글 번역도 좋지만 보다 직접 번역하며 분석하는 게 훨씬 공부에 도움이 된다.**
