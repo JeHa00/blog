@@ -1,7 +1,7 @@
 ---
 title: "Monthly Memoirs 작성 이유와 규칙"
 date: 2022-02-19T02:26:36+09:00
-draft: false
+draft: true
 tags: ["2월", "memoirs", "retrospectives"]
 categories: ["회고-memoirs"]
 summary: "Monthly Memoirs 작성하는 이유를 설명하고, 앞으로의 규칙을 지키자는 다짐을 하기 위해 작성한다."
