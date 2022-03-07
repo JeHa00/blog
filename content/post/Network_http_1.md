@@ -65,7 +65,7 @@ IP의 역할은
 
 ---
 
-# 2. 'IP 문제점의 해결책: TCP '\n TCP 문제점의 해결책: UDP'
+# 2. IP 문제점의 해결책: TCP
 
 <br>
 
@@ -194,7 +194,7 @@ TCP 정보와 IP packet을 생성한 데이터 안에 담겨진 구체적인 내
 
 ---
 
-## 2.2. TCP 문제점의 해결책: UDP
+# 3. TCP 문제점의 해결책: UDP
 
 IP의 여러 문제점을 해결하는 TCP이지만, 위에 TCP segment에 들어가는 정보들처럼 정보양이 많기 때문에 시간이 오래 걸리고, 최적화가 어렵다. 또한, 인터넷 자체도 이미 TCP 기반이라 다듬을 수 없다. 그래서 UDP를 최적화하여 속도를 증가시킬 수 있다. 최근에 이 UDP가 뜨고 있다. 웹 브라우저가 TCP handshake 과정을 줄일려고 하기 때문이다.
 
@@ -213,11 +213,11 @@ IP의 여러 문제점을 해결하는 TCP이지만, 위에 TCP segment에 들�
 
 <br>
 
-# 3. Port와 DNS란 무엇인가??
+# 4. Port와 DNS란 무엇인가??
 
 <br>
 
-## 3.1 Port란?
+## 4.1 Port란?
 
 한 IP에서 여러 Application을 사용하고 있을 때, 데이터를 원하는 Application으로 보내기 위해서 `PORT` 가 필요하다. 이 port 정보는 TCP 세그먼트에 포함되어 있다.
 
@@ -246,7 +246,7 @@ Port number는
 
 ---
 
-## 3.2 DNS란?
+## 4.2 DNS란?
 
 `DNS`는 `Domain Name System`으로, 기억하기 어렵고 변경될 수 있는 IP address 대신에 Domain Name을 사용하면 DNS에서 이 Domain name에 해당되는 IP주소로 응답하여 접속하는 시스템을 말한다.
 
