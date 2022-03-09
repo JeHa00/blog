@@ -13,7 +13,7 @@ categories: ["개발-dev"]
 
 ## Intro
 
-- HTTP에 관한 학습내용의 기본 출처는 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC) 이다.
+- HTTP에 관한 학습내용의 기본 출처: 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
@@ -174,12 +174,12 @@ categories: ["개발-dev"]
 
 ![image](https://user-images.githubusercontent.com/78094972/157241361-b1b91484-f73b-4c2a-86b5-5dbf066b85a6.PNG)
 
-1. 서버는 패킷이 도착하면 패킷의 내부 HTTP method를 해석해서 정보에 맞는 동작을 한다.
-2. 서버에서 HTTP 응답 메세지를 생성한다.
+6. 패킷이 도착하면 서버는 패킷 내부 HTTP method를 해석하여 정보에 맞는 동작을 한다.
+7. 서버에서 HTTP 응답 메세지를 생성한다.
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5488679c-ffc0-4e0f-bc6b-7a0b7ad4b812%2FUntitled.png&blockId=d9d14474-2768-4145-b2e8-ffd62f37750d)
 
-1. 클라이언트에서는 응답 메세지를 받아 HTML 렌더링을 한다.
+8. 클라이언트에서는 응답 메세지를 받아 HTML 렌더링을 한다.
 
 ![image](https://user-images.githubusercontent.com/78094972/157242597-f69fba96-1411-4b06-a930-9c423dcefb3a.PNG)
 
