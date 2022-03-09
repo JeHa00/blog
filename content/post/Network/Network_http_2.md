@@ -28,6 +28,7 @@ categories: ["개발-dev"]
     - from https://www.ietf.org/rfc/rfc3986.txt - 1.1.3. URI, URL, and URN
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F55603624-57bc-422d-a423-1a2f3bc1d490%2FUntitled.png&blockId=7544083d-0ca3-48c5-a59a-1a24553ad18d)
+
 <br>
 
 ### 1.1 URI, URL, URN의 각 의미

@@ -9,13 +9,13 @@ categories: ["개발-dev"]
 
 # Intro
 
-- HTTP에 관한 학습내용의 기본 출처는 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC) 이다.
+- HTTP 학습내용의 기본 출처: 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC) 이다.
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
 <br>
 
-- 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고 시작하고 싶어 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
+- 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
 <br>
 
@@ -24,7 +24,7 @@ categories: ["개발-dev"]
 ## 1.1 HTTP란? (**지금은 HTTP 시대!**)
 
 : HTML 같은 문서 간에 링크를 통해 연결할 수 있는 프로토콜을 의미한다.
-: 하지만, 이제는 문서 뿐만 아니라 **HTTP 메세지에 모든 것을 전송**한다.
+하지만, 이제는 문서 뿐만 아니라 **HTTP 메세지에 모든 것을 전송**한다.
 
 - HTML, TEXT
 - IMAGE, 음성, 영상, 파일
@@ -60,13 +60,14 @@ categories: ["개발-dev"]
 
 <br>
 
-- 사이트에서 기반 프로토콜을 확인하고 싶으면 검사(F12)에 들어가서 `Network tab`을 클릭 한다.
+- 사이트에서 기반 프로토콜을 확인하려면 검사(F12)에 들어가 `Network tab`을 클릭 한다.
 - 하단에 Name tab을 오른쪽 마우스 클릭하여 Protocol을 체크한다.
 - h3는 http/3 고, h2는 http/2 를 의미한다.
 - 구글은 h3를 사용하고, 네이버는 h2를 사용한다.
 
-<p align="center"><image src ="https://user-images.githubusercontent.com/78094972/157368318-ca06aad3-5926-4e3f-a4c9-7168daa68fc1.PNG" width = '600' height ='300'/></p>  
-<p align="center"> <image src ="https://user-images.githubusercontent.com/78094972/157368348-06f8e79f-3f69-40bc-a24c-2cac341bd340.PNG" width = '500' height ='350'/></p>
+![image](https://user-images.githubusercontent.com/78094972/157368318-ca06aad3-5926-4e3f-a4c9-7168daa68fc1.PNG)
+
+![image](https://user-images.githubusercontent.com/78094972/157368348-06f8e79f-3f69-40bc-a24c-2cac341bd340.PNG)
 
 <br>
 
@@ -204,11 +205,9 @@ categories: ["개발-dev"]
 
 - 그러면 서버 증설이 무한히 가능하다면 어떤 이점이 있을까???
 
-<br>
+같은 기능을 하는 서버들 안에서 서버의 **`수평 확장`** 에 유리하다.
 
-같은 기능을 하는 서버 어떠한 것을 선택해도 가능하기 때문에, 서버의 **`수평 확장`** 에 유리하다.
-
-<p align="center"><image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb6939ea2-0d68-4986-bc51-92a9eaf1b0a6%2FUntitled.png&blockId=8367b500-6305-4a9d-972d-babc19570513" width = '500' height ='300'/> </p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb6939ea2-0d68-4986-bc51-92a9eaf1b0a6%2FUntitled.png&blockId=8367b500-6305-4a9d-972d-babc19570513)
 
 <br>
 
@@ -238,9 +237,9 @@ categories: ["개발-dev"]
 
 ## 4.1 연결을 유지하는 모델
 
-<p align="center"><image src ="https://user-images.githubusercontent.com/78094972/157386174-01e9379a-9c31-4423-8043-fb25905a794d.PNG" width = '400' height ='200'/> </p>
+![image](https://user-images.githubusercontent.com/78094972/157386174-01e9379a-9c31-4423-8043-fb25905a794d.PNG)
 
-- TCP/IP 연결로 새로운 클라이언트와 연결하면서 이전 클라이언트와의 연결을 유지하고 있다.
+- TCP/IP 연결로 새로운 클라이언트와 연결하면서 이전 클라이언트와의 연결을 유지한다.
 - 서버의 자원이 연결을 유지하는데 `계속 소모`된다.
 - 연결된 클라이언트가 놀고 있어도 서버가 유지해야 하는게 단점이다.
 
@@ -248,7 +247,7 @@ categories: ["개발-dev"]
 
 ## 4.2 연결을 유지하지 않는 모델 (비연결성)
 
-<p align="center"><image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3a68a360-1286-42f6-9ad4-5e67ad947497%2FUntitled.png&blockId=84d8efb1-84c7-4c81-825d-47a8c45ad880" width = '400' height ='200'/> </p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3a68a360-1286-42f6-9ad4-5e67ad947497%2FUntitled.png&blockId=84d8efb1-84c7-4c81-825d-47a8c45ad880)
 
 - TCP/IP 연결 후, 클라이언트와 서버의 요청 응답 흐름이 끝나면 연결을 종료한다.
 - 그리고 다른 클라이언트와 연결 시, 이전 클라이언트와의 연결을 하지 않는다.
@@ -288,13 +287,13 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 
 아래 이미지를 참조하자.
 
-<p align="center"><image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F37024fde-ab57-4953-9fd1-62dda7951b1f%2FUntitled.png&blockId=1fca311e-5841-45d2-8770-a9821f766e86" width = '600' height ='400'/> </p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F37024fde-ab57-4953-9fd1-62dda7951b1f%2FUntitled.png&blockId=1fca311e-5841-45d2-8770-a9821f766e86)
 
 <br>
 
 그러면 HTTP 지속 연결로 어떻게 변했을까??
 
-<p align="center"><image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F46a04f27-85b1-4573-931a-88e7df14c211%2FUntitled.png&blockId=318906c9-6dfc-4a2e-a813-0d08920d69ac" width = '600' height ='400'/> </p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F46a04f27-85b1-4573-931a-88e7df14c211%2FUntitled.png&blockId=318906c9-6dfc-4a2e-a813-0d08920d69ac)
 
 클라이언트는 서버와 연결을 한 다음, 필요한 자원들을 모두 다운받을 떄까지 요청/응답이 반복된 뒤 종료된다.
 
@@ -314,7 +313,7 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 - HTTP 메시지 구조를 알아보자.
   - 공백 라인은 아래 순서로, 필수로 존재해야 한다.
 
-<p align="center"><image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1c1ade79-e244-4886-953b-ba3c12b4f115%2FUntitled.png&blockId=1f0cf7a3-cd02-4903-92ed-e9782fe18f93" width = '400' height ='200'/> </p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1c1ade79-e244-4886-953b-ba3c12b4f115%2FUntitled.png&blockId=1f0cf7a3-cd02-4903-92ed-e9782fe18f93)
 
 ## 5.1 시작 라인(start line)
 
@@ -326,9 +325,9 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 
 <br>
 
-## 5.1.1 요청 메시지
+### 5.1.1 요청 메시지
 
-<p align="center"><image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9963de80-40e6-4cf3-a0cb-b048ab516fbc%2FUntitled.png&blockId=e21b890c-1a01-4393-8025-55d95e9d0705" width = '400' height ='200'/> </p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9963de80-40e6-4cf3-a0cb-b048ab516fbc%2FUntitled.png&blockId=e21b890c-1a01-4393-8025-55d95e9d0705)
 
 - start line = **request - line (요청 메시지)** / status - line (응답 메시지)
 
@@ -348,9 +347,9 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 
   - HTTP verison (GET /search?q=hello&hl=ko **HTTP/1.1**)
 
-## 5.1.2 응답 메시지
+### 5.1.2 응답 메시지
 
-<p align="center"><image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F085e5d58-f33b-4406-999f-e07072372050%2FUntitled.png&blockId=cf01f06f-02d7-47a5-be2b-d21d8d042dcf" width = '400' height ='200'/> </p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F085e5d58-f33b-4406-999f-e07072372050%2FUntitled.png&blockId=cf01f06f-02d7-47a5-be2b-d21d8d042dcf)
 
 - start line = request - line (요청 메시지) / status - line (응답 메시지)
   - status-line = HTTP-version SP status-code SP reason-phrase CRLF
