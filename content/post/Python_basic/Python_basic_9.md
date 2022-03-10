@@ -122,7 +122,7 @@ e4 :  False
 - 거짓 : "", [], (), {}, 0, None
 
 ```yml
-# city가 공란이르모 False를 의미한다.
+# city가 공란이므로 False를 의미한다.
 # 그래서 else 문을 출력한다.
 > city = ""
 >
