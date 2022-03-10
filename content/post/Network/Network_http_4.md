@@ -9,13 +9,6 @@ categories: ["개발-dev"]
 
 # Intro
 
-> 1. [HTTP API 설계해보기(Http method intro.)](#1-http-api-설계해보기-http-method-intro)
-> 2. [HTTP method - GET, POST](#2-http-method---get-post)
-> 3. [HTTP method - PUT, PATCH, DELETE](#3-http-method---put-patch-delete)
-> 4. [HTTP method의 속성](#4-http-method의-속성)
-
-<br>
-
 - HTTP 학습내용의 기본 출처: 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC) 이다.
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
