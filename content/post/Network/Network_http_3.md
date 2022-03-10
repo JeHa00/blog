@@ -401,4 +401,4 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 # Reference
 
 - [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
-- [URI와 웹 브라우저 요청 흐름](https://catsbi.oopy.io/6befbf82-ce78-4fb9-bb87-805ec1048855)
+- [HTTP 기본](hhttps://catsbi.oopy.io/5c0b482c-b427-4052-9030-d2be0810eeb6)
