@@ -1,8 +1,8 @@
 ---
-title: "[TIL] Python basic 23: if \_\_name\_\_ == '\_\_main\_\_'"
+title: "[TIL] Python basic 23:  if \n_\n_name\n_\n_ == '\n_\n_main\n_\n_'"
 date: 2022-03-11T20:33:01+09:00
 draft: false
-summary: '\_\_name\_\_' 과 '\_\_main\_\_' 의 의미를 이해한 것을 바탕으로,  if \_\_name\_\_ == '\_\_main\_\_' 에 대해 알아본다. 
+summary: "'\n_\n_name\n_\n_' 과 '\n_\n_main\n_\n_' 를 이해한 걸 바탕으로, if \n_\n_name\n_\n_ == '\n_\n_main\n_\n_' 에 대해 알아본다."
 tags: ["TIL", "python", "__name__"]
 categories: ["개발-dev"]
 ---
@@ -225,6 +225,5 @@ after __name__guard <-
 - [[python] if \_\_name\_\_ == '\_\_main\_\_' : 의 정체](https://youngminieo1005.tistory.com/82)
 - [자료구조와 함께 배우는 알고리즘 입문 파이썬편](https://book.naver.com/bookdb/book_detail.nhn?bid=16419115)
 - [What does if\_\_name\_\_ == '\_\_main\_\_': do?](https://stackoverflow.com/questions/419163/what-does-if-name-main-do)
-- [Modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references)
-- [파이썬 공식 문서](https://docs.python.org/3/tutorial/modules.html#modules)
-- [\_\_main\_\_](https://docs.python.org/3/library/__main__.html)
+- [파이썬 공식 문서: Modules](https://docs.python.org/3/tutorial/modules.html#modules)
+- [파이썬 공식 문서: \_\_main\_\_](https://docs.python.org/3/library/__main__.html)
