@@ -92,7 +92,6 @@ your cards right.
 
 - `read()` 함수에 intger type의 인자를 넣으면, 입력한 값만큼의 Byte를 읽는다. 그리고, 또 실행하면 이어서 읽는다. 왜냐하면 cursor가 움직이기 때문이다.
 - `seek()` 함수를 사용하여 이 cursor의 위치를 초기화할 수 있다.
--
 
 ```yml
 > with open('./resource/it_news.txt', 'r', encoding='UTF-8') as f:

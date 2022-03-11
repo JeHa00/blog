@@ -397,7 +397,7 @@ NameError: name 'func_in_func' is not defined
 
 <br>
 
-## 6. 함수 Type Hint
+## 6. 함수 Type Hint: Annotation
 
 - 함수의 매개변수와 함수의 결과값의 데이터 타입을 알려주기 위해 `python 3.5` 부터 나온 기능이다.
 - `def <function-name>(parameter1: <data type>) -> <함수 결과값의 data type>`
