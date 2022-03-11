@@ -79,7 +79,7 @@ hello.py: hello
 python.py: python
 ```
 
-> - 결론
+> - 결론  
 >   \_\_name\_\_은 직접 실행될 때 \_\_main\_\_'이 출력되거나, import될 때에는 원래의 모듈이름이 담겨진다.
 
 <br>
@@ -131,8 +131,6 @@ python.py: python
 > \_\_main\_\_이 출력되는 모듈이 `entry point`라는 걸 알 수 있다. 그리고, 다른 module들을 import 하는 파일을 말한다.
 >
 > 출처: [파이썬 공식 문서: \_\_main\_\_](https://docs.python.org/3/library/__main__.html)
-
-<br>
 
 > [결론]  
 > **_ \_\_name\_\_ 변수를 통해서 현재 진행되는 파일이 entry point인지, module인지 판단할 수가 있다._**
