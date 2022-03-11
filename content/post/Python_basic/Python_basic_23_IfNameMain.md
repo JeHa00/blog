@@ -20,7 +20,7 @@ categories: ["개발-dev"]
 ### 1.1 \_\_name\_\_이란??
 
 > The file name is the module name with the suffix `.py` appended.  
-> Within a module, the module’s name (as a string) is available as the value of the global variable `\_\_name\_\_`
+> Within a module, the module’s name (as a string) is available as the value of the global variable `__name__`  
 > 출처: [파이썬 공식 문서](https://docs.python.org/3/tutorial/modules.html#modules)
 
 - 위 내용을 요약하면 \_\_name\_\_이란?
@@ -105,7 +105,7 @@ python.py: python
 - 그러면 `main module`의 정의는 무엇인가???
 
 > main module (the collection of variables that you have access to in a script executed at the top level and in calculator mode)
-> 출처: [파이썬 공식 문서: Module](https://docs.python.org/3/tutorial/modules.html#modules)
+> 출처: [파이썬 공식 문서: Module](https://docs.python.org/3/tutorial/modules.html#modules)  
 > top level에서 실행되는 script 안에서, 접근 권한을 가지고 있는 변수들의 집합을 말한다.
 
 <br>
