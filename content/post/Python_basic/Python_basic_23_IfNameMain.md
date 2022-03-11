@@ -142,9 +142,9 @@ python.py: python
 
 <br>
 
-### 3.1 `if \_\_name\_\_ == '\_\_main\_\_'` 이란 무엇인가??
+### 3.1 `if __name__ == '__main__'` 이란 무엇인가??
 
-- 그러면 `if \_\_name\_\_ == '\_\_main\_\_` 의미는 다음과 같다.
+- 그러면 `if __name__ == '__main__` 의미는 다음과 같다.
 
 > 이 조건문이 있는 파일을 import가 아닌 직접 실행을 한다면 아래 코드들을 실행하라.
 
@@ -201,7 +201,7 @@ after __name__guard <-
 
 ---
 
-### 3.2 `if \_\_name\_\_ == '\_\_main\_\_'` 을 왜 사용하는 걸까??
+### 3.2 `if __name__ == '__main__'` 을 왜 사용하는 걸까??
 
 1. stack-over-flow [What does if\_\_name\_\_ == '\_\_main\_\_': do?](https://stackoverflow.com/questions/419163/what-does-if-name-main-do)
 2. [[TIL] Python basic 15: module](https://jeha00.github.io/post/python_basic/python_basic_15/)
