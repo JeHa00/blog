@@ -25,7 +25,8 @@ categories: ["개발-dev"]
 
 - 위 내용을 요약하면 \_\_name\_\_이란?
 
-> `__name__`은 `.py`인 파이썬 모듈 파일이 가지고 있는 global variable(전역변수)이며, 모듈의 이름을 담고 있다.
+> `__name__`은 `.py`인 파이썬 모듈 파일이 가지고 있는 global variable(전역변수)이다.  
+> 그리고, 모듈의 이름을 담고 있다.
 
 <br>
 
@@ -97,16 +98,20 @@ python.py: python
 - 파이썬 공식 문서를 보면 \_\_main\_\_에 대해 다음과 같이 설명한다.
 
 > the name of the main module is always "\_\_main\_\_"
-> 출처: [Modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references)
+>
 > main module에서의 \_\_name\_\_ 은 항상 "\_\_main\_\_" 이다.
+>
+> 출처: [Modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references)
 
 <br>
 
 - 그러면 `main module`의 정의는 무엇인가???
 
 > main module (the collection of variables that you have access to in a script executed at the top level and in calculator mode)
-> 출처: [파이썬 공식 문서: Module](https://docs.python.org/3/tutorial/modules.html#modules)  
-> top level에서 실행되는 script 안에서, 접근 권한을 가지고 있는 변수들의 집합을 말한다.
+>
+> top level에서 실행되는 script 안에 접근 권한을 가지고 있는 변수들의 집합을 말한다.
+>
+> 출처: [파이썬 공식 문서: Module](https://docs.python.org/3/tutorial/modules.html#modules)
 
 <br>
 
@@ -117,17 +122,15 @@ python.py: python
 > \_\_main\_\_ is the name of the environment where top-level code is run.  
 > “Top-level code” is the first user-specified Python module that starts running.  
 > It’s “top-level” because it imports all other modules that the program needs.  
-> Sometimes “top-level code” is called an entry point to the application.  
+> Sometimes “top-level code” is called an entry point to the application.
+>
+> \_\_main\_\_은 top-level code 가 운영되는 환경의 이름인데,  
+> Top-level code는 사용자가 지정한 Python module 중에서 최초로 실행하기 시작하는 Python module이다.  
+> 즉, 프로그램이 필요한 다른 모듈들을 import 하는 module이다.  
+> "top-level code" 는 애플리케이션의 관점에서 `entry point` (시작점) 이라 불린다.
+> \_\_main\_\_이 출력되는 모듈이 `entry point`라는 걸 알 수 있다. 그리고, 다른 module들을 import 하는 파일을 말한다.
+>
 > 출처: [파이썬 공식 문서: \_\_main\_\_](https://docs.python.org/3/library/__main__.html)
-
-- \_\_main\_\_은 top-level code 가 운영되는 환경의 이름인데,
-- Top-level code는 사용자가 지정한 Python module 중에서 최초로 실행하기 시작하는 Python module이다.
-- 즉, 프로그램이 필요한 다른 모듈들을 import 하는 module이다.
-- "top-level code" 는 애플리케이션의 관점에서 `entry point` (시작점) 이라 불린다.
-
-<br>
-
-- \_\_main\_\_이 출력되는 모듈이 `entry point`라는 걸 알 수 있다. 그리고, 다른 module들을 import 하는 파일을 말한다.
 
 <br>
 
