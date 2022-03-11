@@ -9,12 +9,6 @@ categories: ["개발-dev"]
 
 ## Intro
 
-> 1. [\_\_name\_\_ 에 대해 알아보자.](#1-__name__-에-대해-알아보자)
-> 2. [\_\_main\_\_ 에 대해 알아보자.](#2-__main__-에-대해-알아보자)
-> 3. [if \_\_name\_\_ == '\_\_main\_\_' 에 대해 알아보자.](#3-if-__name__--__main__-에-대해-알아보자)
-
-<br>
-
 - [[TIL] Python basic 15: module](https://jeha00.github.io/post/python_basic/python_basic_15/)에서 학습했지만, 내용이 빈약하여 별도로 정리한다.
 
 ---
