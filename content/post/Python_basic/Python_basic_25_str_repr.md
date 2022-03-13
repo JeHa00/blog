@@ -1,8 +1,8 @@
 ---
-title: "[TIL] Python basic 25: \_\_str\_\_ vs \_\_repr\_\_"
+title: "[TIL] Python basic 25: \n_\n_str\n_\n_ vs \n_\n_repr\n_\n_"
 date: 2022-03-13T16:33:19+09:00
-draft: true
-summary: `__str__` 과 `__repr__` 이 각각 무엇인지 그리고, 이 둘의 차이가 뭔지 알아본다.  
+draft: false
+summary: \_\_str\_\_ 과 \_\_repr\_\_ 이 각각 무엇인지 그리고, 이 둘의 차이가 뭔지 알아본다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
