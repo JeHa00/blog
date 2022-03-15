@@ -47,7 +47,7 @@ categories: ["개발-dev"]
 - 예) 이미지, 정적 텍스트 문서
 - 정적 데이터는 일반적으로 쿼리 파라미터 없이 `GET` method로 `resource path만` 적어, 단순하게 조회가 가능하다.
 
-<p align="center"> <image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2a0386de-df5f-430f-b267-3902b833591c%2FUntitled.png&blockId=f016c60e-0e24-4cf4-a24a-4643ab1ab4ab"/></p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2a0386de-df5f-430f-b267-3902b833591c%2FUntitled.png&blockId=f016c60e-0e24-4cf4-a24a-4643ab1ab4ab)
 
 <br>
 
@@ -60,7 +60,7 @@ categories: ["개발-dev"]
 - 조회이기 때문에 `GET` 사용하지만, 정적 데이터가 아닌 동적 데이터이므로, `쿼리 파라미터를 사용`해서 데이터를 클라이언트가 서버에게 넘겨줘야 한다.
 - GET도 메세지 바디를 사용할 수 있지만, 지원하지 않는 경우가 많아서 사용하지 않는다.
 
-<p align="center"> <image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0082a8b8-b24d-41ed-81b9-ac485f67cfe0%2FUntitled.png&blockId=82858c8a-47aa-4adf-a1db-4ee739577065"/></p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0082a8b8-b24d-41ed-81b9-ac485f67cfe0%2FUntitled.png&blockId=82858c8a-47aa-4adf-a1db-4ee739577065)
 
 <br>
 
@@ -77,7 +77,7 @@ categories: ["개발-dev"]
 
 ## POST 전송 - 저장
 
-<p align="center"> <image src ="https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa35eb384-0cd3-4fad-982c-1cd3f058d7a1%2FUntitled.png&blockId=9d2c7b8f-bde7-4bd4-b438-fe3924180f36"/></p>
+![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa35eb384-0cd3-4fad-982c-1cd3f058d7a1%2FUntitled.png&blockId=9d2c7b8f-bde7-4bd4-b438-fe3924180f36)
 
 - 예) 회원 가입, 상품 주문, 데이터 변경 상황
 - 전송 버튼을 누르면 웹 브라우저가 form 태그 정보를 읽어서, HTTP message를 생성한다. 그리고, action에 작성된 경로로 해당 method 요청을 보낸다.
@@ -88,7 +88,7 @@ categories: ["개발-dev"]
 
 ## GET 전송 - 저장 (오류)
 
-<p align="center"> <image src ="https://media.vlpt.us/images/dnstlr2933/post/d7518bef-bada-4ad9-9702-1ad70ab6a883/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-01-07%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2012.18.02.png"/></p>
+![image](https://media.vlpt.us/images/dnstlr2933/post/d7518bef-bada-4ad9-9702-1ad70ab6a883/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-01-07%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2012.18.02.png)
 
 - GET이라 메세지 바디를 안쓰기 때문에, url 경로에다가 data를 넣는다. 즉, Query parameter 형식으로 넣어준다.
 - 또한, GET은 조회용으로만 사용가능하므로 저장하는 곳에 사용하면 안된다.
@@ -101,7 +101,7 @@ categories: ["개발-dev"]
 
 ## multipart/form-data
 
-<p align="center"> <image src ="https://media.vlpt.us/images/dnstlr2933/post/296861ed-bce7-431f-8e3c-13a0b0f73d18/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-01-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.16.57.png"/></p>
+![image](https://media.vlpt.us/images/dnstlr2933/post/296861ed-bce7-431f-8e3c-13a0b0f73d18/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-01-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.16.57.png)
 
 - 다른 종류의 여러 파일과 폼의 내용을 함께 전송이 가능하다. 그래서 이름이 mulitpart다.
 - 주로 binary data를 전송할 때 사용한다.
