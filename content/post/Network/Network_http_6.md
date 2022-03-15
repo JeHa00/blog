@@ -1,8 +1,8 @@
 ---
-title: "[TIL] Network HTTP method use"
+title: "[TIL] Network HTTP status"
 date: 2022-03-15T10:14:50+09:00
-draft: true
-summary:
+draft: false
+summary: HTTP status 2xx, 3xx, 4xx, 5xx에 대해 각각 알아본다.
 tags: ["TIL", "Network", "HTTP"]
 categories: ["개발-dev"]
 ---
@@ -42,27 +42,27 @@ categories: ["개발-dev"]
     - 451 ??? -> 4xx (Client Error)
     - 599 ??? -> 5xx (Server Error)
 
-- 그러면 각 상태 코드에 대해 알아보자.
+- 그러면 각 상태 코드에 대해 알아보자.  
   (1xx는 거의 사용하지 않으므로 생략한다. )
 
 <br>
 
 ---
 
-# 1. 2xx (Successful)
+# 2xx (Successful)
 
 > 클라이언트의 요청을 성공적으로 처리한 상태
 
 <br>
 
-- ### 200대 state code 종류
+- ## 2xx state code 종류
 
   - 200 OK
   - 201 Created
   - 202 Accepted
   - 204 No Content
 
-### 200 OK
+- ## 200 OK
 
 > 요청이 성공한 상태
 
@@ -73,7 +73,7 @@ categories: ["개발-dev"]
 
 <br>
 
-### 201 Created
+- ## 201 Created
 
 > 요청이 성공하여 새로운 리소스가 생성된 상태
 
@@ -81,7 +81,7 @@ categories: ["개발-dev"]
 
 <br>
 
-### 202 Accepted
+- ## 202 Accepted
 
 > 요청이 접수되었으나 처리가 완료되지 않은 상태
 
@@ -93,7 +93,7 @@ categories: ["개발-dev"]
 
 <br>
 
-### 204 No Content
+- ## 204 No Content
 
 > 서버가 요청을 성공적으로 수행했으나, 응답 페이로드 본문에 보낼 데이터가 없는 상태
 
@@ -106,112 +106,110 @@ categories: ["개발-dev"]
 
 ---
 
-# 2. 3xx (Redirection)
+# 3xx (Redirection)
 
 > 요청을 완료하기 위해 유저 에이전트(웹 브라우저)의 추가 조치가 필요한 상태
 
-### 3xx status code 종류
+- ## 3xx status code 종류
 
-- 300 Multiple Choices
-- 301 Moved Permanently
-- 302 Found
-- 303 See Other
-- 304 Not Modified
-- 307 Temporary Redirect
-- 308 Permanent Redirect
+  - 300 Multiple Choices
+  - 301 Moved Permanently
+  - 302 Found
+  - 303 See Other
+  - 304 Not Modified
+  - 307 Temporary Redirect
+  - 308 Permanent Redirect
 
-- 웹 브라우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동한다. 이를 `리다이렉트`라 한다.
+- `리다이렉트`란???
 
-- /event path를 더 사용하지 않기 때문에, /new-event로 바꼈다.
-
-<br>
-
-### 리다이렉션의 종류
-
-- 영구 리다이렉션:
-
-  - 특정 리소스의 URI가 _영구적으로_ 이동
-  - 예) /members -> /users
-  - 예) /event -> /new-event
-
-- 일시 리다이렉션:
-
-  - _일시적인_ 변경
-  - 주문 완료 후 주문 내역 화면으로 이동한다.
-  - 자주 쓰이는 패턴: PRG (Post/Redirect/Get)
-
-- 특수 리다이렉션:
-  - 결과 대신 캐시를 사용한다.
-  - 클라이언트가 캐시 사용 시간을 확인하기 위해 서버에게 보내어 서버가 캐시 생성일자로 응답하는 것을 말한다.
+  - 웹 브라우저가 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동하는 것
 
 <br>
 
-### 영구 리다이렉션 (301, 308)
+- ## 리다이렉션의 종류
 
-- 리소스의 URI가 영구적으로 이동
-- 원래의 URL를 사용X, 검색 엔진 등에서도 변경 인지
+  - 영구 리다이렉션:
 
-<br>
+    - 특정 리소스의 URI가 _영구적으로_ 이동
+    - 예) /members -> /users
+    - 예) /event -> /new-event
 
-- 301 Moved Permanently
+  - 일시 리다이렉션:
 
-![image](https://user-images.githubusercontent.com/78094972/158309427-31702d0b-1c21-4110-9ef2-2b36903152ee.PNG)
+    - _일시적인_ 변경
+    - 주문 완료 후 주문 내역 화면으로 이동한다.
+    - 자주 쓰이는 패턴: PRG (Post/Redirect/Get)
 
-- 리다이렉트 시, 요청 메서드가 POST에서 **GET으로 변하고**, 본문이 제거될 수 있음(MAY)
-- 본문이 제거될 수 있다는 문제점을 308이 해결할 수 있으나, 대부분 301을 사용한다.
-- 왜냐하면 경로가 `/new-event`로 바뀌면 내부적으로 전달하는 데이터가 다 바뀌는 것이기 때문에, POST로 와도 GET으로 되돌리는 게 맞다.
-
-- 308 Permanent Redirect
-
-![image](https://user-images.githubusercontent.com/78094972/158309420-34739160-055b-4f71-b94c-79370c7e6f32.PNG)
-
-- 301과 기능은 같음
-- 리다이렉트시 요청 메서드와 본문 유지
-  (처음 POST를 보내면 리다이렉트도 **POST 유지**)
-
-- 스펙에 나와 있어 설명한다. 실무에서는 거의 이렇게 사용하지 않는다.
+  - 특수 리다이렉션:
+    - 결과 대신 캐시를 사용한다.
+    - 클라이언트가 캐시 사용 시간을 확인하기 위해 서버에게 보내어 서버가 캐시 생성일자로 응답하는 것을 말한다.
 
 <br>
 
-### 일시적인 리다이렉션 (302, 307, 303)
+- ## 영구 리다이렉션 (301, 308)
 
-- 리소스의 URI가 일시적으로 변경
-- 따라서 검색 엔진 등에서 URL을 변경하면 안됨
-- **302 Found**
-  - **리다이렉트시 요청 메서드가 GET으로 변하고, 본문이 제거될 수 있음(MAY)**
-- **307 Temporary Redirect**
-  - 302와 기능은 같음
-  - **리다이렉트시 요청 메서드와 본문 유지(요청 메서드를 변경하면 안된다. MUST NOT)**
-- **303 See Other**
-  - 302와 기능은 같음
-  - **리다이렉트시 요청 메서드가 GET으로 변경**
+  - 리소스의 URI가 영구적으로 이동
+  - 원래의 URL를 사용X, 검색 엔진 등에서도 변경 인지
 
 <br>
 
-- 그러면 예를 들어서 설명해보자.
+- ### 301 Moved Permanently
 
-- POST로 주문 후, 웹 브라우저를 새로고침하면??
-  - 새로 고침은 다시 요청하는 것이기 때문에, 중복 주문이 될 수 있다.
-- 이를 해결하기 위해 자주 사용하는 패턴이 `PRG`다.
-  - PRG: POST/Redirect/Get
+  ![image](https://user-images.githubusercontent.com/78094972/158309427-31702d0b-1c21-4110-9ef2-2b36903152ee.PNG)
+
+  - 리다이렉트 시, 요청 메서드가 POST에서 **GET으로 변하고**, 본문이 제거될 수 있음(MAY)
+  - 본문이 제거될 수 있다는 문제점을 308이 해결할 수 있으나, 대부분 301을 사용한다.
+  - 왜냐하면 경로가 `/new-event`로 바뀌면 내부적으로 전달하는 데이터가 다 바뀌는 것이기 때문에, POST로 와도 GET으로 되돌리는 게 맞다.
+
+- ### 308 Permanent Redirect
+
+  ![image](https://user-images.githubusercontent.com/78094972/158309420-34739160-055b-4f71-b94c-79370c7e6f32.PNG)
+
+  - 301과 기능은 같음
+  - 리다이렉트시 요청 메서드와 본문 유지  
+    (처음 POST를 보내면 리다이렉트도 **POST 유지**)
+
+  - 스펙에 나와 있어 설명한다. 실무에서는 거의 이렇게 사용하지 않는다.
 
 <br>
 
-- PRG 사용 전
+- ## 일시적인 리다이렉션 (302, 307, 303)
 
-![image](https://user-images.githubusercontent.com/78094972/158310955-13fedf73-f6f3-4ba2-94f0-2ef7cd012fa3.PNG)
+  - 리소스의 URI가 일시적으로 변경
+  - 따라서 검색 엔진 등에서 URL을 변경하면 안됨
+  - **302 Found**
+    - **리다이렉트시 요청 메서드가 GET으로 변하고, 본문이 제거될 수 있음(MAY)**
+  - **307 Temporary Redirect**
+    - 302와 기능은 같음
+    - **리다이렉트시 요청 메서드와 본문 유지**  
+      (요청 메서드를 변경하면 안된다. MUST NOT)
+  - **303 See Other**
+    - 302와 기능은 같음
+    - **리다이렉트시 요청 메서드가 GET으로 변경**
 
 <br>
 
-- PRG 사용 후
+- ### PRG 예시 (전, 후)
 
-![image](https://user-images.githubusercontent.com/78094972/158310948-77dbaf09-aa61-4871-8a28-28f2a5cffb31.PNG)
+  - POST로 주문 후, 웹 브라우저를 새로고침하면??
+    - 새로 고침은 다시 요청하는 것이기 때문에, 중복 주문이 될 수 있다.
+  - 이를 해결하기 위해 자주 사용하는 패턴이 `PRG`다.
 
-- 302 또는 303 사용한다.
-- POST로 주문 후에도 새로 고침으로 인한 중복 주문을 방지한다.
-- POST로 주문 후에도 주문 결과 화면을 GET method로 리다이렉트하여, 새로 고침해도 결과 화면을 GET 으로 조회한다.
-- 즉, 중복 주문 대신에 결과 화면만 GET으로 다시 요청한다.
-- PRG를 사용해서 경고창이 안뜨고, 서버 입장에서는 오류가 줄어든다.
+    - PRG: POST/Redirect/Get
+
+  - PRG 사용 전
+
+  ![image](https://user-images.githubusercontent.com/78094972/158310955-13fedf73-f6f3-4ba2-94f0-2ef7cd012fa3.PNG)
+
+  - PRG 사용 후
+
+  ![image](https://user-images.githubusercontent.com/78094972/158310948-77dbaf09-aa61-4871-8a28-28f2a5cffb31.PNG)
+
+  - 302 또는 303 사용한다.
+  - POST로 주문 후에도 새로 고침으로 인한 중복 주문을 방지한다.
+  - POST로 주문 후에도 주문 결과 화면을 GET method로 리다이렉트하여, 새로 고침해도 결과 화면을 GET 으로 조회한다.
+  - 즉, 중복 주문 대신에 결과 화면만 GET으로 다시 요청한다.
+  - PRG를 사용해서 경고창이 안뜨고, 서버 입장에서는 오류가 줄어든다.
 
 <br>
 
@@ -225,7 +223,8 @@ categories: ["개발-dev"]
 
   - 처음 302 스펙의 의도는 HTTP 메서드를 유지하는 것이다.
   - 그런데 웹 브라우저들이 대부분 GET으로 바꿨다.(일부는 다르게 동작)
-  - 그래서 모호한 302를 대신하는 명확한 307, 303이 등장했다.(301 대응으로 308도 등장)
+  - 그래서 모호한 302를 대신하는 명확한 307, 303이 등장했다.  
+    (301 대응으로 308도 등장)
 
 - [Now]
   - 307, 303을 권장하지만 현실적으로 이미 많은 애플리케이션 라이브러리들이 302를 기본값으로 사용
@@ -233,7 +232,7 @@ categories: ["개발-dev"]
 
 <br>
 
-### 기타 리다이렉션 (300, 304)
+## 기타 리다이렉션 (300, 304)
 
 - 300 Multiple Choices: 안쓴다.
 - **_304 Not Modified_**
@@ -247,16 +246,16 @@ categories: ["개발-dev"]
 
 ---
 
-# 3. 4xx (Client Error)
+# 4xx (Client Error)
 
 > 오류의 원인이 '클라이언트'에게 있어서, 발생하는 클라이언트 오류
 
 - 클라이언트의 요청에 잘못된 문법 등으로 서버가 요청을 수행할 수 없다.
-- **_클라이언트가 이미 잘못된 요청, 데이터를 보내고 있기 때문에, 똑같은 재시도는 실패한다._**
+- **_클라이언트가 이미 잘못된 요청,데이터를 보내고 있어서, 똑같은 재시도는 실패한다._**
 
 <br>
 
-### 3.1 400 Bad Request
+## 400 Bad Request
 
 > 클라이언트가 잘못된 요청을 해서 서버가 요청을 처리할 수 없다.
 
@@ -266,7 +265,7 @@ categories: ["개발-dev"]
 
 <br>
 
-### 3.2 401 Unauthorized
+## 401 Unauthorized
 
 > 클라이언트가 해당 리소스에 대한 인증이 필요하다.
 
@@ -283,16 +282,16 @@ categories: ["개발-dev"]
 
 <br>
 
-### 3.3 403 Forbidden
+## 403 Forbidden
 
 > 서버가 요청을 이해했지만, 승인을 거부함
 
 - 주로 인증 자격 증명은 있지만, 접근 권한이 부충분한 경우
-  - 예) Admin 등급이 아닌 사용자가 로그인 했지만, admin 등급의 resource에 접근하는 경우
+  - 예) Admin 등급이 아닌 사용자가 로그인하여, admin 등급의 resource에 접근하는 경우
 
 <br>
 
-### 3.4 404 Not Found
+## 404 Not Found
 
 > 요청 리소스를 찾을 수 없다.
 
@@ -304,7 +303,7 @@ categories: ["개발-dev"]
 
 ---
 
-# 4. 5xx (Serve Error)
+# 5xx (Serve Error)
 
 > 오류의 원인이 '서버'에게 있어서, 발생하는 서버 오류
 
@@ -314,7 +313,7 @@ categories: ["개발-dev"]
 
 <br>
 
-### 4.1 500 Internal Server Error
+## 500 Internal Server Error
 
 > 서버 문제로 오류 발생, 애매하면 500 오류
 
@@ -323,7 +322,7 @@ categories: ["개발-dev"]
 
 <br>
 
-### 4.2 503 Service Unavailable
+## 503 Service Unavailable
 
 > 서비스 이용 불가
 
