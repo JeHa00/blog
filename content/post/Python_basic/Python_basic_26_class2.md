@@ -93,7 +93,7 @@ categories: ["개발-dev"]
 
 <br>
 
-> `self._속성` 처럼 언더바(\_)를 사용하는 이유??
+> `self._속성` 처럼 언더바(\_)를 사용하는 이유??  
 > 개발자들은 instance variable를 만들 때 under bar 를 사용한다.  
 > PEP에서 권장한다.
 
@@ -131,7 +131,8 @@ categories: ["개발-dev"]
 
 ## 2. dir, `.__dict__` 그리고 `__doc__`
 
-> - `dir`은 해당 instance가 가지고 있는 속성을 list로 보여준다. 그러나, 속성의 value들은 보여주지 않는다.
+> - `dir`은 해당 instance가 가지고 있는 속성을 list로 보여준다.
+> - 그러나, 속성의 value들은 보여주지 않는다.
 > - `__dict__`는 각 instance의 namespace를 보고 싶을 때 사용한다. 즉, 속성과 속성의 value들을 보여준다.
 
 ```yml
@@ -173,7 +174,7 @@ categories: ["개발-dev"]
 
 ## 3. Method의 3종류
 
-> Method의 종류에는 Instance method, class method, static Method 로 세 가지 종류가 있다.
+> Method의 종류에는 Instance method, class method, static Method 세 종류가 있다.
 
 - 그러면 언제 이 method 들을 사용하는가??
 
@@ -197,8 +198,6 @@ categories: ["개발-dev"]
   - 위 method들과는 달리, 아무것도 받지 않는다.
   - 위 두 가지 변수(클래스 변수, 인스턴스 변수)를 받기에는 조금 적절하지 않을 때 대책으로 사용한다.
   - 또한, `@staticmethod`라는 decorator를 입력한다.
-
--
 
 ```yml
 
