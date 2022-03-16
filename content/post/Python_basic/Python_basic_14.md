@@ -29,6 +29,9 @@ categories: ["개발-dev"]
 - 하지만, `OOP`가 항상 빠르진 않다. 경우에 따라서는 `객체 지향`보다 `절차 지향`이 더 빠른 퍼포먼스를 가질 수 있으므로, `객체 지향`과 `절차 지향`을 적절히 섞어 사용하자.
   - `절차 지향` : 위에서부터 아래로 실행하는 것
 
+> 절차지향과 OOP 비교해보기  
+> [[TIL] Python basic 24: Procedural Programming vs OOP](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)
+
 ---
 
 <br>
@@ -94,20 +97,21 @@ categories: ["개발-dev"]
 
 ```yml
 ## class 정보 호출하기
+# 클래스가 코드로 구현된 걸 확인할 수 있다.
 > print(Dog)
 <class '__main__.Dog'>
-# 클래스가 코드로 구현된 걸 확인할 수 있다.
 ```
 
 <br>
 
 ### 2.3 인스턴스화하기
 
-- `인스턴스화` == class를 통해 구현된 instance를 변수에 할당하여 사용하도록 한다.
+> - `인스턴스화` == class를 통해 구현된 instance를 변수에 할당하는 것
+> - **인스턴스화한 것은 모두 다 다른 id값을 가진다.**
+
 - 즉, `instance`는 변수에 할당하여 활용될 수 있다.
 - 변수에 할당했기 때문에, 메모리에 올라가고 `id`값을 받는다.
 - 각 instance는 동일한 속성값을 가져도, 파이썬에게는 전혀 다른 객체로 간주된다.
-- **인스턴스화한 것은 모두 다 다른 id값을 가진다.**
 
 ```yml
 ## 인스턴스화
@@ -125,10 +129,9 @@ False 2542532857088 2542532856992 2542532856560
 
 ### 2.4 namespace 확인하기
 
-- `namespace` 확인하기
-- `namespace` 란
-  - 객체를 인스턴스화 할 때, instance의 속성들이 `dictionary` 형태로 저장되는 공간으로,
-  - instance들이 가지고 있는 속성들을 확인할 수 있다.
+> `namespace` 란 객체를 인스턴스화 할 때, instance의 속성들이 `dictionary` 형태로 저장되는 공간
+
+- `namespace` 를 통해서 instance들이 가지고 있는 속성들을 확인할 수 있다.
 - `class`는 하나지만, 서로 다른 속성들을 확인할 수 있다.
 - `instance`만의 공간이다.
 - `instance`의 `namespace`를 확인할 때는 `__dict__` 를 사용한다.
@@ -151,7 +154,7 @@ dog2 {'name': 'baby', 'age': 3}
   - `self`가 붙은 것들이 `instance varible(인스턴스 변수)`다.
   - 인스턴스화된 변수로 접근이 가능하다.
   - 객체마다 별도로 존재한다.
-  - 위에 설명한대로 `namespace`라는 그 인스턴스만의 공간을 별도로 갖고 있어서, namespace를 통해 확인한다.
+  - `namespace`라는 그 인스턴스만의 공간을 별도로 갖고 있어서, namespace를 통해 확인한다.
 
 <br>
 
@@ -234,11 +237,11 @@ mikky is a firstdog
 
 ## 인스턴스화된 f를 통해서 func1을 호출해보자.
 # func1에는 매개변수가 없는데, 1개가 넘어갔다는 걸 알 수 있다.
-> f.func1
+> f.func1()
 TypeError: func1() takes 0 positional arguments but 1 was given
 
 ## 그러면 인스턴스화된 f를 통해서 func2를 호출해보자. (2-1 방법)
-> f.func2
+> f.func2()
 2799723753424
 Func2 called
 
