@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Python basic 26: class advanced 1"
+title: "[TIL] Python basic 26: class advanced"
 date: 2022-03-16T14:28:39+09:00
 draft: false
 summary: instance의 self가 무엇을 의미하는지, dir과 `__dict__`가 무슨 차이인지, 그리고 method 3종류에 대해 알아본다.
