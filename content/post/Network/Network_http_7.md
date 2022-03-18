@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Network HTTP Header 1"
 date: 2022-03-17T20:17:50+09:00
-draft: true
+draft: false
 summary: representation, 콘텐츠 협상, 전송 방식, 일반 정보, 특별 정보, 인증 그리고 쿠키에 대해 알아본다.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
