@@ -11,7 +11,7 @@ categories: ["개발-dev"]
 
 - 이번 내용은 [Python basic 14: 파이썬 클래스(class)](https://jeha00.github.io/post/python_basic/python_basic_14/)에 이어 진행한다.
 
-- 예시코드는 Python basic 24에서 작성한 코드를 이어서 사용한다.
+- 예시코드는 [Python basic 24](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)에서 작성한 코드를 이어서 사용한다.
 
 ```yml
 > class Airline():
