@@ -1,8 +1,8 @@
 ---
 title: "[TIL] Python basic 29: Data Model"
 date: 2022-03-23T23:24:24+09:00
-draft: true
-summary:
+draft: false
+summary: Python data model을 상세히 분류하여 list, tuple, dictionary, set에 대해 각각 조금 더 깊이 알아보자.
 tags: ["TIL", "python"]
 categories: ["개발-dev"]
 ---
