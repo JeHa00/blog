@@ -199,7 +199,10 @@ factorial
 # 3. Callable 설명
 
 > - callable이란??
-> - 호출 연산자로, 인자가 호출 가능한지 확인하는 함수
+>   - 호출 연산자로 함수, 클래스 인스턴스, 메서드 등이 호출 가능한지 확인하는 함수
+>   - specail method인 `__call__` method의 존재 유무를 확인한다.
+>   - 이 method가 있으면 True다.
+>   - [What is a 'callable'](https://stackoverflow.com/questions/111234/what-is-a-callable)
 
 - 호출한다는 건 무슨 의미일까???
 
@@ -307,3 +310,4 @@ OrderedDict([('n', <Parameter "n">)])
 - [데이터 모델: 객체](https://docs.python.org/ko/3/reference/datamodel.html#objects-values-and-types)
 - [Inspect: 라이브 객체 검사](https://docs.python.org/ko/3/library/inspect.html)
 - [용어집 - python 3.10.4](https://docs.python.org/ko/3/glossary.html?highlight=%EC%86%8D%EC%84%B1)
+- [What is a 'callable'](https://stackoverflow.com/questions/111234/what-is-a-callable)
