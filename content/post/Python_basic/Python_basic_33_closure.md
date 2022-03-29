@@ -128,22 +128,16 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 ```yml
 # global scope
 > class Avenager():
-
 # enclosing scope
-
 >   def __init__(self):
 >       self._series = []
 # local scope
-
 # special method __call__은 class를 function처럼 호출해서 사용하도록 한다.
 >   def __call__(self, v):
 >       self._series.append(v)
 >       print('inner >>> {} / {}'.format(self._series, len(self, series)))
 >       return sum(self._series) / len(self._series)
 
-```
-
-```yml
 # local scope
 
 # 인스턴스 생성
@@ -185,24 +179,23 @@ inner >>> [15, 35, 40] / 3
 # 이 영역에 정의된 변수: series
 >   series = []
 
-
 >   def averager(v):
 # averager의 local scope
 >      series.append(v)
 >      print('inner >>> {} / {}'.format(series, len(series)))
 >      return sum(series) / len(series)
-```
 
-```yml
 # 일급 함수의 특징: 함수를 반환할 수 있다.
 >   return averager
 
 # make a instance
+# 반환값인 averager가 avg_closure1에 할당된다.
 > avg_closure1 = closure_ex1()
 
 > print(avg_closure1)
 <function closure_ex1.<locals>.averager at 0x000001B59D11FC10>
 
+# 인자로 입력된 15는 averager function의 인자 v이다.
 > print(avg_closure1(15))
 inner >>> [15] / 1
 15.0
