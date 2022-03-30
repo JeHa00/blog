@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 35: Generator 1"
 date: 2022-03-30T14:17:57+09:00
-draft: true
+draft: false
 summary: 첫 번째, 병행성과 병렬성이란 무엇인지 각 개념에 대해 알아본다.  두 번째, Generator를 이해하기 위해 \_\_iter\_\_와 \_\_next\_\_에 대해 알아본다.
 tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
