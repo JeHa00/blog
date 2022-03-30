@@ -4,7 +4,7 @@ date: 2022-03-07T21:16:44+09:00
 draft: false
 summary: HTTP를 학습하기 위해 사전지식으로 IP,TCP/UDP, PORT, DNS를 알아본다.
 tags: ["TIL", "Network", "IP", "TCP", "PORT", "DNS"]
-categories: ["개발-dev"]
+categories: ["개발-dev Netwok"]
 ---
 
 HTTP에 관한 학습내용의 기본 출처는 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC) 이다. 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.

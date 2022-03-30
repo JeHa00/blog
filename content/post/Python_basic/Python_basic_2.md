@@ -4,7 +4,7 @@ date: 2022-02-28T18:50:13+09:00
 draft: false
 summary: 첫 번째 print 함수를 사용할 때, separator와 end를 사용하여 다양하게 사용하는 것과 두 번째, stirng type, numeric type을 다양하게 출력을 해봄으로서 print 함수에 대해 이해해보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 <br>

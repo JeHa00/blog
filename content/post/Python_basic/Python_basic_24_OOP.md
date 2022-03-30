@@ -4,7 +4,7 @@ date: 2022-03-12T23:16:27+09:00
 draft: false
 summary: 절차형 프로그래밍과 객체지향 프로그래밍 각 방식으로 작성하여 직접 차이를 느껴본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 ## Intro

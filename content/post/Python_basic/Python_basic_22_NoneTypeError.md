@@ -4,7 +4,7 @@ date: 2022-03-05T23:47:54+09:00
 draft: false
 summary: Python basic 과정을 마치고, 간단한 프로젝트로 Hangman game을 만들었다. 그 과정에서 NoneTypeError가 발생했다. 'TypeError:'NoneType' object is not subscriptable' 에 대해 알아보자.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 ## 1. Error 종류와 원인

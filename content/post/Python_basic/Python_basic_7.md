@@ -4,7 +4,7 @@ date: 2022-03-01T11:52:48+09:00
 draft: false
 summary: dictionary type의 선언, 출력과 수정 그리고, dictionary에 사용되는 함수에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 <br>

@@ -4,7 +4,7 @@ date: 2022-03-25T20:42:59+09:00
 draft: false
 summary: 일급 함수(일급 객체, first-class)란 무엇인지 알고, 일급 함수의 예인 lambda function, Callable, Partial에 대해 알아본다.  그리고 추가적으로 Signature에 대해 간단히 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 # Intro

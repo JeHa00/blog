@@ -4,7 +4,7 @@ date: 2022-03-29T23:34:52+09:00
 draft: false
 summary: Decorator(데코레이터)가 왜 중요한지, 왜 사용해야 하는지 그리고 작성하기 어려운 지에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 # Intro

@@ -4,7 +4,7 @@ date: 2022-03-11T20:33:01+09:00
 draft: false
 summary: "'\n_\n_name\n_\n_' 과 '\n_\n_main\n_\n_' 를 이해한 걸 바탕으로, if \n_\n_name\n_\n_ == '\n_\n_main\n_\n_' 에 대해 알아본다."
 tags: ["TIL", "python", "__name__"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 ## Intro

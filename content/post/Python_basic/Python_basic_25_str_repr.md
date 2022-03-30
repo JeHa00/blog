@@ -4,7 +4,7 @@ date: 2022-03-13T16:33:19+09:00
 draft: false
 summary: \_\_str\_\_ 과 \_\_repr\_\_ 이 각각 무엇인지 그리고, 이 둘의 차이가 뭔지 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 ## Intro

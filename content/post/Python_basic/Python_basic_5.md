@@ -4,7 +4,7 @@ date: 2022-02-28T19:49:04+09:00
 draft: false
 summary: list의 생성, indexing, slicing, 연산, list에 쓰이는 함수 그리고, list를 수정하고 삭제하는 방법에 대해 알아보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 # Intro

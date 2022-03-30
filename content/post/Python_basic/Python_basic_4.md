@@ -4,7 +4,7 @@ date: 2022-02-28T19:45:30+09:00
 draft: false
 summary: string type의 생성부터 연산, len 함수 사용, type conversion, 문자형 함수 그리고 slicing을 알아보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 <br>

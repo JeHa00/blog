@@ -4,7 +4,7 @@ date: 2022-03-03T01:33:28+09:00
 draft: False
 summary: Error의 종류와 예외 처리문에 대해 알아보고, 일부러 에러를 일으키는 이유와 방법에 대해 알아보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 ## 1. Exception(예외) and Error(에러)의 차이점

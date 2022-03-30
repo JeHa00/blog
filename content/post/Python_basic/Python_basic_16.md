@@ -4,7 +4,7 @@ date: 2022-03-03T01:32:28+09:00
 draft: False
 summary: package란 무엇인지, package의 경로와 함수를 어떻게 실행하는지, __init__.py가 존재하는 이유에 대해 알아보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 ## 1. Pacakge 구조

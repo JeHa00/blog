@@ -4,7 +4,7 @@ date: 2022-03-03T01:34:00+09:00
 draft: False
 summary: 외장 함수를 실행하는 방법과 외장 함수의 여러 종류들을 알아보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 - 여러 외장 함수들 중 sys, pickle, os, time, random, webbrowser 에 대해 예제 실습으로 알아보겠다.

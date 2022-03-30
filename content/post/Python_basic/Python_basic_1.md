@@ -4,7 +4,7 @@ date: 2022-02-28T18:47:51+09:00
 draft: false
 summary: 첫 번째, 기본적인 선언 방법과 동시 선언, 재선언을 알아본다. 두 번째, 각 선언에 따른 id 값을 확인하여 파이썬 내부 원리를 이해한다. 세 번째, 선언 방법의 종류인 Camel case, Pascal case, Snake case가 무엇인지 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 <br>

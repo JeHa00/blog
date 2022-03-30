@@ -4,7 +4,7 @@ date: 2022-03-02T00:51:20+09:00
 draft: false
 summary: OOP의 의미가 무엇인지, Class와 Instance의 차이가 무엇인지, self가 무엇을 의미하는지, class variable과 instance variable에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 ## Intro

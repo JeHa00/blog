@@ -4,7 +4,7 @@ date: 2022-03-22T09:00:37+09:00
 draft: false
 summary: Data Model의 한 종류인 namedtuple에 대해 알아보자.
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
 
 # Intro
