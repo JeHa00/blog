@@ -170,7 +170,7 @@ MS Window의 또 다른 큰 특징은 **plug and play**다. 시스템에 새로�
 
 ## CPU 관리 기법: 3가지
 
-**_CPU_** 는 통상적으로 **컴퓨터 한 대에 하나**가 장착되기 때문에, 여러 프로세스들이 CPU를 **효율적으로** 나누어 사용할 수 있도록 관리되어야 한다. 이 **CPU의 대표적인 관리 방법** 에는 **선입선출(First Come First Served: FCFS), 라운드 로빈(Round Robin), 우선순위(Priority) 기법**이 있다.
+**_CPU_** 란 Central Processing Unit의 약자로, 명령어를 실행하는 연산 장치를 말한다. 이 **_CPU_** 는 통상적으로 **컴퓨터 한 대에 하나**가 장착되기 때문에, 여러 프로세스들이 CPU를 **효율적으로** 나누어 사용할 수 있도록 관리되어야 한다. 이 **CPU의 대표적인 관리 방법** 에는 **선입선출(First Come First Served: FCFS), 라운드 로빈(Round Robin), 우선순위(Priority) 기법**이 있다.
 
 <br>
 
