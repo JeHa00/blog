@@ -124,7 +124,7 @@ sorted - None ['strawberry', 'coconut', 'mango', 'lemon', 'orange', 'apple', 'pa
 
 ## List vs Array 적합한 사용법
 
-- List 기반: 다양한 data type을 사용할 수 있기 때문에, 융통성 있게 범용적으로 사용 가능하다.
+- List 기반: 다양한 data type을 사용할 수 있기 때문에, 융통성 있게 범용적으로 사용 가능.
 - Array 기반: 한 가지 data type만 사용할 수 있기 때문에, 숫자 기반에 많이 사용한다.
 
 ---

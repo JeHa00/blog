@@ -190,10 +190,11 @@ TypeError: can't send non-None value to a just-started generator
 > def coroutine2(x):
 >   print('coroutine started : {}'.format(x))
 
-## main과 sub routine의 양방향 통신 -> 동시성 개발
+# main과 sub routine의 양방향 통신 -> 동시성 개발
 # 좌변 = 우변
 # 좌변은 main routine에서 sub routine으로 입력을 받는 것
 # 우변은 sub routine에서 나한테 준 것
+
 >   y = yield x
 >   print('coroutine y received : {}'.format(y))
 >   z = yield x + y

@@ -9,7 +9,7 @@ categories: ["개발-dev Python"]
 
 # Intro
 
-- `courition`을 공부하면서 global variable과 local variable에 대해서 기본적인 의미만 알았지만,
+- `coroutin`을 공부하면서 global variable과 local variable에 대해서 기본적인 의미만 알았지만,
 - 이것이 Scoping Rule과 연관이 되어있다는 것과,stack과 heap이라는 데이터 임시 저장 자료 구조와 연관된 걸 몰랐다.
 - 그래서 `Scoping Rule`, `Stack` 그리고, `Heap`에 대해 알아보겠다.
 
@@ -87,8 +87,8 @@ categories: ["개발-dev Python"]
   - `.__dict__.keys()` 로 key value로 indexing하여 확인할 수 있다.
 
   - python은 name의 존재유무를 확인하기 위해서, 여러 scope levels(or namespace)를 찾아본다.
-
-    - local namespace -> enclosing namespace -> global or module namespace -> built-in namespace
+  - 찾는 순서는 다음과 같다.
+    - local namespace -> global namespace -> global or module namespace -> built-in namespace
 
 <br>
 
@@ -100,9 +100,11 @@ categories: ["개발-dev Python"]
 
 - **Local(or function) scope**: Python function의 body 또는 code block 부분이 local scope
 
-  - fuction 내에서 정의한 name들만 포함한다.
-  - 이 `function의 코드에서만` local scope에 있는 name을 확인할 수 있다.
-  - lifetime of a local namespace: 할당된 function이 종료되면 끝난다.
+> 지역 함수 내에 로직을 해결하는 값을 사용한다.
+
+- fuction 내에서 정의한 name들만 포함한다.
+- 이 `function의 코드에서만` local scope에 있는 name을 확인할 수 있다.
+- lifetime of a local namespace: 할당된 function이 종료되면 끝난다.
 
 - **Enclosing(or nonlocal) scope**: 중첩함수(nested functions)를 위해서만 존재하는 scope
 
@@ -111,10 +113,12 @@ categories: ["개발-dev Python"]
 
 - **Global(or module) scope**: Python program, script, module 안에서 Top level의 scope
 
-  - 프로그램 또는 모듈에서 `최고 수준으로(Top level)` 정의한 이름들을 포함한다.
-  - `어느 코드에서든지` Global scope에 있는 name을 확인할 수 있다.
-    - [Top level이란??](https://jeha00.github.io/post/python_basic/python_basic_23_ifnamemain/#22-top-level-%EC%9D%B4%EB%9E%80)
-  - lifetime of a module namespace: 일반적으로 script가 끝날 때까지만 지속된다.
+> 이 scope에는 주로 변하지 않는 고정값을 사용한다.
+
+- 프로그램 또는 모듈에서 `최고 수준으로(Top level)` 정의한 이름들을 포함한다.
+- `어느 코드에서든지` Global scope에 있는 name을 확인할 수 있다.
+  - [Top level이란??](https://jeha00.github.io/post/python_basic/python_basic_23_ifnamemain/#22-top-level-%EC%9D%B4%EB%9E%80)
+- lifetime of a module namespace: 일반적으로 script가 끝날 때까지만 지속된다.
 
 - **Built-in scope**: script를 run할 때마다 만들어지는 특별한 scope
 
@@ -164,6 +168,8 @@ The cube of 30 is : 27000
 
 - local scope에 동일한 변수이름을 사용했지만, 프로그램 충돌이 일어나지 않았다.
 - 왜냐하면 `local scope`을 사용했기 때문이다.
+- `local scope`에만 살아있는 변수를 `local variable`이라 한다.
+- 함수 실행이 끝나면 local scope에서 벗어나기 때문에 `local variable`의 생명력은 끝난다.
 - 이러한 장점 때문에, 디버깅과 수정이 쉽고 가독성이 좋아진다.
 
 <br>
@@ -276,7 +282,64 @@ UnboundLocalError: local variable 'var' referenced before assignment
 
 <br>
 
-## 1.11 LEGB rules: Built-in scope
+## 1.11 Local variable 또는 global variable 찾아보기
+
+- `locals()` method를 통해서, `globals()` method를 통해서 지역 변수만, 또는 전역 변수만 출력할 수 있다.
+- 먼저 `locals()`에 대해 알아보자.
+
+```yml
+> def func(var):
+>   x = 10
+>   def printer():
+>       print('Ex > 5', "Printer Func Inner")
+>   print('Func Inner', locals())
+
+> func('Hi')
+Func Inner {'var': 'Hi', 'x': 10, 'printer': <function func.<locals>.printer at 0x000001D53343FDC0>}
+```
+
+- `func()` 함수를 호출하기 위해 인자로 넘겼던 'Hi' 또한 지역변수임을 알 수 있다.
+- enclosing scope에 있는 것 또한 local variable로 확인할 수 있다.
+- outer function의 local scope에 정의했기 때문에 printer 또한 지역 변수로 확인할 수 있다.
+
+<br>
+
+- 그러면 다음으로 `globals()`에 대해 알아보자.
+- globals는 이 코드를 실행할 때 입력한 모든 전역 변수가 입력되기 때문에, 다음과 같이 하여 알아본다.
+- `globals()`는 global 영역에 변수를 입력할 때 호출된다.
+
+```yml
+> print('Ex >', globals())
+Ex7 > {.....}
+
+> globals()['text_variable'] = 100
+> print('Ex >', globals())
+Ex7 > {'test_variable': 100}
+```
+
+<br>
+
+- `globals()`를 사용한 변수 자동화 생성: 지역 -> 전역 변수로 작성한다.
+
+```yml
+> for i in range(1, 6):
+>   for k in range(1, 6):
+>       globals()['plus_{}_{}'.format(i, k)] = i + k
+
+> print(globals())
+{'plus_1_1': 2, 'plus_1_2': 3, 'plus_1_3': 4, 'plus_1_4': 5, 'plus_1_5': 6,
+'plus_2_1': 3, 'plus_2_2': 4, 'plus_2_3': 5, 'plus_2_4': 6, 'plus_2_5': 7,
+'plus_3_1': 4, 'plus_3_2': 5, 'plus_3_3': 6, 'plus_3_4': 7, 'plus_3_5': 8,
+'plus_4_1': 5, 'plus_4_2': 6, 'plus_4_3': 7, 'plus_4_4': 8, 'plus_4_5': 9,
+'plus_5_1': 6, 'plus_5_2': 7, 'plus_5_3': 8, 'plus_5_4': 9, 'plus_5_5': 10}
+
+> rint(plus_3_5)
+8
+> print(plus_5_5)
+10
+```
+
+## 1.12 LEGB rules: Built-in scope
 
 - Built-in scope은 `builtins` 라 불리는 표준 라이브러리 모듈로서 실행되는 특별한 파이썬 scope이다.
 - 파이썬은 LEGB 에서 마지막으로 built-in을 찾는다.
@@ -315,7 +378,9 @@ TypeError: 'int' object is not callable
 15
 ```
 
-## 1.12 LEGB rules: final summary
+<br>
+
+## 1.13 LEGB rules: final summary
 
 <p align="center"><image src ="
 https://user-images.githubusercontent.com/78094972/160286468-2f395646-c83f-44ae-a5c9-b34f8c638d7d.PNG

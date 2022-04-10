@@ -185,7 +185,7 @@ TypeError: 'str' object does not support item assignment
 
 - 그러면 위 예시를 통해 `list comprehension`의 문법에 대해 정리해보자.
 
-  - 1. [`변수(B)를 사용하여 list의 성분이 될 값(A)` for `사용할 변수 이름(B)` in `iterator`]
+  - 1. ['변수(B)를 사용하여 list의 성분이 될 값(A)' for '사용할 변수 이름(B)' in 'iterator']
 
   - 2. `list comprehension`에서 `if 조건문`은 `for문` 표현식 뒤에 설정할 수 있다.
 
