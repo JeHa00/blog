@@ -1,8 +1,8 @@
 ---
 title: "Python_basic_41_ContextManager"
-date: 2022-04-10T20:59:23+09:00
+date: 2022-04-11T20:59:23+09:00
 draft: true
-summary: 
+summary:
 tags: ["TIL", "python"]
-categories: ["개발-dev"]
+categories: ["개발-dev Python"]
 ---
