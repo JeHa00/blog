@@ -9,10 +9,6 @@ categories: ["개발-dev"]
 
 # Intro
 
-> 1. [Map](#1-map)
-> 2. [Filter](#2-filter)
-> 3. [Reduce](#3-reduce)
-
 - [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python_basic/python_basic_31_firstclass/)에서 학습한 고위 함수(High-Order Function)의 대표적인 예인 map, filter, reduce function에 대해 집중적으로 학습하기 위해 작성한다.
 - 그래서 고위 함수(High-Order Function)란 무엇인지 간단히 알아보고, 각 fuction에 대해 기존에 했던 예제에 추가하여 더 알아보자.
 

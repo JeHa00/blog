@@ -1,6 +1,6 @@
 baseURL: "http://jeha00.github.io/"
 title: Jeha00 DevLog
-paginate: 7
+paginate: 10
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -152,4 +152,4 @@ markup:
         codeFences: true 
         guessSyntax: false
         lineNos: false
-        style: monokailight
+        style: dracula
