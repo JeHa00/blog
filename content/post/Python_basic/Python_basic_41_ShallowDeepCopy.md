@@ -117,6 +117,7 @@ True
 
   > print('c_list > ', id(c_list))
   c_list >  2636124593152
+
   > print('d_list > ', id(d_list))
   d_list >  2636124592896
   ```
@@ -148,6 +149,7 @@ True
   # 내장된 data도 독립된 id값을 가진 걸 확인할 수 있다.
   > print('nested data > ', id(c_list[3]))
   nested data >  1329303493056
+  
   > print('nested data > ', id(d_list[3]))
   nested data >  1329303494272
   ```
