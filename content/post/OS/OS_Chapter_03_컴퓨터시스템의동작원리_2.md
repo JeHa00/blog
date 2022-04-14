@@ -1,11 +1,13 @@
 ---
-title: "[TIL] Operating System Chapter 03: System Structure & Program Execution 2"
+title: "[TIL] OS Chapter 03: 컴퓨터 시스템의 동작원리 2"
 date: 2022-04-14T14:54:58+09:00
 draft: false
-summary: 입출력 구조, DMA, 저장장치의 구조 와 하드웨어, 메모리, CPU의 각 보안 방법에 대해 알아본다.
+summary: 입출력 구조, DMA, 저장장치의 구조 그리고 계층구조에 대해 알아본다. 또한, 하드웨어, 메모리, CPU의 각 보안 방법에 대해 알아본다.
 tags: ["TIL", "OS"]
 categories: ["개발-dev OS"]
 ---
+
+# 0. Introduction
 
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.

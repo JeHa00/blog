@@ -1,8 +1,8 @@
 ---
-title: "[TIL] Operating System Chapter 03: System Structure & Program Execution 1"
+title: "[TIL] OS Chapter 03: 컴퓨터 시스템의 동작원리 1"
 date: 2022-04-13T13:55:26+09:00
 draft: false
-summary: System Structure & Program Execution의 상편으로 한글 제목은 컴퓨터 시스템의 구조다. I/O 연산이 무엇이고, controller와 local buffer가 무엇이고, 입출력 연산이 Interrupt를 중심으로 어떻게 진행되는지를 알아본다.
+summary: I/O 연산이 무엇이고, controller와 local buffer가 무엇이고, 입출력 연산이 Interrupt를 중심으로 어떻게 진행되는지를 알아본다.
 tags: ["TIL", "OS"]
 categories: ["개발-dev OS"]
 ---
