@@ -86,8 +86,8 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/jeha00"
-    - name: facebook
-      url: "https://stackoverflow.com"
+    # - name: facebook
+    #   url: "https://www.facebook.com/profile.php?id=100023820606299"
     # - name: twitter
     #   url: "https://twitter.com/sseuppiyongsse1"
 
