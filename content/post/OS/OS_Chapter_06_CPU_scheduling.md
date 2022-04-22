@@ -1,6 +1,6 @@
 ---
 title: "[TIL] OS Chapter 06: CPU scheduling"
-date: 2022-04-19T17:50:51+09:00
+date: 2022-04-22T18:50:51+09:00
 draft: false
 summary: Bound process를 중심으로 CPU 스케쥴러가 왜 필요한지, 스케쥴링의 성능 척도는 무엇인지, CPU sheduling 알고리즘의 종류에는 무엇이 있고, 이 알고리즘 평가는 어떻게 이뤄지는지 알아보자.
 tags: ["TIL", "OS"]
