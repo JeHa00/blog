@@ -21,7 +21,7 @@ window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.
 
 ---
 
-## 1. Static Site Generator 로 Hugo를 선택한 이유
+# 1. Static Site Generator 로 Hugo를 선택한 이유
 
 `Github` page를 만들 때 SSG의 종류들로 `Jekyll`, `Hexo`, `Hugo` 가 많이 언급된다. 그러면 SSG란 무엇인가?? `정적 페이지(Static Site)`란 `HTML`,`CSS`,`JS`를 미리 올려서 서버가 바뀌지 않는 HTML page를 보여주는 것을 말한다. 이 정적 페이지를 보다 간편하게 만들어주는 것이 `SSG(Static Site Generator)`다. 이와 반대로 동적 페이지는 client에 반응하여 HTML page를 동적으로 만들어진 페이지를 말한다. 더 상세한 정보를 원하시는 분은 [정적 웹은 뭐고 동적 웹은 뭔가요?](https://bit.ly/3gVLiIi) 이 영상을 참고하시길 바란다.
 
@@ -64,7 +64,7 @@ Hugo
 
 <br>
 
-## 2. Github page 만들기 위한 local 환경 조성
+# 2. Github page 만들기 위한 local 환경 조성
 
 > - git을 설치한다. 그리고, github 에 가입한다.
 > - Visual Studio Code (VSC), Atom 같은 에디터를 설치한다.
@@ -85,9 +85,9 @@ Hugo
 
 <br>
 
-## 3. 새로운 2개 github repo 와 local 연결하기
+# 3. 새로운 2개 github repo 와 local 연결하기
 
-### 3.1 Submodule 개념 이해하기
+## 3.1 Submodule 개념 이해하기
 
 이 단계를 진행하기 전에 `submodule` 개념을 알아야 한다. 영어 독해가 가능하신 분들은 [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw) 이 링크에 들어가 보시기 바란다. submodule에 대해 그림과 함께 잘 설명되어있다.
 아래 내용은 위 블로그에서 submodule에 대한 부분을 번역한 내용이다. 오역이 있다면 댓글로 알려주시면 감사하겠다.
@@ -130,17 +130,17 @@ Hugo
 
 <br>
 
-### 3.2 New repository 2개 만들기
+## 3.2 New repository 2개 만들기
 
 > 자신의 github에 2개의 repository를 만든다.
 
 - 2개의 repository를 각각 A,B라고 하자.
 - 2개의 repository는 `public`과 `private` 중 `public`으로 만든다. `private` 으로 하면 site에 배포가 안될 수도 있다.
 
-> ⚠️ **주의: 두 repo를 만들 때 주의사항** ⚠️
->
-> - A repo에는 README.md 만들지 말기: README.md가 있다면 나중에 `git push` 시에 충돌이 일어난다.
-> - B repo에 README.md를 만들기: repo가 비어있으면 submodule로 연결이 안된다.
+### 3.2.1 ⚠️ 주의: 두 repo를 만들 때 주의사항 ⚠️
+
+- A repo에는 README.md 만들지 말기: README.md가 있다면 나중에 `git push` 시에 충돌이 일어난다.
+- B repo에 README.md를 만들기: repo가 비어있으면 submodule로 연결이 안된다.
 
 - A는 `user-name/blog` 로, B는 `user-name/user-name.github.io` 로 명칭을 만든다.  
   ex) A의 url은 `github.com/JeHa00/blog` / B의 url은 `github/JeHa00/JeHa00.github.io`
@@ -148,7 +148,7 @@ Hugo
 
 <br>
 
-### 3.3 Hugo new site 생성및 remote add origin A repo 실행
+## 3.3 Hugo new site 생성및 remote add origin A repo 실행
 
 > Visual Studio Code의 terminal 또는 Window의 cmd에 입력한다.
 
@@ -214,7 +214,7 @@ Hugo/project 명칭
 
 <br>
 
-### 3.4 B repo를 public 폴더에 submodule로 연결하기
+## 3.4 B repo를 public 폴더에 submodule로 연결하기
 
 ```yml
 # blog 폴더의 submodule로 branch main에 B repo를 add 한다.
@@ -266,7 +266,7 @@ Hugo/project 명칭
 
 <br>
 
-### 3.5 public directory와 project root directoy git push 단계
+## 3.5 public directory와 project root directoy git push 단계
 
 ```yml
 # public directory에 site build 수행하기
@@ -316,7 +316,7 @@ Hugo/<project 명칭>
 
 <br>
 
-## 4. Github page에 theme 적용
+# 4. Github page에 theme 적용
 
 > 원하는 테마 찾기
 
@@ -403,9 +403,9 @@ url = 테마 url
 
 <br>
 
-## 5. Contents 생성과 업로드, utterances로 댓글 기능 추가, 업로드 자동화
+# 5. Contents 생성과 업로드, utterances로 댓글 기능 추가, 업로드 자동화
 
-### 5.1 Contents 생성과 업로드
+## 5.1 Contents 생성과 업로드
 
 > Contents 생성과 `public` folder에 반영하기
 
@@ -444,7 +444,7 @@ url = 테마 url
 
 <br>
 
-### 5.2 Utterances로 댓글 기능 추가
+## 5.2 Utterances로 댓글 기능 추가
 
 > 사용 방법
 >
@@ -457,7 +457,7 @@ url = 테마 url
 
 <br>
 
-### 5.3 deploy.sh로 자동화
+## 5.3 deploy.sh로 자동화
 
 > `deploy.sh` 파일명으로 아래 코드를 저장한 후, `C:\Hugo\<프로젝트 명칭>` 경로에 저장한다. 이후 `Git Bash` 프로그램을 사용하여 `C:\Hugo\<프로젝트 명칭>` 경로로 이동 후, `bash deploy.sh`를 입력하면 the project root와 submodule 모두 순차적으로 push가 실행된다.
 > 나는 submodule은 `main` default branch에, the project root는 `master` default branch로 설정했다.
@@ -507,14 +507,14 @@ git push origin master
 
 <br>
 
-## 6. To customize blog theme
+# 6. To customize blog theme
 
 > - 커스텀마이징을 위한 제일 좋은 방법은 각자 선택한 테마 템플릿의 `README.md`를 꼼꼼히 읽어보는 게 제일 빠른 지름길이라 생각한다.
 > - 사용자가 원하는 기능들을 어떻게 추가하면 되는지 설명해논 템플릿이 많기 때문에, 반드시 `README.md` 를 `꼼꼼히` 읽기 바란다.
 
 <br>
 
-## 7. 후기
+# 7. 후기
 
 > - git에 대해 더 숙지를 하고 나서 git page를 만들기 시작했다면 시간 소모를 줄일 수 있었을 것이다. 급한 마음에 github page를 시작하여 생각보다 많은 시행착오와 error들을 격었다. 이 error들은 대체로 git을 정확히 이해하지 못해서 발생하는 문제점들이다.
 > - 이번 일을 통해서 git이 개발자에게 사람의 숨쉬기와 같다는 걸 느껴서 [Pro git](https://book.naver.com/bookdb/book_detail.nhn?bid=7187291) 이란 책을 사서 꾸준히 공부하기로 결정했다.
@@ -523,7 +523,7 @@ git push origin master
 
 <br>
 
-## Reference
+# Reference
 
 - [정적 웹은 뭐고 동적 웹은 뭔가요?](https://www.youtube.com/watch?v=C06xRvXIAUk)
 
