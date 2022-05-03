@@ -137,10 +137,10 @@ Hugo
 - 2개의 repository를 각각 A,B라고 하자.
 - 2개의 repository는 `public`과 `private` 중 `public`으로 만든다. `private` 으로 하면 site에 배포가 안될 수도 있다.
 
-  **주의: 두 repo를 만들 때 주의사항 **
-
-  - A repo에는 README.md 만들지 말기: README.md가 있다면 나중에 `git push` 시에 충돌이 일어난다.
-  - B repo에 README.md를 만들기: repo가 비어있으면 submodule로 연결이 안된다.
+> ⚠️ **주의: 두 repo를 만들 때 주의사항** ⚠️
+>
+> - A repo에는 README.md 만들지 말기: README.md가 있다면 나중에 `git push` 시에 충돌이 일어난다.
+> - B repo에 README.md를 만들기: repo가 비어있으면 submodule로 연결이 안된다.
 
 - A는 `user-name/blog` 로, B는 `user-name/user-name.github.io` 로 명칭을 만든다.  
   ex) A의 url은 `github.com/JeHa00/blog` / B의 url은 `github/JeHa00/JeHa00.github.io`
