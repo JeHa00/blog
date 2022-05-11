@@ -63,6 +63,7 @@ categories: ["개발-dev"]
 - Done
 
   - 💻 [모든 개발자를 위한 HTTP 웹 기본 지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/dashboard)
+  - 📚 [IT 엔지니어를 위한 네트워크 입문](http://www.yes24.com/Product/Goods/93997435)
 
 <br>
 
@@ -143,9 +144,10 @@ categories: ["개발-dev"]
 # **Django**
 
 - Will
-- Doing
 
   - 💻 [파이썬/장고 웹서비스 개발 완벽 가이드 with 리액트](https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%A5%EA%B3%A0-%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4/dashboard)
+
+- Doing
 
 - Done
 
