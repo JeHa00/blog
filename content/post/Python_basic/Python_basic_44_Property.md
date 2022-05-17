@@ -82,7 +82,7 @@ Ex > y : 2
 - 그래서 Python에서는 위 방식보다 간편하고 안전한 도구를 제공하는데, 바로 `property` 다.
 - `property`는
   - 속성 같이 행동하는 method를 만든다.
-  - getter와 setter method를 피하는 pythonic way로, 내부 method를 외부에 노출시키는 것 없이 처리할 수 있다.
+  - getter와 setter method를 피하는 pythonic way로, 내부 method를 외부에 노출시키는 것 없이 구현(Implementation)할 수 있다.
 
 <br>
 
