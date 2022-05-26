@@ -195,3 +195,4 @@ Wed Mar  2 20:42:50 2022
 
 - [라이브러리](https://wikidocs.net/33)
 - [pickling](https://www.youtube.com/watch?v=Z24atwS8TZ0)
+

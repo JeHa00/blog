@@ -219,3 +219,12 @@ Path :  c:\Users\ ~ \sub\sub2\module2.py
 - 이 list에 파일명이 다르면 작동할 수 없다.
 - 파이썬이 `import`할 때, `__init__`을 먼저 검사하기 때문에, all에 없으면 `error`가 발생된다.
 - `Python 3.3`부터는 `__init__.py` 가 필수가 아니어도, 아직도 많은 오픈 소스에는 `__init__.py` 가 존재한다.
+
+
+<br>
+
+---
+
+## Reference
+
+- [프로그래밍 시작하기: 파이썬 입문 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)
