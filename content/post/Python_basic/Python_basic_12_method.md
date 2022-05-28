@@ -139,7 +139,7 @@ dict_values([100, 200, 300])
   - `Positional argument`는 인자값이 **_위치_** 에 의해 결정되는 인자다.
     - **_순서_** 가 중요하다.
   - `Keyword argument`는 key value가 **_key_** 에 의해 결정되는 인자다.
-    - **_순서 상관 없이 `keyword`_**가 중요하다.
+    - **_순서 상관 없이 `keyword`_** 가 중요하다.
 
 <br>
 
@@ -436,7 +436,61 @@ hint exam2 : 70
 <class 'Nonetype'>
 ```
 
-> 'tot_length2'의 data type이 'Nonetype'인 이유는 _return 값이 없기 때문이다._
+> **_'tot_length2'의 data type이 'Nonetype'인 이유는 return 값이 없기 때문이다._**
+
+---
+
+# 7. Method와 function 과의 차이
+
+> **_Method: 객체에 속한 function_**
+
+- 해당 내용은 다음 문서를 참고했다.
+
+  - [Difference between Method and Function in Python](https://www.tutorialspoint.com/difference-between-method-and-function-in-python)
+
+- 기본적인 function의 expression은 다음과 같다.
+
+```yml
+> def functionName(arg1, arg2, ...):
+>  """
+>  # Function _body
+>  """
+
+> def sum(num1, num2):
+>   return num1 + num2
+
+> sum(5,6)
+11
+```
+
+- Method의 expression은 다음과 같다.
+
+```yml
+> class ClassName:
+>    def method_name():
+>       …………..
+>       # Method_body
+>       ………………
+
+> class Pet(object):
+>   def my_method(self):
+>     print("I am a Cat")
+
+> cat = Pet()
+> cat.my_method()
+I am a Cat
+```
+
+- 그러면 위 두 가지 코드를 통해서 function과 method의 차이는 무엇일까??
+
+  - function과 달리 method는 object와 관련하여 호출된다. 위 코드를 보자면 "cat" 객체에 관련된 "my_methd" 를 호출했다. 하지만, function "sum" 은 객체 없이 호출된다.
+  - 또한, method는 객체에 관련하여 호출되기 때문에, 객체 안에 있는 data에 접근할 수 있다. 그래서 객체의 상태를 바꿀 수 있지만, function은 할 수 없다.
+
+- 즉, method는 객체에 속한 function임을 알 수 있다.
+
+- 이를 보다 깊이 들어가자면 [Docs.python - Functions and methods](https://docs.python.org/3/howto/descriptor.html#functions-and-methods) 이 공식 문서를 참고해보자.
+
+  - 클래스의 namespace에 저장된 functions들은 호출될 때, method로 바뀐다고 한다. 단지 method는 "객체 인스턴스"가 다른 인자들보다 앞에 오는 점에서 일반 function들과 다르다고 한다.
 
 ---
 
@@ -449,3 +503,4 @@ hint exam2 : 70
 - [Packing, Unpacking](https://wikidocs.net/22801)
 - [enumerate](https://docs.python.org/ko/3.6/library/functions.html?highlight=enumerate#enumerate)
 - [lambda function](https://wikidocs.net/22804)
+- [Docs.python - Functions and methods](https://docs.python.org/3/howto/descriptor.html#functions-and-methods)
