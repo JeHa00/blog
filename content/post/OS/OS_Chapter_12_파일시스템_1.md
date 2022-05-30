@@ -1,12 +1,20 @@
 ---
-title: "[TIL] OS Chapter 12: 파일 시스템"
+title: "[TIL] OS Chapter 12: 파일 시스템 1"
 date: 2022-05-29T18:08:02+09:00
 draft: false
-summary: file이란 무엇이고, 이 file 관리하는 system은 무엇인지, operation은 memory와 disk 사이에서 어떤 순서로 이뤄지는지,  file protection은 어떻게 이뤄지는지, 순차 접근과 직접 접근이 무엇인지 알아본다.    
+summary: file이란 무엇이고, 이 file 관리하는 system은 무엇인지, operation은 memory와 disk 사이에서 어떤 순서로 이뤄지는지,  file protection은 어떻게 이뤄지는지, 순차 접근과 직접 접근이 무엇인지 알아본다.
 tags: ["TIL", "OS"]
 categories: ["개발-dev OS"]
 ---
 
+# 0. Introduction
+
+- 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용이다.
+- 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
+
+<br>
+
+---
 
 # 1. File and File System
 
