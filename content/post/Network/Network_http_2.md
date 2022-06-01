@@ -7,7 +7,7 @@ tags: ["TIL", "Network", "HTTP", "URI"]
 categories: ["개발-dev Netwok"]
 ---
 
-## Intro
+# 0. Introduction
 
 - HTTP에 관한 학습내용의 기본 출처: 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
@@ -21,7 +21,7 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-## 1. URI
+# 1. URI
 
 - URI (Uniform Resource Identifier)란??
   - 로케이터(locater), 이름(name) 또는 둘 다 추가로 분류될 수 있다.
@@ -31,26 +31,33 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-### 1.1 URI, URL, URN의 각 의미
+## 1.1 URI, URL, URN의 각 의미
 
 - URI의 단어 뜻
+
+  - 통일된 방식으로 다른 자원들과 구별할 수 있는 정보
   - **U**niform: 리소스를 식별하는 통일된 방식
   - **R**esource: URI로 식별하는 수 있는 모든 자원으로, 제한 없다.
   - **I**dentifier: 다른 항목과 구분하는데 필요한 정보 (식별자)
-- URL의 단어 뜻
+
+- URL
+
   - Locator: resource가 있는 위치를 지정한다.
-- URN의 단어 뜻
+
+- URN
+
   - Name: resource에 이름을 부여한다.
-- 위치는 변할 수 있지만, 이름은 변하지 않는다.
-- urn:isbn:8960777331 (어떤 책의 isbn URN)
-- URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않았다.
+  - urn:isbn:8960777331 (어떤 책의 isbn URN)
+  - URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않았다.
+  - 위치는 변할 수 있지만, 이름은 변하지 않는다.
+
 - 그래서 **앞으로 URI를 URL과 같은 의미로 이야기하겠다**
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd0c5b0b1-845e-4751-8994-16c6f24fce7e%2FUntitled.png&blockId=9a57f9d6-8a0d-4b02-bd36-20477512065d)
 
 <br>
 
-### 1.2 URL 분석
+## 1.2 URL 분석
 
 > **URL 전체 문법 구조**  
 > **scheme://[userinfo@]host[:port][/path][?query][#fragment]**
@@ -64,7 +71,7 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-**- scheme (ex: https)**
+### 1.2.1 scheme
 
 > **scheme:**//[userinfo@]host[:port][/path][?query][#fragment]  
 > **https:**//www.google.com:443/search?q=hello&hl=ko
@@ -77,9 +84,9 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-**- userinfo**
+### 1.2.2 userinfo
 
-> scheme://**[userinfo@]**host[:port][/path][?query][#fragment]  
+> scheme:// **[userinfo@]** host[:port][/path][?query][#fragment]  
 > https://www.google.com:443/search?q=hello&hl=ko
 
 - URL에 사용자 정보를 포함해서 인증할 때 사용한다.
@@ -87,30 +94,30 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-**- host (ex: www.google.com)**
+### 1.2.3 host
 
 > scheme://[userinfo@]**host**[:port][/path][?query][#fragment]  
-> https://www.google.com:443/search?q=hello&hl=ko
+> https:// **www.google.com** :443/search?q=hello&hl=ko
 
 - 호스트명이다.
 - domain 명 또는 IP 주소를 직접 입력한다.
 
 <br>
 
-**- PORT (ex: 443)**
+### 1.2.4 PORT
 
 > scheme://[userinfo@]host **[:port]**[/path][?query][#fragment]  
-> https://www.google.com:443/search?q=hello&hl=ko
+> https://www.google.com **:443** /search?q=hello&hl=ko
 
 - 접속 포트
 - 일반적으로 생략한다. 생략시 http는 80, https는 443이다.
 
 <br>
 
-**- path (ex: /search)**
+### 1.2.5 path
 
 > scheme://[userinfo@]host[:port]**[/path]**[?query][#fragment]  
-> https://www.google.com:443/search?q=hello&hl=ko
+> https://www.google.com:443 **/search** ?q=hello&hl=ko
 
 - 리소스의 경로다.
 - 계층적 구조로 되어있다.
@@ -120,10 +127,10 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-**- query (ex: q=hello&hl=ko)**
+### 1.2.6 query
 
 > scheme://[userinfo@]host[:port][/path]**[?query]**[#fragment]  
-> https://www.google.com:443/search?q=hello&hl=ko
+> https://www.google.com:443/search **?q=hello&hl=ko**
 
 - key = value 형태로 되어 있다.
 - ?로 시작하며 &로 추가 가능하다.
@@ -131,10 +138,10 @@ categories: ["개발-dev Netwok"]
 - query parameer, query string 등으로 불린다. 웹서버에 제공하는 파라미터, 문자형태다.  
   <br>
 
-**- fragment (ex: getting-started-introducing-spring-boot)**
+### 1.2.7 fragment
 
 > scheme://[userinfo@]host[:port][/path][?query]**[#fragment]**  
-> https://docs.spring.io/spring-boot/docs/current/reference/html/gettingstarted.html#getting-started-introducing-spring-boot
+> https://docs.spring.io/spring-boot/docs/current/reference/html/gettingstarted.html **#getting-started-introducing-spring-boot**
 
 - html 내부 북마크 등에 사용한다.
 - 서버에 전송하는 정보가 아니다.
@@ -143,7 +150,7 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-## 2. 웹 브라우저 요청 흐름
+# 2. 웹 브라우저 요청 흐름
 
 다음 URL을 가지고 `https://www.google.com:443/search?q=hello&hl=ko` 웹 브라우저가 어떻게 요청해서 진행되는지 흐름을 파악해보자.
 
@@ -155,19 +162,19 @@ categories: ["개발-dev Netwok"]
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F92d6ece1-5c3b-4bd5-8820-3d787ea97123%2FUntitled.png&blockId=852f034f-65a1-4e63-bcc9-581c399aecb6)
 
-그러면 'Itroduction 1: Internet Network' 에서 학습한 과정이 진행된다.
+그러면 'Introduction 1: Internet Network' 에서 학습한 과정이 진행된다.
 
 ![image](https://user-images.githubusercontent.com/78094972/156995792-e9d1254f-2424-4b55-81a5-ac5dfba9ef30.PNG)
 
 <br>
 
-### HTTP 메시지 전송
+## HTTP 메시지 전송
 
 1. resource 요청 시, Application layer에서 HTTP 메세지를 생성한다.
 2. 3 way handshake를 통해 socket에 연결한다.
-3. socket library를 통해 transmission layer 계층으로 데이터를 전송한다.
-4. transmission layer 계층에서 HTTP를 포함한 TCP 정보를 씌운다.
-5. TCP 정보를 포함하는 IP 패킷을 생성한다.
+3. socket library를 통해 transport layer으로 데이터를 전송한다.
+4. transport layer에서 HTTP를 포함한 TCP 정보를 씌운다.
+5. Internet layer에서 TCP 정보를 포함하는 IP 패킷을 생성한다.
 
 ![image](https://user-images.githubusercontent.com/78094972/157241361-b1b91484-f73b-4c2a-86b5-5dbf066b85a6.PNG)
 
@@ -184,7 +191,7 @@ categories: ["개발-dev Netwok"]
 
 <br>
 
-## Reference
+# Reference
 
 - [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
 - [URI와 웹 브라우저 요청 흐름](https://catsbi.oopy.io/6befbf82-ce78-4fb9-bb87-805ec1048855)

@@ -7,6 +7,8 @@ tags: ["TIL", "Network", "IP", "TCP", "PORT", "DNS"]
 categories: ["개발-dev Netwok"]
 ---
 
+# 0.Introduction
+
 HTTP에 관한 학습내용의 기본 출처는 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC) 이다. 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 
 <br>
@@ -30,7 +32,7 @@ HTTP에 관한 학습내용의 기본 출처는 김영한님의 [모든 개발�
 
 ## 1.1 IP란??
 
-> `Internet Protocol` 약어로, 인터넷 데이터 통신을 원활히 하기 위해 필요한 통신 '규약' 을 말한다.
+> **_Internet Protocol 약어로, 인터넷 데이터 통신을 원활히 하기 위해 필요한 통신 '규약'_**
 
 <br>
 
@@ -44,7 +46,7 @@ IP의 역할은
 
 그래서, 원하는 서버와 클라이언트에 데이터가 도달하기 위해서는 컴퓨터를 구분하는 고유 IP 주소(IP address)를 부여받아야 한다. 이 IP 주소의 형식은 100.100.100.1 같이 각 부분을 점으로 구분하여 표현한다.
 
-> IP 주소 형식에 대해서도 IPv4, IPv6 로 분류된다. IPv4는 점으로 구분된 부분이 4개의 part고, IPv6는 6개의 파트로 구분된다. IPv4로는 주소 수가 부족하여 IPv6가 등장했다.
+- IP 주소 형식에 대해서도 IPv4, IPv6 로 분류된다. IPv4는 점으로 구분된 부분이 4개의 part고, IPv6는 6개의 파트로 구분된다. IPv4로는 주소 수가 부족하여 IPv6가 등장했다.
 
 <br>
 
@@ -52,11 +54,11 @@ IP의 역할은
 
 ## 1.2 Packet이란?
 
-수화물을 의미하는 Package와 덩어리를 의미하는 bucket의 합성어로, packet이라 한다. 통신 단위 packet에는 여러 데이터가 담겨져 있지만, 기본적으로 '주소지 정보'(출발지의 IP 주소, 도착지의 IP 주소) 그리고, 전달하려는 '전송 데이터'가 있다.
+> **_수화물을 의미하는 Package와 덩어리를 의미하는 bucket의 합성어로, 통신 단위 packet에는 여러 데이터가 담겨져 있지만, 기본적으로 '주소지 정보(출발지의 IP 주소, 도착지의 IP 주소)' 그리고, 전달하려는 '전송 데이터'가 있다._**
 
 <br>
 
-인터넷 망을 구성하는 node들은 다 IP를 따르기 때문에, 중간 과정에 있는 node들은 출발지가 어디고, 도착지인지 이해할 수 있다. 그래서 node들이 IP를 참고하여 서로 `packet`을 던지면서 원하는 목적지로 보내진다.
+인터넷 망을 구성하는 node들은 다 IP를 따르기 때문에, node들은 출발지가 어디고, 어디가 도착지인지 이해할 수 있다. 그래서 node들이 IP를 참고하여 서로 `packet`을 던지면서 원하는 목적지로 보내진다.
 
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtptXC%2Fbtq1TM1JO1G%2Fiuuu8dAUsWdm9gRPQ02IA0%2Fimg.png)
 
@@ -75,8 +77,9 @@ IP의 역할은
 
 - 비연결성 문제
 
-  - 패킷을 받는 대상이 없거나(컴퓨터가 off된 경우), 서비스 불능 상태여도 패킷을 전송한다. 연결이 안되도 보내지는 문제점이 존재한다.
-  - ex) 우편물을 A 주소로 보냈지만, 도착해서 보니 A 주소에 집이 없는 경우를 말한다.
+  - 상대방이 받을 수 없는 상태여도 패킷을 전송한다.
+    - 패킷을 받는 대상이 없거나 (컴퓨터가 off된 경우), 서비스 불능 상태여도 패킷을 전송한다. 연결이 안되도 보내지는 문제점이 존재한다.
+    - ex) 우편물을 A 주소로 보냈지만, 도착해서 보니 A 주소에 집이 없는 경우를 말한다.
 
 - 비신뢰성 문제
 
@@ -100,12 +103,12 @@ TCP에 대해 알기에 앞서 `인터넷 프로토콜 스택의 4계층`에 대
 
 <br>
 
-인터넷 프로토콜은 4계층으로, 순서는 애플리케이션 계층 > 전송 계층 > 인터넷 계층 > 네트워크 인터페이스 순으로 구성된다.
+인터넷 프로토콜은 4계층으로, 순서는 애플리케이션(응용) 계층 > 전송 계층 > 인터넷 계층 > 네트워크 인터페이스 순으로 구성된다.
 
-<br>
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F999DED345B7A26DF05)
 
 1. 애플리케이션 계층(Application layer) - HTTP, FTP
-2. 전송계층(Transmission layer) - TCP, UDP
+2. 전송계층(Transport layer) - TCP, UDP
 3. 인터넷 계층(Internet layer) - IP
 4. 네트워크 인터페이스 계층(Network Access layer)
 
@@ -119,13 +122,16 @@ TCP에 대해 알기에 앞서 `인터넷 프로토콜 스택의 4계층`에 대
 
 - resource 요청 시, Application layer에서 HTTP 메세지를 생성한다.  
   -> 3 way handshake를 통해 socket에 연결한다.  
-  -> socket library를 통해 transmission layer 계층으로 데이터를 전송한다.  
-  -> transmission layer 계층에서 HTTP를 포함한 TCP 정보를 씌운다.  
-  -> TCP 정보를 포함하는 IP 패킷을 생성한다.  
-  -> 패킷 정보가 인터넷을 거쳐서 서버에 도착한다.  
-  -> 패킷이 서버에 도착하면 패킷과 TCP 세그먼트는 버리고, HTTP 메세지를 서버가 해석한다.  
-  -> HTTP 응답 메시지를 마찬가지 방식으로 packet을 생성하여 응답 패킷을 전달한다.  
+  -> socket library를 통해 transport layer 계층으로 데이터를 전송한다.  
+  -> transport layer에서 HTTP를 포함한 TCP 정보를 씌운다.  
+  -> Internet layer에서 TCP 정보를 포함하는 IP 패킷을 생성한다.  
+  -> IP 패킷 정보가 인터넷을 거쳐서 서버에 도착한다.  
+  -> IP 패킷이 서버에 도착하면 IP 패킷과 TCP 세그먼트는 버리고, HTTP 메세지를 서버가 해석한다.  
+  -> HTTP 응답 메시지를 동일한 방식으로 packet을 생성하여 응답 패킷을 전달한다.  
   -> 수 많은 노드들을 통해서 응답 패킷이 도착하면, 웹 브라우저가 HTML 렌더링하여 화면에 보여준다.
+
+- socket이란??
+  - application layer와 transport layer 사이에 위치하여, process가 메시지를 송신하고 수신할 수 있도록 API를 제공해주는 역할을 한다.
 
 <br>
 
@@ -135,16 +141,13 @@ TCP 정보와 IP packet을 생성한 데이터 안에 담겨진 구체적인 내
 
 <br>
 
-> - socket이란??  
->   application layer와 transport layer 사이에 위치하여, process가 메시지를 송신하고 수신할 수 있도록 API를 제공해주는 역할을 한다.
-
 <br>
 
 ---
 
 ## 2.2 IP 문제점의 해결책: TCP
 
-`TCP (Transmisstion Control Protocol)`는 전송 제어 프로토콜로, IP 의 3가지 문제점에 대한 해결책이다. TCP에 여러 특징들이 있지만, 위 문제점을 해결하는 3가지 특징에 대해 중점적으로 알아보자.
+`TCP (Transmisstion Control Protocol)`는 전송 제어 프로토콜로, IP의 3가지 문제점에 대한 해결책이다. TCP에 여러 특징들이 있지만, 위 문제점을 해결하는 3가지 특징에 대해 중점적으로 알아보자.
 
 <br>
 
@@ -170,7 +173,7 @@ TCP 정보와 IP packet을 생성한 데이터 안에 담겨진 구체적인 내
 
 <br>
 
-> 3 way handshake 방식은 물리적으로 직접 연결된 상태가 아니라, 논리적으로 연결된 상태이다. 이 의미는 클라이언트와 서버 사이에 무수히 많은 노드들을 거쳐서 연결된 것을 의미한다. 물리적으로 직접 연결된 상태라는 건 클라이언트와 서버가 직섭 랜선으로 연결된 경우를 말한다.
+> **_3 way handshake 방식은 물리적으로 직접 연결된 상태가 아니라, 논리적으로 연결된 상태이다. 이 의미는 클라이언트와 서버 사이에 무수히 많은 노드들을 거쳐서 연결된 것을 의미한다. 물리적으로 직접 연결된 상태라는 건 클라이언트와 서버가 직섭 랜선으로 연결된 경우를 말한다._**
 
 <br>
 
@@ -240,7 +243,7 @@ Port number는
 
 <br>
 
-위 이미지를 예를 들어 server IP 200.200.200.3 에서 클라이언트의 웹 브라우저 요청에 응답하기를 원한다면 도착지 IP는 100.100.100.1 이고, PORT는 10010 이다.
+위 이미지를 예를 들어 서버 IP 200.200.200.3 에서 클라이언트의 웹 브라우저 요청에 응답하기를 원한다면 도착지 IP는 100.100.100.1 이고, PORT는 10010 이다.
 
 <br>
 
