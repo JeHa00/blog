@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Introduction
+# 0. Introduction
 
 <br>
 

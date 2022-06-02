@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-## Intro
+## 0. Introduction
 
 - csv 파일이란??
   - `Comma-Separated Values`의 약자로, 콤마로 구분된 텍스트 파일이다.

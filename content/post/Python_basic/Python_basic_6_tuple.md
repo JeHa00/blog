@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Introduction
+# 0. Introduction
 
 - list와 tuple의 차이를 알아야 비교해서 무엇을 쓸 지 결정한다.
 

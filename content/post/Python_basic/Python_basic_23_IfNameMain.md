@@ -7,7 +7,7 @@ tags: ["TIL", "python", "__name__"]
 categories: ["개발-dev Python"]
 ---
 
-## Intro
+## 0. Introdction
 
 - [[TIL] Python basic 15: module](https://jeha00.github.io/post/python_basic/python_basic_15/)에서 학습했지만, 내용이 빈약하여 별도로 정리한다.
 

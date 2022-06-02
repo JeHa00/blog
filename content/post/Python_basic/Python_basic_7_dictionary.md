@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Introduction
+# 0. Introduction
 
 - **범용적으로 가장 많이 사용되는 기초 자료형**
 

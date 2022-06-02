@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-## Introduction
+# 0. Introduction
 
 - for 문은 코딩에서 중요하다.
 - 파이썬의 for 문은 다른 for 문과 달리 독자적인 특징이 있다.
@@ -26,7 +26,7 @@ categories: ["개발-dev Python"]
 
 ---
 
-## 1. for ~ range pattern: 3가지
+# 1. for ~ range pattern: 3가지
 
 - 첫 번째 패턴
   - `for n in range(j)` : 변수 n이 0부터 j가 아닌 (j-1)까지 반복된다.
@@ -111,7 +111,7 @@ v is : 10
 
 ---
 
-## 2. Iterator 자료형 활용과 Iterable 함수
+# 2. Iterator 자료형 활용과 Iterable 함수
 
 ```yml
 
@@ -214,7 +214,7 @@ E
 
 ---
 
-## 3. break, continue 문
+# 3. break, continue 문
 
 - `break` 문: 가장 가까운 반복문을 강제로 탈출한다.
   - 내가 원하는 특정 조건에서, 멈추기 원할 때 사용된다.
@@ -271,7 +271,7 @@ multiply by 2: (8+0j)
 
 ---
 
-## 4. for ~ else 구문
+# 4. for ~ else 구문
 
 - for ~ else 구문: python에만 있는 for-else 구문으로, 자주 사용하지는 않지만, 알고 있자.
 
