@@ -46,7 +46,7 @@ False
 ```yml
 > print(chr(67))
 C
-> print(ord('c'))
+> print(ord('C'))
 67
 ```
 
@@ -65,7 +65,7 @@ C
 <br>
 
 - `filter()`: Iterable 객체를 `지정한 함수 조건`에 맞는 값만 추출한다.
-- filter(function or None, iterable) --> filter object
+  - filter(function or None, iterable) --> filter object
 
 ```yml
 > def conv_positive(x):
@@ -133,7 +133,7 @@ y
 
 <br>
 
-- **`map`: iterable 객체 요소를 `지정한 함수`를 실행 후 추출**
+- **`map`: iterable 객체 요소를 `지정한 함수`에 실행 후 추출**
 - **`map`: map(func, \*iterables) --> map object**
   - **Make an iterator that computes the function using arguments from each of the iterables.**
 - 데이터 전처리 과정에서 많이 사용한다.
@@ -183,7 +183,7 @@ range(1, 10, 2)
 - `round`: 반올림
 
 ```yml
-## 소수점 둘쨰자리에서 반올림한다.
+## 소수점 둘째자리에서 반올림한다.
 > print(round(6.5781, 2))
 6.58
 > print(round(5.6))

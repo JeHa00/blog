@@ -101,7 +101,7 @@ False 2542532857088 2542532856992 2542532856560
 
 ## 2.3 namespace 확인하기
 
-> **_'namespace'란 python의 attribute name이 dictionary data type으로 구현되 및 저장된 공간_** 으로서, dictionary가 python의 naming system에 사용하기 때문에, 각 name은 key로서 중복되지 않는다.
+> **_'namespace'란 python의 attribute name이 dictionary data type으로 구현 및 저장된 공간_** 으로서, dictionary가 python의 naming system에 사용하기 때문에, 각 name은 key로서 중복되지 않는다.
 
 - `dir()` 과 `.__dict__`를 통해서 namespace를 확인할 수 있는데, 그럼 이 두 가지의 차이는 무엇일까??
 
@@ -144,8 +144,8 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 
 # 3. Self 의 이해: class method, instance method
 
-> - **_class method_** : 매개변수에 **self 가 없는** method
-> - **_instance method_** : 매개변수에 **self 가 있는** method
+> - **_class method_** : 클래스 변수를 인자로 받는 method
+> - **_instance method_** : 인스턴스 변수를 인자로 받는 method
 > - **_self_** : instance를 인자로 받는 매개변수
 
 - **method 호출방법**
@@ -155,7 +155,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
     - class로 바로 호출하는 방법 (1-1 방법)
   - **_instance method 2가지 방법_**
     - 첫 번째: 인스턴스화 변수를 통해서 **_instance method_** 를 호출하는 방법 (2-1 방법)
-    - 두 번째: 클래스로 접근하여 매개변수에 인스턴스를 넘겨주는 방법 (2-2 방법)
+    - 두 번째: 클래스로 접근하여 인자에 인스턴스를 넘겨주는 방법 (2-2 방법)
 
 - instance 변수를 만들지 않고 사용할 것이기 때문에, '\_\_init\_\_' 생성자를 만들지 않는다.
 

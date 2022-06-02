@@ -137,7 +137,7 @@ sub
 ```yml
 ## 두 번째 방법
 > from sub.sub1 import module1
-> from sub.sub1 import module2 as m2
+> from sub.sub2 import module2 as m2
 
 # 호출하기
 > module1.mod1_test1()

@@ -85,7 +85,7 @@ Andorra|AD
 
 ## __iter__을 확인한다.
 >   print(dir(reader))
-['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'dialect', 'line_num']
+['__class__', '__delattr__', '__dir__', '__doc__', ... '__iter__',...]
 
 ## __iter__이면 for문에도 사용할 수 있다.
 # list 형식으로 가져온다는 걸 확인할 수 있다.
@@ -177,7 +177,7 @@ AndorraAD
 >    print(type(reader))
 <class 'csv.DictReader'>
 >    print(dir(reader))
-['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_fieldnames', 'dialect', 'fieldnames', 'line_num', 'reader', 'restkey', 'restval']
+['__class__', '__delattr__', '__dict__', '__dir__', ...', '__iter__']
 
 ## __iter__ 확인 완료
 >   for c in reader:

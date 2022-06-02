@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Intro
+# 0. Introduction
 
 - 예시코드는 [Python basic 24](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)에서 작성한 코드를 이어서 사용한다.
 
@@ -72,7 +72,7 @@ categories: ["개발-dev Python"]
 
 ```
 
-## Python의 핵심: 4가지
+# 1. Python의 핵심: 4가지
 
 - 파이썬의 핵심은 4 가지다.
 
@@ -91,7 +91,7 @@ categories: ["개발-dev Python"]
 
 ---
 
-# Special method란 ??
+# 2. Special method란 ??
 
 > - class 안에서 정의할 수 있는 특별한 method.
 > - double under-bar로 시작한다.
@@ -150,7 +150,7 @@ True True
 
 ---
 
-# Special method 연산 예제 1
+# 3. Special method 연산 예제 1
 
 - magic method를 재정의하지 않고, 클래스끼리 덧셈을 해보자.
 
@@ -251,7 +251,7 @@ Called >> __sub__
 
 ---
 
-# Special method 연산 예제 2
+# 4. Special method 연산 예제 2
 
 - 이번 예제에서는 `packin` 과 `unpacking`을 사용한다.
 - `packin` 과 `unpacking`에 대한 기본 내용은 다음을 참고한다.
