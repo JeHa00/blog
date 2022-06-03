@@ -7,7 +7,7 @@ tags: ["TIL", "Network", "HTTP"]
 categories: ["개발-dev Netwok"]
 ---
 
-# Intro
+# 0. Introduction
 
 - HTTP 학습내용의 기본 출처: 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
@@ -20,11 +20,6 @@ categories: ["개발-dev Netwok"]
 <br>
 
 # 1. 클라이언트에서 서버로 데이터 전송
-
-> 1.1 [정적 데이터 조회](#11-정적-데이터-조회)
-> 1.2 [동적 데이터 조회](#12-동적-데이터-조회)
-> 1.3 [HTML Form을 통한 데이터 전송](#13-html-form을-통한-데이터-전송)
-> 1.3 [HTML API를 통한 데이터 전송](#14-http-api를-통한-데이터-전송)
 
 <br>
 
@@ -103,7 +98,7 @@ categories: ["개발-dev Netwok"]
 
 ![image](https://media.vlpt.us/images/dnstlr2933/post/296861ed-bce7-431f-8e3c-13a0b0f73d18/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-01-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.16.57.png)
 
-- 다른 종류의 여러 파일과 폼의 내용을 함께 전송이 가능하다. 그래서 이름이 mulitpart다.
+- 다른 종류의 여러 파일과 폼의 내용을 함께 전송이 가능해서 이름이 multipart다.
 - 주로 binary data를 전송할 때 사용한다.
 - 웹브라우저가 생성한 요청 HTTP 메시지의 content-type에 boundary 가 명시되어 있는데, form data 간 구분을 지어준다.
 
@@ -123,7 +118,7 @@ categories: ["개발-dev Netwok"]
   - 웹 클라이언트에서 HTML Form 전송 대신 자바 스크립트를 통한 통신에 사용 (AJAX)
     - 예)React, Vue.JS 같은 웹 클라이언트와 API 통신
 - POST, PUT,PATCH: 사용하며, 메시지 바디를 통해 데이터를 전송
-- GET: 조회, 쿼리, 파라미터로 데이터를 전달
+- GET: 조회, 쿼리 파라미터로 데이터를 전달
 - Content-type: application/json을 주로 사용 (사실상 표준)
   - TEXT, XML, JSON 등등이 있지만, XML이 읽기 어렵고, 복잡해서 지금은 JSON을 사용한다. 데이터 크기도 상대적으로 XML보다 작아서, 사실상 JSON이 표준이다.
 

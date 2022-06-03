@@ -29,9 +29,9 @@ categories: ["개발-dev OS"]
 - Data 영역
   - 전역 변수(global variable) 등 **프로그램이 사용하는 데이터를 저장** 하는 공간
 - Stack 영역
-  - 함수 호출 시의 **복귀 주소 및 데이터를 저장** 하는 공간
+  - 프로그램 내의 함수 호출 시의 **복귀 주소 및 데이터를 저장** 하는 공간
   - 예)
-    - X 함수 수행 → Y 함수 호출 → 이 때 X 함수에서 Y 함수를 호출하는 지점을 stack 영역에 저장 → Y 함수가 호출되어 실행할 명령의 메모리 위치가 바뀜 → Y 함수 수행 완료 → stack에 저장된 X 함수의 주소 위치로 돌아와 코드를 계속 수행
+    - 프로그램 내의 X 함수 수행 → 프로그램 내의 Y 함수 호출 → 이 때 X 함수에서 Y 함수를 호출하는 지점을 stack 영역에 저장 → Y 함수가 호출되어 실행할 명령의 메모리 위치가 바뀜 → Y 함수 수행 완료 → stack에 저장된 X 함수의 주소 위치로 돌아와 코드를 계속 수행
 
 ## 1.2 PCB: 프로그램 수행의 복귀 위치
 
@@ -101,15 +101,17 @@ categories: ["개발-dev OS"]
 ## 3.1 가상 메모리(Virtual Memory)
 
 - 프로그램은 **실행 파일 형태**로 하드 디스크에 저장한다.
+  - 이 때는 프로그램은 주소 영역을 가지고 있다고 한다.
+  - 하지만, 실행되는 순간 프로세스가 되며 프로그램의 주소 영역은 프로세스의 주소 공간이 되는 것이다.
 - **파일 실행 → `가상 메모리(Virtual Memory)` 생성 → `Address transition` → `물리적 메모리(Physical Memory)` 에 올라감**
 
-  - `가상 메모리(address space, logical memory)` : 프로그램마다 가지는 독자적인 주소 영역
+  - `가상 메모리(address space, logical memory)` : 프로세스마다 가지는 독자적인 주소 공간
   - `물리적 메모리(Physical Memory)` : 0번지부터 시작
   - `Address transition` : 가상 메모리 주소를 물리적 메모리 주소로 변환하는 것으로, 하드웨어 장치가 수행
     ![image](https://woovictory.github.io/img/address_translation.png)
 
-- **Virtual memory = 주소 영역 = Address space = code + data + stack**
-- **OS의 주소 영역**
+- **Virtual memory = 주소 공간 = Address space = code + data + stack**
+- **OS의 주소 공간**
   - kernel의 code
     1. **자원 관리**를 위한 부분
     2. 사용자에게 **편리한 인터페이스를 제공**하기 위한 부분
@@ -124,7 +126,7 @@ categories: ["개발-dev OS"]
   - `'____'` 코드 수행 중 이루어지는 함수 호출로 인한 복귀 주소 유지는 `'____'` 을 사용
     - process → **자신의 address space 내의 stack**
     - kernel → **kernel stack**
-  - CPU 수행 주체가 OS로 바뀔 때 직전 수행 프로그램의 복귀 정보는 stack이 아닌 `PCB`에 저장
+  - 여기서 유의사항은 CPU 수행 주체가 OS로 바뀔 때 직전 수행 프로그램의 복귀 정보는 stack이 아닌 `PCB`에 저장한다는 사실이다.
 
 ![image](https://woovictory.github.io/img/address_structure_of_os.png)
 
@@ -154,7 +156,7 @@ categories: ["개발-dev OS"]
        - kernel의 address space에 code가 정의되기 때문에, system call로 kernel mode로 바꿔야 실행 가능하다.
 - **_사용자 정의 함수와 라이브러리 함수_** 는
   - 프로그램의 코드 영역에 기계어 명령 형태로 존재 → 프로그램 실행 시, 해당 프로세스의 address space에 포함
-  - 함수 호출 시에도, 프로세스의 address process에 있는 stack 영역을 사용
+  - 프로세스 내의 함수 호출 시에도, 프로세스의 address space에 있는 stack 영역을 사용
   - 프로세스의 address space의 code 영역 안에서 메모리 상의 점프를 한다.
   - user mode에서 실행된다.
 
@@ -195,9 +197,9 @@ categories: ["개발-dev OS"]
     → OS는 interrupt line을 통해서 어느 종류의 interrupt인지 확인한 후, interrupt vector가 가리키는 interrut service routine을 찾아 실행하여, 요청한 I/O에 해당하는 device controller에게 I/O 명령을 한다.  
     → I/O 요청이 수행되는 동안, 해당 process는 데이터가 없어서 다음 명령을 수행할 수 없으므로, CPU를 다른 process에게 이양한다.  
     → 다른 process의 작업을 CPU가 작업하는 도중에, I/O 작업이 완료되면 device controller가 CPU에게 interrupt를 발생시켜 I/O 작업 완료를 알린다. 이 때 발생한 interrupt는 HW interrupt다.  
-    → iterrupt 처리 내용으로 device controller가 device로부터 읽어와서 local buffer에 저장한 내용을 메모리로 복사해온다.  
+    → interrupt 처리 내용으로 device controller가 device로부터 읽어와서 local buffer에 저장한 내용을 메모리로 복사해온다.  
     → 복사 후, I/O 작업을 요청했던 process에게 다시 CPU를 얻을 수 있는 권한을 준다.  
-    → 그러면 I/O 작업을 이제 완료한 process는 CPU를 기다리는 큐에 삽입되고, CPU의 제어권은 iterrupt를 당한 process에게 넘어가서 하던 작업을 계속 수행한다.
+    → 그러면 I/O 작업을 이제 완료한 process는 CPU를 기다리는 큐에 삽입되고, CPU의 제어권은 interrupt를 당한 process에게 넘어가서 하던 작업을 계속 수행한다.
 
 - **process가 CPU를 빼앗기는 경우: 2가지**
   - **Timer의 CPU 할당 시간이 만료된 경우, interrupt가 발생**

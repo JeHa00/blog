@@ -11,13 +11,13 @@ categories: ["개발-dev Python"]
 
 - OOP : Object Oriented Programming 의 약자로, `객체 지향 프로그래밍' 이라 한다.
 - Object(객체) : 소프트웨어로 구현할 대상
-- **OOP의 특징: _Encapsulation(캡슐화)_** 로 `attribute` 와 `method`를 하나로 묶어서 객체로 구성하는 것
-- `OOP`의 이점
+- **OOP의 특징: _Encapsulation(캡슐화)_** 로 'attribute' 와 'method'를 하나로 묶어서 객체로 구성하는 것
+- 'OOP'의 이점
   - `Encapsulation(캡슐화)`를 통해서 내부 정보를 외부로부터 보호하면서, `주변에 악영향 (side effect)`을 최소화할 수 있다. 이를 `Infomation hiding(정보 은폐)`이라 한다.
-  - `class`를 통해 만들기 때문에 `코드의 재사용성`이 용이하다. => `경제적`
+  - class를 통해 만들기 때문에 `코드의 재사용성`이 용이하다. => `경제적`
     - 코드의 개선, 수정이 용이하다.
     - 버그가 발생했을 때 유지보수 또한 용이하다.
-- 하지만, `OOP`가 항상 빠르진 않다. 경우에 따라서는 `객체 지향`보다 `절차 지향`이 더 빠른 퍼포먼스를 가질 수 있으므로, `객체 지향`과 `절차 지향`을 적절히 섞어 사용하자.
+- 하지만, 'OOP'가 항상 빠르진 않다. 경우에 따라서는 `객체 지향`보다 `절차 지향`이 더 빠른 퍼포먼스를 가질 수 있으므로, `객체 지향`과 `절차 지향`을 적절히 섞어 사용하자.
   - `절차 지향` : 위에서부터 아래로 실행하는 것
 
 > **_절차지향과 OOP 비교해보기_** : [[TIL] Python basic 24: Procedural Programming vs OOP](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)

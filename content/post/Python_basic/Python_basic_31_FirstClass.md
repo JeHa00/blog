@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Intro
+# 0. Introduction
 
 - 이번 시간에 배울 내용은 특히 더 중요하다.
 - 이번 시간에는 일급 객체라고도 불리는 `일급 함수`에 대해 알아보겠다.
@@ -17,19 +17,20 @@ categories: ["개발-dev Python"]
 
 # 1. 일급 함수(first-class)란??
 
-> - 일급 함수(일급 객체, first-clss)란??
->   - 객체 취급되는 함수
-> - 다음 4가지 특징을 가지는 함수를 말한다.
->   - 1. 런타임 초기화: 실행 시점에서 초기화한다.
->   - 2. 함수를 변수에 할당 가능하다.
->   - 3. 함수를 인수로 전달 가능하다. (Higher - order function의 첫 번째 특징)
->   - 4. 함수를 결과값으로서 반환 가능하다. (Higher - order function의 첫 번째 특징)
+> - **_일급 함수(일급 객체, first-class)란??_**
+>   - **_객체 취급되는 함수_**
+> - **_다음 4가지 특징을 가지는 함수를 말한다._**
+>   - **_1. 런타임 초기화: 실행 시점에서 초기화한다._**
+>   - **_2. 함수를 변수에 할당 가능하다._**
+>   - **_3. 함수를 인수로 전달 가능하다. (Higher - order function의 첫 번째 특징)_**
+>   - **_4. 함수를 결과값으로서 반환 가능하다. (Higher - order function의 첫 번째 특징)_**
 
 - 위 일급 함수의 특징들은 `파이썬 함수의 특징`이라고 할 수 있다.
-- 그러면 first-class는 왜 중요한가??
+- 그러면 일급함수는 왜 중요한가??
 
-  - 일급함수를 알아야 **_`함수형 프로그래밍`_** 을 할 수 있기 때문이다.
-  - `함수형 프로그래밍`이란?? side effect를 허용하지 않는 순수 함수(pure function)을 지향하여 동시에 여러 thread에서 문제 없이 동작하는 프로그램을 쉽게 작성할 수 있다.
+  - 일급함수를 알아야 **_'함수형 프로그래밍'_** 을 할 수 있기 때문이다.
+  - **'함수형 프로그래밍'** 이란??
+    - side effect를 허용하지 않는 순수 함수(pure function)를 지향하여 동시에 여러 thread에서 문제 없이 동작하는 프로그램을 쉽게 작성하는 방식
 
 - 이러한 이유로 `일급 함수`에 대해 알아보자.
 - 일급 함수가 가지는 특징을 모두 예제로 구현해볼 것이다.
@@ -40,19 +41,19 @@ categories: ["개발-dev Python"]
 
 - **객체**란 무엇인가???
 
-  - [[TIL] Python basic 14: class](https://jeha00.github.io/post/python_basic/python_basic_14/)에 따르면 소프트웨어로 구현할 대상이라 했다.
+  - [[TIL] Python basic 14: class](https://jeha00.github.io/post/python_basic/python_basic_14_class/)에 따르면 소프트웨어로 구현할 대상이라 했다.
 
 - 하지만 파이썬 내부에서의 객체의 정의와 특징은 무엇일까???
 
   - 파이썬이 data를 추상화(abstraction)한 것을 말하며,
+    - 추상화: 
   - id(identity), type(형) 그리고, value(값)을 가지는 걸 말 한다.
   - 파이썬의 모든 데이터는 객체나 객체 간의 관계로 표현된다.
-  - 객체의 id는 메모리 상에서 객체의 주소를 말한다.
-  - 또한, id는 한 번 만들어진 후에는 변경되지 않는다.
+  - 객체 id는 메모리 상에서 객체의 주소이며, id는 만들어진 후에는 변경되지 않는다.
 
     - from [데이터 모델: 객체](https://docs.python.org/ko/3/reference/datamodel.html#objects-values-and-types)
 
-  - attribute란 객체와 결합한 값(value)를 말한다.
+  - attribute란 점표현식을 사용하는 이름으로 참조되는 객체와 결합한 값(value)
     - [용어집 - python 3.10.4](https://docs.python.org/ko/3/glossary.html?highlight=%EC%86%8D%EC%84%B1)
 
 - **함수 객체** : 함수처럼 행동하는 객체

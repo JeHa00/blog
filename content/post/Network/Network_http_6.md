@@ -7,7 +7,7 @@ tags: ["TIL", "Network", "HTTP"]
 categories: ["개발-dev Netwok"]
 ---
 
-# Intro
+# Introduction
 
 - HTTP 학습내용의 기본 출처: 김영한님의 [모든 개발자를 위한 HTTP 웹 기본지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
@@ -98,7 +98,7 @@ categories: ["개발-dev Netwok"]
 > 서버가 요청을 성공적으로 수행했으나, 응답 페이로드 본문에 보낼 데이터가 없는 상태
 
 - 예) 웹 문서 편집기에서 save 버튼
-- save 버튼의 겨로가로 아무 내용이 없어도 된다.
+- save 버튼의 결과로 아무 내용이 없어도 된다.
 - save 버튼을 눌러도 같은 화면을 유지해야 한다.
 - 결과 내용이 없어도, 204 메시지(2xx)만으로 성공을 인식할 수 있다.
 

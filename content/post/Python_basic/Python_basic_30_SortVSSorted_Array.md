@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Intro
+# 0. Introduction
 
 - `sort`와 `sorted`는 책 한 권으로 나올만큼 많은 내용이 있지만, 무엇보다 이 두가지의 기본적인 차이를 알아본다.
 - 그리고, [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/)에서 상세 분류에서 언급된 Array data type에 대해 알아본다.
@@ -16,8 +16,13 @@ categories: ["개발-dev Python"]
 
 # 1. Sort vs Sorted
 
-> - **sort** : 정렬 후, 객체의 원본을 수정한다. 그리고, 반환값이 없다(return none).
-> - **sorted** : 정렬 후, 객체의 원본을 수정하지 않는다. 그리고 새로운 객체를 반환한다.
+> **_- sort: sort the list in ascending order and return None._**  
+> **_- sorted: Return a new list containing all items from the iterable in ascending order._**
+
+| function  | sort() | sorted()        |
+| --------- | ------ | --------------- |
+| 원본 수정 | O      | X               |
+| 반환값    | None   | New list object |
 
 - list data model에서 자주 사용하는 함수인 `sort` 와 `sorted`에 대해 알아보자.
 
@@ -62,7 +67,7 @@ sort - None ['strawberry', 'papaya', 'orange', 'mango', 'lemon', 'coconut', 'app
 > print('sorted - ', sorted(f_list, key = len))
 sorted - ['apple', 'mango', 'lemon', 'orange', 'papaya', 'coconut', 'strawberry']
 
-> print('sort - ', sort(key = len), f_list)
+> print('sort - ', f_list.sort(key = len), f_list)
 sort - None ['apple', 'mango', 'lemon', 'orange', 'papaya', 'coconut', 'strawberry']
 
 # key = lambda x: x[-1]
@@ -70,7 +75,7 @@ sort - None ['apple', 'mango', 'lemon', 'orange', 'papaya', 'coconut', 'strawber
 > print('sorted - ', sorted(f_list, key=lambda x: x[-1]))
 sorted - ['papaya', 'orange', 'apple', 'lemon', 'mango', 'coconut', 'strawberry']
 
-> print('sort - ', sort(f_list, key=lambda x: x[-1]))
+> print('sort - ', sort(f_list, key=lambda x: x[-1]), f_list)
 sort - None ['papaya', 'orange', 'apple', 'lemon', 'mango', 'coconut', 'strawberry']
 
 # key = lambda x: x[-1], reverse = True
@@ -78,7 +83,7 @@ sort - None ['papaya', 'orange', 'apple', 'lemon', 'mango', 'coconut', 'strawber
 > print('sorted - ', sorted(f_list, key=lambda x: x[-1], reverse = True))
 sorted - ['strawberry', 'coconut', 'mango', 'lemon', 'orange', 'apple', 'papaya']
 
-> print('sort - ', sort(f_list, key=lambda x: x[-1], reverse = True))
+> print('sort - ', sort(f_list, key=lambda x: x[-1], reverse = True), f_list)
 sorted - None ['strawberry', 'coconut', 'mango', 'lemon', 'orange', 'apple', 'papaya']
 ```
 
