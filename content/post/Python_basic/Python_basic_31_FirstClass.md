@@ -46,8 +46,8 @@ categories: ["개발-dev Python"]
 - 하지만 파이썬 내부에서의 객체의 정의와 특징은 무엇일까???
 
   - 파이썬이 data를 추상화(abstraction)한 것을 말하며,
-    - 추상화: 
-  - id(identity), type(형) 그리고, value(값)을 가지는 걸 말 한다.
+    - 추상화:
+  - id(identity), type(형) 그리고, value(값)을 가dd지는 걸 말 한다.
   - 파이썬의 모든 데이터는 객체나 객체 간의 관계로 표현된다.
   - 객체 id는 메모리 상에서 객체의 주소이며, id는 만들어진 후에는 변경되지 않는다.
 
@@ -56,9 +56,7 @@ categories: ["개발-dev Python"]
   - attribute란 점표현식을 사용하는 이름으로 참조되는 객체와 결합한 값(value)
     - [용어집 - python 3.10.4](https://docs.python.org/ko/3/glossary.html?highlight=%EC%86%8D%EC%84%B1)
 
-- **함수 객체** : 함수처럼 행동하는 객체
-
-  - from [함수 객체의 장점](https://namoeye.tistory.com/entry/%ED%95%A8%EC%88%98%EA%B0%9D%EC%B2%B4%EB%9E%80)
+- **함수 객체** : 함수처럼 행동하는 객체 from [함수 객체의 장점](https://namoeye.tistory.com/entry/%ED%95%A8%EC%88%98%EA%B0%9D%EC%B2%B4%EB%9E%80)
 
 - 그럼 코드 상에서 확인해보자.
 
@@ -80,9 +78,11 @@ categories: ["개발-dev Python"]
 > print(factorial.__doc__)
 Factorial Function -> n : int
 
+# 함수를 인자로서 넘겼다.
 > print(type(factorial), type(A))
 <class 'fuction'>, <class 'type'>
 
+# 함수 또한 객체임을 확인했다.
 > print(id(factorial))
 id -  2416266045904
 
@@ -131,9 +131,9 @@ factorial
 
 ## 1.3 고위 함수의 두 가지 특징
 
-> - Higher - order function (고위함수)의 특징
->   - 1. 함수를 인수로 전달 가능하다.
->   - 2. 함수를 결과값으로서 반환 가능하다.
+> **_Higher - order function (고위함수)의 특징_**  
+> **_- 1. 함수를 인수로 전달 가능하다._**  
+> **_- 2. 함수를 결과값으로서 반환 가능하다._**
 
 - 고위 함수의 대표적인 예로는 `map`, `filter`, `reduce`, `lambda` 등이 있다.
 
@@ -154,6 +154,7 @@ factorial
 > print(list(map(var_func, filter(lambda x: x % 2, range(1,6)))))
 [1, 6, 120]
 
+## list comprehension을 사용하기
 # 위와 동일한 출력값을 갖는다. 하지만, 가독성이 더 좋다.
 > print([var_func(i) for i in range(1, 6) if i % 2])
 [1, 6, 120]
@@ -181,12 +182,12 @@ factorial
 
 ---
 
-# 2. 익명 함수(lambda)
+# 2. High - order functions
 
-> 이름 없는 함수로, 익명 함수다.
-> 그래서 익명 함수가 복잡할 때, 주석을 사용해야 한다.
-> 하지만, 되도록 함수를 만들어서 사용하자.
-> 일반 함수 형태로 `refactoring`을 권장한다.
+## 2.1 익명 함수(lambda)
+
+> **_이름 없는 함수로, 익명 함수다. 그래서 익명 함수가 복잡할 때, 주석을 사용해야 한다._**  
+> **_하지만, 되도록 함수를 만들어서 사용하자. 일반 함수 형태로 `refactoring`을 권장한다._**
 
 ```yml
 > print(reduce(lambda x, t : x + t, range(1,11)))
@@ -195,15 +196,10 @@ factorial
 
 <br>
 
----
+## 2.2 Callable
 
-# 3. Callable 설명
-
-> - callable이란??
->   - 호출 연산자로 함수, 클래스 인스턴스, 메서드 등이 호출 가능한지 확인하는 함수
->   - specail method인 `__call__` method의 존재 유무를 확인한다.
->   - 이 method가 있으면 True다.
->   - [What is a 'callable'](https://stackoverflow.com/questions/111234/what-is-a-callable)
+> **_호출 연산자로 함수, 클래스 인스턴스, 메서드 등이 호출 가능한지 확인하는 함수다. 이를 구체적으로 확인하는 방법은 specail method인 `__call__` method의 존재 유무를 확인하는데, 이 method가 있으면 True다._**  
+> from [What is a 'callable'](https://stackoverflow.com/questions/111234/what-is-a-callable)
 
 - 호출한다는 건 무슨 의미일까???
 
@@ -230,10 +226,9 @@ True True True False
 
 ---
 
-# 4. Partial 사용법
+## 2.3 Partial
 
-> - 인수를 고정할 때 사용하는 함수로, 콜백 함수에 사용한다.
-> - 매우 중요하다.
+> **_인수를 고정할 때 사용하는 함수로, 콜백 함수에 사용하기 때문에 매우 중요하다._**
 
 - 코드로 알아보자.
 
@@ -259,17 +254,13 @@ True True True False
 
 <br>
 
----
+## 2.4 Signature
 
-# 5. Signature
-
-> - signature(callable, \*, follow_wrapped=True)
->   - 인자로 callable을 취하고, annotation을 반환한다.
+> **_signature(callable, \*, follow_wrapped=True) 형식으로 인자로 callable을 취하고, annotation을 반환한다._**
 
 - `signature` 함수는 `inspect` module에서 import한다.
 - `inspect` module은
-  - 모듈은 모듈, 클래스, 메서드, 함수, 트레이스백, 프레임 객체 및 코드 객체와 같은  
-    라이브 객체에 대한 정보를 얻는 데 도움이 되는 몇 가지 유용한 함수를 제공한다.
+  - 모듈은 모듈, 클래스, 메서드, 함수, 트레이스백, 프레임 객체 및 코드 객체와 같은 라이브 객체에 대한 정보를 얻는 데 도움이 되는 몇 가지 유용한 함수를 제공한다.
 - 예를 들어
   - 클래스의 내용을 검사하거나,
   - 메서드의 소스 코드를 꺼내오거나,
