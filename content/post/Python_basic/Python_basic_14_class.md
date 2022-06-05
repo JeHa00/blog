@@ -101,7 +101,7 @@ False 2542532857088 2542532856992 2542532856560
 
 ## 2.3 namespace 확인하기
 
-> **_'namespace'란 python의 attribute name이 dictionary data type으로 구현 및 저장된 공간_** 으로서, dictionary가 python의 naming system에 사용하기 때문에, 각 name은 key로서 중복되지 않는다.
+> **_'namespace'란 python의 해당 객체와 관련된 attribute의 name들이 dictionary data type으로 구현 및 저장된 공간_** 으로서, dictionary가 python의 naming system에 사용하기 때문에, 각 name은 key로서 중복되지 않는다.
 
 - `dir()` 과 `.__dict__`를 통해서 namespace를 확인할 수 있는데, 그럼 이 두 가지의 차이는 무엇일까??
 

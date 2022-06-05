@@ -7,14 +7,6 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Intro
-
-- Closure에 이어서 decorator(데코레이터)에 대해 알아보자.
-
-<br>
-
----
-
 # 1. Decorator가 중요한 이유
 
 - 데코레이터를 사용하기는 쉽지만, 작성하기는 어렵다고 한다.
@@ -105,7 +97,7 @@ categories: ["개발-dev Python"]
 >       et = time.perf_counter() - st
 >       # func의 이름
 >       name = func.__name__
->       # arg로 구성된 문자열이 arg_str에 할당된다.
+>       # 여러 개의 정수를 하나의 문자열 묶음으로 바꾸기
 >       arg_str = ', '.join(repr(arg) for arg in args)
 >       print('[%0.5fs] %s(%s) -> %r' % (et, name, arg_str, result))
 >       return result
@@ -153,17 +145,17 @@ categories: ["개발-dev Python"]
   - 두 번째, perf_clock(time_func)의 return 값인 `perf_clocked` fuction을 none_deco1에 할당했다.
   - 세 번째,
 
-    - inner fuction인 perf_clocked(\*\*args) function의 `자유변수인 func`에 time_func가 할당된 상태로, none_deco1에 할당된다.
+    - 중첩 함수인 perf_clocked(\*args) function에 time_func가 할당된 상태로, none_deco1에 할당된다.
 
-    - 그러면 인자 `func` 그리고 `**args` 중에서 할당되지 않은 인자는 `**args`다.
+    - 그러면 인자 `func` 그리고 `*args` 중에서 할당되지 않은 인자는 `*args`다.
 
   - 다섯 번째,
 
-    - none_deco1(1.5)를 선언하면서 `**args`에 1.5가 할당된다.
+    - none_deco1(1.5)를 선언하면서 `*args`에 1.5가 할당된다.
 
-    - none_deco2(100, 150, 250, 300, 350)은 `**args`에 100, 150, 200, 300, 350이 할당.
+    - none_deco2(100, 150, 250, 300, 350)은 `*args`에 100, 150, 200, 300, 350이 할당.
 
-- 이처럼 지난 firt-class에서 알아본 partial처럼 하나씩 고정인수를 만들어간다.
+- 이처럼 지난 first-class에서 알아본 partial처럼 하나씩 고정인수를 만들어간다.
 - 이 방식이 가능한 이유는 closure의 개념을 이용했기 때문이다.
 
 <br>
@@ -201,7 +193,7 @@ categories: ["개발-dev Python"]
 
 - 위에 각각 입력하는 의미는 `perf_clock`의 `func` 인자에 time_func와 sum_func을 할당하여 고정시킨다.
 
-- 이 다음으로 time_func(1.5) 와 time_func(100, 150, 250, 300, 350)처럼 `**args` 가변인자를 사용하여 할당한다.
+- 이 다음으로 time_func(1.5) 와 time_func(100, 150, 250, 300, 350)처럼 `*args` 가변인자를 사용하여 할당한다.
 
 <br>
 

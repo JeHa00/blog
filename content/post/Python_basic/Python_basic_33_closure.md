@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Intro
+# 0. Introudtion
 
 - Closure가 필요한 이유 그리고, 잘못 사용된 사례에 대해 알아보자.
 
@@ -88,12 +88,9 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 
 ## 2.1 What is closure ??
 
-> [Reference에 따른 closure 정의]
->
-> - 외부에서 호출된 함수의 변수값, 상태(레퍼런스)를 복사 후 저장한다.
-> - 그 후에 접근(액세스)이 가능하도록 하는 도구
+> **_Reference에 따른 closure 정의: 외부에서 호출된 함수의 변수값, 상태(레퍼런스)를 복사 후 저장한다. 그 후에 접근(액세스)이 가능하도록 하는 도구_**
 
-- scope을 기준으로 설명하자면
+- **scope을 기준으로 설명하자면**
 
   - **Closure란 enclosing scope에 있는 자유변수(free variable)를 이 scope의 실행이 종료되도 보유하고 있는 내부 함수 또는 중첩함수를 말한다.**
 
@@ -109,7 +106,7 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 
 ## 2.2 Why does we need closure ??
 
-- 함수 안에 선언된 것들이 함수의 실행이 끝나서 소멸되면 변수 값도 사라지지만, closure를 사용하면 기억된다.
+> **_함수 안에 선언된 것들이 함수의 실행이 끝나서 소멸되면 변수 값도 사라지지만, closure를 사용하면 기억되기 때문에, single thread여도 동시성 제어가 가능하다._**
 
 - 서버 프로그래밍의 관점에서 closure를 바라보면
 
@@ -117,11 +114,9 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
   - 한정된 메모리 공간에서 여러 자원이 접근하면 `교착상태(Dead lock)`에 부딪힌다.
   - 이를 해결하는 게 `동시성(Concurrency) 제어`다.
   - closure는 불변자료 (immutable, Read Only) 구조 및 atom, STM 이므로 multi-thread 프로그래밍에 강점을 가진다.
-  - multi-thread가 아닌 `단일 thread`인데도 동시성을 갖도록 하는 기반이 되는 게 바로 이 closure다.
+  - multi-thread가 아닌 **_단일 thread_** 인데도 동시성을 갖도록 하는 기반이 되는 게 바로 이 closure다.
 
 - 또한, 이 클로저는 함수형 프로그래밍에도 연결된다.
-
-- 위 관점에 대해서는 그렇구나 정도만 알고 넘어가자. 나중에 차차 알아보자.
 
 - 그러면 class를 사용하여 closure가 무엇인지 구현해보자.
 
@@ -135,7 +130,7 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 # special method __call__은 class를 function처럼 호출해서 사용하도록 한다.
 >   def __call__(self, v):
 >       self._series.append(v)
->       print('inner >>> {} / {}'.format(self._series, len(self, series)))
+>       print('inner >>> {} / {}'.format(self._series, len(self_.series)))
 >       return sum(self._series) / len(self._series)
 
 # local scope
@@ -158,9 +153,7 @@ inner >>> [15, 35, 40] / 3
 30.0
 ```
 
-- 위의 예시처럼 class 실행이 끝나서, 변수가 소멸되야 하는데 유지되고 있다.
-- 상태를 기억하고 있기 때문에 계속해서 누적된다.
-- 그래서 중간부터 해도 이어서 할 수 있다.
+- 위의 예시처럼 class 실행이 끝나서, 변수가 소멸되야하는데 유지되고 있다. 상태를 기억하고 있기 때문에 계속해서 누적된다. 그래서 중간부터 해도 이어서 할 수 있다.
 
 <br>
 
@@ -185,7 +178,9 @@ inner >>> [15, 35, 40] / 3
 >      print('inner >>> {} / {}'.format(series, len(series)))
 >      return sum(series) / len(series)
 
+## 반환해야 클로저로서 사용할 수 있다.
 # 일급 함수의 특징: 함수를 반환할 수 있다.
+
 >   return averager
 
 # make a instance
@@ -271,9 +266,8 @@ inner >>> [15, 35, 40] / 3
 ```
 
 - 바로 위의 예시처럼 `nonlocal`을 사용하는 방법 그리고, UnboundLocalError를 설명할 때 언급한 `global` 을 사용하는 법이 잘못된 closure 사용법이다.
-- UnboundLocalError 를 설명한 경우와 달리, 변수를 전역이 아닌 자유 변수로 만들었다.
-- 그래서, closure지만 좋은 방법이 아니다.
-- 왜냐하면 함수 내에 전역 변수와 연결되는 게 있다면 _디버깅_ 할 때 쉽지 않다.
+- UnboundLocalError 를 설명한 경우와 달리, 변수를 전역이 아닌 자유 변수로 만들었고, 내장 함수를 반환했기 때문에 closure지만 좋은 방법이 아니다.
+- 왜냐하면 함수 내에 지역 변수 외의 것과 연결되는 게 있다면 _디버깅_ 할 때 쉽지 않다.
 
 ---
 
