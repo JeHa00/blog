@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Python basic 35: Generator 1"
+title: "[TIL] Python basic 35: \n_\n_iter\n_\n_과 \n_\n_next\n_\n_"
 date: 2022-03-30T14:17:57+09:00
 draft: false
 summary: 첫 번째, 병행성과 병렬성이란 무엇인지 각 개념에 대해 알아본다.  두 번째, Generator를 이해하기 위해 \_\_iter\_\_와 \_\_next\_\_에 대해 알아본다.
@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["개발-dev Python"]
 ---
 
-# Intro
+# 0. Introduction
 
 - 병행성을 위한 방법으로 generator와 coroutine을 알아보고자 한다.
 - 이번 포스팅에서는 \_\_iter\_\_와 \_\_next\_\_ 을, 다음 포스팅에서는 `generator`를 알아본다.
@@ -18,8 +18,8 @@ categories: ["개발-dev Python"]
 
 # 1. 병행성과 병렬성이란??
 
-> - 병행성(Concurrency): 한 컴퓨터가 여러 일을 동시에 수행하는 것 -> 동시 수행
-> - 병렬성(parallelism): 여러 컴퓨터가 여러 작업을 동시에 수행하는 것 -> 속도 향상
+> - **_동시성, 병행성(Concurrency): 하나의 core에서 하나 이상의 process(또는 thread)가 여러 실행 단위를 번갈아 실행하면서, 동시 진행되는 것처럼 보이는 것_**
+> - **_병렬성(parallelism): 물리적으로 둘 이상의 코어를 실행해서 하나 이상의 prcess가 한 꺼번에 진행되는 것- > 속도 향상 목적_**
 
 - **_병행성_** 은 단일 프로그램 안에서 여러 일을 쉽게 해결하기 위해 사용된다.
   - thread는 하나지만, 마치 동시에 일을 하고 있는 것처럼 수행한다.
@@ -38,13 +38,13 @@ categories: ["개발-dev Python"]
 ## 2.1 \_\_iter\_\_와 \_\_next\_\_ 용어 정리
 
 > - **\_\_iter\_\_**
->   - \_\_iter\_\_: iter() built-in function이 호출하는 메소드
+>   - \_\_iter\_\_: iter() built-in function이 호출하는 special method
 >   - iter(): 호출된 \_\_iter\_\_의 return 값을 반환한다.
 >   - 즉, iterator는 \_\_iter\_\_ method가 만든다.
 > - **\_\_next\_\_**
->   - \_\_next\_\_: next() built-in function이 호출하는 메소드
+>   - \_\_next\_\_: next() built-in function이 호출하는 special method
 
-- **iter** 가 있는 용어들에 대해 정리하면서 알아보자.
+- iter 이 있는 용어들인 **iteration**, **iterable**, **iterator**에 대해 정리하면서 알아보자.
 
 <br>
 
@@ -62,10 +62,9 @@ categories: ["개발-dev Python"]
   - An object(or the adjective used to describe an object) that can be iterated over
   - `__iter__`을 가지고 있는 객체
 
-- 이 iterable한 객체 또는 iterable을 `iter()`에 인자로서 전달하여 반환되는 것을 `interator`라 불린다.
+- **iter()**
 
-- 그리고, `iter()`는 `__iter__` method의 return 값(iterator)을 반환하는 함수다.
-
+  - 이 iterable object를 인자로서 받아, `__iter__` method의 반환값인 `interator`를 반환하는 함수
   - The built-in function used to obtain an iterator from an iterable
 
 - 즉, **iterator**의 의미는
@@ -79,7 +78,7 @@ categories: ["개발-dev Python"]
 
 ## 2.2 Iterator 관련 data type
 
-- iterator를 반환하는 data type들:
+- iterator를 반환하는 data type들 == iterable object
   - for, collections, string, list, dict, set, tuple, unpacking, \*args
 
 ```yml
@@ -106,7 +105,7 @@ categories: ["개발-dev Python"]
 
 <br>
 
-- iterator를 반환하지 않는 data type들
+- iterator를 반환하지 않는 data type들 != iterable object
   - Integer, foat, built-in functions
 
 ```yml
@@ -144,16 +143,18 @@ TypeError: 'builtin_function_or_method' object is not iterable
 
 # iter을 통해서 a의 iterator를 만든다.
 > itr = iter(a)
-> itr
+> print(itr)
 <list_iterator object at 0x031EFD10>
 
-# nest()를 통해서 itr 안의 다음 값을 얻는다.
-> next(itr)
-'foo'
-> next(itr)
-'bar'
-> next(itr)
-'baz'
+# next()를 통해서 itr 안의 다음 값을 얻는다.
+> print(next(itr))
+foo
+
+> priint(next(itr))
+bar
+
+> print(next(itr))
+baz
 
 # 값이 다 소진되면 다음과 같은 Error를 띄운다.
 > next(itr)
@@ -204,12 +205,13 @@ F
 - in 다음에는 iterable이 온다. 그러면 어떻게 하나씩 반환될까??
 
   - `__iter__` 과 `__next__` 와 연결시켜보자.
-  - iteralbe을 입력하면 for문에서 `iter()`을 호출하여 iterable객체를 `iterator`로 바꾼 후, `__next__` method를 통해 하나씩 출력된는 원리라는 걸 이해할 수 있다.
+  - iterable을 입력하면 for문에서 `iter()`을 호출하여 iterable객체를 `iterator`로 바꾼 후, `__next__` method를 통해 하나씩 출력된는 원리라는 걸 이해할 수 있다.
 
 - 위에 for문을 while문으로 만들어서 구체적으로 이해해보자.
 
 ```yml
 > t = 'ABCDEF'
+> t1 = iter(t)
 
 > while True:
 >   try:
@@ -295,7 +297,8 @@ tomorrow
 # 인덱스를 기억하지 않아도 된다.
 >       self._text = text.split('')
 
->   def __next__(self):
+# __next__ 가 아닌 __iter__를 사용한다.
+>   def __iter__(self):
 >       for word in self._text:
 
 # 이것이 제네레이터이며, 이 제네레이터가 위치 정보를 기억한다.

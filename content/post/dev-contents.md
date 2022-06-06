@@ -44,10 +44,10 @@ categories: ["개발-dev"]
 - Will
 - Doing
 
-  - 📚 [운영체제와 정보기술의 원리 - 반효경 지음 -](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=)
-  - 💻 [KOCW 운영체제 이화여자대학교 - 반효경 -](http://www.kocw.net/home/cview.do?cid=3646706b4347ef09)
 
 - Done
+  - 📚 [운영체제와 정보기술의 원리 - 반효경 지음 -](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=)
+  - 💻 [KOCW 운영체제 이화여자대학교 - 반효경 -](http://www.kocw.net/home/cview.do?cid=3646706b4347ef09)
 
 <br>
 
@@ -60,10 +60,9 @@ categories: ["개발-dev"]
   - 💻 [KOCW 컴퓨터 네트워크 한양대학교 - 이석복 -](http://www.kocw.net/home/cview.do?cid=6166c077e545b736)
 
 - Doing
+  - 📚 [성공과 실패를 결정하는 1%의 네트워크 원리](https://search.naver.com/search.naver?ie=UTF-8&sm=whl_sug&query=%EC%84%B1%EA%B3%B5%EA%B3%BC+%EC%8B%A4%ED%8C%A8%EB%A5%BC+%EA%B2%B0%EC%A0%95%ED%95%98%EB%8A%94+1%25%EC%9D%98+%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC+%EC%9B%90%EB%A6%AC5)
 - Done
-
   - 💻 [모든 개발자를 위한 HTTP 웹 기본 지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/dashboard)
-  - 📚 [IT 엔지니어를 위한 네트워크 입문](http://www.yes24.com/Product/Goods/93997435)
 
 <br>
 
@@ -129,9 +128,9 @@ categories: ["개발-dev"]
 
 - Doing
 
-  - 💻 [level 3 모두를 위한 파이썬 : 필수 문법 배우기 Feat. 오픈소스 패키지 배포 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89/dashboard)
 
 - Done
+  - 💻 [level 3 모두를 위한 파이썬 : 필수 문법 배우기 Feat. 오픈소스 패키지 배포 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89/dashboard)
 
   - 💻 [level 2 우리를 위한 프로그래밍 : 파이썬 중급 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B8%89-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90/dashboard)
   - 💻 [level 1 프로그래밍 시작하기 : 파이썬 입문 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90/dashboard)
@@ -145,9 +144,9 @@ categories: ["개발-dev"]
 
 - Will
 
-  - 💻 [파이썬/장고 웹서비스 개발 완벽 가이드 with 리액트](https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%A5%EA%B3%A0-%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4/dashboard)
 
 - Doing
+  - 💻 [파이썬/장고 웹서비스 개발 완벽 가이드 with 리액트](https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%A5%EA%B3%A0-%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4/dashboard)
 
 - Done
 
@@ -158,9 +157,10 @@ categories: ["개발-dev"]
 # **생산성 도구**
 
 - Will
+  - 📚 [Pro Git 2 edition](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788966261789&orderClick=LAG&Kc=)
+
 - Doing
 
-  - 📚 [Pro Git 2 edition](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788966261789&orderClick=LAG&Kc=)
 
 - Done
 
