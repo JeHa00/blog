@@ -15,7 +15,7 @@ window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 `<user-id>.
 
 <br>
 
-위 과정들에서 필요한 개념들, 부딪혔던 error 및 해결책도 각 단계 마지막 부분에 작성했다.
+위 과정들에서 필요한 개념들, 부딪혔던 error 및 해결책도 각 단계 마지막 부분에 작성했다.g
 
 > 동일한 주제로 다룬 블로그들을 보면 3단계와 4단계의 순서를 바꿔서 진행한다. 4단계 진행 후, 3단계를 진행해도 무방하다. 다만, 나는 그 과정에서 헷갈린 부분이 있어서 마지막에 theme 적용을 하기로 선택했다.
 
@@ -85,7 +85,7 @@ Hugo
 
 <br>
 
-# 3. 새로운 2개 github repo 와 local 연결하기
+# 3. 새로운 2개 github repo 와 local 연결
 
 ## 3.1 Submodule 개념 이해하기
 
@@ -167,6 +167,7 @@ Hugo
 > git init
 
 # blog의 remote origin으로 A repo 추가하기
+# 추가 시, .git을 반드시 붙여야 github에 push된다. 
 # sample: git remote add origin https://github.com/Jeha00/blog.git
 > git remote add origin https://github.com/<user-name>/<A repo 명칭>.git
 
