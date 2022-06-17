@@ -1,16 +1,16 @@
 ---
 title: "[TIL] Alogorithum Chapter 03: Search algorithum"
-date: 2022-06-10T20:47:08+09:00
+date: 2022-06-03T20:47:08+09:00
 draft: false
-summary: 
+summary: 검색 알고리즘의 종류인 선형 검색, 이진검색, 해쉬법에 대해 알아본다.
 tags: ["TIL", "Algorithum"]
 categories: ["개발-dev Algorithum"]
 ---
 
-# 0. Introduction 
+# 0. Introduction
 
-- 이번 chapter의 학습은 [Do it! 자료구조와 함께 배우는 알고리즘 입문](http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=9791163031727)로부터 학습했습니다.  
-- 더 자세한 내용과 관련 내용의 코드는 위 서적의 출판사 사이트에서 확인하실 수 있습니다.  
+- 이번 chapter의 학습은 [Do it! 자료구조와 함께 배우는 알고리즘 입문](http://www.kyobobook.co.kr/product/detailViewKor.laf?barcode=9791163031727)로부터 학습했습니다.
+- 더 자세한 내용과 관련 내용의 코드는 위 서적의 출판사 사이트에서 확인하실 수 있습니다.
 
 <br>
 
@@ -134,7 +134,7 @@ categories: ["개발-dev Algorithum"]
 
 이 충돌을 발생 시 대처 방법에는 아래와 같이 2가지가 있다.
 
-- 체인법: 해시값이 같은 데이터 원소를 체인 모양의 연결 리스트롤 연결하는 방법을 말하며, 오픈 해시법(open hashing) 이라 한다. 
+- 체인법: 해시값이 같은 데이터 원소를 체인 모양의 연결 리스트롤 연결하는 방법을 말하며, 오픈 해시법(open hashing) 이라 한다.
 - 오픈 주소법: 빈 버킷을 찾을 때까지 해시를 반복한다.
 
 <br>
