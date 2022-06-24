@@ -1,8 +1,8 @@
 ---
-title: "[TIL] Git study: Lecture Chapter 02"
+title: "[TIL] Git study: Lecture Chapter 02 - resest vs revert"
 date: 2022-06-23T11:33:57+09:00
 draft: false
-summary: git add /  git commit / git reset --hard / git revert 그리고,  vim에서 몇 가지 명령어를 알아본다.
+summary: git add 와  git commit 으로 변경사항을 stage에 올리고, 저장해본다. 이 과정에서 vim의 몇 가지 명령어를 알아본다. 핵시으로 git reset --hard / git revert 를 학습하여 과거 시점으로 돌아가는 걸 학습한다.
 tags: ["TIL", "git"]
 categories: ["개발-dev git"]
 ---
