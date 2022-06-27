@@ -92,9 +92,7 @@ categories: ["개발-dev git"]
 
   - 처음 저장소를 clone 하면 이 저장소 안에 있는 파일은 checkout 하고 나서 아무것도 수정하지 않았기 때문에, `Tracked` 상태이면서 `Unmodified` 상태다.
 
-<p align="center"><image src ="https://git-scm.com/book/en/v2/images/lifecycle.png" width = '550' height ='400'/></p>
-
-<p align="center">[Life cycle of file]</p>
+![image](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
 - 다음으로 '2.2.1 파일의 상태 확인하기' ~ '2.2.3 Modified 상태의 파일을 Stage 하기' 내용을 정리하겠다.
 - '2.2.1 파일의 상태 확인하기' 에서는 `git status` 명령어를 배운다.
