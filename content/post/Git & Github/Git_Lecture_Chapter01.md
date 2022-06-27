@@ -9,10 +9,6 @@ categories: ["개발-dev git"]
 
 # 0. Introduction
 
-> 1. [Git을 배워야 하는 이유](#1-git을-배워야-하는-이유)
-> 2. [Git과 Sourcetree 설치](#2-git과-sourcetree-설치)
-> 3. [Git 설정 vs 프로젝트 관리 시작하기](#3-git-설정-vs-프로젝트-관리-시작하기)
-
 - 해당 내용은 [제대로 파는 Git & GitHub - by 얄코 ](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)를 중심으로 [Pro git : Second editions](https://book.naver.com/bookdb/book_detail.nhn?bid=7187291)을 참고하여 공부한 내용입니다.
 
 <br>
