@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Git study: Lecture Chapter 06 - git help & git config"
 date: 2022-06-28T17:37:08+09:00
-draft: true
+draft: false
 summary: git 명령어가 기억나지 않아 설명서가 필요한 경우 사용하는 `git help` 명령어와 `git config`를 사용한 git 설정에 대해 자세히 알아본다.
 tags: ["TIL", "git"]
 categories: ["개발-dev git"]

@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Git study: Lecture Chapter 07 - Commit message 권장사항과 convention "
 date: 2022-06-28T17:44:03+09:00
-draft: true
+draft: false
 summary: commit message를 작성할 때 권장사항들과 commit message convention에 대해 학습하여 commit message를 보다 체계적으로 작성해본다.
 tags: ["TIL", "git"]
 categories: ["개발-dev git"]
