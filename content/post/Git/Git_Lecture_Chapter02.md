@@ -109,7 +109,7 @@ git commit -m 'FIRST COMMIT'
 
 아래 명령어와 소스트리로 확인한다.
 
-    - 종료는 `:q`를 사용한다.
+  - 종료는 `:q`를 사용한다.
 
 ```YML
 git log

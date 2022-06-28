@@ -55,7 +55,7 @@ params:
 
   # profile-mode
   profileMode:
-    enabled: false
+    enabled: True
      # needs to be explicitly set
     title: Jeha00 DevLog
     subtitle: "선한 마음과 꾸준함이 비범함을 만든다"
@@ -64,10 +64,12 @@ params:
     imageHeight: 120
     imageTitle: my image
     buttons:
-      - name: Archive
-        url: /archives/
+      - name: About
+        url: /about/
       - name: Github
         url: https://github.com/jeha00/
+      - name: Archive
+        url: /archives/
 
   # home-info mode
   homeInfoParams:

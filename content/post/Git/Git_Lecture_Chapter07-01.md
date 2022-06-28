@@ -102,8 +102,8 @@ categories: ["개발-dev git"]
 
 ## 7-1.3 Gitmoji
 
-Commit message에 이모지를 넣어서 입력하는 방식도 있다.
-이는 Chapter 12에서 학습한다.
+Commit message에 이모지를 넣어서 입력하는 방식도 있다.  
+이는 Chapter 12에서 학습할 예정이다.
 
 <br>
 
