@@ -55,7 +55,7 @@ params:
 
   # profile-mode
   profileMode:
-    enabled: True
+    enabled: false
      # needs to be explicitly set
     title: Jeha00 DevLog
     subtitle: "선한 마음과 꾸준함이 비범함을 만든다"
