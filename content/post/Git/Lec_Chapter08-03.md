@@ -1,6 +1,6 @@
 ---
 title: "[TIL] Git study: Lecture Chapter 08 - git reflog"
-date: 2022-07-11T23:31:37+09:00
+date: 2022-07-07T23:31:37+09:00
 draft: false
 summary: git reset 으로 사라진 커밋을 복구하기 위해서 git reflog 명령어를 통해 더 자세한 commit 번호를 확인 후, git reset --hard 명령어를 통해서 사라진 커밋을 복구해본다.
 tags: ["TIL", "git"]

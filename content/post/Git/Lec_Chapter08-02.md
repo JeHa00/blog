@@ -1,6 +1,6 @@
 ---
 title: "[TIL] Git study: Lecture Chapter 08 - git restore"
-date: 2022-07-07T23:31:33+09:00
+date: 2022-07-06T23:31:33+09:00
 draft: false
 summary: git restore 명령어를 통해서 첫 번째, 특정 파일을 지정된 상태로 복구해보는 것과 두 번째, 변경 상태를 stage area에서 working directory로 돌려보는 것을 해본다.
 tags: ["TIL", "git"]
