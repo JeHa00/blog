@@ -3,7 +3,7 @@ title: "[TIL] Network HTTP intro. 1: Internet network"
 date: 2022-03-07T21:16:44+09:00
 draft: false
 summary: HTTP를 학습하기 위해 사전지식으로 IP,TCP/UDP, PORT, DNS를 알아본다.
-tags: ["TIL", "Network", "IP", "TCP", "PORT", "DNS"]
+tags: ["TIL", "Network", "HTTP"]
 categories: ["개발-dev Netwok"]
 ---
 

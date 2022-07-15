@@ -3,7 +3,7 @@ title: "Django study: Document tutorial Part 1 따라해보기"
 date: 2022-07-03T23:45:43+09:00
 draft: false
 summary: django를 설치한 후, project와 application을 명령어를 통해 만들어보고, view와 URLconf에 대해 학습해본다.
-tags: ["TIL", "Django"]
+tags: ["Django"]
 categories: ["개발-dev Django"]
 ---
 

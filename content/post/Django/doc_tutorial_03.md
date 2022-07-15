@@ -3,7 +3,7 @@ title: "Django study: Document tutorial Part 3 따라해보기"
 date: 2022-07-06T23:45:57+09:00
 draft: True
 summary:
-tags: ["TIL", "Django"]
+tags: ["Django"]
 categories: ["개발-dev Django"]
 ---
 

@@ -1,9 +1,9 @@
 ---
-title: "Django study: Document tutorial Part 3 따라해보기"
+title: "Django study: Document tutorial Part 4 따라해보기"
 date: 2022-07-08T23:46:04+09:00
-draft: True
+draft: false
 summary:
-tags: ["TIL", "Django"]
+tags: ["Django"]
 categories: ["개발-dev Django"]
 ---
 
@@ -20,7 +20,6 @@ categories: ["개발-dev Django"]
     - 사람들이 설문조사를 보고 투표할 수 있는 'public site'
     - 설문조사를 더하고, 수정하고, 삭제하는 'admin site'
 
--
 
 <br>
 
