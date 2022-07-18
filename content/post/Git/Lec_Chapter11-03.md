@@ -2,7 +2,7 @@
 title: "[TIL] Git study: Lecture Chapter 11 - Git blame & GitLens"
 date: 2022-07-18T15:16:52+09:00
 draft: false
-summary: `git blame` 명령어와 VSC의 extension program인 GitLens를 통해 각 라인의 작성자를 확인하는 법을 알아본다.  
+summary: git blame 명령어와 VSC의 extension program인 GitLens를 통해 각 라인의 작성자를 확인하는 법을 알아본다.  
 tags: ["TIL", "git"]
 categories: ["개발-dev git"]
 ---
