@@ -4,7 +4,7 @@ date: 2022-04-11T20:18:00+09:00
 draft: false
 summary: Shallow copy 와 Deep copy가 각각 무엇이고, 무슨 차이인지 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # Intro

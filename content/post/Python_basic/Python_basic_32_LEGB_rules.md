@@ -4,7 +4,7 @@ date: 2022-03-27T23:53:06+09:00
 draft: false
 summary: LEGB rules 즉 Local, Enclosing, global(or module), built-in varialbe의 scope에 대해 알아본다. 그리고, Python Memory structure가 어떤지 개괄적으로 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

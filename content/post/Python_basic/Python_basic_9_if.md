@@ -4,7 +4,7 @@ date: 2022-03-01T11:52:55+09:00
 draft: false
 summary: 조건문의 기본 형식, 연산자를 통해서 제어하는 방법, 참거짓을 의미하는 값들, 다중 및 중첩 조건문, in & not in 으로 제어하는 방법을 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 ## 1. 조건문 기본 형식

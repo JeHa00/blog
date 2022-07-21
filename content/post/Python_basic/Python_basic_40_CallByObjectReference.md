@@ -4,7 +4,7 @@ date: 2022-04-10T15:54:18+09:00
 draft: false
 summary: python의 변수를 만드는 원리인 object reference에 대해 알아보고, 파이썬의 호출 방식인 call by object reference에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # Intro

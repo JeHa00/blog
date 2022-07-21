@@ -4,7 +4,7 @@ date: 2022-03-01T11:52:41+09:00
 draft: false
 summary: list와 tuple의 차이. tuple의 indexing, slicing, 연산. 그리고, tuple의 중요한 특징 중 하나인 packing & unpacking에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

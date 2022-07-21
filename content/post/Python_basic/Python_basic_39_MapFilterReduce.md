@@ -4,7 +4,7 @@ date: 2022-04-09T14:45:39+09:00
 draft: false
 summary: High-order function의 대표적인 예인 map, filter, reduce에 대해 lambda, def, closure로 구현해본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

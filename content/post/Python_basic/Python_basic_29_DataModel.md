@@ -4,7 +4,7 @@ date: 2022-03-23T23:24:24+09:00
 draft: false
 summary: Python data model을 상세히 분류하여 mutable과 immutable의 차이가 무엇인지,  list comprehension이 무엇인지, unpacking을 tuple에 어떻게 구현하는지, immutable dictionary와 set에 대해 조금 더 깊이 알아보자.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

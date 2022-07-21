@@ -4,7 +4,7 @@ date: 2022-03-28T23:38:59+09:00
 draft: false
 summary: Closure를 설명하기 위해서 global variable, local variable에 추가하여 free variable에 대해 설명하고, 왜 closure가 필요한지, closure의 잘못된 사용법을 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introudtion

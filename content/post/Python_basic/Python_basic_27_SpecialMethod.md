@@ -4,7 +4,7 @@ date: 2022-03-21T17:14:36+09:00
 draft: false
 summary: 지난 번 Python basic 26 Class advanced에 이어서 class 안에 정의되는 built-in method인 special method에 대해 알아보자.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

@@ -4,7 +4,7 @@ date: 2022-05-15T20:26:29+09:00
 draft: false
 summary: OOP에서 사용하는 overriding과 overloading에 대해 알아본다. 그리고, multipledispatch module을 사용하여 overloading을 구현한다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 1. Method overriding

@@ -4,7 +4,7 @@ date: 2022-03-03T01:33:46+09:00
 draft: False
 summary: 내장 함수란 무엇이고, 내장 함수에서 자주 사용된 것들로 실습을 해보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 - 내장 함수란 프로그래밍 언어의 라이브러리에(파이썬의 인터프리터에) 이미 등록되어 있는 함수를 말한다. 그래서 별도의 정의나 설치가 필요없다.

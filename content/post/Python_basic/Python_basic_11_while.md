@@ -4,7 +4,7 @@ date: 2022-03-02T00:49:59+09:00
 draft: false
 summary: While 반복문의 기본 사용법, break & continue 문, While ~ else 구문, 무한 반복 구문에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # Introduction

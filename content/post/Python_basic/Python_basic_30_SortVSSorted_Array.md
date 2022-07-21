@@ -4,7 +4,7 @@ date: 2022-03-24T23:01:10+09:00
 draft: false
 summary: sort와 sorted의 차이를 알아보고, Array data type 에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

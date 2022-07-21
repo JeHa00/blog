@@ -4,7 +4,7 @@ date: 2022-03-13T16:33:19+09:00
 draft: false
 summary: \_\_str\_\_ 과 \_\_repr\_\_ 이 각각 무엇인지, 이 둘의 차이는 무엇인지, print 함수와 \_\_str\_\_ 사이에는 무슨 관계가 있는지 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

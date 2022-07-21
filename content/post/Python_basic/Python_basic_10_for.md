@@ -4,7 +4,7 @@ date: 2022-03-01T11:53:00+09:00
 draft: false
 summary: for ~ range의 3가지 pattern, for문에 interable 자료형 활용하기, break 문과 continue 문 사용하기, for ~ else 구문에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

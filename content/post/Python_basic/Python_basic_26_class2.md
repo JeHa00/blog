@@ -4,7 +4,7 @@ date: 2022-03-16T14:28:39+09:00
 draft: false
 summary: Python basic 14의 내용을 이어서 진행한다. instance의 self가 무엇을 의미하는지, dir과 `__dict__`가 무슨 차이인지, 또한 method 3종류인 class method, instance method 마지막으로 static method에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

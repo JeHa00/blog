@@ -4,7 +4,7 @@ date: 2022-04-12T13:09:09+09:00
 draft: false
 summary: context manager가 무엇이고, 이를 with, class, decorator를 사용하여 여러 방법으로 구현해본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 1. Context Manager란?

@@ -4,7 +4,7 @@ date: 2022-02-28T18:51:39+09:00
 draft: false
 summary: 첫 번째, python의 자료형 종류에는 무엇이 있는지 알아본다. 두 번째, 숫자형 데이터 타입의 선언, 연산, 그리고 형 변환에 대해 중점적으로 알아보겠다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 ## 1. 파이썬의 모든 자료형

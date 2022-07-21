@@ -4,7 +4,7 @@ date: 2022-03-02T00:50:00+09:00
 draft: false
 summary: 함수의 중요성 및 선언, Packing & Unpacking, 중첩 함수(Nested function), 람바 함사(익명 함수), 함수 Type hint인 annotation 에 대해 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 1. 함수 중요성

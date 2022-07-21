@@ -4,7 +4,7 @@ date: 2022-03-01T11:52:52+09:00
 draft: false
 summary: set 선언법, set type conversion, 집합 자료형 활용을 위한 함수, set type의 수정하기를 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction

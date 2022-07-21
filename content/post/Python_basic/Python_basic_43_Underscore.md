@@ -4,7 +4,7 @@ date: 2022-05-11T13:27:50+09:00
 draft: false
 summary: Python에서 underscore(_)가 어떻게 쓰이는지 알아보고, 그 중에서 Access modifier 접근 지정자 Public, Protected, private 각각에 대해 알아본다. 그리고, Private의 경우, naming mangling와 연결하여 알아본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 1. Python underscore 활용

@@ -4,7 +4,7 @@ date: 2022-04-06T21:34:38+09:00
 draft: false
 summary: 인프런 파이썬 level 4 과정의 기반으로 대략적으로 학습하는 내용이다. 구체적으로 Synchro와 Asynchro가 각각 무엇을 의미하는지, threadpool이란 무엇인지, concurrent.futures package에서 wait과 as_completed module에 대해 학습해본다.
 tags: ["TIL", "python"]
-categories: ["개발-dev Python"]
+categories: ["Python"]
 ---
 
 # 0. Introduction
