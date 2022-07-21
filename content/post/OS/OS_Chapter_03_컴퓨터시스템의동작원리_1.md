@@ -4,7 +4,7 @@ date: 2022-04-13T13:55:26+09:00
 draft: false
 summary: I/O 연산이 무엇이고, controller와 local buffer가 무엇이고, 입출력 연산이 Interrupt를 중심으로 어떻게 진행되는지를 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

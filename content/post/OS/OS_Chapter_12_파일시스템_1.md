@@ -4,7 +4,7 @@ date: 2022-05-29T18:08:02+09:00
 draft: false
 summary: file이란 무엇이고, 이 file 관리하는 system은 무엇인지, operation은 memory와 disk 사이에서 어떤 순서로 이뤄지는지,  file protection은 어떻게 이뤄지는지, 순차 접근과 직접 접근이 무엇인지 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

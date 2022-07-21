@@ -4,7 +4,7 @@ date: 2022-05-23T21:50:30+09:00
 draft: false
 summary: 가상 메모리를 관리하기 위한 방법으로 demanding paging에 대해 알아본다. 그리고, 페이지 교체는 어떠한 순서로 이뤄지는지, 프로세스에 프레임은 어떤 알고리즘을 통해서 할당되는지, 전역 교체와 지역교체는 무엇인지 마지막으로 thrashing 상황과 MPD 개념에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

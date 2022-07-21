@@ -4,7 +4,7 @@ date: 2022-05-04T20:53:38+09:00
 draft: false
 summary: Race condition이란 무엇이고, 이 race condition은 OS에서 언제 발생되며, 이를 해결하기 위한 방법으로 SW 방법과 SW 방법에는 무엇이 있는지를 배운다. 또한, Semaphore가 무엇인지 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

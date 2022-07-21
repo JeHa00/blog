@@ -4,7 +4,7 @@ date: 2022-04-28T16:13:46+09:00
 draft: false
 summary: logical address와 physical address를 어떻게 mapping하는지, 메모리 관리와 관련된 용어 4가지에 대해 알아보고, 물리적 메모리의 할당 방식 연속할당과 불연속할당 방식 중 연속할당에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

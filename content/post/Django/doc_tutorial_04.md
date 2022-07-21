@@ -4,7 +4,7 @@ date: 2022-07-08T23:46:04+09:00
 draft: false
 summary:
 tags: ["Django"]
-categories: ["개발-dev Django"]
+categories: ["Django"]
 ---
 
 # 0. Introduction

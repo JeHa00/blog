@@ -4,7 +4,7 @@ date: 2022-05-10T20:38:04+09:00
 draft: false
 summary: 프로세스 동기화의 전통적인 문제 3가지와 semaphore를 개선한 방법인 monitor에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

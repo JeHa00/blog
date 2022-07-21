@@ -4,7 +4,7 @@ date: 2022-07-05T23:45:49+09:00
 draft: false
 summary: class를 사용하여 model을 만들면서 Field를 적용해본다. application을 활성화하기 위해 settings.py에 INSTALLED_APPS 에 등록한다. 그리고, migration file을 만든 후, DB에 적용해본다.
 tags: ["Django"]
-categories: ["개발-dev Django"]
+categories: ["Django"]
 ---
 
 # 0. Introduction

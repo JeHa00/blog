@@ -4,7 +4,7 @@ date: 2022-05-25T13:37:20+09:00
 draft: false
 summary: 디스크의 물리적인 구조는 어떻고, 이 디스크 스케쥴링이 왜 필요하고 어떤 알고리즘들로 스케쥴링되는지, disk의 역할 2가지는 무엇인지, 다중 디스크 상황의 장점은 무엇인지 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

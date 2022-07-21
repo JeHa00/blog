@@ -4,7 +4,7 @@ date: 2022-03-18T21:51:01+09:00
 draft: false
 summary: 검증 헤더와 조건부 요청 헤더의 종류, 그중 캐시 관련 헤더에 대해서 알아본다. 그리고, 프록시 서버와 원(Origin) 서버의 차이와 캐시를 어떻게 무효화하는지 알아본다.
 tags: ["TIL", "Network", "HTTP"]
-categories: ["개발-dev Netwok"]
+categories: ["Netwok"]
 ---
 
 # Intro

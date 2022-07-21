@@ -4,7 +4,7 @@ date: 2022-06-07T20:47:33+09:00
 draft: false
 summary: stack과 queue에 대해 알아보고, 직접 구현하여 해당 자료 구조에 대해 알아보고, 이 두 자료구조의 차이점에 대해 이해해보자.
 tags: ["TIL", "Algorithum"]
-categories: ["개발-dev Algorithum"]
+categories: ["Algorithum"]
 ---
 
 # 0. Introduction

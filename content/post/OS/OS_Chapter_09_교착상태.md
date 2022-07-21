@@ -4,7 +4,7 @@ date: 2022-05-10T20:38:17+09:00
 draft: false
 summary: 교착 상태(deadlock)이란 무엇이고, deadlock 발생 조건 4가지는 무엇이며, 이에 따라 deadlock 처리 방법에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

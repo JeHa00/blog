@@ -4,7 +4,7 @@ date: 2022-06-03T20:47:08+09:00
 draft: false
 summary: 검색 알고리즘의 종류인 선형 검색, 이진검색, 해쉬법에 대해 알아본다.
 tags: ["TIL", "Algorithum"]
-categories: ["개발-dev Algorithum"]
+categories: ["Algorithum"]
 ---
 
 # 0. Introduction

@@ -4,7 +4,7 @@ date: 2022-04-05T17:43:59+09:00
 draft: false
 summary: 운영체제란 무엇이고, 무슨 역할을 하는지, 어떻게 분류되는지, 그리고 CPU, 메모리, 입출력 장치의 대략적인 관리 mechanism에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

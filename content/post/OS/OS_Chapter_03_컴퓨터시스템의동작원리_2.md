@@ -4,7 +4,7 @@ date: 2022-04-14T14:54:58+09:00
 draft: false
 summary: 입출력 구조, DMA, 저장장치의 구조 그리고 계층구조에 대해 알아본다. 또한, 하드웨어, 메모리, CPU의 각 보안 방법에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

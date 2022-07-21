@@ -4,7 +4,7 @@ date: 2022-04-18T23:25:25+09:00
 draft: false
 summary: 프로세스란 무엇인지, 프로세스의 상태는 어떻게 흘러가는지, 문맥 교환이란 무엇인지, 프로세스가 어떻게 생성되고 종료되는지, 프로세스끼리 협력은 어떻게 하는지, thread는 무엇인지 알아보겠다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

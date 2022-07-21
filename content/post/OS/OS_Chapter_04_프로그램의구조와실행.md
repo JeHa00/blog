@@ -4,7 +4,7 @@ date: 2022-04-15T00:27:39+09:00
 draft: false
 summary: 프로그램의 구조와 실행에 대해 설명한다. 예를 들어 프로그램의 주소영역, PCB, Program counter, 일반 명령과 특권 명령, Virtual memory, kernel mode와 user mode 등등을 알아본다.
 tags: ["TIL", "OS"]
-categories: ["개발-dev OS"]
+categories: ["OS"]
 ---
 
 # 0. Introduction

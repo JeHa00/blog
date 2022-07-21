@@ -4,7 +4,7 @@ date: 2022-06-10T20:47:42+09:00
 draft: false
 summary: 재귀 알고리즘(recursive algorithum)에서 재귀의 의미를 이해하여 재귀 알고리즘이란 무엇이고, 재귀 알고리즘 분석 방법 2가지와 제거하는 방법을 알아본다. 또한, 재귀 알고리즘으로 유명한 문제인 하노이의 탑, 8퀸 문제에 대해 알아본다.
 tags: ["TIL", "Algorithum"]
-categories: ["개발-dev Algorithum"]
+categories: ["Algorithum"]
 ---
 
 # 0. Introduction
