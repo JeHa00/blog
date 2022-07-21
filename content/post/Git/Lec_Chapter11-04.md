@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Git study: Lecture Chapter 11 - Git bisect"
 date: 2022-07-19T21:12:20+09:00
-draft: true
+draft: false
 summary: git bisect 명령어를 통해서 이진 탐색과 commit hash number를 이용하여 오류 지점을 찾아본다.   
 tags: ["TIL", "git"]
 categories: ["개발-dev git"]
