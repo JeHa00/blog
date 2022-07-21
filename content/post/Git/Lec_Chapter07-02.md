@@ -4,7 +4,7 @@ date: 2022-06-28T17:44:10+09:00
 draft: false
 summary: 변경사항을 보다 쪼갠 hunk 크기로 나눠 staging area에 올리는 명령어인 git add -p 와 커밋하는 명령어인 git commit -v 에 대해 학습해본다.
 tags: ["TIL", "git"]
-categories: ["개발-dev git"]
+categories: ["git"]
 ---
 
 # 0. Introduction

@@ -4,7 +4,7 @@ date: 2022-06-27T21:39:43+09:00
 draft: false
 summary: 첫 번째, Git의 장점. 두 번째, Git의 3가지 공간. 세 번째, git rm과 git mv 명령어. 네 번째, reset의 3가지 옵션. 다섯 번째, Git의 HEAD를 이동하기 위해서 git checkout 명령어. 마지막으로 fetch와 pull의 차이를 학습한다.
 tags: ["TIL", "git"]
-categories: ["개발-dev git"]
+categories: ["git"]
 ---
 
 # 0. Introduction

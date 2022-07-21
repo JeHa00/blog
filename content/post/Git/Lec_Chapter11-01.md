@@ -4,7 +4,7 @@ date: 2022-07-15T15:07:17+09:00
 draft: false
 summary: git log에 달려있는 여러 옵션들을 사용하여 log를 더 자세히 알아본다.  
 tags: ["TIL", "git"]
-categories: ["개발-dev git"]
+categories: ["git"]
 ---
 # 0. Introduction
 

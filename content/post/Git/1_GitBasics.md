@@ -4,7 +4,7 @@ date: 2022-06-22T11:31:54+09:00
 draft: false
 summary: 첫 번째, git 저장소 만들기. 두 번째, git add 와 git status 명령어를 통해서 Git introduction에서 알아본 git의 3가지 상태와 3가지 단계를 이해해본다.
 tags: ["TIL", "git"]
-categories: ["개발-dev git"]
+categories: ["git"]
 ---
 
 # 2.1 Git 저장소 만들기

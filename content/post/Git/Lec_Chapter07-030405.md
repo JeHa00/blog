@@ -4,7 +4,7 @@ date: 2022-06-30T20:59:37+09:00
 draft: false
 summary: 커밋하기 애매한 변화를 치워두는 명령어인 git stash, commit message를 수정하는 git commit --amend, commit 과거 내역들을 수정하는 git rebase -i 를 학습한다.
 tags: ["TIL", "git"]
-categories: ["개발-dev git"]
+categories: ["git"]
 ---
 
 # 0. Introduction
