@@ -8,9 +8,6 @@ categories: ["git"]
 ---
 # 0. Introduction
 
-> 1. [Pull request](#1-pull-request)
-> 2. [Issure](#2-issue)
-> 3. [오픈소스 프로젝트에 기여하기](#3-오픈소스-프로젝트에-기여하기)
 
 - 해당 내용은 [제대로 파는 Git & GitHub - by 얄코 ](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)을 통해서 공부한 내용입니다.
 
