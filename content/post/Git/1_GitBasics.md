@@ -11,7 +11,7 @@ categories: ["git"]
 
 - Git 저장소를 만드는 방법에는 2가지가 있다.
   - 기존 directory를 Git 저장소로 만들기
-  - 기존 저장소를 clone 하기
+  - 기존 repository를 clone 하기
 
 <br>
 
@@ -37,16 +37,15 @@ categories: ["git"]
 
 - `git init`은 `.git` 이라는 하위 directory를 만든다.
 - `.git` directory 안에는 저장소에 필요한 뼈대 파일이 존재한다.
-- 하지만 `.git`이 있다고 프로젝트의 파일을 관리하지 않는다.
-- **Git이 프로젝트를 관리하기 위해서는 저장소에 파일을 추가하고, 커밋해야 한다.**
+- 하지만 `.git`이 있다고 프로젝트의 파일이 관리되는 게 아니고, **저장소에 파일을 추가하고, 커밋해야 Git이 프로젝트를 관리한다.**
 
-> _주의사항: `.git` 폴더를 지우면 Git 관리내역이 삭제되어 과거의 내역으로 돌아갈 수 없다. (현 파일들은 유지)_
+❗❗ 주의사항: `.git` 폴더를 지우면 Git 관리내역이 삭제되어 과거의 내역으로 돌아갈 수 없다. (현 파일들은 유지)
 
 <br>
 
 ## 2.1.2 기존 저장소를 clone 하기
 
-> **_git clone [url]_**
+> **_git clone [url].git_**
 
 <br>
 
@@ -65,7 +64,7 @@ categories: ["git"]
 - `git-practice` 코드를 복사하려는 상황이라면
 
 ```yml
-> git clone https://github.com/git-practice/git-practice
+> git clone https://github.com/git-practice/git-practice.git
 ```
 
 - 이 명령으로 `git-practice`라는 directory를 만들고, 그 안에 `.git` directory를 만든다.
@@ -74,6 +73,8 @@ categories: ["git"]
 ---
 
 <br>
+
+---
 
 # 2.2 수정하고 저장소에 저장하기
 
@@ -90,7 +91,7 @@ categories: ["git"]
     - 나머지 파일은 다 `Untracked` 상태다.
     - `Untracked` 상태는 `snapshot`에도, `staging area`에도 포함되지 않은 파일이다.
 
-  - 처음 저장소를 clone 하면 이 저장소 안에 있는 파일은 checkout 하고 나서 아무것도 수정하지 않았기 때문에, `Tracked` 상태이면서 `Unmodified` 상태다.
+  - 처음 저장소를 clone 하면 이 저장소 안에 있는 파일은 아무것도 수정하지 않았기 때문에, `Tracked` 상태이면서 `Unmodified` 상태다.
 
 ![image](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
@@ -102,36 +103,40 @@ categories: ["git"]
 
 ## 2.2.1 git status
 
+> `git status` **_는 현재 파일의 상태를 확인하기 위해 사용되는 명령어다._**
+
 - `git status` 명령어로 파일의 상태를 먼저 확인하자.
 
-```yml
-> git status
-On branch master
-nothing to commit, working directory clean
-```
+  ```yml
+  > git status
+  On branch master
+  nothing to commit, working directory clean
+  ```
 
 - 위 코드의 의미는 다음과 같다.
 
   - 현재 branch는 기본 branch인 master다.
-  - 현재 `Tracked` 나 `Modified` 상태인 파일이 없다.
+  - 현재 `Tracked` 이지만, `Modified` 상태인 파일이 없다.
 
 - 만약 `.git`을 삭제한 후, `git status`를 입력하면, 다음과 같은 안내문이 뜬다.
 
-```yml
-> fatal: not a git repository (or any of the parent directories): .git
-```
+  ```yml
+  > fatal: not a git repository (or any of the parent directories): .git
+  ```
 
 - git이 관리하지 않는다는 의미다. 그래서 `.git`을 삭제하면 안된다.
 
 <br>
 
-> **`git status`는 현재 파일의 상태를 확인하기 위해 사용되는 명령어다.**
-
-<br>
-
 ## 2.2.2 git add
 
-- `git add` 개념을 설명해보겠다.
+> - **`git add` _명령어는_** 
+>   - **_새로운 파일을 추적할 때 사용되는 명령어로서, `Untracked`상태에서 `Tracked` 상태로 이동된다._**
+>   - **_새로운 파일을 추적할 때 뿐만 아니라, 수정한 파일을 `Staged`상태로 만들 때에도 사용된다._**  
+>   - **_파일을 `프로젝트에` 추가하는 명령어라기 보다는 `다음 커밋에` 추가하는 명령어로 생각하자._**
+
+
+### Untracked
 
 ```yml
 > echo 'My project' > README.md
@@ -145,11 +150,12 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-- `echo 'My project' > README.md` 명령어는 'My project'라는 내용을 가진 `README.md` 파일을 만들라는 명령어다.
-- 파일을 만든 후, `git status` 실행하면 `Untracked files` 안에 새로 만든 파일이 있다는 걸 확인할 수 있다.
-- 이는 `README.md`파일이 `Untracked` 상태임을 말한다.
-- Git은 `Untracked` 상태의 파일을 `아직 snapshot에 존재하지 않는 파일`로 인식한다.
-- 그러면 `Untracked` 상태를 `Trancked`상태로 바꿔보자.
+  - `echo 'My project' > README.md` 명령어는 'My project'라는 내용을 가진 `README.md` 파일을 만들라는 명령어다.
+  - 파일을 만든 후, `git status` 실행하면 `Untracked files` 안에 새로 만든 파일이 있다는 걸 확인할 수 있다.
+  - 이는 `README.md`파일이 `Untracked` 상태임을 말한다.
+  - Git은 `Untracked` 상태의 파일을 `아직 snapshot에 존재하지 않는 파일`로 인식한다.
+
+### Untracked -> Tracked
 
 ```yml
 > git add README.md
@@ -167,9 +173,7 @@ Changes to be committed:
 
 <br>
 
-> **`git add` 명령어는 새로운 파일을 추적할 때 사용되는 명령어다. 그리고, `Untracked`상태에서 `Tracked` 상태로 이동된다.**
-
-<br>
+### Tracked: Unmodified -> Modified
 
 - `Tracked` 상태인 `README.md` 파일을 수정한 후, `git status` 를 입력해보자.
 
@@ -186,6 +190,11 @@ Changes not staged for commit:
 
 - `README.md` 파일은 `Changes to be committed:` 에 있다가 `Changes not staged for commit:` 으로 옮겨졌다.
 - 이는 수정한 파일이 `Tracked` 상태이지만, `Staged` 상태는 아니라는 것이다. 즉, 수정된 파일이므로 `Modified` 상태임을 말한다.
+
+<br>
+
+### Tracked: Modified -> Staged
+
 - `Modified` 상태에서 `Staged` 상태로 바꿔보자.
 
 ```yml
@@ -200,7 +209,10 @@ Changes to be committed:
 
 - `Changes to be committed:` 로 옮겨졌다.
 - `Tracked` 상태이면서 `Staged` 상태로 되었다. 이는 커밋을 실행할 때 이 파일이 포함된다는 걸 의미한다.
-- 하지만, 아직 더 수정해야 한다는 걸 알게 되어 바로 커밋하지 못하는 상황이라고 생각해보자.
+
+### Tacked: Staged & Unstaged
+
+- 하지만, 더 수정할 게 있어 바로 커밋하지 못하는 상황이라고 생각해보자.
 - 수정하고 나서 `git status`를 입력했다.
 
 ```yml
@@ -225,6 +237,9 @@ Changes not staged for commit:
 - `git add` 후에 다시 수정을 했고, 수정한 후 `git add`를 하지 않았기 때문에 `unstaged` 상태로도 나온다.
 - 즉, `git add` 명령을 실행한 후에 또 파일을 수정하면 `git add` 명령을 다시 실행해서 최신 버전을 `Staged` 상태로 만들어야 한다.
 
+
+### Tracked: Unstaged -> Staged
+
 ```yml
 > git add README.md
 > git status
@@ -237,9 +252,6 @@ Changes to be committed:
 
 - `Changes not staged for commit:`에서 `Changes to be committed:`로 옮겨졌다.
 - 최신 상태가 `Staged`에 올랐다는 걸 확인할 수 있다.
-
-> **`git add` 명령어는 새로운 파일을 추적할 때 뿐만 아니라, 수정한 파일을 `Staged`상태로 만들 때에도 사용된다.**  
-> **`git add` 명령어는 `프로젝트에 파일을 추가하는` 라기보다는, `다음 커밋에 추가하는` 명령어다.**
 
 ---
 

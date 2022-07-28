@@ -179,10 +179,8 @@ git commit -am "(메세지)"
 - add 및 commit
 
 ```yml
-git add .
-
 # commit message를 구분한다.
-git commit -m 'add George to tigers'
+git commit -am 'add George to tigers'
 ```
 
 <br>
@@ -221,7 +219,7 @@ git commit -m 'Replace Cheetas with Panthers'
 
 # 3. 과거로 돌아가는 두 가지 방법
 
-커밋을 묻어놓은 타임캡슐을 버전이라고 생각하면 다음과 같은 순서로 버전들이 만들어졌다.
+커밋을 묻어놓은 타임캡슐을 버전이라고 생각하면 다음과 같은 순서로 버전들이 만들어진다.
 
 그리고, 안에 무엇이 있는지를 알기 위해서 캡슐마다 작업한 것을 적어서 꼬리표를 달아놓은 것이다.
 
@@ -390,7 +388,7 @@ hint: run "git revert --abort".
 
 이처럼 에러가 뜨는 것은 컴퓨터가 결정할 수 없기 때문에, 내가 결정을 하라고 알려준 것이다. 그래서 어떻게 해결하면 되는지 hint를 알려주고, 그 후에 `git revert --continue` 를 하라고 안내해준다.
 
-`git rm <pathspec>` 이란 <pathspec>에 있는 파일을 삭제하라는 명령어다.
+`git rm <pathspec>` 란 `<pathspec>`에 있는 파일을 삭제하라는 명령어다.
 
 ```yml
 $ git rm leopards.yaml
@@ -408,6 +406,15 @@ Date:   Thu Jun 23 11:22:12 2022 +0900
     Revert "Replace Lions with Leopards"
 
     This reverts commit 3183106276f5315380d6722971159db9d72e7fd1.
+```
+
+❗ 만약 `git revert --continue` 명령어를 수행했늗네, 다음과 같은 Error가 뜬다면 `git add/rm <pathspec>` 명령어를 수행해야한다.
+
+```yml
+$ git revert --continue
+error: Committing is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
 ```
 
 <br>

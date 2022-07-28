@@ -23,7 +23,7 @@ categories: ["git"]
 
 **그런데, 일반 클라우드 서비스와의 차이점은 무엇일까??**
 
-일반 클라우드 서비스로 협업을해야한다면 같은 파일을 공유해서 수정할 경우, 일반적인 공유 방법으로는 답이 없다. 왜냐하면 계속해서 덮어씌워지는 문제가 발생하기 때문이다.
+일반 클라우드 서비스로 협업을 해야한다면 같은 파일을 공유해서 수정할 경우, 일반적인 공유 방법으로는 답이 없다. 왜냐하면 계속해서 덮어씌워지는 문제가 발생하기 때문이다.
 
 하지만, Github을 사용하면 모든 업로드와 다운로드를 커밋 단위로 주고받기 때문에, 서로의 작업을 덮어씌울 걱정할 필요 없이 협업하는데 문제점을 해결해준다.
 
@@ -162,20 +162,30 @@ Window menu bar에 이를 검색하면 바로 뜰 것이다.
 
 4. push 할 것이 있을 시, pull하는 두 가지 방법
 
-   - `git pull --no-rebase`: merge 방식
+   - `git pull` or `git pull --no-rebase`: merge 방식
 
      - 3번에서 `push` 전에 하는 `pull` 과 동일하다. `git pull`을 하면 자동적으로 `git pull --no-rebase`로 입력한다.
      - 소스트리에서 확인해보기
-     - `reset`으로 되돌린 다음 아래 방식도 해보기
+     
+     
        ![image](https://user-images.githubusercontent.com/78094972/175796590-9cf944e5-e3cd-4f50-814c-98161b084d7e.PNG)
+     
+     
+     - `reset`으로 되돌린 다음 아래 방식도 해보기
 
    - `git pull --rebase` : rebase 방식
-     - pull 상의 rebase는 다르다. (협업 시, 사용 OK)
      - GitHub에 시간선을 맞춘다.
      - pull 상의 rebase는 일반 rebase와 상황이 다르므로, 협업시 사용해도 괜찮다.  
        ![image](https://user-images.githubusercontent.com/78094972/175796732-0e0c1a3b-f7eb-42e5-b693-a86be73a2af6.PNG)
 
+❗ pull 상의 rebase는 다르므로, 협업 시, 사용 OK
+❗ `git pull --rebase`는 rebase 하려는 local commit 뒤로 시간선을 맞춘다. 
+
+
+
 5. `push` 하기
+
+   - `merge` 와는 달리 별도의 커밋이 추가되지 않는다. 
 
 <br>
 
@@ -318,6 +328,7 @@ To https://github.com/JeHa00/git-practice.git
 4. 로컬의 Pumas의 members에 Pororo 추가
 
    - Commit message: `Add Pororo to Pumas`
+
 
 5. 소스트리에서 `커밋` 클릭 -> 스테이지에 올라가지 않은 파일을 클릭한 다음, `모두 스테이지에 올리기`를 클릭합니다.
 
