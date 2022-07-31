@@ -2,7 +2,7 @@
 title: "[TIL] Python study: Window에서 Asyncio RuntimeError"
 date: 2022-07-29T23:38:50+09:00
 draft: false
-summary: 비동기 모듈을 사용하여 크롤링을 보다 빠르게 하는
+summary: 비동기 모듈을 사용하면서 겪은 Asyncio RuntimeError의 원인과 해결방법에 대해 알아본다. 
 tags: ["TIL", "python"]
 categories: ["Python"]
 ---
