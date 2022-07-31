@@ -14,9 +14,6 @@ categories: ["git"]
 <br>
 
 ---
-<br>
-
----
 
 # 1. Git의 장점: Snapshot과 DVCS
 

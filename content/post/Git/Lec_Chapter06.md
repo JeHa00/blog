@@ -47,7 +47,7 @@ categories: ["git"]
 
 - **global 설정과 local 설정**
 
-  - config를 `--global`과 함께 지정하면 전역으로 설정된다.
+  - config를 `--global`과 함께 지정하면 **전역으로 설정** 된다.
     - ex) `git config --global user.name`
 
 - **현재 모든 설정값 보기**
@@ -59,7 +59,7 @@ categories: ["git"]
 
   - 기본 설정값은 Vim editor
   - `git config -e`
-  - 기본 에디터인 Vim에서 Visual studio code 등 IDE로 보고 싶으면 아래 명령어를 입력한다.
+  - 기본 에디터인 Vim에서 Visual studio code 등 IDE로 보고 싶으면 아래 명령어를 입력.
     - `git config --global core.editor "code --wait"`
     - code 자리에 원하는 편집 프로그램의 .exe 파일 경로를 연결해도 변경할 수 있다.
     - 이 명령어를 실행한 후, git config -e를 실행한다. 이와 같이 설정하면 커밋 메시지 입력창도 해당 에디터에서 열리게 된다.
@@ -98,7 +98,9 @@ categories: ["git"]
 
 예를 들어 `git config --global alias.cam "commit -am"` 로 사용한다.
 
-하지만, 이 방식은 나중에 사용하는 게 낫다고 판단된다. 전반적인 명령어를 안보고 사용할 수 있는 수준에 이르면 사용하자.
+하지만, 이 방식은 나중에 사용하는 게 낫다고 판단된다. 
+
+전반적인 명령어를 안보고 사용할 수 있는 수준에 이르면 사용하자.
 
 <br>
 
