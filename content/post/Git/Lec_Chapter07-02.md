@@ -2,14 +2,16 @@
 title: "[TIL] Git study: Lecture Chapter 07 - git add -p & git commit -v"
 date: 2022-06-28T17:44:10+09:00
 draft: false
-summary: 변경사항을 보다 쪼갠 hunk 크기로 나눠 staging area에 올리는 명령어인 git add -p 와 커밋하는 명령어인 git commit -v 에 대해 학습해본다.
+summary: 변경사항을 보다 쪼갠 hunk 크기로 나눠 staging area에 올리는 명령어인 git add -p 와 변경사항을 확인하고 커밋하는 git commit -v 에 대해 학습해본다.
 tags: ["TIL", "git"]
 categories: ["git"]
 ---
 
 # 0. Introduction
 
-- 해당 내용은 [제대로 파는 Git & GitHub - by 얄코 ](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)를 중심으로 [Pro git : Second editions](https://book.naver.com/bookdb/book_detail.nhn?bid=7187291)을 참고하여 공부한 내용입니다.
+- 해당 내용은 [제대로 파는 Git & GitHub - by 얄코 ](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)을 통해서 공부한 내용입니다.
+
+- 이번 단원에서는 hunk 단위로 stage 하는 `git add -p` 을 학습하고, 변경사항을 확인하고 커밋하는 `git commit -v`를 학습해본다.  
 
 <br>
 
@@ -85,7 +87,8 @@ $ git commit -m 'Edit Leopards and Tigers'
 
 - 마지막으로 `git diff --staged`와 비교해보자.
 
-  - 이 명령어는 이번 commit에서 변경된 사항을 확인하는 명령어다.
+  - 이 명령어는 `git add` 후 staging area에 올라간 snapshot을 기준으로 변경사항을 알려준다.  
+  - `git commit -v` 와의 차이점은 커밋 유무도 있지만, `git commit -v`는 Vim 모드로 이동.
 
 - 이 `git commit -v`는 커밋과 이 `git diff --staged`를 같이하는 명령어라고 생각하면 된다.
 
@@ -96,4 +99,3 @@ $ git commit -m 'Edit Leopards and Tigers'
 # Reference
 
 - [제대로 파는 Git & GitHub - by 얄코](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
-- [Pro git : Second editions](https://book.naver.com/bookdb/book_detail.nhn?bid=7187291)

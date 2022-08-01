@@ -9,9 +9,10 @@ categories: ["git"]
 
 # 0. Introduction
 
-- 해당 내용은 [제대로 파는 Git & GitHub - by 얄코 ](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)를 중심으로 [Pro git : Second editions](https://book.naver.com/bookdb/book_detail.nhn?bid=7187291)을 참고하여 공부한 내용입니다.
+- 해당 내용은 [제대로 파는 Git & GitHub - by 얄코 ](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)을 통해서 공부한 내용입니다.
 
 - 이번 단원에서는 `git stash`, `git commit --amend` 그리고, `git rebase -i` 명령어를 학습해본다.
+- 마지막으로 과거의 커밋을 수정, 삭제, 병합, 분할해보는 명령어를 학습해본다.
 
 <br>
 
@@ -115,7 +116,7 @@ categories: ["git"]
 
 # 7-5. git rebase -i
 
-> **_i란 interactive를 의미하며, 과거의 커밋 내역들을 다양한 방법으로 수정 가능하다. _**
+> **_i란 interactive를 의미하며, 과거의 커밋 내역들을 다양한 방법으로 수정 가능하다._**
 
 - `git rebase -i`를 입력했을 때, 사용되는 명령어들
 
@@ -140,6 +141,11 @@ pick b9d4eb7
 pick 8605c74
 pick 59b42f3
 ```
+
+❗ `git rebase -i`를 입력했지만, Vim 화면은 뜨지 않고, 'There is no tracking information for the current branch..'가 뜰 때는 최신 커밋을 입력한 것이다. 해당 명령어는 입력한 커밋 해쉬 번호 이후부터를 보여주기 때문에, 최신 커밋을 보여줬으므로 당연히 아무것도 뜨지 않는다. 
+
+
+### Vim에서 수정해보기
 
 - 다음 수정사항들을 진행해보자.
 
@@ -170,12 +176,14 @@ pick 59b42f3
     pick 59b42f3
     ```
 
-  - 한 커밋 안에 두 작업이 있으므로, 2개의 커밋으로 나누는 작업을 진행해보자.
-    - `git rebase -i <나눌려고 하는 commit의 이전 commit 해시 번호>` 입력
-      - pick에서 `e` 로 수정하고 `:wq`
-    - `git reset HEAD~`
-    - 변화들을 따로 스테이지 및 커밋
-    - `git rebase --continue`
+### 하나의 커밋을 두 커밋으로 나누기
+
+- 한 커밋 안에 두 작업이 있으므로, 2개의 커밋으로 나누는 작업을 진행해보자.
+  - `git rebase -i <나눌려고 하는 commit의 이전 commit 해시 번호>` 입력
+    - pick에서 `e` 로 수정하고 `:wq`
+  - `git reset HEAD~`
+  - 변화들을 따로 스테이지 및 커밋
+  - `git rebase --continue`
 
 <br>
 
@@ -184,4 +192,3 @@ pick 59b42f3
 # Reference
 
 - [제대로 파는 Git & GitHub - by 얄코](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
-- [Pro git : Second editions](https://book.naver.com/bookdb/book_detail.nhn?bid=7187291)
