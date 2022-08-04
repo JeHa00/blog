@@ -2,7 +2,7 @@
 title: "[TIL] Git study: Lecture Chapter 08 - git restore"
 date: 2022-07-06T23:31:33+09:00
 draft: false
-summary: git restore 명령어를 통해서 첫 번째, 특정 파일을 지정된 상태로 복구해보는 것과 두 번째, 변경 상태를 stage area에서 working directory로 돌려보는 것을 해본다.
+summary: git restore 명령어를 통해서 첫 번째, 변경 상태를 stage area에서 working directory로 돌려보는 것과 두 번째, 특정 파일을 HEAD나 커밋 해쉬번호를 사용하여 지정된 상태로 복구해보는 것을 해본다. 
 tags: ["TIL", "git"]
 categories: ["git"]
 ---
@@ -29,7 +29,7 @@ categories: ["git"]
 
   - `git restore (파일명)`
 
-    - working directory의 특정 파일을 복구한다.
+    - working directory의 특정 파일의 변화를 staging area에서 working directory로 내린다.
     - 또는 파일명 자리에 `.`을 입력하면 모든 파일이 복구된다.
 
     ```yml
@@ -97,7 +97,7 @@ categories: ["git"]
             modified:   leopards.yaml
     ```
 
-- **파일을 특정 커밋의 상태로 되돌리기**
+- **특정 파일을 특정 커밋의 상태로 되돌리기**
 
   - `git restore --source=(head 또는 commit hash) 파일명`
 

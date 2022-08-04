@@ -134,7 +134,7 @@ $ git push origin v1.0.5
 
 ### 특정 태그 원격에서 삭제
 
-> **_git push --delete (원격명) (태그명)_**
+> **_git push ---delete (원격명) (태그명)_**
 
 ```yml
 $ git push --delete origin v1.0.5
@@ -146,9 +146,10 @@ $ git push --delete origin v1.0.5
 
 ### 로컬의 모든 태그 원격에 올리기
 
-> **_git push --tags_**
+> **_git push ---tags_**
 
-- tag의 갯수가 다시 늘어난 걸 알 수 있다. tag 버전명을 따로 적지 않으면 모든 tag에 원격에 올라간다.
+- tag의 갯수가 다시 늘어난 걸 알 수 있다.   
+- tag 버전명을 따로 적지 않으면 모든 tag가 원격에 올라간다.
 
 <br>
 
@@ -164,7 +165,7 @@ $ git push --delete origin v1.0.5
 
 - 그러면 배포하기 원하는 title과 그 내용을 markdown 명령어로 입력한다.
 
-- `Pubishing`을 클릭하여 배포한다.
+- `Publish release`를 클릭하여 배포한다.
 
 <br>
 
