@@ -151,7 +151,7 @@ html tag의 기본 템플렛이 다음과 같을 때, `<head> </head>` tag 안�
 
 한 종류의 태그가 여러 개 있을 때, 이 태그들 각각에 서로 다른 css style을 적용하고 싶다면 어떻게 해야할까???
 
-바로 아래 코드와 같이 `id` 속성을 사용한다. 
+바로 아래 코드와 같이 `id` attribute를 사용한다. 
 
 ```html
 <!DOCTYPE html>
@@ -247,9 +247,9 @@ html tag의 기본 템플렛이 다음과 같을 때, `<head> </head>` tag 안�
 
 > tag의 속성 class는 속성 id처럼 각 tag element들을 구별해서 가리킬 수도 있고, id와는 다르게 겹쳐서 가리킬 수 있는 attribute다.  
 
-`class` 속성을 css에 입력하는 방법을 밑에 코드로 확인해보자. 
+`class` attribute는 css에 입력하는 방법을 밑에 코드로 확인해보자. 
 
-`id` 속성과는 달리 `#`아니라 `.`을 사용한다.    
+`id` attribute와는 달리 `#`아니라 `.`을 사용한다.    
 
 ```html
 <style>
