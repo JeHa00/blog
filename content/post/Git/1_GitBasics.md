@@ -70,9 +70,6 @@ categories: ["git"]
 - 이 명령으로 `git-practice`라는 directory를 만들고, 그 안에 `.git` directory를 만든다.
 - 그리고, 저장소의 데이터를 모두 가져와서 최신 버전으로 checkout 해놓는다.
 
----
-
-<br>
 
 ---
 

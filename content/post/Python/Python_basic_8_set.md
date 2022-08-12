@@ -14,6 +14,7 @@ categories: ["Python"]
 - Sets은 한국어로 집합을 의미한다. 수학의 집합을 생각해보자.
 - sequence X, 중복 X
   - 순서가 없기 때문에, 출력할 때마다 달라진다.
+  - slicing 과 indexing 안된다.
 - mutable 자료형 => 수정 O, 삭제 O
 - 집합 자료형 활용에 핵심이다.
 

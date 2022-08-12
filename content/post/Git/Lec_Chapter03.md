@@ -357,7 +357,7 @@ $ git merge new-teams
    ```
 
    - 그러면 VSC에서 해당 파일 옆에 `!`로 뜬다.
-   - 해당 파일을 클릭하면 `Accept Current Change`, `Accept Incoming Changes` 등을 선택라고 한다.
+   - 해당 파일을 클릭하면 `Accept Current Change`, `Accept Incoming Changes` 등을 선택하라고 한다.
    - 이 때, 해당 파일은 일반 폴더에서 더블 클릭하여 열면 단순 text로 나타난다. 이를 VSC에서 보기 좋게 표현한 것이다.
    - 충돌되는 부분만 찾고 싶다면 VSC 검색에서 `<<<<<` 을 입력하여 찾을 수 있다.
 
