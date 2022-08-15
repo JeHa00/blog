@@ -63,7 +63,7 @@ spreadsheet의 예로는 우리가 알고 있는 마이크로소프트의 엑셀
 
 이 table 형식의 data들을 특정 소프트웨어나 프로그램에 종속되지 않고 독립되어 정보를 저장하는 장소를 바로 **_DB(DataBase)_** 라 한다. 이 DB는 단지 데이터 저장소이므로 별다른 기능이 없다.
 
-그리고, 이 DB에 여러 기능들을 넣어서 만들어 **_DB를 관리 및 운영하도록 만든 소프트웨어_**를 **_DBMS(DataBase Management System, 데이터베이스 관리 시스템)_** 라 한다.
+그리고, 이 DB에 여러 기능들을 넣어서 만들어 **_DB를 관리 및 운영하도록 만든 소프트웨어_** 를 **_DBMS(DataBase Management System, 데이터베이스 관리 시스템)_** 라 한다.
 
 DBMS에서 DB로부터 다른 정보를 넣고, 빼는 등 조작하여 손쉽게 사용되도록 하는 도구가 **_구조화된 질의 언어인 SQL(Structured Query Language)_** 다. DBMS에서 DB를 관리하는 방식이 SQL이라고 생각하면 된다.
 

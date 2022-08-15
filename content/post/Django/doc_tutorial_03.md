@@ -1,5 +1,5 @@
 ---
-title: "Django study: Document tutorial Part 3 따라해보기"
+title: "Django study: Document tutorial Part 3 따라하기"
 date: 2022-07-06T23:45:57+09:00
 draft: True
 summary:
