@@ -2,7 +2,7 @@
 title: "[TIL] Git study: Lecture Chapter 12 - Gitmoji & git submodules"
 date: 2022-07-20T21:21:59+09:00
 draft: false
-summary: hook을 사용하여 gitmoji 를 사용하는 방법을 학습하나 후, submodule이란 무엇이고 어떠한 장점이 있는지를 학습한다. 그리고, git submodule 명령어를 통해 submodule 연결을 해본다.  
+summary: hook을 사용하여 gitmoji 를 사용하는 방법을 학습한 후, submodule이란 무엇이고 어떠한 장점이 있는지를 학습한다. 그리고, git submodule 명령어를 통해 submodule 연결을 해본다.  
 tags: ["TIL", "git"]
 categories: ["git"]
 ---

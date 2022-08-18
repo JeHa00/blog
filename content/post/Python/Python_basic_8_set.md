@@ -27,7 +27,7 @@ categories: ["Python"]
 - dictionary 처럼 sets 도 다양한 선언 방식이 있다.
 - 빈집합, list 형식으로도, 중괄호로도 가능하다.
 
-```yml
+```python
 > a = set()
 > b = set([1,2,3,4,4])
 > c = set([1, 4, 5, 6])
@@ -59,9 +59,25 @@ e <class 'set'> {'qux', 'bz', 'foo', 'bar'}
 
 > print('f', type(f), f)
 f <class 'set'> {42, 3.14159, 'foo', (1, 2, 3)}
-
-
 ```
+
+
+❗ set 빈집합 선언 시, 주의사항
+
+- set과 dictionary는 중괄호를 동일하게 사용하여, 아래 b와 같이 사용하면 dict로 인식한다. 그래서 중괄호를 사용하여 빈집합을 선언할 수는 없다.
+- 빈집합으로 set을 만들고 싶으면 함수를 사용해야 한다. 
+
+  ```python
+  > a = set()
+  > b = {}
+  print(type(a), type(b))
+  <class 'set'>  <class 'dict'>
+
+  > b = {1,2}
+  > b = {1,2,}
+  print(type(b))
+  <class 'set'>
+  ```
 
 ---
 
@@ -73,7 +89,7 @@ f <class 'set'> {42, 3.14159, 'foo', (1, 2, 3)}
 - `sets`에 중복으로 값을 입력해도, 중복을 허락하지 않기 때문에 type conversion 시에도 중복된 값들은 하나만 있는 걸 확인할 수 있다.
 - `tuple`로 변환
 
-```yml
+```python
 
 > t = tuple(b)
 
@@ -87,7 +103,7 @@ t -  1 (2, 3)
 
 - `list`로 변환
 
-```yml
+```python
 > l = list(c)
 > print('l - ', type(l), l)
 l -  <class 'list'> [1, 4, 5, 6]
@@ -117,7 +133,7 @@ Set :  {'m', 'a', 'c', 'e', 'n', 'A'}
 
 - 또한 `len` 함수로 길이를 구할 수 있다.
 
-```yml
+```python
 
 > print(len(a))
 0
@@ -168,7 +184,7 @@ Set :  {'m', 'a', 'c', 'e', 'n', 'A'}
 - **상위집합 유무 판단**
   - `A.issupset(B)`: A는 B의 상위집합인가??
 
-```yml
+```python
 > s1 = set([1, 2, 3, 4, 5, 6])
 > s2 = set([4, 5, 6, 7, 8, 9])
 
@@ -224,7 +240,7 @@ False
 
 - 모두 제거하는 건 `.clear()` 함수를 사용한다.
 
-```yml
+```python
 > s1 = set([1,2,3,4])
 
 > s1.add(5)

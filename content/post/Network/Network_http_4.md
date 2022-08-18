@@ -247,7 +247,7 @@ Content-Type: application/json
 }
 ```
 
-- **\_리resource resource**
+- **resource resource**
 
   - 리소스가 있으면 대체하고, 없으면 생성한다. (Overwirte)
 
