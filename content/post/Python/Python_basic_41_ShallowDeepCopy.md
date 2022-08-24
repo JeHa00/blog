@@ -11,6 +11,9 @@ categories: ["Python"]
 
 - [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)에서 간단히 다뤘던 shallow copy와 deep copy에 대해 깊이 알아보자.
 
+- 또한, 이번에 학습하는 개념은 Pointer의 개념과 연결되는 것으로 아래 링크들과 연결된다.
+  - [[TIL] Python basic 40: Call by object reference](https://jeha00.github.io/post/python/python_basic_40_callbyobjectreference/)
+
 <br>
 
 - shallow copy와 deep copy는 모든 분야에 통틀어 알고 있어야 하는 지식이다.

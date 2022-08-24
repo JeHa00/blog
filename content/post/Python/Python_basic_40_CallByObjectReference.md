@@ -7,9 +7,13 @@ tags: ["TIL", "python"]
 categories: ["Python"]
 ---
 
-# Intro
+# 0. Introduction
 
 - python의 변수를 만드는 원리와 호출 방식에 대해 알아보자.
+
+- 또한, 이번에 학습하는 개념은 Pointer의 개념과 연결되는 것으로 아래 링크들과 연결된다.
+  - [[TIL] Python basic 41: Shallow copy & Deep copy](https://jeha00.github.io/post/python/python_basic_41_shallowdeepcopy/)
+  - [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python/python_basic_29_datamodel/)
 
 <br>
 
