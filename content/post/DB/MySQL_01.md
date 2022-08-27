@@ -1,6 +1,6 @@
 ---
-title: "[TIL] DB MySQL study: MySQL의 Query문 학습"
-date: 2022-08-27T23:46:43+09:00
+title: "[TIL] DB MySQL study: Query문 학습 1"
+date: 2022-08-26T23:46:43+09:00
 draft: false
 summary: MySQL의 SQL에 대해 학습을 시작한다. SELECT, FROM, WHERE 와 비교연산자, 논리연산자, 산술연산자에 대해 학습해본다. 비교연산자는 프로그래밍 언어와 동일하며, 논리연산자에는 LIKE, Between A and B, IS NULL NOT NULL, IN이 있다. 산술연산자에는 MySQL만의 오류가 있어서 날짜 계산 시, 별도의 함수를 사용해야 하는 걸 학습해본다.
 tags: ["TIL", "DB"]
