@@ -3,7 +3,7 @@ title: "Dev-Contents"
 date: 2022-03-31T22:09:06+09:00
 draft: false
 summary: Updated on June 17   /  개발 관련 좋은 컨텐츠를 보관하고 섭취하기
-tags: ["Dev-contents"]
+tags: ["dev-contents"]
 categories: ["dev-contents"]
 ---
 

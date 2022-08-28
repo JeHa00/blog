@@ -8,6 +8,9 @@ categories: ["dev-contents"]
 ---
 # 0. Introduction
 
+🔆 **업데이트 날짜: 2022-08-28 Error 기록**
+
+
 - window 10 환경에서 Hugo 라는 SSG의 한 종류를 사용해서 총 6단계를 거쳐서 `<user-id>.github.io` 주소의 github page를 만들고 배포한 후, contents를 업로드하는 것까지 내용을 다룬다. 
 
 - 마지막으로, 테마를 커스텀마이징하는 지름길과 후기를 남겼다. 
@@ -467,6 +470,17 @@ url = 테마 url
 - contents 생성 후, `hugo server -D`로 `localhost`에는 생성한 contents가 보이는데, github page에는 안보인다면 `hugo -t <테마이름>`명령을 하지 않았기 때문이다.
 
 - 여기서 `<테마이름>`은 `git submodule add <theme 경로>.git themes/<테마명>` 에서 테마명과 동일해야 한다.
+
+<br>
+
+### ❗️❗️ 2022.08.28 Error 기록
+
+- 배경: Window에서 MacOS로 이동하여 pjt를 clone하는 과정 중에 생긴 error
+
+- 만약 새롭게 blog와 submodule을 `git clone`해야하는 상황이라면 [서브모듈 업데이트](https://jeha00.github.io/post/git/lec_chapter12/#213-%EC%84%9C%EB%B8%8C%EB%AA%A8%EB%93%88-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8)를 참고한다. 
+- 이 명령어를 입력해도 안된다면 각 서브 모듈 파일로 경로를 이동하여 `git log`를 통해 최신 commit hash 번호를 확인 후, `git reset --hard <commit hash number>`를 입력하여 그 시점으로 초기화한다. 
+- 그 후, main project folder 로 이동한다. (submodule directory를 담고 있는 directory로 이동)
+- `git pull`을 실행하여 최신화한다.  
 
 <br>
 
