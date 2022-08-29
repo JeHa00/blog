@@ -70,10 +70,10 @@ categories: ["dev-contents"]
 # **DB**
 
 - Will
-- Doing
-  - 💻 [갖고노는 MySQL 데이터베이스 by 얄코](https://www.inflearn.com/course/%EC%96%84%EC%BD%94-%EB%A7%88%EC%9D%B4%EC%97%90%EC%8A%A4%ED%81%90%EC%97%98/dashboard)
   - 💻 [관계형 데이터 모델링 - 생활코딩](https://opentutorials.org/course/3883)
+- Doing
 - Done  
+  - 💻 [갖고노는 MySQL 데이터베이스 by 얄코](https://www.inflearn.com/course/%EC%96%84%EC%BD%94-%EB%A7%88%EC%9D%B4%EC%97%90%EC%8A%A4%ED%81%90%EC%97%98/dashboard)
 
 <br>
 
@@ -83,10 +83,8 @@ categories: ["dev-contents"]
 
 - Will
 
-  - 📚 [알고리즘 문제해결전략 1,2 세트](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788966260546&orderClick=LEa&Kc=)
-
 - Doing
-
+  - 📚 [알고리즘 문제해결전략 1,2 세트](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788966260546&orderClick=LEa&Kc=)
   - 📚 [자료구조와 함께 배우는 알고리즘 입문 파이썬편](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163031727&orderClick=LEa&Kc=)
 
 - Done
@@ -132,9 +130,8 @@ categories: ["dev-contents"]
 # **Linux**
 
 - Will
-- Doing
-
   - 📚 [실습과 그림으로 배우는 리눅스 구조 -](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791162241523&orderClick=LEa&Kc=)
+- Doing
 
 - Done
 
@@ -175,6 +172,7 @@ categories: ["dev-contents"]
 
 - Done
 
+  - 💻 [제대로 파는 Git & GitHub - by 얄코 ](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EA%B9%83/dashboard)
   - 📚 [업무와 일상을 정리하는 새로운 방법 Notion](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791190665476&orderClick=LEa&Kc=)
 
 ---
