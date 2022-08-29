@@ -1,8 +1,8 @@
 ---
-title: "[TIL]Web Application Basic study 01"
+title: "[TIL]Web Application Basic study: client와 server / web server structure"
 date: 2022-08-29T17:14:46+09:00
 draft: false
-summary: 클라이언트와 서버 구조와 웹 서버 구조에 대해 학습해본다.  
+summary: 클라이언트와 서버란 무엇인지, 서버의 종류에는 무엇이 있고, 웹서버 - WSGI - 웹 애플리케이션 - DB라는 서버 구조에서 각각에 대해 알아본다.   
 tags: ["TIL", "Netwok"]
 categories: ["Netwok"]
 ---
