@@ -1,18 +1,19 @@
 ---
-title: "[TIL] book study - 1일 1로그 100일 완성 IT 지식: 1 - 5 days"
+title: "Book Study  - 1일 1로그 100일 완성 IT 지식: 1 - 6 days"
 date: 2022-08-28T23:10:39+09:00
 draft: false
 summary: IT 분야의 문해력을 기르기 위해서 꾸준히 매일 작은 지식들을 학습하고자 1일 1로그 100일 완성 IT 지식을 학습한다.
-tags: ["TIL", "dev-contents"]
-categories: ["dev-contents"]
+tags: ["TIL", "Book study"]
+categories: ["Book Study"]
 ---
+
 # 0. Introduction
 
 
 - IT 분야의 문해력을 기르기 위해서 꾸준히 매일 작은 지식들을 학습하고자 [1일 1로그 100일 완성 IT지식](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788966263301&orderClick=LEa&Kc=)을 시작한다. 
 
 
-- 5일에 한 번씩 기술 블로그에 TIL로 올린다. 
+- 소챕터의 요약 부분까지 읽으면 TIL로 올린다.
 
 <br>
 
@@ -258,8 +259,13 @@ Mac에 비해서 pc가 저렴한 이유는 많은 공급 업체가 치열한 경
 
 <br>
 
+---
 
-##
+# 6 day: Summary
+
+> **_Subject: 컴퓨터의 하드웨어 구조_**
+> **_Summary: 시대가 흘러가면서 사이즈는 작아지고, 기능은 많아져도 기본적인 하드웨어 구조는 변하지 않았다._**
+
 
 <br>
 
