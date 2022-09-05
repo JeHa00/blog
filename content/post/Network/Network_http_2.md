@@ -4,7 +4,7 @@ date: 2022-03-08T11:50:46+09:00
 draft: false
 summary: URI, URL, URN 에 대해 알아보고, 웹 브라우저의 요청 흐름에 대해 알아본다.
 tags: ["TIL", "Network", "HTTP"]
-categories: ["Netwok"]
+categories: ["Network"]
 ---
 
 # 0. Introduction

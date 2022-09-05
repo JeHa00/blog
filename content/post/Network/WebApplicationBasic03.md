@@ -3,8 +3,8 @@ title: "[TIL]Web Application Basic study: 4, 5, 6, 7 계층"
 date: 2022-08-31T14:23:03+09:00
 draft: False
 summary: 이번에는 4계층부터 7계층까지 각각 학습해본다.
-tags: ["TIL", "Netwok"]
-categories: ["Netwok"]
+tags: ["TIL", "Network"]
+categories: ["Network"]
 ---
 # 0. Introduction: 웹 애플리케이션 기초
 
@@ -71,7 +71,7 @@ categories: ["Netwok"]
 
 - 그리고 데이터 수신 시, 각 계층을 지나갈 때마다 그 계층에 맞는 헤더를 제거해서 응용계층에서 원하는 데이터를 본다.  
 
-![image](http://wiki.hash.kr/images/7/71/OSI_7_%EA%B3%84%EC%B8%B5.jpg)
+![image](https://user-images.githubusercontent.com/78094972/188447421-8d46432e-c1d1-4d56-8031-71903ade33f6.jpeg)
 
 ---
 

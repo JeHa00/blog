@@ -3,8 +3,8 @@ title: "[TIL]Web Application Basic study: 1,2,3 계층"
 date: 2022-08-30T18:50:58+09:00
 draft: false
 summary: OSI 7 layer는 전체적으로 무슨 층으로 구성되어 있고, 1 계층인 물리계층, 2 계층인 데이터링크 계층, 3 계층인 네트워크 계층에 대해 알아본다.  
-tags: ["TIL", "Netwok"]
-categories: ["Netwok"]
+tags: ["TIL", "Network"]
+categories: ["Network"]
 ---
 # 0. Introduction: 웹 애플리케이션 기초
 

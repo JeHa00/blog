@@ -4,7 +4,7 @@ date: 2022-03-17T20:17:50+09:00
 draft: false
 summary: representation, 콘텐츠 협상, 전송 방식, 일반 정보, 특별 정보, 인증 그리고 쿠키에 대해 알아본다.
 tags: ["TIL", "Network", "HTTP"]
-categories: ["Netwok"]
+categories: ["Network"]
 ---
 
 # Intro
@@ -17,7 +17,7 @@ categories: ["Netwok"]
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
-<br>
+[](Network_http_6.md)<br>
 
 - 이번 chapter에서는 HTTP header 여러 종류에서 주로 사용하는 헤더에 대해 알아보겠다.
 
