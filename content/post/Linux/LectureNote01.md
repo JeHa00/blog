@@ -3,7 +3,7 @@ title: "[TIL]Linux: terminal에서 AWS ec2 instance 접속 환경 조성하기"
 date: 2022-09-05T21:43:21+09:00
 draft: false
 summary: aws 사이트가 아닌 terminal에서 손쉽게 aws ec2 인스턴스에 접속할 수 있는 환경을 조성해보고, 그 과정에서 error 상황과 대처법을 기록했다.  
-tags: ["TIL"]
+tags: ["TIL", "Linux"]
 categories: ["Linux"]
 ---
 # 0. Introduction

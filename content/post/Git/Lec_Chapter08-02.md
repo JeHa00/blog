@@ -76,7 +76,7 @@ categories: ["git"]
             modified:   pumas.yaml
     ```
 
-  - `git restore --stage (파일명)`
+  - `git restore --stage (파일명)` 또는 `git restore --staged (파일명)`  
 
     ```yml
     $ git restore --stage leopards.yaml
