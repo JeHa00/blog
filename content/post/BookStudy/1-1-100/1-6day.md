@@ -3,7 +3,7 @@ title: "Book Study  - 1일 1로그 100일 완성 IT 지식: 1 - 6 days"
 date: 2022-08-28T23:10:39+09:00
 draft: false
 summary: IT 분야의 문해력을 기르기 위해서 꾸준히 매일 작은 지식들을 학습하고자 1일 1로그 100일 완성 IT 지식을 학습한다.
-tags: ["TIL", "Book study"]
+tags: ["TIL", "Book Study"]
 categories: ["Book Study"]
 ---
 
