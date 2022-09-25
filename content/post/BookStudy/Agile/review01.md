@@ -1,6 +1,6 @@
 ---
 title: "Book Study - 함께 자라기: 애자일로 가는 길 review 01"
-date: 2022-09-18T23:04:19+09:00
+date: 2022-09-19T23:04:19+09:00
 draft: false
 summary: 김창준님이 작성하신 함께 자라기- 애자일로 가는 길에 대한 후기
 tags: ["TIL", "Book Study"]
