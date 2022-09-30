@@ -85,25 +85,39 @@ categories: ["OS"]
 
 ## 2.2 Process 상태 변화 예시
 
-- **_입출력을 요청한 프로세스의 상태 변화_**
-  **Running state**
+## 2.2 Process 상태 변화 예시
+
+> **_입출력을 요청한 프로세스의 상태 변화_**
+
+- **Running state**
   - A process가 CPU를 할당 받아 기계어 명령을 하나씩 수행  
-    **→ I/O 요청**
+
+
+- **→ I/O 요청**
   - 파일의 내용을 disk에서 읽어와야 명령이 진행될 수 있으므로, 입출력 요청을 한다.  
-    **→ Blocked state**
+
+
+- **→ Blocked state**
   - 입출력 요청이 완료될 때까지 CPU를 반환한 다음, disk 입출력 서비스를 기다리며 봉쇄 상태로 바뀐다.
   - 그리고, 해당 process는 device I/O queue 뒤에 줄슨다.  
-    **→ Ready state의 process 중 선정**
+
+
+- **→ Ready state의 process 중 선정**
   - CPU를 할당받을 process를 선택하기 위해, ready 상태의 process 들 중에서 CPU scheduler가 적절한 process를 하나 선정하여 CPU를 할당한다.  
-    **→ Running state**
+
+- **→ Running state**
   - B process가 CPU를 받아 자신의 code를 실행한다.  
-    **→ device controller 가 interrupt 발생**
+
+- **→ device controller 가 interrupt 발생**
   - I/O 작업을 하던 controller가 interrupt를 발생하여 CPU에게 I/O 작업 완료를 알림  
-    **→ B process를 user mode에서 kernel mode 진입**
+
+- **→ B process를 user mode에서 kernel mode 진입**
   - interrupt의 발생 원인이 B process와 상관없어도, CPU가 현재 사용하고 있던 process가 kernel mode로 진입했다고 판단.  
-    **→ Ready state**
+
+- **→ Ready state**
   - HW interrupt에 의해서 A process를 blocked state에서 ready state로 바꾼 후, CPU의 ready queue에 줄을 세운다.
   - 그리고, device의 local buffer에 있는 내용을 memory로 이동한다.
+
 
 <br>
 
@@ -302,23 +316,35 @@ categories: ["OS"]
 ## 7.1 Process creation (프로세스 생성) : COW(Copy-On-Write)
 
 - **OS가 process를 전부 생성하는 게 아닌, 부팅 후 최초의 process는 운영체제가 직접 생성한다. 그 다음부터는 이미 존재하는 process가 다른 process를 복제 생성한다.**
-- **process를 생성하는 process를 `부모 프로세스`라 하고, 생성된 process를 `자식 프로세스`라 한다.**
-  - 부모 프로세스 1개가 자식 프로세스 최소 1개를 **복제 생성** 한다.
-  - 또한, 자식 프로세스가 또 process를 생성할 수 있다.
-  - 프로세스의 트리(계층 구조) 형성
+
+
+- 부모 프로세스와 자식 프로세스의 정의 및 관계
+  - **process를 생성하는 process: `부모 프로세스`**
+  - **부모 프로세스에 의해 생성된 process: `자식 프로세스`**
+    - 부모 프로세스 1개가 자식 프로세스 최소 1개를 **복제 생성** 한다.
+    - 또한, 자식 프로세스가 process를 생성할 수 있다.
+    - 그래서 프로세스의 트리(계층 구조) 형성
+
+
 - **작업 수행을 위한 자원**
   - 부모 프로세스는 OS로부터 받는다.
   - 자식 프로세스는 부모 프로세스와 **공유** 한다.
     - 부모와 자식 프로세스가 **서로 모든 자원을 공유** 하는 모델
     - **일부를 공유** 하는 모델
     - 전혀 공유하지 않는 모델
+
+
 - **주소 공간 (Address space)**
-  - process 생성의 첫 번째: 부모 공간을 복사 → 두 번째: 복사한 공간에 새로운 프로그램의 주소 공간을 덮어씌운다.
+  - process 생성의 첫 번째: 부모 공간을 복사 → 두 번째: 복사한 공간에 새로운 프로그램의 주소 공간을 **덮어씌운다**.
+
+
 - **Process 와 관련한 system call (특권 명령 )**
   - fork() : create a child (copy)
   - exec() : overlay new image = 새로운 프로그램으로서 덮어씌운다.
   - wait() : sleep until child is done
   - exit() : frees all the resources, notify parent
+
+
 - UNIX의 예
   - os에게 fork() system call 요청하여, 새로운 process를 생성
     - 부모를 그대로 복사하고, 주고 공간을 할당
@@ -403,8 +429,10 @@ categories: ["OS"]
 - **_협력 프로세스( Cooperating process)_**
   - Why?
     - 업무의 효율성 증대: 부분적인 처리 결과, 정보를 공유할 수 있고, 처리 속도가 향상.
-  - How? - IPC(Inter-Process Communication): process 간 통신과 동기화를 이루기 위한 mechanism
-    <br>
+  - How? 
+    - IPC(Inter-Process Communication): process 간 통신과 동기화를 이루기 위한 mechanism
+  
+  <br>
 
 ## 8.2 IPC의 대표적인 방법: 2가지
 
@@ -430,28 +458,32 @@ categories: ["OS"]
 
 ## 8.3 Message passing 방식: 2가지
 
-- **_Message passing 방식에는 직접통신(direct communication)과 간접통신(indirect communication) 으로 나뉜다._**
-- **_Direct communication_**
+**_Message passing 방식에는 직접통신(direct communication)과 간접통신(indirect communication) 으로 나뉜다._**
+
+
+### Direct communication
 
 ![image](https://user-images.githubusercontent.com/78094972/163952882-fb4ef53a-5293-4ddd-b5a7-86463ee14d82.png)
 
-    - 통신하려는 프로세스의 이름을 명시적으로 표시한다.
-    - Send (Q, message): process Q에게 메시지를 전송하는 것을 의미
-    - Receive (P, message): process P로부터 메시지를 전달받는 것을 의미
-    - link는 자동적으로 생성되며, 하나의 link는 정확히 한 쌍의 process에게 할당된다.
-    - 각 쌍의 process에게는 오직 하나의 link만이 존재한다.
+- 통신하려는 프로세스의 이름을 명시적으로 표시한다.
+- Send (Q, message): process Q에게 메시지를 전송하는 것을 의미
+- Receive (P, message): process P로부터 메시지를 전달받는 것을 의미
+- link는 자동적으로 생성되며, 하나의 link는 정확히 한 쌍의 process에게 할당된다.
+- 각 쌍의 process에게는 오직 하나의 link만이 존재한다.
 
-- **_Indirect communication_**
+<br>
+
+### Indirect communication
 
 ![image](https://user-images.githubusercontent.com/78094972/163952887-cddbe514-95a3-4e50-a325-f1dc43e7b01a.png)
 
-    - 통신하려는 프로세스의 이름을 명시적으로 표시하지 않는다.
-    - mailbox ( or port)를 통해 메시지를 간접 전달한다.
-    - mailbox에는 고유의 ID가 있다.
-    - 이 mailbox를 공유하는 process 들끼리만 서로 통신할 수 있다.
-    - Send(M, message): M이라는 mailbox에 message를 전달하는 것
-    - Receive(M, message): M이라는 mailbox로부터 메시지를 전달받는 것
-    - mailbox를 3개 이상의 process가 공유할 경우, 각각의 프로세스에게 링크를 따로 생성가능.
+- 통신하려는 프로세스의 이름을 명시적으로 표시하지 않는다.
+- mailbox ( or port)를 통해 메시지를 간접 전달한다.
+- mailbox에는 고유의 ID가 있다.
+- 이 mailbox를 공유하는 process 들끼리만 서로 통신할 수 있다.
+- Send(M, message): M이라는 mailbox에 message를 전달하는 것
+- Receive(M, message): M이라는 mailbox로부터 메시지를 전달받는 것
+- mailbox를 3개 이상의 process가 공유할 경우, 각각의 프로세스에게 링크를 따로 생성가능.
 
 <br>
 
@@ -490,9 +522,9 @@ categories: ["OS"]
 
   ![image](https://user-images.githubusercontent.com/78094972/163952874-762af2a9-2ab7-4c21-930f-be722d55da8d.png)
 
-  - CPU가 명령을 수행하기 위해서는 코드의 실행될 부분을 가리키는 `program counter`가 있어야 한다.
+  - CPU가 명령 수행을 위해서는 코드의 실행될 부분을 가리키는 `program counter`가 있어야 한다.
   - 또한, memory에 `register 값` 을 세팅해야 한다.
-  - 그리고, OS는 process를 관리하기 위해 process마다 1개의 PCB를 둔다.
+  - OS는 process를 관리하기 위해 process마다 1개의 PCB를 둔다.
   - 이 PCB를 보면 여러 thread로 구성된 걸 확인할 수 있다.
 
 <br>
@@ -500,7 +532,7 @@ categories: ["OS"]
 ## 9.2 Thread의 장점
 
 - **_Responsiveness: 응답성_**
-  - eg) multi-thread: 하나의 서버 thread가 blocked state 인 동안에도, 동일한 task 내의 다른 thread가 계속 실행되어 빠른 처리를 할 수 있다.
+  - eg) multi-thread: 하나의 thread가 blocked state 인 동안에도, 동일한 task 내의 다른 thread가 계속 실행되어 빠른 처리를 할 수 있다.
 - **_Resource sharing: 자원의 효율적인 관리_**
   - 여러 thread가 process의 code, data, resource를 공유하기 때문에, 자원 관리가 효율적.
 - **_Economy: 경제성_**

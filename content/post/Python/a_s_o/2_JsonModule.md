@@ -25,7 +25,7 @@ categories: ["Python"]
 
 [python docs-guide: Data Serialization](https://docs.python-guide.org/scenarios/serialization/)와 [stackoverflow - What is data serialization?](https://stackoverflow.com/questions/11817950/what-is-data-serialization)에 따르면 data serialiation의 정의를 다음과 같이 내린다. 
 
-> **_'Data seirialization(직렬화)'란 구조화된 데이터를 저장되거나 공유될 수 있는 한 가지 형식으로 전화하는 것으로 즉, 저장되거나 네트워크를 통해 보내지기 위해서 다른 형식으로 객체를 인코딩하는 걸 말한다. 이 과정에서 데이터의 사이즈를 줄이는 효과도 가진다._**
+> **_'Data seirialization(직렬화)'란 구조화된 데이터를 저장되거나 공유될 수 있는 한 가지 형식으로 전환하는 것으로 즉, 저장되거나 네트워크를 통해 보내지기 위해서 다른 형식으로 객체를 인코딩하는 걸 말한다. 이 과정에서 데이터의 사이즈를 줄이는 효과도 가진다._**
 
 
 <br>
@@ -63,7 +63,9 @@ categories: ["Python"]
 
 ### Nested data 
 
-Nested data의 종류에는 YAML, JSON, XML 등이 있다. 이 type들 모두 `import yaml, json, xml` 을 통해 nested data를 다룰 수 있다.  
+Nested data의 종류에는 YAML, JSON, XML 등이 있다. 
+
+이 type들 모두 `import yaml, json, xml` 을 통해 nested data를 다룰 수 있다.  
 
 여기서는 `import json`에 대한 것만 다음 챕터에서 다룰 것이다.  
 
@@ -72,7 +74,6 @@ Nested data의 종류에는 YAML, JSON, XML 등이 있다. 이 type들 모두 `i
 
 
 ---
-
 
 # 2. json.loads 와 json.dump
 
