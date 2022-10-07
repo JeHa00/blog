@@ -129,12 +129,12 @@ two one
 # 문자열 총 자리 수는 10자리를 의미한다.
 # 오른쪽 정렬
 # 즉, blank 시작은 왼쪽부터다.
-> print('%10s' % (likelike))
+> print('%10s' % ('likelike'))
 # 왼쪽 blank는 2칸이다.
   likelike
 
 # 방향을 반대로 하기 위해서는 (-)를 붙힌다: 왼쪽정렬
-> print('%-10s' % (likelike))
+> print('%-10s' % ('likelike'))
 likelike
 ```
 

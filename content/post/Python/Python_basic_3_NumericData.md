@@ -179,7 +179,7 @@ True
 True
 
 > print('P' not in str_o1)
-False
+True
 ```
 
 <br>
@@ -240,7 +240,7 @@ True <class 'str'>
 
 ### Capitalize
 
-- `Capitalize`: 첫 글자를 대문자로 바꿔주는 함수
+- `Capitalize()`: 첫 글자를 대문자로 바꿔주는 함수
 
   ```python
   > print("Capitalize : ", str_o1.capitalize())
@@ -251,9 +251,9 @@ True <class 'str'>
 
 ### upper, lower, endswith
 
-- `upper`: 모든 문자를 대문자로 바꿔주는 함수  
-- `lower`: 모든 문자를 소문자로 바꿔주는 함수  
-- `endswith`: 마지막 글자가 무슨 문자로 끝나는지 확인하는 함수
+- `upper()`: 모든 문자를 대문자로 바꿔주는 함수  
+- `lower()`: 모든 문자를 소문자로 바꿔주는 함수  
+- `endswith()`: 마지막 글자가 무슨 문자로 끝나는지 확인하는 함수
 
   ```python
   # 모든 문자를 대문자로 바꿔주는 함수
@@ -274,7 +274,7 @@ True <class 'str'>
 
 ### split
 
-- `split()`: 인자로 입력한 값을 기준으로 문자열을 분리하는 함수 
+- `split()`: 인자로 입력한 값을 기준으로 문자열을 분리해서 리스트로 반환하는 함수  
 
   ```python
   # 해당 문자열을 입력한 문자열을 기준으로 쪼개어 list로 만드는 함수
@@ -412,6 +412,7 @@ True <class 'str'>
   - string이 아닌 list를 **단순히 뒤집어서 저장해주는 역할**
   - 리턴값이 없어서 for문 같은 조건문 반복문에 사용하지 못 한다.
 - reversed는 원본에서 뒤집어진 순서의 새로운 객체(reverse iterator)를 만든다.
+  - `sorted`도 새로운 객체를 만들고, 기존 객체는 수정하지 않는다. 
   - 그래서 `id` 값으로 나온다.
   - 출력을 원하면 reverse 값을 원하면 형 변환을 해야 한다.
   - **_기존 리스트의 값을 변경하지 않으면서 return 값만을 원할 때 reversed 함수를 사용한다._**
@@ -478,7 +479,7 @@ nohtyP eciN
 
 ```
 
-- **결론: slicing을 사용하여 원하는 정보를 추출해야한다. 그렇기 떄문에 slicing은 중요하다.**
+- **결론: slicing을 사용하여 원하는 정보를 추출해야한다. 그렇기 때문에 slicing은 중요하다.**
 
 ---
 
