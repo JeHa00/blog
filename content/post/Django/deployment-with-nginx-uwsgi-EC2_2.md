@@ -1,6 +1,6 @@
 ---
 title: "Django study: nginx와 uwsgi를 사용한 django application deployment - 502 Bad Gateway Error"
-date: 2022-10-17T03:28:59+09:00
+date: 2022-10-15T03:28:59+09:00
 draft: false
 summary: nginx와 uwsgi를 사용한 배포과정에서 발생한 502 Bad Gateway Error에 대한 해결과정과 해결책을 정리해본다.
 tags: ["Django"]

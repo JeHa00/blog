@@ -1,6 +1,6 @@
 ---
 title: "Django study: nginx와 uwsgi를 사용한 django application deployment"
-date: 2022-10-15T03:16:12+09:00
+date: 2022-10-14T03:16:12+09:00
 draft: false
 summary: django appliation을 nginx와 uwsgi를 사용하여 배포하는 과정을 학습한다. 
 tags: ["Django"]
