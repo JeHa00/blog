@@ -59,7 +59,7 @@ categories: ["Django"]
     ALLOWED_HOSTS = ["127,0,0,1"]
     ```
 
-### settings option을 사용하여 runserver 실행 
+### 네 번째, settings option을 사용하여 runserver 실행 
 
 그러면 settings를 나눴기 때문에, 옵션을 사용하여 적절한 설정을 택하여 서버를 실행시켜보자.
 
@@ -77,7 +77,7 @@ $ python manage.py runserver --settings=config.settings.production
 
 <br>
 
-### BASE_DIR 수정하기
+### 다섯 번째, BASE_DIR 수정하기
 
 처음에는 `BASE_DIR = Path(__file__).resolve().parent.parent` 이랬지만,
 
