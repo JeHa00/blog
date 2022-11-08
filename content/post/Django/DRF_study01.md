@@ -17,6 +17,8 @@ categories: ["Django"]
 	- DRF와 DRF의 핵심인 직렬화가 무엇인지
 	- Serializer 설계  
 
+- DRF 강의 내용을 정리한 이유는 DRF는 api 설계에 주로 사용하기 때문에, 정답이라는 게 없어서 많이 사용하는 내용을 정리할 필요를 느꼈습니다.
+
 
 <br>
 
@@ -28,7 +30,7 @@ categories: ["Django"]
 
 ### REST API
 
-- REST란?
+- **REST란?**
 	- resource를 중심으로 디자인: 행위 부분은 HTTP method로 표현
 	- 특정 리소스를 고유하게 식별하는 식별자  
 		- ex) id 

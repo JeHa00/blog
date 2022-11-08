@@ -1,5 +1,5 @@
 ---
-title: "Django study: API url 만드는 방법 3가지 - APIView, @api_view([]), ModelViewSet"
+title: "Django study: DRF의 API url 만드는 방법 3가지 - APIView, @api_view([]), ModelViewSet"
 date: 2022-11-05T13:36:56+09:00
 draft: false
 summary: API url을 만드는 방법으로 APIView, @api_view() 그리고 ModelViewSet을 사용한다. 이 방법들 중에서 자주 사용하는 방식은 APIView다. ModelViewSet은 중복을 방지하여 여러 url들을 만들어주지만, 최적화가 어렵기 때문이다. 
@@ -20,6 +20,7 @@ categories: ["Django"]
 	- ModelViewSet, @api_view, ViewSet 각각으로 view를 만드는 방법
 	- Serializer 설계  
 
+- DRF 강의 내용을 정리한 이유는 DRF는 api 설계에 주로 사용하기 때문에, 정답이라는 게 없어서 많이 사용하는 내용을 정리할 필요를 느꼈습니다.
 
 
 <br>
