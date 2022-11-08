@@ -30,6 +30,36 @@ categories: ["Django"]
 > **_REST 규격에 맞는 api 설계를 간편하게 해주는 django library_**    
 
 
+### REST API
+
+- REST란?
+	- resource를 중심으로 디자인: 행위 부분은 HTTP method로 표현
+	- 특정 리소스를 고유하게 식별하는 식별자  
+		- ex) id 
+	- 요청 및 응답 포맷으로는 JSON을 많이 사용
+	- 균일한 인터페이스를 적용
+
+- 이러한 REST 설계 원칙을 준수한 API를 준수한 REST API라 한다. 
+
+```yml
+## 나쁜 예시
+/get/lesson/
+/create/lesson/
+/delete/lesson/1
+
+/groups/8SUE9E/courses/finance/lessons/
+
+## 좋은 예시
+/lessons/  와 GET method 사용
+/lessons/  와 POST method 사용
+/lessons/1/ 와 DELETE method 사용
+
+# 긴 api가 아니라, courses/로 이동한다. 
+/groups/8SUE9E/courses/ 
+courses/finance/lessons/
+```
+
+
 ### CRUD: HTTP method POST, GET, UPDATE & PATCH, DELETE
 
 위 HTTP 메서드에 해당되는 CRUD 수행을 간편하게 해주는 외부 라이브러리다.
