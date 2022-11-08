@@ -2,11 +2,10 @@
 title: "Django study: DRF의 직렬화(serialization)와 역직렬화(deserialization)"
 date: 2022-10-28T13:29:58+09:00
 draft: false
-summary: Django의 library인 Django-RestFramework의 직렬화와 역직렬화에 대해 알아본다.
+summary: Django의 library인 Django-RestFramework의 직렬화, 역직렬화 개념과 이를 사용하기 위한 Serializer를 작성해본다.
 tags: ["Django"]
 categories: ["Django"]
 ---
-
 # 0. Introduction 
 
 - 해당 강의는 [러닝스푼즈 - 나노디그리 Python & Django backed course](https://learningspoons.com/course/detail/django-backend/)의 김형종 강사님의 django 강의를 학습한 내용입니다.
@@ -16,8 +15,6 @@ categories: ["Django"]
 
 - 이번에는 django의 외부 라이브러리인 DRF(Django Rest-Framework)에 대해 학습한 걸 정리했습니다. 
 	- DRF와 DRF의 핵심인 직렬화가 무엇인지
-	- 어떤 흐름으로 설계를 진행하는지
-	- ModelViewSet, @api_view, ViewSet 각각으로 view를 만드는 방법
 	- Serializer 설계  
 
 
@@ -28,7 +25,6 @@ categories: ["Django"]
 # 1. DRF(Django RestFramework)란? 
 
 > **_REST 규격에 맞는 api 설계를 간편하게 해주는 django library_**    
-
 
 ### REST API
 
@@ -60,6 +56,7 @@ courses/finance/lessons/
 ```
 
 
+
 ### CRUD: HTTP method POST, GET, UPDATE & PATCH, DELETE
 
 위 HTTP 메서드에 해당되는 CRUD 수행을 간편하게 해주는 외부 라이브러리다.
@@ -84,8 +81,8 @@ pip install djangorestframework
 
 ```python
 INSTALLED_APPS = [
-    ...
-    "rest_framework",
+	...
+	"rest_framework",
 ]
 ```
 
@@ -122,9 +119,9 @@ api를 통해서 전달받은 데이터를 원하는 객체 타입으로 전환�
 
 - settings.py 가 분기되어 있을 때라면 다음과 같이 실행한다.
 
-```yaml
-python mange.py serialization --settings=config.settings.develop
-```
+	```yaml
+	python mange.py serialization --settings=config.settings.develop
+	```
 
 ## 코드를 통해 이해해보기 
 
@@ -235,8 +232,52 @@ OrderedDict([('title', ''), ('code', 'foo="bar"'), ('linenos', False), ('languag
 <br>
 
 ---
+# 3. 직렬화 코드 작성하기 
+
+- Serializer는 FormView와 유사하다.
+
+- Serializer의 class name은 `<Model명>Serializer` 로 작성한다.
+
+- fields의 역할은 가져오는 정보 종류를 의미한다. 
+	- `"__all__"` 이면 모든 정보를 다 가져온다. 
+	- 하지만 `"code"` 를 하면 code만 가져온다. 
+
+- drf의 view인 `APIView` 라는 걸 이용해서 하나 하나 api를 구현할 수 있지만, drf는 설정한대로 하면 금방한다. 
+
+
+```python
+# course/serialization.py
+
+from rest_framework import serializers 
+from course.models import Course, Group, Registration
+
+class CourseSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Course
+		fields = "__all__"
+		# fields = ["code"] 
+		# 만약 이렇게 하면 code만 가져온다. 
+			
+class GroupSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Group
+		fields = "__all__"
+
+class RegistrationSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Registration
+		fields = "__all__"
+```
+
+<br>
+
+---
+
+<br>
+
+---
 
 # Reference
 
 - [러닝스푼즈 - 나노디그리 Python & Django backed course](https://learningspoons.com/course/detail/django-backend/) 
-- [Django REST framework](https://www.django-rest-framework.org/tutorial/)
+- [Django REST framework](https://www.django-rest-framework.org/tutorial/)rial/)
