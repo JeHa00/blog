@@ -3,7 +3,7 @@ title: "Project: Pull Request templates를 도입한 이유"
 date: 2022-11-03T13:37:52+09:00
 draft: false
 summary: 프로젝트 진행에 Pull Request templates를 사용하는 이유와 적절한 PR size는 얼만큼 정했는지에 대해 공유해본다.
-tags: ["Project"]
+tags: ["github"]
 categories: ["Project"]
 ---
 
@@ -60,9 +60,7 @@ template 이라는 형식이 없다면 각자 자유롭게 작성하기 때문�
 
 commit message를 작성할 때, commit convention에 맞춰서 header와 body 부분을 작성합니다. 
 
-팀원들끼리 의논한 결과, commit message body 부분에 상세히 적는 것보다 body 부분도 개략적으로 짧게 적은 후 PR template에 상세히 적는 것을 다들 선호하여 
-
-PR template에 보다 자세히 작성하기로 결정했습니다. 
+팀원들끼리 의논한 결과, commit message body 부분에 상세히 적는 것보다 body 부분도 개략적으로 짧게 적은 후 PR template에 상세히 적는 것을 다들 선호하여 PR template에 보다 자세히 작성하기로 결정했습니다. 
 
 <br>
 
