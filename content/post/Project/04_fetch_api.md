@@ -4,7 +4,7 @@ date: 2022-11-17T16:23:16+09:00
 draft: true
 summary: 
 tags: [""]
-categories: [""]
+categories: ["Project"]
 ---
 
 ### 호출 순서

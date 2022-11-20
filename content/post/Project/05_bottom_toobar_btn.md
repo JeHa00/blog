@@ -4,7 +4,7 @@ date: 2022-11-17T16:23:39+09:00
 draft: true
 summary: 
 tags: [""]
-categories: [""]
+categories: ["Project"]
 ---
 makeDeleteInToolBar(parentNode , site) -> makeModalActive(deleteButton, site): 삭제 버튼을 누르면 Modal 창을 활성화시키는 함수
 

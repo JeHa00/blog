@@ -4,8 +4,10 @@ date: 2022-11-16T03:13:43+09:00
 draft: true
 summary: 
 tags: [""]
-categories: [""]
+categories: ["Project"]
 ---
+
+
 
 
 외부에서 import 해서 js를 사용하는 경우 - Debug 순서
