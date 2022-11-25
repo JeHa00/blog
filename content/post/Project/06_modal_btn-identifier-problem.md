@@ -1,21 +1,15 @@
 ---
-title: "Bottom_toobar_btn"
-date: 2022-11-17T16:23:39+09:00
+title: "Modal_btn"
+date: 2022-11-19T01:37:38+09:00
 draft: true
 summary: 
 tags: [""]
 categories: ["Project"]
 ---
-makeDeleteInToolBar(parentNode , site) -> makeModalActive(deleteButton, site): 삭제 버튼을 누르면 Modal 창을 활성화시키는 함수
 
-makeModal() -> 창을 닫는 함수 
-            -> deleteSite -> makeDeleteInToolBar로부터 입력된 site 데이터가 있어야 지정된 항목 삭제 가능 
 
-makeModal()을 makeDeleteInToolBar() 안에 넣을 수 없는 이유는 모달창은 1개만 필요하기 떄문이다. 
+항목 하나만 삭제하려고 했는데, 모든 항목에 대해 개별적으로 api가 쏴줘서 삭제되는 문제가 발생했다.  
 
-안에 넣어놓으면 article의 갯수만큼 생성된다.
-
-그래서 makdModalActive 안에 deleteSite를 추가했다. 모달 창의 삭제 버튼은 getElement 함수를 사용하여 가져왔다. 
 
 그래서 실행한 결과, 한 항목의 하단 툴바 삭제버튼을 클릭하여 모달 창을 띄우고, 모달 창의 삭제 기능 버튼을 누르면 모든 항목들이 삭제된다...
 
@@ -25,7 +19,7 @@ makeModal()을 makeDeleteInToolBar() 안에 넣을 수 없는 이유는 모달�
 
 그래서 views.py의 def delete(self, request): 를 보았다. 
 
-아래와 같이 중간 중간 print문을 입력했다. 
+아래와 같이 중간 중간 console.log 문을 입력했다. 
 
 ```python
     def delete(self, request, pk):

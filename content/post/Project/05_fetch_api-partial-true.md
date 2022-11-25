@@ -1,5 +1,5 @@
 ---
-title: "Fetch_api"
+title: "Fetch_api를 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정"
 date: 2022-11-17T16:23:16+09:00
 draft: true
 summary: 
@@ -136,7 +136,7 @@ if serializer.is_valid(raise_exception=True):
 serializers.errors 내용을 보면 다음과 같다.(에러를 확인하고자 할 때는 예외를 일으키는 걸 사용하지 말자.)
 
 {
-    'title': [ErrorDetail(string='This field is required.', code='required')], 
+'title': [ErrorDetail(string='This field is required.', code='required')], 
 'thumbnail_url': [ErrorDetail(string='This field is required.', code='required')], 
 'host_name': [ErrorDetail(string='This field is required.', code='required')], 
 'content': [ErrorDetail(string='This field is required.', code='required')], 
