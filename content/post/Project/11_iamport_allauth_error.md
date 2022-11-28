@@ -486,45 +486,6 @@ PG사를 지정하지 않았다는 에러 안내문이 발생했다.
 
 # 뜬 모달 결제창, 하지만 결제 완료 단계에서 발생된 문제
 
-```js
-function ImpTransaction(e, merchant_id, imp_id, amount) {
-    console.log('##### ImpTransaction #####')
-    e.preventDefault();
-    var request = $.ajax({
-        method: "POST",
-        url: validation,
-        async: false,
-        data: {
-            merchant_id: merchant_id,
-            imp_id: imp_id,
-            amount: amount,
-            csrfmiddlewaretoken: csrf_token,
-        }
-    });
-    console.log(`request: ${request}`)
-    request.done(function (data) {
-        if (data.works) {
-            $(location).attr('href', location.origin+redirect)
-        }
-    });
-    request.fail(function (jqXHR, textStatus) {
-        if (jqXHR.status == 404) {
-            alert("페이지가 존재하지 않습니다.");
-        } else if (jqXHR.status == 403) {
-            alert("로그인 해주세요.");
-        } else {
-            alert("문제가 발생했습니다. 다시 시도해주세요.");
-        }
-    });
-}
-```
-
-위 함수에서 request.fail로 들어가서 403이 발생된 문제다.  
-분명 로그인을 했는데, 왜 이 에러가 뜬 것일까? 저 코드가 403으로 입력해서 발생했을 수도 있다. 
-브라우저 디버깅 기능을 사용했을 때, `request`는 다음과 같은 값을 가졌다.
-
-
-
 PaymentImpAjaxView class 의 다음 부분에서 Error가 발생하여 500 Error가 발생했다.
 
 ```python

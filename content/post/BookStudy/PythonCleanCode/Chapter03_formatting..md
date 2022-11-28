@@ -202,7 +202,7 @@ import 시에는 아래와 같은 우선순위로 묶으라고 권고하고 있�
 - Django, Requests, Selenium 같은 써드 파트들 끼리 묶기
 - 해당 프로그램의 지역 모듈들끼리 묶기
 
-# 4. Install black: code formatter
+# 5. Install black: code formatter
 
 ```python
 # install black
@@ -221,3 +221,11 @@ Black 실행 후, 변할 부분 미리 보기
 ```python
 python3 -m black --diff yourScript.py
 ```
+
+<br>
+
+---
+
+# Reference
+
+- [클린 코드, 이제는 파이썬이다.](https://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=355096830&gclid=Cj0KCQjw166aBhDEARIsAMEyZh4ltxiM-nlGaj3yjPIW82A6l-hPlXjmjBCqtmw6xzqRX8dc8Rk6PFMaAjm9EALw_wcB) 
