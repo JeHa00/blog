@@ -6,6 +6,17 @@ summary:
 tags: [""]
 categories: [""]
 ---
+결제 프로세스 완료의 의미
+
+결제 프로세스 완료는 아래의 모든 경우를 포함합니다.
+결제 성공(결제 상태: paid, imp_success: true)
+결제 실패(결제 상태: failed, imp_success: false)
+PG 모듈 설정이 올바르지 않아, 결제 창이 열리지 않음
+사용자가 임의로 X 버튼이나 취소 버튼을 눌러 결제를 종료함
+카드 정보 불일치, 한도 초과, 잔액 부족 등의 사유로 결제가 중단됨
+가상계좌 발급 완료(결제 상태: ready, imp_success: true)
+
+
 - checkout.js
 
 ```javascript

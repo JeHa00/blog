@@ -500,6 +500,123 @@ get에 들어가는 매개변수 명칭이 model이 가지고 있는 속성이 �
 merchant_order_id 는 Payment에서 존재하지 않는다. 
 **속성 값을 입력할 때도 정확하게 model이 가지고 있는 속성 값을 입력해야 한다.**
 
+그래서 `merchant_order_id`를 `merchant_id`로 수정했다. 
+
+# DB에 저장되는 시간대 설정
+
+DateTimeField로 결제 시간을 저장하고 있다. 
+DB에 저장되는 시간을 보면 한국 시간대가 아니다. 
+그래서 아래 2가지 설정을 `settings.py`에 추가한다.
+- `TIME_ZONE = 'Asia/Seoul'`
+- `USE_TZ = False`
+
+출처: https://docs.djangoproject.com/el/1.10/ref/settings/#std:setting-TIME_ZONE 
+USE_TZ가 True일 때는 templates, forms에서의 datetime에만 내가 설정한 TIME_ZONE이 적용된다. 따라서 models의 datetime에는 이 부분이 적용되지 않았기 때문에 원래의 default time zone인 'UTC' 값으로 계속 설정되었던 것이다.
+나는 models에서도 내가 설정한 TIME_ZONE 값을 적용하고 싶기 때문에 이 부분을 False로 바꾸어 주었다.
+
+
+
+## IMP.request_pay({})
+
+IMP.request_pay로 들어와서 데이터가 아임포트에 전달되고, 결제 모듈 창이 뜨고, 결제 완료 후 모달 창이 닫힌다. 
+
+- 위 과정에서 결제 버튼을 클릭하여 창이 닫히면서 function (rsp) {} 가 실행단계에 돌입.
+- 여기서 rsp는 PG사로부터 응답이다.
+- rsp에 담겨진 데이터를 알기 위해서 function (rsp)로 조건문으로 분기 전에 `console.log(rsp)`를 출력하면 다음과 같이 뜬다.
+
+```yml
+apply_num: "34987222"
+bank_name: null
+buyer_addr: ""
+buyer_email: "rudtls0611@naver.com"
+buyer_name: ""
+buyer_postcode: ""
+buyer_tel: ""
+card_name: "BC카드"
+card_number: "910020*********0"
+card_quota: 0
+currency: "KRW"
+custom_data: null
+imp_uid: "imp_989639118401"
+merchant_uid: "ada3f4dfcf"
+name: "Devket Premium 서비스"
+paid_amount: 100
+paid_at: 1669691757
+pay_method: "card"
+pg_provider: "html5_inicis"
+pg_tid: "StdpayCARDINIpayTest20221129121557395502"
+pg_type: "payment"
+receipt_url: "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid=StdpayCARDINIpayTest20221129121557395502&noMethod=1"
+status: "paid"
+success: true
+```
+
+위 값들에서 맨 마지막 success 값이 true이냐, false 냐에 따라서 이후 로직이 갈라진다. 
+
+그러고 success가 true일 때만 ImpTransaction 함수가 실행된다. 
+- Iamport에 해당 결제 내역이 있는지 조회가 성공되면 db에 'paid'로 결제완료 상태로 변한다. 
+
+
+### 사용자가 변심으로 인해 결제창을 끌 경우
+
+```python
+@api_view(['POST'])
+def make_status_failed(request): 
+    """
+    사용자 변심으로 인한 결제 취소 시, payment의 status를 failed 값으로 바꾸기
+    """
+    merchant_id                 = request.POST.get('merchant_id')
+    imp_id                      = request.POST.get('imp_id')
+    payment                     = Payment.objects.get(payment_id=merchant_id)
+
+    if payment is not None: 
+        payment.payment_id = imp_id
+        payment.status = 'failed'
+        payment.save()
+        data = {'work': True}
+        return Response(data)
+    
+    else:
+        data = {'work': False}
+        return Response(data)
+```
+
+
+ File "/Users/jehakim/Desktop/Devket/env-devket/lib/python3.10/site-packages/django/db/models/query.py", line 439, in get
+    raise self.model.MultipleObjectsReturned(
+pocket.models.Payment.MultipleObjectsReturned: get() returned more than one Payment -- it returned more than 20!
+
+이와 같은 에러가 발생했다. 즉 위에서 Payment 객체를 조회할 때, 속성값을 `payment_id`로 했기 때문에, 조회되지 않는 값이 여러 개라서, 2개 이상이 조회되어 발생된 에러다. 
+이를 payment_id가 아닌 merchant_id로 수정해야 한다. 
+payment_id는 조회 후, 반영되기 때문이다.  
+
+```python
+# views.py
+payment                     = Payment.objects.get(merchant_id=merchant_id)
+```
+
+그리고, 이 function에 request를 보내는 checkout.js의 CancelTransaction도 merchant_id를 받도록 매개변수 부분을 수정한다. 
+
+
+사용자 변심으로 인한 취소는 DB에 imp_id가 반영되지 않은 상황이다.
+이러한 상황에서 Payment 조회 후 자동적으로 payment_validation이 실행될 경우, imp_id가 filter의 속성으로도 들어가기 때문에 NoneType을 반환하여 
+`TypeError: 'NoneType' object is not subscriptable` 가 발생한다. 
+
+
+PaymentManager 부분에서 아래 부분 때문에 failed 부분이 포함되지 않아서 생긴 문제였다. 
+
+```python
+def get_transaction(self, merchant_id):
+        result = PaymentManager.imp.find_transaction(merchant_id)
+
+        if result['status'] == 'paid' or 'failed':
+            return result
+        else:
+            return None
+```
+
+위 결과 소비자 변심으로 마지막 결제 창에서 취소한다는 건 DB data 상에서 imp_id 와 merchant_id가 존재하는데 status가 failed인 경우를 의미한다. 
+
 
 🔆 위 코드를 작성하기 위해 참고했던 코드의 모델을 보니 User model을 따로 만들지 않았으며 foreignKey로 User랑 연결하지 않고, allauth만으로 했기 때문에,
 위 에러가 발생되지 않았다. 
