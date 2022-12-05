@@ -1,7 +1,7 @@
 ---
 title: "Project: iamport를 활용해서 만든 프로젝트 결제 과정"
 date: 2022-12-04T21:30:35+09:00
-draft: true
+draft: t
 summary: 
 tags: ["iamport"]
 categories: ["Project"]
@@ -20,3 +20,9 @@ PG 모듈 설정이 올바르지 않아, 결제 창이 열리지 않음
 
 
 https://skyseven73.tistory.com/17
+
+
+IMP.init('아임포트 가입 유저가 갖는 가맹점 번호')
+
+
+결제 버튼 클릭 -> call-payment.js 실행 -> passPaymentInfo 호출(view class에서 반환하는 merchant_id를 반환) -> PaymentPassView와 연결된 api 로 request 보냄 ->  PaymentPassView가 merchant_id를 만들어서 반환 -> passPaymentInfo function이 merchant_id를 받아서

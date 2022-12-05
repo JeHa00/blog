@@ -71,7 +71,7 @@ categories: ["Network"]
 
 - 그리고 데이터 수신 시, 각 계층을 지나갈 때마다 그 계층에 맞는 헤더를 제거해서 응용계층에서 원하는 데이터를 본다.  
 
-![image](http://wiki.hash.kr/images/7/71/OSI_7_%EA%B3%84%EC%B8%B5.jpg)
+![image](https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/axm/image/lEbuexy5CZ5WK6Xq5yZuwg_8tR4.png)
 
 ## 3.1 1계층: 물리계층
 
@@ -287,4 +287,4 @@ host가 스위치에 데이터를 보내면 스위치는 라우터와 연결되�
 # Reference
 
 - [나노디그리 러닝스푼즈: Python & Django backend course](https://learningspoons.com/course/detail/django-backend/)
-- [OSI 7 layer](http://wiki.hash.kr/index.php?title=OSI_7_%EA%B3%84%EC%B8%B5&mobileaction=toggle_view_desktop)
+- [osi 7 layer](https://brunch.co.kr/@lars/1)

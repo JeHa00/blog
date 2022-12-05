@@ -1,5 +1,5 @@
 ---
-title: "Project: Iamport를 선택한 이유와 사용하여 얻는 결제 과정과 장점"
+title: "Project: Iamport를 선택한 이유, 사용 시 결제 과정, 그리고 얻는 장점"
 date: 2022-11-23T14:56:16+09:00
 draft: false
 summary: 기존 결제 과정과 iamport를 사용 시 변한 결제 과정을 정리하고, iamport 사용 시 얻는 장점들에 대해 정리해본다.
@@ -52,9 +52,9 @@ categories: ["Project"]
 
 ## 2.1 아임 포트를 선택한 이유
 
-**1. 직접 api로 만들어야하는 많은 부분을 아임포트가 대신 해주기 때문에 짧은 기간 안에 결제 기능을 추가하기 좋은 라이브러리**    
-**2. 경험이 없는 학습자가 도입하기에 api 설계에 대한 퀄리티에 집중할 수 있다.**      
-**3. 결제 기능 확장성이 좋다.**   
+- 직접 api로 만들어야하는 많은 부분을 아임포트가 대신 해주기 때문에, 짧은 기간 안에 결제 기능을 추가하기 좋은 라이브러리    
+- 위와 같은 이유로 경험이 없는 학습자가 사용하기에 보다 퀄리티에 집중할 수 있다.      
+- 결제 기능 확장성이 좋다.  
 
 ## 2.2 Iamport 사용 시 결제 과정과 장점
 
@@ -68,8 +68,6 @@ categories: ["Project"]
 
 하지만, 아임포트를 사용한다면 3, 4, 7, 8번만 신경쓰면 된다. 
 
-
-
 카드정보가 잘못되었다면 카드사 모듈 창에서 입력 시, 인증 오류가 날 것이다. 
 
 결제 정보가 잘못되었다던가, 카드 한드가 초과되었다던가, 사용자 변심으로 결제가 취소했다면 결제 단계에서 에러가 난다.  
@@ -78,11 +76,17 @@ categories: ["Project"]
 
 ### 편리한 복수 PG 사용  
 
+연동되는 PG 선택도 [iamport admin](https://admin.iamport.kr/auth/signin)에서 로그인하여 테스트 버전으로 자유롭게 선택할 수 있다.  
+
+
+<br>
+
+### 잘 정리된 api 문서
+
 [아임포트 api 문서](https://api.iamport.kr/) 를 보면 아임포트 API가 체계적으로 정리되어 있다.
 
 적절한 api url에 필요한 정보만 보내면 결제 정보를 조회할 수 있다.  
 
-그리고, 연동되는 PG 선택도 iamport admin 사이트에서 자유롭게 선택할 수 있다.  
 
 
 <br>
@@ -93,4 +97,5 @@ categories: ["Project"]
 
 - [한국 전자결제 서비스 흐름](https://github.com/iamport/iamport-manual/blob/master/%EC%9D%B8%EC%A6%9D%EA%B2%B0%EC%A0%9C/background.md)  
 - [Django에서 아임포트를 통해 결제 구현하기 - (1) 아임포트 세팅 및 결제 구조](https://skyseven73.tistory.com/17)  
+- [iamport admin](https://admin.iamport.kr/auth/signin)
 - [아임포트 api 문서](https://api.iamport.kr/)   
