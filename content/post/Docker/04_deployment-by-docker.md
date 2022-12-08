@@ -23,7 +23,7 @@ db를 컨테이너에 띄어서 관리하는가, 아니면 쌩 서버에 관리�
 
 왜냐하면 컨테이너의 기본이 지워져도 상관없다는 전제이기 때문에, db는 지워지면 안되기 때문에 컨테이너에 사용되지 않는다. 
 
- ㅜ 
+
 ### 컨테이너 내부 접속하기
 컨테이너 내부로 들어가기: `docker exec -it <Container ID> /bin/bash`
 - 그래서 이 내부에서 명령어를 잘못 입력하면 컨테이너에서 나갔다가 Kill하면 된다. 
@@ -32,7 +32,7 @@ superuser로 로그인하기: `psql -U postgres` 를 의미한다.
 
 - `\dt`: 테이블 조회
 
-postgresql 종료 명령어: `\q`
+- postgresql 종료 명령어: `\q`
 
 ### Dockerfile이란?
 
@@ -53,6 +53,7 @@ PostgreSQL에 대한 Dockerfile을 담을 directory를 생성한다.
 
 ---
 
+
 # 2. 도커 볼륨(docker volume)
 
 > **_도커 볼륨이란? 도커 컨테이너에 있는 데이터를 보관하기 위해서 사용하는 툴_**
@@ -66,7 +67,7 @@ PostgreSQL에 대한 Dockerfile을 담을 directory를 생성한다.
 
 도커에서는 볼륨을 생성하여 사용하기를 추천한다. 
 
-## 2.1 로컬 경로와 연결
+## 2.1 로컬 경로로 연결
 
 ![image](https://user-images.githubusercontent.com/78094972/206185981-93ac908c-1cae-4e9d-ba82-898ee0cb11b0.png)
 
@@ -103,11 +104,11 @@ PostgreSQL에 대한 Dockerfile을 담을 directory를 생성한다.
 
 <br>
 
-## 2. 도커 볼륨으로 연결하기
+## 2.2 도커 볼륨으로 연결하기
 
 ![image](https://user-images.githubusercontent.com/78094972/206185086-a0071191-96ea-4b05-a7a6-0b9f740107a9.png)
 
-### 2.1 생성 후, 내용 확인하기 
+### 생성 후, 내용 확인하기 
 
 
 첫 번째, 명령어 `docker volume create <볼륨명>`을 사용하여 볼륨을 ec2 내에서 생성한다.
@@ -118,25 +119,25 @@ PostgreSQL에 대한 Dockerfile을 담을 directory를 생성한다.
 - 확인된 정보들에서 `Mountpoint`는 생성한 볼륨의 경로를 의미한다.
 
 
-### 2.2 docker host의 경로와 연결하기
+### docker host의 경로와 연결하기
 
-> docker run -e POSTGRES_PASSWORD=mysecretpassword -v myvolume:/var/lib/postgresql/data -d postgres
+> **_docker run -e POSTGRES_PASSWORD=mysecretpassword -v myvolume:/var/lib/postgresql/data -d postgres_**
 
 myvolume을 postgresql의 데이터 경로와 연결한다. 
 
 ❗️/var/lib/postgresql/data 는 내가 임의로 정하는 게 아닌 RDBMS마다 정해져있으므로 다른 것을 사용한다면 추가로 확인해야한다.
 
-### 2.3 postgresql 데이터 생성 및 container 삭제 후, 다시 실행하여 데이터 확인하기
+### postgresql 데이터 생성, 컨테이너 삭제 후 실행하여 데이터 확인하기
 
-- container 접속: `docker exec -it <postgresql에 해당되는 container id>`
-- postgresql 접속: `psql -U postgres`
-- 사용자 추가: `CREATE USER jeha PASSWORD '1234' SUPERUSER;`
-- `\du`: 모든 사용자 보여주기 
-- `\q`: 나오기
-- container 중단: `docker container stop <container id>`
-- container 삭제: `docker container rm <container id>`
-- 다시 postgresql 실행하여 접속한다.
-- `\du`로 등록된 사용자가 아직 존재하는지 확인 후, exit
+1. container 접속: `docker exec -it <postgresql에 해당되는 container id>`
+2. postgresql 접속: `psql -U postgres`
+3. 사용자 추가: `CREATE USER jeha PASSWORD '1234' SUPERUSER;`
+4. `\du`: 모든 사용자 보여주기 
+5. `\q`: 나오기
+6. container 중단: `docker container stop <container id>`
+7. container 삭제: `docker container rm <container id>`
+8. 다시 postgresql 실행하여 접속한다.
+9. `\du`로 등록된 사용자가 아직 존재하는지 확인 후, exit
 
 <br>
 
@@ -160,7 +161,7 @@ myvolume을 postgresql의 데이터 경로와 연결한다.
 
 > **_서버 포트와 컨테이너 포트 연결하기_**
 
-- 트래픽은 컨테이너로 바로 들어오는 게 아닌, 서버를 거쳐서 컨테이너로 들어온다. 총 2단계가 필요하다.
+- 트래픽은 바로 들어오는 게 아닌, 서버를 거쳐서 컨테이너로 들어온다. 총 2단계가 필요하다.
 
 - 우리가 브라우저의 url 창에 도메인을 입력하고 나서 입력하는 포트 번호는 컨테이너의 포트 번호가 아니라 '서버의 포트 번호'를 말한다. 
 
@@ -193,12 +194,14 @@ myvolume을 postgresql의 데이터 경로와 연결한다.
 
 - 만약 해당 포트가 이미 사용 중이라고 한다면 `ps -ef | grep 8000`을 입력해서 8000번에 무엇이 사용되는지 알 수 있다.
 
-
-- 만약 `docker container ls`를 입력했는데 아무것도 안뜨면 보다 자세히 확인하기 위해서 `docker container ls -a` 를 입력하면 STATUS를 통해 확인하면 `Exited`를 확인할 수 있다. 그러면 아래 명령어를 사용하여 로그를 확인해보면 에러 원인을 보다 자세히 알 수 있으므로 활용해보자.
+### 🔆 참고사항
+만약 `docker container ls`를 입력했는데 아무것도 안뜨면 자세히 확인하기 위해서 `docker container ls -a` 를 입력하면 STATUS를 통해 확인하면 `Exited`를 확인할 수 있다. 그러면 아래 명령어를 사용하여 로그를 확인해보면 에러 원인을 보다 자세히 알 수 있으므로 활용하자.
 
 - 로그 확인: `docker logs <container ID>`  
 
-❗️ Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use.
+
+### ❗️Error starting userland proxy
+Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use.
 
 `sudo netstat -nlptu | grep 80`을 입력해보자. 만약 `command not found`가 뜬다면 `apt-get install net-tools`를 입력하여 설치 후, 다시 실행해보자.
 
@@ -242,7 +245,7 @@ nginx, apache가 아니라면서 `sudo kill -9 <PID>` 를 입력한다.
 - `work`로 이동
 
 - `pyenv`는 아래 링크를 따라서 진행하여 설치 및 활성화한다.
-    - https://losskatsu.github.io/programming/pyenv/#5-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EC%84%A4%EC%B9%98
+    - [pyenv를 통한 파이썬(python) 가상환경 구축](https://losskatsu.github.io/programming/pyenv/#5-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD-%EC%84%A4%EC%B9%98)
 
 - 가상환경 실행: `pyenv activate <가상환경명>`
     - pyenv 말고, ec2에 설치된 게 있으면 그것으로 하면 된다. 
@@ -263,7 +266,7 @@ nginx, apache가 아니라면서 `sudo kill -9 <PID>` 를 입력한다.
 
 ## ❗️ 발생한 Error
 
-> ModuleNotFoundError: No module named '_sqlite3'
+> **_ModuleNotFoundError: No module named '_sqlite3' _**
 
 sqlite3는 파이썬 설치 시, 포함되는데 위와 같은 에러는 파이썬 설치가 제대로 안된 것이기 때문에, 
 
@@ -274,19 +277,19 @@ sqlite3는 파이썬 설치 시, 포함되는데 위와 같은 에러는 파이�
 
 ---
 
-# 5. 직접 짠 코드 docker container로 배포하기
+# 5. 직접 짠 코드 container로 배포하기
 
 ## 5.1 디렉토리 정리, tree 설치하여 파일 구조 확인하기
 
-> sudo apt-get install tree
+> **_sudo apt-get install tree_**
 
-- 위 명령어 실행 후, `tree ./`로 원하는 경로의 directiory 구조를 tree로 확인한다.
+위 명령어 실행 후, `tree ./`로 원하는 경로의 directiory 구조를 tree로 확인한다.
 
 <br>
 
 ## 5.2 requirements.txt 파일 생성
 
-- 이 파일을 추가하는 이유는 나만의 도커 이미지를 만들기 위해서, django 4.1.1 layer를 쌓겠다는 의미다. 
+- 이 파일 추가하는 이유는 나만의 도커 이미지를 만들기 위해 django 4.1.1 layer를 쌓기 위해서다. 
 - 왜냐하면 도커는 여러 Layer가 쌓여진 것이기 때문이다. 
 
 - `vim requirements.txt`를 실행하여 생성한다. 
@@ -340,7 +343,7 @@ EXPOSE 8000
 
 ### Dockerfile 의 file level
 
-- Dockerfile과 requirements.txt는 동일한 파일 level에 있어야 한다.
+Dockerfile과 requirements.txt는 동일한 파일 level에 있어야 한다.
 
 ![image](https://user-images.githubusercontent.com/78094972/205901668-9b0a42b2-a803-4037-9d54-cbd8be15ac37.png)
 
@@ -412,6 +415,7 @@ CMD ["nginx", "-g", "daemon off;"]
 ## 6.3 image build 및 확인
 
 ### image build
+
 Dockerfile이 있는 경로에서 아래 명령어를 실행한다.
 
 `docker build . -t nginx-test`
@@ -456,13 +460,13 @@ nginx: 서버 와 django: 웹 서버를 연결하기 위해서 gunicorn을 사�
 
 ### Docker compose concept
 
-django과 nginx를 연결해야하는데, 많은 컨테이너를 하나 하나 직접 연결하는 건 매우 시간이 많이 걸린다.
+django과 nginx를 연결하는데, 많은 컨테이너를 하나 하나 직접 연결하는 건 매우 시간이 많이 걸린다.
 
 도커 파일은 '하나의 컨테이너' 를 관리하기 위한 파일이다.
 
 하지만, **도커 컴포즈는 '여러 개의 컨테이너'를 관리하는 도커 애플리케이션**이다.
 
-- 도커 컴포즈를 사용하기 위해서는 docker-compose.yml이라는 YAML 파일을 사용한다.
+도커 컴포즈를 사용하기 위해서는 docker-compose.yml이라는 YAML 파일을 사용한다.
 
 <br>
 
@@ -495,7 +499,7 @@ docker compose version
 
 ### ❗️ Error
 
-> docker: 'compose' is not a docker command.
+> **_docker: 'compose' is not a docker command_**
 
 curl -o 뒤에 경로와 mkdir의 경로가 일치한지 확인하기
 
@@ -617,14 +621,8 @@ services:
 
 ## 7.7 docker compose 실행 및 내리기
 
-### docker compose 실행하기
-
-> docker compose up -d --build
-
-
-### docker compose 내리기
-
-> docker compose down
+- docker compose 실행하기: `docker compose up -d --build` 
+- docker compose 내리기: `docker compose down`  
 
 
 <br>
@@ -645,12 +643,6 @@ services:
 ### gunicorn을 선택한 이유
 
 gunicorn을 사용한 이유는 현재 과정에서는 빠른 속도가 불필요하기 때문이다. 빠른 속도가 빠른 성능이 필요하면 wsgi를 쓴다. 
-
-<br>
-
-### ❗️현 단계에서 Error가 발생되면
-
- 컨테이너가 잘못되었는지 File system이 잘못되었는지 구분해야 한다.
 
 <br>
 
@@ -720,13 +712,13 @@ volumes:
 - psql-test에는 db이기 때문에 volume이 추가된 걸 알 수 있다. 
 
 
-- 만약 용량이 부족하다는 error가 뜰 경우 `docker system prune --volumes` 명령어를 상용해보자. 
+❗️ 만약 용량 부족 error가 뜰 경우 `docker system prune --volumes` 명령어를 상용해보자. 
 
 <br>
 
 ## 8.3 django settings.py의 DB 설정 변경하기
 
-- 그리고 django application의 settings.py의 DATEBASES 환경 변수를 수정한다. 
+django application의 settings.py의 DATEBASES 환경 변수를 수정한다. 
 
 ```python
 # before
@@ -758,11 +750,12 @@ DATABASES = {
 - compose 실행: `docker compose up -d --build`
 
 
-❗️ invalid mount config for type "volume": invalid mount path: 'var/lib/postgresql/data' mount path must be absolute
+### ❗️ Error 01
+invalid mount config for type "volume": invalid mount path: 'var/lib/postgresql/data' mount path must be absolute
 
 'var/lib/postgresql/data' 앞에 `/`가 없어서 생긴 문제다.
-
-❗️strconv.Atoi: parsing "": invalid syntax
+### ❗️ Error 02
+strconv.Atoi: parsing "": invalid syntax
 
 `sudo docker system prune`을 실행한다.
 
