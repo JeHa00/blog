@@ -8,15 +8,6 @@ categories: ["docker"]
 ---
 # 0. Introduction
 
-> 1. [PostgreSQL 컨테이너로 배포하기](#1-postgresql-컨테이너로-배포하기)      
-> 2. [도커 볼륨(docker volume)](#2-도커-볼륨docker-volume)   
-> 3. [docker로 django 배포하기](#3-docker로-django-배포하기)   
-> 4. [서버에 장고 코드 배포하기](#4-서버에-장고-코드-배포하기)  
-> 5. [직접 짠 코드 docker container로 배포하기](#5-직접-짠-코드-docker-container로-배포하기)   
-> 6. [docker로 nginx 배포하기](#6-docker로-nginx-배포하기)
-> 7. [docker compose로 django와 nginx 함께 배포하기](#7-docker-compose로-장고와-nginx-함께-배포하기)     
-> 8. [도커로 django, nginx, postgreSQL 함께 배포하기](#8-도커로-장고-nginx-postgresql-함께-배포하기)    
-
 - 해당 강의는 [러닝스푼즈 - 나노디그리 Python & Django backed course](https://learningspoons.com/course/detail/django-backend/)의 장철원 강사님의 docker 강의를 학습한 내용입니다.
 
 - 인스턴스는 우분투를 사용한다.
