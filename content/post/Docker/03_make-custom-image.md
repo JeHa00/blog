@@ -1,5 +1,5 @@
 ---
-title: "Docker study: Make custom image"
+title: "Docker study: 기본 image 활용하여 나만의 custom image 만들기"
 date: 2022-12-03T16:49:19+09:00
 draft: false
 summary: docker run -it 으로 docker의 기본 image를 실행한 후, 이를 바탕으로 apt-get install로 여러 layer를 쌓는다. 마지막으로 docker commit으로 나만의 image를 만든다.

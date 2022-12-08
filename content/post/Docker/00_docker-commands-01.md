@@ -70,8 +70,10 @@ categories: ["docker"]
 <br>
 
 ---
-# 3. docker container 목록 확인
+# 3. docker container 목록 확인, 정지하기
 
+
+### container 목록 확인하기
 - 작동 중인 컨테이너 확인: `docker container ls` 
 
 - 모든 컨테이너 확인: `docker container ls -a` 
@@ -81,6 +83,14 @@ categories: ["docker"]
 - 직접 경로 이동하여 확인하기
     - 도커 실행 후, `cd /run/docker` 로 이동
     - `ls`를 입력하여 확인하면 실행 중인 container id 확인가능
+
+
+<br>
+
+### container 정지하기
+
+- `docker container stop <container ID>`
+
 
 
 🔆 참고: runtime-runc directory에 'moby'는 도커의 옛날 프로젝트 명이다.
