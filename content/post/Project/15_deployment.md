@@ -14,6 +14,14 @@ categories: ["Project"]
 
 
 - 1차적으로 구현한 기능을 마치고, Docker 내용을 복습한 후 배포 작업을 시작했다. 배포 작업 순서, 에러, 해결방안, 그리고 여러 이유들에 대해 정리해본다.
+    
+- 배포에 관련해서 배운 내용은 다음과 같다.    
+    - django live 강의에서는 docker를 사용하지 않고, AWS EC2 서버에서 nginx, uwsgi와 django app을 연결 후, AWS RDS, IAM, S3와 연결하여 배포했다.
+    - Docker 강의에서는 AWS EC2 서버에서 Docker container만을 사용하여 nginx, django app, postgreSQL image들을 사용하여 배포했다. 
+    
+- 그래서 이번 프로젝트 배포에서는 django live 강의 마지막에 학습한 배포와 docker 강의에서 학습한 docker를 활용한 배포 내용을 정리한 것을 보고 합하여 진행해본다.
+    - AWS EC2 서버에서 docker-compose를 사용하여 nginx, django의 각 custom image를 만든다.
+    - 이 때, django app에는 AWS RDS(postgreSQL), IAM, S3 연결 세팅을 해놓은 후 build한다. 
 
 <br>
 
@@ -83,8 +91,8 @@ CMD python manage.py runserver 0:8000
 EXPOSE 8000
 ```
 
-- [boto3를 사용하는 이유](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html#boto3-documentation): 파이썬 언어를 사용하여 EC2, S3 같은 AWS 서비스를 구성하고, 관리하려면 boto3를 사용해야 한다.
-- [django-storages를 설치하는 이유](https://django-storages.readthedocs.io/en/latest/): 장고 프로젝트가 특정 storage를 사용하기 위해서 설치해야 한다.
+- [boto3를 사용하는 이유](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html#boto3-documentation): 파이썬 언어를 사용하여 EC2, S3 같은 AWS 서비스를 구성하고 관리하려면 boto3를 사용해야 한다.
+- [django-storages를 설치하는 이유](https://django-storages.readthedocs.io/en/latest/): 장고 프로젝트가 특정 storage를 사용하기 위해서 설치한다.
 
 
 <br>
@@ -188,8 +196,8 @@ RDS 생성 시, 추가사항 탭을 클릭하여 DB 이름을 설정하지 않�
 
 S3에 연결하기 전에 이전에 학습해던 [3가지 방식](https://jeha00.github.io/post/django/deployment-with-nginx-uwsgi-ec2_3/#1-static-file-serving)을 다 사용하면서 왜 S3를 사용하는지 되새겨본다.
 
-## 첫 번째 방법: ’location /static/’ 추가
-> **_문제점: admin에 적용되는 css를 확인할 수 없다._**
+## 6.1 첫 번째 방법: ’location /static/’ 추가
+> **_문제점: admin에 적용되는 css를 확인할 수 없다._**  
 
 ```yml
 # 경로: nginx의 default.conf
@@ -202,9 +210,9 @@ location /static/ {
 
 <br>
 
-## 두 번째 방법: collectstatic
-> **_장점: 첫 번째 방법에 대한 문제점 해결_**
-> **_문제점: 프로젝트 내부에 정적 파일들을 모아놓기 때문에, 서버 부하를 피할 수 없다._**
+## 6.2 두 번째 방법: collectstatic
+> **_- 장점: 첫 번째 방법에 대한 문제점 해결_**  
+> **_- 문제점: 프로젝트 내부에 정적 파일들을 모아놓기 때문에, 서버 부하를 피할 수 없다._**  
 
 `python manage.py collectstatic` 명령어를 사용하여 모든 static 파일들을 public directory 안에 모으기 위해서 location 설정을 바꾼다.
 
@@ -241,85 +249,108 @@ location /static/ {
 
 <br>
 
-## 세 번째 방법: S3에 연결하기
-> **_내부가 아닌 외부 AWS S3에 모아놓은 정적 파일들을 올려서 서버 부하를 분산시킨다._**
+## 6.3 세 번째 방법: S3에 연결하기
+
+> **_admin에 적용되는 css도 확인할 수 있으면서, 내부가 아닌 외부 AWS S3에 모아놓은 정적 파일들을 올려서 서버 부하를 분산시키기 때문에 이 방식을 최종적으로 선택한다._**  
 
 
-- AWS S3 bucket 생성하기  
-    - bucket 명: devket
-    - 객체 소유권: ACL 활성화 + 객체 소유권: 객체 라이터
-    - 퍼블릭 액세스 차단 설정
-    ![image](https://user-images.githubusercontent.com/78094972/206662633-05848dcc-79ba-49f8-924a-97a6fa6103d5.png)
+### 6.3.1 AWS S3 bucket 생성하기  
 
-- AWS IAM에서 다운 받은 key를 settings.py에 반영하기
-    - [이 링크](https://jeha00.github.io/post/django/deployment-with-nginx-uwsgi-ec2_3/#3-aws-iam%EC%97%90%EC%84%9C-%EB%8B%A4%EC%9A%B4-%EB%B0%9B%EC%9D%80-key%EB%A5%BC-settingspy%EC%97%90-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0)를 따라서 생성한다.
-
-- config/storages.py 추가하기
-
-    ```python
-    from storages.backends.s3boto3 import S3Boto3Storage
-
-    class S3DefaultStorage(S3Boto3Storage): 
-            location = "media"
-
-    class S3StaticStorage(S3Boto3Storage): 
-            location = "static"
-    ```
-
-- 현재 과정에서 file directory 구조
-
-    ```yml
-    # ~/deployment
-
-    ./
-    ├── devket
-    │   ├── Dockerfile
-    │   ├── devket
-    │   │   ├── config
-    │   │   │   ├── __init__.py
-    │   │   │   ├── asgi.py
-    │   │   │   ├── settings.py
-    │   │   │   ├── storages.py
-    │   │   │   ├── urls.py
-    │   │   │   └── wsgi.py
-    │   │   ├── manage.py
-    │   │   ├── pocket
-    │   │   ├── static
-    │   │   │   ├── css
-    │   │   │   ├── images
-    │   │   │   └── js
-    │   │   └── templates
-    │   └── requirements.txt
-    ├── docker-compose.yml
-    └── nginx
-        ├── Dockerfile
-        └── default.conf
-    ```
-
-
-- static file들을 S3로 옮기기: `python manage.py collectstatic`
-    - ❗️**python manage.py collectstatic 시 발생된 Error**
-        - 첫 번째 Error: botocore.errorfactory.NoSuchBucket: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
-            - 지정한 bucket이 존재하지 않는다는 의미다. S3의 bucket name이 storages.py의 BUCKET_NAME과 동일한지 비교한다.
-
-        - 두 번째 Error: botocore.exceptions.ClientError: An error occurred (AccessControlListNotSupported) when calling the PutObject operation: The bucket does not allow ACLs
-            - bucket 인식문제는 해결되었지만, 이 문제가 새롭게 발생했다. bucket 생성 시, 아래 설정대로 했는지 확인해보자.
-            - ![image](https://user-images.githubusercontent.com/78094972/206662633-05848dcc-79ba-49f8-924a-97a6fa6103d5.png)
-
-
-- nginx의 location url로 경로 바꾸기
-    - 이 단계까지 수행하면 css file들이 AWS S3 bucket으로 연결되지 않은 걸 확인할 수 있다. 그래서 nginx의 default.conf 설정을 수정해야한다. 
-    - 생성한 bucket에 들어가서 새로고침을 하면 `static/`이 생긴 걸 확인할 수 있다. 이를 선택하면 `URL 복사`가 활성화되는데, 이 버튼으로 복사해서 
-
-    ```yml
-    location /static/ {
-                    alias https://devket.s3.ap-northeast-2.amazonaws.com/static/;
-    }
-    ```
+- bucket 명: devket
+- 객체 소유권: ACL 활성화 + 객체 소유권: 객체 라이터
+- 퍼블릭 액세스 차단 설정
+![image](https://user-images.githubusercontent.com/78094972/206662633-05848dcc-79ba-49f8-924a-97a6fa6103d5.png)
 
 <br>
 
-### Error: Django amazon s3 SuspiciousOperation
+### 6.3.2 AWS IAM을 사용하는 이유
+
+> _IAM 역할을 사용하면 일반적으로 조직의 AWS 리소스에 대한 액세스 권한이 없는 사용자나 서비스에 액세스 권한을 위임할 수 있습니다.  ... 그러면 애플리케이션이 이러한 자격 증명을 사용해 Amazon S3 버킷 또는 Amazon DynamoDB 데이터 등의 리소스에 액세스할 수 있습니다._   
+> 출처: [AWS - manage-roles](https://aws.amazon.com/ko/iam/details/manage-roles/)
+
+AWS S3 bucket을 데이터 저장소로 사용한다면 IAM을 사용해서 액세스 권한을 위임받아야한다는 내용이므로, 반드시 IAM을 사용해야 한다.
+
+<br>
+
+### 6.3.3 AWS IAM에서 다운 받은 key를 settings.py에 반영하기
+
+- [이 링크](https://jeha00.github.io/post/django/deployment-with-nginx-uwsgi-ec2_3/#3-aws-iam%EC%97%90%EC%84%9C-%EB%8B%A4%EC%9A%B4-%EB%B0%9B%EC%9D%80-key%EB%A5%BC-settingspy%EC%97%90-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0)를 따라서 생성한다.
+
+<br>
+
+### 6.3.4 config/storages.py 추가하기
+
+```python
+from storages.backends.s3boto3 import S3Boto3Storage
+
+class S3DefaultStorage(S3Boto3Storage): 
+        location = "media"
+
+class S3StaticStorage(S3Boto3Storage): 
+        location = "static"
+```
+
+<br>
+
+### 6.3.5 현재 과정에서 file directory 구조
+
+```yml
+# ~/deployment
+
+./
+├── devket
+│   ├── Dockerfile
+│   ├── devket
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   ├── asgi.py
+│   │   │   ├── settings.py
+│   │   │   ├── storages.py
+│   │   │   ├── urls.py
+│   │   │   └── wsgi.py
+│   │   ├── manage.py
+│   │   ├── pocket
+│   │   ├── static
+│   │   │   ├── css
+│   │   │   ├── images
+│   │   │   └── js
+│   │   └── templates
+│   └── requirements.txt
+├── docker-compose.yml
+└── nginx
+    ├── Dockerfile
+    └── default.conf
+```
+
+
+### 6.3.6 static file들을 S3로 옮기기:`python manage.py collectstatic
+
+❗️**python manage.py collectstatic 시 발생된 Error**
+
+- **첫 번째 Error** : botocore.errorfactory.NoSuchBucket: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+    - 지정한 bucket이 존재하지 않는다는 의미다. S3의 bucket name이 storages.py의 BUCKET_NAME과 동일한지 비교한다.
+
+- **두 번째 Error** : botocore.exceptions.ClientError: An error occurred (AccessControlListNotSupported) when calling the PutObject operation: The bucket does not allow ACLs
+    - bucket 인식문제는 해결되었지만, 이 문제가 새롭게 발생했다. bucket 생성 시, 아래 설정대로 했는지 확인해보자.
+    - ![image](https://user-images.githubusercontent.com/78094972/206662633-05848dcc-79ba-49f8-924a-97a6fa6103d5.png)
+
+
+<br>
+
+### 6.3.7 nginx의 location url로 경로 바꾸기
+
+- 이 단계까지 수행하면 css file들이 AWS S3 bucket으로 연결되지 않은 걸 확인할 수 있다. 그래서 nginx의 default.conf 설정을 수정해야한다. 
+- 생성한 bucket에 들어가서 새로고침을 하면 `static/`이 생긴 걸 확인할 수 있다. 이를 선택하면 `URL 복사`가 활성화되는데, 이 버튼으로 복사해서 
+
+```yml
+location /static/ {
+                alias https://devket.s3.ap-northeast-2.amazonaws.com/static/;
+}
+```
+
+<br>
+
+### Error: Django amazon S3 SuspiciousOperation
 
 위 nginx의 location url 경로를 수정해도 이와 같은 error가 발생했다. 
 
@@ -333,15 +364,6 @@ location /static/ {
 
 출처: [Django amazon s3 SuspiciousOperation](https://stackoverflow.com/questions/25456420/django-amazon-s3-suspiciousoperation)
 
-
-<br>
-
-### AWS IAM을 사용하는 이유
-
-> _IAM 역할을 사용하면 일반적으로 조직의 AWS 리소스에 대한 액세스 권한이 없는 사용자나 서비스에 액세스 권한을 위임할 수 있습니다.  ... 그러면 애플리케이션이 이러한 자격 증명을 사용해 Amazon S3 버킷 또는 Amazon DynamoDB 데이터 등의 리소스에 액세스할 수 있습니다._   
-> 출처: [AWS - manage-roles](https://aws.amazon.com/ko/iam/details/manage-roles/)
-
-AWS S3 bucket을 데이터 저장소로 사용한다면 IAM을 사용해서 액세스 권한을 위임받아야한다는 내용이므로, 반드시 IAM을 사용해야 한다.
 
 <br>
 
