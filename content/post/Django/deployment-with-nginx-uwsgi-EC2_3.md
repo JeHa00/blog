@@ -150,9 +150,9 @@ STATICFILES_STORAGE = "config.storages.S3StaticStorage"
 - 맨 아래 `DEFAULT_FILE_STORAG` 와 `STATICFILES_STORAGE` 의 각 `S3DefaultStorage` , `S3StaticStorage` 는 밑에 `config/storages.py` 의 class를 의미한다.
 
 
-### 4) config/storage.py 추가하기
+### 4) config/storages.py 추가하기
 
-- `config/storage.py`는 위에 settings.py에 추가한 코드대로 config 밑에 추가한다. 
+- `config/storages.py`는 위에 settings.py에 추가한 코드대로 config 밑에 추가한다. 
 
 - 경로: config/storages.py
 
