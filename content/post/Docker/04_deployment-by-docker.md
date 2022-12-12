@@ -572,7 +572,7 @@ server {
 	server_name localhost;
 
 	location /{
-		proxy_pass http://<nginx에 연결할 image 이름>:8000;
+		proxy_pass http://<nginx에 연결할 service name>:8000;
 	}
 }
 ```
@@ -621,6 +621,8 @@ services:
 
 ## 7.7 docker compose 실행 및 내리기
 
+docker compose 명령어는 docker-compose.yml 파일이 있는 경로 및 그 아래 경로 어디서든 실행할 수 있다.
+
 - docker compose 실행하기: `docker compose up -d --build` 
 - docker compose 내리기: `docker compose down`  
 
@@ -642,7 +644,7 @@ services:
 
 ### gunicorn을 선택한 이유
 
-gunicorn을 사용한 이유는 현재 과정에서는 빠른 속도가 불필요하기 때문이다. 빠른 속도가 빠른 성능이 필요하면 wsgi를 쓴다. 
+gunicorn을 사용한 이유는 현재 과정에서는 빠른 속도가 불필요하기 때문이다. 빠른 속도와 빠른 성능이 필요하면 wsgi를 쓴다. 
 
 <br>
 
@@ -751,13 +753,25 @@ DATABASES = {
 
 
 ### ❗️ Error 01
-invalid mount config for type "volume": invalid mount path: 'var/lib/postgresql/data' mount path must be absolute
+
+> invalid mount config for type "volume": invalid mount path: 'var/lib/postgresql/data' mount path must be absolute
 
 'var/lib/postgresql/data' 앞에 `/`가 없어서 생긴 문제다.
-### ❗️ Error 02
-strconv.Atoi: parsing "": invalid syntax
 
-`sudo docker system prune`을 실행한다.
+<br>
+
+
+### ❗️ Error 02
+
+> strconv.Atoi: parsing "": invalid syntax
+
+docker-compose.yml 또는 Dockerfile에 입력 형식이 잘못되었다는 의미다.
+
+<br>
+
+### ❗️ 용량 부족으로 인한 Error
+
+image가 과도하게 많아서 에러가 발생할 경우, `sudo docker system prune`을 실행한다.
 
 <br>
 

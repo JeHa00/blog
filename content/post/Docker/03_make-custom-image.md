@@ -12,6 +12,10 @@ categories: ["docker"]
 
 - 이번 챕터는 docker 기본 image를 바탕으로 자신만의 image를 만드는 과정을 학습하겠습니다.
 
+- 추가로 다른 터미널에서 만든 image를 확인할 수 있다는 걸 알기 위해서 터미널 2개를 띄어 진행합니다.
+
+
+
 <br>
 
 ---
@@ -29,7 +33,7 @@ categories: ["docker"]
 
 ### 현재 상황
 
-- terminal 2개 A, B를 실해애 중인 상황
+- terminal 2개 A, B를 실행 중인 상황
 
 - terminal B에만 container 실행 중
 

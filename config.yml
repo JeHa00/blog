@@ -19,21 +19,20 @@ params:
   title: JeHa00 DevLog
   description: "선한 마음과 꾸준함이 비범함을 만든다"
   keywords: [Blog, Portfolio, PaperMod]
-  author: Jeha00
-  # author: ["Me", "You"] # multiple authors
+  # author: ["Me"] # multiple authors
   images: /apple-touch-icon.png
   DateFormat: "January 2, 2006"
-  defaultTheme: auto # dark, light
+  defaultTheme: dark # dark, light
   disableThemeToggle: false
 
-  ShowReadingTime: true
+  ShowReadingTime: false
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   disableSpecial1stPost: false
   disableScrollToTop: false
-  comments: True
+  comments: false
   hidemeta: false
   hideSummary: false
   showtoc: True # 글 안에 Table of Contents 표시
@@ -88,10 +87,8 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/jeha00"
-    # - name: facebook
-    #   url: "https://www.facebook.com/profile.php?id=100023820606299"
-    # - name: twitter
-    #   url: "https://twitter.com/sseuppiyongsse1"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/jeha-kim-b62897233/"
 
   analytics:
     google:
@@ -123,17 +120,17 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    # - name: About
-    #   url: /about/
-    #   weight: 10
+    - name: About
+      url: /about/
+      weight: 10
+    # - name: Project
+    #   url: /projects/
+    #   weight: 20
     - name: Archive
       url: /archives/
-      weight: 20
+      weight: 30
     - name: Categories
       url: /categories/
-      weight: 30
-    - name: Tags
-      url: /tags/
       weight: 40
     - name: Search
       url: /search/
@@ -153,5 +150,5 @@ markup:
         # anchorLineNos: true
         codeFences: true 
         guessSyntax: false
-        lineNos: false
+        lineNos: true
         style: dracula
