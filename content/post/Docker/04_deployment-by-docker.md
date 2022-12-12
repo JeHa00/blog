@@ -12,7 +12,7 @@ categories: ["docker"]
 
 - 인스턴스는 우분투를 사용한다.
 
-<br>
+&nbsp;
 
 ---
 # 1. PostgreSQL 컨테이너로 배포하기
@@ -49,7 +49,7 @@ PostgreSQL에 대한 Dockerfile을 담을 directory를 생성한다.
 해당 경로에 `vim Dockerfile`를 실행하여 `FROM postgres`를 입력한다.
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -139,7 +139,7 @@ myvolume을 postgresql의 데이터 경로와 연결한다.
 8. 다시 postgresql 실행하여 접속한다.
 9. `\du`로 등록된 사용자가 아직 존재하는지 확인 후, exit
 
-<br>
+&nbsp;
 
 
 ----
@@ -225,7 +225,7 @@ nginx, apache가 아니라면서 `sudo kill -9 <PID>` 를 입력한다.
     - `docker container ls -a`로 정지했었던 container id를 확인
     - 멈춰있는 도커를 재시작한다는 의미이므로, `docker start <container id>`를 입력
 
-<br>
+&nbsp;
 
 ---
 
@@ -273,7 +273,7 @@ sqlite3는 파이썬 설치 시, 포함되는데 위와 같은 에러는 파이�
 `pyenv install <python version>`을 입력하여 설치를 다시 한다.
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -376,7 +376,7 @@ Dockerfile이 있는 위치에서 실행한다.
 
 ❗️ 위 명령어로 container id가 떴음에도 불구하고, `docker container ls -a`로 해당 container id의 status가 `exited` 이면 `docker logs <container id>`로 원인을 파악한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -438,7 +438,7 @@ Dockerfile이 있는 경로에서 아래 명령어를 실행한다.
 `docker container ls`
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -627,7 +627,7 @@ docker compose 명령어는 docker-compose.yml 파일이 있는 경로 및 그 �
 - docker compose 내리기: `docker compose down`  
 
 
-<br>
+&nbsp;
 
 ---
 # 8. 도커로 장고, nginx, PostgreSQL 함께 배포하기
@@ -773,7 +773,7 @@ docker-compose.yml 또는 Dockerfile에 입력 형식이 잘못되었다는 의�
 
 image가 과도하게 많아서 에러가 발생할 경우, `sudo docker system prune`을 실행한다.
 
-<br>
+&nbsp;
 
 ---
 

@@ -23,11 +23,7 @@ categories: ["Project"]
 
 ### 위 내용을 바탕으로 구성한 배포 구조    
 그래서 이번 프로젝트 배포에서는 django live 강의 마지막에 학습한 배포와 docker 강의에서 학습한 docker를 활용한 배포 내용을 정리한 것을 보고 합하여 진행해본다.
-- AWS EC2 서버에서 docker-compose를 사용하여 nginx, django의 각 custom image를 만든다. django app에는 AWS RDS(postgreSQL), IAM, S3 연결 세팅을 해놓은 후 build 실행한다. 
-
-
-<br>
-
+- AWS EC2 서버에 docker-compose를 사용하여 nginx, django의 각 custom image를 만든다. django app에는 AWS RDS(postgreSQL), IAM, S3 연결 세팅을 해놓은 후 build 실행한다. 
 
 ### uWSGI와 gunicorn 중 후자를 택한 이유
 
@@ -49,23 +45,21 @@ uWSGI 와 gunicorn 중 gunicorn을 선택했다.
 root 계정으로 배포를 하게 되면 일반 user는 로그인하지 못하기 때문이다.
 
 
-<br>
+&nbsp;
 
 ---
 
 
-# 1. git clone하여 가져오기
+# 1. git clone 및 file directory 구조
 
-- `~/development/devket` directory를 생성하여 git clone으로 가져온다.
+### git clone 하여 가져오기 
 
-- 이에 따라 requirements.txt를 docker compose를 실행하기 위해서 위치를 바꾼다. `Devket` 안이 아니라 `Dockerfile`과 동일한 레벨로 옮긴다.
+`~/development/devket` directory를 생성하여 git clone으로 가져온다.
+
+이에 따라 requirements.txt를 docker compose를 실행하기 위해서 위치를 바꾼다. `Devket` 안이 아니라 `Dockerfile`과 동일한 레벨로 옮긴다.
 
 
-<br>
-
----
-
-# 2. file directory 구조
+### file directory
 
 익숙하지 않아서 먼저 구조를 잡기 위해 파일들을 생성했다.
 
@@ -92,13 +86,13 @@ root 계정으로 배포를 하게 되면 일반 user는 로그인하지 못하�
     └── default.conf
 ```
 
-<br>
+&nbsp;
 
 ---
 
-# 3. Dockerfile 생성
+# 2. Dockerfile 생성
 
-## 3.1 django app(devket) Dockerfile
+## 2.1 django app(devket) Dockerfile
 
 ```yml
 FROM python:3.10.8
@@ -142,10 +136,10 @@ Dockerfile이 진행되는 동안 입력값을 받지 못하고, 처음 image bu
 
 - 출처: [Where to run collectstatic when deploying django app...using Docker](https://stackoverflow.com/questions/59719175/where-to-run-collectstatic-when-deploying-django-app-to-heroku-using-docker)
 
-<br>
+&nbsp;
 
 
-## 3.2 django app Dockerfile 수정
+## 2.2 django app Dockerfile version 입력
 
 위 Dockerfile에서 다음 명령어를 삭제 또는 수정하기로 했다. 
 
@@ -177,10 +171,9 @@ gunicorn==20.1.0
 && pip install gunicorn==20.1.0
 ```
 
-<br>
+&nbsp;
 
-
-## 3.3 nginx Dockerfile
+## 2.3 nginx Dockerfile
 
 ```yml
 FROM nginx
@@ -190,10 +183,10 @@ CMD ["nginx", "-g", "daemon off;"]
 ```
 
 
-<br>
+&nbsp;
 
 ---
-# 4. nginx의 default.conf
+# 3. nginx의 default.conf
 
 - 80 port로 트래픽을 받아서 web application에 전달한다. 
 
@@ -210,13 +203,10 @@ server {
 }
 ```
 
-
-
-
-<br>
+&nbsp;
 
 ---
-# 5. docker-compose.yml 생성
+# 4. docker-compose.yml 생성
 
 ```yml
 version: "3"
@@ -238,7 +228,7 @@ services:
         - devket
 ```
 
-### 502 Bad Gateway
+### ❗️ 502 Bad Gateway
 
 
 `docker logs <container id>` 로 nginx와 django app을 확인해보자.
@@ -258,11 +248,11 @@ nginx: [emerg] host not found in upstream "devket" in /etc/nginx/conf.d/default.
 
 위 두 에러 모두 django Dockerfile의 WORKDIR을 수정하여 해결했다.
 
-<br>
+&nbsp;
 
 ---
 
-# 6. RDS 생성 및 연결
+# 5. RDS 생성 및 연결
 
 RDS 생성 시 설정 세팅은 [RDS 연결하기](https://jeha00.github.io/post/django/deployment-with-nginx-uwsgi-ec2_3/#2-rds-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0)를 참고하여 진행했다.
 
@@ -286,26 +276,26 @@ DATABASES = {
 - RDS endpoint 는 `연결 & 보안`에서 확인 가능
 - DB 이름, 마스터 사용자 이름은 `구성`에서 확인 가능  
 
-`super user`가 생성가능하면 DB 연결이 된 것이다.
+🔆 `super user`가 생성가능하면 DB 연결이 된 것이다.
 
 <br>
 
 ### ❗️ RDS 생성할 때 DB 이름의 기본값 
 
-RDS 생성 시, 추가사항 탭을 클릭하여 DB 이름을 설정하지 않았다면 기본값으로 'postgres'가 입력된다. 
+RDS 생성 시, 추가사항 탭 클릭하여 DB 이름을 설정하지 않았다면 기본값으로 'postgres'가 입력된다. 
 
 DB를 하나만 사용하고 있는 상황에서는 반드시 DB 이름을 입력할 필요는 없다고 판단되나, 프로젝트의 첫 배포 과정으로서 DB에 이름을 부여하고 싶어 입력했다.
 
 
-<br>
+&nbsp;
 
 ---
 
-# 7. S3 연결하기
+# 6. S3 연결하기
 
 S3에 연결하기 전에 이전에 학습해던 [3가지 방식](https://jeha00.github.io/post/django/deployment-with-nginx-uwsgi-ec2_3/#1-static-file-serving)을 다 사용하면서 왜 S3를 사용하는지 되새겨본다.
 
-## 7.1 첫 번째 방법: ’location /static/’ 추가
+## 6.1 첫 번째 방법: ’location /static/’ 추가
 > **_문제점: admin에 적용되는 css를 확인할 수 없다._**  
 
 ```yml
@@ -317,9 +307,9 @@ location /static/ {
 }
 ```
 
-<br>
+&nbsp;
 
-## 7.2 두 번째 방법: collectstatic
+## 6.2 두 번째 방법: collectstatic
 > **_- 장점: 첫 번째 방법에 대한 문제점 해결_**  
 > **_- 문제점: 프로젝트 내부에 정적 파일들을 모아놓기 때문에, 서버 부하를 피할 수 없다._**  
 
@@ -357,14 +347,14 @@ location /static/ {
     }
     ```
 
-<br>
+&nbsp;
 
-## 7.3 세 번째 방법: S3에 연결하기
+## 6.3 세 번째 방법: S3에 연결하기
 
 > **_admin에 적용되는 css도 확인할 수 있으면서, 내부가 아닌 외부 AWS S3에 모아놓은 정적 파일들을 올려서 서버 부하를 분산시키기 때문에 이 방식을 최종적으로 선택한다._**  
 
 
-### 7.3.1 AWS S3 bucket 생성하기  
+### 6.3.1 AWS S3 bucket 생성하기  
 
 - bucket 명: devket
 - 객체 소유권: ACL 활성화 + 객체 소유권: 객체 라이터
@@ -373,7 +363,7 @@ location /static/ {
 
 <br>
 
-### 7.3.2 AWS IAM을 사용하는 이유
+### 6.3.2 AWS IAM을 사용하는 이유
 
 > _IAM 역할을 사용하면 일반적으로 조직의 AWS 리소스에 대한 액세스 권한이 없는 사용자나 서비스에 액세스 권한을 위임할 수 있습니다.  ... 그러면 애플리케이션이 이러한 자격 증명을 사용해 Amazon S3 버킷 또는 Amazon DynamoDB 데이터 등의 리소스에 액세스할 수 있습니다._   
 > 출처: [AWS - manage-roles](https://aws.amazon.com/ko/iam/details/manage-roles/)
@@ -382,7 +372,7 @@ AWS S3 bucket을 데이터 저장소로 사용한다면 IAM을 사용해서 액�
 
 <br>
 
-### 7.3.3 AWS IAM에서 다운 받은 key를 settings.py에 반영하기
+### 6.3.3 AWS IAM에서 다운 받은 key를 settings.py에 반영하기
 
 - [이 링크](https://jeha00.github.io/post/django/deployment-with-nginx-uwsgi-ec2_3/#3-aws-iam%EC%97%90%EC%84%9C-%EB%8B%A4%EC%9A%B4-%EB%B0%9B%EC%9D%80-key%EB%A5%BC-settingspy%EC%97%90-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0)를 따라서 생성한다.
 
@@ -403,7 +393,7 @@ STATICFILES_STORAGE = "config.storages.S3StaticStorage"
 
 <br>
 
-### 7.3.4 config/storages.py 추가하기
+### 6.3.4 config/storages.py 추가하기
 
 ```python
 from storages.backends.s3boto3 import S3Boto3Storage
@@ -417,7 +407,7 @@ class S3StaticStorage(S3Boto3Storage):
 
 <br>
 
-### 7.3.5 현재 과정에서 file directory 구조
+### 6.3.5 현재 과정에서 file directory 구조
 
 ```yml
 # ~/deployment
@@ -448,7 +438,7 @@ class S3StaticStorage(S3Boto3Storage):
 ```
 
 
-### 7.3.6 static file들을 S3로 옮기기:`python manage.py collectstatic
+### 6.3.6 static file들을 S3로 옮기기:`python manage.py collectstatic
 
 ❗️**python manage.py collectstatic 시 발생된 Error**
 
@@ -462,7 +452,7 @@ class S3StaticStorage(S3Boto3Storage):
 
 <br>
 
-### 7.3.7 nginx의 location url로 경로 바꾸기
+### 6.3.7 nginx의 location url로 경로 바꾸기
 
 - 이 단계까지 수행하면 css file들이 AWS S3 bucket으로 연결되지 않은 걸 확인할 수 있다. 그래서 nginx의 default.conf 설정을 수정해야한다. 
 - 생성한 bucket에 들어가서 새로고침을 하면 `static/`이 생긴 걸 확인할 수 있다. 이를 선택하면 `URL 복사`가 활성화되는데, 이 버튼으로 복사해서 alias 옆 경로를 붙여넣는다.
@@ -473,27 +463,33 @@ location /static/ {
 }
 ```
 
-<br>
+&nbsp;
 
-### Error: Django amazon S3 SuspiciousOperation
+### ❗️Error: Django amazon S3 SuspiciousOperation
 
 위 nginx의 location url 경로를 수정해도 이와 같은 error가 발생했다. 
 
 `django S3 연결 SuspiciousOperation`을 검색하니 아래와 같은 문서가 떴다.
 
-읽어보면 해결 방법은 총 2가지다. 
+읽어보면 해결 방법은 총 3가지다. 
 
-첫 번째 방법은 storages.py 의 class 내용을 수정하는 방식이지만, 두 번째 방법은 static tag 뒤에 파일 경로의 시작 부분 `/`를 삭제하는 방식이다. 
+- 첫 번째 방법은 storages.py 의 class 내용을 수정하는 방식 
+- 두 번째 방법은 static tag 뒤에 파일 경로의 시작 부분 `/`를 삭제하는 방식 
+- 세 번째 방법은 img의 src에 static template tag를 사용하는 방식
 
-현재 단계에서는 static tag로 연결된 부분이 많지 않기 때문에, 코드를 추가 작성하는 것보다 두 번째 방법으로 하는 게 시간적으로 금방 해결되기 때문에 후자를 선택하여 진행했다.
+기존에 알고 있던 django template tag를 사용하는 방식이 보다 django 를 잘 활용하는 개발 방식이라 판단하여 세 번째 방식을 선택했다. 그래서 img src에도 django template tag를 적용했다. 
+
+그 전에는 이를 적용하지 않았던 이유는 django static template tag를 head tag 안에 import 시에만 사용하고, body 안에는 사용한다는 생각을 못 했기 때문이다. 
+
+위 방식을 알아낸 것은 아래 문서를 통해서 인지했다.
 
 출처: [Django amazon s3 SuspiciousOperation](https://stackoverflow.com/questions/25456420/django-amazon-s3-suspiciousoperation)
 
-<br>
+&nbsp;
 
 
 ---
-# 8. Django image size 줄이기: slim
+# 7. Django image size 줄이기: slim
 
 `docker image ls`로 확인한 결과 django image의 size는 다음과 같다. 
 
@@ -520,9 +516,7 @@ or specify the full executable path with the
     or with the pg_config option in 'setup.cfg'
 ```
 
-[stackoverflow - pg_config executable not found](https://stackoverflow.com/questions/11618898/pg-config-executable-not-found)에 모든 답변을 따라서 시도했지만 계속해서 같은 오류가 떴다. 
-
-그래서 `pip install psycopg2-binary=2.9.5`를 택하여 설치하기로 한다. 
+[stackoverflow - pg_config executable not found](https://stackoverflow.com/questions/11618898/pg-config-executable-not-found)에 모든 답변을 따라서 시도했지만 계속해서 같은 오류가 떴다. 그래서 `pip install psycopg2-binary=2.9.5`을 설치하기로 한다. 
 
 
 psycopg2 와 psycopg2-binary의 차이는 다음 글을 참고했다. 
@@ -535,10 +529,9 @@ REPOSITORY                TAG       IMAGE ID       CREATED         SIZE
 deployment-devket         latest    2c0746fca459   2 minutes ago   308MB
 ```
 
-동일한 기능을 낸다면 가벼운 것과 상대적으로 무거운 것 중 가벼운 것으로 가는 방향이 cost가 덜 나가기 때문에 이를 줄이는 방향을 선택했다. 
+동일한 기능을 낸다면 가벼운 것과 상대적으로 무거운 것 중 가벼운 것으로 가는 방향이 cost가 덜 나가기 때문에 size를 줄이는 방향을 선택했다. 
 
-
-<br>
+&nbsp;
 
 ---
 # Reference
@@ -555,3 +548,6 @@ deployment-devket         latest    2c0746fca459   2 minutes ago   308MB
 - [AWS IAM에서 다운 받은 key를 settings.py에 반영하기](https://jeha00.github.io/post/django/deployment-with-nginx-uwsgi-ec2_3/#3-aws-iam%EC%97%90%EC%84%9C-%EB%8B%A4%EC%9A%B4-%EB%B0%9B%EC%9D%80-key%EB%A5%BC-settingspy%EC%97%90-%EB%B0%98%EC%98%81%ED%95%98%EA%B8%B0)
 - [Django amazon s3 SuspiciousOperation](https://stackoverflow.com/questions/25456420/django-amazon-s3-suspiciousoperation)  
 - [AWS - manage-roles](https://aws.amazon.com/ko/iam/details/manage-roles/)  
+- [stackoverflow - pg_config executable not found](https://stackoverflow.com/questions/11618898/pg-config-executable-not-found)
+[psycopg2 vs psycopg2-binary](https://www.psycopg.org/docs/install.html#psycopg-vs-psycopg-binary)
+- [what is the different about psycopg2 and psycopg2-binary python package](https://stackoverflow.com/questions/70330567/what-is-the-different-about-psycopg2-and-psycopg2-binary-python-package)

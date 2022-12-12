@@ -12,7 +12,7 @@ categories: ["docker"]
 
 - docker의 기본 개념에 대해 학습해보겠습니다. 
 
-<br>
+&nbsp;
 
 ---
 
@@ -23,7 +23,7 @@ categories: ["docker"]
 - 컨테이너를 관리하는 소프트웨어를 **도커 엔진(Docker Engine)** 이라 한다.  
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -59,7 +59,7 @@ categories: ["docker"]
     - IaaS X: EC2를 사용할 뿐, EC2를 제공하지 않는다.
     - PaaS X: Docker를 사용할 뿐, Docker service를 제공하지 않는다. 
 
-<br>
+&nbsp;
 
 ---
 
@@ -82,8 +82,6 @@ categories: ["docker"]
 ![image](https://user-images.githubusercontent.com/78094972/205431374-9e4f18cf-3b98-40a2-9e9a-a7d6ca7fa0a8.png)
 
 출처: https://transferhwang.tistory.com/31 
-
-<br>
 
 &nbsp;
   
@@ -145,7 +143,7 @@ categories: ["docker"]
     - 다른 container에 있는 것에 영향을 줄 수 없다.     
     - 옛날에는 하나의 EC2 마다 하나의 서비스를 배포했지만, 지금은 docker를 사용하면 하나의 EC2에서도 여러 개의 서비스를 배포할 수 있다.
 
-<br>
+&nbsp;
 
 ## Docker는 Linux 환경에서만 동작한다.
 
@@ -230,7 +228,7 @@ docker가 설치된 서버로서, 나는 ec2를 사용할 것이므로 EC2가 �
     - **컨테이너는 실행할 때마다 새로운 IP 주소를 가진다.**    
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -253,7 +251,7 @@ host OS는 있지만, 컨테이너 안에는 OS가 없다.
 
 
 
-<br>
+&nbsp;
 
 
 ---
