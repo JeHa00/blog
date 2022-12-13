@@ -1,7 +1,7 @@
 ---
 title: "About Me."
 layout: "about"
-url: "/about/"
+url: "/me/"
 summary: about
 ---
 
@@ -49,6 +49,7 @@ _프로젝트에 사용한 기술들입니다._
 &nbsp;
 
 ### 기술 블로그 만들기
+
 > **_[Window에서 Hugo로 github page 만들고 배포하기](https://jeha00.github.io/post/dev-contents/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/)_**  
 
 - **_기간 : 2022.01.15 - 2022.02.16 (1개월)_** 
@@ -58,6 +59,7 @@ _프로젝트에 사용한 기술들입니다._
 &nbsp;
 
 ### 졸업 논문 project
+
 > **_[유연부가 있는 진동형 heat pipe를 이용한 노트북 PC 방열 설계: 3D 모델링 설계 및 실험 진행](https://dog-lightyear-010.notion.site/020263bee9df472d944ad7df7a1fdc9b)_**
 
 - **_기간 : 2018.09.03 - 2019.06.30 (1년)_**
