@@ -123,9 +123,6 @@ menu:
     - name: About
       url: /about/
       weight: 10
-    - name: Project
-      url: /projects/
-      weight: 20
     - name: Archive
       url: /archives/
       weight: 30
