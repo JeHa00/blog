@@ -11,7 +11,7 @@ summary: about
 - 기록, 정리 그리고 공유의 힘을 믿는  
 - 혼자보다 동료와 함께 성장하고 싶은  
 - 커뮤니케이션을 잘하고 싶은  
-- 러닝 커브가 가파른
+- 학습 속도가 빠른
 
 
 ### Channel & Contact.
@@ -34,6 +34,10 @@ _프로젝트에 사용한 기술들입니다._
 ### Frontend
 
 - Javascript, HTML, CSS
+
+### Etc
+
+- jira, figma, notion
 
 ---
 # Projects.
