@@ -49,7 +49,7 @@ _프로젝트에 사용한 기술들입니다._
 
 - **Growth of team and Communication** 
     - 팀 전체 성장과 커뮤니케이션 효율을 위해 주도적으로 PR template 도입 추진 및 제작
-    - [Project: Pull Request templates를 도입한 이유](https://jeha00.github.io/post/project/01_why-pr-template/)
+        - [Project: Pull Request templates를 도입한 이유](https://jeha00.github.io/post/project/01_why-pr-template/)
 
 - **Fast learning ability**
     - 한 달보다 적은 기간 동안 JS와 DRF를 학습하여 다음과 같은 성과 성취
