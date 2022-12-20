@@ -57,7 +57,9 @@ objects 가 아닌 objects_manager 라고 한다면 AsManager.objects 를 입력
 `PaymentCheckoutAjaxView`는 아임포트 js 파일이 실행될 시, js function인 `AjaxStoreTransaction`가 호출하는 뷰 클래스다. 
 `AjaxStoreTransaction`가 보내는 request를 받아서 주문 고유 번호인 `merchant_id`를 반환하는 클래스다.  
 
-즉, `AjaxStoreTransaction`는 `PaymentCheckoutAjaxView`가 보낸 response에 담겨진 `merchant_id` 주문 고유번호를 아임포트에 전달하는 역할을 한다. 그래서 이 고유 번호와 다른 값들과 함께 정산 확인 및 환불을 진행할 수 있다.  
+즉, `AjaxStoreTransaction`는 `PaymentCheckoutAjaxView`가 보낸 response에 담겨진 `merchant_id` 주문 고유번호를 아임포트에 전달하는 역할을 한다. 
+
+그래서 이 고유 번호와 다른 값들과 함께 정산 확인 및 환불을 진행할 수 있다.  
 
 `AjaxStoreTransaction`와 `merchant_id` 라는 명칭은 아임포트 안내사항에 따라 작명했다.  
 

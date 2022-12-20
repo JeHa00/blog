@@ -11,6 +11,7 @@ summary: about
 - 기록, 정리 그리고 공유의 힘을 믿는  
 - 혼자보다 동료와 함께 성장하고 싶은  
 - 커뮤니케이션을 잘하고 싶은  
+- 러닝 커브가 가파른
 
 
 ### Channel & Contact.
@@ -28,8 +29,7 @@ _프로젝트에 사용한 기술들입니다._
 ### Backend
 
 - Python, Django, Django DRF, PostgreSQL 
-- Docker, AWS EC2, AWS RDS, AWS S3, AWS IAM 
-
+- Docker, Docker-compose, AWS EC2, AWS RDS, AWS S3, AWS IAM 
 
 ### Frontend
 
@@ -42,16 +42,27 @@ _프로젝트에 사용한 기술들입니다._
 > **_실제 제품인 pocket 사이트를 클론 코딩 및 개선하기_**
 
 - **_기간 : 2022.11.15 - 2022.12.14 (1개월)_**
-- Frontend
+
+- **Growth of team and Communication** 
+    - 팀 전체 성장과 커뮤니케이션 효율을 위해 주도적으로 PR template 도입 추진 및 제작
+    - [Project: Pull Request templates를 도입한 이유](https://jeha00.github.io/post/project/01_why-pr-template/)
+
+- **Fast learning ability**
+    - 한 달보다 적은 기간 동안 JS와 DRF를 학습하여 다음과 같은 성과 성취
+
+- **Frontend** : vanilla js만을 사용하여 다음 내용을 개발
     - 저장한 웹 사이트 목록 렌더링
     - 저장한 각 웹 사이트 하단에 뜨는 하단툴바 렌더링
     - 구축한 api로 하단툴바를 통한 즐겨찾기, 삭제 기능 구현
 
-- Backend
-    - 저장한 웹 사이트 목록 조회 api 구축
-    - 하단툴바를 통한 즐겨찾기, 삭제 기능 api 구축
-    - 아임포트를 통한 결제 api 구축
-    - AWS EC2, RDS, S3와 Docker를 사용한 배포
+- **Backend**
+    - 저장한 웹 사이트 전체 목록 조회 api 구축
+    - ORM filter를 사용하여 즐겨찾기 목록, 아티클, 동영상 목록 조회 api 구축
+    - 하단 툴바의 즐겨찾기 목록 추가 및 해제, 저장한 웹 사이트 삭제 api 구현
+    - 아임포트를 통한 결제 기능 구현: 결제, 환불 api 구축
+        - ModelManager를 사용하여 Payment 객체 생성, 조회
+        - 결제 과정에 따라 생성된 결제 객체 상태 정보 업데이트
+    - AWS EC2, RDS, S3와 docker-compose를 사용한 배포
 
 
 &nbsp;
@@ -62,7 +73,7 @@ _프로젝트에 사용한 기술들입니다._
 
 - **_기간 : 2022.01.15 - 2022.02.16 (1개월)_** 
 - Window 환경에서 Hugo SSG를 사용하여 기술 블로그를 만든 정보가 Jekyell에 비해 부족한 상황
-- 다른 분들에게 도움이 되고자 만든 과정을 기술 블로그에 정리
+- 다른 분들에게 도움이 되고자 만든 과정을 공유하기 위해 기술 블로그에 정리
 
 &nbsp;
 
@@ -71,7 +82,7 @@ _프로젝트에 사용한 기술들입니다._
 > **_[유연부가 있는 진동형 heat pipe를 이용한 노트북 PC 방열 설계: 3D 모델링 설계 및 실험 진행](https://dog-lightyear-010.notion.site/020263bee9df472d944ad7df7a1fdc9b)_**
 
 - **_기간 : 2018.09.03 - 2019.06.30 (1년)_**
-- 교내 졸업 프로젝트 종합설계 프로젝트 16개팀 중 열유체 분야 동상 수상
+- 교내 종합설계 프로젝트 16개팀 중 열유체 분야 동상 수상
 - 1차, 2차 모델로 나눠서 점진적으로 진행한 결과, 1차 모델보다 10℃ 낮은 방열 성능으로 개선
 - flexible display 방열을 주제로 한 대학원 연구의 기반
 
@@ -91,6 +102,7 @@ _프로젝트에 사용한 기술들입니다._
 ### [한국항공대학교 항공우주 및 기계공학부](http://www.kau.ac.kr/web/index.do#)
 
 - **_2017.03 - 2020.02 (졸업)_**
+- 학점: 3.51/4.5
 - 졸업 논문 프로젝트 16팀 중 열유체 분야 동상 수상  
 
 ---
@@ -99,4 +111,4 @@ _감사합니다._
 
 _Backend Engineer,  김제하(jeha)_  
 
-_Latest updated    2022.12.13_  
+_Latest updated    2022.12.20_  

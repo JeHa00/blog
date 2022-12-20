@@ -23,11 +23,10 @@ console 창에 코드를 직접 입력해보니 제대로 활성화되는 것을
     - 이 함수가 작성되는 파일이 A 라고 하면 이 A를 받아서 사용하는 B에서 DOM이 생성되기 때문에 발생한 것이다.  
 
 그래서 아래와 같이 작성했으나, 그럴 경우 전체 for문을 돌려야 하므로 DOM 생성되면서 반복되는데, 또 반복을 하면서 이 기능을 추가하므로 시간복잡도 n^(2)으로 좋지 않다.
-그래서 각 버튼의 dom을 생성하는 함수 맨 아래에 넣기로 결정했다. 
 
 ```js
 window.onload = () => {
-
+    
     const favoriteButton        = getElement('.footer .item-actions .favorite'); 
     const categoryButton        = getElement('.footer .item-actions .category');
     const tagButton             = getElement('.footer .item-actions .tag');
@@ -40,6 +39,7 @@ window.onload = () => {
 }
 ```
 
+그래서 각 버튼의 dom을 생성하는 함수 맨 아래에 넣기로 결정했다. 
 
 ### active 문자열 추가 시 문제점
 또 한 가지 문제 active를 문자열 연산으로 추가한 후, 파이썬 처럼 동일하게 제거될 거라 생각했다. 

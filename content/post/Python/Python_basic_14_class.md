@@ -151,7 +151,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 - **method 호출방법**
 
   - **_class method 1가지 방법_**
-    - _주의 사항: 인스턴스화한 변수를 통해서 **class method** 를 호출하면 error가 뜬다._
+    - ❗️ _주의 사항: 인스턴스화한 변수를 통해서 **class method** 를 호출하면 error가 뜬다._
     - class로 바로 호출하는 방법 (1-1 방법)
   - **_instance method 2가지 방법_**
     - 첫 번째: 인스턴스화 변수를 통해서 **_instance method_** 를 호출하는 방법 (2-1 방법)
@@ -175,9 +175,12 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
   # dir로 변수 내부를 확인한다.
   > print(dir(f))
   ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',..., 'func1', 'func2']
-
-  # 인스턴스화된 f를 통해서 func1을 호출해보자.
-  # func1에는 매개변수가 없는데, 1개가 넘어갔다는 걸 알 수 있다.
+  ```
+  
+  - 인스턴스화된 f를 통해서 func1을 호출해보자.
+  - func1에는 매개변수가 없는데, 1개가 넘어갔다는 걸 알 수 있다.
+  
+  ```python
   > f.func1()
   TypeError: func1() takes 0 positional arguments but 1 was given
   ```
