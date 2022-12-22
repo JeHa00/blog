@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 37: Coroutine"
 date: 2022-04-02T21:15:33+09:00
-draft: false
+draft: true
 summary: 첫 번째, Thread, Multi-thread 그리고 Coroutine이 무엇인지 알아보면서, coroutine이 왜 중요한지를 이해한다. 두 번째, Coroutine을 구현해보면서 Generator와의 차이를 통해 Coroutine을 이해한다.
 tags: ["TIL", "python"]
 categories: ["Python"]

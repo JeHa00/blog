@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 38: Futures"
 date: 2022-04-06T21:34:38+09:00
-draft: false
+draft: true
 summary: 인프런 파이썬 level 4 과정의 기반으로 대략적으로 학습하는 내용이다. 구체적으로 Synchro와 Asynchro가 각각 무엇을 의미하는지, threadpool이란 무엇인지, concurrent.futures package에서 wait과 as_completed module에 대해 학습해본다.
 tags: ["TIL", "python"]
 categories: ["Python"]
@@ -45,7 +45,7 @@ categories: ["Python"]
 - Non-blocking이란 non이 붙여졌듯이 blocking의 반대 의미다.
 - 요청이 완료될 때까지 기다릴 필요 없이 바로 자신의 작업을 할 수 있는 상태를 말한다.
 
-- blocking 현상으로 CPU 및 resource 낭비를 하고 있을 때, `동시성` 활용 작업으로 낭비를 방지한다.
+- blocking 현상으로 CPU 및 resource 낭비 하고 있을 때, `동시성` 활용 작업으로 낭비를 방지한다.
 - 파이썬은 단일 쓰레드로 해도 충분히 빠르다.
 - 특히, 비동기 작업과 적합한 프로그램일 경우, 압도적으로 성능이 향상된다.
 

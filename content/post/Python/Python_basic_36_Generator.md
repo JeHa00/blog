@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 36: Generator"
 date: 2022-04-01T19:57:38+09:00
-draft: false
+draft: true
 summary: Generator 1에 이어서 본격적으로 Generator에 대해 알아본다. 그리고, Generator와 관련된 중요 함수들도 알아본다.
 tags: ["TIL", "python"]
 categories: ["Python"]

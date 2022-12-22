@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 46: Metaclass"
 date: 2022-05-17T17:53:25+09:00
-draft: false
+draft: true
 summary: 첫 번째,Type fuction을 통해서 Metaclass가 무엇인지, 그리고 class를 동적으로 만들어본다. 두 번째, Metaclass의 장점은 무엇이고, metaclass를 통해서 custom metaclass를 만들어본다.
 tags: ["TIL", "python"]
 categories: ["Python"]

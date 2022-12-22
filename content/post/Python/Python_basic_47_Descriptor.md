@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 47: Descriptor"
 date: 2022-05-19T19:12:47+09:00
-draft: false
+draft: true
 summary: Descriptor가 무엇이고, 어떤 점들이 유용한지, 어떻게 사용하는지를 알아본다. 개념적으로 알아보므로, 나중에 더 깊이 학습한다.
 tags: ["TIL", "python"]
 categories: ["Python"]
