@@ -1,8 +1,8 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: code formatting"
+title: "Book Study - 클린 코드, 이제는 파이썬이다: code formatting and black"
 date: 2022-11-28T16:19:28+09:00
 draft: false
-summary: 알 스웨이가트가 지었고, 박재호님이 번역하신  '클린코드, 이제는 파이썬이다'를 읽고 학습한 내용이다. 이번에는 PEP8에서는 python code formatting을 어떤 방식으로 의무적으로 또는 권고하는지 알아보자. 
+summary: 알 스웨이가트가 지었고, 박재호님이 번역하신  '클린코드, 이제는 파이썬이다'를 읽고 학습한 내용이다. 이번에는 PEP8에서는 python code formatting을 어떤 방식으로 의무적으로 또는 권고하는지 알아보자. 마지막으로 code formatting을 위한 라이브러리인 black을 설치해본다.
 tags: ["TIL", "Book Study"]
 categories: ["Book Study"]
 ---
