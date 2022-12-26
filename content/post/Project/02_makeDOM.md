@@ -68,4 +68,5 @@ function renderItem(post) {
 
     // 각 항목(item)의 하단 툴바
     makeBottomToolbar(article)
+}
 ```
