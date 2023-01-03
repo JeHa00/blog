@@ -19,9 +19,10 @@ categories: ["Python"]
   - 수정 X => del, remove, slicing, insert 로 값 변경 X
   - list 와 마찬가지로 다양한 타입이 함께 포함될 수 있다.
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 ## 1. tuple 선언
 
@@ -49,9 +50,10 @@ categories: ["Python"]
 
 ```
 
----
-
 &nbsp;
+
+
+---
 
 ## 2. tuple indexing, slicing, 연산
 
@@ -114,9 +116,12 @@ c * 3 -(11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14)
 'Test' + c[0] - Test11
 ```
 
+&nbsp;
+
+
+
 ---
 
-&nbsp;
 
 ## 3. tuple 함수: index, count
 
@@ -136,6 +141,10 @@ a - 1
 ```
 
 &nbsp;
+
+
+
+---
 
 ## 4. tuple의 중요한 특징: packing & unpacking
 
@@ -189,7 +198,9 @@ foo bar baz qux
 4 5 6
 ```
 
+
 &nbsp;
+
 
 ---
 

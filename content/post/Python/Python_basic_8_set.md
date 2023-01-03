@@ -9,7 +9,6 @@ categories: ["Python"]
 
 # 0. Introduction
 
-&nbsp;
 
 - Sets은 한국어로 집합을 의미한다. 수학의 집합을 생각해보자.
 - sequence X, 중복 X
@@ -18,9 +17,10 @@ categories: ["Python"]
 - mutable 자료형 => 수정 O, 삭제 O
 - 집합 자료형 활용에 핵심이다.
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 ## 1. Sets 선언
 
@@ -79,9 +79,10 @@ f <class 'set'> {42, 3.14159, 'foo', (1, 2, 3)}
   <class 'set'>
   ```
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 ## 2. Sets type converison
 
@@ -152,9 +153,10 @@ Set :  {'m', 'a', 'c', 'e', 'n', 'A'}
 
 ```
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 ## 3. 집합 자료형 함수: Sets 함수
 
@@ -227,9 +229,10 @@ False
 
 ```
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 ## 4. Sets 수정, 추가, 제거
 

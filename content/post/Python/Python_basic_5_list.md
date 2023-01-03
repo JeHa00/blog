@@ -16,7 +16,9 @@ categories: ["Python"]
 
 - 다른 언어에서는 배열이라 하는데 알고리즘을 풀기 위해서 굉장히 중요한 자료 형태다.
 
+
 &nbsp;
+
 
 ---
 
@@ -47,9 +49,11 @@ categories: ["Python"]
 
 ```
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 ## 2. List indexing, slicing
 
@@ -102,9 +106,11 @@ e - ['Ace', 'Base']
 e - ['Ace', 'Base']
 ```
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 ## 3. List 연산
 
@@ -138,9 +144,11 @@ True
 True
 ```
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 ## 4. List 함수
 
@@ -204,9 +212,11 @@ a - 2
 - a.extend(): 괄호 안의 값을 list에 `연장`한다.
   - reverse()처럼 반환값이 없고, 객체에 바로 저장된다.
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 ## 5. List 수정, 삭제
 
@@ -244,7 +254,6 @@ a - 2
   ## list 안에 list가 들어간 걸 `중첩`이라 한다.
   ```
 
-&nbsp;
 
 - 삭제하기
 
@@ -306,7 +315,7 @@ a - 2
     - 예2) 웹 브라우저를 뒤로 가기 버튼을 누르면, 마지막 페이지가 먼저 나온다.
     - 이런 자료 구조에서 많이 사용되는 method가 `pop` 입니다.
 
-- `Queue` 는 stack과 반대로 가장 처음에 들어온 것을 빼는 구조로, First In, First Out로 FIFO라 한다.
+- `Queue` 는 스택과 반대로 가장 처음에 들어온 걸 빼는 구조로, First In, First Out로 FIFO라 한다.
 
 &nbsp;
 
@@ -323,6 +332,8 @@ a - 2
   ```
 
 &nbsp;
+
+
 
 ---
 

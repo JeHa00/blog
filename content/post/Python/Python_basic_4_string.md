@@ -53,9 +53,11 @@ Pyton <class 'str'>
 - 문자열 출력에는 다른 출력과 동일하게 print를 사용한다.
 - 문자열 길이 측정에는 len() 함수를 사용한다. 길이에는 공백을 포함한다.
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 ## 2. Escape, raw string and multi line
 
@@ -149,9 +151,11 @@ Check!
 - 이스케이프 코드를 사용하고 싶지 않을 때는 string code를 사용한다.
 - 한 줄로는 너무 길어서 여러 줄로 표현하고 싶을 때, 백슬러쉬와 따옴표 3개를 사용하여 멀티라인으로 출력한다.
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 ## 3. 문자형 연산
 
@@ -185,11 +189,12 @@ False
 
 &nbsp;
 
+
+
 ---
 
 ## 4. 문자형 형 변환(Type conversion), 문자형 함수
 
-&nbsp;
 
 ### 4.1 Type Conversion
 
@@ -286,7 +291,9 @@ reversed2:  ['e', 'l', 'p', 'p', 'A']
   - 출력을 원하면 reverse 값을 원하면 형 변환을 해야 한다.
   - **_기존 리스트의 값을 변경하지 않으면서 return 값만을 원할 때 reversed 함수를 사용한다._**
 
+
 &nbsp;
+
 
 ---
 
@@ -341,9 +348,11 @@ nohtyP eciN
 
 - **결론: slicing을 사용하여 원하는 정보를 추출하기에 slicing은 중요하다.**
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 # Reference
 

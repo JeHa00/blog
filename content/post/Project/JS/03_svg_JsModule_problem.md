@@ -50,7 +50,9 @@ https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML
 
 setAttribute로 하면 인식되지 않았지만, html를 통채로 입력하니 가능했다. 
 
-## 첫 번재 article에만 svg path tag가 다 들어간 상황
+&nbsp;
+
+# 첫 번재 article에만 svg path tag가 다 들어간 상황
 
 관련 함수 코드
 - 즐겨찾기 만드는 함수 외에 카테고리 함수, 태그 함수, 삭제 함수 모두 다 발생된 문제이지만, 예로서 즐겨찾기만 가져왔다.
@@ -153,7 +155,7 @@ const favoriteIconSvg               = favoriteIconContainer.querySelector('.favo
 
 ![image](https://user-images.githubusercontent.com/78094972/205588915-a5022426-8374-4390-b67f-c63413565708.png)
 
-<br>
+&nbsp;
 
 ---
 

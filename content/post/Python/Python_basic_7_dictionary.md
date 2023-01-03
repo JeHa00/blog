@@ -36,13 +36,13 @@ categories: ["Python"]
 TypeError: unhashable type: 'list'
 ```
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 ## 1. dictionary 선언
 
-&nbsp;
 
 - dictionary 선언에는 매우 다양한 방법이 있다.
 - 이 다양한 방법들의 공통점은 { }, key, value 로 기본적으로 구성된다.
@@ -106,13 +106,13 @@ e -  <class 'dict'> {'Name': 'Niceman', 'City': 'Seoul', 'Age': '33', 'Grade': '
 f -  <class 'dict'> {'Name': 'Niceman', 'City': 'Seoul', 'Age': '33', 'Grade': 'A', 'Status': True}
 ```
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 # 2. dictionary value 출력과 수정
 
-&nbsp;
 
 ## 2.1 dictionary value 출력
 
@@ -120,7 +120,6 @@ f -  <class 'dict'> {'Name': 'Niceman', 'City': 'Seoul', 'Age': '33', 'Grade': '
   - `print(a[key])` 로 출력하는 방법
   - `print(a.get(key))`로 출력하는 방법
 
-&nbsp;
 
 - 첫 번째 방법은 key에 해당하는 value 값이 존재하지 않으면 `keyError`가 발생한다.
 - 두 번째 방법은 key에 해당하는 value 값이 존재하지 않으면 `none`처리를 한다.
@@ -180,9 +179,10 @@ Seoul
 
 ```
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 # 3. dictionary 함수
 
@@ -277,7 +277,6 @@ dict_items([('Name', 'Niceman'), ('City', 'Seoul'), ('Age', 33), ('Grade', 'A'),
 
 ```
 
-<dr>
 
 - `in` 연산자 사용하여 key 값 존재유무 확인
 
@@ -291,10 +290,9 @@ False
 
 ```
 
+&nbsp;
 
-❗ 다른 data type을 dictionary로 만들 때 유의사항
-
-- 갯수가 맞아야 한다.
+❗ 다른 data type을 dictionary로 만들 때 유의사항: 갯수가 맞아야 한다.
 
 ```python
 > a = ['ab', 'cd', 'ef']

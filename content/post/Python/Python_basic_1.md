@@ -7,7 +7,6 @@ tags: ["TIL", "python"]
 categories: ["Python"]
 ---
 
-&nbsp;
 
 # 1. 변수 할당 설명
 
@@ -32,6 +31,8 @@ categories: ["Python"]
 ```
 
 **- 결론 : 선언을 한다는 건 메모리 값을 할당하는 걸 의미한다. 이는 `id` 값을 통해 `고유주소`를 확인하여 알 수 있다.**
+
+&nbsp;
 
 ## 1.2 동시 선언
 
@@ -102,9 +103,11 @@ Change Value
 
 > 추가로 [[TIL] Python basic 40: Call by object reference](https://jeha00.github.io/post/python_basic/python_basic_40_callbyobjectreference/) 을 참고하자.
 
+&nbsp;
+
+
 ---
 
-&nbsp;
 
 # 2. Object References
 
@@ -173,12 +176,11 @@ False
 
 &nbsp;
 
-# 3. 다양한 변수 선언방법과 예약어
+# 3. 다양한 변수 선언 방법과 예약어
 
-- 이 규칙들을 가지고 변수를 선언하면 세련되고, 코드를 재활용할 때 가독성이 좋은 소스 코드로 만들 수 있다.
+이 규칙으로 변수를 선언하면 세련되고, 코드를 재활용할 때 가독성이 좋은 소스 코드로 만들 수 있다.
 
-&nbsp;
-
+## 3.1 다양한 변수 선언 방법
 - camelCase : method 및 함수를 선언할 때 사용.
 
   - ex) numberOfCollegeGraduates
@@ -232,6 +234,8 @@ continue	global	pass
 ```
 
 &nbsp;
+
+
 
 ---
 
