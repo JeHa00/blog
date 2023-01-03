@@ -12,7 +12,7 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -50,7 +50,7 @@ categories: ["OS"]
    → 다시 B로 돌아와 업무를 중단한 지점부터 계속 진행  
    → A는 CPU를 큐에서 기다리다가 자신의 차례가 되면 CPU를 할당받고 입출력 연산 이후의 작업을 수행
 
-<br>
+&nbsp;
 
 ### 5.1.1 입출력 연산 동안 CPU를 다른 process에게 할당하는 이유
 
@@ -68,7 +68,7 @@ categories: ["OS"]
   - 봉쇄 상태의 프로그램에게는 CPU를 할당하지 않고, CPU 할당 시 곧바로 명령을 수행할 수 있는 프로그램에만 CPU를 할당한다.
   - 인터럽트를 보내면 프로그램의 상태를 봉쇄 상태로부터 해제시킨다.
 
-<br>
+&nbsp;
 
 ### 5.1.2 봉쇄 해제 후, ready 상태로 큐에서 기다리는 이유
 
@@ -81,7 +81,7 @@ categories: ["OS"]
 
   - 프로그램 A가 먼저 요청했으면 이를 먼저 큐에 넣고, 그 후에 발생한 B의 요청을 A 요청 뒤에 삽입한다. 디스크 차원에서는 큐에 있는 순서대로 처리하여 동기화 문제를 해결할 수 있다.
 
-<br>
+&nbsp;
 
 ### 5.1.3 Summary
 
@@ -89,14 +89,14 @@ categories: ["OS"]
 - 그러나, CPU의 효율적인 사용을 위해 입출력이 수행하는 동안 다른 프로그램에게 CPU를 양도하면 동시에 다수의 입출력 연산이 일어날 수 있다.
 - 그래서 다수의 프로그램이 동시에 입출력 연산을 요청하는 경우 동기성(synchronization)을 보장하기 위해 장치마다 큐를 두어 요청된 순서대로 처리할 수 있도록 한다.
 
-<br>
+&nbsp;
 
 ## 5.2 비동기식 입출력(Asynchronous I/O)
 
 - I/O가 시작된 후, 입출력 작업이 끝나기를 기다리지 않고 즉시 제어가 사용자 프로그램에 넘어간다.
 - 그래서 입출력 연산과 무관한 처리 가능한 작업부터 처리한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -113,7 +113,7 @@ categories: ["OS"]
 
 > **_메모리에는 CPU 뿐만 아니라 DMA도 접근할 수 있다는 걸 알 수 있다._**
 
-<br>
+&nbsp;
 
 ---
 
@@ -137,7 +137,7 @@ categories: ["OS"]
   - 각 track은 **sector**로 나눠지며, 이 sector에 **최소한의 단위 정보**가 저장된다.
   - Arm assembly에 연결된 arm이 움직이면서 head가 저장된 데이터를 읽고 쓴다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -191,7 +191,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/163322482-5e78c22d-f94e-4022-9839-b6c826446b73.PNG)
 
-<br>
+&nbsp;
 
 ---
 
@@ -217,7 +217,7 @@ categories: ["OS"]
 
 ![image](https://images.velog.io/images/jehjong/post/2393e5ae-7318-4b41-8879-da6d2cfc0df1/image.png)
 
-<br>
+&nbsp;
 
 ---
 
@@ -229,7 +229,7 @@ categories: ["OS"]
 - timer의 값을 setting하는 명령을 **_load timer_** 라 하며, `특권 명령` 이다.
 - timer는 시분할 시스템을 구현하기 위해서도 사용된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -242,7 +242,7 @@ categories: ["OS"]
   - 그리고, 운영체제는 인터럽트 처리 루틴을 실행한다.
   - 입출력 완료 시, 제어권을 사용자 프로그램에게 넘긴다.
 
-<br>
+&nbsp;
 
 ---
 

@@ -12,7 +12,7 @@ categories: ["Python"]
 - class에 대해 공부를 더 시작하면서 매직 메소드에 대해 알기 시작했다.
 - 매직 메소드의 종류인 `__str__` 과 `__repr__` 에 대해 각각 알아보고, 차이점도 알아보자.
 
-<br>
+&nbsp;
 
 # 1. Magic method 의 종류: str 과 repr
 
@@ -46,7 +46,7 @@ categories: ["Python"]
 
 - Airline 클래스의 인스턴스를 보이기 위해서, `print()`을 사용하면 출력할 instance의 memory address를 보인다.
 
-<br>
+&nbsp;
 
 ## 1.1 \_\_str\_\_ magic method
 
@@ -75,7 +75,7 @@ str : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 
 - `__str__` method 를 사용하니, memory address를 출력하는 것이 아닌, `__str__` method의 return 값을 출력한다.
 
-<br>
+&nbsp;
 
 ## 1.2 \_\_repr\_\_ magic method
 
@@ -127,7 +127,7 @@ str : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 
 - `__str__` method의 return 문을 출력했다.
 
-<br>
+&nbsp;
 
 ## 1.3. \_\_str\_\_ 과 \_\_repr\_\_ 의 공통점과 차이
 
@@ -157,7 +157,7 @@ str : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 datetime.datetime(2022, 3, 13, 0, 0)
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -182,7 +182,7 @@ datetime.datetime(2022, 3, 13, 0, 0)
 str : Koreanair - {'uniform_color': 'skyblue', 'kind': 'FSC', 'price': 8000}
 ```
 
-<br>
+&nbsp;
 
 - `repr()` 또한 `__repr__`을 통해서 변환된 것을 반환한다.
 
@@ -206,7 +206,7 @@ repr : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 
 - 또한, `__str__`이 별도로 정의되지 않았고 `__repr__`만 정의된 상황일지라도, `str()`을 실행하면 `__repr__`가 실행된다.
 
-<br>
+&nbsp;
 
 ## Summary
 
@@ -221,7 +221,7 @@ repr : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 
 - `__str__`은 내부적으로 default로 `__repr__`을 호출한다면, 내부적으로 어떤 과정을 거쳐서 차이가 생기는지 알아보자.
 
-<br>
+&nbsp;
 
 ---
 

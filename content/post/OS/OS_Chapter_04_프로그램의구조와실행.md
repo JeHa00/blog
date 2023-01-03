@@ -12,7 +12,7 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -40,7 +40,7 @@ categories: ["OS"]
 - 과정
   - A 프로그램이 CPU를 할당받아 명령을 수행 → interrupt 발생 → 현재 수행 중인 명령 위치를 PCB에 저장 → CPU 제어권을 OS에게 양도 → 인터럽트 처리 완료 후, PCB에 저장된 작업 지점으로 돌아와 계속 수행
 
-<br>
+&nbsp;
 
 ---
 
@@ -85,7 +85,7 @@ categories: ["OS"]
     - CPU는 매번 명령을 수행한 후, 인터럽트 라인을 체크하여 요청 유무를 확인한다.
     - 또한, 인터럽트의 원인이 다양하기 때문에, **인터럽트 라인을 다르게 해서 구분**한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -141,7 +141,7 @@ categories: ["OS"]
   - swap area는 메모리 용량 한계로 메모리 연장 용도로 사용한다.
   - 하지만, 프로그램이 파일 형태로 저장되는 보조기억장치의 disk 영역은 비휘발성 용도로 저장한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -160,7 +160,7 @@ categories: ["OS"]
   - 프로세스의 address space의 code 영역 안에서 메모리 상의 점프를 한다.
   - user mode에서 실행된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -181,7 +181,7 @@ categories: ["OS"]
   - 그 다음, 중요도가 더 높은 인터럽트를 처리한다.
   - 인터럽트 처리가 끝나면 저장 주소로 복귀해 이전에 수행하던 인터럽트 처리 코드를 마저 수행한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -211,7 +211,7 @@ categories: ["OS"]
         - 입출력 작업을 요청한 process에게 CPU를 할당해도 파일 데이터가 있어야 당장 다음 명령을 수행할 수 있는데,
         - I/O 연산 속도는 CPU 연산 속도보다 매우 느리기 때문에, 긴 기다리는 시간 동안 CPU가 일을 할 수 없어 비효율적이기 때문이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -227,7 +227,7 @@ categories: ["OS"]
   - process A가 system call 을 통해 OS에게 대행 요청을 하여 kernel code를 실행 중이다 = process A가 kernel mode에서 실행 중
   - os가 kernel code를 수행하고 있을 지라도, os는 process A를 대신하여 수행 중이기 때문에, process A가 실행 상태인 걸로 간주한다.
 
-<br>
+&nbsp;
 
 ---
 

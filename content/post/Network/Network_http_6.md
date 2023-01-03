@@ -12,7 +12,7 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-<br>
+&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
@@ -29,7 +29,7 @@ categories: ["Network"]
 - 4xx (Client Error): 클라이언트 오류, 잘못된 문법등으로 서버가 요청을 수행할 수 없음
 - 5xx (Server Error): 서버 오류, 서버가 정상 요청을 처리하지 못함
 
-<br>
+&nbsp;
 
 - 만약 모르는 상태 코드가 나타나면??
 
@@ -44,7 +44,7 @@ categories: ["Network"]
 - 그러면 각 상태 코드에 대해 알아보자.  
   (1xx는 거의 사용하지 않으므로 생략한다. )
 
-<br>
+&nbsp;
 
 ---
 
@@ -52,7 +52,7 @@ categories: ["Network"]
 
 > 클라이언트의 요청을 성공적으로 처리한 상태
 
-<br>
+&nbsp;
 
 - ## 2xx state code 종류
 
@@ -70,7 +70,7 @@ categories: ["Network"]
 - 200번대 모든 코드들을 사용하지 않고, 200과 201만 사용하는 경우가 많다.
 - 그래서, 팀 내에서 코드를 어디까지 사용할지 결정한다.
 
-<br>
+&nbsp;
 
 - ## 201 Created
 
@@ -78,7 +78,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/158292339-12e77ed7-ebe3-454e-970b-d343bc65c8b9.PNG)
 
-<br>
+&nbsp;
 
 - ## 202 Accepted
 
@@ -90,7 +90,7 @@ categories: ["Network"]
 > 배치 처리(batch processing)란??  
 > 일괄 처리라 하며, 데이터를 일괄적으로 모아서 처리하는 작업을 말한다.
 
-<br>
+&nbsp;
 
 - ## 204 No Content
 
@@ -101,7 +101,7 @@ categories: ["Network"]
 - save 버튼을 눌러도 같은 화면을 유지해야 한다.
 - 결과 내용이 없어도, 204 메시지(2xx)만으로 성공을 인식할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -123,7 +123,7 @@ categories: ["Network"]
 
   - 웹 브라우저가 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동하는 것
 
-<br>
+&nbsp;
 
 - ## 리다이렉션의 종류
 
@@ -143,14 +143,14 @@ categories: ["Network"]
     - 결과 대신 캐시를 사용한다.
     - 클라이언트가 캐시 사용 시간을 확인하기 위해 서버에게 보내어 서버가 캐시 생성일자로 응답하는 것을 말한다.
 
-<br>
+&nbsp;
 
 - ## 영구 리다이렉션 (301, 308)
 
   - 리소스의 URI가 영구적으로 이동
   - 원래의 URL를 사용X, 검색 엔진 등에서도 변경 인지
 
-<br>
+&nbsp;
 
 - ### 301 Moved Permanently
 
@@ -170,7 +170,7 @@ categories: ["Network"]
 
   - 스펙에 나와 있어 설명한다. 실무에서는 거의 이렇게 사용하지 않는다.
 
-<br>
+&nbsp;
 
 - ## 일시적인 리다이렉션 (302, 307, 303)
 
@@ -186,7 +186,7 @@ categories: ["Network"]
     - 302와 기능은 같음
     - **리다이렉트시 요청 메서드가 GET으로 변경**
 
-<br>
+&nbsp;
 
 - ### PRG 예시 (전, 후)
 
@@ -210,7 +210,7 @@ categories: ["Network"]
   - 즉, 중복 주문 대신에 결과 화면만 GET으로 다시 요청한다.
   - PRG를 사용해서 경고창이 안뜨고, 서버 입장에서는 오류가 줄어든다.
 
-<br>
+&nbsp;
 
 - [Summary]
 
@@ -229,7 +229,7 @@ categories: ["Network"]
   - 307, 303을 권장하지만 현실적으로 이미 많은 애플리케이션 라이브러리들이 302를 기본값으로 사용
   - 자동 리다이렉션시에 GET으로 변해도 되면 그냥 302를 사용해도 큰 문제 없음
 
-<br>
+&nbsp;
 
 ## 기타 리다이렉션 (300, 304)
 
@@ -241,7 +241,7 @@ categories: ["Network"]
   - 304 응답은 응답에 메시지 바디를 포함하면 안된다. (로컬 캐시를 사용해야 하므로)
   - 조건부 GET, HEAD 요청시 사용
 
-<br>
+&nbsp;
 
 ---
 
@@ -252,7 +252,7 @@ categories: ["Network"]
 - 클라이언트의 요청에 잘못된 문법 등으로 서버가 요청을 수행할 수 없다.
 - **_클라이언트가 이미 잘못된 요청,데이터를 보내고 있어서, 똑같은 재시도는 실패한다._**
 
-<br>
+&nbsp;
 
 ## 400 Bad Request
 
@@ -262,7 +262,7 @@ categories: ["Network"]
 - 클라이언트는 요청 내용을 다시 검토하고, 보내야 한다.
 - 예) 요청 파라미터가 잘못되거나, API 스펙이 맞지 않을 때
 
-<br>
+&nbsp;
 
 ## 401 Unauthorized
 
@@ -271,7 +271,7 @@ categories: ["Network"]
 - 인증(Authentication) 되지 않은 상태를 말한다.
   - 401 오류 발생시 응답에 WWW-Authenticate 헤더와 함께 인증 방법을 설명한다.
 
-<br>
+&nbsp;
 
 > [참고]
 >
@@ -279,7 +279,7 @@ categories: ["Network"]
 > - 인가(Authorization): 권한부여 (ADMIN 권한처럼 특정 리소스에 접근할 수 있는 권한, 인증이 있어야 인가가 있음)
 > - 오류 메시지가 Unauthorized 이지만 인증 되지 않음 (이름이 아쉬움)
 
-<br>
+&nbsp;
 
 ## 403 Forbidden
 
@@ -288,7 +288,7 @@ categories: ["Network"]
 - 주로 인증 자격 증명은 있지만, 접근 권한이 부충분한 경우
   - 예) Admin 등급이 아닌 사용자가 로그인하여, admin 등급의 resource에 접근하는 경우
 
-<br>
+&nbsp;
 
 ## 404 Not Found
 
@@ -298,7 +298,7 @@ categories: ["Network"]
 - 클라이언트가 권한이 부족한 리소스에 접근할 때
 - 해당 리소스를 숨기고 싶을 때
 
-<br>
+&nbsp;
 
 ---
 
@@ -310,7 +310,7 @@ categories: ["Network"]
 - 500대 에러는 서버에 심각한 문제가 터졌을 때를 의미한다.
 - 고객의 잔고가 부족할 경우, 20세 이상만 이용 가능한데 15세가 들어왔을 경우 등등은 500번대 에러가 아니다.
 
-<br>
+&nbsp;
 
 ## 500 Internal Server Error
 
@@ -319,7 +319,7 @@ categories: ["Network"]
 - 서버 내부 문제로 오류가 발생한 상황
 - 애매하면 500 오류를 사용
 
-<br>
+&nbsp;
 
 ## 503 Service Unavailable
 
@@ -329,7 +329,7 @@ categories: ["Network"]
 - Retry-After 헤더 필드로 얼마 뒤에 복구되는지 보낼 수 있다.
 - **_대부분의 서비스 에러는 예측 불가하기 때문에 500번이다._**
 
-<br>
+&nbsp;
 
 ---
 

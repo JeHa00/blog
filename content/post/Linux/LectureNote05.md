@@ -17,13 +17,13 @@ categories: ["Linux"]
 
 - 이번 소챕터에서는 date, rdate, file, find를 학습해본다.  
 
-<br>
+&nbsp;
 
 ---
 
 # 4. date, rdate, file, find
 
-<br>
+&nbsp;
 
 ## 4.1 date와 rdate
 
@@ -69,7 +69,7 @@ Sat Sep 3 01:00:31 KST 2022
     ```
 
 
-<br>
+&nbsp;
 
 ## 4.3 file
 
@@ -91,7 +91,7 @@ Sat Sep 3 01:00:31 KST 2022
 ./lib/: symbolic link to 'usr/lib'
 ```
 
-<br>
+&nbsp;
 
 ## 4.4 find
 
@@ -134,7 +134,7 @@ drwxr-xr-x 2 root root 24 Sep  3 14:44 temp
 
 
 
-<br>
+&nbsp;
 
 ---
 # Reference

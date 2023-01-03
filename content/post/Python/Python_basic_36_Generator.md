@@ -26,7 +26,7 @@ categories: ["Python"]
 - 파이썬에서는 **_병행성_** 과 **_병렬성_** 을 모두 지원한다.
 - 그리고, 파이썬 실력을 결정하는 중요한 내용이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -65,13 +65,13 @@ categories: ["Python"]
   - generator는 실행 시, 함수의 몸체를 실행하는 게 아니라, generator 함수가 가진 객체를 반환하는 일을 한다.
   - 한 번 생성해서 반환한 객체를 보관하지 않기 때문에, 이전 코드를 실행한 후, 추가 코드를 실행하면 아무런 객체도 출력되지 않는다.
 
-<br>
+&nbsp;
 
 ---
 
 # 3. Generator 예제
 
-<br>
+&nbsp;
 
 ## 3.1 예제 1
 
@@ -110,7 +110,7 @@ StopIteration
 - 이처럼 위의 **_next처럼 '위치 인자'를 계속해서 유지하는 게 '병행성'의 핵심_** 이다.
 - `위치 인자`를 계속해서 기억하는 것 즉, 다음 할 일을 계속해서 기억하는 걸 의미한다.
 
-<br>
+&nbsp;
 
 ## 3.2 예제 2
 
@@ -299,14 +299,14 @@ sleep 1s
 - 데이터의 크기가 커질수록 제네레이터의 효율성이 더 두드러지게 나타난다!!
 - 이렇게 어떤 값이 실제로 쓰일 때까지 그 값의 연산을 뒤로 미루는 방식을 `Lazy Evaluation`이라 한다.
 
-<br>
+&nbsp;
 
 # 4. Generator 관련 중요 함수들
 
 - Generator 관련 함수들은 `itertools`를 import하는 것부터 시작한다.
 - 계속 복습을 하면서 활용해보도록 하자.
 
-<br>
+&nbsp;
 
 ## 4.1 itertools.count(시작값, 증가값)
 
@@ -333,7 +333,7 @@ sleep 1s
 8.5
 ```
 
-<br>
+&nbsp;
 
 ## 4.2 itertools.takewhile(predicate, iter)
 
@@ -357,7 +357,7 @@ sleep 1s
 18.5
 ```
 
-<br>
+&nbsp;
 
 ## 4.3 itertools.filterfalse(predicate, iter)
 
@@ -376,7 +376,7 @@ sleep 1s
 5
 ```
 
-<br>
+&nbsp;
 
 ## 4.4 itertools.accumulate(iterable, func=operator.add)
 
@@ -398,7 +398,7 @@ sleep 1s
 5050
 ```
 
-<br>
+&nbsp;
 
 ## 4.5 itertools.chanin(\*itertables)
 
@@ -421,7 +421,7 @@ sleep 1s
 [(0, 'A'), (1, 'B'), (2, 'C'), (3, 'D'), (4, 'E')]
 ```
 
-<br>
+&nbsp;
 
 ## 4.6 itertools.product(\*iterables, repeat=)
 
@@ -450,7 +450,7 @@ gen7 -  [('A',), ('B',), ('C',), ('D',), ('E',)]
 ('E', 'A'), ('E', 'B'), ('E', 'C'), ('E', 'D'), ('E', 'E')]
 ```
 
-<br>
+&nbsp;
 
 ## 4.7 itertools.groupby(iterable, key = none)
 
@@ -470,7 +470,7 @@ D  :  ['D', 'D']
 E  :  ['E', 'E', 'E']
 ```
 
-<br>
+&nbsp;
 
 ---
 

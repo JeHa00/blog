@@ -35,7 +35,7 @@ categories: ["dev-contents"]
 - **📚은 서적을, 💻은 인터넷 강의를, 🖊️ 은 블로그 포스팅 글을 말합니다.**
 - **Doing과 Done의 경우, 위에 있을 수록 최신의 것을 말합니다.**
 
-<br>
+&nbsp;
 
 ---
 
@@ -48,7 +48,7 @@ categories: ["dev-contents"]
   - 📚 [운영체제와 정보기술의 원리 - 반효경 지음 -](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=)
   - 💻 [KOCW 운영체제 이화여자대학교 - 반효경 -](http://www.kocw.net/home/cview.do?cid=3646706b4347ef09)
 
-<br>
+&nbsp;
 
 ---
 
@@ -63,7 +63,7 @@ categories: ["dev-contents"]
 - Done
   - 💻 [모든 개발자를 위한 HTTP 웹 기본 지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/dashboard)
 
-<br>
+&nbsp;
 
 ---
 
@@ -75,7 +75,7 @@ categories: ["dev-contents"]
 - Done  
   - 💻 [갖고노는 MySQL 데이터베이스 by 얄코](https://www.inflearn.com/course/%EC%96%84%EC%BD%94-%EB%A7%88%EC%9D%B4%EC%97%90%EC%8A%A4%ED%81%90%EC%97%98/dashboard)
 
-<br>
+&nbsp;
 
 ---
 
@@ -89,7 +89,7 @@ categories: ["dev-contents"]
 
 - Done
 
-<br>
+&nbsp;
 
 ---
 
@@ -109,7 +109,7 @@ categories: ["dev-contents"]
   - 💻 [level 1 프로그래밍 시작하기 : 파이썬 입문 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90/dashboard)
   - 📚 [Do it! 첫 코딩 with 파이썬](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791163032151&orderClick=LEa&Kc=)
 
-<br>
+&nbsp;
 
 ---
 
@@ -123,7 +123,7 @@ categories: ["dev-contents"]
 
 - Done
 
-<br>
+&nbsp;
 
 ---
 
@@ -135,7 +135,7 @@ categories: ["dev-contents"]
 
 - Done
 
-<br>
+&nbsp;
 
 ---
 
@@ -148,7 +148,7 @@ categories: ["dev-contents"]
 - Doing
 - Done
 
-<br>
+&nbsp;
 
 ---
 
@@ -158,7 +158,7 @@ categories: ["dev-contents"]
 - Doing
 - Done
 
-<br>
+&nbsp;
 
 ---
 
@@ -204,7 +204,7 @@ categories: ["dev-contents"]
   - 🖊️ [학습에 실패한 이야기](https://github.com/JeHa00/dev-contents/blob/master/1.%20%EA%B0%9C%EB%B0%9C%20%EC%9D%BC%EB%B0%98/%EA%B0%9C%EB%B0%9C%EC%9E%90%20%EC%84%B1%EC%9E%A5%20Summaries.md#%ED%95%99%EC%8A%B5%EC%97%90-%EC%8B%A4%ED%8C%A8%ED%95%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0)
   - 🖊️ [개발자가 실력을 향상시킬 방법은 OO뿐이에요. 반복](https://github.com/JeHa00/dev-contents/blob/master/1.%20%EA%B0%9C%EB%B0%9C%20%EC%9D%BC%EB%B0%98/%EA%B0%9C%EB%B0%9C%EC%9E%90%20%EC%84%B1%EC%9E%A5%20Summaries.md#%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%EC%8B%A4%EB%A0%A5%EC%9D%84-%ED%96%A5%EC%83%81%EC%8B%9C%ED%82%AC-%EB%B0%A9%EB%B2%95%EC%9D%80-oo-%EB%BF%90%EC%9D%B4%EC%97%90%EC%9A%94-%EB%B0%98%EB%B3%B5)
 
-<br>
+&nbsp;
 
 ---
 
@@ -214,7 +214,7 @@ categories: ["dev-contents"]
 - Doing
 - Done
 
-<br>
+&nbsp;
 
 ---
 

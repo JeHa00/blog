@@ -13,13 +13,13 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-<br>
+&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고 시작하고 싶어 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
 ---
 
-<br>
+&nbsp;
 
 # 1. URI
 
@@ -29,7 +29,7 @@ categories: ["Network"]
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F55603624-57bc-422d-a423-1a2f3bc1d490%2FUntitled.png&blockId=7544083d-0ca3-48c5-a59a-1a24553ad18d)
 
-<br>
+&nbsp;
 
 ## 1.1 URI, URL, URN의 각 의미
 
@@ -55,7 +55,7 @@ categories: ["Network"]
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd0c5b0b1-845e-4751-8994-16c6f24fce7e%2FUntitled.png&blockId=9a57f9d6-8a0d-4b02-bd36-20477512065d)
 
-<br>
+&nbsp;
 
 ## 1.2 URL 분석
 
@@ -69,7 +69,7 @@ categories: ["Network"]
 - path: `\search`
 - query parameter: `?q=hello&hl=ko`
 
-<br>
+&nbsp;
 
 ### 1.2.1 scheme
 
@@ -82,7 +82,7 @@ categories: ["Network"]
 - http는 80포트, https는 443포트를 주로 사용하며 포트는 생략 가능하다.
 - https는 http에 보안 사용을 추가한 것이다. (HTTP Secure)
 
-<br>
+&nbsp;
 
 ### 1.2.2 userinfo
 
@@ -92,7 +92,7 @@ categories: ["Network"]
 - URL에 사용자 정보를 포함해서 인증할 때 사용한다.
 - 하지만 거의 사용하지 않는다.
 
-<br>
+&nbsp;
 
 ### 1.2.3 host
 
@@ -102,7 +102,7 @@ categories: ["Network"]
 - 호스트명이다.
 - domain 명 또는 IP 주소를 직접 입력한다.
 
-<br>
+&nbsp;
 
 ### 1.2.4 PORT
 
@@ -112,7 +112,7 @@ categories: ["Network"]
 - 접속 포트
 - 일반적으로 생략한다. 생략시 http는 80, https는 443이다.
 
-<br>
+&nbsp;
 
 ### 1.2.5 path
 
@@ -125,7 +125,7 @@ categories: ["Network"]
   - /members
   - /members/100, /item/iphone12
 
-<br>
+&nbsp;
 
 ### 1.2.6 query
 
@@ -136,7 +136,7 @@ categories: ["Network"]
 - ?로 시작하며 &로 추가 가능하다.
   - ex) ?keyA=valueA&keyB=valueB
 - query parameer, query string 등으로 불린다. 웹서버에 제공하는 파라미터, 문자형태다.  
-  <br>
+  &nbsp;
 
 ### 1.2.7 fragment
 
@@ -148,7 +148,7 @@ categories: ["Network"]
 
 ---
 
-<br>
+&nbsp;
 
 # 2. 웹 브라우저 요청 흐름
 
@@ -166,7 +166,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/156995792-e9d1254f-2424-4b55-81a5-ac5dfba9ef30.PNG)
 
-<br>
+&nbsp;
 
 ## HTTP 메시지 전송
 
@@ -189,7 +189,7 @@ categories: ["Network"]
 
 ---
 
-<br>
+&nbsp;
 
 # Reference
 

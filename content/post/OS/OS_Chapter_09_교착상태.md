@@ -12,7 +12,7 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 책에는 있지 않고, [kocw 이화여자대학교 운영체제 -반효경 교수-](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e) 강의만 보고 정리한 내용이다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -24,13 +24,13 @@ categories: ["OS"]
   - 누군가가 희생하지 않으면 교착 상태는 발생하지 않는다.
   - 즉, 각자 일부 자원을 가지고 있으면서, 상대방이 가지고 있는 걸 요구하는 상황
 
-<br>
+&nbsp;
 
 ## 1.1 Deadlock이란??
 
 > **일련의 프로세스들이 서로가 가진 자원을 기다리며 block된 상태**
 
-<br>
+&nbsp;
 
 ## 1.2 Resource (자원)이란??
 
@@ -54,7 +54,7 @@ categories: ["OS"]
     - Po는 A를 획득한 후, B를 얻고 싶어한다. P1은 반대다.
     - 서로 반대 것을 가지고 있기 때문에, Deadlock 상황이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -82,7 +82,7 @@ categories: ["OS"]
     - Pn-1은 Pn이 가진 자원을 기다린다.
     - Pn은 Po이 가진 자원을 기다린다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -90,7 +90,7 @@ categories: ["OS"]
 
 > Deadlock 발생하는지 확인하기 위해, resource - allocation graph (자원 할당 그래프)를 그려본다.
 
-<br>
+&nbsp;
 
 ## 3.1 Graph 설명
 
@@ -108,7 +108,7 @@ categories: ["OS"]
 
 - **자원의 점은 instance를 의미한다**
 
-<br>
+&nbsp;
 
 ## 3.2 deadlock 확인하기
 
@@ -134,7 +134,7 @@ categories: ["OS"]
 - **왼쪽 graph: 2-1번 case**
   - R2 자원을 P1과 P2가 가지고 있으면서, P3가 이 자원을 요청하는 상황이기 때문에, deadlock 이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -160,7 +160,7 @@ categories: ["OS"]
   - Unix를 포함한 대부분의 OS가 채택
     - Deadlock은 빈번히 발생하는 문제가 아니기 때문에, 이를 방지하기 위해 오히려 많은 overhead가 발생하기 때문에, 이 방식을 택한다.
 
-<br>
+&nbsp;
 
 ## 4.1 Deadlock 처리 방법 첫 번째: deadlock prevention
 
@@ -199,7 +199,7 @@ categories: ["OS"]
 
 ⇒ **_Utilization 저하, throughout 감소, starvation 문제_**
 
-<br>
+&nbsp;
 
 ---
 
@@ -235,7 +235,7 @@ categories: ["OS"]
     - **Multiple instances** per resource types
       - **Banker’s Algorithum (은행원 알고리즘) 사용**
 
-<br>
+&nbsp;
 
 ### 4.2.1 Resource Allocation Graph algorithum: single instance per resource types
 
@@ -249,7 +249,7 @@ categories: ["OS"]
 
 ![Resource_allocation_graph_algorithum.PNG](https://user-images.githubusercontent.com/78094972/167449436-43b0974d-ae85-4c50-b61d-7a5a70412b3e.PNG)
 
-<br>
+&nbsp;
 
 ### 4.2.2 Banker’s Algorithum: multiple instances per resource types
 
@@ -301,7 +301,7 @@ categories: ["OS"]
 - 뱅커스 알고리즘 이렇게 최대요청을 해도 deadlock이 발생하지 않는 상황에서만 요청을 받아들여 deadlock을 피해간다.
   - 하지만, 이는 혹시 모를 상황을 대비하기 때문에 비효율적이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -309,7 +309,7 @@ categories: ["OS"]
 
 > 알고리즘을 통해 현재 시스템에 deadlock이 있는지 찾고, 알고리즘을 통해 deadlock을 복구하는 것
 
-<br>
+&nbsp;
 
 ### 4.3.1 Single instance per resource type
 
@@ -336,7 +336,7 @@ categories: ["OS"]
 
 - **Resource-allocation graph에서 자원을 빼면 coreesponding wait-for graph가 된다.**
 
-<br>
+&nbsp;
 
 ### 4.3.1 Multiple instance per resource type
 
@@ -357,7 +357,7 @@ categories: ["OS"]
 
 - Deadlock detection과 recovery도 overhead가 크다.
 
-<br>
+&nbsp;
 
 ### 4.3.2 Recovery
 
@@ -373,7 +373,7 @@ categories: ["OS"]
     - 동일한 프로세스가 계속해서 victim으로 선정되는 경우
     - cost factor에 rollback 횟수도 같이 고려
 
-<br>
+&nbsp;
 
 ---
 
@@ -385,7 +385,7 @@ categories: ["OS"]
 - 만약 시스템에 deadlock이 발생한 경우, 직접 process를 죽이는 등의 방법으로 대처한다.
   - 만약 한 번에 deadlock의 원인이 되는 process를 죽이면 효율적이지만, 원인이 되는 process가 죽을 수도 있다.
 - UNIX, Windows 등 대부분의 범용 OS가 채택하는 방식이다.
-  <br>
+  &nbsp;
 
 ---
 

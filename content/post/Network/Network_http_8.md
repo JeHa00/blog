@@ -13,23 +13,23 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-<br>
+&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
-<br>
+&nbsp;
 
 - 이번 chapter에서는 지난 HTTP header [[TIL] Network HTTP Header 1](https://jeha00.github.io/post/network/network_http_7/)에 이어서 관련 header에 대해 집중적으로 알아본다.
 
 - HTTP header의 용도는 [[TIL] Network HTTP basic](https://jeha00.github.io/post/network/network_http_3/#52-http-header)을 참고한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 1. 캐시 기본 동작
 
-<br>
+&nbsp;
 
 ## 1.1 캐시가 없을 때
 
@@ -44,7 +44,7 @@ categories: ["Network"]
   - HTTP body의 data 크기: 1.0 Megabyte
 - 서버의 응답에 클라이언트는 star.jpg를 받는다.
 
-<br>
+&nbsp;
 
 - 그러면 캐시가 없는 상황에서 서버에 동일한 요청을 또 보내면 어떻게 될까??
 
@@ -52,7 +52,7 @@ categories: ["Network"]
 
 - 처음과 동일하게, 총 1.1M의 크기를 다운받는다.
 
-<br>
+&nbsp;
 
 - **_캐시가 없기 때문에_**
   - 데이터가 변경되지 않아도, 계속 네트워크를 통해서 데이터를 다운받아야 한다.
@@ -60,7 +60,7 @@ categories: ["Network"]
   - 브라우저 로딩 속도가 느리다.
   - 결국, 사용자는 느린 사용 경험을 겪는다.
 
-<br>
+&nbsp;
 
 ## 1.2 캐시를 적용할 때
 
@@ -72,7 +72,7 @@ categories: ["Network"]
 - 클라이언트의 요청에 서버는 응답 메세지를 생성한다.
 - 그리고, 클라이언트에게 응답 메세지를 보내면서 결과를 캐시에 저장한다.
 
-<br>
+&nbsp;
 
 ![image](https://user-images.githubusercontent.com/78094972/159005485-f165358b-54c4-4824-aa04-8bbf7b112923.PNG)
 
@@ -82,7 +82,7 @@ categories: ["Network"]
 - 먼저, 브라우저 캐시에서 캐시 유효 시간을 먼저 검증한다.
 - 유효 시간이 일치하면 캐시에서 조회하여 원하는 데이터를 사용한다.
 
-<br>
+&nbsp;
 
 - **_캐시가 존재하기 때문에_**
   - 캐시 가능 시간 동안 네트워크를 사용하지 않아도 된다.
@@ -90,7 +90,7 @@ categories: ["Network"]
   - 브라우저 로딩 속도가 매우 빠르다.
   - 사용자는 빠른 네트워크 경험을 할 수 있다.
 
-<br>
+&nbsp;
 
 ## 1.3 캐시 시간 초과했을 때
 
@@ -124,7 +124,7 @@ categories: ["Network"]
   - 데이터를 전송하는 대신에 저장해 두었던 캐시를 재사용할 수 있다.
   - 단, 클라이언트와 서버의 각 데이터가 같다는 사실을 확인할 수 있는 방법이 필요하다.
 
-<br>
+&nbsp;
 
 ![image](https://user-images.githubusercontent.com/78094972/159008398-034f1d5d-cffc-4d8a-8f11-4cdd0449491f.PNG)
 
@@ -162,7 +162,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/159013587-a2616b67-f5f5-4b97-baf1-f373d40eed2e.PNG)
 
-<br>
+&nbsp;
 
 ---
 
@@ -195,7 +195,7 @@ categories: ["Network"]
       - **200 OK**, 모든 데이터 전송(BODY 포함)
       - 전송 용량 1.1M (헤더 0.1M, 바디 1.0M)
 
-<br>
+&nbsp;
 
 ## 3.1 `If-Modified-Since:`, `Last-Modified` 단점
 
@@ -206,7 +206,7 @@ categories: ["Network"]
 - 위 문제로 서버에서 별도의 캐시 로직을 관리하고 싶은 경우, 다음 Header들을 사용한다.
   - ex) 스페이스나 주석처럼 크게 영향이 없는 변경에서 캐시를 유지하고 싶은 경우
 
-<br>
+&nbsp;
 
 ## 3.2 해결책: `ETag`, `IF-None-Match`
 
@@ -219,7 +219,7 @@ categories: ["Network"]
   - ex) ETag: 'aaaaa', -> ETag: 'bbbbbb'
 - **진짜 단순하게 ETag만 보내서 같으면 유지, 다르면 다시 받는다.**
 
-<br>
+&nbsp;
 
 ![image](https://user-images.githubusercontent.com/78094972/159034239-a629868d-4ac9-4874-88f1-81a18629e351.PNG)
 
@@ -250,7 +250,7 @@ categories: ["Network"]
 
 - 응답 결과를 재사용하여, 캐쉬 데이터의 헤더 데이터를 갱신한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -261,7 +261,7 @@ categories: ["Network"]
   - `Pragma`: 캐시 제어(하위 호환)
   - `Expires`: 캐시 유효 기간(하위 호환)
 
-<br>
+&nbsp;
 
 ## 4.1 Cache-Control
 
@@ -281,7 +281,7 @@ categories: ["Network"]
   - 데이터에 민감한 정보가 있으므로 저장하면 안된다.
   - (메모리에서 사용하고 최대한 빨리 삭제)
 
-<br>
+&nbsp;
 
 ## 4.2 Pragma
 
@@ -292,7 +292,7 @@ categories: ["Network"]
   - 하위 호환이라 지금은 대부분 사용하지 않는다.
   - 하지만, 구글에서는 여러 국가를 지원하기 때문에 사용하고 있다.
 
-<br>
+&nbsp;
 
 ## 4.3 Expires
 
@@ -304,7 +304,7 @@ categories: ["Network"]
 - 지금은 더 유연한 방법인 `Cache-Control:max-age` 를 권장한다.
 - `Cache-Control:max-age`와 함께 사용하면 `Expires`는 무시된다.
 
-<br>
+&nbsp;
 
 ## 4.4 검증 헤더와 조건부 요청 헤더
 
@@ -318,7 +318,7 @@ categories: ["Network"]
   - If-Match, If-None-Match: ETag 값 사용
   - If-Modified-Since, If-Unmodified-Since: Last-Modified 값 사용
 
-<br>
+&nbsp;
 
 ---
 
@@ -345,7 +345,7 @@ categories: ["Network"]
   - Origin 서버에서 응답 후, proxy 캐시 내에 머문 시간(단위:초)
   - 우리가 데이터를 받아야 알 수 있다.
 
-<br>
+&nbsp;
 
 ![image](https://user-images.githubusercontent.com/78094972/159041113-bd3c9900-b4f9-49fe-a6cd-b54f38cd722b.PNG)
 
@@ -356,7 +356,7 @@ categories: ["Network"]
 
 - 하지만 이렇게 proxy 캐시 서버를 도입하면 한국에서 보다 빨리 데이터를 받을 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -393,7 +393,7 @@ categories: ["Network"]
   - `Pragma: no-cache`
     - HTTP 1.0 하위 호환
 
-<br>
+&nbsp;
 
 ## no-cache vs must-revalidate
 
@@ -403,7 +403,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/159101258-53f6d5be-2665-4d37-8a2d-dcf7a408f449.PNG)
 
-<br>
+&nbsp;
 
 - `no-cache` 상황에서, 프록시 캐시와 원 서버 간 네트워크 단절이 순간 발생한 경우
 
@@ -413,7 +413,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/159101256-67c91b6b-3d64-4047-b629-f7f80f334958.PNG)
 
-<br>
+&nbsp;
 
 - 정리
 
@@ -429,7 +429,7 @@ categories: ["Network"]
     - _504 Gateway Timeout_ 으로 응답한다.
     - _오류인지 알려준다_
 
-<br>
+&nbsp;
 
 ---
 

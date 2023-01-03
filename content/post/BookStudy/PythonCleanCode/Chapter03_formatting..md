@@ -18,7 +18,7 @@ categories: ["Book Study"]
 
 - 이번 chapter의 주제는 **'Chapter 03: CODE FORMATTING WITH BLACK'** 입니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -44,7 +44,7 @@ categories: ["Book Study"]
 
 프로그램의 행동을 바꾸는 것 없이 자동적으로 포맷팅을 해주는 라이브러리다. 
 
-<br>
+&nbsp;
 
 ---
 
@@ -62,7 +62,7 @@ categories: ["Book Study"]
 
 이 문서는 소프트웨어 프로젝트가 반드시 따라야만 하는 포맷팅 규칙들을 안내해준다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -141,7 +141,7 @@ print('Hello, world!') # display a greeting
 print('Hello, world!')#display a greeting
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -222,7 +222,7 @@ Black 실행 후, 변할 부분 미리 보기
 python3 -m black --diff yourScript.py
 ```
 
-<br>
+&nbsp;
 
 ---
 

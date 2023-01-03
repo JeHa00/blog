@@ -27,7 +27,7 @@ categories: ["Django"]
 
 - Tutorial Part 3에서는 public interface인 `view` 를 생성해보는 걸 목표로 둔다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -43,7 +43,7 @@ django는 이 patterns를 사용하기 위해서 `URLconfs`를 사용하는데, 
 
 이번 tutorial을 통해 URLconfs의 기본적인 사용 방법을 배울 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -88,7 +88,7 @@ path('<int:question_id>/vote', views.vote, name = 'vote'),
     - `<int: question_id>/`에서 `int`는 converter이고, `question_id`는 pattern name이다. `:`은 이 두 가지를 구분하는 역할을 한다.
     - converter란 URL path에서 이 부분에 해당되는 pattern이 무엇인지 결정한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -153,7 +153,7 @@ def index(request):
 
 - 이 코드는 `polls/index.html` 이라 불리는 템플릿을 불러오고, 이를 `context`라는 변수에 전달한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -179,7 +179,7 @@ def index(request):
 
 - `render` 은 요청 객체를 첫 번째 인수로, 템플릿 이름을 두 번째 인수로, 딕셔너리를 세 번째 인수로 받는다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -197,7 +197,7 @@ def index(request):
 > </ul>
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -217,7 +217,7 @@ def index(request):
 > <li><a href = "{% url 'detail' %}">{{ question.question_text }}</li>
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -238,7 +238,7 @@ def index(request):
 
   - 그리고 `polls/index.html`에서 `{% url 'detail' question.id %}` 부분을 `{% url 'polls: detail' question.id %}`로 수정하여 다른 application을 만들 때 django가 바로 인식할 수 있도록 namespacing을 사용한다.
 
-<br>
+&nbsp;
 
 ---
 

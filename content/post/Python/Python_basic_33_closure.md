@@ -11,7 +11,7 @@ categories: ["Python"]
 
 - Closure가 필요한 이유 그리고, 잘못 사용된 사례에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -78,13 +78,13 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 - 그래서 또 다른 방법이 바로 `closure(클로저)` 다.
 - 이 클로저에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ---
 
 # 2. Closure
 
-<br>
+&nbsp;
 
 ## 2.1 What is closure ??
 
@@ -102,7 +102,7 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 
 - 그래서, 함수실행이 끝나도 그 시점의 변수를 이어서 작업할 수 있다.
 
-<br>
+&nbsp;
 
 ## 2.2 Why does we need closure ??
 
@@ -155,7 +155,7 @@ inner >>> [15, 35, 40] / 3
 
 - 위의 예시처럼 class 실행이 끝나서, 변수가 소멸되야하는데 유지되고 있다. 상태를 기억하고 있기 때문에 계속해서 누적된다. 그래서 중간부터 해도 이어서 할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -207,7 +207,7 @@ inner >>> [15, 35, 40] / 3
 - 하지만, enclosing scope에 변수를 정의했기 때문에, 함수를 실행할 때마다 자유변수에 접근해서 값이 보존된다.
 - 그래서 새로 추가해도 실행이 가능하다.
 
-<br>
+&nbsp;
 
 - 그러면 파이썬에서 이 closure를 어떻게 취급하는지 확인해보자.
 
@@ -231,7 +231,7 @@ inner >>> [15, 35, 40] / 3
 
 - `__code__`: 함수가 컴파일되서 바이트코드 상태의 정보를 출력해주는 역할
 
-<br>
+&nbsp;
 
 ---
 

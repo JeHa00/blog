@@ -14,7 +14,7 @@ categories: ["Python"]
 - 이러한 Data type 들이 있고, 각각의 특징을 이해하여 코드에 녹여내자.
 - 각 data type에 대해서 여기에 언급된 내용이 전부가 아니니 더 공부하자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -22,7 +22,7 @@ categories: ["Python"]
 
 Python의 data type은 **여러 기준**으로 분류될 수 있다.
 
-<br>
+&nbsp;
 
 ### 1.1 무슨 형태의 자료형을 담을 수 있는가???
 
@@ -40,7 +40,7 @@ Python의 data type은 **여러 기준**으로 분류될 수 있다.
 > chars = '+_)(*'
 ```
 
-<br>
+&nbsp;
 
 ### 1.2 element가 수정될 수 있는가?? 없는가??
 
@@ -53,7 +53,7 @@ Python의 data type은 **여러 기준**으로 분류될 수 있다.
 - 수정될 수 있으면 element를 교체, 삭제, 추가가 가능하다.  
   ex) del, append 등등 가능
 
-<br>
+&nbsp;
 
 ### 1.3 순서가 있는가 없는가???
 
@@ -65,7 +65,7 @@ Python의 data type은 **여러 기준**으로 분류될 수 있다.
 
 - 순서가 존재하면 slicing, indexing 이 가능하다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -94,7 +94,7 @@ Python의 data type은 **여러 기준**으로 분류될 수 있다.
 | 실제 인수 영향        | 변경 O               | 변경 X           |
 | id 값                 | 변경 X               | 변경 O           |
 
-<br>
+&nbsp;
 
 ## 2.1 Immutable
 
@@ -129,7 +129,7 @@ TypeError: 'str' object does not support item assignment
 
   - `누적 변수`: 변수값에 특정값을 더한 결과값을 다시 대입하여 업데이트한 변수
 
-<br>
+&nbsp;
 
 ## 2.2 Mutable
 
@@ -149,13 +149,13 @@ TypeError: 'str' object does not support item assignment
 
 - list는 `mutable`로 성분값을 수정할 수 있어서, `id` 값이 수정 전과 동일하다.
 
-<br>
+&nbsp;
 
 ---
 
 # 3. List comprehension
 
-<br>
+&nbsp;
 
 ## 3.1 List comprehension의 의미와 구조
 
@@ -238,7 +238,7 @@ Classes(rank='D', number='1'), Classes(rank='D', number='2'), Classes(rank='D', 
 - 한 줄로 표현할 수 있지만, 가독성이 떨어진다.
 - 코드 몇 줄을 줄이기 위해서 가독성이 많이 떨어진다면 재고할 방법이다.
 
-<br>
+&nbsp;
 
 ## 3.2 list comprehension의 주의사항
 
@@ -296,7 +296,7 @@ Classes(rank='D', number='1'), Classes(rank='D', number='2'), Classes(rank='D', 
 - 그래서 copy 형식을 사용할 때는 조심히 다뤄야 한다.
 - `id`값을 확인해보고, 꼼꼼히 개발하자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -353,13 +353,13 @@ TypeError: divmod expected 2 arguments, got 1
 0 1 []
 ```
 
-<br>
+&nbsp;
 
 ---
 
 # 5. Advanced dictionary
 
-<br>
+&nbsp;
 
 ## 5.1 hash table이란??
 
@@ -396,7 +396,7 @@ TypeError: unhashable type: 'list'
 - 그래서 list type의 hash number를 확인할려고 했으나, TypeError가 뜬 것이다.
 - list는 `mutable`이기 때문이다.
 
-<br>
+&nbsp;
 
 ## 5.2 key가 중복되는 dictionary 만들기
 
@@ -457,7 +457,7 @@ k2 val5
 - `setdefault`를 사용하여 훨씬 짧은 코드로 key가 중복된 tuple을 dictionary로 구현했다.
 - `setdefault`를 사용하여 `[]` 가 아닌 `()`로 했다면 tuple이므로, 만들 수 없다.
 
-<br>
+&nbsp;
 
 - 만약, dictionary를 만들 때 키가 중복되면 나중 값으로 overwritten된다.
 
@@ -467,7 +467,7 @@ k2 val5
 {'k1': 'val2', 'k2': 'val5'}
 ```
 
-<br>
+&nbsp;
 
 ## 5.3 Immutable Dictionary 생성하기
 
@@ -512,7 +512,7 @@ False True
 
 # 6. Advanced set
 
-<br>
+&nbsp;
 
 ## 6.1 Immutable set
 
@@ -565,7 +565,7 @@ frozenset({'Kiwi', 'Orange', 'Apple'}) <class 'frozenset'>
 
 - `frozenset`을 통해서 immutable set인 frozenset으로 type이 바뀐 걸 알 수 있다.
 
-<br>
+&nbsp;
 
 ## 6.2 선언 최적화
 
@@ -597,7 +597,7 @@ None
 
 - set([10]) 은 5단계, {10}은 3단계로 s1처럼 선언하는 방식이 더 빠르다는 걸 알 수 있다.
 
-<br>
+&nbsp;
 
 ## 6.3 Set comprehension
 
@@ -635,7 +635,7 @@ None
 - set 또한 list처럼 comprehension의 방법으로 선언할 수 있다는 걸 확인했다.
 - 간결한 선언법이 장점이지만, 과하면 가독성이 좋지 않다는 걸 기억하자.
 
-<br>
+&nbsp;
 
 ---
 

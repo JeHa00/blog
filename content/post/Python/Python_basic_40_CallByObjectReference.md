@@ -15,7 +15,7 @@ categories: ["Python"]
   - [[TIL] Python basic 41: Shallow copy & Deep copy](https://jeha00.github.io/post/python/python_basic_41_shallowdeepcopy/)
   - [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python/python_basic_29_datamodel/)
 
-<br>
+&nbsp;
 
 ---
 
@@ -40,7 +40,7 @@ categories: ["Python"]
 
   ![image](https://python-course.eu/images/python-tutorial/shoebox_variables_1_300w.webp)
 
-<br>
+&nbsp;
 
 - 그리고 나서 변수들에 값을 할당한다.
 - 할당하는 건 `=`을 사용한다.
@@ -55,7 +55,7 @@ categories: ["Python"]
 
   ![image](https://python-course.eu/images/python-tutorial/shoebox_variables_3_300w.webp)
 
-<br>
+&nbsp;
 
 - 다음으로 Python에서의 variable을 알아보자.
   - 파이썬에서는 선언하는 게 필요 없고, 바로 변수의 이름과 이 변수에 할당할 data type과 value만 정하면 된다.
@@ -80,7 +80,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 # 2. Call by object reference
 
@@ -93,7 +93,7 @@ categories: ["Python"]
 - 각 방식에 대해 code로 구현해보자.
 - data type에 따라 id 값이 변하는 것과 변하지 않는 것에 대한 설명은 [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)를 참조한다.
 
-<br>
+&nbsp;
 
 ## 2.1 Call by value
 
@@ -125,7 +125,7 @@ msg =  Python 2072884335536
 - foo에서 처음 print가 실행되어 확인한 id 값은 동일하다.
 - 하지만, value가 수정됨에 따라 참조 객체가 달라진다.
 
-<br>
+&nbsp;
 
 ## 2.2 Call by reference
 
@@ -156,7 +156,7 @@ msg =  [1, 2, 3, 4, 5, 10] 2211845893440
 - `foo` function에서 수정했지만, 그것이 global scope에서 출력 시에도 영향을 준다.
 - 즉, 참조값이 수정된 걸 의미한다.
 
-<br>
+&nbsp;
 
 ---
 

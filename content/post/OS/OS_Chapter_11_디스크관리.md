@@ -12,7 +12,7 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용이다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -23,7 +23,7 @@ categories: ["OS"]
 - 디스크의 효율적인 관리를 위해 `디스크 스케쥴링 기법` 과 `저전력 디스크 관리 기법` 에 대해 알아보자.
 - 또한, 엘리베이터 scheduling 문제를 통해 쉽게 이해해보자.
 
-<br>
+&nbsp;
 
 ## 1.1 논리 블록(logical block) 단위
 
@@ -41,7 +41,7 @@ categories: ["OS"]
 
   - 해당 블록의 index 번호를 disk controller에 전달 → disk controller가 대응되는 sector를 찾아 요청 데이터에 대한 입출력 작업을 수행
 
-<br>
+&nbsp;
 
 ## 1.2 디스크의 물리적 구조
 
@@ -64,7 +64,7 @@ categories: ["OS"]
   - disk를 하나 이상의 실린더 그룹으로 나누는 과정
   - OS는 이것을 _독립적인 disk_ 로 취급(logical disk)
 
-<br>
+&nbsp;
 
 ## 1.3 Booting
 
@@ -86,13 +86,13 @@ categories: ["OS"]
 - **OS를 disk에서 load하여 실행**
   - boot block이 file system에서 OS의 kernel 위치를 찾아서 memory에 올려서 실행하라고 지시한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 2. 디스크 스케쥴링
 
-<br>
+&nbsp;
 
 ## 2.1 접근시간(Access time)의 구성
 
@@ -114,7 +114,7 @@ categories: ["OS"]
   - 회전지연시간, 전송시간은 OS가 통제하기 힘들다.
   - 그래서, `탐색시간` 을 줄이기 위해 헤드의 움직임을 최소화하는 스케쥴링 작업을 실행한다.
 
-<br>
+&nbsp;
 
 ## 2.2 Disk scheduling 작업
 
@@ -123,7 +123,7 @@ categories: ["OS"]
 - 목표: disk head의 이동거리를 줄이는 것
   - seek time을 최소화하는 것과 유사
 
-<br>
+&nbsp;
 
 ### 2.2.1 FCFS(First Come First Served) scheduling
 
@@ -134,7 +134,7 @@ categories: ["OS"]
 - 은행창구처럼 고정된 장소에서 이뤄지는 게 아니라, 데스크 헤드가 움직이면서 서비스를 하기 때문에, 비효율적
 - 그룹화를 하지 않고 진행하기 때문.
 
-<br>
+&nbsp;
 
 ### 2.2.2 SSTF(Shortest Seek Time First) scheduling
 
@@ -148,7 +148,7 @@ categories: ["OS"]
 
 - 이동거리 측면에서 가장 우수한 알고리즘은 아니다.
 
-<br>
+&nbsp;
 
 ### 2.2.3 SCAN algorithum
 
@@ -171,7 +171,7 @@ categories: ["OS"]
   - 이동 거리 측면에서 효율적이나, 모든 실린더 위치의 기다리는 시간이 공평한 것 X
   - 제일 안쪽과 바깥쪽 위치보다 가운데 위치가 기다리는 평균시간이 더 짧기 때문
 
-<br>
+&nbsp;
 
 ### 2.2.4 C-SCAN algorithum
 
@@ -184,7 +184,7 @@ categories: ["OS"]
 - SCAN algorithum을 개선한 것으로, circular-SCAN의 줄임말이다.
 - 장점: 이동거리는 조금 길어지지만, 균일한 탐색시간을 제공
 
-<br>
+&nbsp;
 
 ### 2.2.5 LOOK and C-LOOK algorithum
 
@@ -196,7 +196,7 @@ categories: ["OS"]
 - 진행 방향에 요청이 있는지 살핀 후, 이동하기 때문에 `LOOK` 이라 한다.
 - 지금까지 살펴본 디스크 스케쥴링 기법들 중 LOOK 과 C-LOOK 등의 알고리즘이 많은 시스템에서 FCFS 와 SSTF에 비해 더 효율적인 것으로 알려져있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -217,7 +217,7 @@ categories: ["OS"]
     - 일반 파일보다 훨씬 짧은 시간만 존재하고 자주 참조된다.
     - 따라서, block의 크기 및 저장 방식이 일반 파일 시스템과 다름
 
-<br>
+&nbsp;
 
 ---
 
@@ -258,13 +258,13 @@ categories: ["OS"]
     - 목표: 다수의 승객이 오래 기다리지 않고, 빠른 서비스를 받는 시스템의 확장성
     - 사용자가 적을 경우, 한 대의 엘리베이터로 운행하는 게 효율적
 
-<br>
+&nbsp;
 
 ---
 
 # 5. 디스크의 저전력 관리
 
-<br>
+&nbsp;
 
 ## 5.1 비활성화 기법
 
@@ -296,7 +296,7 @@ categories: ["OS"]
   - 예측기반(prediction based): 과거 요청을 관찰하여, 다음 공회전 구간의 길이를 예측 후, 비활성화 시점 결정
   - 확률기반(stochastic based): 확률분포를 사용
 
-<br>
+&nbsp;
 
 ## 5.2 회전속도 조절 기법
 
@@ -304,26 +304,26 @@ categories: ["OS"]
 - OS는 시스템 자원과 부하를 포괄적으로 볼 수 있기 때문에, 하드웨어 혼자보다 더 많은 전력 절감 효과 얻음
 - 멀티미디어 환경에서는 미래의 참조 예측이 비교적 정확해서 전력 소모를 줄일 수 있다.
 
-<br>
+&nbsp;
 
 ## 5.3 디스크의 데이터 배치 기법
 
 - 데이터의 복제본을 많이 만들어, 헤드 위치에서 가까운 복제본에 접근하여 빠른 응답시간과 전력 소모량 절감을 얻는 FS2 file 시스템(free space file system)
 
-<br>
+&nbsp;
 
 ## 5.4 버퍼캐싱 및 사전인출 기법
 
 - 전제:미래에 요청할 데이터를 미리 알거나, 어느 정도 예측할 수 있다면
   - 활성 상태일 때 헤드 위치로부터 가까운 데이터를 사전 인출하여, 디스크의 비활성화 가능성을 높여 전력 소모를 줄임
 
-<br>
+&nbsp;
 
 ## 5.5 쓰기전략을 통한 저전력 디스크 기법
 
 - 디스크가 비활성화 상태일 때는 기다리다가, 활성 상태일 때 쓰는 방식으로 전력 소모를 줄이는 방안
 
-<br>
+&nbsp;
 
 ---
 

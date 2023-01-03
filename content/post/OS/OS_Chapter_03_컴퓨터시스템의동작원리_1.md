@@ -12,13 +12,13 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
 # 1. 컴퓨터 시스템의 구조
 
-<br>
+&nbsp;
 
 ## 1.1 컴퓨터의 구조: 내부장치와 외부장치
 
@@ -44,13 +44,13 @@ categories: ["OS"]
   - 메모리를 제어하는 컨트롤러는 메모리 컨트롤러
   - 디스크를 제어하는 컨트롤러는 디스크 컨트롤러
 
-<br>
+&nbsp;
 
 ---
 
 # 2. CPU 연산과 I/O 연산
 
-<br>
+&nbsp;
 
 ## 2.1 연산 = CPU가 무언가를 한다
 
@@ -75,13 +75,13 @@ categories: ["OS"]
 
 4. CPU는 **_명령 하나를 수행할 때마다_** 인터룹트가 발생했는지 확인하는데, 인터럽트가 발생하면 자신이 하던 일을 멈추고, **_인터럽트 처리를 먼저 한 후_** 멈춘 명령을 다시 수행한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 3. 인터럽트의 일반적 기능
 
-<br>
+&nbsp;
 
 ## 3.1 Interrupt(인터럽트)란??
 
@@ -130,7 +130,7 @@ categories: ["OS"]
 
 ## 3.5 Trap: exception 과 system call
 
-<br>
+&nbsp;
 
 ### 3.5.1 예외 상황(exception)
 
@@ -139,7 +139,7 @@ categories: ["OS"]
 - 비정상적인 작업의 예: 사용자 프로그램이 0으로 나누는 연산을 실행
 - 권한이 없는 작업의 예: 사용자 프로그램이 자신의 메모리 영역 바깥에 접근하려는 시도
 
-<br>
+&nbsp;
 
 ### 3.5.2 시스템 콜(system call)
 
@@ -149,7 +149,7 @@ categories: ["OS"]
 - 하지만, 커널 내부에 있는 코드를 사용자 프로그램이 실행하고자 할 때는 사용자 프로그램이 직접 접근할 수 있는 게 아니라, system call을 통해서 **_대행 요청_** 을 한다.
 - system call 요청을 interrupt line 을 통해 CPU 제어권을 운영체제로 넘겨 커널 내부 코드를 실행한다.
 
-<br>
+&nbsp;
 
 ---
 

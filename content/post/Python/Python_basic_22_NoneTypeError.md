@@ -14,7 +14,7 @@ categories: ["Python"]
 - 만드는 과정에서 모르는 에러가 발생했다.
 - 바로 이 에러(: `TypeError: 'NoneType' object is not subscriptable`) 다.
 
-<br>
+&nbsp;
 
 - 에러가 발생한 코드는 다음과 같다.
 
@@ -36,7 +36,7 @@ categories: ["Python"]
 > print(q[0])
 ```
 
-<br>
+&nbsp;
 
 ## 2. Error 해결과정
 
@@ -46,7 +46,7 @@ categories: ["Python"]
 - 급하게 생각하여 차근 차근 생각하지 못 했다. A 과정을 거쳐 B 과정을 수행한다고 했을 때, 각 과정을 위해서 무슨 함수를 사용할지 정한다.
 - 각 함수의 기능을 영문으로 찾아보자.
 
-<br>
+&nbsp;
 
 그래서 결과부터 말하자면 위 코드는 다음과 같이 수정했다.
 
@@ -59,7 +59,7 @@ categories: ["Python"]
 
 그러면 하나 하나 파악해보자.
 
-<br>
+&nbsp;
 
 제일 먼저 `.shuffle()`의 의미를 확인해보았다.
 
@@ -68,7 +68,7 @@ categories: ["Python"]
 random.shuffle(x) 은 list x의 성분들의 순서를 섞지만, 아무것도 반환하지 않는 함수라는 의미다. q에는 아무것도 할당되지 않았다는 의미다.  
 그렇기 때문에 `'Nonetype'`으로 object가 떴다. `subscriptable`은 구글 영문 사전, 네이버 영영 사전을 검색해도 의미가 나오지 않아, stackoverflow를 검색해보았다. [What does it mean if a Python object is "subscriptable" or not?](https://stackoverflow.com/questions/216972/what-does-it-mean-if-a-python-object-is-subscriptable-or-not) 이 글을 보면 다음과 같은 의미를 가진다.
 
-<br>
+&nbsp;
 
 ```
  The [...] indexing syntax is called a subscript,
@@ -81,12 +81,12 @@ random.shuffle(x) 은 list x의 성분들의 순서를 섞지만, 아무것도 �
 
 ```
 
-<br>
+&nbsp;
 
 > [...] 는 인덱싱 문법에 사용되는 기호로, `subscript`라 한다. 왜냐하면 수학 표기법에서 a[1]은 a₁ 와 같기 때문이다. 즉, `subscriptable`는 `able to be subscripted`: `인덱싱에 사용할 수 있다`를 의미한다.
 > 파이썬 용어의 관점에서 `[] indexing`은 `__getitem__`을 실행한다는 의미다. (ex) a[1] == `a.__getitem__(1)`
 
-<br>
+&nbsp;
 
 **결론**
 
@@ -94,7 +94,7 @@ random.shuffle(x) 은 list x의 성분들의 순서를 섞지만, 아무것도 �
 
 **- 구글 번역도 좋지만 보다 직접 번역하며 분석하는 게 훨씬 공부에 도움이 된다.**
 
-<br>
+&nbsp;
 
 ---
 

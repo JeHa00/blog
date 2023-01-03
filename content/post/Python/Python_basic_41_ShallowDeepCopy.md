@@ -14,7 +14,7 @@ categories: ["Python"]
 - 또한, 이번에 학습하는 개념은 Pointer의 개념과 연결되는 것으로 아래 링크들과 연결된다.
   - [[TIL] Python basic 40: Call by object reference](https://jeha00.github.io/post/python/python_basic_40_callbyobjectreference/)
 
-<br>
+&nbsp;
 
 - shallow copy와 deep copy는 모든 분야에 통틀어 알고 있어야 하는 지식이다.
 - Python은 모든 걸 객체취급하는데, 이 객체의 복사를 수행하는 명령어가 copy 명령어다.
@@ -22,7 +22,7 @@ categories: ["Python"]
   - 각 copy에 대해 정확히 이해한 후, 프로그램 개발에 사용해야 문제가 발생하지 않고, 디버깅의 방해 요소가 되지 않는다.
   - 또한, 구현하려는 목적에 맞게 이 3가지 copy 방식을 구분해서 사용해야 한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -65,7 +65,7 @@ True
 - 일반적인 copy 방식으로 `call by reference` 방식이다.
 - 동일한 reference를 참조하기 때문에, `b_list`의 성분만을 수정했지만 `a_list` 까지 수정되었다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -127,7 +127,7 @@ True
 
 - 중첩된 data 까지는 독립된 reference를 가지지 않는 걸 확인했다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -157,7 +157,7 @@ True
   nested data >  1329303494272
   ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -181,7 +181,7 @@ True
 
   ![image](https://user-images.githubusercontent.com/78094972/162728047-aec3b86b-989d-4107-9bde-f4193b3cc004.png)
 
-<br>
+&nbsp;
 
 ---
 

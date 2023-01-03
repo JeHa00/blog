@@ -75,7 +75,7 @@ Ex1 >  {'__module__': '__main__', '__init__': <function ParentEx1.__init__ at 0x
 
 - 그 결과, 차이가 있다는 걸 알 수 있다.
 
-<br>
+&nbsp;
 
 ## Ex 1.2
 
@@ -116,7 +116,7 @@ Ex1 >  {'__module__': '__main__', '__init__': <function ParentEx1.__init__ at 0x
 {'__module__': '__main__', 'get_value': <function ChildEx2.get_value at 0x000002919386FD30>, '__doc__': None}
 ```
 
-<br>
+&nbsp;
 
 ## Ex 1.3
 
@@ -165,7 +165,7 @@ test1
 
 - `super(TimestampLogger, self)`는 `super(파생클래스, self)`로 기반 클래스의 method 호출에 사용한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -220,7 +220,7 @@ TypeError: add() missing 1 required positional argument: 'z'
 11
 ```
 
-<br>
+&nbsp;
 
 - 다음으로 unpacking에 **_자료형에 따른 분기 처리_** 를 추가해보자.
   - single method로 여러 기능들을 구현할 수 있다.
@@ -252,7 +252,7 @@ Hi Guys
 - **파이썬은 클래스 내에서 method overloading을 지원하지 않는다.**
   - 그래서 multipledispatch를 사용하여 method overloading을 구현한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -260,7 +260,7 @@ Hi Guys
 
 > **외부 module인 multipledispatch를 사용하여 overriding을 구현해보기**
 
-<br>
+&nbsp;
 
 ## 3.1 To install Multipledispatch
 
@@ -280,7 +280,7 @@ Hi Guys
 > pip search multipledispatch
 ```
 
-<br>
+&nbsp;
 
 ## 3.2 Multipledispatch로 구현하기
 
@@ -324,7 +324,7 @@ Hi Guys
 - 동일한 method 명이지만, 변수의 타입과 갯수에 맞게 적절한 method가 적용된다는 걸 확인했다.
 - 동일한 name을 사용하여 훨씬 깔끔하고, name을 아낄 수 있다.
 
-<br>
+&nbsp;
 
 ---
 

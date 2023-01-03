@@ -13,11 +13,11 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-<br>
+&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
-[](Network_http_6.md)<br>
+[](Network_http_6.md)&nbsp;
 
 - 이번 chapter에서는 HTTP header 여러 종류에서 주로 사용하는 헤더에 대해 알아보겠다.
 
@@ -34,7 +34,7 @@ categories: ["Network"]
 - Response 헤더: 응답 정보, 예) Server: Apache
 - **_Entity 헤더_**: 엔티티 바디 정보, 예) **Content-Type**: text/html, **Content-Length**: 3423
 
-<br>
+&nbsp;
 
 ### RFC2616(과거) - HTTP body
 
@@ -45,7 +45,7 @@ categories: ["Network"]
 - **entity header**는 **entity 본문**의 데이터를 해석할 수 있는 정보를 제공한다.
   - 데이터 유형(html, json), 데이터 길이, 압축 정보 등등
 
-<br>
+&nbsp;
 
 ### RFC2616 폐지 그리고, RFC7230~7235 등장
 
@@ -55,7 +55,7 @@ categories: ["Network"]
 - `엔티티(Entity)` -> `Representation`
   - `Representation` = `Representation Metadata` + `Representation Data`
 
-<br>
+&nbsp;
 
 ### RFC7230 - HTTP Body
 
@@ -68,7 +68,7 @@ categories: ["Network"]
   - 데이터 유형(html, json), 데이터 길이, 압축 정보 등등
 - 참고: Representation header는 representation metadata 와 payload message를 구분해야 하지만, 여기서는 생략한다.
 
-<br>
+&nbsp;
 
 - 그러면 이 `representation`이 뭔지 알아보자.
 
@@ -78,7 +78,7 @@ categories: ["Network"]
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc0fbdc83-b061-40a5-86bf-4df7184db205%2FUntitled.png&blockId=8ca73a3f-e079-4d94-9460-2c06876fe5b1)
 
-<br>
+&nbsp;
 
 ## 1.0 Representation header 란??
 
@@ -94,7 +94,7 @@ categories: ["Network"]
   - Content-Language: 표현 데이터의 자연 언어
   - Content-Length: 표현 데이터의 길이
 
-<br>
+&nbsp;
 
 ## 1.1 Content-Type
 
@@ -108,7 +108,7 @@ categories: ["Network"]
   - application/json
   - image/png
 
-<br>
+&nbsp;
 
 ## 1.2 Content-Encoding
 
@@ -124,7 +124,7 @@ categories: ["Network"]
   - deflate
   - identity
 
-<br>
+&nbsp;
 
 ## 1.3 Content-Language
 
@@ -138,7 +138,7 @@ categories: ["Network"]
   - en
   - en-US
 
-<br>
+&nbsp;
 
 ## 1.4 Content-Length
 
@@ -149,7 +149,7 @@ categories: ["Network"]
 - 바이트 단위
 - Transfer-Encoding(전송 코딩)을 사용하면 Content-Length를 사용하면 안된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -167,7 +167,7 @@ categories: ["Network"]
   - Accept-Encoding: 클라이언트가 선호하는 압축 인코딩
   - Accept-Language: 클라이언트가 선호하는 자연 언어
 
-<br>
+&nbsp;
 
 ## 2.1 Accept-Language 적용 전과 후
 
@@ -183,7 +183,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/158811068-5b5cf032-2459-481e-aff0-70c0164dcd3d.PNG)
 
-<br>
+&nbsp;
 
 ## 2.2 협상과 우선순위 (Quality Values(q))
 
@@ -207,7 +207,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/158811071-64ccf151-192e-48c3-a048-94ead11a9dcb.PNG)
 
-<br>
+&nbsp;
 
 ### 2.2.2 협상과 우선순위 두 번째
 
@@ -222,7 +222,7 @@ categories: ["Network"]
   - text/\*
   - \*/\*
 
-<br>
+&nbsp;
 
 ### 2.2.3 협상과 우선순위 세 번째
 
@@ -233,7 +233,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/158827146-187af392-d1f0-4c80-b996-7c76aea0e68f.PNG)
 
-<br>
+&nbsp;
 
 ---
 
@@ -252,7 +252,7 @@ categories: ["Network"]
 - content의 길이를 알 수 있을 때 사용한다.
 - 한 번에 요청하고,한 번에 받는다.
 
-<br>
+&nbsp;
 
 ### 3.2 압축 전송(Content-Encoding)
 
@@ -261,7 +261,7 @@ categories: ["Network"]
 - 서버에서 메세지 바디를 압축해서 전달하는 방식
 - Content-Encoding에 어떻게 압축했는지 알려줘야, 웹 브라우저에서 이에 맞게 풀어서 접근할 수 있다.
 
-<br>
+&nbsp;
 
 ### 3.3 분할 전송(Transfer-Encoding)
 
@@ -271,19 +271,19 @@ categories: ["Network"]
 - 이 때는 content-length를 넣으면 안된다. 전체 길이를 알 수 없기 때문이다.
 - 5 byte 씩 나눠서 보내고, 마지막에는 보낼 게 없어서 0이다.
 
-<br>
+&nbsp;
 
 ### 3.4 범위 전송(Range, Content-Range)
 
 ![image](https://user-images.githubusercontent.com/78094972/158811083-61b33632-0c48-4caa-b02f-0fab727c2c7f.PNG)
 
-<br>
+&nbsp;
 
 ---
 
 ## 4. 일반 정보
 
-<br>
+&nbsp;
 
 ### 4.1 From
 
@@ -293,7 +293,7 @@ categories: ["Network"]
 - 검색 엔진 같은 곳에서, 주로 사용한다.
 - 요청에서 사용한다.
 
-<br>
+&nbsp;
 
 ### 4.2 Referer
 
@@ -306,7 +306,7 @@ categories: ["Network"]
 - 요청에서 사용한다.
 - 참고: referer는 단어 referrer의 오타다. 이미 너무 많은 곳에서 사용해서 그냥 사용한다.
 
-<br>
+&nbsp;
 
 ### 4.3 User-Agent
 
@@ -319,7 +319,7 @@ categories: ["Network"]
 - 어떤 종류의 브라우저에서 장애가 발생하는지 파악 가능
 - 요청에서 사용
 
-<br>
+&nbsp;
 
 ### 4.4 Server
 
@@ -330,7 +330,7 @@ categories: ["Network"]
 - server: nginx
 - 응답에서 사용한다.
 
-<br>
+&nbsp;
 
 ### 4.5 Data
 
@@ -339,7 +339,7 @@ categories: ["Network"]
 - Date: Tue, 15 Nov 1994 08:12:31 GMT
 - 응답에서 사용한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -350,7 +350,7 @@ categories: ["Network"]
 - Allow: 허용 가능한 HTTP 메서드
 - Retry-After: 유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간
 
-<br>
+&nbsp;
 
 ### 5.1 Host
 
@@ -368,7 +368,7 @@ categories: ["Network"]
 - 이럴 때 HOST가 없이 요청을 하면 어느 도메인으로 들어가야하는지 알 수 없다.
 - 이럴 때, 헤더 정보에 host를 추가하여 어느 도메인으로 들어가야 할지 알 수 있다.
 
-<br>
+&nbsp;
 
 ### 5.2 Location
 
@@ -380,7 +380,7 @@ categories: ["Network"]
 - `201 (Created)`: Location 값은 요청에 의해 생성된 리소스 URI
 - `3xx (Redirection)`: Location 값은 요청에 의해 생성된 리소스 URI
 
-<br>
+&nbsp;
 
 ### 5.3 Allow
 
@@ -390,7 +390,7 @@ categories: ["Network"]
 - 405 (Method Not Allowed) 에서 응답에 포함해야 한다.
 - Allow: GET, HEAD, PUT
 
-<br>
+&nbsp;
 
 ### 5.4 Retry-After
 
@@ -401,7 +401,7 @@ categories: ["Network"]
 - Retry-After: Fri, 31 Dec 1999 23:59:59 GMT (날짜 표기)
 - Retry-After: 120 (초단위 표기)
 
-<br>
+&nbsp;
 
 ---
 
@@ -414,7 +414,7 @@ categories: ["Network"]
 - Authorization: Basic xxxxxxxxxxxxxxxx
 - 인증 관련해서 여러 매커니즘이 있다. 각 매커니즘마다 넣는 헤더가 다르다. 추가적으로 알아보자.
 
-<br>
+&nbsp;
 
 ### 6.2 WWW-Authenticate
 
@@ -425,13 +425,13 @@ categories: ["Network"]
   title="Login to \"apps\"", Basic realm="simple"
   - 인증할려면 : 이후의 내용들을 참고해서 인증 방법을 만들라는 의미다.
 
-<br>
+&nbsp;
 
 ---
 
 ## 7. 쿠키(중요)
 
-<br>
+&nbsp;
 
 ### 7.1 쿠키란??
 
@@ -461,7 +461,7 @@ categories: ["Network"]
 
 - 하지만, 로그인후 다시 welcome page에 접근하면 다시 손님으로 인식한다.
 
-<br>
+&nbsp;
 
 - HTTP는 `stateless 프로토콜`이기 때문에, 클라이언트와 서버가 요청과 응답을 주고 받으면 연결이 끊어진다.
 - 그래서 클라이언트가 다시 요청하면 서버는 이전 요청을 기억하지 못하기 때문에, 클라이언트와 서버는 서로 상태를 유지하지 않는다.
@@ -472,7 +472,7 @@ categories: ["Network"]
   - 현실적으로 매우 힘들다.
   - 그래서 이에 대한 대책으로 만든게 `쿠키(cookie)`다.
 
-<br>
+&nbsp;
 
 - 쿠키를 사용하면 어떻게 되는지 알아보자.
 
@@ -488,7 +488,7 @@ categories: ["Network"]
 
 - 모든 요청에 쿠키 정보를 자동으로 포함한다.
 
-<br>
+&nbsp;
 
 ### 7.2 쿠키의 사용처와 문제점
 
@@ -511,7 +511,7 @@ categories: ["Network"]
   - 보안에 민감한 데이터는 저장하면 안된다.
     - ex) 주민번호, 신용카드 번호 등등
 
-<br>
+&nbsp;
 
 ### 7.3 쿠키 - 생명주기 header
 
@@ -529,7 +529,7 @@ categories: ["Network"]
 - 세션 쿠키: 만료 날짜를 생략하면 브라우저 종료 시까지만 유지
 - 영속 쿠키: 만료 날짜를 입력하면 해당 날짜까지 유지
 
-<br>
+&nbsp;
 
 ### 7.4 쿠키 - domain header
 
@@ -552,7 +552,7 @@ categories: ["Network"]
       - dev.example.org는 쿠키 미접근
         - 하위 도메인은 접근 불가능하다.
 
-<br>
+&nbsp;
 
 ### 7.5 쿠키 - 경로 header
 
@@ -567,13 +567,13 @@ categories: ["Network"]
     - /home/level1/level2 -> 가능
     - /hello -> 불가능
 
-<br>
+&nbsp;
 
 ### 7.6 쿠키 - 보안 header
 
 > `Secure`, `HttpOnly`, `SameSite`
 
-<br>
+&nbsp;
 
 - `Secure`
 
@@ -590,7 +590,7 @@ categories: ["Network"]
   - XSRF 공격방지
   - 요청 도메인과 쿠키에 설정된 도메인이 같은 경우만 쿠키 전송
 
-<br>
+&nbsp;
 
 ---
 

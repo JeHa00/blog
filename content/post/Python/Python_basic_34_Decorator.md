@@ -21,7 +21,7 @@ categories: ["Python"]
 
   - from [파이썬 데코레이터를 작성하는 법을 배워야 하는 5가지 이유](https://www.hanbit.co.kr/media/channel/view.html?cms_code=CMS5689111564)
 
-<br>
+&nbsp;
 
 - 그렇다면 왜 데코레이터를 배워야하는가???
 
@@ -46,7 +46,7 @@ categories: ["Python"]
 
 - from [인프런 파이썬 중급](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B8%89-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)
 
-<br>
+&nbsp;
 
 ---
 
@@ -71,7 +71,7 @@ categories: ["Python"]
 >   return perf_clocked
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -104,7 +104,7 @@ categories: ["Python"]
 >   return perf_clocked
 ```
 
-<br>
+&nbsp;
 
 ## 3.2 Decorator 없이 사용하기
 
@@ -158,7 +158,7 @@ categories: ["Python"]
 - 이처럼 지난 first-class에서 알아본 partial처럼 하나씩 고정인수를 만들어간다.
 - 이 방식이 가능한 이유는 closure의 개념을 이용했기 때문이다.
 
-<br>
+&nbsp;
 
 ## 3.3 Decorator로 사용하기
 
@@ -195,11 +195,11 @@ categories: ["Python"]
 
 - 이 다음으로 time_func(1.5) 와 time_func(100, 150, 250, 300, 350)처럼 `*args` 가변인자를 사용하여 할당한다.
 
-<br>
+&nbsp;
 
 - 이처럼 decorator는 closure, firt-class, 가변인자, packing & unpacking 개념을 사용한다.
 
-<br>
+&nbsp;
 
 ---
 

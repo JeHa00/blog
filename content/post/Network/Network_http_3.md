@@ -13,11 +13,11 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-<br>
+&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
-<br>
+&nbsp;
 
 # 1. 모든 것이 HTTP
 
@@ -32,7 +32,7 @@ categories: ["Network"]
 - 거의 모든 형태의 데이터를 저장하여 전송 가능하다.
 - 서버 간에 데이터를 주고 받을 때도 대부분 HTTP를 사용한다.
 
-<br>
+&nbsp;
 
 ## 1.2 HTTP 역사 (HTTP/1.1을 기준으로 학습)
 
@@ -45,7 +45,7 @@ categories: ["Network"]
 - HTTP/2 2015년: 성능 개선
 - HTTP/3 진행중: TCP 대신에 UDP 사용, 성능 개선
 
-<br>
+&nbsp;
 
 ## 1.3 기반 프로토콜
 
@@ -58,7 +58,7 @@ categories: ["Network"]
 > [HTTP/3가 UDP 기반인 이유]  
 > 기본 TCP는 3 way handshake로 신뢰성이나 연결성이 보장되지만, 속도가 떨어진다. 그래서 UDP를 애플리케이션 레벨에서 재설계되어 나온게 `HTTP/3`다.
 
-<br>
+&nbsp;
 
 - 사이트에서 기반 프로토콜을 확인하려면 검사(F12)에 들어가 `Network tab`을 클릭 한다.
 - 하단에 Name tab을 오른쪽 마우스 클릭하여 Protocol을 체크한다.
@@ -69,7 +69,7 @@ categories: ["Network"]
 
 ![image](https://user-images.githubusercontent.com/78094972/157368348-06f8e79f-3f69-40bc-a24c-2cac341bd340.PNG)
 
-<br>
+&nbsp;
 
 ## 1.4 HTTP 특징
 
@@ -81,13 +81,13 @@ categories: ["Network"]
   - HTTP 메시지도 매우 단순하다.
   - 크게 성공하는 표준 기술의 하나의 예로, 단순하지만 확장 가능한 기술이다.
 
-<br>
+&nbsp;
 
 각 특징들에 대해 알아보자.
 
 ---
 
-<br>
+&nbsp;
 
 # 2. 클라이언트 서버 구조
 
@@ -95,7 +95,7 @@ categories: ["Network"]
 - 클라이언트는 HTTP 메세지를 만들어서 서버에 요청(request)을 보낸 후, 서버로부터 응답(response)이 올 때까지 기다린다.
 - 서버는 클라이언트로부터 온 요청(request)에 대한 결과를 만들어서 응답(response)한다.
 
-<br>
+&nbsp;
 
 > [클라이언트 서버 구조가 중요한 이유]  
 > 독립적 구조 -> 각자의 역할에 집중  
@@ -103,7 +103,7 @@ categories: ["Network"]
 
 ---
 
-<br>
+&nbsp;
 
 # 3. Stateful, Stateless
 
@@ -111,19 +111,19 @@ categories: ["Network"]
 
 - **`Stateful`** 이란??
 
-<br>
+&nbsp;
 
 **한 서버가 클라이언트의 이전 상태를 보존(기억)하기 때문에**, 클라이언트의 요청에 응답하는 서버가 **_항상 같은 서버로 유지_** 되어야 하는 상태를 말한다.
 
-<br>
+&nbsp;
 
 - **`Stateful(상태 유지)`** 의 문제점은 무엇일까??
 
-<br>
+&nbsp;
 
 서버가 멈추거나 하는 여러 이유로 해당 서버를 쓸 수가 없는 상황이 발생했다. 다른 서버를 이용해야 한다. 이런 경우, 새로운 서버에서 이전 서버에 가지고 있던 상태값들을 가지고 있지 않아 에러가 발생된다.
 
-<br>
+&nbsp;
 
 - 예시: 고객을 클라이언트, 점원을 서버라고 생각하자.
 
@@ -155,21 +155,21 @@ categories: ["Network"]
 
   ```
 
-<br>
+&nbsp;
 
 한 서버에서만 클라이언트의 상태를 기억하기 때문에, 서버가 변경되면 기존 서버에 저장된 클라이언트의 상태를 기억하지 못하여 에러가 발생했다. 그래서 **_항상 같은 서버로 유지_** 되어야 한다.
 
-<br>
+&nbsp;
 
 ## 3.2 Stateless
 
 - **`Stateless`** 란??
 
-<br>
+&nbsp;
 
 **서버가 클라이언트의 이전 상태를 보존(기억)하지 않고**, 클라이언트가 요청할 때마다 **_매번 모든 상태 값들을 전달_** 하기 때문에, **_서버 변경이 용이_** 하다.
 
-<br>
+&nbsp;
 
 - 예시: 고객을 클라이언트, 점원을 서버라고 생각하자.
 
@@ -201,7 +201,7 @@ categories: ["Network"]
 
 클라이언트가 모든 상태 값을 서버에 전달하기 때문에, 서버가 중간에 바뀌어도 문제가 되지 않는다. 항상 같은 서버로 유지될 필요없다. 그래서 **서버 변경이 용이**하기 때문에, **`stateless`** 는 **무한한 서버 증설이 가능**하다.
 
-<br>
+&nbsp;
 
 그러면 서버 증설이 무한히 가능하다면 어떤 이점이 있을까???
 
@@ -209,7 +209,7 @@ categories: ["Network"]
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb6939ea2-0d68-4986-bc51-92a9eaf1b0a6%2FUntitled.png&blockId=8367b500-6305-4a9d-972d-babc19570513)
 
-<br>
+&nbsp;
 
 좋은 이점들이 많지만, 모든 것을 `stateless(무상태)` 로 할 수 없다. 실무 한계가 존재한다.
 
@@ -221,7 +221,7 @@ categories: ["Network"]
 
 > 수평 확장(scale out)과 수직 확장(scale up)의 차이: [스케일 아웃과 스케일 업](https://m.blog.naver.com/islove8587/220548900044)
 
-<br>
+&nbsp;
 
 ## 3.3 정리
 
@@ -233,7 +233,7 @@ categories: ["Network"]
   - 그래서 서버는 수평적 확장에 유리한다. (scale out)
   - 하지만 모든 것을 무상태로 할 수 없기 때문에, 무상태로 서버를 최대한 설계하며, 상태 유지로 서버를 최소한 설계한다.
 
-<br>
+&nbsp;
 
 # 4. 비연결성 (connectionless)
 
@@ -245,7 +245,7 @@ categories: ["Network"]
 - 연결된 클라이언트가 놀고 있어도 서버가 유지해야 하는게 단점이다.
 - 왜냐하면 서버의 자원이 연결을 유지하는데 **_계속 소모_** 되기 때문이다.
 
-<br>
+&nbsp;
 
 ## 4.2 연결을 유지하지 않는 모델 (비연결성)
 
@@ -255,7 +255,7 @@ categories: ["Network"]
 - 그리고 다른 클라이언트와 연결 시, 이전 클라이언트와의 연결은 유지하지 않는다.
 - 즉, 서버는 연결 유지를 하지 않아 **_최소한의 자원만 사용_** 할 수 있다.
 
-<br>
+&nbsp;
 
 - HTTP의 비연결성
 
@@ -265,7 +265,7 @@ categories: ["Network"]
     - 예) 웹 브라우저에서 계속 연속해서 검색 버튼을 누르지 않는다.
   - **_즉, 서버 자원을 매우 효율적으로 사용할 수 있다._**
 
-<br>
+&nbsp;
 
 - 비연결성의 한계와 해결 방법
   - 한계
@@ -275,23 +275,23 @@ categories: ["Network"]
     - 지금은 `HTTP 지속 연결(Persistent Connections)`로 문제 해결했다.
     - HTTP/2 와 HTTP/3에서 더 많은 최적화를 한다.
 
-<br>
+&nbsp;
 
 ## 4.3 HTTP 지속 연결: 비연결성의 한계 해결 방법
 
 비연결성의 한계를 해결한 방법인 `HTTP 지속 연결`에 대해 알아보자.
 
-<br>
+&nbsp;
 
 HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응답 -> 종료' 를 반복하여, 시간이 대략적으로 1초 가량 소모되었다고 한다.
 
-<br>
+&nbsp;
 
 아래 이미지를 참조하자.
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F37024fde-ab57-4953-9fd1-62dda7951b1f%2FUntitled.png&blockId=1fca311e-5841-45d2-8770-a9821f766e86)
 
-<br>
+&nbsp;
 
 그러면 HTTP 지속 연결로 어떻게 변했을까??
 
@@ -299,7 +299,7 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 
 클라이언트는 서버와 연결을 한 다음, 필요한 자원들을 모두 다운받을 때까지 요청/응답이 반복된 뒤 종료된다.
 
-<br>
+&nbsp;
 
 또한, HTTP/2,3으로 오면서 더 빨라졌다. 특히, HTTP 3으로 오면서 UDP를 사용하여 연결 속도 자체도 줄어들었다.
 
@@ -308,7 +308,7 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 
 ---
 
-<br>
+&nbsp;
 
 # 5. HTTP 메시지
 
@@ -325,7 +325,7 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
   - request-line = method SP(공백) request-target SP HTTP-version CRLF(엔터)
   - status-line = HTTP-version SP status-code SP reason-phrase CRLF
 
-<br>
+&nbsp;
 
 ### 5.1.1 요청 메시지
 
@@ -362,7 +362,7 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
     - 500: 서버 내부 오류
   - 이유 문구: 사람이 이해할 수 있는 짧은 상태 코드 설명 글
 
-<br>
+&nbsp;
 
 ## 5.2 HTTP header
 
@@ -378,7 +378,7 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
   - 표준 헤더가 너무 많다. (https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
   - 필요한 경우, 임의의 헤더 추가 가능
 
-<br>
+&nbsp;
 
 ## 5.3 HTTP message body
 
@@ -399,7 +399,7 @@ HTTP 초기에는 모든 자료에 대해서 비연결성으로 '연결 -> 응�
 
 ---
 
-<br>
+&nbsp;
 
 # Reference
 

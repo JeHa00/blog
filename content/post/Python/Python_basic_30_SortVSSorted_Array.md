@@ -87,7 +87,7 @@ sorted - ['strawberry', 'coconut', 'mango', 'lemon', 'orange', 'apple', 'papaya'
 sorted - None ['strawberry', 'coconut', 'mango', 'lemon', 'orange', 'apple', 'papaya']
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -125,7 +125,7 @@ sorted - None ['strawberry', 'coconut', 'mango', 'lemon', 'orange', 'apple', 'pa
 [43, 95, 41, 40, 42, 38, 94, 37, 36, 35, 64, 33, 126, 41]
 ```
 
-<br>
+&nbsp;
 
 ## List vs Array 적합한 사용법
 

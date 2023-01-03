@@ -38,11 +38,11 @@ TypeError: unhashable type: 'list'
 
 ---
 
-<br>
+&nbsp;
 
 ## 1. dictionary 선언
 
-<br>
+&nbsp;
 
 - dictionary 선언에는 매우 다양한 방법이 있다.
 - 이 다양한 방법들의 공통점은 { }, key, value 로 기본적으로 구성된다.
@@ -108,11 +108,11 @@ f -  <class 'dict'> {'Name': 'Niceman', 'City': 'Seoul', 'Age': '33', 'Grade': '
 
 ---
 
-<br>
+&nbsp;
 
 # 2. dictionary value 출력과 수정
 
-<br>
+&nbsp;
 
 ## 2.1 dictionary value 출력
 
@@ -120,7 +120,7 @@ f -  <class 'dict'> {'Name': 'Niceman', 'City': 'Seoul', 'Age': '33', 'Grade': '
   - `print(a[key])` 로 출력하는 방법
   - `print(a.get(key))`로 출력하는 방법
 
-<br>
+&nbsp;
 
 - 첫 번째 방법은 key에 해당하는 value 값이 존재하지 않으면 `keyError`가 발생한다.
 - 두 번째 방법은 key에 해당하는 value 값이 존재하지 않으면 `none`처리를 한다.
@@ -159,7 +159,7 @@ Seoul
 
 ```
 
-<br>
+&nbsp;
 
 ## 2.2 dictionary 수정
 
@@ -182,7 +182,7 @@ Seoul
 
 ---
 
-<br>
+&nbsp;
 
 # 3. dictionary 함수
 
@@ -316,7 +316,7 @@ ValueError: dictionary update sequence element;
 # 위와 똑같은 Error가 발생된다.
 ```
 
-<br>
+&nbsp;
 
 ---
 

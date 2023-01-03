@@ -16,14 +16,14 @@ categories: ["Linux"]
 
 - 이번 소챕터에서는 리눅스 명령어를 사용하여 시스템 종료 및 재시작하는 것을 실습해보고, 어떤 과정을 거쳐서 진행되는지 알아본다.
 
-<br>
+&nbsp;
 
 ---
 
 
 # 5. 시스템 종료 및 재시작
 
-<br>
+&nbsp;
 
 ## 5.1. Shutdown
 
@@ -34,7 +34,7 @@ categories: ["Linux"]
 - 현재 수행중인 프로세스(Program)들은 모두 종료하며 **Sync** 를 수행하여 아직 저장되어 있지 않은 데이터를 디스크에 저장한 후, 모든 파일 시스템을 Unmount 후 시스템을 종료  
     - unmount: 모든 장비를 해제시킨다. 
 
-<br>
+&nbsp;
 
 ## 5.2. 🔆 Shutdown과 시스템 종료 절차 
 
@@ -56,7 +56,7 @@ categories: ["Linux"]
 
 9) 시스템을 **종료** 한다. [system halt]
 
-<br>
+&nbsp;
 
 ## 5.3 Shutdown 명령어
 
@@ -75,7 +75,7 @@ categories: ["Linux"]
 
 
 
-<br>
+&nbsp;
 
 ---
 

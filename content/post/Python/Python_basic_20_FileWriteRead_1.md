@@ -9,7 +9,7 @@ categories: ["Python"]
 
 # 0. Introduction
 
-<br>
+&nbsp;
 
 - 이번 chapter에서는 외부에서 수집하거나 작성한 어떠한 text 파일, csv 파일, json 같은 다양한 형식의 외부 파일들을 읽고 쓰는 작업을 알아본다.
 
@@ -19,7 +19,7 @@ categories: ["Python"]
   - 두 번째, 사용한 resource는 반드시 close를 해야 한다. 그래서 `with문`을 사용한다.
     - close를 하는 이유는 하지 않을 경우 다음 코드를 사용할 때 원활하지 않을 수 있다.
 
-<br>
+&nbsp;
 
 # 1. Read file (파일 읽기)
 
@@ -35,7 +35,7 @@ categories: ["Python"]
     - 절대 경로: C:\Django\example..'
     - 다른 컴퓨터에 다운을 받을 때는 `절대 경로`보다 `상대 경로`가 맞다. 그 이유는 경로가 절대적으로 같지 않기 때문이다.
 
-<br>
+&nbsp;
 
 - 외부에 있는 파일을 읽을 때는 먼저 함수를 사용하여 연결한 후, 내용을 읽는다.
 - Encoding 이란 사람의 언어를 컴퓨터 언어로 암호화하는 걸 의미한다.
@@ -144,11 +144,11 @@ your cards right.
 
 ```
 
-<br>
+&nbsp;
 
 ---
 
-<br>
+&nbsp;
 
 # 2. Write file (파일 쓰기)
 
@@ -175,11 +175,11 @@ I love python2
 
 ```
 
-<br>
+&nbsp;
 
 - `writelines` 함수를 사용하여 line list를 파일에 작성하기
 
-<br>
+&nbsp;
 
 ```yml
 
@@ -209,7 +209,7 @@ Test Text Write!
 # 위에 file = f 를 없애면 terminal로 출력된다.
 ```
 
-<br>
+&nbsp;
 
 ---
 

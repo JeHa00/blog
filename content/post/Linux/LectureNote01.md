@@ -10,7 +10,7 @@ categories: ["Linux"]
 
 - 해당 강의는 [러닝스푼즈 - 나노디그리 Python & Django backed course](https://learningspoons.com/course/detail/django-backend/)의 Jason.Kim 강사님의 Linux 강의로부터 학습한 자료입니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -33,7 +33,7 @@ aws 사이트가 아닌 terminal에서 손쉽게 인스턴스에 접속할 수 �
 - 두 번째, `mkdir .ssh`
 - 세 번째, `chmod 700 .ssh`
 
-<br>
+&nbsp;
 
 ### .ssh/config 생성하기
 
@@ -66,7 +66,7 @@ cp dalkom.pem ~/.ssh 으로 복사
 
 - 입력을 다 맞쳤으면 `esc`를 누르고, `:wq`를 입력한다.
 
-<br>
+&nbsp;
 
 ### config 생성 잘 되었는지 확인하기  
 
@@ -83,7 +83,7 @@ cp dalkom.pem ~/.ssh 으로 복사
 
 - `ssh <host name>`
 
-<br>
+&nbsp;
 
 ---
 
@@ -120,7 +120,7 @@ aws-ec2 는 보안상의 이유로 루트를 통한 접근을 보안 상의 이�
 
 `ls -l`은 현재 디렉토리 외의 디렉토리를 확인하고자 할 때 사용하는 명령어
 
-<br>
+&nbsp;
 
 ---
 
@@ -151,7 +151,7 @@ cd: .ssh: No such file or directory
 그 후, `ssh-gen`을 입력하여 key를 생성했고,  위와 같은 error는 뜨지 않았다.
 
 
-<br>
+&nbsp;
 
 ## 두 번째: Error
 
@@ -176,7 +176,7 @@ Config 내에 `IdentityFile` 의 경로가 잘못 입력된 것이었다.
 이제 `ssh root` 와 `ssh user`를 사용하면 손쉽게 AWS를 통해서 Linux를 학습할 수 있게 되었다.  
 
 
-<br>
+&nbsp;
 
 
 ---

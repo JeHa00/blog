@@ -14,7 +14,7 @@ categories: ["OS"]
 
 ---
 
-<br>
+&nbsp;
 
 - 운영체제는 보통 모든 프로그램들에 공평하게 같은 크기의 메모리를 할당하기보다는 **_몇몇 프로그램들에게 집중적으로 메모리를 할당한 후_**, 시간이 흐르면 이들로부터 메모리를 회수해서 다른 프로그램들에게 다시 집중적으로 메모리를 할당하는 방식을 채택한다.
 
@@ -28,7 +28,7 @@ categories: ["OS"]
 
 - 그러면 요구 페이징에 대해 먼저 알아보자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -75,7 +75,7 @@ categories: ["OS"]
 - **Page fault**
   - CPU가 한 페이지를 참조하려는데, 요청한 페이지가 메모리에 없어서 invalid bit인 경우를 말한다.
 
-<br>
+&nbsp;
 
 ## 1.1 요구 페이징의 페이지 부재 처리
 
@@ -104,7 +104,7 @@ categories: ["OS"]
 
   - → 다시 CPU를 잡고 running 하며 아까 중단되었던 instruction을 재개한다.
 
-<br>
+&nbsp;
 
 ## 1.2요구 페이징의 성능
 
@@ -112,7 +112,7 @@ categories: ["OS"]
   - 페이지 부재로 인해 페이지 교체가 이뤄지는 과정에서 요청된 페이지를 디스크에서 메모리로 읽어오는 disk input/output 과 각종 overhead가 포함되어 시간이 오래 걸린다.
   - 그래서 `유효 접근 시간` 이 짧을 수록 성능 향상
 
-<br>
+&nbsp;
 
 ---
 
@@ -135,7 +135,7 @@ categories: ["OS"]
   - 참조되는 페이지들의 번호를 시간 순서에 따라 나열한 것
     - 예) 1,2,3,4,1,2,5,1,2,3,4,5
 
-<br>
+&nbsp;
 
 ## 2.1 최적 페이지(Optimal Algorithum) 교체
 
@@ -164,7 +164,7 @@ categories: ["OS"]
 
 - 이 이후에 알고리즘은 미래를 모르는 알고리즘들이다.
 
-<br>
+&nbsp;
 
 ## 2.2 선입선출(FIFO:First In First Out) 알고리즘
 
@@ -183,7 +183,7 @@ categories: ["OS"]
   - **페이지 프레임 4개**
     - 10번의 페이지 부재
 
-<br>
+&nbsp;
 
 ## 2.3 LRU(Least Recently Used) 알고리즘
 
@@ -194,7 +194,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/169760585-bf523345-8b80-494a-9792-1dd7b3252481.PNG)
 
-<br>
+&nbsp;
 
 ## 2.4 LFU(Least Frequently used) 알고리즘
 
@@ -221,7 +221,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/169771182-b7d3e785-b479-45e0-955c-6dbf67c41cdd.PNG)
 
-<br>
+&nbsp;
 
 ## 2.5 클럭(Clock) 알고리즘
 
@@ -253,7 +253,7 @@ categories: ["OS"]
   - reference bit = 1: 한 바퀴 도는 동안 적어도 한 번 참조된 페이지
   - modified bit = 1: 최근에 변경된 페이지(I/O를 동반하는 페이지)
 
-<br>
+&nbsp;
 
 ---
 
@@ -284,7 +284,7 @@ categories: ["OS"]
 
 경우에 따라서는, 최소한의 메모리 요구량을 충족시키기 위해 일부 프로세스에게 메모리를 할당하지 않아야 한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -311,7 +311,7 @@ categories: ["OS"]
     - frame 할당 알고리즘은 균등할당, 비례할당, 우선순위 할당으로 프로세스에게 미리 할당한다.
   - 프로세스가 FIFO, LRU, LFU 등의 알고리즘을 독자적으로 운영할 때, 사용되는 방법
 
-<br>
+&nbsp;
 
 ---
 
@@ -353,7 +353,7 @@ categories: ["OS"]
 
 - 이를 조절하는 알고리즘이 **_워킹셋(working-set algorithum)_** 과 **_페이지 부재 빈도 알고리즘(page-fault frequency scheme)_** 이 있다.
 
-<br>
+&nbsp;
 
 ## 5.1 워킹셋(working-set) 알고리즘
 
@@ -378,7 +378,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/169816980-3f3efb0e-254f-42fb-b245-156f3a949183.PNG)
 
-<br>
+&nbsp;
 
 ### 5.1.1 Working-set algorithum 구현
 
@@ -396,7 +396,7 @@ categories: ["OS"]
   - window의 크기가 너무 작으면, 지역성 집합을 모두 수용 X
   - window의 크기가 너무 크면, 여러 규모의 지역성 집합 수용 가능하지만, MPD가 감소 → CPU 이용률 감소
 
-<br>
+&nbsp;
 
 ## 5.2 페이지 부재 빈도(page fault frequency: PFF) 알고리즘
 
@@ -412,7 +412,7 @@ categories: ["OS"]
 - 빈 frame이 없으면 일부 프로세스를 swap out한다.
 - 모든 프로세스에게 프레임을 다 할당한 후에도 프레임이 남는 경우, 위의 swap out된 process에게 frame을 할당하여 MPD를 높인다.
 
-<br>
+&nbsp;
 
 ---
 

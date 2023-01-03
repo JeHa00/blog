@@ -17,13 +17,13 @@ categories: ["Linux"]
 
 - 이번 소챕터에서는 pwd, cd, ls, cp, mv를 학습해본다.  
 
-<br>
+&nbsp;
 
 ---
 
 # 1. pwd, cd, ls, cp, mv
 
-<br>
+&nbsp;
 
 ## 1.1 pwd
 
@@ -34,7 +34,7 @@ categories: ["Linux"]
 /root
 ```
 
-<br>
+&nbsp;
 
 ## 1.2 cd
 
@@ -111,7 +111,7 @@ drwxr-xr-x  80 root root 8192 Aug 30 04:09 etc
 # 아래 ls 실습으로 이어진다.
 ```
 
-<br>
+&nbsp;
 
 ## 1.3 ls
 
@@ -334,7 +334,7 @@ drwxr-xr-x   2 root root   21 Sep  2 05:21 test
 
 ```
 
-<br>
+&nbsp;
 
 ## 1.5 mv
 
@@ -360,7 +360,7 @@ drwxr-xr-x 2 root     root       6 Sep  2 05:31 test
 total 0
 ```
 
-<br>
+&nbsp;
 
 ---
 

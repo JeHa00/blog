@@ -16,7 +16,7 @@ categories: ["Django"]
 
 - DB를 나눠서 적용해보는 걸 실습해본다.
 
-<br>
+&nbsp;
 
 ---
 # 개발자 DB 와 운영 DB로 나누기 
@@ -75,7 +75,7 @@ $ python manage.py runserver --settings=config.settings.production
 
 하지만 `FileNotFoundError`가 발생된다. 그 이유는 `settings` directory가 생기면서 기존 설정 파일의 디렉토리 레벨이 한 단계 깊어져서, `BASE_DIR`의 값이 달라졌기 때문이다. 
 
-<br>
+&nbsp;
 
 ### 다섯 번째, BASE_DIR 수정하기
 
@@ -92,7 +92,7 @@ python manage.py runserver 0:8000 --settings=config.settings.production
 
 그 결과, 화면에 `Disallowed Error`가 발생하는데, 정상적으로 잘 되었다는 걸 의미한다.  
 
-<br>
+&nbsp;
 
 ### 🔆 DB를 production과 develop를 나눈 이유
 
@@ -104,7 +104,7 @@ python manage.py runserver 0:8000 --settings=config.settings.production
     - production.py 에는 RDS DATABASES를 적용한다.   
     - develop.py 에는 기존 장고 프로젝트 생성 시, DB 내용을 적용한다고 하자.  
 
-<br>
+&nbsp;
 
 - develop.py
 
@@ -121,7 +121,7 @@ DATABASES = {
 }
 ```
 
-<br>
+&nbsp;
 
 
 - production.py
@@ -143,7 +143,7 @@ DATABASES = {
 }
 ```
 
-<br>
+&nbsp;
 
 ---
 

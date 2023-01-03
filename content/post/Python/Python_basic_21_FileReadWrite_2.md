@@ -19,7 +19,7 @@ categories: ["Python"]
 - csv의 파일 1행을 열머리글로 `header`라고 한다.
 - 콤마(,)로 반드시 구분되는 게 아니지만, 정석은 콤마다.
 
-<br>
+&nbsp;
 
 ## 1. Read csv file (csv 파일 읽기)
 
@@ -31,7 +31,7 @@ categories: ["Python"]
 - the iterator protocol을 지원하는지 알기 위해서 `dir()` 함수를 사용하여 `__iter__`이 있는지 확인한다.
 - 그리고, 파이썬은 `list` 형태로 가져오고, 작성한다.
 
-<br>
+&nbsp;
 
 - 예제 파일 내용은 아래와 같다.
 
@@ -240,7 +240,7 @@ Code AD
 
 ---
 
-<br>
+&nbsp;
 
 ## 2. Write csv file (csv 파일 쓰기)
 
@@ -307,7 +307,7 @@ one,two,three
 19,20,21
 ```
 
-<br>
+&nbsp;
 
 ---
 

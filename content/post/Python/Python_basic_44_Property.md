@@ -11,7 +11,7 @@ categories: ["Python"]
 
 - 지난 Chapter [Python basic 43: Underscore](https://jeha00.github.io/post/python_basic/python_basic_43_underscore/) 의 access modifier에 대한 개념을 먼저 이해해야 한다.
 
-<br>
+&nbsp;
 
 - class 내의 attribute를 관리하기 위해서 2가지 방법을 가진다.
 
@@ -20,11 +20,11 @@ categories: ["Python"]
 
 - 이번 Chapter에서는 두 번째 방법에 대해 알아본 후, property로 이를 구현해본다.
 
-<br>
+&nbsp;
 
 ---
 
-<br>
+&nbsp;
 
 # 1. Method 활용하여 Getter, Setter 작성
 
@@ -64,13 +64,13 @@ Ex > y : 2
 - `dir()`를 통해서 private variable은 naming mangling이 일어난 걸 알 수 있다.
 - method `get_y` 와 `set_y`를 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
 # 2. Property
 
-<br>
+&nbsp;
 
 ## 2.1 Property란??
 
@@ -84,7 +84,7 @@ Ex > y : 2
   - 속성 같이 행동하는 method를 만든다.
   - getter와 setter method를 피하는 pythonic way로, 내부 method를 외부에 노출시키는 것 없이 구현(Implementation)할 수 있다.
 
-<br>
+&nbsp;
 
 ## 2.2 Property의 구현 방식 2가지
 
@@ -96,7 +96,7 @@ Ex > y : 2
 
 - `@property` 는 `Python 2.4` 부터 가능해진 방식이다.
 
-<br>
+&nbsp;
 
 ## 2.3 @property
 
@@ -204,7 +204,7 @@ class Circle(builtins.object)
 ValueError: 0보다 큰 값을 입력하세요.
 ```
 
-<br>
+&nbsp;
 
 ## 2.4 Summary
 
@@ -212,7 +212,7 @@ ValueError: 0보다 큰 값을 입력하세요.
 - **docstring의 위치는 `@property` 안에 입력해야 한다.**
 - **`setter` 와 `deleter` method는 `getter` method name에 `.setter` 그리고, `.deleter` 로 추가하여 decorate 된다.**
 
-<br>
+&nbsp;
 
 ---
 

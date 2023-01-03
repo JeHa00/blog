@@ -22,7 +22,7 @@ categories: ["Linux"]
 
     - more의 단점: 지나간 내용을 볼 수 없다.  
 
-<br>
+&nbsp;
 
 ---
 
@@ -30,7 +30,7 @@ categories: ["Linux"]
 
 이번 챕터 내용은 더 많이 중요하다.  
 
-<br>
+&nbsp;
 
 ## 3.1 cat
 
@@ -44,7 +44,7 @@ categories: ["Linux"]
     - 출력 생성: 생성된 내용에 추가한 내용을 합쳐서 출력  
     - 병합  
 
-<br>
+&nbsp;
 
 ### 보기
 
@@ -55,7 +55,7 @@ tcpdump:x:72:72::/:/sbin/nologin
 ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
 ```
 
-<br>
+&nbsp;
 
 ### 생성
 
@@ -71,7 +71,7 @@ ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
 [root@ip-172-31-8-107 ec2-user]# cat /etc/passwd
 ```
 
-<br>
+&nbsp;
 
 ### 추가 
 
@@ -112,7 +112,7 @@ total 20
 
 ❗️❗️ 만약 리눅스의 한 시스템과 동일한 명칭의 파일을 위 명령어로 추가한다면 리눅스가 작동하지 않아, 다시 깔아야할 일이 발생하므로 매우 조심해야 한다.
 
-<br>
+&nbsp;
 
 ### 출력 생성
 
@@ -128,7 +128,7 @@ Python & Django backend course
 jeha00 trainee majoring aerospace and machanical engineering
 ```
 
-<br>
+&nbsp;
 
 ### 병합
 
@@ -167,7 +167,7 @@ I'm on boarding of this bootcamp
 
 - 반대로 `cat b a > d`를 하면 입력된 내용이 반대인 d file이 생성된다.
 
-<br>
+&nbsp;
 
 ## 3.2 head
 
@@ -205,7 +205,7 @@ lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
 ```
 
 
-<br>
+&nbsp;
 
 ## 3.3 tail
 
@@ -241,7 +241,7 @@ tcpdump:x:72:72::/:/sbin/nologin
 ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
 ```
 
-<br>
+&nbsp;
 
 ## 3.4 more
 
@@ -260,7 +260,7 @@ ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
 - 하지만, 단점으로 지나간 내용은 볼 수 없다. 이럴 경우, 마우스 휠을 사용해야 한다.
 
 
-<br>
+&nbsp;
 
 ## 3.5 less
 
@@ -274,7 +274,7 @@ ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
 - `q` 를 사용하여 나간다.
 
 
-<br>
+&nbsp;
 
 ## 3.6 nl
 
@@ -324,7 +324,7 @@ drwxr-xr-x  2 root root       94 Aug 15 20:22 bash_completion.d
 
 
 
-<br>
+&nbsp;
 
 ---
 

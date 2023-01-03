@@ -20,7 +20,7 @@ categories: ["Django"]
 - DRF 강의 내용을 정리한 이유는 DRF는 api 설계에 주로 사용하기 때문에, 정답이라는 게 없어서 많이 사용하는 내용을 정리할 필요를 느꼈습니다.
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -69,7 +69,7 @@ courses/finance/lessons/
 	- [django-rest-framework.org/](http://django-rest-framework.org/) 
 
 
-<br>
+&nbsp;
 
 ### DRF installation
 
@@ -88,7 +88,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -180,7 +180,7 @@ from rest_framework.parsers import JSONParser
 b'{"id":null,"title":"","code":"foo=\\"bar\\"\\n","linenos":false,"language":"python","style":"friendly"}'
 ```
 
-<br>
+&nbsp;
 
 ### 역직렬화
 
@@ -231,7 +231,7 @@ OrderedDict([('title', ''), ('code', 'foo="bar"'), ('linenos', False), ('languag
 
 ```
 
-<br>
+&nbsp;
 
 ---
 # 3. 직렬화 코드 작성하기 
@@ -271,11 +271,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
 		fields = "__all__"
 ```
 
-<br>
+&nbsp;
 
 ---
 
-<br>
+&nbsp;
 
 ---
 

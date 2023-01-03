@@ -12,20 +12,20 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
 ## 1. Bound process
 
-<br>
+&nbsp;
 
 ### 1.1 CPU란??
 
 - **CPU(Central Processing Unit): PC(Program Counter)가 가리키는 주소의 기계어 명령을 실제로 수행하는 컴퓨터 내의 중앙처리장치**
   - PC: Program Counter로, 레지스터의 한 종류로서 현재 CPU에서 수행할 프로세스의 코드의 메모리 주소값을 가지고 있다.
 
-<br>
+&nbsp;
 
 ### 1.2 기계어 명령의 종류
 
@@ -55,7 +55,7 @@ categories: ["OS"]
   - 특권 명령: 3번
   - 일반 명령: 1번과 2번
 
-<br>
+&nbsp;
 
 ### 1.3 CPU burst와 I/O burst
 
@@ -73,7 +73,7 @@ categories: ["OS"]
 
     ![image](https://user-images.githubusercontent.com/78094972/164410780-5cab4ac8-b72b-430d-8eff-d26a77bf934e.PNG)
 
-<br>
+&nbsp;
 
 ### 1.4 Bound process: CPU & I/O
 
@@ -91,7 +91,7 @@ categories: ["OS"]
     - 대화형 프로그램(interactive prgram)에 해당
     - 즉, 사용자에게 입력을 받아 CPU 연산을 수행하여 그 결과를 다시 출력하는 작업에 해당
 
-<br>
+&nbsp;
 
 ### 1.5 CPU sheduling이 필요한 이유
 
@@ -113,7 +113,7 @@ categories: ["OS"]
 - **그래서, I/O bound process의 우선순위를 높이는 것이 바람직한다.**
   - I/O bound process에게 늦게 주면 사용자는 답답함을 느낀다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -135,7 +135,7 @@ categories: ["OS"]
   - 선점형(preemptive): CPU를 계속 사용하기 원해도, 강제로 빼앗는 방법 -> 2번과 3번
     - ex) timer interrupt
 
-<br>
+&nbsp;
 
 ---
 
@@ -157,7 +157,7 @@ categories: ["OS"]
   - Dispatcher 과정에서 1번부터 3번까지 걸린 시간
   - context switching의 overhead에 해당
 
-<br>
+&nbsp;
 
 ---
 
@@ -204,13 +204,13 @@ categories: ["OS"]
     - 대기시간: 각각의 음식이 나오기까지 기다린 시간을 합한 것
     - 응답시간: 최초의 음식이 나오기까지 기다린 시간
 
-<br>
+&nbsp;
 
 ---
 
 ## 5. 스케쥴링 알고리즘
 
-<br>
+&nbsp;
 
 ### 5.1 선입선출 스케쥴링(FCFS: First-Come First-Served)
 
@@ -248,7 +248,7 @@ categories: ["OS"]
 
     ![image](https://user-images.githubusercontent.com/78094972/164449789-cc9d22d7-f221-4f83-9f6b-bc897e191404.PNG)
 
-<br>
+&nbsp;
 
 ### 5.2 최단작업 우선 스케쥴링(Shortest-Job First: SJF)
 
@@ -282,7 +282,7 @@ categories: ["OS"]
 
     ![image](https://user-images.githubusercontent.com/78094972/164451957-43b6277b-830a-4f09-819f-6c3d375989bb.PNG)
 
-<br>
+&nbsp;
 
 ### 5.3 우선순위 스케쥴링(Priority scheduling)
 
@@ -301,7 +301,7 @@ categories: ["OS"]
   - 기다리는 시간이 비례하여 우선순위를 높이는 것을 말한다.  
     ex) 버스나 지하철에서 나이 드신 분께 자리를 양보하는 것과 동일.
 
-<br>
+&nbsp;
 
 ### 5.4 라운드 로빈 스케쥴링(Round Robin Scheduling)
 
@@ -340,7 +340,7 @@ categories: ["OS"]
 
     ![image](https://user-images.githubusercontent.com/78094972/164458802-d87defe3-7159-4e00-aaa8-6c97c05e8acc.PNG)
 
-<br>
+&nbsp;
 
 ### 5.5 멀티레벨 큐(Multi-level queue)
 
@@ -373,7 +373,7 @@ categories: ["OS"]
   - 각 queue에 CPU 시간을 적절한 비율로 할당
     - ex) RR인 전위 큐: 80% , FCFS인 후위 큐: 20%
 
-<br>
+&nbsp;
 
 ### 5.6 멀티레벨 피드백 큐(Multi-level Feedback Queue)
 
@@ -400,7 +400,7 @@ categories: ["OS"]
     -> CPU burst가 긴 process라면 하위 큐(Round robine, 할당시간 16)로 강등시킨다.
     -> 그럼에도 완료하지 못하면 계산위주의 프로세스로 간주하여 최하위 큐인 FCFS scheduling을 적용
 
-<br>
+&nbsp;
 
 ### 5.7 다중처리기 스케쥴링(Multi-processor system)
 
@@ -419,7 +419,7 @@ categories: ["OS"]
   - 대칭형 다중처리(SMP, Symetric Multi-Processing): 모든 CPU가 대등해서 각자 알아서 스케줄링을 결정하는 방식
   - 비대칭형 다중처리(asymmetric multiprogramming): 하나의 CPU가 다른 모든 CPU의 스케줄링 및 데이터 접근을 책임지고, CPU는 거기에 따라 움직이는 방식
 
-<br>
+&nbsp;
 
 ### 5.8 실시간 스케쥴링(real-time system)
 
@@ -429,7 +429,7 @@ categories: ["OS"]
   - 전자는 원자로 제어, 미사일 발사 등 시간을 정확히 지켜야하는 시스템
   - 후자는 데드라인이 존재하지만, 지키지 못했다고 하여 위험한 상황이 발생하지 않는다.
 
-<br>
+&nbsp;
 
 ### 5.9 Thread scheduling
 
@@ -442,7 +442,7 @@ categories: ["OS"]
     - Kernel level thread의 경우, 일반 프로세스와 마찬가지로 커널의 단기 스케쥴러가 어떤 thread를 스케줄할지 결정
     - 즉, OS가 thread의 존재를 인지한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -459,7 +459,7 @@ categories: ["OS"]
     - 가상으로 CPU scheduling program을 작성한 후, 프로그램의 CPU 요청을 입력값으로 넣어 어떠한 결과가 나오는지 확인하는 방법
     - 그래서 가상으로 생성된 값과 실제 system에서 추출한 입력값(이를 trace라 한다.)을 비교한다.
 
-<br>
+&nbsp;
 
 ---
 

@@ -31,7 +31,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 ## 2. pickle
 
@@ -66,7 +66,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 ## 3. os
 
@@ -87,7 +87,7 @@ rudtl
 
 ---
 
-<br>
+&nbsp;
 
 ## 4. time
 
@@ -129,7 +129,7 @@ Wed Mar  2 20:42:50 2022
 
 ---
 
-<br>
+&nbsp;
 
 ## 5. random
 
@@ -170,7 +170,7 @@ Wed Mar  2 20:42:50 2022
 
 ---
 
-<br>
+&nbsp;
 
 ## 6. webbrowser
 
@@ -188,7 +188,7 @@ Wed Mar  2 20:42:50 2022
 
 ```
 
-<br>
+&nbsp;
 
 ---
 

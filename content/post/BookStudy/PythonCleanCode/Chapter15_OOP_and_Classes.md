@@ -25,7 +25,7 @@ categories: ["Book Study"]
 
 - 이번에 학습하는 chapter의 주제는 **'Chapter 15: Object-Oriented Programming and Classes'** 입니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -45,7 +45,7 @@ OOP는 변수와 함수를 함께 묶어서 클래스라는 새로운 데이터 
 
 많은 예제에서 Car 라는 객체에 대한 클래스를 생성하여 설명한다. 그래서 Car의 속성에 바퀴 수나, 좌석 수, 차 종류, 제조사 같은 것들만 입력하는데 이 Car라는 객체를 사용하는 곳이 매우 다양한 만큼 속성의 종류도 다양해진다. 즉, 이 Car라는 객체를 사용하는 소프트웨어의 목적에 따라 속성이 결정된다. 그리고 이 소프트웨어의 목적은 도메인에 따라 결정된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -66,7 +66,7 @@ birthday.day # 31
 birthday.weekday() # 위의 것들과 달리 괄호가 있다는 걸 보면 메소드다.
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -94,7 +94,7 @@ coninJar = WizCoin(13, 0, 0)
 
 그리고, dot annotation을 사용하여 속성에 접근할 수 있다.
 
-<br>
+&nbsp;
 
 ## Method, __init__, self
 
@@ -106,7 +106,7 @@ coninJar = WizCoin(13, 0, 0)
 
 - self는 반드시 self로 작성할 필요는 없지만, 관례이기 때문에 다르게 작성하면 가독성이 떨어진다.  그리고, 이 self가 메서드와 함수를 구별할 수 있는 가장 빠른 방법이다.
 
-<br>
+&nbsp;
 
 ## Attribute
 
@@ -129,7 +129,7 @@ pile.someNewAttribute = '새로운 속성'
 print(pile.someNewAttribute) # 새로운 속성
 ```
 
-<br>
+&nbsp;
 
 ## Private attribute and method
 
@@ -174,7 +174,7 @@ acct._name = 'Bob'
 
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -211,7 +211,7 @@ str(type(42)) # "<class 'int'>"
 type(42).__qualname__ # 'int'
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -223,7 +223,7 @@ class로 작성하는 게 보다 깔끔하고, 직관적이라는 걸 알 수 �
 
 매개변수를 넘길 필요 없이 다른 메소드를 호출하여 사용하면 된다. 이때 `self.` 를 부여준다. 
 
-<br>
+&nbsp;
 
 ---
 
@@ -241,7 +241,7 @@ class로 작성하는 게 보다 깔끔하고, 직관적이라는 걸 알 수 �
 
 나라면 이런 경우, 나라별 사이트를 다르게 하여 문화에 따른 복잡성을 해소할 것 같다.
 
-<br>
+&nbsp;
 
 ---
 

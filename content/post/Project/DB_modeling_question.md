@@ -1,3 +1,7 @@
+models.py에서 Field로 선언되는 것들은 각 인스턴스 간에 값이 공유되는 클래스 변수가 아니라, 클래스 공간에 선언되는
+
+디스크립터(Descriptor) 객체다.
+
 # Email model 관련 질문
 
 - authentication_check 는 인증 여부에 대한 속성값인데, pocket에서 인증하는게 있는가?
@@ -7,11 +11,15 @@
 
 # User model 관련 질문
 
-upload_to=f"profile/"에서 f-string을 쓴 이유
+- upload_to=f"profile/"에서 f-string을 쓴 이유: 기억이 안나서 다시 여쭤봅니다.
+
+- password 속성에서 max_length = 15에서 128로 왜 수정했는지?
+
+- USERNAME_FIELD 를 'password'로 수정한 이유
 
 # Site model 관련 질문
 
-- thumbnail_url에서 max_length 2000을 한 이유
+- thumbnail_url에서 max_length로 2000을 한 이유
 - url = models.CharField(verbose_name='url', max_length=2000, null=True) 에서 max_length 부분
 - host_name 에서 max_length를 500으로 한 부분
 

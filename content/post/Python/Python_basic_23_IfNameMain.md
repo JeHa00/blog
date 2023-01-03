@@ -15,7 +15,7 @@ categories: ["Python"]
 
 ## 1. \_\_name\_\_ 에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ### 1.1 \_\_name\_\_이란??
 
@@ -28,7 +28,7 @@ categories: ["Python"]
 > `__name__`은 `.py`인 파이썬 모듈 파일이 가지고 있는 global variable(전역변수)이다.  
 > 그리고, 모듈의 이름을 담고 있다.
 
-<br>
+&nbsp;
 
 ### 1.2 \_\_name\_\_이 다르게 출력되는 상황 2가지
 
@@ -41,7 +41,7 @@ categories: ["Python"]
 - 그리고 이 두 개의 파일을 module로서 import하는 test.py 를 작성하자.
 - 그러면 총 3개의 파일을 작성한 상태다.
 
-<br>
+&nbsp;
 
 - hello.py, python.py 그리고 test.py의 내용은 다음과 같다.
 
@@ -67,7 +67,7 @@ hello.py: __main__
 python.py: __main__
 ```
 
-<br>
+&nbsp;
 
 - 두 번째 경우
   - test.py 를 실행해보겠다.
@@ -80,14 +80,14 @@ python.py: python
 
 > 결론: \_\_name\_\_은 직접 실행될 때 \_\_main\_\_'이 출력되거나, import 시에는 import된 module file name이 출력된다.
 
-<br>
+&nbsp;
 
 - 하지만, 이걸로 완전히 의문점을 해결되지 않았다.
 - 그러면 `__main__`은 무엇을 의미하는 것인가???
 
 ---
 
-<br>
+&nbsp;
 
 ## 2. \_\_main\_\_ 에 대해 알아보자.
 
@@ -101,7 +101,7 @@ python.py: python
 >
 > 출처: [Modules](https://docs.python.org/3/tutorial/modules.html#intra-package-references)
 
-<br>
+&nbsp;
 
 - 그러면 `main module`의 정의는 무엇인가???
 
@@ -111,7 +111,7 @@ python.py: python
 >
 > 출처: [파이썬 공식 문서: Module](https://docs.python.org/3/tutorial/modules.html#modules)
 
-<br>
+&nbsp;
 
 ---
 
@@ -134,11 +134,11 @@ python.py: python
 
 ---
 
-<br>
+&nbsp;
 
 ## 3. if \_\_name\_\_ == '\_\_main\_\_' 에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ### 3.1 `if __name__ == '__main__'` 이란 무엇인가??
 
@@ -195,7 +195,7 @@ after __name__guard <-
 - `if __name__ == '__main__'` 조건문에서 출력된 결과물이다.
 - 직접 실행되었기 때문에 출력되었다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -213,7 +213,7 @@ after __name__guard <-
     - 첫 번째, run time 시 의도치 않게 불러온 script에 있는 여러 인자들로 main script가 작동된다.
     - 두 번째, `guard`를 생략한 script를 저장할 파일에 담아 저장하면, 이 파일을 불러올 때 `guard`를 생략한 script를 import 할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 

@@ -12,7 +12,7 @@ categories: ["Python"]
 - 이번 내용은 파이썬 고급 과정 [고수가 되는 파이썬 : 동시성과 병렬성 문법 배우기 Feat. 멀티스레딩 vs 멀티프로세싱 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%99%84%EC%84%B1-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90/dashboard) 에서 자세히 배운다고 하여 깊이 있게 들어가진 않았다.
 - 이런 게 있구나 정도로만 파악하자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -32,7 +32,7 @@ categories: ["Python"]
 
   - A에 작업을 조금 걸어넣고, B에도 조금 시작하여 `동시성`이 실행되는 걸 의미한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -49,7 +49,7 @@ categories: ["Python"]
 - 파이썬은 단일 쓰레드로 해도 충분히 빠르다.
 - 특히, 비동기 작업과 적합한 프로그램일 경우, 압도적으로 성능이 향상된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -62,13 +62,13 @@ categories: ["Python"]
 - GIL을 우회하기 위해서는 반드시 multi-processing을 사용하거나 CPython을 사용하면 GIL이 걸리지 않는다.
 - 하지만 이 때는 동기화를 직접해야 한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 4. Concurrent.futures
 
-<br>
+&nbsp;
 
 ## 4.1 Thread Pool이란??
 
@@ -111,7 +111,7 @@ categories: ["Python"]
 - process pool 또한, process를 미리 만들어두는 방식을 말한다.
 - python에서는 `GIL` 때문에 CPU-bound task를 실행할려면, 동시에 CPU에서 여러 프로세스가 실행될 수 없으므로 thread pool을 사용해야 한다.
 
-<br>
+&nbsp;
 
 ## 4.2 concurrent.futures package
 
@@ -129,7 +129,7 @@ categories: ["Python"]
 
   - thread pool이란 미리 만들어 놓은 thread 집단을 말한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -214,7 +214,7 @@ categories: ["Python"]
 
 - ProcessPool로 실행했을 때의 결과가 더 빠르다는 걸 확인했다.
 
-<br>
+&nbsp;
 
 - 그러면 동기적으로 진행했을 때의 시간을 측정해보자.
 
@@ -235,7 +235,7 @@ categories: ["Python"]
 
 - thread pool과 process pool을 사용하는 방법이 더 빠르다는 걸 알 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -245,7 +245,7 @@ categories: ["Python"]
 - 그러면 동시적으로 수행되는 각 작업이 성공했는지, 확인할 수도 있어야 하지 않을까??
 - 이를 확인하기 위해, `wait`과 `as_completed` module에 대해 먼저 알아보자.
 
-<br>
+&nbsp;
 
 ## 6.1 wait
 
@@ -256,7 +256,7 @@ categories: ["Python"]
 - 완료되지 않은 작업들, 실패한 작업들을만 추출하고 싶으면 `.not_done` method를 사용한다.
 - 결과값을 원할 때는 `.result`를 사용한다.
 
-<br>
+&nbsp;
 
 ## 6.2 as_completed
 
@@ -267,7 +267,7 @@ categories: ["Python"]
 - 완료된 작업들만 추출하고 싶으면 `.done` method를 사용한다.
 - 완료되지 않은 작업들, 실패한 작업들을만 추출하고 싶으면 `.cancelled` method를 사용한다.
 
-<br>
+&nbsp;
 
 - 그러면 예시 코드로 적용해보자.
 
@@ -371,7 +371,7 @@ Pending ones after waiting for 7seconds : {<Future at 0x204191610d0 state=runnin
 - `Futures` chapter는 더 공부를 해야할 필요를 다른 단원보다 많이 느낀다.
 - 파이썬에 대해 더 공부한 후, 파이썬 과정 level 4인 [고수가 되는 파이썬 : 동시성과 병렬성 문법 배우기 Feat. 멀티스레딩 vs 멀티프로세싱 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%99%84%EC%84%B1-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90/dashboard) 을 공부하면서 깊이 있게 학습해야겠다.
 
-<br>
+&nbsp;
 
 ---
 

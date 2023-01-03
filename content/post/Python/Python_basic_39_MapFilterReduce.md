@@ -12,7 +12,7 @@ categories: ["Python"]
 - [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python_basic/python_basic_31_firstclass/)에서 학습한 고위 함수(High-Order Function)의 대표적인 예인 map, filter, reduce function에 대해 집중적으로 학습하기 위해 작성한다.
 - 그래서 고위 함수(High-Order Function)란 무엇인지 간단히 알아보고, 각 fuction에 대해 기존에 했던 예제에 추가하여 더 알아보자.
 
-<br>
+&nbsp;
 
 - **High - Order Function (고위 함수)란??**
 
@@ -22,7 +22,7 @@ categories: ["Python"]
 - 이번 예에서 lambda function을 사용할 것이다.
   - [[TIL] Python basic 12: Method](https://jeha00.github.io/post/python_basic/python_basic_12/#5-%EB%9E%8C%EB%8B%A4lambda-%ED%95%A8%EC%88%98-%EC%9D%B5%EB%AA%85%ED%95%A8%EC%88%98) 에서 학습했으므로, 이를 참조한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -73,7 +73,7 @@ Ex1-2 function >  [100, 400, 900, 1600, 2500]
 Ex1-3 Closure >   [20, 40, 60, 80, 100]
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -109,7 +109,7 @@ Ex2-1 lambda >  [1, 3, 5]
 Ex2-2 closure >  [1, 3, 5]
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -147,7 +147,7 @@ Ex2-2 closure >  [1, 3, 5]
 5050
 ```
 
-<br>
+&nbsp;
 
 ---
 

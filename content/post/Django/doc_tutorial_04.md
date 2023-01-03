@@ -21,7 +21,7 @@ categories: ["Django"]
     - 설문조사를 더하고, 수정하고, 삭제하는 'admin site'
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -104,7 +104,7 @@ categories: ["Django"]
   <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
   ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -120,7 +120,7 @@ categories: ["Django"]
   - URLconf를 전환하기 -> 오래되고 불필요한 view를 제거하기 -> Django의 generic views를 기반으로한 새로운 views를 도입하기
     - 여태 generic view를 사용하지 않은 이유는 django의 핵심 개념에 집중하기 위해서다.
 
-<br>
+&nbsp;
 
 ## 2.1 Amend URLconf
 
@@ -136,13 +136,13 @@ categories: ["Django"]
 > ]
 ```
 
-<br>
+&nbsp;
 
 ## 2.2 Amend views
 
 - 기존에 만들었던 `index`, `detail`, `results` 를 generic view로 대체할 것이다.
 
-<br>
+&nbsp;
 
 ```yml
 ## 경로: polls/views.py

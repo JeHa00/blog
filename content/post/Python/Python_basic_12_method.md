@@ -18,7 +18,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 # 2. 함수 선언 및 사용
 
@@ -75,7 +75,7 @@ categories: ["Python"]
   100 200 300
   ```
 
-<br>
+&nbsp;
 
 ## 2.2 원하는 data type으로 return하기
 
@@ -123,13 +123,13 @@ categories: ["Python"]
   <class 'dict'> {'v1': 300, 'v2': 600, 'v3': 900} 600 dict_items([('v1', 300), ('v2', 600), ('v3', 900)]) dict_keys(['v1', 'v2', 'v3'])
   ```
 
-<br>
+&nbsp;
 
 ---
 
 # 3. Packing, Unpacking
 
-<br>
+&nbsp;
 
 ## 3.1 Positional argument, Keyword argument
 
@@ -141,7 +141,7 @@ categories: ["Python"]
   - `Keyword argument`는 key value가 **_key_** 에 의해 결정되는 인자다.
     - **_순서 상관 없이 `keyword`_** 가 중요하다.
 
-<br>
+&nbsp;
 
 ```python
 ## Positional argument(위치인자)
@@ -156,7 +156,7 @@ categories: ["Python"]
 (3 + 5j)
 ```
 
-<br>
+&nbsp;
 
 ## 3.2 Packing의 두 종류
 
@@ -186,7 +186,7 @@ categories: ["Python"]
 | expression | \*args                      | \*\*kwargs               |
 | data type  | tuple                       | dictionary               |
 
-<br>
+&nbsp;
 
 ### 3.2.1 Positional arguments packing
 
@@ -234,7 +234,7 @@ categories: ["Python"]
   Result : 2 Kim
   ```
 
-<br>
+&nbsp;
 
 ### 3.2.2 Keyword arguments packing
 
@@ -274,7 +274,7 @@ categories: ["Python"]
 
 - 맨 마지막 인자는 \*\* 이므로, keyword argument packing이다. dictionary로 출력된 걸 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ## 3.3 Unpacking
 
@@ -306,7 +306,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 # 4. 중첩 함수 (Nested function)
 
@@ -336,7 +336,7 @@ categories: ["Python"]
   NameError: name 'func_in_func' is not defined
   ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -403,7 +403,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 # 6. 함수 Type Hint: Annotation
 
@@ -496,7 +496,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 ## Reference
 

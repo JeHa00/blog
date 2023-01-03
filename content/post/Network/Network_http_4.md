@@ -13,11 +13,11 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-<br>
+&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -33,7 +33,7 @@ categories: ["Network"]
   - 회원 수정
   - 회원 삭제
 
-<br>
+&nbsp;
 
 - 그러면 초보 개발자인 경우, 다음과 같이 API URI 설계할 수 있다.
 
@@ -59,7 +59,7 @@ categories: ["Network"]
   - 회원을 등록하고, 수정하고, 조회하는 것을 모두 배제한 다음
   - _회원이라는 resource만 식별하면 된다 -> 회원 resource를 URI에 매핑한다._
 
-<br>
+&nbsp;
 
 ---
 
@@ -78,7 +78,7 @@ categories: ["Network"]
   - 행위: 조회, 등록,삭제, 변경
   - resource는 명사, 행위는 동사
 
-<br>
+&nbsp;
 
 - 행위는 어떻게 구분할 수 있을까??
   - **HTTP method**를 사용하여 구분한다.
@@ -86,7 +86,7 @@ categories: ["Network"]
 
 ---
 
-<br>
+&nbsp;
 
 # 2. HTTP method - GET, POST
 
@@ -105,7 +105,7 @@ categories: ["Network"]
   - TRACE: 대상 리소스에 대한 경로를 따라 메시지 루프백 테스트를 수행
     - CONNECT 와 TRACE는 거의 사용안한다.
 
-<BR>
+&nbsp;
 
 - 이번 단원에서는 GET과 POST에 대해 자세히 알아보자.
 
@@ -136,13 +136,13 @@ Host: www.google.com
 6. 또한, 회원 정보도 담겨있다.
    - 위 에시에는 JSON이지만, 실제로는 HTML일수도 있고, 다양한다.
 
-<br>
+&nbsp;
 
 ---
 
 ## 2.2 HTTP method - POST
 
-<br>
+&nbsp;
 
 ### 2.2.1 POST란?
 
@@ -162,7 +162,7 @@ Content-Type: application/json
    - 메시지 바디를 통해 들어온 데이터를 처리하는 모든 기능을 수행한다.
 4. 주로 전달된 데이터로 신규 resource 등록, 프로세스 처리에 사용
 
-<br>
+&nbsp;
 
 ### 2.2.2 POST를 사용한 resource 등록 과정
 
@@ -174,7 +174,7 @@ Content-Type: application/json
 2. 그리고 해당 정보를 서버로 전송한다.  
    ( 정보를 전달하기 전에, 사전에 서버가 무엇을 할지 미리 약속이 되어 있어야 한다.)
 
-<br>
+&nbsp;
 
 - 두 번째: 신규 resource 생성
 
@@ -182,7 +182,7 @@ Content-Type: application/json
 
 1. 서버에서 받는 메세지를 분석해 데이터베이스에 등록한다. 이 때 신규 아이디도 생성.
 
-<br>
+&nbsp;
 
 - 세 번째: 응답 데이터
 
@@ -192,7 +192,7 @@ Content-Type: application/json
 2. 신규회원에 대한 데이터를 바디에 담아서 보내준다.
 3. 만들어졌기 때문에 Created라 뜬다. 그리고, 자원의 신규 생성된 URL을 보내준다.
 
-<br>
+&nbsp;
 
 ### 2.2.3 요청 데이터를 어떻게 처리한다는 뜻일까??
 
@@ -208,7 +208,7 @@ Content-Type: application/json
   - 기존 자원에 데이터 추가
     - 예) 한 문서 끝에 내용 추가하기
 
-<br>
+&nbsp;
 
 ### 2.2.4 POST method 정리
 
@@ -232,7 +232,7 @@ Content-Type: application/json
 
 ---
 
-<br>
+&nbsp;
 
 # 3. HTTP method - PUT,PATCH,DELETE
 
@@ -255,7 +255,7 @@ Content-Type: application/json
 
   - 클라이언트가 resource 위치를 알고 URI 지정한다.
 
-<br>
+&nbsp;
 
 - 예) 리소스가 없는 경우
   - /members/100 이라는 신규 리소스를 생성한다.
@@ -285,7 +285,7 @@ Content-Type: application/json
 { "age": 50 }
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -325,7 +325,7 @@ Host: localhost:8080
 
 ---
 
-<br>
+&nbsp;
 
 # 4. HTTP method의 속성
 
@@ -337,7 +337,7 @@ Host: localhost:8080
   - 멱등(idempotent Methods)
   - 캐시가능(Cacheable Methods)
 
-<br>
+&nbsp;
 
 ---
 
@@ -349,7 +349,7 @@ Host: localhost:8080
   - Q. 그래도 변경을 요청하면 변경되진 않아도, 로그에 계속 남게되어 터지지 않을까??
   - A: 안전은 해당 리소스만 고려한다. 그런 부분까지 고려하지 않는다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -364,13 +364,13 @@ Host: localhost:8080
   - **DELETE: 결과를 삭제한다. 같은 요청을 여러번 해도 결과는 동일.**
   - **_POST_ : 멱등이 아니다! 두 번 호출하면 같은 결제가 중복해서 발생할 수 있다.**
 
-<br>
+&nbsp;
 
 - 활용
   - 자동 복구 메커니즘
   - 서버가 TIMEOUT 등으로 정상 응답을 못 주었을 때, 클라이언트가 같은 요청을 다시 해도 되는가?? 판단근거
 
-<br>
+&nbsp;
 
 - 멱등은 외부 요인으로 인해 리소스가 변경되는 건 고려하지 않는다.
   - 내가 호출하는 것에 한정한다.
@@ -380,7 +380,7 @@ Host: localhost:8080
     - 사용자1: GET -> username:A, age:30 -> 사용자2의 영향으로 바뀐 데이터 조회
   - 이런 부분은 멱등하지 않다고 생각하자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -394,7 +394,7 @@ Host: localhost:8080
 
 ---
 
-<br>
+&nbsp;
 
 # Reference
 

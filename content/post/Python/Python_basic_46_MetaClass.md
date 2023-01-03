@@ -24,7 +24,7 @@ categories: ["Python"]
 
 - **이번 chapter에서의 목표는 최종적으로 Custom Meta class를 만들기 위함이다.**
 
-<br>
+&nbsp;
 
 ---
 
@@ -100,7 +100,7 @@ True
 
 ![image](https://files.realpython.com/media/class-chain.5cb031a299fe.png)
 
-<br>
+&nbsp;
 
 ---
 
@@ -126,7 +126,7 @@ True
     - Django는 metaclass를 기반으로 만든 ORM framework로,
     - DB와 클래스를 일대일로 맵핑하기 때문에 엄격하다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -153,7 +153,7 @@ True
 > ex = foo()
 ```
 
-<br>
+&nbsp;
 
 ## 3.2 동적으로 클래스 만들기
 
@@ -217,7 +217,7 @@ foo
 2000
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -234,7 +234,7 @@ foo
     - 클래스 개선(기능 추가)
     - 수정된 클래스 반환
 
-<br>
+&nbsp;
 
 ## 4.1 Custom metaclass란?
 
@@ -292,7 +292,7 @@ TypeError: can't set attributes of built-in/extension type 'type'
 > 100
 ```
 
-<br>
+&nbsp;
 
 ## 4.2 Ex1 with Type 상속 X
 
@@ -352,7 +352,7 @@ TypeError: can't set attributes of built-in/extension type 'type'
 - list만의 모든 method를 사용할 수 있으면서, 추가한 method까지 사용할 수 있다.
 - `dir()`로 확인한 속성을 보면 list에 사용되는 method들이 있는 것을 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ## 4.3 Ex2 with Type 상속 O
 
@@ -412,7 +412,7 @@ __call__ ->  <class '__main__.CustomList2'> ([1, 2, 3, 4, 5, 6, 7, 8, 9],) {}
 [777, 200, 300, 400, 500, 600, 700, 800, 900]
 ```
 
-<br>
+&nbsp;
 
 ---
 

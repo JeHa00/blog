@@ -12,7 +12,7 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -25,7 +25,7 @@ categories: ["OS"]
   - 디스크에 실행파일 형태로 존재하는 상태(프로그램) → 메모리에 올라감 → 실행
   - 이 실행 중일 때를 process라 한다.
 
-<br>
+&nbsp;
 
 ## 1.2 Process context (프로세스 문맥 )
 
@@ -49,13 +49,13 @@ categories: ["OS"]
   - Kernel stack
     - OS가 process를 관리하기 위해 유지하는 자료구조들: PCB, kernel stack
 
-<br>
+&nbsp;
 
 ---
 
 # 2. 프로세스의 상태
 
-<br>
+&nbsp;
 
 ## 2.1 Process의 상태도
 
@@ -81,7 +81,7 @@ categories: ["OS"]
 - **_Dispatch:_**
   - CPU를 할당받을 process를 선택한 후, 실제로 CPU의 제어권을 넘겨받는 과정
 
-<br>
+&nbsp;
 
 ## 2.2 Process 상태 변화 예시
 
@@ -119,7 +119,7 @@ categories: ["OS"]
   - 그리고, device의 local buffer에 있는 내용을 memory로 이동한다.
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -131,7 +131,7 @@ categories: ["OS"]
 - **_process 마다 유지하는 정보들을 담는,_**
 - **_커널 내의 자료구조_**
 
-<br>
+&nbsp;
   
 ## 3.2 PCB의 구성 요소
 
@@ -150,13 +150,13 @@ categories: ["OS"]
 - **_4) 파일 관련_**
   - open file descriptors: 입출력 관련 상태 정보
 
-<br>
+&nbsp;
 
 ---
 
 # 4. 문맥교환 (Context switch)
 
-<br>
+&nbsp;
 
 ## Context switch란??
 
@@ -184,20 +184,20 @@ categories: ["OS"]
   - 하지만, CPU 할당 시간을 너무 크게 설정하면 시분할 시스템의 의미가 퇴색된다.
   - 그러므로, 적절한 CPU 할당시간을 정해야 한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 5. 프로세스를 스케쥴링 하기 위한 큐
 
-<br>
+&nbsp;
 
 ## 5.1 kernel의 process 상태 관리
 
 - process 상태 관리는 **_kernel의 주소 공간의 data 영역_** 에 다양한 queue를 두어 수행한다.
 - **_process들은 각 queue들을 오가며 수행한다._**
 
-<br>
+&nbsp;
 
 ## 5.2 다양한 queue 종류
 
@@ -221,7 +221,7 @@ categories: ["OS"]
     - 그래서, 공유 데이터에는 매 시점 하나의 프로세스만이 접근하도록 한다.
       - SW resource에 접근 중인 process가 다 사용하고 반납할 때까지, 다른 process가 CPU를 할당받았어도 접근하지 말고 공유 데이터 queue에서 기다려야 한다.
 
-<br>
+&nbsp;
 
 ## 5.3 Process scheduling queue의 모습
 
@@ -240,13 +240,13 @@ categories: ["OS"]
   - disk queue에는 PCB 3 ← PCB 14 ← PCB 6 순서로 대기하고 있다.
   - terminal queue에는 PCB 5 만 대기하고 있다.
 
-<br>
+&nbsp;
 
 ---
 
 # 6. 스케쥴러 (Scheduler)
 
-<br>
+&nbsp;
 
 ## 6.1 Long-term scheduler (장기 스케쥴러 or job scheduler)
 
@@ -260,7 +260,7 @@ categories: ["OS"]
   - 현 컴퓨터에는 장기 스케쥴러는 없고, 프로그램이 시작하면 다 ready 상태로 들어간다.
 - time sharing system에는 보통 장기 scheduler가 없다. (무조건 ready)
 
-<br>
+&nbsp;
 
 ## 6.2 Short-term schduler (단기 scheduler or CPU scheduler)
 
@@ -268,7 +268,7 @@ categories: ["OS"]
 - 프로세스에 **_CPU_** 를주는문제
 - 충분히 빨라야 함 (milli-second 단위)
 
-<br>
+&nbsp;
 
 ## 6.3 Medium-Term Scheduler (중기 스케쥴러 or Swapper)
 
@@ -280,7 +280,7 @@ categories: ["OS"]
   - 현재 multi-programming을 제어하는 scheduler
   - 이 중기 스케쥴러가 들어가 있기 때문에, 프로세스의 상태 3가지에 추가된 게 suspended다.
 
-<br>
+&nbsp;
 
 ## 6.4 추가된 프로세스 상태도
 
@@ -305,13 +305,13 @@ categories: ["OS"]
   - Blocekd: **자신이 요청한 event가 만족되면(자신이 요청한 작업이 완료되면) Ready**
   - Suspended: **외부에서 정지된 상태이기 대문에, 외부에서 resume 해 주어야 Active**
 
-<br>
+&nbsp;
 
 ---
 
 # 7. 프로세스의 생성
 
-<br>
+&nbsp;
 
 ## 7.1 Process creation (프로세스 생성) : COW(Copy-On-Write)
 
@@ -352,7 +352,7 @@ categories: ["OS"]
   - fork () 다음에 이어지는 exec () system cal을 통해 새로운 프로그램을 메모리에 올린다.
   - fork () 와 exec () 둘 다 system call을 통해서 실행되므로, 운영체제가 생성한다.
 
-<br>
+&nbsp;
 
 ## 7.2 Process Termination (프로세스 종료)
 
@@ -367,7 +367,7 @@ categories: ["OS"]
     - 운영체제는 부모프로세스가 종료하는 경우, 자식이 더 수행되도록 두지 않는다.
     - 단계적인 종료( 손자 → 자식 → 부모 )가 지켜져야 한다.
 
-<br>
+&nbsp;
 
 ## 7.3 fork () system call
 
@@ -380,21 +380,21 @@ categories: ["OS"]
 - **_복제된 process인지 아닌지 구분하는 방법_**
   - fork 함수의 결과값으로 자식 process 는 0을, 부모 process에게는 양수를 준다.
 
-<Br>
+&nbsp;
 
 ## 7.4 exec () system call
 
 - fork () 한 후, exec () system call을 통해서 자식 프로세스를 새로운 program으로 대체한다. (overwrite)
 - 한 번 만들어지면 다시 되돌아갈 수 없다.
 
-<br>
+&nbsp;
 
 ## 7.5 wait () system call
 
 - wait () system call은 자식 process가 종료될 때까지 process A를 blocked state로 만든다.
 - 자식 프로세스가 종료되면 kernel은 프로세스 A를 준비 상태로 변경하여 준비 큐에 진입.
 
-<br>
+&nbsp;
 
 ## 7.6 exit() system call
 
@@ -413,13 +413,13 @@ categories: ["OS"]
 - 프로그램을 강제 종료시킨 후, 계속 수행시켜야하는 경우에는 종료되지 않는 다른 자식 프로세스로 이양시켜서, 기존 부모 프로세스가 종료된 후에도 다른 프로세스 아래에서 계속 수행한다.
   - 부모가 죽기 전에 자식이 먼저 죽는다는 원칙은 여전히 지켜진다.
 
-<br>
+&nbsp;
 
 ---
 
 # 8. 프로세스 간의 협력
 
-<br>
+&nbsp;
 
 ## 8.1 Process 간 협력하는 이유
 
@@ -432,7 +432,7 @@ categories: ["OS"]
   - How? 
     - IPC(Inter-Process Communication): process 간 통신과 동기화를 이루기 위한 mechanism
   
-  <br>
+  &nbsp;
 
 ## 8.2 IPC의 대표적인 방법: 2가지
 
@@ -454,7 +454,7 @@ categories: ["OS"]
 
 - **_Shared memory: 공유 메모리 방식_**
 
-<br>
+&nbsp;
 
 ## 8.3 Message passing 방식: 2가지
 
@@ -471,7 +471,7 @@ categories: ["OS"]
 - link는 자동적으로 생성되며, 하나의 link는 정확히 한 쌍의 process에게 할당된다.
 - 각 쌍의 process에게는 오직 하나의 link만이 존재한다.
 
-<br>
+&nbsp;
 
 ### Indirect communication
 
@@ -485,7 +485,7 @@ categories: ["OS"]
 - Receive(M, message): M이라는 mailbox로부터 메시지를 전달받는 것
 - mailbox를 3개 이상의 process가 공유할 경우, 각각의 프로세스에게 링크를 따로 생성가능.
 
-<br>
+&nbsp;
 
 ## 8.4 Shared memory
 
@@ -495,13 +495,13 @@ categories: ["OS"]
 - 물리적인 공간에 mapping 할 때, 공유된 상태로 진행한다.
 - 이 방법에서 동기화 문제는 kernel 책임지지 않고, 공유되는 process 들이 책임져야 한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 9. Thread
 
-<br>
+&nbsp;
 
 ## 9.1 Thread란??
 
@@ -527,7 +527,7 @@ categories: ["OS"]
   - OS는 process를 관리하기 위해 process마다 1개의 PCB를 둔다.
   - 이 PCB를 보면 여러 thread로 구성된 걸 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ## 9.2 Thread의 장점
 
@@ -542,7 +542,7 @@ categories: ["OS"]
   - 병렬로 thread가 실행될 수 있다.
   - 다중 thread가 협력하여 높은 처리율과 성능 향상을 얻는다.
 
-<br>
+&nbsp;
 
 ## 9.3 Implementation of threads
 
@@ -562,7 +562,7 @@ categories: ["OS"]
 - **_Some are real time threads_**
   - real time을 지원하는 thread
 
-<br>
+&nbsp;
 
 ---
 

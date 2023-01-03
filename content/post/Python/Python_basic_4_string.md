@@ -45,7 +45,7 @@ Pyton <class 'str'>
 6
 ```
 
-<br>
+&nbsp;
 
 ### 결론
 
@@ -55,7 +55,7 @@ Pyton <class 'str'>
 
 ---
 
-<br>
+&nbsp;
 
 ## 2. Escape, raw string and multi line
 
@@ -151,7 +151,7 @@ Check!
 
 ---
 
-<br>
+&nbsp;
 
 ## 3. 문자형 연산
 
@@ -183,13 +183,13 @@ True
 False
 ```
 
-<br>
+&nbsp;
 
 ---
 
 ## 4. 문자형 형 변환(Type conversion), 문자형 함수
 
-<br>
+&nbsp;
 
 ### 4.1 Type Conversion
 
@@ -212,7 +212,7 @@ True <class 'str'>
 12 + 0j
 ```
 
-<br>
+&nbsp;
 
 ### 4.2 문자열 함수
 
@@ -286,7 +286,7 @@ reversed2:  ['e', 'l', 'p', 'p', 'A']
   - 출력을 원하면 reverse 값을 원하면 형 변환을 해야 한다.
   - **_기존 리스트의 값을 변경하지 않으면서 return 값만을 원할 때 reversed 함수를 사용한다._**
 
-<br>
+&nbsp;
 
 ---
 
@@ -343,7 +343,7 @@ nohtyP eciN
 
 ---
 
-<br>
+&nbsp;
 
 # Reference
 

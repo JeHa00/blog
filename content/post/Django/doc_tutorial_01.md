@@ -16,7 +16,7 @@ categories: ["Django"]
     - 사람들이 설문조사를 보고 투표할 수 있는 'public site'
     - 설문조사를 더하고, 수정하고, 삭제하는 'admin site'
 
-<br>
+&nbsp;
 
 ---
 
@@ -77,7 +77,7 @@ django-admin startproject mysite
 
 - `mysite/asgi.py` 와 `mysite/wsgi.py`: [How to deploy with ASGI](https://docs.djangoproject.com/en/4.0/howto/deployment/asgi/) 와 [How to deploy with WSGI](https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/)를 나중에 참고해보자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -109,7 +109,7 @@ Quit the server with CONTROL-C.
 
 이처럼 django가 자동적으로 한 가지 app의 기본적인 directory 구조를 생성하기 때문에, 디렉토리들을 어떻게 생성할지보다 코드를 작성하는 것에 집중할 수 있게 된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -152,7 +152,7 @@ __init__.py
 >     views.py
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -212,7 +212,7 @@ mysite/urls.py 에 추가하기 위해서, `django.urls.include` 를 import하�
 > python manage.py runserver
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -238,7 +238,7 @@ mysite/urls.py 에 추가하기 위해서, `django.urls.include` 를 import하�
 - name
   - URL을 django 어디에서든 name으로 참조하도록 한다.
 
-<br>
+&nbsp;
 
 ---
 

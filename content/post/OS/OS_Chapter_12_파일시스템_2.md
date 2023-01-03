@@ -9,12 +9,12 @@ categories: ["OS"]
 
 # 0. Introduction
 
-<br>
+&nbsp;
 
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용이다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -32,7 +32,7 @@ categories: ["OS"]
   - sector: disk에서 물리적으로 저장하는 단위
   - block: file system에서 file이 저장되는 단위
 
-<br>
+&nbsp;
 
 ## 6.1 Contiguous Allocation
 
@@ -61,7 +61,7 @@ categories: ["OS"]
     - file이 커져서 sector를 늘려 저장하려할 때, 다른 file이 옆 sector를 차지하고 있다면 늘릴 수 없다. 그래서 file이 커질 것을 대비하여 미리 할당했을지라도, 할당된 만큼만 커질 수 있다는 단점이 있다.
     - 그리고 미리 할당된거면서 사용하지 않는 조각이기 때문에, 내부 조각이 발생된다.
 
-<br>
+&nbsp;
 
 ## 6.2 Linked Allocation
 
@@ -87,7 +87,7 @@ categories: ["OS"]
   - File-Allocation Table (FAT) 파일 시스템
     - pointer를 별도의 sector에 보관하여 신뢰성 문제와 공간 효율성 문제를 해결한다.
 
-<br>
+&nbsp;
 
 ## 6.3 Indexed Allocation
 
@@ -114,7 +114,7 @@ categories: ["OS"]
 
 - 이번 소챕터에서는 이론적으로 disk에 file을 어떻게 할당하는 지를 알아봤으니, 다음 소챕터에서는 실제로 어떠한지 알아보자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -131,7 +131,7 @@ categories: ["OS"]
 - 0번 block이며, bootstrap loader라고도 한다.
 - 모든 file system에 존재하는 블록
 
-<br>
+&nbsp;
 
 ## 7.2 Super block
 
@@ -139,7 +139,7 @@ categories: ["OS"]
 
 - 어느 부분이 비어 있는 블록인지, 어느 부분이 사용 중인 블록인지, 어디부터가 Inode 블록인지, data 블록인지 등을 알려주는 정보를 가지고 있다.
 
-<br>
+&nbsp;
 
 ## 7.3 Inode list
 
@@ -152,7 +152,7 @@ categories: ["OS"]
   - 파일의 크기가 크지 않다면 이 블록을 이용하여 파일을 접근할 수 있다.
   - direct blocks로 커버할 수 있는 크기보다 저장 용량이 큰 파일은 single indirect를 통해서 하나의 level을 두어 저장하는 방식을 취하고, 그보다 더 큰 파일은 double indirect, 더 큰 파일은 triple indirect 방식을 취한다.
 
-<br>
+&nbsp;
 
 ## 7.4 Data block
 
@@ -161,7 +161,7 @@ categories: ["OS"]
 - 이 중 directory file은 자신의 directory에 속한 file의 이름과 inode 번호를 가지고 있다.
   - file의 이름은 실제로 data block이 가지고 있고, 나머지는 Inode 번호로 가진다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -181,7 +181,7 @@ categories: ["OS"]
 
 - FAT는 중요한 정보이므로 복제본을 만들어 두어야 한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -189,7 +189,7 @@ categories: ["OS"]
 
 > **_Sector가 할당되고 나서 발생하는 hole을 관리하는 디스크 자유 공간 관리방법으로, 아래 4가지가 있다._**
 
-<br>
+&nbsp;
 
 ## 9.1 Bit map or Bit vector
 
@@ -199,7 +199,7 @@ categories: ["OS"]
 
 - UNIX file system의 경우, super block에 정보를 저장한다.
 
-<br>
+&nbsp;
 
 ## 9.2 Linked list
 
@@ -211,7 +211,7 @@ categories: ["OS"]
 
 - 연속적인 가용 공간을 찾기 어렵지만, 공간의 낭비가 없다.
 
-<br>
+&nbsp;
 
 ## 9.3 Grouping
 
@@ -223,7 +223,7 @@ categories: ["OS"]
 - 그러나 마지막 1개는 첫 번째와 마찬가지로, (n-1)개의 빈 블록 주소를 가지고 있는 또 다른 자유 블록을 가리킨다.
 - linked list와 달리 비어있는 block을 한 번에 찾기에는 효율적이지만, 연속적인 free block을 찾기에는 효과적이지 않다.
 
-<br>
+&nbsp;
 
 ## 9.4 Counting
 
@@ -232,7 +232,7 @@ categories: ["OS"]
 - 프로그램들이 종종 여러 개의 연속적인 block을 할당하고 반납한다는 사실에 착안했다.
 - 모든 블록을 일일이 추적할 필요 없이, 자유 블록의 첫 번째와 연속된 계수만 유지하면 보다 효율적이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -268,7 +268,7 @@ categories: ["OS"]
   - 하지만 file name이 엔트리의 고정 길이보다 길어지는 경우, entry의 마지막 부분에 file name의 뒷 부분이 위치한 곳의 pointer를 둔다.
   - file 이름의 나머지 부분은 동일한 directory file의 일부에 존재한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -291,7 +291,7 @@ categories: ["OS"]
 - **분산 시스템에서는 네트워크를 통해 파일을 공유하기 위해 NFS client와 NFS server가 이용된다.**
   - client와 server 모두에 NFS module이 있어서, 같은 약속으로 접근이 가능하다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -306,7 +306,7 @@ categories: ["OS"]
 - Memory-Mapped I/O 를 쓰는 경우, 파일의 I/O에서도 page cache를 사용한다.
 - page cache는 운영체제에게 주어진 정보가 극히 제한적이라, clock 알고리즘을 사용한다.
 
-<br>
+&nbsp;
 
 ## 12.2 Memory-Mapped I/O
 
@@ -314,7 +314,7 @@ categories: ["OS"]
 
 - 매핑한 영역에 대한 메모리 접근 연산은 파일의 입출력을 수행하게 한다.
 
-<br>
+&nbsp;
 
 ## 12.3 Buffer cache: File system 관점
 
@@ -325,7 +325,7 @@ categories: ["OS"]
 - 모든 process가 공용으로 사용
 - 교체 알고리즘 필요 (LRU, LFU 등)
 
-<br>
+&nbsp;
 
 ## 12.4 Unified(통합) buffer cache
 
@@ -333,13 +333,13 @@ categories: ["OS"]
 
 - 별도의 구분 없이 필요할 때만 할당해서 사용하는 방식이다.
 
-<br>
+&nbsp;
 
 ## 12.5 통합 buffer cache로 인한 차이점
 
 ![image](https://user-images.githubusercontent.com/78094972/170958342-0f2c376b-e3f8-4b26-aa71-2596ec1ce965.png)
 
-<br>
+&nbsp;
 
 ---
 
@@ -353,7 +353,7 @@ categories: ["OS"]
 
 - 이 때, 코드 부분은 이미 파일 시스템에 있고, 프로세스의 주소에 이미 mapping된 경우이기 때문에, swap area에 내리지 않고 필요 없으면 물리적 메모리에서 지운다. 나중에 필요하면 file system에서 가져오면 된다. 즉, 이 code 부분은 memory mapping된 대표적인 예다.
 
-<br>
+&nbsp;
 
 ## 13.1 Memory Mapped I/O 수행
 
@@ -373,7 +373,7 @@ categories: ["OS"]
 
 - 현재 process B가 데이터 파일에 대해 Memory Mapped I/O를 수행하여, 물리적 메모리에 페이지 프레임을 올려 두었는데도, 프로세스 A도 이 page frame을 공유하여 사용할 수 있다.
 
-<br>
+&nbsp;
 
 ## 13.2 read() 수행
 
@@ -387,7 +387,7 @@ categories: ["OS"]
 
 - 운영 체제는 buffer cache에 있던 내용을 복사하여 process의 주소 공간에 할당한다.
 
-<br>
+&nbsp;
 
 ## 13.3 Memory Mapped I/O vs read()
 
@@ -402,7 +402,7 @@ categories: ["OS"]
   - page cache에 있는 내용을 복사해야 한다.
   - 여러 프로세스가 `read()`를 사용해도 일관성 문제가 발생하지 않는다.
 
-<br>
+&nbsp;
 
 ---
 

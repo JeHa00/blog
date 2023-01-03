@@ -21,7 +21,7 @@ categories: ["Python"]
 > [statement(s)]
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -51,7 +51,7 @@ categories: ["Python"]
 
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -107,7 +107,7 @@ i : 6
 
 ❗ pass에 대해 설명하자면 다른 언어의 경우 빈 줄로 넘겨도 Error가 나지 않지만, 파이썬은 Error가 나기 때문에 나중에 작성하고자 빈란으로 남기면 안된다. 그럴 때 파이썬은 pass를 사용한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -142,7 +142,7 @@ find black
 
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -172,7 +172,7 @@ foo
 
 - a의 원소가 존재하지 않으므로 `if not a`가 참이 되어 `break`가 실행된다.
 
-<br>
+&nbsp;
 
 ---
 

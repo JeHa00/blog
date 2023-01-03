@@ -23,7 +23,7 @@ categories: ["Django"]
 - DRF 강의 내용을 정리한 이유는 DRF는 api 설계에 주로 사용하기 때문에, 정답이라는 게 없어서 많이 사용하는 내용을 정리할 필요를 느꼈습니다.
 
 
-<br>
+&nbsp;
 
 ---
 # 1. Throttle Scope
@@ -63,7 +63,7 @@ class EmployeeViewSet(ModelViewSet):
 	throttle_scope = "basic"
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -98,7 +98,7 @@ REST_FRAMEWORK = {
 ```
 
 
-<br>
+&nbsp;
 
 ---
 # 3. authentication & permission
@@ -173,7 +173,7 @@ has_permission
 
 `return True` 대신에 `return request.user.is_staff`을 추가하여 staff 여부를 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ## 3.2 authentification
 
@@ -266,7 +266,7 @@ superuser로 만들었던 아이디와 비밀번호를 입력하면 아래와 �
 
 그러면 이 Token을 http message header에 추가하여 GET으로 함께 해당 api_url를 보내면 user 정보를 받을 수 있다.  
 
-<br>
+&nbsp;
 
 ---
 

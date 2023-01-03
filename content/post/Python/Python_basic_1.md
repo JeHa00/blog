@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["Python"]
 ---
 
-<br>
+&nbsp;
 
 # 1. 변수 할당 설명
 
@@ -62,7 +62,7 @@ categories: ["Python"]
 
 > 추가로 [[TIL] Python basic 41: Shallow copy & Deep copy](https://jeha00.github.io/post/python_basic/python_basic_41_shallowdeepcopy/) 을 참고하자.
 
-<br>
+&nbsp;
 
 ## 1.3 재선언
 
@@ -104,7 +104,7 @@ Change Value
 
 ---
 
-<br>
+&nbsp;
 
 # 2. Object References
 
@@ -171,13 +171,13 @@ Change Value
 False
 ```
 
-<br>
+&nbsp;
 
 # 3. 다양한 변수 선언방법과 예약어
 
 - 이 규칙들을 가지고 변수를 선언하면 세련되고, 코드를 재활용할 때 가독성이 좋은 소스 코드로 만들 수 있다.
 
-<br>
+&nbsp;
 
 - camelCase : method 및 함수를 선언할 때 사용.
 
@@ -212,7 +212,7 @@ False
 ```
 
 
-<br>
+&nbsp;
 
 ## 3.2 예약어
 
@@ -231,7 +231,7 @@ class	from	or
 continue	global	pass
 ```
 
-<br>
+&nbsp;
 
 ---
 

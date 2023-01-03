@@ -22,7 +22,7 @@ categories: ["Python"]
 
 > **_절차지향과 OOP 비교해보기_** : [[TIL] Python basic 24: Procedural Programming vs OOP](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)
 
-<br>
+&nbsp;
 
 ---
 
@@ -32,9 +32,9 @@ categories: ["Python"]
   - 소프트웨어로 구현할 대상을 `객체(Object)`라 한다.
 - 그리고, 이 **_객체(Object)_** 를 **_class라는 틀_** 을 통해서 소프트웨어적으로 묘사한 것을 **_instance_** 라 한다.
 
-<br>
+&nbsp;
 
-<br>
+&nbsp;
 
 ## 2.1 Class 만들고 호출하기
 
@@ -44,7 +44,7 @@ categories: ["Python"]
   - 개의 종은 매우 다양하기 때문에, 개의 종이 추가될 때마다 변수 입력한다면 그 양이 매우 많아지고, 가독성도 떨어진다.
   - 하지만, 클래스를 이용한다면 눈에 보이는 애완견 실체를 `클래스 형태`로 구성해서 `instance`로 만들 수 있다.
 
-<br>
+&nbsp;
 
 - `class` 라는 예약어를 통해 클래스를 만들기 시작한다.
   - 모든 클래스는 object를 상속받기 때문에, 선언 방법은 자유롭다.
@@ -76,7 +76,7 @@ categories: ["Python"]
 <class '__main__.Dog'>
 ```
 
-<br>
+&nbsp;
 
 ## 2.2 인스턴스화하기
 
@@ -97,7 +97,7 @@ categories: ["Python"]
 False 2542532857088 2542532856992 2542532856560
 ```
 
-<br>
+&nbsp;
 
 ## 2.3 namespace 확인하기
 
@@ -138,7 +138,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 - namespace 를 통해서 class와 instance들이 가지고 있는 속성들을 확인할 수 있다.
 - class 는 하나지만, instance를 만들 때 다른 속성 값을 입력했기 때문에, `dir()` 이 아닌, `.__dict__`를 통해서 이를 확인할 수 있다. 그래서 instance의 속성값을 확인할 때는 `.__dict__` 를 사용하자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -235,13 +235,13 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 
   - 그래서 클래스로 접근해도 instance method에 인스턴스화한 변수를 인자로 넘기니 정상적으로 작동됨을 알 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
 # 4. class, instance variable
 
-<br>
+&nbsp;
 
 - 다른 클래스를 만들어보자.
 
@@ -289,7 +289,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
   - 객체마다 별도로 존재한다.
   - `namespace` 라는 **_인스턴스만의 공간_** 을 별도로 갖고 있어서, namespace를 통해 인스턴스 변수를 확인한다.
 
-<br>
+&nbsp;
 
 - **클래스 변수에 접근하기**
 
@@ -352,7 +352,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
   {'__module__': '__main__', 'stock_num': 1, ...}
   ```
 
-<br>
+&nbsp;
 
 ## 4.2 Python의 namespace lookup 원리
 
@@ -364,7 +364,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
   - instance의 namespace에서는 class 변수가 없다. 그러면 인스턴스화한 변수를 통해서 클래스 변수가 어떻게 출력되는걸까???
   - 이는 python이 instance의 namespace에서 찾지 못하자, class의 namespace에서 찾아 출력하는 것이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -419,7 +419,7 @@ Marry says Mung Mung!
   - 깔끔한 코드를 통해 프로그램 개발을 할 수 있다.
   - 생산성이 향상되고, 성능도 코드에 따라 좋아진다.
 
-<br>
+&nbsp;
 
 ---
 

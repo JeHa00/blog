@@ -15,7 +15,7 @@ categories: ["Django"]
 
 - 또한, 실제 현업에서는 STATIC 파일을 올리는 방법들 중 S3를 사용하는 방식을 사용한다고 한다. 
 
-<br>
+&nbsp;
 
 ---
 
@@ -34,7 +34,7 @@ AWS의 EC2, S3, RDS에 대해 간단히 알아보자.
 - AWS RDS
     - 클라우드 스토리지로서, 인터넷 공간에 데이터를 저장하는 저장소를 의미
 
-<br>
+&nbsp;
 
 ---
 
@@ -62,7 +62,7 @@ NGINX는 HTTP request가 들어오면 url를 통해서 정적 데이터인지, �
 
 하지만, 그렇지 않은 루트로 시작되는 것들은 uWSGI로 보내지고, uWSGI가 EC2 위의 django application에게 전달한다. 그리고, 이를 거쳐서 AWS RDS로 저장된다. 
 
-<br>
+&nbsp;
 
 ---
 
@@ -86,7 +86,7 @@ NGINX는 HTTP request가 들어오면 url를 통해서 정적 데이터인지, �
 - request를 받을 때, 일부 프로토콜만 허용하는데 이 범위를 정하는 게 범위 그룹의 인바운드라는 그룹이다.   
 - 브라우저로 접근하기 때문에 HTTP에 대한 접근을 허용했다. 
 
-<br>
+&nbsp;
 
 ### 탄력적 IP 설정
 
@@ -102,7 +102,7 @@ NGINX는 HTTP request가 들어오면 url를 통해서 정적 데이터인지, �
 - EC2가 종료되었다가, 다시 시작하면 IP가 바뀐다. 예를 들어서 공유지 전원을 겄다가 키면 주소가 바뀐다. 그런데 사용 중인 IP주소가 바뀌는 걸 막고자 탄력적 IP를 사용한다.  
 - 탄력적 IP 주소를 사용한 결과, 외부에서는 이 IP가 고정된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -150,7 +150,7 @@ ubuntu@ip-172-31-3-151:~$
 **❗️ Ubuntu OS에서는 우분투 계정을 기본적으로 제공하므로, 별도로 계정을 추가할 필요가 없다.**  
 **❗️ pem 파일은 Owner read 권한만 존재해야 접근 가능하다.**  
 
-<br>
+&nbsp;
 
 ---
 
@@ -177,7 +177,7 @@ $ubuntu@ip-172-31-3-151:~$ sudo apt-get install virtualenv
     - 위 작업을 놓치면 **UWSGI** 를 설치할 수 없다.
     - `sudo apt-get install python3.9 python3.9-dev`
 
-<br>
+&nbsp;
 
 ## 5.2 File structure
 
@@ -220,7 +220,7 @@ $ubuntu@ip-172-31-3-151:~$ sudo apt-get install virtualenv
 
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -246,7 +246,7 @@ $ubuntu@ip-172-31-3-151:~$ sudo apt-get install virtualenv
 🔆 uwsgi 를 설치하지 않아도, 화면이 정상적으로 뜬다. 하지만 이 경우, uwsgi가 없기 때문에 nginx 와 연결될 수 없다.
 
 
-<br>
+&nbsp;
 
 ---
 # 7. uWSGI 설치 및 적용하기
@@ -262,7 +262,7 @@ $ubuntu@ip-172-31-3-151:~$ sudo apt-get install virtualenv
     - 만약 uwsgi가 설치되지 않는다면 아래 명령어를 실행하지 않은 것이다.
     - `sudo apt-get install python3.9 python3.9-dev`
 
-<br>
+&nbsp;
 
 ## uWSGI 파일 수정 및 적용
 
@@ -309,7 +309,7 @@ daemonize = /home/ubuntu/www/ls-django/uwsgi.log
 
 - 실제로는 더 많은 옵션들이 존재하므로, 더 찾아보자.
 
-<br>
+&nbsp;
 
 ### uWSGI 파일 적용
 
@@ -330,7 +330,7 @@ $ uwsgi --ini uwsgi.ini
 # -f 의 의미는 log에 새로 생기면 바로 출력된다는 걸 의미한다. 
 ```
 
-<br>
+&nbsp;
 
 ## 🔆 uWSGI 과정에서 발생한 Error 정리
 
@@ -341,7 +341,7 @@ $ uwsgi --ini uwsgi.ini
     - 첫 번째, 가상환경이 활성화되어 있는지 확인하라.
     - 두 번째, `pip install uwsgi`을 실행했는지 생각해라.
 
-<br>
+&nbsp;
 
 ### Case 2
 
@@ -351,7 +351,7 @@ $ uwsgi --ini uwsgi.ini
     - 수정 전: `home/ubuntu/www/ls-django/uwsgi.log`
     - 수정 전: `/home/ubuntu/www/ls-django/uwsgi.log`
 
-<br>
+&nbsp;
 
 ### 로그 확인
 
@@ -361,7 +361,7 @@ $ uwsgi --ini uwsgi.ini
     - `-f`의 의미: follow의 약어로서, 계속해서 파일의 상태를 감시하며 파일에 내용이 뒤에 추가될 때마다 새로 추가된 내용을 보여준다.
 
 
-<br>
+&nbsp;
 
 ---
 # 8. NGINX 설치 및 적용하기
@@ -373,7 +373,7 @@ Nginx 설치 명령어 실행하기
 
 - `sudo apt-get install nginx`
 
-<br>
+&nbsp;
 
 ## nginx.conf 수정하기
 
@@ -388,7 +388,7 @@ Nginx 설치 명령어 실행하기
 -  `/etc/nginx/sites-enabled/default`  
     - `sudo vi /etc/nginx/sites-enabled/default`
 
-<br>
+&nbsp;
 
 ### nginx에 uWSGI socket 연결하기
 
@@ -412,7 +412,7 @@ location / {
 }
 ```
 
-<br>
+&nbsp;
 
 ### nginx와 uwsgi가 어떻게 연결되는가?
 
@@ -445,7 +445,7 @@ server {
 
 static file을 실행시켜주는 것도 위에 location에서 실행한다. 
 
-<br>
+&nbsp;
 
 ## nginx 적용하기
 
@@ -482,7 +482,7 @@ lines 1-16/16 (END)
 
 이를 직접 보고 싶으면 불러온 사이트의 inspection tool로 들어가서 Network > CSS 를 클릭하면 status code를 보고 알 수 있다.
 
-<br>
+&nbsp;
 
 ---
 

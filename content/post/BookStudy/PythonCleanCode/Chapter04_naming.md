@@ -18,7 +18,7 @@ categories: ["Book Study"]
 
 - 이번 chapter의 주제는 **'Chapter 04: Naming'** 입니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -53,7 +53,7 @@ categories: ["Book Study"]
 
 - 첫 단어부터 각 단어들의 첫 글자는 대문자로 작성하는 작명법
 
-<br>
+&nbsp;
 
 ---
 
@@ -71,7 +71,7 @@ categories: ["Book Study"]
 - 개발자들은 위 사항들을 엄격히 따를 필요는 없다.
     - 그래서 저자는 변수 이름을 snake_case로 작성하는 게 아닌 camelCase로 작성하고 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -124,7 +124,7 @@ payment1, payment2 는 읽는 사람으로 하여끔 충분히 디테일한 정�
 파이썬의 내장 함수로 사용되는 이름들과, ‘data’ 는 사용하지 않는다.
 
 
-<br>
+&nbsp;
 
 ---
 

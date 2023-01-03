@@ -49,7 +49,7 @@ categories: ["Python"]
 - Access modifier 접근 지정자로 사용된다.
   - 이 접근 지정자 private에서 **_Naming Mangling_** 이 발생된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -68,7 +68,7 @@ categories: ["Python"]
 
 - 그러면 Public, Protected, Private에 대해 각각 알아보자.
 
-<br>
+&nbsp;
 
 ## 2.1 Public
 
@@ -111,7 +111,7 @@ Age:  30
 Name:  Wang
 ```
 
-<br>
+&nbsp;
 
 ## 2.2 Protected
 
@@ -187,7 +187,7 @@ Roll:  130205
 branch:  Information Technology
 ```
 
-<br>
+&nbsp;
 
 ## 2.3 Private: Naming Mangling
 
@@ -299,7 +299,7 @@ AttributeError: 'Geek' object has no attribute '_Geek__name'
 - private data는 상속된 class에서 출력할 수 없다는 걸 확인했다.
 
 
-<br>
+&nbsp;
 
 
 ### Naming Mangling 확인하기
@@ -318,7 +318,7 @@ AttributeError: 'Geek' object has no attribute '_Geek__name'
 - 맨 처음 private data를 선언된 class의 이름이 붙여져서 `_Student__name`으로 naming Mangling 된 걸 확인했다.
 - mangling의 의미처럼 기존의 설정한 name은 훼손되어 사용할 수 없다.
 
-<br>
+&nbsp;
 
 ### 다른 언어와의 차이점
 
@@ -326,7 +326,7 @@ AttributeError: 'Geek' object has no attribute '_Geek__name'
 
 - 하지만, 원칙에 맞게 Python 오픈 소스 프로젝트들은 이를 준수하고 있다.
 
-<br>
+&nbsp;
 
 ## 2.4 Summary
 
@@ -393,7 +393,7 @@ Protected data:  4
 private data:  !
 ```
 
-<br>
+&nbsp;
 
 ---
 

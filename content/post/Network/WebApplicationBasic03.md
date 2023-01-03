@@ -31,7 +31,7 @@ categories: ["Network"]
 - 네트워크
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -103,7 +103,7 @@ categories: ["Network"]
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | 0 | 0 | 0 | 0 | 0 | 0 |
 
-<br>
+&nbsp;
 
 ### TCP header의 특성 1: 신뢰성
 
@@ -163,7 +163,7 @@ categories: ["Network"]
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | 0 | 1 | 0 | 0 | 0 | 0 |
 
-<br>
+&nbsp;
 
 ### TCP header의 특성: 식별성
 
@@ -177,7 +177,7 @@ categories: ["Network"]
 | POP3 | 110|
 | HTTPS | 443 |
 
-<br>
+&nbsp;
 
 ### UDP header
 
@@ -187,7 +187,7 @@ categories: ["Network"]
 
 - 그래서 TCP는 확인해야할 것들이 많아서 느리지만, UDP는 빠르다.  
 
-<br>
+&nbsp;
 
 ---
 
@@ -205,14 +205,14 @@ categories: ["Network"]
 | 메일 수신 | POP 3|
 | 이름 해석 | DNS | 
 
-<br>
+&nbsp;
 
 ## Summary 
 
 ![image](https://user-images.githubusercontent.com/78094972/187599188-35a39439-9e90-4636-a090-7e2750f89e3d.png)
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -237,7 +237,7 @@ categories: ["Network"]
     - `netmask 0xffffff00`: 255.255.255.192 /26
         - 11111111 11111111 1111111 11000000
 
-<br>
+&nbsp;
 
 ## DNS server
 
@@ -266,7 +266,7 @@ categories: ["Network"]
 - DNS에다가 추가하고 싶은 IP 주소를 추가할 수 있다는 것
 
 
-<br>
+&nbsp;
 
 ## ping
 
@@ -296,7 +296,7 @@ round-trip min/avg/max/stddev = 36.573/41.375/45.149/3.740 ms
 - 총 8개의 packet을 보내고, 받았다는 걸 알 수 있다.  
 - 이렇게 Ping을 보내어 해당 서버와 통신 유무를 확인할 수 있다.  
 
-<br>
+&nbsp;
 
 ---
 

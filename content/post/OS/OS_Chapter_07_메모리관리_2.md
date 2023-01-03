@@ -12,13 +12,13 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용이다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 - 이번 chapter 내용인 메모리 관리는 물리적인 메모리 관리로, 주요 내용은 address binding이다.
 - address binding에서의 OS의 역할은 없고, 다 HW가 해야한다.
 - address binding을 할 때마다 OS에게 CPU 제어권을 양도해도, 결국 물리적 메모리에 instruction을 실행하는 건 CPU다. 그래서 HW가 해야한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -43,7 +43,7 @@ categories: ["OS"]
   - 위 문제에 대한 해결책으로 **페이지 테이블(page table)** 을 가진다.
   - page table이 사용하는 주소 변환기법에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ## 4.1 주소 변환(address translation) 기법
 
@@ -61,7 +61,7 @@ categories: ["OS"]
   -> page table에서 위에서 p 번째를 찾으면 frame 번호(f)가 나온다.  
   -> 이렇게 해서 logical address에서 physical address로 바뀐다.
 
-<br>
+&nbsp;
 
 ## 4.2 페이지 테이블의 구현
 
@@ -112,19 +112,19 @@ categories: ["OS"]
 - page table은 각 process마다 논리적인 주소 체계가 달라서, 각 프로세스마다 존재한다.
   - 그래서, TLB도 각 process마다 다르게 존재한다.
 
-<br>
+&nbsp;
 
 ## 4.3 계층적 페이징
 
 > **2개 이상의 page table을 통해서 물리적 메모리에 접근하는 기법으로, 각 페이지를 다시 페이지화시키는 기법**
 
-<br>
+&nbsp;
 
 ### 4.3.1 Twp-level page table이란???
 
 - **2단계 페이징 기법(Two-level page table)은 outer-page table과 inner-page table을 통해서 Physical memory에 접근한다.**
 
-<br>
+&nbsp;
 
 ### 4.3.2 Two-level page table을 사용하는 이유
 
@@ -150,7 +150,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/165732044-6ce1d363-0a50-484b-bc9a-2bfbc16e9bd6.PNG)
 
-<br>
+&nbsp;
 
 ### 4.3.3 Two-level page table의 구성과 갯수, 크기 계산
 
@@ -183,7 +183,7 @@ categories: ["OS"]
   - 세 번째
     - 해당 프레임으로부터 d 만큼 떨어진 곳에서 원하는 정보에 접근한다.
 
-<br>
+&nbsp;
 
 ### 4.3.4 multi-level page의 문제점과 해결책
 
@@ -196,7 +196,7 @@ categories: ["OS"]
 - **Solution: TLB**
   - TLB 와 함께 사용하여 메모리 접근 시간을 줄일 수 있고, 다단계 page table을 사용하여 메모리 공간의 효율적 사용 효과는 매우 크다.
 
-<br>
+&nbsp;
 
 ## 4.4 메모리 보호(Memory Protection)
 
@@ -215,7 +215,7 @@ categories: ["OS"]
     - 첫 번재 경우, 프로세스가 그 주소 부분을 사용 X
     - 두 번째 경우, 해당 페이지가 물리적 메모리에 올라있지 않고, 백킹스토어에 존재
 
-<br>
+&nbsp;
 
 ## 4.5 역페이지 테이블(Inverted page table)
 
@@ -261,7 +261,7 @@ categories: ["OS"]
   - 연관 레지스터를 사용하여 병렬탐색을 하여 시간적 효율성을 높인다.
   - 단, 비용이 비싸다.
 
-<br>
+&nbsp;
 
 ## 4.6 공유 페이지(Shared page)
 
@@ -286,7 +286,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/165756401-a43070d6-6222-47ea-8f59-e9d181db0d42.PNG)
 
-<br>
+&nbsp;
 
 ---
 
@@ -307,17 +307,17 @@ categories: ["OS"]
   - 크게는 프로그램 전체를 하나의 세그먼트로 정의한다.
   - 일반적으로는 code, data, stack 부분이 하나씩의 segment로 정의된다.
 
-<br>
+&nbsp;
 
 ## 5.1 Segmentation Architecture
 
-<br>
+&nbsp;
 
 ### 5.1.1 Logical address
 
 > 두 가지 [s: segment-number, d: offset]로 구성
 
-<br>
+&nbsp;
 
 ### 5.1.2 Segment table
 
@@ -363,7 +363,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/165791144-186c1785-f254-4097-8e25-8ca186fd6a71.PNG)
 
-<br>
+&nbsp;
 
 ## 5.2 세그먼테이션에서의 보호비트와 유효비트
 
@@ -371,7 +371,7 @@ categories: ["OS"]
 - 유효 비트(valid bit): 각 세그먼트의 주소 변환 정보가 유효한지, 즉 해당 세그먼트가 현재 물리적 메모리에 적재되어 있는지 나타낸다.
   - valid bit = 0 : illegal segment
 
-<br>
+&nbsp;
 
 ## 5.3 공유 세그먼트(shared segment)
 
@@ -386,7 +386,7 @@ categories: ["OS"]
   - 왜냐하면 크기 단위로 나누다 보면 공유 코드와 사유 데이터 영역이 동일 페이지에 공존하는 경우가 발생할 수 있기 때문이다.
   - 그래서 어떤 권한을 줘야할지 결정하기가 어렵다.
 
-<br>
+&nbsp;
 
 ## 5.4 세그먼트 할당 방식
 
@@ -397,7 +397,7 @@ categories: ["OS"]
   - 그래서 동적 메모리 할당 문제가 존재한다.
   - 이 문제에 대해서는 first-fit 방식과 best-fit 방식을 사용한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -405,19 +405,19 @@ categories: ["OS"]
 
 > segmentation을 기반으로, 각 segmentation을 크기가 동일한 page로 구성
 
-<br>
+&nbsp;
 
 ## 6.1 pure segmentaton과의 차이점
 
 - **_segment-table entry_** 가 segment의 **_base address_** 를 가지고 있는 것이 아닌, segment를 구성하는 **_page table_** 의 **_base address_** 를 가지고 있다.
 
-<br>
+&nbsp;
 
 ## 6.2 Paged segmentation의 logical address
 
 - 두 가지 [s: segment-number, d: offset]로 구성
 
-<br>
+&nbsp;
 
 ## 6.3 Paged segmentation의 특징과 장점
 
@@ -427,7 +427,7 @@ categories: ["OS"]
 
 - **장점: segmentation에서의 외부조각 문제와 paging 기법의 접근 권한 보호 문제를 해결**
 
-<br>
+&nbsp;
 
 ## 6.4 address binding 과정 설명
 
@@ -461,7 +461,7 @@ categories: ["OS"]
 
 - **page table for segment s 의 entry 갯수는 segment table의 segment 길이를 보면 알 수 있다.**
 
-<br>
+&nbsp;
 
 ---
 

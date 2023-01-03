@@ -19,7 +19,7 @@ categories: ["Book Study"]
 - 이번에 학습하는 chapter의 주제는 **'Chapter 06: Pythonic Code'** 입니다.
 
 
-<br>
+&nbsp;
 
 ---
 # 1. 흔히 잘못 사용되는 구문
@@ -57,7 +57,7 @@ for animal in animals:
 
 훨씬 깔끔하고, 직관적이다.
 
-<br>
+&nbsp;
 
 ## 1.2 open() 과 close()보다는 with문을 사용하자.
 
@@ -84,7 +84,7 @@ with open('spam.txt', 'w') as fileObj:
 
 close()에 대한 명시적인 호출이 없어도, 실행 흐름이 블록을 벗어나면 with 선언문은 close 호출을 자동적으로 실행한다.
 
-<br>
+&nbsp;
 
 ## 1.3 == 대신 is를 써서 None과 비교하자.
 
@@ -109,7 +109,7 @@ print(spam == None) # True
 
 True와 False는 `is` 연산자가 아닌 `==` 를 사용하여 판단한다. id보다는 그 값 자체의 판단에서 사용되기 때문이다. 이 때 `if <변수> == True:` 또는 `if <변수> == False:` 보다는 `if <변수>:` 또는 `if not <변수>:` 처럼 연산자와 boolean 값을 생략하는게 파이썬에서 일반적인 사용 방식이다.
 
-<br>
+&nbsp;
 
 ---
 # 2. 문자열 포매팅
@@ -140,7 +140,7 @@ print(r'The file is in C:\Users\Al\Desktop\Info\Archive\Spam')
 
 문자열 내부에 변수 이름과 표현식을 인라인으로 넣을 수 있기 때문에 코드의 가독성이 개선된다.
 
-<br>
+&nbsp;
 
 ---
 # 3. 리스트의 얕은 사본 만들기
@@ -169,7 +169,7 @@ eggs = copy.copy(spam)
 같은 값의 다른 객체를 생성하고 싶으면 `copy` module을 사용해보자.
 
 
-<br>
+&nbsp;
 
 ---
 # 4. 파이썬다운 딕셔너리 사용법 
@@ -196,7 +196,7 @@ numberOfPets = {'dogs': 2}
 print(f'I have {numberOfPets.get('cats', 0)}, cats')
 ```
 
-<br>
+&nbsp;
 
 ### setdefault() 
 
@@ -217,7 +217,7 @@ numberOfPets.setdefault('cats', 0)
 numberOfPets['cats'] += 10
 ```
 
-<br>
+&nbsp;
 
 ## 4.2 기본값으로 collections.defaultdict를 사용하자.
 
@@ -243,7 +243,7 @@ scores = collections.default(list)
 scores # defaultdict(list, {'Al': [], 'Zophie': []})
 ```
 
-<br>
+&nbsp;
 
 ## 4.3 switch 문 대신에 dictionary를 사용하자.
 
@@ -274,7 +274,7 @@ season의 할당값에 따라서 다른 걸 반환하고, 만약 season에 할�
 
 if-elif case 보다 코드가 훨씬 짧아진 걸 알 수 있다. 하지만 가독성은 떨어진다.
 
-<br>
+&nbsp;
 
 ---
 # 5. 조건식: 파이썬의 보기 흉한 3항 연산자
@@ -303,7 +303,7 @@ message # Access denied
 ```
 
 
-<br>
+&nbsp;
 
 ---
 # 6. 변수값 작업
@@ -339,7 +339,7 @@ spam == eggs == bacon == 'string'
 
 하지만, 체이닝을 연달아 사용했을 때, 발생할 수 있는 버그도 존재한다. 이는 8장에서 알아본다.
 
-<br>
+&nbsp;
 
 ## 6.2 변수가 여러 값 중 하나인지 여부를 확인하자.
 
@@ -357,7 +357,7 @@ spam in ('cat', 'dog', 'moose')
 파이썬스럽지 않은 코드보다 파이썬답게 작성한 코드가 실행속도가 보다 더 빠르다는 걸 `timeit` module을 통해서 확인할 수 있다.
 
 
-<br>
+&nbsp;
 
 ---
 

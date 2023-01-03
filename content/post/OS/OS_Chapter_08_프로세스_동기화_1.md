@@ -9,12 +9,12 @@ categories: ["OS"]
 
 # 0. Introduction
 
-<br>
+&nbsp;
 
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 책에는 있지 않고, [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e) 강의만 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -31,19 +31,19 @@ categories: ["OS"]
   |컴퓨터 내부| 디uy7스크|
   |프로세스| 그 프로세스의 주소 공간|
 
-<br>
+&nbsp;
 
 ---
 
 # 2. Race condition
 
-<br>
+&nbsp;
 
 ## 2.1 Race condition이란??
 
 > **여러 프로세스/스레드가 동시에 shared data를 조작할 때, 한 연산자가 stroage에서 가져와 작업 중인데, 작업 중인 data를 다른 연산자가 가져가서 작업하여 동기화되지 않는 현상**
 
-<br>
+&nbsp;
 
 ## 2.2 Race condition 발생 배경과 원인
 
@@ -59,7 +59,7 @@ categories: ["OS"]
   - shared memory를 사용하는 process들 (address space ~ process)
   - kernel 내부 data를 접근하는 routine들 간 발생
 
-<br>
+&nbsp;
 
 ---
 
@@ -67,7 +67,7 @@ categories: ["OS"]
 
 > 원인: kernel address space를 공유할 때, race condition이 발생한다.
 
-<br>
+&nbsp;
 
 ## 3.1 Interrupt handler vs kernel
 
@@ -95,7 +95,7 @@ categories: ["OS"]
   - 중요한 변수값을 건드리는 동안에는 인터럽트가 들어와도 인터럽트 처리 루틴으로 바로 넘어가지 않는다.
   - 인터럽트를 `disable` 시켰다가, 작업이 다 끝난 다음에 interrupt service routine으로 넘긴다.
 
-<br>
+&nbsp;
 
 ## 3.2 Preempt a process running in kernel
 
@@ -103,7 +103,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/166150673-e2cc077e-d9c6-4e5f-aa27-a5f5c9d9cb76.PNG)
 
-<br>
+&nbsp;
 
 - **kernel mode로 실행 중 system call로 인한 CPU 선점**
   - 두 프로세스의 address space 간에는 data sharing이 없다.
@@ -117,7 +117,7 @@ categories: ["OS"]
   - 첫 번째: kernel mode에서 수행 중일 때는 CPU를 빼앗지 않는다.
   - 두 번째: kernel mode에서 user mode로 돌아갈 때 CPU를 빼앗는다.
 
-<br>
+&nbsp;
 
 ## 3.3 Multi-processor
 
@@ -133,7 +133,7 @@ categories: ["OS"]
   - 해결책 2: shared data in kernel에 접근할 때마다 이 데이터에 대해 lock 과 unlcok을 하는 방법
     - kernel 전체를 하나의 lock으로 막고, kernel에서 나올 때는 unlock 한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -153,7 +153,7 @@ categories: ["OS"]
   - 하지만, A process가 critical section에 있기 때문에, 다른 process가 CPU를 받아도 critical section에 들어갈 수 없고, 대기해야 한다.
   - 이를 `Critical section problem` 이라 한다.
 
-<br>
+&nbsp;
 
 ## 4.3 SW 해결법의 충족 조건 3가지(requirements)
 
@@ -176,7 +176,7 @@ categories: ["OS"]
   - Process가 critical section에 들어가려고 요청한 순간부터 그 요청이 허용될 때까지 다른 process들이 critical section에 들어가는 횟수에 한계가 있어야 한다.
     - 횟수 한계가 없으면 `starvation` 문제가 발생한다.
 
-<br>
+&nbsp;
 
 ## 4.4 위 조건을 해결하기 위한 SW solution: Peterson's Algorithum
 
@@ -230,7 +230,7 @@ do {
     - 하지만, A process가 CPU를 잡아서 조건을 바꿔줘야 B process가 들어올 수 있다.
     - 그래서 이를 busy waiting이라 한다.
 
-<br>
+&nbsp;
 
 ## 4.5 위 조건을 해결하기 위한 HW solution
 
@@ -273,13 +273,13 @@ Process Pi
   - 들어가지 못 하고, 계속 while문을 돈다.
   - critical section에서 나오면서 lock = false로 재설정하여 while문에서 돌고 있는 process가 들어오게 한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 5. Semaphores
 
-<br>
+&nbsp;
 
 ## 5.1 Semaphores 란??
 
@@ -334,7 +334,7 @@ Process Pi
 - **Semaphore의 문제점**
   - while문에서 계속 기다리기 때문에 `busy & wait` 문제가 존재한다.
 
-<br>
+&nbsp;
 
 ## 5.2 Criticall section of n process
 
@@ -366,7 +366,7 @@ do {
   - shared data를 쓰고 있는 process가 criticial section 실행을 완료할 때까지, 대기 중인 process는 `block` 상태에 있어서 CPU를 얻지 못하고,
   - 사용 중이던 process가 데이터를 내놓으면 `block` 상태에 있는 process는 `wake up` 하여 ready queue에 들어와서 대기하는 방식
 
-<br>
+&nbsp;
 
 ## 5.3 Block & Wakeup implementation
 
@@ -431,7 +431,7 @@ typeef struct
   - block/wakeup overhead가 busy-wait overhead보다 더 커질 수 있다.
   - 일반적으로는 block/wakeup 방식이 더 좋다.
 
-<br>
+&nbsp;
 
 ## 5.5 Two types of semaphores
 
@@ -442,11 +442,11 @@ typeef struct
 | resource  | resource >= 0      | resource = 1          |
 | purpose   | resource counting  | mutext(lock / unlock) |
 
-<br>
+&nbsp;
 
 ## 5.5 Semaphore 주의사항: Deadlock and Starvation
 
-<br>
+&nbsp;
 
 ### 5.5.1 Deadlock
 
@@ -472,7 +472,7 @@ typeef struct
     - 서로 다른 프로세스여도 같은 순서로 정한다.
         - Q를 획득하려면 S를 먼저 획득하라는 의미
 
-<br>
+&nbsp;
 
 ### 5.5.2 Starvation
 
@@ -480,7 +480,7 @@ typeef struct
 
 - 특정 process 자원을 독점하여 나머지 프로세스가 자원을 얻지 못하고 무한히 기다리는 현상으로 Deadlock과 유사하지만, 다르다.
 
-<br>
+&nbsp;
 
 ---
 

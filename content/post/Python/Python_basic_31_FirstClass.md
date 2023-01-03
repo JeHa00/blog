@@ -35,7 +35,7 @@ categories: ["Python"]
 - 이러한 이유로 `일급 함수`에 대해 알아보자.
 - 일급 함수가 가지는 특징을 모두 예제로 구현해볼 것이다.
 
-<br>
+&nbsp;
 
 ## 1.1 객체 취급되는 함수
 
@@ -105,7 +105,7 @@ factorial
 
 ````
 
-<br>
+&nbsp;
 
 ## 1.2 변수로 할당되는 함수
 
@@ -127,7 +127,7 @@ factorial
 
 - 변수에 할당되어 여러 함수에 사용될 수 있다는 걸 확인했다.
 
-<br>
+&nbsp;
 
 ## 1.3 고위 함수의 두 가지 특징
 
@@ -178,7 +178,7 @@ factorial
 > print(sum(range(1, 11)))
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -194,7 +194,7 @@ factorial
 55
 ```
 
-<br>
+&nbsp;
 
 ## 2.2 Callable
 
@@ -222,7 +222,7 @@ True True True False
 
 - `3.14`는 호출할 수 없다는 걸 `callable`을 통해 간단히 확인했다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -252,7 +252,7 @@ True True True False
 60
 ```
 
-<br>
+&nbsp;
 
 ## 2.4 Signature
 

@@ -16,13 +16,13 @@ categories: ["Linux"]
 
 - 이번 소챕터에서는 mkdir, rmdir, rm, alias, touch를 학습해본다.  
 
-<br>
+&nbsp;
 
 ---
 
 # 2. mkdir, rmdir, rm, alias, touch
 
-<br>
+&nbsp;
 
 ## 2.1 mkdir
 
@@ -66,7 +66,7 @@ adjtime test test2
 
 
 
-<br>
+&nbsp;
 
 ## 2.2 rmdir
 
@@ -126,7 +126,7 @@ rmdir: failed to remove directory './test2': Directory not empty
 # ./test2 에는 파일이 존재하기 때문에 ./a와 달리 삭제되지 않았다. 
 ```
 
-<br>
+&nbsp;
 
 ## 2.3 rm
 
@@ -220,7 +220,7 @@ total 0
 - 하지만 `./*`이 아니라, `/*`을 입력한다면??
     - 시스템 전체가 삭제되므로, 재설치해야한다.
 
-<br>
+&nbsp;
 
 ## 2.4 alias
 
@@ -235,7 +235,7 @@ total 0
 total 0
 ```
 
-<br>
+&nbsp;
 
 ## 2.5 touch
 
@@ -269,7 +269,7 @@ total 0
 
 
 
-<br>
+&nbsp;
 
 ---
 

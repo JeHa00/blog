@@ -88,7 +88,7 @@ categories: ["Python"]
 
 - 파이썬 공식문서 [Data Model](https://docs.python.org/3/reference/datamodel.html#special-method-names) 을 꼭 참고하자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -130,13 +130,13 @@ categories: ["Python"]
 
 - '+' 연산자도 `__add__` magic method를 호출하기 때문에, 위와 같이 결과가 동일하다.
 
-<br>
+&nbsp;
 
 ## 2.2 Special method 예시 2
 
 - 또한, 지난 번에 알아봤던 것처럼 repr() 를 사용하는 건 `__repr__`를 호출하여 이 method에 의한 결과값을 반환하는 것이라 했다.
 
-<br>
+&nbsp;
 
 ## 2.3 Special method 예시 3
 
@@ -149,7 +149,7 @@ True True
 
 - 파이썬에서는 많은 함수가 magic method를 호출하여 사용된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -249,7 +249,7 @@ Called >> __sub__
 >   lt: little  
 >   gt: greater
 
-<br>
+&nbsp;
 
 ---
 
@@ -265,7 +265,7 @@ Called >> __sub__
 
 > **_`other`이란?? 정의한 class로 만든 또 다른 instance를 의미한다._**
 
-<br>
+&nbsp;
 
 ````yml
 > class Vector(Object):
@@ -342,7 +342,7 @@ Vector(25.0, 50)
 - 위 magic method 외에도 매우 많이 있다.
 - 이 문서 [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/)를 참고하자.
 
-<br>
+&nbsp;
 
 ---
 

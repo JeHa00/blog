@@ -12,7 +12,7 @@ categories: ["Python"]
 > 원하는 타이밍에 정확하게 resource를 할당 및 제공하며, 반환하는 역할을 한다.  
 > 그래서, special method `.__enter__` 와 `.__exit__`을 가지고 있는 객체를 말한다.
 
-<br>
+&nbsp;
 
 ## 1.1 Context Manager가 필요한 이유???
 
@@ -21,7 +21,7 @@ categories: ["Python"]
 - 그래서 `원하는 시점에` resource 할당 및 회수를 위해서 context manager가 중요하다.
 - 이러한 특징으로 외부 resource를 처리하는 작업을 할 때, 안전하게 할 수 있는 기능을 만들 수 있다.
 
-<br>
+&nbsp;
 
 ## 1.2 Context Manager의 magic method
 
@@ -45,7 +45,7 @@ categories: ["Python"]
 - Context manager의 대표적인 구문인 with를 이해해야한다.
   - with문에 관한 내용은 [[TIL] Python basic 20: with open as](https://jeha00.github.io/post/python_basic/python_basic_20_filewriteread_1/) 와 [[TIL] Python basic 21: csv.read, write](https://jeha00.github.io/post/python_basic/python_basic_21_filereadwrite_2/)을 참고한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -65,7 +65,7 @@ categories: ["Python"]
 
 - python이 업데이트 되어 나온게 with문이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -82,7 +82,7 @@ categories: ["Python"]
 
 - 위 코드의 결과로 testfile2.txt 가 생성되고, 그 안에는 Context Manager Test2. \nContextlib Test2. 가 작성되어 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -121,7 +121,7 @@ FileWriter started : __exit__
 # 그리고 testfile3.txt가 생성된다.
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -159,7 +159,7 @@ Received start monotonic1 : 590914.968
 Start! job: 0.35999999998603016 s
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -215,7 +215,7 @@ Received start monotonic2 : 594934.0
 Start! : 0.42099999997299165 s
 ```
 
-<br>
+&nbsp;
 
 ---
 

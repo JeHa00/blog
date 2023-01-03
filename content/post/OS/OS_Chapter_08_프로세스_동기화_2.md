@@ -13,7 +13,7 @@ categories: ["OS"]
 - [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 책에는 있지 않은 내용이다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -41,7 +41,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/166848937-b879d706-82f5-427b-8046-8d973224f2c7.PNG)
 
-<br>
+&nbsp;
 
 ## 6.1 Semaphore로 문제 해결하기
 
@@ -67,7 +67,7 @@ categories: ["OS"]
   - V(mutex): lock을 푼다.
   - V(empty): 비어있는 buffer의 수를 1 증가시킨다. 그리고, 비어진 buffer는 생산자에게 자원이 된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -112,7 +112,7 @@ categories: ["OS"]
   - readcount - -: process가 다 읽고 빠져나가기 때문에, 1 감소된다.
   - if readcount == 0: writer가 작성할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -157,7 +157,7 @@ categories: ["OS"]
 
     - semaphore code와 비교하기
 
-<br>
+&nbsp;
 
 ---
 
@@ -182,7 +182,7 @@ Critical section
 P(mutex)
 ```
 
-<br>
+&nbsp;
 
 ## 9.2 Monitor
 
@@ -260,7 +260,7 @@ P(mutex)
 - full.signal()
   - 내용이 들어 있는 buffer가 있으면 생산자를 깨운다.
 
-<br>
+&nbsp;
 
 ---
 

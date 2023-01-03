@@ -23,7 +23,7 @@ categories: ["Django"]
 - DRF 강의 내용을 정리한 이유는 DRF는 api 설계에 주로 사용하기 때문에, 정답이라는 게 없어서 많이 사용하는 내용을 정리할 필요를 느꼈습니다.
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -70,7 +70,7 @@ class LessonAPIView(APIView):
 		return
 ```
 
-<br>
+&nbsp;
 
 ### @api_view(["GET"]])
 
@@ -81,7 +81,7 @@ def get_lesson(request):
 	return 
 ```
 
-<br>
+&nbsp;
 
 ### ModelViewSet 상속
 
@@ -93,7 +93,7 @@ class LessonViewSet(ModelViewSet):
 	serializer_class = LessonSerializer
 ```
 
-<br>
+&nbsp;
 
 ### DRF - Policy
 
@@ -110,7 +110,7 @@ DRF에서 제공하는 유용한 기능 'Policy'
 	- 이 횟수제한을 다루는 기능
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -153,7 +153,7 @@ class Employee(models.Model):
         verbose_name_plural = "임직원 목록"
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -194,7 +194,7 @@ class EmployeeListAPIView(APIView):
 
 ```
 
-<br>
+&nbsp;
 
 
 ### queryset을 다른 data type으로 변환 후, 직렬화하기
@@ -216,7 +216,7 @@ class EmployeeListAPIView(APIView):
 		return JsonResponse(result)
 ```
 
-<br>
+&nbsp;
 
 ## 3.2 Response
 
@@ -236,7 +236,7 @@ class EmployeeListAPIView(APIView):
 		return Response(result)
 ```
 
-<br>
+&nbsp;
 
 ## 3.3 Serializers 추가하기
 
@@ -279,7 +279,7 @@ class EmployeeListAPIView(APIView):
 `fields = '__all__'`이 아닌 `fields = ['name']`을 입력하면 'name'에 관련된 것만 가져온다.
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -305,7 +305,7 @@ def employee_list(request):
 🔆 url에 매핑하는 방식은 기존 FBV 방식과 동일하다.
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -362,7 +362,7 @@ urlpatterns = [
 ]
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -378,7 +378,7 @@ urlpatterns = [
 	- ModelViewSet으로는 API를 자세하게 다룰 수 없어서, APIView를 주로 사용한다. 
 	- 왜냐하면 ModelViewSet에는 CRUD가 다 존재하기 때문이다.  
 
-<br>
+&nbsp;
 
 ---
 

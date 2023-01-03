@@ -17,7 +17,7 @@ categories: ["Python"]
   - 영구적 등록: `환경 변수`에 있는 python path에 추가하기
 - 이 `Module` 파일이 모여지면 `Package`가 된다.
 
-<br>
+&nbsp;
 
 ## 1.2 Import 사용하기
 
@@ -34,7 +34,7 @@ categories: ["Python"]
   0.71924824
   ```
 
-<br>
+&nbsp;
 
 ## 1.3 경로 추가하기
 
@@ -135,7 +135,7 @@ categories: ["Python"]
   ---------------
   ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -185,7 +185,7 @@ categories: ["Python"]
 
 - 더 자세한 내용은 [[TIL] Python basic 23: if \_ \_name \_ \_ == ' \_ \_main \_ \_'](https://jeha00.github.io/post/python_basic/python_basic_23_ifnamemain/) 을 참고한다.
 
-<br>
+&nbsp;
 
 ---
 

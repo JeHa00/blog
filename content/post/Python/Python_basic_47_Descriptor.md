@@ -18,7 +18,7 @@ categories: ["Python"]
 
 > class의 속성을 다른 객체와(= 다른 클래스와) mapping하여, 이 객체에서 지정된 Descriptor protocol의 method로 동작하게 하는 것이다. 즉, 클래스에서 다른 클래스를 속성값으로 가지는 것이다.
 
-<br>
+&nbsp;
 
 ## 1.1 Descriptor protocol의 정의
 
@@ -48,7 +48,7 @@ categories: ["Python"]
 | fdel | 속성의 값을 삭제하는 함수              | \_\_delete\_\_      |
 | doc  | property에 대해 설명하는 문자열 string |                     |
 
-<br>
+&nbsp;
 
 ## 1.2 Descriptor protocol의 분류
 
@@ -58,7 +58,7 @@ categories: ["Python"]
 - **_data descriptor_** : `__set__`, `__del__` 을 구현한 descriptor
 - **_non-data descriptor_**: `__get__` 을 구현한 descriptor
 
-<br>
+&nbsp;
 
 ## 1.3 Descriptor protocol signature 의미
 
@@ -134,7 +134,7 @@ name : None
 | ---- | --- | ------- |
 | name | s1  | Ex1     |
 
-<br>
+&nbsp;
 
 ---
 
@@ -150,7 +150,7 @@ name : None
 - 네 번째, ORM framework에 사용된다.
   - [Real Python - descriptor의 ORM 예제](https://docs.python.org/ko/3/howto/descriptor.html#orm-example)
 
-<br>
+&nbsp;
 
 - 두 번째 low level에 관여할 수 있다는 건 다음과 같은 경우를 말한다.
   - 밑에 코드는 [Real Python - descriptor의 dry code](https://realpython.com/python-descriptors/#dry-code) 부분을 가져왔다.
@@ -224,7 +224,7 @@ name : None
 - 더 low level에서 구현할 수 있기 때문에, 코드 복제를 줄이고, 보다 심플하게 구현할 수 있다.
 - 그렇기 때문에 low level 까지 관여할 수 있는 실력을 갖춰야 한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -287,7 +287,7 @@ Property Method Example
 
 - descriptor의 instance를 만드는 것 대신에, 한 클래스 안에 name 객체에다가 property() 를 할당하여, property 안에 method들을 통해 내부적으로 작동할 수 있도록 한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -352,7 +352,7 @@ Property Method Example
 
 - `listdir`: 주어진 directory에 있는 항목들의 이름을 담고 있는 list를 반환한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -406,7 +406,7 @@ Jeju Price >  150000
 Jeju Price >  100000
 ```
 
-<br>
+&nbsp;
 
 ---
 

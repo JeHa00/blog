@@ -21,7 +21,7 @@ categories: ["Book Study"]
 - 파이썬 용어집: https://docs.python.org/3/glossary.html 참고하기  
 - 파이썬 객체 설명: https://docs.python.org/3/reference/datemodel.html 참고하기  
 
-<br>
+&nbsp;
 
 ---
 본격적으로 시작하기 전에 '전문 용어'에 대해서 생각을 잠시 해보자. 이 '전문 용어'를 풀어서 설명할 수 있다. 하지만, 그러기 시작하면 문장이 길어져서 일하기가 어려워진다. 그래서 약어를 선호하게 되고, 전문 용어를 선호하게 된다.
@@ -43,7 +43,7 @@ categories: ["Book Study"]
 구현체의 종류에는 C 프로그래밍 언어로 된 C파이썬, java로 작성된 Jython, 프로그램 실행됨에 따라 컴파일하며 파이썬으로 작성된 PyPy가 있다.
 
 
-<br>
+&nbsp;
 
 ## 가비지 컬렉션
 
@@ -63,7 +63,7 @@ someFunction()
 
 
 
-<br>
+&nbsp;
 
 
 ## 리터럴
@@ -74,14 +74,14 @@ someFunction()
 age = 42 + len('Zophie')
 ```
 
-<br>
+&nbsp;
 
 
 ## 키워드
 
 모든 프로그래밍 언어에는 언어만의 고유의 키워드를 가진다.  이를 예약어라고 부른다. 이 키워드들은 변수명으로 사용해서는 안된다.
 
-<br>
+&nbsp;
 
 
 ## 🔆 객체, 값, 인스턴스, 아이디
@@ -160,14 +160,14 @@ bacon = spam
 
 
 
-<br>
+&nbsp;
 
 
 ## 아이템
 
 list나 dictionary 처럼 컨테이너 객체 안에 있는 객체를 파이썬에서는 아이템(item) 또는 원소(element)라고 부른다. `['dog', 'cat', 'moose']` 내의 문자열은 객체지만 아이템, 원소라고도 부른다.
 
-<br>
+&nbsp;
 
 
 ## 가변 데이터 타입, 불변 데이터 타입
@@ -185,7 +185,7 @@ list나 dictionary 처럼 컨테이너 객체 안에 있는 객체를 파이썬�
 | | 튜플(tuple) |
 | |바이트(Byte)|
 
-<br>
+&nbsp;
 
 ### String
 
@@ -202,7 +202,7 @@ id(spam) # 140349607257072
 기존 문자열에 새로운 문자열을 더하는 연산도 다른 id 값을 가지게 된다.
 
 
-<br>
+&nbsp;
 
 ### List
 
@@ -236,7 +236,7 @@ extend method로 list를 추가하면 id값이 바뀔 것 같지만, 그렇지 �
 `+` 연산을 하면서 id 값이 변경되지 않기 위해서는 `+=` 연산자를 사용하면 된다.
 
 
-<br>
+&nbsp;
 
 ### Tuple
 
@@ -262,7 +262,7 @@ eggs[2].append(8)
 id(eggs[2]) # 140349875845504
 ```
 
-<br>
+&nbsp;
 
 
 ## 인덱스, 키, 해시
@@ -273,7 +273,7 @@ list의 원소에 접근하기 위해서는 인덱싱을 해야하는데 이 때
 
 인덱스는 **0 기반 인덱스** 를 사용한다.
 
-<br>
+&nbsp;
 
 ### dictionary, tuple
 
@@ -295,7 +295,7 @@ hash([1,2,3])
 TypeError: unhashable type: 'list'
 ```
 
-<br>
+&nbsp;
 
 ## 컨테이너, 시퀀스, 매핑
 
@@ -311,7 +311,7 @@ TypeError: unhashable type: 'list'
     - 파이썬에서 매핑 유형은 매우 다양하다: OrderedDict, ChainMap, Counter, UserDict 등등 
 
 
-<br>
+&nbsp;
 
 
 ## 이중밑줄 메소드, 매직 메소드
@@ -326,7 +326,7 @@ Dunder는 Double UNDERscore의 줄임말이다.
 
 17장에서 자세히 설명한다.
 
-<br>
+&nbsp;
 
 
 ## 모듈, 패키지
@@ -337,7 +337,7 @@ Dunder는 Double UNDERscore의 줄임말이다.
 
 패키지는 `__init__.py`라는 이름의 파일 담겨진 폴더 안에 있는 모듈들의 집합을 말한다.
 
-<br>
+&nbsp;
 
 
 ## 호출가능 객체, 일급 객체
@@ -380,7 +380,7 @@ Spam! Spam! Spam! Spam!
 Spam! Spam! Spam! Spam!
 ```
 
-<br>
+&nbsp;
 
 ---
 # 2. 흔히 혼동되어 사용되는 용어
@@ -400,7 +400,7 @@ myName.isupper()
 if 문, for 문, return 문 등의 표현식이 포함된다.
 
 
-<br>
+&nbsp;
 
 
 ## 블록 vs 절 vs 바디
@@ -422,7 +422,7 @@ if name == 'Zophie':
 ```
 
 
-<br>
+&nbsp;
 
 
 ## 변수 vs 속성
@@ -442,7 +442,7 @@ spam.month
 
 year, month는 해당 객체의 속성이다.
 
-<br>
+&nbsp;
 
 
 ## 함수 vs 메서드
@@ -462,7 +462,7 @@ math.sqrt(25)
 
 마침표/점이 있다고 해서 반드시 메소드라고 생각해서는 안된다.
 
-<br>
+&nbsp;
 
 
 ## 반복가능 객체 vs 반복자
@@ -488,7 +488,7 @@ print(next(listObj)) # StopIteration:
 
 iter()은 `__iter__`을, next()는 `__next__`를 호출하기 때문에, 클래스 문에서 나만의 데이터 타입을 만들 때 이 던더 메소드들을 사용해서 특별한 메소드를 구현할 수 있다.
 
-<br>
+&nbsp;
 
 
 ## 구문 에러 vs 런타임 에러 vs 의미 에러
@@ -506,7 +506,7 @@ iter()은 `__iter__`을, next()는 `__next__`를 호출하기 때문에, 클래�
 
 에러 메세지를 발생하거나, 충돌을 일으키지 않지만 컴퓨터가 프로그래머의 의도한 방식으로 코드를 수행하지 않은 걸 말한다.
 
-<br>
+&nbsp;
 
 
 ## 파라미터 vs 인수
@@ -520,7 +520,7 @@ def greeting(name, species):
     print(name + 'is a' + species)
 ```
 
-<br>
+&nbsp;
 
 
 ## 타입 강제변환 vs 타입 캐스팅
@@ -537,7 +537,7 @@ int('42') # 42
 2 + 3.0 # 5.0
 ```
 
-<br>
+&nbsp;
 
 
 ## 프로퍼티(property) vs 속성(attribute)
@@ -546,7 +546,7 @@ int('42') # 42
 
 파이썬에서 property는 훨씬 더 깔끔한 구문으로 getter와 setter를 사용할 수 있는데, 이 getter와 setter란 속성에 값을 직접 대입하는 것 대신, 프로그램은 해당 속성에 대한 setter method를 사용하여 올바른 값만 할당하도록 한다. 그리고, getter method를 사용하여 속성의 값을 읽는다.
 
-<br>
+&nbsp;
 
 ## 바이트 코드 vs 기계어 코드
 
@@ -560,7 +560,7 @@ int('42') # 42
 
 파이썬 인터프리터는 파이썬 소스 코드를 파이썬 바이트 코드로 컴파일한 다음, 해당 바이트 코드를 수행할 수 있다.
 
-<br>
+&nbsp;
 
 
 ## 스크립트 vs 프로그램, 스크립트 언어 vs 프로그래밍 언어
@@ -573,7 +573,7 @@ int('42') # 42
 
 왜냐하면 언어는 컴파일이나 해석 관점이 아닌, 컴파일러나 인터프리터 구현체 관점으로 바라봐야하기 때문이다.
 
-<br>
+&nbsp;
 
 ## 라이브러리 vs 프레임워크 vs SDK vs 엔진 vs API
 
@@ -589,7 +589,7 @@ int('42') # 42
 ### 엔진(engine)
 개발자의 소프트웨어가 외부에서 제어할 수 있는 독립적으로 동작하는 대규모 시스템  
 
-<br>
+&nbsp;
 
 ---
 

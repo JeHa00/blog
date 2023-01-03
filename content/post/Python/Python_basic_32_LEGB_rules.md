@@ -11,7 +11,7 @@ categories: ["Python"]
 
 - `coroutin`을 공부하면서 global variable과 local variable 라는 것이 Scoping Rule과 연관이 되어있다는 것과, `Stack` 과 `Heap` 이라는 데이터 임시 저장 자료 구조와 연관된 걸 확인하고 이에 대해 정리해보겠다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -25,7 +25,7 @@ categories: ["Python"]
   - name 충돌을 방지할 수 있고, 버그를 줄일 수 있다.
   - 이와 관련된 tool인 `Closure`에 대해 알 수 있다.
 
-<br>
+&nbsp;
 
 ## 1.1 초기 Scope의 부재로 인한 문제
 
@@ -33,7 +33,7 @@ categories: ["Python"]
 - scope을 사용한 후, 프로그램의 어디에서든지 해당되는 scope에서 벗어나 있는 변수들에 함부로 접근할 수 없다. (_out of scope_)
 - name들의 scope은 이 name들을 정의한 코드의 block scope과 동일하다. (_in scope_)
 
-<br>
+&nbsp;
 
 ## 1.2 파이썬의 이름(name) 만들기
 
@@ -42,7 +42,7 @@ categories: ["Python"]
   - function , classes: 예약어 `def`, `classes`를 사용하여 정의하면 이용할 수 있다.
   - modules: `import`하여 사용할 수 있고, as를 통해서 별칭으로 정의할 수 있다.
 
-<br>
+&nbsp;
 
 ## 1.3 Reference operations과 Assignment operations의 차이
 
@@ -53,7 +53,7 @@ categories: ["Python"]
 
 - 그리고, 할당한다는 건 특정 scope이 결정된다는 걸 말한다.
 
-<br>
+&nbsp;
 
 ## 1.4 Python scope와 namespace의 관계
 
@@ -65,7 +65,7 @@ categories: ["Python"]
 
   - `.__dict__.keys()` 로 key value로 indexing하여 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ## 1.5 Python이 name을 찾는 규칙: LEGB rules
 
@@ -83,7 +83,7 @@ categories: ["Python"]
 
 - From: [Python Scope & the LEGB rule: Resolving Names in Your code](https://realpython.com/python-scope-legb-rule/)
 
-<br>
+&nbsp;
 
 - **_Local(or function) scope: 지역 범휘_**
 
@@ -98,7 +98,7 @@ categories: ["Python"]
   - enclosing function 안에서 정의된 names만 포함한다.
   - 이 `enclosing function의 코드에서만` enclosing scope에 있는 name을 확인할 수 있다.
 
-<br>
+&nbsp;
 
 - **_Global(or module) scope: 전역 범위_**
 
@@ -132,11 +132,11 @@ categories: ["Python"]
 - In the module scope(or global scope): number 변수를 찾을 수 있어서 출력할 수 있다.
 - 만약 number 변수가 the global scope에서 정의되지 않는다면, 파이썬은 built-in scope에서 찾을 것이다.
 
-<br>
+&nbsp;
 
 # 2. LEGB rules를 code로 이해해보기
 
-<br>
+&nbsp;
 
 ## 2.1 LEGB rules: The Local Scope
 
@@ -177,7 +177,7 @@ categories: ["Python"]
   - local scope에 동일한 변수이름을 사용했지만, 프로그램 충돌이 일어나지 않은 이유는 `local scope`에만 살아있는 `local variable(지역 변수)`이기 때문에, 함수 실행이 끝나면 local scope에서 벗어나 지역 변수의 수명은 끝난다.
   - 이러한 장점 때문에, 디버깅과 수정이 쉽고 가독성이 좋아진다.
 
-<br>
+&nbsp;
 
 ## 2.2 LEGB rules: The Enclosing Scope (Nested Functions)
 
@@ -204,7 +204,7 @@ NameError: name 'inner_func' is not defined
   - `global scope`과 `local scope` 둘 다 아니고, 이 사이에 놓여있는 특별한 scope을 의미.
 - 또한, `inner_func()`은 enclosing function인 outer_func이 실행되는 동안에만 유지되는 일시적인 함수로서, `outer_func()`의 code에서만 `inner_func()`을 찾을 수 있다. `outer_func()`의 실행이 종료되면 `inner_func()`은 사라진다.
 
-<br>
+&nbsp;
 
 ## 2.3 LEGB rules: Modules - The Global Scope
 
@@ -256,13 +256,13 @@ UnboundLocalError: local variable 'var' referenced before assignment
 
 > **_Python은 global variable과 동일한 이름으로 function body에 선언해도 local variable로 인식한다._**
 
-<br>
+&nbsp;
 
 ## 2.4 Local variable 또는 global variable 찾아보기
 
 - `locals()` 과 `globals()` function을 통해서 지역 변수와 전역 변수를 출력해보자.
 
-<br>
+&nbsp;
 
 ### 2.4.1 locals()
 
@@ -285,7 +285,7 @@ UnboundLocalError: local variable 'var' referenced before assignment
 - **x** : enclosing scope에 있는 것 또한 지역변수임을 확인할 수 있다.
 - **printer** : outer function의 local scope에 정의했기 때문에 printer 또한 지역 변수로 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ### 2.4.2 globals()
 
@@ -302,7 +302,7 @@ Ex > {'__name__': '__main__', '__doc__': None, ..., '__cached__':
 None, 'func': <function func at 0x0000028708197F70>, 'text_variable': 100}
 ```
 
-<br>
+&nbsp;
 
 - `globals()`를 사용한 변수 자동화 생성: 지역 -> 전역 변수로 작성한다.
 
@@ -324,7 +324,7 @@ None, 'func': <function func at 0x0000028708197F70>, 'text_variable': 100}
 10
 ```
 
-<br>
+&nbsp;
 
 ## 1.12 LEGB rules: Built-in scope
 
@@ -344,7 +344,7 @@ None, 'func': <function func at 0x0000028708197F70>, 'text_variable': 100}
 - `dir()`의 첫 호출에서 `__builtins__`을 확인할 수 있다.
 - 그리고 `__builtins__`를 dir로 내부를 들여다보면, 파이썬의 built-in names의 전체 목록을 얻을 수 있다.
 
-<br>
+&nbsp;
 
 - 또 한 가지 특징은 global scope에서 어떠한 built-in names이든 오버라이드할 수 있다.
 - 하지만 우연히 또는 부주의하게 이렇게 오버라이드가 된다면 위험하며, 버그를 찾기 어렵다. 그래서 이런 종류의 실행은 최대한 피하는 게 낫다.
@@ -365,19 +365,19 @@ TypeError: 'int' object is not callable
 15
 ```
 
-<br>
+&nbsp;
 
 ---
 
 # 2. Python memory structure
 
-<br>
+&nbsp;
 
 ## 2.1 코드 영역
 
 > **실행할 프로그램의 코드가 저장**되는 영역 (text 영역이라고도 한다)
 
-<br>
+&nbsp;
 
 ## 2.2 데이터 영역
 
@@ -385,7 +385,7 @@ TypeError: 'int' object is not callable
 
 - 프로그램이 시작하고, 끝날 때까지 메모리에 계속 남아 있는다.
 
-<br>
+&nbsp;
 
 ## 2.3 Stack
 
@@ -398,7 +398,7 @@ TypeError: 'int' object is not callable
 - **`pop(팝)`**:stack에서 데이터를 꺼내는 작업
 - 데이터를 넣고 꺼내는 작업에서 윗 부분을 `top`, 아랫 부분을 `bottom` 이라 한다.
 
-<br>
+&nbsp;
 
 - stack 영역은 `함수의 호출과 함께 생성`되고, 함수의 호출이 완료되면 소멸한다.
 - `스택 프레임(stack frame)`: 스택 영역에 저장되는 함수의 호출 정보
@@ -406,7 +406,7 @@ TypeError: 'int' object is not callable
 - 한계가 있어서, 한계를 초과하도록 삽입할 수 없다.
 - Stack overflow: 함수는 변수를 저장하기 위해 stack을 만드는데, 만들어진 stack이 메모리 용량을 넘어서면 `Stack overflow`가 발생한다.
 
-<br>
+&nbsp;
 
 ## 2.2 Heap
 
@@ -416,7 +416,7 @@ TypeError: 'int' object is not callable
 - heap 영역은 `런타임 시`에 크기가 결정된다 (메모리가 할당된다)
 - 메모리의 낮은 주소에서 높은 주소로 할당된다.
 
-<br>
+&nbsp;
 
 ---
 

@@ -7,7 +7,7 @@ tags: ["TIL", "python"]
 categories: ["Python"]
 ---
 
-<br>
+&nbsp;
 
 # 1. 기본 출력
 
@@ -22,7 +22,7 @@ categories: ["Python"]
 \000: 널 문자
 ```
 
-<br>
+&nbsp;
 
 ## 1.2 기본 출력
 
@@ -53,7 +53,7 @@ JeHa start!
 JeHa start!
 ```
 
-<br>
+&nbsp;
 
 ## 1.3 Separator 옵션
 
@@ -76,7 +76,7 @@ python
 python@google.com
 ```
 
-<br>
+&nbsp;
 
 ## 1.4 End 옵션
 
@@ -99,7 +99,7 @@ u
 I love u
 ```
 
-<br>
+&nbsp;
 
 # 2. String 문자열 출력 (s)
 
@@ -192,7 +192,7 @@ _____likel
 > print('{:>10.5}'.format('likelike'))
 ```
 
-<br>
+&nbsp;
 
 ## 결론
 
@@ -210,7 +210,7 @@ _____likel
 
 ---
 
-<br>
+&nbsp;
 
 # 3. Integer 정수형 출력 (d)
 
@@ -250,7 +250,7 @@ _24_
 
 ```
 
-<br>
+&nbsp;
 
 ## 결론
 
@@ -267,7 +267,7 @@ _24_
 
 ---
 
-<br>
+&nbsp;
 
 ## 4. Float 실수형 출력 (f)
 
@@ -303,7 +303,7 @@ _24_
 3.14
 ```
 
-<br>
+&nbsp;
 
 ## 결론
 
@@ -316,7 +316,7 @@ _24_
 
 ---
 
-<br>
+&nbsp;
 
 # Reference
 

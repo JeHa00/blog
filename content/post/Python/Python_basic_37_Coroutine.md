@@ -16,7 +16,7 @@ categories: ["Python"]
 - 그리고, 이들을 이해하기 위해서는 `process`가 뭔지 알아야 한다.
 - 그러면 이 개념들에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ---
 
@@ -50,7 +50,7 @@ categories: ["Python"]
 - 자원 소비 가능성이 증가한다.
 - 이런 이유로 Single thread가 더 빠른 이유가 switching cost 때문이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -71,7 +71,7 @@ categories: ["Python"]
 
 - 흐름 제어: 메인 루틴에서 서브 루틴을 호출하면 서브루틴에서 수행한다.
 
-<br>
+&nbsp;
 
 - 이어지는 예제들을 통해서 아래 3가지를 유심히 보자.
 
@@ -79,13 +79,13 @@ categories: ["Python"]
   - 상태 저장
   - 양방향 전송
 
-<br>
+&nbsp;
 
 ---
 
 # 3. 코루틴 기본예제 1: 코루틴 이해하기
 
-<br>
+&nbsp;
 
 - 앞으로 `def`를 보면 단지 function이라 생각하지 말자.
 
@@ -93,7 +93,7 @@ categories: ["Python"]
 
 - for문에서는 예외가 잡히기 때문에, `StopIterator`가 발생되지 않는다.
 
-<br>
+&nbsp;
 
 ```yml
 ## Generator
@@ -129,7 +129,7 @@ categories: ["Python"]
 
   > Generator의 특별한 형태로, yield와 send를 통해서 main routine과 sub routine의 데이터를 상호 교환할 수 있다.
 
-<br>
+&nbsp;
 
 ```yml
 > cr1 = coroutine1()
@@ -144,7 +144,7 @@ categories: ["Python"]
  StopIteration
 ```
 
-<br>
+&nbsp;
 
 - **send와 next 비교**
   - 위 code를 통해서 `send`도 `next` 기능이 포함된 걸 알 수 있다.
@@ -152,7 +152,7 @@ categories: ["Python"]
   - send() 에 100을 입력하니, 'coroutine received: 100'이 출력되었다.
 - main routine에서 보낸 100이 sub routine인 `coroutine1`의 `yield`가 받았고, 이를 i에 할당한 걸 알 수 있다.
 
-<br>
+&nbsp;
 
 - 그러면 `send`를 잘못 사용한 경우를 알아보자.
 
@@ -171,7 +171,7 @@ categories: ["Python"]
   - Error를 통해 알 수 있는 건 sub-routine의 yield 지점에서 context가 멈춰야, send로 보냈을 때 받을 수 있다는 걸 알 수 있다.
   - `next`를 먼저 실행하여, `coroutine`을 실행한 후 `yield` keyword를 실행해야 한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -187,7 +187,7 @@ categories: ["Python"]
   - 좌변은 main routine에서 sub routine으로 보낸 값을 받는 것
   - 우변은 sub routine에서 terminal로 출력
 
-<br>
+&nbsp;
 
 ```yml
 # 이번에는 매개변수가 존재
@@ -214,7 +214,7 @@ coroutine z received : 100
 Stop Iteration
 ```
 
-<br>
+&nbsp;
 
 - 상태값 확인을 해보겠다.
 - 상태값 확인은 `getgeneratestate`를 import하는 것부터 시작한다.
@@ -244,7 +244,7 @@ coroutine z received : 20
 StopIteration
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -284,12 +284,12 @@ StopIteration
 ['A', 'B', 1, 2, 3]
 ```
 
-<br>
+&nbsp;
 
 - `yield from`을 사용해서 위 code를 구현해보자.
 - 그냥 `yield`보다 더 직관적으로 이해가 가능하다.
 
-<br>
+&nbsp;
 
 ```yml
 > def generator2():
@@ -317,7 +317,7 @@ B
 3
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -334,7 +334,7 @@ B
   - 제네레이터는 next 함수(\_\_next\_\_ method)를 반복 호출하여 값을 얻어내는 방식
   - 코루틴은 next 함수(\_\_next\_\_ method)를 한 번만 호출한 뒤, `send` method를 사용하여 값을 주고, 받는 방식
 
-<br>
+&nbsp;
 
 ---
 

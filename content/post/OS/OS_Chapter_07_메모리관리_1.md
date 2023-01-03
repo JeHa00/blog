@@ -12,19 +12,19 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용이다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 - 이번 chapter 내용인 메모리 관리는 물리적인 메모리 관리로, 주요 내용은 address binding이다.
 - address binding에서의 OS의 역할은 없고, 다 HW가 해야한다.
 - address binding을 할 때마다 OS에게 CPU 제어권을 양도해도, 결국 물리적 메모리에 instruction을 실행하는 건 CPU다. 그래서 HW가 해야한다.
 
-<br>
+&nbsp;
 
 ---
 
 # 1. 주소(address) 바인딩
 
-<br>
+&nbsp;
 
 ## 1.1 주소란??
 
@@ -36,7 +36,7 @@ categories: ["OS"]
   - 32bit는 2^(32) 가지, 64bit는 2^(64) 가지의 서로 다른 메모리 위치를 구분할 수 있다.
 - **byte 단위로 메모리 주소를 부여한다.**
 
-<br>
+&nbsp;
 
 ## 1.2 논리적 주소, 물리적 주소
 
@@ -57,7 +57,7 @@ categories: ["OS"]
   - 해당 프로그램이 물리적 메모리에 올라가 있어야 한다.
   - 해당 논리적 주소가 물리적 메모리의 어느 위치에 매핑되는지 확인해야 한다.
 
-<br>
+&nbsp;
 
 ## 1.3 주소 바인딩(address binding)
 
@@ -100,7 +100,7 @@ categories: ["OS"]
   - CPU가 주소 참조 시, address mapping table을 이용해 원하는 데이터가 물리적 메모리의 어느 위치에 존재하는지 확인한다.
   - `MMU(Memory Management Unit)` 라는 하드웨어적 지원이 필요
 
-<br>
+&nbsp;
 
 ## 1.4 MMU 기법(MMU scheme)
 
@@ -146,18 +146,18 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/165416345-7ee411ec-ad78-4bf0-b2ec-4849c3598f71.PNG)
 
-<br>
+&nbsp;
 
 ---
 
 # 2. 메모리 관리와 관련된 용어
 
-<br>
+&nbsp;
 
 ## 2.1 동적 로딩(Dynamic loading)
 
 > - 다중 프로그래밍 환경에서 메모리를 효율적으로 사용하기 위한 기법
-> - 프로세스의 주소 공간 전체를 메모리에 다 올려놓는 게 아닌, 해당 부분이 불릴 때에마다 메모리에 적재하는 방식
+> - 프로세스의 주소 공간 전체를 메모리에 다 올려놓는 게 아닌, 해당 부분이 불릴 때에마다 그 부분만 메모리에 적재하는 방식
 
 - **loading: 물리적 메모리로 올리는 것**
 - **부분적으로만 올리는 이유**
@@ -165,7 +165,7 @@ categories: ["OS"]
 - **동적 로딩 -> 더 많은 프로그램 로딩 가능 -> 메모리 이용 효율성 향상**
 - 운영체제 지원 없이 개발자가 코드로 구현 가능하고, OS는 라이브러리를 통해 지원 가능
 
-<br>
+&nbsp;
 
 ## 2.2 중첩(overlays)
 
@@ -176,7 +176,7 @@ categories: ["OS"]
   - 중첩의 목적: single-process를 실행하기 위한 환경에서 메모리 용량보다 큰 프로세스를 실행하기 위한 용도
   - 운영체제의 지원 없이 프로그래머가 직접 구현해야 한다.
 
-<br>
+&nbsp;
 
 ## 2.3 스와핑(Swapping)
 
@@ -222,9 +222,9 @@ categories: ["OS"]
   - compile time binding & load time binding: 다시 swap in 시, 원래 존재하던 메모리 위치로 다시 올라가야 해서 swapping의 효과가 좋지 않다.
   - runtime binding은 추후 빈 메모리 영역 아무 곳에나 프로세스를 올리기 때문에, swapping으로 인한 효과가 좋다.
 
-<br>
+&nbsp;
 
-## 2.4 동적 연결(Dynamic linking))
+## 2.4 동적 연결(Dynamic linking)
 
 - **연결(linking)이란??**
 
@@ -264,7 +264,7 @@ categories: ["OS"]
   | 실행 파일에 라이브러리 포함 유무 | O                      | X                       |
   | 메모리 낭비 발생                 | O                      | X                       |
 
-<br>
+&nbsp;
 
 ---
 
@@ -274,7 +274,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/165253477-335490e5-4c30-49e5-8d87-7aafbd875f5f.PNG)
 
-<br>
+&nbsp;
 
 ## 3.1 연속할당(Contiguous allocation) 방식
 
@@ -286,7 +286,7 @@ categories: ["OS"]
   - **가용 공간(hole)** : 사용되지 않은 메모리 공간으로, 메모리 내의 여러 곳에서 산발적으로 존재할 수 있다.
 - 이 가용공간(hole)은 물리적 메모리 내부에 산발적으로 존재하기 때문에, 효율적으로 관리하기 위해서 운영체제는 사용 중인 공간과 가용 공간에 대한 정보를 각각 유지한다.
 
-<br>
+&nbsp;
 
 ### 3.1.1 고정분할(Fixed partition) 방식
 
@@ -315,7 +315,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/165446743-8ba76f95-5c65-48ed-a700-650bf3d40607.PNG)
 
-<br>
+&nbsp;
 
 ### 3.1.2 가변분할(Variable partition) 방식
 
@@ -332,7 +332,7 @@ categories: ["OS"]
 
 - **Solution 1: Compaction**
 
-  - 외부조각 같은 hole을 해결하는 방법으로 **_컴팩션(compaction)_**을 사용한다.
+  - 외부조각 같은 hole을 해결하는 방법으로 **_컴팩션(compaction)_** 을 사용한다.
     - Compaction이란???
       - 물리적 메모리 중에서 프로세스에 의해 사용 중인 메모리 영역을 한 쪽으로 몰고, 가용 공간들을 다른 한쪽으로 모아서 하나의 큰 가용공간을 만드는 방법
   - 메모리 위치를 상당 부분 이동해야 해서 **비용이 매우 많이 들기 때문에**, 최소한의 메모리 이동으로 얻을려고 한다.
@@ -356,7 +356,7 @@ categories: ["OS"]
     - **가장 크기가 큰 hole**을 찾아 새로운 프로그램을 할당하는 방법으로,
     - 시간적 오버헤드가 발생하고, 가용 공간을 빨리 소진한다.
 
-<br>
+&nbsp;
 
 ## 3.2 불연속할당(Noncontiguous allocation) 기법
 
@@ -370,7 +370,7 @@ categories: ["OS"]
 
 - 그러면 다음 챕터에서 위 3가지 기법들에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ---
 

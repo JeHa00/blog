@@ -19,7 +19,7 @@ categories: ["Book Study"]
 - 이번에 학습하는 chapter의 주제는 **'Chapter 01: DEALING WITH ERRORS AND ASKING FOR HELP'** 입니다.
 
 
-<br>
+&nbsp;
 
 ---
 # 1. 파이썬 에러 메세지를 이해하는 방법
@@ -30,7 +30,7 @@ categories: ["Book Study"]
 
 첫 번째 방법부터 찾아보자. 
 
-<br>
+&nbsp;
 
 ## Traceback을 면밀히 살펴보자. 
 
@@ -68,13 +68,13 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
-<br>
+&nbsp;
 
 ### most recent call last 의 의미
 
 가장 처음에 호출된 게 Traceback 바로 밑에 메세지이고, 가장 최근의 것이 끝에 있다는 의미
 
-<br>
+&nbsp;
 
 ### frame summary의 의미
 
@@ -91,14 +91,14 @@ File "abcTraceback.py", line 13, in <module>
 그리고 위에 소스 코드에서의 `print`는 frame summary에서 보여지지 않는다. 
 - 왜냐하면 예외가 발생시킨 함수 호출이 포함된 line만 traceback에 나타나기 때문이다.
 
-<br>
+&nbsp;
 
 ### 마지막 frame summary
 
 - 마지막 frame summary에는 '예외메세지'는 물론, '예외 에러의 타입명'까지 알려준다.
 - 그리고, traceback이 준 line number는 파이썬이 마지막으로 에러를 발견한 장소를 의미한다. 그래서 버그의 원인이 있는 소스는 이 알려준 line number 전 어딘가에 존재한다는 걸 말해준다. 
 
-<br>
+&nbsp;
 
 ### 문법적 에러를 늦게 발견하는 파이썬 인터프리터
 
@@ -122,19 +122,19 @@ SyntaxError: invalid syntax
 
 그래서 오류가 난 줄의 다음 줄을 가리킨다. 
 
-<br>
+&nbsp;
 
 ### debuggr 또는 로깅 메세지 확인
 
 위의 경우처럼 원인의 위치를 정확하게 가리키지 않는 경우, 디버거를 사용하여 프로그램 내부를 살펴보거나, 로깅 메세지를 확인해야한다. 
 
-<br>
+&nbsp;
 
 ### 에러를 직접 검색하기
 
 하지만, 이런 경우는 상당히 많은 시간이 소모되기 때문에, 마지막 방법인 Error messages를 인터넷 상에서 검색해보는 것이 더 빠른 솔루션이다. 
 
-<br>
+&nbsp;
 
 ### Linter 사용하기
 
@@ -143,7 +143,7 @@ SyntaxError: invalid syntax
 
 `pip install --user pyflakes`를 사용하면 설치할 수 있다. 
 
-<br>
+&nbsp;
 
 ---
 # 2. 질문하는 방법
@@ -161,7 +161,7 @@ SyntaxError: invalid syntax
 - os 또는 version에 대한 정보를 주지 않는 것
 - 누군가가 나를 대신하여 프로그램을 작성해주기를 바라는 것  
 
-<br>
+&nbsp;
 
 ### 질문 잘 작성하는 방법
 
@@ -187,7 +187,7 @@ SyntaxError: invalid syntax
 - 컴퓨터 및 환경 설정 사항을 공유하기 ex) version
 
 
-<br>
+&nbsp;
 
 ### 좋은 질문 예시
 
@@ -213,7 +213,7 @@ SyntaxError: invalid syntax
 
 
 
-<br>
+&nbsp;
 
 ---
 

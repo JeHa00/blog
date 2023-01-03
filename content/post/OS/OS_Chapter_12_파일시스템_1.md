@@ -12,7 +12,7 @@ categories: ["OS"]
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 와 [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e)를 보고 정리한 내용이다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -60,7 +60,7 @@ categories: ["OS"]
   - 반대로 여러 개의 물리적인 디스크를 하나의 파티션으로 구성하기도 한다.
   - (물리적) 디스크를 파티션으로 구성한 뒤 각각의 파티션에 **file system**을 설치하거나, 가상 메모리의 **swapping** 등 다른 용도로 크게 2가지로 나눠 사용할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -70,7 +70,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/170816109-5e0503c4-ec5e-4b72-b225-b61c86b5c595.PNG)
 
-<br>
+&nbsp;
 
 ## 2.1 open() 연산의 구체적인 과정
 
@@ -95,7 +95,7 @@ categories: ["OS"]
     - 한 번 open한 파일은 kernel의 메모리 영역 일부에 copy하여 두고 나서 동일한 경로의 파일에 관한 read / wrtie 시, kernel의 메모리 영역에 둔 file을 다시 copy해서 사용하기 때문에 directory search를 하지 않아도 된다.
     - kernel memory 일부 영역에 copy하여 별도로 저장된 file을 `buffer cache` 라 한다. 그래서 LRU와 LFU 알고리즘을 자연스럽게 사용할 수 있다.
 
-<br>
+&nbsp;
 
 ## 2.2 file system 연산의 두 종류 table
 
@@ -112,7 +112,7 @@ categories: ["OS"]
     - Open한 process의 수
     - File offset: 파일 어느 위치 접근 중인지 표시 (별도 테이블 필요)
 
-<br>
+&nbsp;
 
 ---
 
@@ -127,7 +127,7 @@ categories: ["OS"]
 - Access control Matrix로 하는 건 overhead가 커서 일반적인 OS에서는 Grouping 방법을 사용한다.
 - Grouping 방식은 단 9 비트만 있으면 된다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -139,7 +139,7 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/170826480-293a2f09-85c1-4048-93a6-13306600a154.PNG)
 
-<br>
+&nbsp;
 
 ---
 
@@ -157,7 +157,7 @@ categories: ["OS"]
     - LP 레코드 판과 같이 접근하도록 한다.
     - 파일을 구성하는 레코드를 임의의 순서로 접근할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 

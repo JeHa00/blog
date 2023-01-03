@@ -21,7 +21,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 ## 1. tuple 선언
 
@@ -51,7 +51,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 ## 2. tuple indexing, slicing, 연산
 
@@ -116,7 +116,7 @@ c * 3 -(11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14)
 
 ---
 
-<br>
+&nbsp;
 
 ## 3. tuple 함수: index, count
 
@@ -135,7 +135,7 @@ a - 0
 a - 1
 ```
 
-<br>
+&nbsp;
 
 ## 4. tuple의 중요한 특징: packing & unpacking
 
@@ -189,7 +189,7 @@ foo bar baz qux
 4 5 6
 ```
 
-<br>
+&nbsp;
 
 ---
 

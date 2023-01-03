@@ -13,7 +13,7 @@ categories: ["Python"]
 - 예외는 무엇이고 에러는 무엇이다라고 외우진 말자.
 - 예외를 에러의 범주에 포함하기도 하기 때문이다. 다만, 예외와 에러에 대한 틀을 잡기 위해 설명한다.
 
-<br>
+&nbsp;
 
 - `Exception(예외)`는 우리가 작성한 로직에서 비정상적으로 발생한 사건(event)이다.
   - 예외에는 `예측이 가능한 예외`와 `예측이 불가능한 예외`로 나눠진다.
@@ -23,7 +23,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 ## 2. Error의 종류
 
@@ -38,7 +38,7 @@ categories: ["Python"]
 SyntaxError: invalid syntax
 ```
 
-<br>
+&nbsp;
 
 ### 2.2 TypeError: 자료형에 맞지 않는 연산을 수행하여 발생하는 오류
 
@@ -61,7 +61,7 @@ TypeError: can only concatenate list (not "str") to list
 
 ```
 
-<br>
+&nbsp;
 
 ### 2.3 NameError: 참조가 없을 때 발생하는 오류
 
@@ -73,7 +73,7 @@ NameError: name 'c' is not defined
 
 ```
 
-<br>
+&nbsp;
 
 ### 2.4 IndexError: index가 존재하지 않아 발생하는 오류
 
@@ -95,7 +95,7 @@ IndexError: list index out of range
 IndexError: pop from empty list
 ```
 
-<br>
+&nbsp;
 
 ### 2.5 ValueError: 참조값이 없을 때 발생하는 오류
 
@@ -109,7 +109,7 @@ IndexError: pop from empty list
 ValueError: list.remove(x): x not in list
 ```
 
-<br>
+&nbsp;
 
 ### 2.6 KeyError: 해당되는 key가 없을 때 발생하는 오류
 
@@ -123,7 +123,7 @@ KeyError: 'D'
 None
 ```
 
-<br>
+&nbsp;
 
 ### 2.7 AttributeError: 모듈, 클래스에 있는 잘못된 속성을 사용하여 발생한 오류
 
@@ -133,7 +133,7 @@ None
 AttributeError: module 'time' has no attribute 'time2'
 ```
 
-<br>
+&nbsp;
 
 ### 2.8 FileNotFoundError: 파일을 찾을 수 없을 때 발생하는 오류
 
@@ -142,7 +142,7 @@ AttributeError: module 'time' has no attribute 'time2'
 FileNotFoundError: [Errno 2] No such file or directory: 'test.txt'
 ```
 
-<br>
+&nbsp;
 
 ### 2.9 ZeroDivisionError: 0으로 나눠서 발생하는 오류
 
@@ -153,7 +153,7 @@ ZeroDivisionError: division by zero
 
 ---
 
-<br>
+&nbsp;
 
 ## 3. 예외 처리 (try ~ exception)
 
@@ -243,7 +243,7 @@ Not found it! - Occurred Error!
 Ok! finally
 ```
 
-<br>
+&nbsp;
 
 - **error** 를 일부러 발생시킨 경우를 생각해보자. 언제 일부러 **error** 를 발생시킬까??
 - 여기서 **error** 란 Python에서 발생시킨 게 아니라, 설계자가 회사에서 요구하는 논리상 알기 위해서 **일부러** 발생시킨 error를 말한다.
@@ -284,7 +284,7 @@ Occurred! Exception!
 - a에는 'Park'가 할당되었다. 'Kim'이 아니기 때문에, 일부러 `ValueError`를 발생시켰다. 그래서 `except ValueError` 문이 실행이 되어 print문이 출력되었다.
 - 일부러 Error를 일으키고, ErrorType도 정할 수 있다는 걸 알고 있자.
 
-<br>
+&nbsp;
 
 ---
 

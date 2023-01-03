@@ -15,7 +15,7 @@ categories: ["Python"]
 - 첫 번째로 병행성이 무엇을 의미하는 건지, 이와 유사한 개념으로 병렬성은 무엇인지 학습한다.   
 - 두 번째로, Generator를 이해하기 위해서 \_\_iter\_\_와 \_\_next\_\_ 을 먼저 학습한다.    
 
-<br>
+&nbsp;
 
 ---
 
@@ -30,13 +30,13 @@ categories: ["Python"]
 - 파이썬에서는 **_병행성_** 과 **_병렬성_** 을 모두 지원한다.
 - 그리고, 파이썬 실력을 결정하는 중요한 내용이다.
 
-<br>
+&nbsp;
 
 ---
 
 # 2. \_\_iter\_\_와 \_\_next\_\_
 
-<br>
+&nbsp;
 
 ## 2.1 \_\_iter\_\_와 \_\_next\_\_ 용어 정리
 
@@ -49,7 +49,7 @@ categories: ["Python"]
 
 - **iter** 가 있는 용어들에 대해 정리하면서 알아보자.
 
-<br>
+&nbsp;
 
 ### iteration이란?
 
@@ -60,7 +60,7 @@ categories: ["Python"]
   - **Definite** iteration 상황: 미리 반복 횟수를 명백하게 정한 상황. ex) for 문
   - **Indefinite** iteration 상황: 몇 가지 조건이 만족될 때까지 code block을 실행하는 상황. ex) while 문
 
-<br>
+&nbsp;
 
 
 ### iterable
@@ -68,7 +68,7 @@ categories: ["Python"]
 - An object(or the adjective used to describe an object) that can be iterated over
 - `dir()`로 확인했을 때, `__iter__`을 가지고 있는 객체
 
-<br>
+&nbsp;
 
 ### iterator: Type의 한 종류
 
@@ -84,7 +84,7 @@ categories: ["Python"]
   - `next()` function의 기준으로 보자면, `__next__`을 가지고 있는 객체
 
 
-<br>
+&nbsp;
 
 ## 2.2 Iterator 관련 data type
 
@@ -113,7 +113,7 @@ categories: ["Python"]
   <dict_keyiterator object at 0x036DD990>
   ```
 
-<br>
+&nbsp;
 
 - iterator를 반환하지 않는 data type들
   - Integer, foat, built-in functions
@@ -141,7 +141,7 @@ categories: ["Python"]
   TypeError: 'builtin_function_or_method' object is not iterable
   ```
 
-<br>
+&nbsp;
 
 ## 2.3 iter() 과 next() 예제
 
@@ -184,7 +184,7 @@ categories: ["Python"]
   TypeError: 'list' object is not an iterator
   ```
 
-<br>
+&nbsp;
 
 ## 2.4 iter() 과 next() 토대로 for문 이해하기
 
@@ -228,7 +228,7 @@ categories: ["Python"]
 >       break
 ```
 
-<br>
+&nbsp;
 
 ## 2.5 \_\_iter\_\_ 확인하는 방법
 
@@ -251,7 +251,7 @@ True
 True
 ```
 
-<br>
+&nbsp;
 
 ## 2.6 class로 \_\_next\_\_ 구현하기
 
@@ -325,7 +325,7 @@ Stopped Iteration
 # 출력 코드는 동일.
 ```
 
-<br>
+&nbsp;
 
 ---
 

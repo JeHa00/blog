@@ -19,7 +19,7 @@ categories: ["Django"]
 
 - 이번 tutorial에서는 database를 설치하고, 첫 번째 model을 만들고, 장고가 자동적으로 생성되는 'admin site'에 대해 quick introduction을 얻는다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -50,7 +50,7 @@ $ python manage.py migrate
 
 - migrate는 `mysite/settings` 안에 db settings에 따라 필요한 db table을 생성한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -101,7 +101,7 @@ $ python manage.py migrate
 
   - ForeignKey (외래키)를 사용하여 관계를 정의할 수 있다. 각 `Choice` class는 `Question` class 와 관련 있다. django는 모든 DB 관계들을 지원한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -171,7 +171,7 @@ $ python manage.py migrate
 
 - `sqlmigrate` 명령어는 실제로 migrate를 하는 게 아닌, 단지 django가 생각하기에 요구되는 SQL 문이 무엇인지 볼 수 있도록 화면에 출력하는 용도다. 그래서 django가 무엇을 할 것인지 확인하고 싶으면 이 명령어를 사용한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -276,7 +276,7 @@ True
 1
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -286,21 +286,21 @@ True
 
 - `python manage.py createsuperuser` 를 실행하여 뜨는 입력란에 정보를 다 입력하는데, 이 정보들은 admin user의 ID와 Password가 된다.
 
-<br>
+&nbsp;
 
 ### 배포 서버 실행하기
 
 - `python manage.py runserver`
   - local server 주소는 http://127.0.0.1:8000/ 이지만, admin은 http://127.0.0.1:8000/admin/ 다.
 
-<br>
+&nbsp;
 
 ### Question 등록하기
 
 - admin index page에는 poll app이 보이지 않아서 아래 명령어를 입력해줘야 한다.
   - `admin.site.register(Question)`
 
-<br>
+&nbsp;
 
 ---
 

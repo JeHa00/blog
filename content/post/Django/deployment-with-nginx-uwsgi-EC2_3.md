@@ -16,7 +16,7 @@ categories: ["Django"]
 
 - 지난 배포 과정에서 nginx 와 uwsgi 를 연결하여 EC2 public IPv4 만 입력해도 장고 웹 애플리케이션이 돌아가도록 했다. 하지만, **CSS** 가 적용되지 않는 문제점이 있다. 이를 해결하고자 S3에 연결하는 과정을 진행해본다. 그 다음으로 동적 데이터 처리를 위해 RDS와도 연결해본다. 
 
-<br>
+&nbsp;
 
 ---
 # 1. Static file serving
@@ -44,7 +44,7 @@ $ sudo service nginx reload
 
 - 문제점: 이 방법을 사용하면 admin에 적용되는 css를 확인할 수가 없다.  
 
-<br>
+&nbsp;
 
 ## 두 번째 방법: collectstatic
 
@@ -92,7 +92,7 @@ location /static/ {
 
 - 문제점: 프로젝트 내부에 정적 파일들을 모아놓기 때문에, 서버 부하를 피할 수 없다.
 
-<br>
+&nbsp;
 
 ## 세 번째 방법: S3에 연결하기
 
@@ -210,7 +210,7 @@ css 파일의 Request URL을 보면 다음과 같이 aws에서 오는 걸 확인
 - CDN = 콘텐츠 전송 네트워크(Content Delivery Network) 로 옮겨서 응답시간을 개선. 지리적으로 분산된 서버의 네트워크  
 
 
-<br>
+&nbsp;
 
 ---
 # 2. RDS 연결하기
@@ -260,7 +260,7 @@ admin page에 들어가려는 이유는 이것으로 DB 연결 유무를 확인�
     - '초기 데이터베이스 이름' 작성하기
         - ex) postgres
 
-<br>
+&nbsp;
 
 ## 두 번째, 인바운드 규칙 편집
 
@@ -284,7 +284,7 @@ Is the server running on host "ls-django.cvhmktue5rnw.ap-northeast-2.rds.amazona
 (172.31.28.221) and accepting TCP/IP connections on port 5432?
 ```
 
-<br>
+&nbsp;
 
 ## 세 번째, local django settings.py에 RDS정보 입력
 
@@ -317,7 +317,7 @@ DATABASES = {
 
 이를 해결하고자 psycopg2를 설치해보자.
 
-<br>
+&nbsp;
 
 ## 네 번째, psycopg2 설치하기
 
@@ -355,7 +355,7 @@ pip install --upgrade numpy
 위 명령어들을 다 실행하고 `runserver`를 실행했을 때 psycopg2 module이 인식되지 않으면 `pip install psycopg2-binary==2.9.2` 을 실행해보자.
 
 
-<br>
+&nbsp;
 
 ## 다섯 번째, admin 들어가기
 
@@ -364,7 +364,7 @@ pip install --upgrade numpy
 로그인이 된다면 DB 연결이 잘 된 것이다. 
 
 
-<br>
+&nbsp;
 
 ---
 

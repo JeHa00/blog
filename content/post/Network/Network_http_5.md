@@ -13,15 +13,15 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-<br>
+&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
-<br>
+&nbsp;
 
 # 1. 클라이언트에서 서버로 데이터 전송
 
-<br>
+&nbsp;
 
 - 클라이언트에서 서버로 데이터를 전달하는 방식은 크게 2가지가 있다.
   - **쿼리 파라미터를 통한 데이터 전송**
@@ -31,7 +31,7 @@ categories: ["Network"]
     - POST, PUT, PATCH를 사용한다.
     - 예) 회원 가입, 상품 주문, 리소스 등록, 리소스 변경하는데 사용한다.
 
-<br>
+&nbsp;
 
 - 그리고, 클라이언트가 서버로 데이터를 전송하는 4가지 상황이 있다. 각 상황에서 어떻게 클라이언트가 서버에 데이터를 전달하는지 알아보자.
 
@@ -44,7 +44,7 @@ categories: ["Network"]
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2a0386de-df5f-430f-b267-3902b833591c%2FUntitled.png&blockId=f016c60e-0e24-4cf4-a24a-4643ab1ab4ab)
 
-<br>
+&nbsp;
 
 ---
 
@@ -57,18 +57,18 @@ categories: ["Network"]
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0082a8b8-b24d-41ed-81b9-ac485f67cfe0%2FUntitled.png&blockId=82858c8a-47aa-4adf-a1db-4ee739577065)
 
-<br>
+&nbsp;
 
 ---
 
 # 1.3 HTML Form을 통한 데이터 전송
 
-<br>
+&nbsp;
 
 - **HTML Form 전송은 GET, POST만 지원한다.**
 - 예) 회원 가입, 상품 주문, 데이터 변경
 
-<br>
+&nbsp;
 
 ## POST 전송 - 저장
 
@@ -79,7 +79,7 @@ categories: ["Network"]
 - 쿼리 파라미터랑 동일한 형식으로 HTTP message body에 넣어 서버에 전송된다.
   - `username=kim&age=20`
 
-<br>
+&nbsp;
 
 ## GET 전송 - 저장 (오류)
 
@@ -92,7 +92,7 @@ categories: ["Network"]
 > [결론]  
 > FORM에서 GET / POST의 사용에 맞춰서 웹 브라우저가 알아서 `HTTP 요청 메세지`의 구성을 Query 또는 Body 등으로 맞춰서 생성한다.
 
-<br>
+&nbsp;
 
 ## multipart/form-data
 
@@ -102,13 +102,13 @@ categories: ["Network"]
 - 주로 binary data를 전송할 때 사용한다.
 - 웹브라우저가 생성한 요청 HTTP 메시지의 content-type에 boundary 가 명시되어 있는데, form data 간 구분을 지어준다.
 
-<br>
+&nbsp;
 
 ---
 
 # 1.4. HTTP API를 통한 데이터 전송
 
-<br>
+&nbsp;
 
 - HTML Form을 쓰지 않는 모든 상황을 말한다.
 - 예) 회원 가입, 상품 주문, 데이터 변경에 사용
@@ -122,7 +122,7 @@ categories: ["Network"]
 - Content-type: application/json을 주로 사용 (사실상 표준)
   - TEXT, XML, JSON 등등이 있지만, XML이 읽기 어렵고, 복잡해서 지금은 JSON을 사용한다. 데이터 크기도 상대적으로 XML보다 작아서, 사실상 JSON이 표준이다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -139,17 +139,17 @@ categories: ["Network"]
     - 순수 HTML + HTML form 사용
     - GET, POST만 지원
 
-<br>
+&nbsp;
 
 - 이 3가지에 대해 각각 알아보자.
 
-<br>
+&nbsp;
 
 ## 2.1 HTTP API - collection
 
 > **서버가 새로 등록된 리소스 URI를 생성하고 관리하는 구조: Collection**
 
-<br>
+&nbsp;
 
 - 회원 관리 시스템: API 설계 - POST 기반 등록
   - 회원 목록 /members -> GET
@@ -160,7 +160,7 @@ categories: ["Network"]
 
 > 실제로는 위의 경우처럼 명확하게 구분되지 않기 때문에, `컨트롤 URI` 를 사용할 수 밖에 없다.
 
-<br>
+&nbsp;
 
 - 클라이언트는 등록될 리소소의 URI를 모른다.
   - 회원 등록 /members -> POST
@@ -175,13 +175,13 @@ categories: ["Network"]
 
 ---
 
-<br>
+&nbsp;
 
 ## 2.2 HTTP API - store
 
 > **클라이언트가 직접 resource uri를 지정하고, 관리하는 구조: Store**
 
-<br>
+&nbsp;
 
 - 파일 관리 시스템: API 설계 - PUT 기반 등록
   - 파일 목록 /files -> GET
@@ -192,7 +192,7 @@ categories: ["Network"]
     - 파일 등록에 PUT을 썼기 때문에, 대량 등록에는 POST를 썼다.
     - 왜냐하면 POST는 임의로 의미를 만들 수 있다.
 
-<br>
+&nbsp;
 
 - 클라이언트가 리소스 URI를 알고 있어야 한다.
   - 파일 등록/files/{filename} -> PUT
@@ -203,14 +203,14 @@ categories: ["Network"]
   - 클라이언트가 리소스의 URI를 생성하고 관리
   - 여기서 store는 /files
 
-<br>
+&nbsp;
 
 > 그럼 위 두 방식(Collection, Store) 중 무엇을 많이 사용할까??  
 > 대부분 실무에서는 POST를 사용하는 Collection 구조를 사용한다. 하지만, file 관리의 경우, Store를 사용한다.
 
 ---
 
-<br>
+&nbsp;
 
 ## 2.2 HTML FORM 사용
 
@@ -225,7 +225,7 @@ categories: ["Network"]
   - 위에 수정 폼과 같은 url을 쓰는 것을 추천한다.
 - 회원 삭제 /members/{id}/delete -> POST
 
-<br>
+&nbsp;
 
 - HTML FORM은 _GET, POST만 지원_ 하므로 제약이 있다.
 - 이런 제약을 해결하기 위해 `동사로 된 리소스 경로`를 사용한다.
@@ -233,7 +233,7 @@ categories: ["Network"]
 - AJAX 같은 기술을 사용해서 해결 가능하다 -> 회원 API 참고
 - 여기서는 순수 HTML, HTML FORM 이야기다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -256,18 +256,18 @@ categories: ["Network"]
   - 동사를 직접 사용
   - 예) /members/{id}/delete
 
-<br>
+&nbsp;
 
 > REST API를 보면 해결이 안되는 경우가 있다.  
 > 그럴 때, 네 번째 개념인 `컨트롤 URI`가 꼭 있어야 한다.  
 > 문서, collection, store 만으로 부족할 때, `컨트롤 URI` 를 사용한다.
 
-<br>
+&nbsp;
 
 - https://restfulapi.net/resource-naming 참고하기
   - 여러 사람들이 HTTP API를 하다보니, 좋은 practice가 있다.
 
-<br>
+&nbsp;
 
 ---
 

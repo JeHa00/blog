@@ -12,11 +12,11 @@ categories: ["Python"]
 - [[TIL] Python basic 14: class](https://jeha00.github.io/post/python_basic/python_basic_14_class/) 에서 언급한 `절차지향 프로그래밍`이 구체적으로 무엇인지 간단히 구현한다.
 - 그 다음 클래스를 사용한 `객체지향 프로그래밍`에 대해 알아보겠다.
 
-<br>
+&nbsp;
 
 - `절차지향 프로그래밍`은 일반적인 과거의 코딩방식으로, 함수 중심이기 때문에, 데이터가 방대하여 복잡하다는 단점이 있다.
 
-<br>
+&nbsp;
 
 - 이에 대한 해결책이 `OOP(Object Oriented Programming)` 으로 `객체지향 프로그래밍`이다.
 - 클래스 중심으로 사용하기 때문에 객체로 관리하기 때문에, 다음과 같은 특징이 있다.
@@ -27,7 +27,7 @@ categories: ["Python"]
 
 ---
 
-<br>
+&nbsp;
 
 # 1. 절차지향 프로그래밍 (Procedural Programming)
 
@@ -92,7 +92,7 @@ categories: ["Python"]
 - index를 사용하여 삭제할 때, 데이터 양이 많으면 index 번호를 알기가 어렵기 때문이다.
 - 그리고, index로 접근 시 실수할 가능성이 높다.
 
-<br>
+&nbsp;
 
 - 다음으로 딕셔너리 구조로 입력해보자.
 
@@ -122,7 +122,7 @@ categories: ["Python"]
 - 여전히 코드의 반복은 지속되어, 개발자에게 피로도를 증가시킨다.
 - 키 중첩 문제가 존재하며, 키 조회 시 예외 처리를 해야한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -158,12 +158,12 @@ categories: ["Python"]
 - class 로 틀을 만들어서 airline instance를 손쉽게 만들었다.
 - instance에 담긴 구체적인 정보를 알고싶을 때는 `__dict__` 를 사용하는 것도 알 수 있다.
 
-<br>
+&nbsp;
 
 - 이렇듯 절차지향과 객체지향 다 장단점이 있어 적절한 곳에 사용해야 한다.
 - 하지만, 절차지향의 단점을 해결하는 객체지향을 잘 사용해서 코드의 재사용성과 유지보수까지 고려하자.
 
-<br>
+&nbsp;
 
 ---
 

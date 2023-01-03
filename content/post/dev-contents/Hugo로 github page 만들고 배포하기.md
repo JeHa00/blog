@@ -25,13 +25,13 @@ categories: ["dev-contents"]
 
 
 
-<br>
+&nbsp;
 
 ---
 
 # 1. Static Site Generator 로 Hugo를 선택한 이유
 
-<br>
+&nbsp;
 
 ## 1.1 SSG란?
 
@@ -40,11 +40,11 @@ categories: ["dev-contents"]
 - 그러면 SSG란 무엇인가?? 
 	- '정적 페이지(Static Site)'란 HTML, CSS, JS를 미리 올려서 서버가 바뀌지 않는 HTML page를 보여주는 것을 말하는데, 이 정적 페이지를 보다 간편하게 만들어주는 것이 `SSG(Static Site Generator)`다.   
 
-<br>
+&nbsp;
 
 > 이와 반대로 동적 페이지는 client에 반응하여 HTML page를 동적으로 만들어진 페이지를 말한다. 더 상세한 정보를 원하시는 분은 [정적 웹은 뭐고 동적 웹은 뭔가요?](https://bit.ly/3gVLiIi) 이 영상을 참고하시길 바란다.  
 
-<br>
+&nbsp;
 
 ## 1.2  SSG의 종류와 Hugo를 선택한 이유
 
@@ -80,7 +80,7 @@ Hugo
 	- 내가 원하는 디자인 대부분이 Hugo였다.
 	- 앞으로 계속해서 기술 블로그를 작성할 것이기 때문에, 빠른 빌드를 원했다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -97,13 +97,13 @@ Hugo
 - 그러면 최종적으로 `https://github.com/user-name/` 을 가진다.    
 - github page의 url은 `[user-name].github.io` 로 가진다.  
 
-<br>
+&nbsp;
 
 ## 2.2 두 번째
 
 - 나는 visual studio code를 사용한다. [visual studio code](https://code.visualstudio.com/) 여기에 들어가 설치한다.
 
-<br>
+&nbsp;
 
 ## 2.3 세 번째
 
@@ -113,7 +113,7 @@ Hugo
     - cmd에 `echo %PATH%` 를 입력하여 추가한 경로가 있는지 확인한다.
     - 해제한 압축 파일에서 hugo 실행하여 설치 후, cmd에 `hugo version` 으로 동작 확인한다.
 
-<br>
+&nbsp;
 
 ---
 # 3. 새로운 2개 github repo 와 local 연결하기
@@ -122,7 +122,7 @@ Hugo
 
 ❗ 이런 개념이 있구나 정도만 이해하고 3.1을 넘어가기. 이해하기 어렵다면 생략하고 바로 다음 3.2 chapter로 넘어가 따라해보자. 
 
-<br>
+&nbsp;
 
 - 이 단계를 진행하기 전에 `submodule` 개념을 알아야 한다. 영어 독해가 가능하신 분들은 [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw) 이 링크에 들어가 보시기 바란다. submodule에 대해 그림과 함께 잘 설명되어있다.
 아래 내용은 위 블로그에서 submodule에 대한 부분을 번역한 내용이다. 오역이 있다면 댓글로 알려주시면 감사하겠다.
@@ -153,7 +153,7 @@ Hugo
 > 출처: https://www.adamormsby.com/posts/000/how-to-set-up-a-hugo-site-on-github-pages-with-submodules/  
 
 
-<br>
+&nbsp;
 
 - A repo가 `blog` 에 `remote origin`으로 연결된다.
 - B repo가 `public` 폴더 형태로, `blog`의 submodule로 들어간다.
@@ -162,7 +162,7 @@ Hugo
 
     출처: [How to Set Up a Hugo Site on Github Pages - with Git Submodules!](https://bit.ly/3sM7daw)
 
-<br>
+&nbsp;
 
 ---
 
@@ -188,7 +188,7 @@ Hugo
     - repo가 비어있으면 submodule로 연결이 안된다.
 
 
-<br>
+&nbsp;
 
 ## 3.3 Hugo new site 생성 및 remote add origin A repo 실행
 
@@ -254,7 +254,7 @@ Hugo/project 명칭
 └─config.toml
 ```
 
-<br>
+&nbsp;
 
 ## 3.4 B repo를 public 폴더에 submodule로 연결하기
 
@@ -306,7 +306,7 @@ Hugo/project 명칭
 - 위 방법대로 했지만 `public` 폴더와 B repo가 submodule 연결이 되지 않는다면, B repo에 아무런 file이 존재하지 않아서다.
 - [3.2 New repository 2개 만들기](https://jeha00.github.io/post/hugo%EB%A1%9C-github-page-%EB%A7%8C%EB%93%A4%EA%B3%A0-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/#32-new-repository-2%EA%B0%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0) 내용처럼 B repo에 README.md를 추가하여 empty repo로 만들지 말자.
 
-<br>
+&nbsp;
 
 ## 3.5 public directory와 project root directoy git push 단계
 
@@ -355,14 +355,14 @@ Hugo/<project 명칭>
 
 ![image](https://user-images.githubusercontent.com/78094972/154519110-95573fbf-29eb-4c8c-aff6-2d3f5a3c7c06.PNG)
 
-<br>
+&nbsp;
 
 ---
 
 
 # 4. Github page에 theme 적용
 
-<br>
+&nbsp;
 
 ## 4.1 원하는 테마 찾기
 
@@ -370,7 +370,7 @@ Hugo/<project 명칭>
 
 - 처음에 테마 찾는 데 많은 시간을 썼는데, 지금 생각해보면 기본 테마를 찾은 다음에 customizing 하는 방법이 더 빠른 방향이었다.
 
-<br>
+&nbsp;
 
 ## 4.2 submodule을 사용하여 테마 적용하기
 
@@ -437,7 +437,7 @@ url = 테마 url
 
 - theme 적용 후, theme 폴더 안에 `examplesite` 란 의미의 폴더가 있다면, 그 폴더 안에 있는 `config.toml`을 복사하여 `C:\Hugo\<New Project 명칭>` 경로에 있는 `config.toml`에 복사 붙여 넣는다. `BaseURL`만 다시 수정한다.
 
-<br>
+&nbsp;
 
 ## 4.3 테마 적용되었는지 테스트하기
 
@@ -451,14 +451,14 @@ url = 테마 url
 - terminal 작업을 다시 할려면 `Ctrl + C`를 눌러 중단한다.
 - `hugo server -D` 가 돌아가는 동안에는 글의 수정을 바로 확인할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 
 
 # 5. Contents 생성과 업로드
 
-<br>
+&nbsp;
 
 ## 5.1 Contents 생성과 `public` folder에 반영하기
 
@@ -477,7 +477,7 @@ url = 테마 url
 
 - 여기서 `<테마이름>`은 `git submodule add <theme 경로>.git themes/<테마명>` 에서 테마명과 동일해야 한다.
 
-<br>
+&nbsp;
 
 ### ❗️❗️ 2022.08.28 Error 기록
 
@@ -488,7 +488,7 @@ url = 테마 url
 - 그 후, main project folder 로 이동한다. (submodule directory를 담고 있는 directory로 이동)
 - `git pull`을 실행하여 최신화한다.  
 
-<br>
+&nbsp;
 
 ## 5.2 컨텐츠 업로드
 
@@ -508,7 +508,7 @@ url = 테마 url
 > git push origin master
 ```
 
-<br>
+&nbsp;
 
 ---
 
@@ -524,7 +524,7 @@ url = 테마 url
 
 [아웃사이더님의 블로그 글](https://blog.outsider.ne.kr/1356?category=1)에서 보고 가져온다.
 
-<br>
+&nbsp;
 
 ## 6.2 deploy.sh로 자동화
 
@@ -575,7 +575,7 @@ git push origin master
 
 ---
 
-<br>
+&nbsp;
 
 # 7. To customize blog theme & 후기
 
@@ -586,7 +586,7 @@ git push origin master
 
 - 사용자가 원하는 기능들을 어떻게 추가하면 되는지 설명해논 템플릿이 많기 때문에, 반드시 `README.md` 를 `꼼꼼히` 읽기 바란다.
 
-<br>
+&nbsp;
 
 ## 후기
 
@@ -601,7 +601,7 @@ git push origin master
 
 - 진행하다가 부딪힌 error들에 대해서는 바로 바로 기록을 하자. 이는 반복적인 똑같은 삽질을 예방할 수 있다.
 
-<br>
+&nbsp;
 
 ---
 

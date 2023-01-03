@@ -31,7 +31,7 @@ categories: ["Network"]
 - 네트워크
 
 
-<br>
+&nbsp;
 
 ---
 
@@ -49,7 +49,7 @@ categories: ["Network"]
 
 - AWS란 아마존 웹 서비스를 말하는데, AWS에 서버가 엄청 많아서, **이 서버를 빌려주는 서비스를 말한다.**
 
-<br>
+&nbsp;
 
 ## 서버의 정의와 종류
 
@@ -65,7 +65,7 @@ categories: ["Network"]
     - 프록시 서버
 
 
-<br>
+&nbsp;
 
 ## 웹서버
 
@@ -75,7 +75,7 @@ categories: ["Network"]
 
 - **"물리 서버가 고장났다"** 라는 말을 했다면, 컴퓨터 프로그램이 아닌 **프로그램을 제공하는 컴퓨터** 를 의미한다.
 
-<br>
+&nbsp;
 
 ## HTTP
 
@@ -84,7 +84,7 @@ categories: ["Network"]
 
 - https = http + 보안기능(SSL: Secure Socket Layer)
 
-<br>
+&nbsp;
 
 ---
 
@@ -103,7 +103,7 @@ categories: ["Network"]
 - static page: 누가 접속하든 동일하게 보여주는 page
 - dynamic page(동적): static page의 반대로서, web framework를 사용해야한다.
 
-<br>
+&nbsp;
 
 ## 2.2 웹 서버의 종류
 
@@ -119,7 +119,7 @@ categories: ["Network"]
     - 동시 접속자가 만명이 넘어가면 더 이상 커넥션 형성 X
     - 그래서 규모 있는 서비스를 만들려면 아파치를 사용하면 안된다.
 
-<br>
+&nbsp;
 
 ### 2.2.2 NGINX HTTP 서버(Apache HTTP 서버)
 
@@ -130,7 +130,7 @@ categories: ["Network"]
     - 수 많은 요청이 들어와도 비동기 방식으로 대기시켜서 먼저 등록된 요청부터 처리해주는 방식  
     - 예전에는 아파치를 자주 사용했지만, 요즘에는 Nginx를 사용하는 추세  
 
-<br>
+&nbsp;
 
 ## 2.2 WSGI(Web Server Gateway Interface)
 
@@ -138,7 +138,7 @@ categories: ["Network"]
 
 - 비유를 하자면 웹 서버는 한국어를 사용하고 웹 애플리케이션은 영어를 쓰는 상황에서, WSGI가 이를 통역하여 웹 애플리케이션에 전달하는 역할을 한다.
 
-<br>
+&nbsp;
 
 ### WSGI의 종류
 
@@ -148,7 +148,7 @@ categories: ["Network"]
 
 - **uwsgi**: gunicorn보다는 어렵지만, 디테일하게 직접 설계하여 성능을 최대로 높일 수 있다. 
 
-<br>
+&nbsp;
 
 ## 2.3 웹 애플리케이션
 
@@ -164,7 +164,7 @@ categories: ["Network"]
     - 일본에서는 django보다 Ruby가 많다. 
 
 
-<br>
+&nbsp;
 
 ## 2.4 DB
 
@@ -177,7 +177,7 @@ categories: ["Network"]
     - 형식 존재하지 않음  
 
 
-<br>
+&nbsp;
 
 ## Summary
 
@@ -187,7 +187,7 @@ categories: ["Network"]
     - NGiNX <=> gunicorn <=> Django <=> PostgreSQL  
     - 서버개발자는 위 모든 것을 다 설치해야 하며, 장고 외의 것들도 어떻게 구성할지 고려해야한다.  
 
-<br>
+&nbsp;
 
 ---
 

@@ -9,14 +9,14 @@ categories: ["Python"]
 
 # 0. Introduction
 
-<br>
+&nbsp;
 
 - 파이썬에서 모든 객체는 데이터에 대한 추상화로 표현될 수 있다.
 - 파이썬에서는 `namedtuple`외에도 많은 Container datatypes가 있다.
 - 이 종류들은 Collections library에서 찾을 수 있다.
 - 객체를 사용하기보다 튜플 활용을 공식 레퍼런스에서 추천하고 있다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -28,7 +28,7 @@ categories: ["Python"]
 - Dictionary Key와 같이 사용되기 때문에, key 값을 통해서 access할 수 있다.
 - 일반 class 형태보다 적은 메모리를 사용한다.
 
-<br>
+&nbsp;
 
 ---
 
@@ -36,7 +36,7 @@ categories: ["Python"]
 
 - 3차원 좌표 사이의 거리를 구하는 예제를 통해서 namedtuple에 대해 알아보자.
 
-<br>
+&nbsp;
 
 ### 2.1 namedtuple 없이 구하기
 
@@ -54,7 +54,7 @@ categories: ["Python"]
 > leng1 = sqrt((pt2[0] - pt1[0]) ** 2 + (pt2[1] - pt1[1]) ** 2 + (pt2[2] - pt1[2]) ** 2 )
 ```
 
-<br>
+&nbsp;
 
 ### 2.2 namedtuple로 구해보기
 
@@ -80,7 +80,7 @@ True
 
 - 이처럼 namedtuple을 사용하면 dictionary처럼 key 값이 생기기 때문에, index로 직접 접근하지 않아 오류를 낼 가능성이 낮다.
 
-<br>
+&nbsp;
 
 ### 2.3 namedtuple의 다양한 선언법
 
@@ -103,7 +103,7 @@ True
 
 - rename을 입력하지 않으면 `rename = False` 가 default다.
 
-<br>
+&nbsp;
 
 ### 2.4 namedtuple의 다양한 객체 생성법
 
@@ -135,7 +135,7 @@ True
 Point(x=10, y=35) Point(x=20, y=40) Point(x=45, y=20) Point(x=10, y=20, _2=30, _3=40) Point(x=75, y=55)
 ```
 
-<br>
+&nbsp;
 
 ### 2.5 namedtuple 메소드
 
@@ -157,7 +157,7 @@ Point(x=52, y=38)
 {'x': 10, 'y': 35} {'x': 52, 'y': 38}
 ```
 
-<br>
+&nbsp;
 
 ---
 
