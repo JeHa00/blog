@@ -34,11 +34,11 @@ categories: ["OS"]
   - 이 특징으로 연속할당에서의 동적 메모리 할당 문제와 외부조각 문제가 발생하지 않는다.
   - 그러나, 프로그램의 크기가 항상 페이지 크기의 배수라는 보장이 없기 때문에 내부조각이 발생할 가능성은 있다.
 
-- **Problem**
+- **Problem 01**
 
   - 물리적 메모리의 불연속적인 위치에 각 페이지를 올리기 때문에, 논리적 주소에서 물리적 주소로 변환하는 작업이 복잡하다.
 
-- **Solution**
+- **Solution 01**
 
   - 위 문제에 대한 해결책으로 **페이지 테이블(page table)** 을 가진다.
   - page table이 사용하는 주소 변환기법에 대해 알아보자.
@@ -53,7 +53,7 @@ categories: ["OS"]
 
 - logical address에서 physical address로 변환하는 구체적인 과정은 다음과 같다.
 
-![image](https://user-images.githubusercontent.com/78094972/165468793-e71603b1-ef02-49a3-96e6-6cca6ba84e75.PNG)
+![image](https://user-images.githubusercontent.com/78094972/210475914-916c4f71-e6fb-4d2f-8445-3eada254bdc5.jpeg)
 
 - p = 페이지 번호: page table 접근 시 인덱스(index)로 사용
 - d = 페이지 offset  
@@ -101,16 +101,16 @@ categories: ["OS"]
   - page table의 경우
     - page 번호만큼 떨어진 항목에 곧바로 접근해 대응되는 프레임 번호를 얻는다.
   - 하지만, TLB의 경우
-    - 모든 페이지에 대한 주소 변환 정보 X -> 페이지 번호와 이에 대응하는 프레임 번호가 쌍으로 저장되야 한다.
-    - 해당 페이지에 대한 주소 변환 정보가 TLB에 있는지 확인하기 위해 TLB의 모든 항목을 다 찾아봐야 하는 오버헤드가 발생한다.
+    - 해당 페이지에 대한 주소 변환 정보가 TLB에 있는지 확인하기 위해 TLB의 _모든 항목을 다 찾아봐야 하는_ 오버헤드가 발생한다.
 
-- **Associative register**
+- **Associative register(연관 레지스터)**
 
   - 위의 언급한 오버헤드를 줄이기 위해 병렬 탐색(parallel search)이 가능한 연관 레지스터(associative register)를 사용한다.
     - Parallel search: TLB 내의 모든 항목을 동시에 탐색할 수 있는 기능
 
 - page table은 각 process마다 논리적인 주소 체계가 달라서, 각 프로세스마다 존재한다.
   - 그래서, TLB도 각 process마다 다르게 존재한다.
+
 
 &nbsp;
 
@@ -154,6 +154,8 @@ categories: ["OS"]
 
 ### 4.3.3 Two-level page table의 구성과 갯수, 크기 계산
 
+![image](https://user-images.githubusercontent.com/78094972/165677100-dcb70c52-30a2-478e-a463-52344bdf835c.jpg)
+
 - **logical address의 구성**
 
   - two level 이므로, 두 종류의 페이지 번호(P1,P2)
@@ -183,6 +185,7 @@ categories: ["OS"]
   - 세 번째
     - 해당 프레임으로부터 d 만큼 떨어진 곳에서 원하는 정보에 접근한다.
 
+
 &nbsp;
 
 ### 4.3.4 multi-level page의 문제점과 해결책
@@ -202,7 +205,6 @@ categories: ["OS"]
 
 > **메모리 보호를 위해 page table의 각 entry마다 보호 비트(protection bit)와 유효-무효 비트(valid-invalid bit)를 둔다.**
 
-![image](https://user-images.githubusercontent.com/78094972/165677100-dcb70c52-30a2-478e-a463-52344bdf835c.jpg)
 
 - **보호 비트(Protection bit)**: 각 page에 대한 연산 접근 권한을 설정하는데 사용
 
@@ -311,7 +313,6 @@ categories: ["OS"]
 
 ## 5.1 Segmentation Architecture
 
-&nbsp;
 
 ### 5.1.1 Logical address
 
@@ -405,7 +406,6 @@ categories: ["OS"]
 
 > segmentation을 기반으로, 각 segmentation을 크기가 동일한 page로 구성
 
-&nbsp;
 
 ## 6.1 pure segmentaton과의 차이점
 

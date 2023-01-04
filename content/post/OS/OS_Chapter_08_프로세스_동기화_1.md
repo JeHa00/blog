@@ -9,7 +9,6 @@ categories: ["OS"]
 
 # 0. Introduction
 
-&nbsp;
 
 - 해당 내용은 [운영체제와 정보기술의 원리 -반효경 지음-](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158903589&orderClick=LAG&Kc=) 책에는 있지 않고, [kocw 이화여자대학교 운영체제 - 반효경 교수 -](http://www.kocw.net/home/cview.do?lid=3dd1117c48123b8e) 강의만 보고 정리한 내용입니다.
 - 정확하지 않은 내용이 있다면 말씀해주시면 감사하겠습니다.
@@ -28,7 +27,7 @@ categories: ["OS"]
   | E-box | S-box |
   |----|----|
   |CPU|Memory|
-  |컴퓨터 내부| 디uy7스크|
+  |컴퓨터 내부| 디ㅃ스크|
   |프로세스| 그 프로세스의 주소 공간|
 
 &nbsp;
@@ -37,7 +36,6 @@ categories: ["OS"]
 
 # 2. Race condition
 
-&nbsp;
 
 ## 2.1 Race condition이란??
 
@@ -67,7 +65,6 @@ categories: ["OS"]
 
 > 원인: kernel address space를 공유할 때, race condition이 발생한다.
 
-&nbsp;
 
 ## 3.1 Interrupt handler vs kernel
 
@@ -103,7 +100,6 @@ categories: ["OS"]
 
 ![image](https://user-images.githubusercontent.com/78094972/166150673-e2cc077e-d9c6-4e5f-aa27-a5f5c9d9cb76.PNG)
 
-&nbsp;
 
 - **kernel mode로 실행 중 system call로 인한 CPU 선점**
   - 두 프로세스의 address space 간에는 data sharing이 없다.
@@ -279,7 +275,6 @@ Process Pi
 
 # 5. Semaphores
 
-&nbsp;
 
 ## 5.1 Semaphores 란??
 
@@ -446,7 +441,6 @@ typeef struct
 
 ## 5.5 Semaphore 주의사항: Deadlock and Starvation
 
-&nbsp;
 
 ### 5.5.1 Deadlock
 
