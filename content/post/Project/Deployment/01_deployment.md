@@ -487,6 +487,8 @@ location /static/ {
 
 &nbsp;
 
+### S3 CORS issue
+
 
 ---
 # 7. Django image size 줄이기: slim

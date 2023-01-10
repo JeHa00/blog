@@ -1,6 +1,6 @@
 ---
-title: "DOM 생성과 fetch 사용을 위한 Javascript 학습 후기 및 각 과정에 일어난 개발 이슈"
-date: 2022-11-30T18:25:52+09:00
+title: "Project: DOM 생성과 fetch 사용을 위한 Javascript 학습 후기 및 각 과정에 일어난 개발 이슈"
+date: 2022-11-15T18:25:52+09:00
 draft: false
 summary: 첫 번째, DOM 생성과 fetch 사용을 위한 Javascript 학습 후기와 각 과정에서 일어난 개발 이슈에 대해 정리해본다.
 tags: ["DOM"]
@@ -415,6 +415,8 @@ function setFetchData(method, body){
 
 
 🔆 이 문서에서는 Javascript SDK와의 전체적인 흐름이 아닌 fetch 함수의 비동기적 특징에 대해서만 다룬다.
+- [아임포트 Javascript SDK를 사용한 결제 흐름](http://localhost:1313/post/project/django/08_payment_overall_flow/#3-%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8-javascript-sdk%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-%EA%B2%B0%EC%A0%9C-%ED%9D%90%EB%A6%84)
+
 
 
 ### 발생된 issue와 원인 코드

@@ -1,5 +1,5 @@
 ---
-title: "Fetch_api를 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정"
+title: "Project: 구축한 api를 fetch로 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정"
 date: 2022-11-17T16:23:16+09:00
 draft: true
 summary: 
