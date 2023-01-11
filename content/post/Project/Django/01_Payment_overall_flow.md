@@ -37,6 +37,9 @@ categories: ["Project"]
 ### PG 사에서 저장할 수 없도록 만든 방법
 
 ![image](https://github.com/iamport/iamport-manual/raw/master/%EC%9D%B8%EC%A6%9D%EA%B2%B0%EC%A0%9C/screenshot/background/authentication.png)
+출처: [아임포트 공식문서 - webhook](https://docs.iamport.kr/tech/webhook)
+
+###
 
 그래서 결제를 진행할 때 PG 사의 결제 모달 창이 뜬 후, 카드사를 클릭하면 또 다른 모달 창이 뜬다. 
 
@@ -53,6 +56,10 @@ categories: ["Project"]
 ### Iamport 사용 시 결제 과정
 
 ![image](https://docs.iamport.kr/static/images/tech/webhook/iamport-flow.svg)
+출처: [아임포트 공식문서 - webhook](https://docs.iamport.kr/tech/webhook)
+
+
+
 ## 아임 포트를 선택한 이유
 
 ### PG 사와의 복잡한 연동 과정 해소
@@ -87,21 +94,294 @@ categories: ["Project"]
 
 # 3. 아임포트 Javascript SDK를 사용한 결제 흐름
 
+
 아임포트 결제 연동 서비스를 사용하기 위해서는 아임포트 Javascript SDK(Software Development Kit)를 사용해야 한다. 이 SDK를 통해서 내가 생성한 주문번호와 금액을 아임포트에 전달하고, 아임포트는 결제 번호를 나에게 전달한다.
 
-그래서 이 SDK를 통해 결제 각 단계에서의 데이터 처리를 js function을 통해서 django의 view로 전달하고, DB에 결제 상태와 정보를 저장한다. 그리고, django의 view에 전달하기 위해서 fetch를 사용했다.
+그래서 이 SDK를 통해 결제 각 단계에서의 데이터 처리를 js function을 통해서 해당 api로 데이터를 전달하기 위해서 fetch를 사용했다. 그리고, 이 view에서 model에 접근하여 고유 주문 번호, 결제 상태, 결제 금액 등의 정보를 저장한다. model에 접근할 때는 ModelManager를 사용하여 해당 Model 객체만의 ORM을 만들었다.
+
+## 3.1 결제 프로세스 과정 순서
+
+해당 프로젝트에서 설계한 결제 프로세스의 전체 흐름은 다음 이미지와 같다. 
+
+![image](https://user-images.githubusercontent.com/78094972/211764083-805f1ddb-8622-45c4-90f2-3ef80d5d9a70.png)
+
+&nbsp;
+
+### 1), 2) 결제 버튼 클릭 및 call-payment.js 실행
+
+아래 이미지의 '이 옵션 선택' 태그를 클릭하여 `call-payment.js`를 실행한다. 
+
+❗️ 원래 사이트에서는 월간 멤버쉽과 연간 멤버쉽 둘 다 존재했다. 하지만, 월간 멤버쉽만 고려한 이유는 1차로 결제 자체 기능만 구현한 후, 그 다음으로 월간 멤버쉽만을 추가로 구현할 계획이기 때문이다.
+
+![image](https://user-images.githubusercontent.com/78094972/204946352-7f8cb13c-11f5-4cb6-bec3-8b37daa64504.png)
 
 
-### 결제 프로세스의 상태
+call-payment.js의 전체 소스 코드를 보고 싶다면 [이 링크](https://github.com/backendnanodegree/Devket/blob/main/static/js/call-payment.js)를 클릭한다.
+
+위 이미지의 버튼은 `.order`이라는 클래스 명을 가지고 있기 때문에 이를 통해서 DOM을 인식하여 event를 건다.
+
+```js
+import {getElement ,setFetchData} from './common.js';
+
+window.onload = function () {
+    const IMP = window.IMP;
+    IMP.init('imp62676076');
+    const paymentButton = getElement('.order')
+    paymentButton.addEventListener('click', async (e) => {
+        const type              = 'card';
+        let buyer_name, buyer_email, merchant_id, amount, payment_info;
+        payment_info            = await passPaymentInfo(e, type);
+        [buyer_name, buyer_email, merchant_id, amount] = payment_info
+        if (merchant_id !== '' && merchant_id !== undefined) {
+           ...
+        }
+        return false;
+    })
+};
+```
+
+&nbsp;
+
+
+### 3) 가맹점 식별코드로 IMP 객체 초기화
+
+'call-payment.js'가 실행되면서 제일 먼저 하는 건 '가맹점 식별코드'로 인한 초기화 작업이다.
+'가맹점 식별코드'는 아임포트를 가입할 때 IMP_KEY와, IMP_SECRET 그리고 가맹점 식별코드인 MERCHANT_ID가 제공된다. 이 MERCHANT_ID를 입력해야 한다. IMP_KEY와 IMP_SECRET은 아임포트에 접근하기 위한 토큰을 받기 위해서 필요하다.
+
+&nbsp;
+
+### 4) passPaymentInfo 함수 실행
+
+> **_IMP.request_pay()에 전달하기 위한 merchant_id(고유 주문 번호), buyer_name, buyer_email을 backend에서 받아내는 함수_**  
+
+![image](https://user-images.githubusercontent.com/78094972/211742667-8b37833c-0dbc-42f0-a6d5-6e2c17eb8848.png)
+
+이벤트가 발생 시, call-payment.js에서 가장 먼저 실행되는 함수다. 그 이유는 아임포트 api에 전달할 merchant_id (고유 주문 번호)를 생성하고, amount(결제 금액)와 함께 전달하기 위해서다.
+
+argument(or parameter)로 받은 type은 결제 방식을 말한다. 현재 개발 단계에서는 카드 결제만 고려하고 있기 때문에 `const type = 'card'`로 정해져있다. 
+
+- **[4-1, 4-2] 과정**  
+    - merchant_id를 생성하기 위해서 정해놓은 `/api/payment/checkout` 으로 fetch를 사용하여 data를 보낸다. 그러면 urls.py 에 의해서 이 api url과 mapping된 django view class로 request를 보낸다. 이 api url과 연결된 class는 `PaymentPassView` 다. 
+- **[4-5] 과정**
+    - `PaymentPassView`에서 보낸 response에서 json형태로 데이터를 뽑아낸다. `.works`는 아임포트 api에서 응답 결과를 알려주는 key 값이다. 아임포트에서 응답이 성공했으면 `"works": True`로, 실패하면 `False`로 값이 온다.
+
+그래서 works가 True이면 view class에서 원하는 값을 받은 것이기 때문에, 이 경우 unpacking을 사용하고자 배열의 형태로 결과값을 반환했다.
+
+```js
+// IMP.request_pay를 호출하기 위한 merchant_id 반환
+async function passPaymentInfo(e, type) {
+    e.preventDefault(); 
+    let merchant_id = ''
+    let amount = 0
+    let buyer_name = ''
+    let buyer_email = ''
+    const data = setFetchData('POST', {
+        amount: amount, 
+        type: type
+    })
+    const response = await fetch(`/api/payment/checkout`, data)
+    const result   = await response.json() 
+    if (result.works) {
+        buyer_name = result.buyer_name 
+        buyer_email = result.buyer_email
+        merchant_id = result.merchant_id
+        amount = result.amount
+        return [buyer_name, buyer_email, merchant_id, amount]
+    } else if (response.status === 401) {
+        alert('로그인 해주세요.')
+    } else {
+        alert('문제가 발생했습니다. 다시 시도해주세요.')
+    }};
+```
+
+그러면 PaymentPassView class에서 어떻게 merchant_id를 생성하여 반환하는지 알아보자.
+
+로그인 후, 결제를 시도하면 다음 ORM으로 user과 email를 조회한다.
+
+```python
+user = User.objects.get(id=kwards['user_id'])
+buyer_email = Email.objects.get(user=user).email 
+# Email model에서 email은 회원가입 시 사용한 이메일을 말한다.
+```
+
+그 후, 이 객체 정보를 사용하여 merchant_id를 생성한다.
+
+```python
+merchant_id = Payment.objects.create_new(
+                user=user,
+                amount=amount,
+                type=payment_type,
+                )
+```
+
+
+
+- **[4-3 ~ 4-5 과정]**
+    - **(4-3) class PaymentManager**  
+        - Payment만의 orm을 사용하기 위해 만든 PaymentManager를 통해서 merchant_id를 생성한다.
+
+    - **(4-4) import.py & Payment object 생성**  
+        - 그후, 이 merchant_id와 amount를 아임포트에 전달한다.
+        - PaymentManager의 클래스 변수로 선언한 imp를 사용하여 `prepare_payments` method를 통해 생성한 merchant_id를 amount와 함께 아임포트에 전달한다.
+        - 이 때 전달하는 아임포트 api url은 `{아임포트 기본 api url}/payments/prepare` 이다.
+        - 그 다음에 payment 객체를 새롭게 생성한다.
+
+        ```python
+        class PaymentManager(models.Manager):
+            imp = Iamport()
+
+            def create_new(self, user, amount, type):
+                ...
+                # 아임포트에 전달
+                PaymentManager.imp.prepare_payments(merchant_id, amount)
+                
+                # 새로운 payment 객체 생성
+                new_payment = self.model(user=user, merchant_id=merchant_id,
+                                        amount=int(amount), type=type)
+        ```
+
+    - **(4-5) class PaymentPassView**  
+        - PaymentManager의 create_new에서 반환한 merchant_id와 함께 필요한 정보들을 call-payments.js의 passPaymentInfo function에 response를 보낸다.
+
+&nbsp;
+
+### 5) IMP.request_pay()에 결제 정보 전달 
+
+이전 단계에서 보낸 amount, merchant_id, pay_method, buyer_name, buyer_email와 함께 어느 pg사를 호출할 것인지 pg key 값에 value로 입력해야 한다. 이는 아임포트 공식문서를 참고한다. 
+
+pg사로는 KG 이니시스를 선택했는데, 그 이유로는 웹표준으로서 브라우저 제약 없이 결제가 가능하기 때문이다.
+
+```js
+if (merchant_id !== '' && merchant_id !== undefined) {
+            IMP.request_pay({
+                pg: 'html5_inicis', // KG 이니시스
+                merchant_uid: merchant_id,
+                name: 'Devket Premium 서비스',
+                pay_method: 'card',
+                amount: amount,
+                buyer_name : buyer_name,
+                buyer_email : buyer_email
+            },
+            // 결제창 오픈
+            function (response) {
+                if (response.success) {
+                   ...
+                } else {
+                   ...
+                }
+            });
+        }
+```
+&nbsp;
+
+### 6) PG사의 결제창 오픈 및 카드사 선택하여 결제 진행
+
+다음과 같은 KG 이니시스의 결제창이 떠서 결제가 진행된다.
+
+![image](https://user-images.githubusercontent.com/78094972/204946409-f7df613c-15af-43df-a5b1-4c1633f7deb0.png)
+
+&nbsp;
+
+### 7), 8) 결제 성공: storeImpIdInDB 함수 실행 -> redirect 
+
+> **_결제가 성공하여 아임포트에서 받은 imp_uid를, 생성했던 payment 객체에 imp_id로서 결제 상태를 저장하고, User 객체의 결제 상태를 변경하는 함수_**
+
+![image](https://user-images.githubusercontent.com/78094972/211764278-c8cfba87-185a-49db-9604-58da610fe634.png)
+
+- **(7-1) urls.py**
+    - fetch를 사용하여 '/api/payment/validation' api url에 data를 보내면 urls.py에서 이 api url에 mapping된 PaymentImpStoreView로 request가 가도록 한다.
+- **(7-2, 7-3, 7-4, 7-5) class PaymentImpStoreView**
+    - request로부터 imp_id, amount, merchant_id, status를 가져와 이에 해당하는 payment 정보와 User 정보를 조회한다.
+    ```python
+    class PaymentImpStoreView:
+        ...
+        user = User.objects.get(id=kwards['user_id'])
+        payment = Payment.objects.get(user, merchant_id, amount)
+    ```
+    - 조회 후, payment 객체에 imp_id, status 정보를 저장한다. user 객체에는 기존에 미결제 상태인 것을 '결제' 상태로 변경한다. 
+
+    ```python
+    user.payment_status = User.PAYMENT_ON
+    user.save()
+    payment_data = {'payment_id': imp_id, 'status': payment_status}
+    self.check_validation(payment, data=payment_data)
+    ...
+    ```
+
+    - 그리고, 변경 결과에 따라서 `works`의 값이 변경되고, 이를 storeImpIdInDB에 전달한다.
+
+
+- **(7-5 ~ 7-7) 결제 검증하기: payment_validation & get_transaction**
+    - post_save에 의해서 Payment 객체가 저장되면 결제가 유효한지 검증하는  `payment_validation` function이 실행된다.
+
+    ```python
+    post_save.connect(payment_validation, sender=Payment)
+    ```
+    - payment_validation 내부에는 PaymentManager로 정의한 `get_transaction` 메서드가 있어서, 이를 통해서 iamport 내에 결제 내역이 있는지 확인하여 아임포트에도 존재하고, db에도 다 존재하는지를 확인합니다.
+    - 다 존재해야 결제가 올바르게 된 것입니다.
+
+
+- **[8] 과정- redirect** : PG 결제 창에서 결제가 완료되면 다른 화면으로 리다이렉트합니다.
+
+&nbsp;
+
+### 9) 결제 실패: makeStatusFailure 함수 실행
+![image](https://user-images.githubusercontent.com/78094972/211742647-d5694554-81bc-4483-9351-016ca109380f.png)
+
+> **_사용자가 결제 정보를 다 입력하고, 완료버튼만 누르면 되는 상황에서 '사용자 변심'으로 결제를 취소할 경우 결제 상태를 반영하는 함수_**
+
+- **(9-1) urls.py**
+    - fetch를 사용하여 '/api/payment/failure' api url에 data를 보내면 urls.py에서 이 api url에 mapping된 PaymentFailedView로 request가 간다.
+- **(9-2 ~ 9-5) class PaymentFailedView**
+    - request로부터 imp_id 와 merchant_id를 가져와 아래아 같이 객체 조회 및 수정에 사용한다.
+    - Payment 객체 조회 및 수정
+
+    ```python
+    imp_id = request.data['imp_id']
+    merchant_id = request.data['merchant_id']
+
+    # Payment 객체 조회
+    payment = Payment.objects.get(merchant_id= merchant_id)
+    
+    # Payment 객체 정보 수정
+    payment_data = {'payment_id': 'imp_id', 'status': 'failed'}
+    serializer = PaymentSerializer(payment, data=payment_data, partial=True)
+    ```
+
+    - 처리 결과에 따라서 `"works"`의 값을 True, False로 바꿔서 Response를 보낸다.
+
+
+&nbsp;
+
+### 10) 결제 실패 안내문
+
+9)의 경우처럼 사용자 변심으로 결제 실패한 경우와 그 외의 실패했을 때 다음과 같이 alert를 사용하여 안내한다.
+
+```js
+else {
+    if (response.imp_uid) {
+        // 결제한 유저의 이름과 이메일 확인 후, 사용자 변심으로 결제 창을 닫아 결제 취소되는 로직
+        makeStatusFailure(e, response.merchant_uid, response.imp_uid);
+    }
+    let msg = '결제에 실패하였습니다. \n';
+    msg += '에러내용: ' + response.error_msg;
+    alert(msg)
+}
+```
+
+&nbsp;
+
+## 3.2 결제 프로세스에서 고려한 발생할 수 있는 상황들
+
 결제 프로세스 완료의 의미
 
-결제 프로세스 완료는 아래의 모든 경우를 포함합니다.
-결제 성공(결제 상태: paid, imp_success: true)
-결제 실패(결제 상태: failed, imp_success: false)
-PG 모듈 설정이 올바르지 않아, 결제 창이 열리지 않음
-사용자가 임의로 X 버튼이나 취소 버튼을 눌러 결제를 종료함
-카드 정보 불일치, 한도 초과, 잔액 부족 등의 사유로 결제가 중단됨
-가상계좌 발급 완료(결제 상태: ready, imp_success: true)
+결제 프로세스 완료는 아래의 모든 경우를 포함한다.  
+결제 성공(결제 상태: paid, imp_success: true)   
+결제 실패(결제 상태: failed, imp_success: false)   
+PG 모듈 설정이 올바르지 않아, 결제 창이 열리지 않음  
+사용자가 임의로 X 버튼이나 취소 버튼을 눌러 결제를 종료함  
+카드 정보 불일치, 한도 초과, 잔액 부족 등의 사유로 결제가 중단됨  
+가상계좌 발급 완료(결제 상태: ready, imp_success: true)  
 
 
 
@@ -109,10 +389,8 @@ PG 모듈 설정이 올바르지 않아, 결제 창이 열리지 않음
 https://skyseven73.tistory.com/17
 
 
-IMP.init('아임포트 가입 유저가 갖는 가맹점 번호')
 
-
-결제 버튼 클릭 -> call-payment.js 실행 -> passPaymentInfo 호출(view class에서 반환하는 merchant_id를 반환) -> PaymentPassView와 연결된 api 로 request 보냄 ->  PaymentPassView가 merchant_id를 만들어서 반환 -> passPaymentInfo function이 merchant_id를 받아서
+결제 과정에서 고려사항은 [Project: Payment 개발 과정에서의 고려사항들과 개발 이슈들](https://jeha00.github.io/post/project/django/02_payment_issues/) 문서를 참고하도록 한다.
 
 
 &nbsp;
