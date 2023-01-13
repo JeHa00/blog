@@ -1,9 +1,9 @@
 ---
-title: "Project: DOM 생성과 fetch 사용을 위한 Javascript 학습 후기 및 각 과정에 일어난 개발 이슈"
-date: 2022-11-15T18:25:52+09:00
+title: "Project: DOM 생성과 fetch 사용을 위한 Javascript 학습 후기 및 각 과정에 일어난 개발 issues"
+date: 2022-11-20T18:25:52+09:00
 draft: false
-summary: 첫 번째, DOM 생성과 fetch 사용을 위한 Javascript 학습 후기와 각 과정에서 일어난 개발 이슈에 대해 정리해본다.
-tags: ["DOM"]
+summary: 첫 번째, DOM 생성과 fetch 사용을 위한 Javascript 학습 후기를 남겨본다. 두 번째, DOM을 조작하여 개발한 과정과 fetch를 사용하여 개발한 각 과정에서 일어난 여러 개발 issue들에 대해 정리해본다.
+tags: []
 categories: ["Project"]
 ---
 
@@ -143,7 +143,7 @@ function makeBottomToolbar(parentNode) {
 
 &nbsp;
 
-## 2.3 렌더링 시 시간 복잡도 고려 이슈
+## 2.3 렌더링 시 시간 복잡도 고려 issue
 
 각 저장된 사이트(post)를 내 목록에 렌더링할 때, 전체 항목을 렌더링하고 나서 각 항목에 하단 툴바를 렌더링했다. 즉 크롤링해서 가져온 사이트들을 먼저 각각 렌더링 후, 각 사이트마다 하단툴바를 렌더링을 시도했다. 
 
@@ -172,7 +172,252 @@ function renderItem(post) {
 
 &nbsp;
 
-## 2.4 Document.querySelector() issue
+## 2.4 svg icon이 인식되지 않는 문제
+
+### 문제점
+
+**[Pull requests]**
+- [Edit html about premium, mylist and Refactor bottom-toolbar.js #51](https://github.com/backendnanodegree/Devket/pull/51)
+- [Rendering mylist view and bottom-toolbar under each item #28](https://github.com/backendnanodegree/Devket/pull/28)  
+
+
+각 항목에 mouse를 hover 시, 하단에 뜨는 하단 툴바를 만들기 위해서 DOM을 생성하는 과정에서 부딪힌 문제점이다. **svg icon을 사용하기 위해서 `<svg>` node를 생성해야 하는데, 생성되지 못한 문제점이 있었다.** 
+
+프로젝트의 클론 코딩 대상 사이트는 아이콘을 `<i>` tag보다 `<svg><path d=""></path></svg>` 를 사용한다. 그래서 다른 태그를 생성하는 것과 동일한 방식을 사용했다. 
+ - `createNode`와 `appendTag` function을 사용하여 svg tag와 path tag를 생성 
+ - `.className`을 사용하여 class name을 추가
+ - 속성명에 `-`가 있는 건 dot annotation으로 추가 못하기 때문에 `setAttribute()` 사용
+
+하지만 아이콘이 브라우저에 형성되지 않는 문제를 발견했다. 클론 코딩 대상의 프로젝트 tag 속성을 개발자 도구로 분석하면서 관련 속성들을 하나씩 지워보고, 순서도 바꿔보고, 새로운 html을 생성하여 해당 태그들만 추가해보고, stackoverflow와 여러 구글링을 통해 피드백 받은 방안들을 적용해봤지만 svg icon이 형성되지 않았다. 
+
+이 문제로 2~3일을 소비했기 때문에, 임시로 i tag를 사용하기로 결정하여, fontawesome site를 선택하여 유사한 icon을 선택하여 사용했다. 
+
+마지막으로, 팀원들이 이 시행착오를 겪지 않도록 하기 위해 코드 리뷰 시간에 공유했다.
+
+### 해결책
+
+다른 팀원 또한 렌더링하는 과정에서 svg icon 문제에 똑같이 부딪혔고, 내가 공유한 과정들을 통해 다른 방식을 적용하여 문제를 해결했다. 
+
+**해결한 방법은 setAttribute로 하면 인식되지 않았지만 html를 통채로 입력하니 가능했다.** 
+
+이 때 변수를 `insertAdjacentHTML`을 사용한 이유는 다음과 같다. 
+
+className과 속성들을 별도로 입력하는 방식이 작동되지 않기 때문에, 통째로 입력하는 방법을 선택했다. 그래서 HTML을 통째로 원하는 DOM tree 안에 node들을 추가하기 위해 함수 'insertAdjacentHTML' 를 사용했다.
+
+사용 방식은 `element.insertAdjacentHTML(position, text)`와 같다. 이 함수의 사용 방법 출처는 [MDN - Element.insertAdjacentHTML()](https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML)을 참고했다.
+
+'text'에 들어갈 svg를 담은 변수를 `let`으로 선언한 이유는 재정의할 수도 있기 때문이다. 클론 코딩의 상단 툴바의 경우 아이콘이 변하는 경우가 있어서 let으로 선언했지만, 하단 툴바의 경우에는 그렇지 않기 때문에 아래 코드의 `let`은 `const`로 수정해야하는 부분이다. 
+
+- let & const
+||재선언|재할당|
+|----|----|----|
+|let|X|O|
+|const|X|X|
+
+- position
+| position | 설명 |
+| ---- | ---- |
+| beforebegin | element 앞에|
+|afterbegin| element 안에 가장 첫번째 chid|
+|beforeend| element 안에 가장 마지막 child |
+|afterend|element 뒤에|
+
+
+클론 코딩의 대상 사이트의 svg DOM 구조가 다음과 같았다.
+
+```html
+<span>
+    <svg>
+        <path></path>
+    </svg>
+</span>
+```
+
+그래서 favoriteIconContainer이 `<span>`에 `<svg>`가 들어가기 위해서 `favoriteIconContainer.insertAdjacentHTML('beforeend', favoriteIconSvgHTML)`을 한 후, `<svg>` 안에 `<path>`를 넣기 위해서 `favoriteIconSvg.insertAdjacentHTML('beforeend', favoriteIconPathHTML)`으로 작성했다.
+
+여기서 `beforeend`를 선택한 이유는 `<path>`의 경우, svg icon의 종류에 따라서 복수로 존재하기도 했다. 그래서 `<path>` tag 순서를 _작성한대로 순서를 원래의 것과 유지하여 직관적으로 순서를 바로 확인할 수 있도록_ 이를 사용했다.
+
+```js
+const favoriteButton = createNode('button')
+...
+
+const favoriteIconContainer         = createNode('span')
+favoriteIconContainer.className     = 'i1qqph0t icon'
+appendTag(favoriteButton, favoriteIconContainer)
+
+let favoriteIconSvgHTML             = `<svg class='favorite-icon-svg' fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"aria-hidden="true"></svg>`
+favoriteIconContainer.insertAdjacentHTML('beforeend', favoriteIconSvgHTML)
+const favoriteIconSvg               = getElement('.favorite-icon-svg')
+
+let favoriteIconPathHTML            = '<path fill-rule="evenodd" clip-rule="evenodd" d="M12 1a1 1 0 0 1 ... 1-.753-.548L12 4.26Z"></path>'
+favoriteIconSvg.insertAdjacentHTML('beforeend', favoriteIconPathHTML)
+```
+
+❗️ let을 const로 수정하기
+
+&nbsp;
+
+---
+## 2.5 Modal 창을 통한 삭제 기능 issue
+
+### 발생된 issue
+
+**[Pull requests]**
+- [Modifiy api-url and add delete function by bottom-toolbar #42](https://github.com/backendnanodegree/Devket/pull/42)
+
+**[Issue 배경]**  
+저장된 사이트의 하단 툴바 삭제 기능을 클릭하여, 모달 창이 뜨면 이 모달 창으로 삭제를 진행하는 방식으로 개발했다.
+모달 창을 통해서 삭제를 진행하는 이유는 삭제하면 이 사이트 저장을 되돌릴 수 없기 때문에, 경고를 하는 게 유저 편의성을 높이는 방향이라고 생각했기 때문이다.   
+
+**[발생된 issue]**  
+한 사이트의 하단 툴바 삭제 아이콘을 클릭하여 모달 창의 삭제버튼으로 삭제를 진행할 때, 하단툴바가 달려있던 한 사이트만 삭제가 되야하는데 저장된 모든 사이트가 다 삭제되는 이슈가 발생했다.
+
+### issue 발생했을 때 삭제 기능 함수 호출 순서 
+
+원인 코드와 해결과정을 작성하기에 앞서 먼저 하단 툴바의 삭제 버튼을 클릭하여, 모달창이 띄어지고, 삭제를 실행하는 전체 흐름 함수를 확인해보자.
+
+저장된 사이트(site)의 정보를 토대로 목록에 렌더링하는 함수인 renderItem(site) 에서 시작된다. 
+
+- renderItem(site) -> makeBottomToolbar(, site) -> makeDeleteInToolBar(, site) -> openModal() -> Modal 창 오픈
+
+- makeModal() -> deleteSite() -> closeModal -> window.location.reload()
+
+makeModal에 의해서 모달창은 브라우저 창이 load 시, 기본적으로 만들어지지만 화면에 나타나지 않도록 설계했다. 미리 만든 이유는 기본적으로 만들어서 있는 게 버튼을 클릭 이벤트 때마다 렌더링하는 것보다 속도가 빠르다고 생각했기 때문이다. 그래서 openModal()은 기존 class와 tag에 class name을 추가하여 모달창이 보이도록 한다.
+
+또한, makeModal()을 makeDeleteInToolBar() 안에 넣을 수 없는 이유는 모달창은 1개만 필요하기 떄문이다. 만약 makeDeleteInToolBar 안에서 makeModal이 호출된다면 저장된 사이트 수만큼 하단 툴바가 생성되고, 그만큼 모달창이 생성된다.
+
+
+### 원인
+
+저장된 사이트들을 화면에 렌더링할 때 태그 속성을 식별자로 만들기 위해서 태그 속성 id의 값으로 각 site의 DB에 저장된 id 값으로 정했다.
+
+❗️ 태그 속성 id의 값으로 db의 id 값을 입력한 것은 보안적으로 좋지 않기 때문에, 프로젝트 완성을 위해 다시 개발할 때 수정할 예정이다.
+
+리액트의 경우, 자동적으로 이 태그들을 구분하기 때문에 식별자가 필요하다고 한다. 하지만 우리는 바닐라 js로 하기 때문에 필요했다. 
+
+하지만 모달 창을 통해 삭제할 때 이 모든 site의 id를 가져오기 때문에 발생된 issuse다. 식별을 위해서 입력했지만, 정작 코드 상 식별의 역할을 하지 못했다.
+
+
+### 해결 과정
+
+이 issue를 해결하는 초기 과정에서는 무엇이 원인인지 알 수 없어서, 다음과 같이 views.py의 해당 method를 print 문을 통해서 확인해보았다.
+
+
+```python
+def delete(self, request, pk):
+
+    site = self.get_object(pk)
+    
+    print(f'before delete site: {site}')
+
+    site.delete()
+    print(f'after delete site: {site}')
+
+    return Response({'msg': 'Deleted successfully'}, status=status.HTTP_200_OK)
+```
+
+실행한 결과 터미널에서 모든 항목들이 하나씩 하나씩 출력되었다. 의도치 않게 자바스크립트에서 전체 사이트들이 포함된 배열로 보내져서 이것이 하나씩 삭제되는 건가 추측했지만, 터미널의 결과를 보니 그렇지 않았다. 한 항목의 하단 툴바 삭제 기능을 눌러 실행한 것이지만, 각 항목의 하단 툴바 삭제 버튼을 모든 항목에 대해서 클릭하여 일어난 것과 동일한 결과이기 때문이다. 
+
+```python
+before delete site: ....
+before delete site: ....
+```
+
+
+그래서 이번에는 javascript 함수인 `makeDeleteInToolBar`, `makeModalActive`, `deleteSite` 에 각각 `console.log(site)` 를 입력하여 브라우저 콘솔 창에 확인하니 삭제 버튼을 실행하지 않아도 위 각 함수에서 모든 항목이 출력되는 걸 확인했다. 이는 js 문제이며 식별자 문제임을 확인했다.
+
+만약 리액트로 이를 구현했다면, 리액트에서는 각 항목들을 구분하는 별도의 값을 자동적으로 만들어주기 때문에 이런 문제에 부딪히지 않는다고 멘토님을 통해 확인했다. 
+
+그래서 각 항목들을 확실하게 구별할 수 있는 식별자를 만들어, 이 식별자에 접근하여 삭제하는 방식을 권하셨다. 이에 대한 구체적인 방안으로 각 항목의 하단 툴바 삭제 버튼을 클릭하면 해당 항목의 class에 `selected` 를 추가한다. 
+
+```js
+function makeDeleteInToolBar() {
+    deleteButton.addEventListener('click', () => {
+    const article = document.getElementById(`${site.id}`)
+
+    // 추가
+    article.classList.add('selected')
+    openModal(deleteButton)
+
+
+    })}
+```
+
+그리고 `selected`가 클래스 값에 있는 태그를 가져와, 이 태그의 id 값을 fetch에 입력하여 view 단에 보내는 흐름으로 구성했다.
+
+```js
+function deleteSite() {
+    /* DELETE http message를 보내는 함수 */
+
+    const site      = getElement('.c18o9ext.grid.hiddenActions.noExcerpt.selected')
+    const csrftoken = getCookie('csrftoken');
+    const data      = {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json',
+            'X-CSRFToken' : csrftoken,  
+        },
+    }
+
+    fetch(`/api/sites/${site.id}`, data)
+    .then(response => {
+        const status = response.status
+
+        if (status === 200) {
+            console.log('삭제 완료했습니다.')
+        } else if (status === 404) {
+            console.log('해당 항목이 존재하지 않습니다.')
+        } return response.json() 
+    })
+    .catch(error => console.log('Error:', error))
+}
+```
+
+
+삭제 후, 화면을 다시 불러오기 위해서 `window.location.reload()`를 사용한다.
+
+
+### 최종 호출 순서
+
+문제 상황을 해결하고, 다른 팀원들도 공통으로 사용할 수 있도록 모달창을 모듈화한 최종 함수 호출 흐름은 다음과 같다.
+
+- issue 발생 시 함수 호출 흐름: renderItem(site) -> makeBottomToolbar(, site) -> makeDeleteInToolBar(, site) ->
+
+- 최종 함수 호출 흐름: renderItem(site) -> makeBottomToolbar(, site) -> makeDeleteInToolBar(, site) -> openModal(param) -> makeModal(param) -> deleteSite()
+
+내가 코드를 작성했을 때 모달창 렌더링은 하단 툴바에서만 사용하는 경고 텍스트, 버튼 이름이었지만, 이를 상단 툴바나 이외의 곳에서 팀원들이 같이 사용하기 위해서 팀원들 모두 동의 하에 모듈화를 진행했다. 그래서 param의 역할은 모듈로 사용되기 위해서 다음과 같이 만들어진 객체다. 
+
+```js
+// 하단 툴바의 모달창 Parameter
+let modalParam  = {
+    func        : deleteSite,
+    type        : 'bottom',
+    alarm_txt   : `이 항목을 삭제하겠습니까? 삭제한 항목은 복원할 수 없습니다.`,
+    title       : '항목 삭제',
+    buttonName  : '삭제', 
+    args        : '',
+}
+
+// 상단 툴바의 즐겨찾기 추가 복수 작업
+let modalParam = {
+    func        : bulkFavorite,
+    type        : 'bulk', 
+    alarm_txt   : alarm_txt,
+    title       : '선택 항목 즐겨찾기',
+    buttonName  : '추가', 
+    args        : favorite,
+}
+```
+
+또한, 추가로 `article.classList.add('selected')` 였지만 코드 리뷰 시간에 `.toggle()`이란 걸 사용하면 없으면 추가하고, 있으면 빼는 작업을 자동적으로 해주는 걸 알게되어 `article.classList.toggle('selected')`로 수정했다.
+
+
+&nbsp;
+
+---
+
+
+## 2.6 Document.querySelector() issue
 
 
 ### 발생된 issue 와 원인 코드
@@ -289,87 +534,6 @@ const favoriteIconSvg           = favoriteIconContainer.querySelector('.favorite
 그 결과, 다음 이미지와 같이 하단 툴바가 몰리는 issue를 해결할 수 있었다.
 
 ![image](https://user-images.githubusercontent.com/78094972/205588915-a5022426-8374-4390-b67f-c63413565708.png)
-
-&nbsp;
-
-
-## 2.5 svg icon이 인식되지 않는 문제
-
-### 문제점
-
-각 항목에 mouse를 hover 시, 하단에 뜨는 하단 툴바를 만들기 위해서 DOM을 생성하는 과정에서 부딪힌 문제점이다. **svg icon을 사용하기 위해서 `<svg>` node를 생성해야 하는데, 생성되지 못한 문제점이 있었다.** 
-
-프로젝트의 클론 코딩 대상 사이트는 아이콘을 `<i>` tag보다 `<svg><path d=""></path></svg>` 를 사용한다. 그래서 다른 태그를 생성하는 것과 동일한 방식을 사용했다. 
- - `createNode`와 `appendTag` function을 사용하여 svg tag와 path tag를 생성 
- - `.className`을 사용하여 class name을 추가
- - 속성명에 `-`가 있는 건 dot annotation으로 추가 못하기 때문에 `setAttribute()` 사용
-
-하지만 아이콘이 브라우저에 형성되지 않는 문제를 발견했다. 클론 코딩 대상의 프로젝트 tag 속성을 개발자 도구로 분석하면서 관련 속성들을 하나씩 지워보고, 순서도 바꿔보고, 새로운 html을 생성하여 해당 태그들만 추가해보고, stackoverflow와 여러 구글링을 통해 피드백 받은 방안들을 적용해봤지만 svg icon이 형성되지 않았다. 
-
-이 문제로 2~3일을 소비했기 때문에, 임시로 i tag를 사용하기로 결정하여, fontawesome site를 선택하여 유사한 icon을 선택하여 사용했다. 
-
-마지막으로, 팀원들이 이 시행착오를 겪지 않도록 하기 위해 코드 리뷰 시간에 공유했다.
-
-### 해결책
-
-다른 팀원 또한 렌더링하는 과정에서 svg icon 문제에 똑같이 부딪혔고, 내가 공유한 과정들을 통해 다른 방식을 적용하여 문제를 해결했다. 
-
-**해결한 방법은 setAttribute로 하면 인식되지 않았지만 html를 통채로 입력하니 가능했다.** 
-
-이 때 변수를 `insertAdjacentHTML`을 사용한 이유는 다음과 같다. 
-
-className과 속성들을 별도로 입력하는 방식이 작동되지 않기 때문에, 통째로 입력하는 방법을 선택했다. 그래서 HTML을 통째로 원하는 DOM tree 안에 node들을 추가하기 위해 함수 'insertAdjacentHTML' 를 사용했다.
-
-사용 방식은 `element.insertAdjacentHTML(position, text)`와 같다. 이 함수의 사용 방법 출처는 [MDN - Element.insertAdjacentHTML()](https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML)을 참고했다.
-
-'text'에 들어갈 svg를 담은 변수를 `let`으로 선언한 이유는 재정의할 수도 있기 때문이다. 클론 코딩의 상단 툴바의 경우 아이콘이 변하는 경우가 있어서 let으로 선언했지만, 하단 툴바의 경우에는 그렇지 않기 때문에 아래 코드의 `let`은 `const`로 수정해야하는 부분이다. 
-
-- let & const
-||재선언|재할당|
-|----|----|----|
-|let|X|O|
-|const|X|X|
-
-- position
-| position | 설명 |
-| ---- | ---- |
-| beforebegin | element 앞에|
-|afterbegin| element 안에 가장 첫번째 chid|
-|beforeend| element 안에 가장 마지막 child |
-|afterend|element 뒤에|
-
-
-클론 코딩의 대상 사이트의 svg DOM 구조가 다음과 같았다.
-
-```html
-<span>
-    <svg>
-        <path></path>
-    </svg>
-</span>
-```
-
-그래서 favoriteIconContainer이 `<span>`에 `<svg>`가 들어가기 위해서 `favoriteIconContainer.insertAdjacentHTML('beforeend', favoriteIconSvgHTML)`을 한 후, `<svg>` 안에 `<path>`를 넣기 위해서 `favoriteIconSvg.insertAdjacentHTML('beforeend', favoriteIconPathHTML)`으로 작성했다.
-
-여기서 `beforeend`를 선택한 이유는 `<path>`의 경우, svg icon의 종류에 따라서 복수로 존재하기도 했다. 그래서 `<path>` tag 순서를 _작성한대로 순서를 원래의 것과 유지하여 직관적으로 순서를 바로 확인할 수 있도록_ 이를 사용했다.
-
-```js
-const favoriteButton = createNode('button')
-...
-
-const favoriteIconContainer         = createNode('span')
-favoriteIconContainer.className     = 'i1qqph0t icon'
-appendTag(favoriteButton, favoriteIconContainer)
-
-let favoriteIconSvgHTML             = `<svg class='favorite-icon-svg' fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"aria-hidden="true"></svg>`
-favoriteIconContainer.insertAdjacentHTML('beforeend', favoriteIconSvgHTML)
-const favoriteIconSvg               = getElement('.favorite-icon-svg')
-
-let favoriteIconPathHTML            = '<path fill-rule="evenodd" clip-rule="evenodd" d="M12 1a1 1 0 0 1 ... 1-.753-.548L12 4.26Z"></path>'
-favoriteIconSvg.insertAdjacentHTML('beforeend', favoriteIconPathHTML)
-```
-
-❗️ let을 const로 수정하기
 
 &nbsp;
 

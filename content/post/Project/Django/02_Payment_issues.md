@@ -2,13 +2,31 @@
 title: "Project: Payment 개발 과정에서의 고려사항들과 개발 이슈들"
 date: 2022-12-05T11:08:59+09:00
 draft: true
-summary: 
+summary: Payment 1차 기능을 개발하는 과정에서의 고려사항들과 개발 이슈들에 대해 정리해본다.
 tags: ["payment"]
 categories: ["Project"]
 ---
+# 0. Introduction
 
+- 이 repository는 현재 [러닝스푼즈 나노디그리 - django backend 부트캠프](https://learningspoons.com/course/detail/django-backend/)에서 팀 프로젝트를 진행하면서 다음과 같은 내용들에 대해 정리하고자 만들었습니다. 
+    - 팀 정책을 이것으로 정한 이유 
+    - 개발하면서 부딪힌 문제들에 대한 원인, 해결방안, 해결과정, 그리고 그 이유들
 
-# Payment id 암호화
+- 이번 포스팅에서는 payment 결제 1차 기능을 개발하는 과정에서의 고려사항들과 개발 이슈들에 대해 정리해보겠습니다.
+    - payment 결제 1차 기능은 내부적으로 정한 상황들에 대해서 결제 자체가 가능하도록 개발하는 것에 목적을 두었습니다.  
+    - 이후에는 환불 기능과 정기결제 기능을 추가하여 '구독' 개념을 도입할 예정입니다. 
+
+&nbsp;
+
+---
+
+# Payment model에 대한 고려사항
+
+# PaymentManager
+
+# Iamport.py에서의 고려사항 
+
+# Payment id(merchant_id) 암호화
 
 아임포트 결제 시, 겹쳐지지 않는 주문 번호가 필요하여 암호화 과정을 도입한다.
 
@@ -128,14 +146,6 @@ iamport api와 통신하기 위해서 Iamport class를 만들었다.
 
 # 결제 정보를 html tag에 노출된 것을 서버 view class로 옮기는 과정에서 발생된 Error
 
-## TypeError: View.__init__() takes 1 positional argument but 2 were given 
-
-MakeStatusFailed class에서 urls.py에 입력할 때 .as_view()를 입력해야하는데 빠트림
-
-출처: https://stackoverflow.com/questions/53572251/django-2-1-3-error-init-takes-1-positional-argument-but-2-were-given 
-
-
-
 ## ValueError: 거래건이 존재하지 않습니다.
 
 - 아래 views.py 코드에서 payment.save()로부터 에러가 발생했다.
@@ -219,3 +229,11 @@ models.py 의 amount 속성의 default 값이 0이기 때문이다.
 Devket은 유료 무료로만 나눠진 거라 상품과 할인율이 없지만, 구독이란 개념이 들어가게 된다면 할인률에 따라 상품을 나눠서 운영한다면 model 속성으로서 값을 가져와서 입력되도록 설계한다.
 
 
+
+&nbsp;
+
+---
+
+# Reference 
+
+- []()

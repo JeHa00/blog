@@ -1,45 +1,23 @@
 ---
-title: "Project: 구축한 api를 fetch로 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정"
+title: "Project: fetch를 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정"
 date: 2022-11-17T16:23:16+09:00
 draft: true
-summary: 
+summary: Update serializer를 작성하면서 알게된 유효성 검증 흐름(자세히 적기)
 tags: [""]
 categories: ["Project"]
 ---
+# 0. Introduction
 
-### 호출 순서
-화면 로드 후, console 창에 
-className += 'active' 로 추가 가능. 
+- 이 repository는 현재 [러닝스푼즈 나노디그리 - django backend 부트캠프](https://learningspoons.com/course/detail/django-backend/)에서 팀 프로젝트를 진행하면서 다음과 같은 내용들에 대해 정리하고자 만들었습니다. 
+    - 팀 정책을 이것으로 정한 이유 
+    - 개발하면서 부딪힌 문제들에 대한 원인, 해결방안, 해결과정, 그리고 그 이유들
 
-하지만, import 해서 사용할 때는 bottom-toolbar.js:127 Uncaught TypeError: Cannot read properties of null (reading 'className') 문제가 발생 
-즉 지정 태그를 읽어오지 못한다는 것 
-이 하단 툴바는 각 site 항목에 마우스를 hover 시, block에서 flex로 바뀌면서 나타난다. 
-console 창에 코드를 직접 입력해보니 제대로 활성화되는 것을 확인할 수 있다. 
+- 이번 포스팅에서는 저장한 사이트의 즐겨찾기 값을 UPDATE 하면서 front와 backend 양측에서 겪은 문제를 정리했습니다.
 
-- DOM이 다 불러오기 전에 javascript가 실행되어 찾지 못하는 문제점이다. 
-- 즉 읽는 시점을 HTML이 다 불러오고나서 js가 실행되도록 해야한다.
-    - https://valuefactory.tistory.com/548
-    - window.onload = () => {} 를 사용하여 모든 DOM이 불러오고 나서 실행될 것을 분리했다. 
-    - 이 함수가 작성되는 파일이 A 라고 하면 이 A를 받아서 사용하는 B에서 DOM이 생성되기 때문에 발생한 것이다.  
+&nbsp;
 
-그래서 아래와 같이 작성했으나, 그럴 경우 전체 for문을 돌려야 하므로 DOM 생성되면서 반복되는데, 또 반복을 하면서 이 기능을 추가하므로 시간복잡도 n^(2)으로 좋지 않다.
-
-```js
-window.onload = () => {
-    
-    const favoriteButton        = getElement('.footer .item-actions .favorite'); 
-    const categoryButton        = getElement('.footer .item-actions .category');
-    const tagButton             = getElement('.footer .item-actions .tag');
-    const deleteButton          = getElement('.footer .item-actions .delete');
-
-    favoriteButton.addEventListener('click', () => {
-        favoriteButton.classList.add('active');
-        favoriteButton.setAttribute('data-tooltip', '즐겨찾기 해제'); 
-    })   
-}
-```
-
-그래서 각 버튼의 dom을 생성하는 함수 맨 아래에 넣기로 결정했다. 
+---
+# 1. 발생된 issue와 원인 코드
 
 ### active 문자열 추가 시 문제점
 또 한 가지 문제 active를 문자열 연산으로 추가한 후, 파이썬 처럼 동일하게 제거될 거라 생각했다. 
@@ -72,6 +50,7 @@ NaN 은 Not-A-Number(숫자가 아님) 를 의미한다.
 위 코드의 결과, 403 Forbidden이 떴고, 위 코드의 맨 마지막 줄에 의해서 구체적인 error 내용은 다음과 같다.
 
 `'CSRF Failed: CSRF token missing or incorrect.'}`
+
 
 
 
@@ -174,7 +153,7 @@ DB에 반영이 되었다. 하지만, 아이콘이 바로 활성화되지 않는
 
 
 
-### 유효성 검증 순서
+# 3. 유효성 검증 순서
 
 1. `if serializer.is_valid():` 진입
 
