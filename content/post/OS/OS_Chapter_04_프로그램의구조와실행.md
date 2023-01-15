@@ -133,7 +133,7 @@ categories: ["OS"]
 ## 3.2 Swap area
 
 - Problem
-  - 프로그램이 프로세스가 되었을 때 생성되는 address space를 물리적 메모리에 다 올리지 않는다.
+  - 프로그램이 프로세스 되었을 때 생성되는 address space를 물리적 메모리에 다 올리지 않는다.
   - Why?? 다 올리면 메모리 낭비가 심하기 때문
 - Solution
   - 바로 필요한 코드 부분만 memory에 올린다.

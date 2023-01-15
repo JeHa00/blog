@@ -20,11 +20,6 @@ categories: ["Django"]
 ---
 # 기존에 사용한 방식
 
-virtualenv env-before --python=3.8.9
-
-→ source ./env-before/bin/activate  → pip install django == 3.2.13
-
-
 1. `mkdir <directory명>`으로 가상환경과 프로젝트를 담을 directory를 생성  
     - ex) `mkdir pjt1`
 

@@ -102,7 +102,7 @@ categories: ["OS"]
 
 # 6. DMA
 
-> **_Direct Memory Access의 약어로, CPU의 중재 없이 device controller가 device의 buffer stroage에 읽어오면 CPU를 대신하여 잃어온 내용을 메모리에 block 단위로 직접 복사한 후, CPU에게 interrupt를 발생시키는 장치_**
+> **_Direct Memory Access의 약어로, CPU의 중재 없이 device controller가 device의 buffer storage에 읽어오면 CPU를 대신하여 읽어온 내용을 메모리에 block 단위로 직접 복사한 후, CPU에게 interrupt를 발생시키는 장치_**
 
 - **_왜 DMA가 필요한가???_**
   - 문제점: CPU가 interrupt로 많은 방해를 받아 효율이 많이 떨어진다.
