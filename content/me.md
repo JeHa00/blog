@@ -57,10 +57,11 @@ _프로젝트에 사용한 기술들입니다._
 ### Fast learning ability
 - 한 달보다 적은 기간 동안 JS와 DRF를 학습하여 다음과 같은 성과 성취
 
-### Frontend : vanilla js만을 사용
-- 저장한 웹 사이트 목록 렌더링
-- 저장한 각 웹 사이트 하단에 뜨는 하단툴바 렌더링
-- 구축한 api로 하단툴바를 통한 즐겨찾기, 삭제 기능 구현
+### [Frontend : vanilla js만을 사용 🔗](https://jeha00.github.io/post/project/js/dom_fetch_issue/)
+- 저장한 웹 사이트 목록 렌더링  
+- 저장한 각 웹 사이트 하단에 뜨는 하단툴바 렌더링  
+- 구축한 api로 하단툴바를 통한 즐겨찾기, 삭제 기능 구현  
+- fetch를 사용하여 api로부터 데이터를 받아 아임포트에 전송  
 
 ### Backend
 - DB modeling 설계 및 ERD 작성
@@ -69,7 +70,7 @@ _프로젝트에 사용한 기술들입니다._
 - 하단 툴바를 통한 저장된 웹 사이트의 즐겨찾기 값 변경, 저장한 웹 사이트 삭제 api 구축
     - Serializer를 통해 저장한 웹 사이트의 즐겨찾기 값 부분 수정
 - 개발 기간과 확장성을 고려하여 결제 모듈로 아임포트를 선정하여 결제 기능 구현: 결제 api 구축
-    - Payment만의 queryset을 생성하기 위해 ModelManager를 사용
+    - Payment만의 objects를 사용하기 위해 ModelManager를 사용
     - 중복되지 않은 주문 번호를 생성하기 위해 hashlib 사용
 - AWS EC2, RDS, S3와 docker-compose를 사용한 배포
 
@@ -123,4 +124,4 @@ _감사합니다._
 
 _Backend Engineer,  김제하(jeha)_  
 
-_Latest updated    2022.12.21_  
+_Latest updated    2022.12.30_  
