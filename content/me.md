@@ -65,12 +65,11 @@ _프로젝트에 사용한 기술들입니다._
 
 ### Backend
 - DB modeling 설계 및 ERD 작성
-- 저장한 웹 사이트 전체 목록 조회 api 구축
-- 복수 조건으로 조회하기 위해 ORM filter와 Q를 사용하여 즐겨찾기 목록, 아티클, 동영상 목록 조회 api 구축
+- 전체 목록 및 특정 조건을 만족하는 목록 조회를 위해 ORM filter와 Q를 사용하여 조회 api 구축
 - 하단 툴바를 통한 저장된 웹 사이트의 즐겨찾기 값 변경, 저장한 웹 사이트 삭제 api 구축
     - Serializer를 통해 저장한 웹 사이트의 즐겨찾기 값 부분 수정
 - 개발 기간과 확장성을 고려하여 결제 모듈로 아임포트를 선정하여 결제 기능 구현: 결제 api 구축
-    - [Project: Iamport를 선택한 이유, 사용 시 결제 과정과 장점, 그리고 아임포트 javascript SDK를 사용한 결제 흐름 🔗](https://jeha00.github.io/post/project/django/01_payment_overall_flow/)
+    - [Project: Iamport 선정 이유, 그리고 아임포트 javascript SDK를 사용하여 구축한 결제 흐름 🔗](https://jeha00.github.io/post/project/django/01_payment_overall_flow/)
     - Payment만의 objects를 사용하기 위해 ModelManager를 사용
     - 중복되지 않은 주문 번호를 생성하기 위해 hashlib 사용
 - AWS EC2, RDS, S3와 docker-compose를 사용한 배포
