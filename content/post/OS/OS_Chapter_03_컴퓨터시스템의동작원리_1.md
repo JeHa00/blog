@@ -120,6 +120,7 @@ categories: ["OS"]
   - HW가 발생시킨 인터럽트
   - HW 일꾼들이 CPU와 정보 교신을 위해서 거는 것
   - **하드웨어 장치**가 CPU의 interrupt line을 세팅한다.
+    - ex) Timer Interrupt, device controller가 발생시키는 interrupt 
   - 통상적으로 불리는 interrupt의 의미가 HW interrupt다.
 - SW interrupt (= **_트랩(trap)_**)
   - 사용자 프로그램이 운영체제에게 대행해달라고 요청하는 것

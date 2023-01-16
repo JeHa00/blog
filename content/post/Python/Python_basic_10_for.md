@@ -111,7 +111,7 @@ v is : 10
 
 ---
 
-# 2. Iterator 자료형 활용과 Iterable 함수
+# 2. Iterable 자료형 활용과 Iterable 함수
 
 ```yml
 
@@ -120,7 +120,7 @@ v is : 10
 
 # 예제1
 
-# Iterator: string으로 구성된 list
+# Iterable: string으로 구성된 list
 > names = ["Kim", "Park", "Cho", "Lee", "Choi", "Yoo"]
 > for name in names:
 >   print("You are", name)
@@ -132,7 +132,7 @@ You are Choi
 You are Yoo
 
 # 예제2
-# Iterator: interger 로 구성된 list
+# Iterable: interger 로 구성된 list
 > lotto_numbers = [11, 19, 21, 28, 36, 37]
 > for number in lotto_numbers:
 >   print("Current number : ", number)
@@ -144,7 +144,7 @@ Current number : 36
 Current number : 37
 
 # 예제3
-# Iterator : string
+# Iterable : string
 > word = 'Beautiful'
 > for s in word:
 >   print('word : ', s)
@@ -159,7 +159,7 @@ word :  u
 word :  l
 
 # 예제4
-# Iterator: dictionary
+# Iterable: dictionary
 > my_info = {
 >   "name": "Lee",
 >   "Age": 33,
@@ -183,13 +183,13 @@ Seoul
 ```
 
 - Iterable에 사용되는 함수를 사용하여 대문자로 출력해보자.
-- `<string iterator>.isupper` : 문자가 대문자인지 확인하는 함수
-- `<string iterator>.islower` : 문자가 소문자인지 확인하는 함수
-- `<string iterator>.upper` : 문자열을 대문자로 변경하는 함수
-- `<string iterator>.lower` : 문자열을 소문자로 변경하는 함수
+- `<string iterable>.isupper` : 문자가 대문자인지 확인하는 함수
+- `<string iterable>.islower` : 문자가 소문자인지 확인하는 함수
+- `<string iterable>.upper` : 문자열을 대문자로 변경하는 함수
+- `<string iterable>.lower` : 문자열을 소문자로 변경하는 함수
 
 ```yml
-# Iterator : string
+# Iterable : string
 > name = 'FineApplE'
 
 # 지난 시간에 배운 중첩 조건문을 의미

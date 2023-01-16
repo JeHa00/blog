@@ -71,7 +71,7 @@ categories: ["OS"]
     - 다른 조건은 다 만족하고, 메모리에는 올라와 CPU만 기다리는 상태
   - **Blocked( wait, sleep ):**
     - CPU를 할당받아도 당장 instruction을 수행할 수 없는 상태
-    - process 자신이 요청한 even가 즉시 만족되지 않아 이를 기다리는 상태
+    - process 자신이 요청한 event가 즉시 만족되지 않아 이를 기다리는 상태
       - ex) disk에서 file을 읽어와야 하는 경우 (I/O 작업)
   - **New**:
     - process가 시작되어 자료구조는 생성되었지만, 메모리 획득을 승인받지 못한 상태
