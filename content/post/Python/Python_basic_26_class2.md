@@ -90,8 +90,6 @@ categories: ["Python"]
 
 - `self._속성`으로 입력하기 때문에, 각 인스턴스마다 자신의 영역에 저장할 수 있다.
 
-&nbsp;
-
 - `self._속성` 입력 시, 언더바(\_)를 사용하는 이유??
   - PEP에서 권장하기 때문에 인스턴스 변수를 만들 때 underbar를 사용한다.
   - 언더바의 의미는 [[TIL] Python basic 43: Underscore](https://jeha00.github.io/post/python_basic/python_basic_43_underscore/)을 참고하라.
@@ -129,8 +127,6 @@ categories: ["Python"]
 ---
 
 # 2. dir, \_\_dict\_\_ 그리고 \_\_doc\_\_
-
-&nbsp;
 
 ## 2.1 dir 과 \_\_dict\_\_
 

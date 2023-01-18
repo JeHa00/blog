@@ -2,7 +2,7 @@
 title: "[TIL] Python basic 27: Special Method"
 date: 2022-03-21T17:14:36+09:00
 draft: false
-summary: 지난 번 Python basic 26 Class advanced에 이어서 class 안에 정의되는 built-in method인 special method에 대해 알아보자.
+summary: 지난 번 Python basic 26 Class advanced에 이어서 class 안에 정의되는 built-in method인 special method에 대해 알아보자. 또한 파이썬의 핵심 4가지에 대해 알아보자. 마지막으로 오버라이딩을 통해서 클래스끼리 연산해보자.  
 tags: ["TIL", "python"]
 categories: ["Python"]
 ---
@@ -128,26 +128,25 @@ categories: ["Python"]
 110
 ```
 
-- '+' 연산자도 `__add__` magic method를 호출하기 때문에, 위와 같이 결과가 동일하다.
+'+' 연산자도 `__add__` magic method를 호출하기 때문에, 위와 같이 결과가 동일하다.
 
 &nbsp;
 
 ## 2.2 Special method 예시 2
 
-- 또한, 지난 번에 알아봤던 것처럼 repr() 를 사용하는 건 `__repr__`를 호출하여 이 method에 의한 결과값을 반환하는 것이라 했다.
+지난 번에 알아봤던 것처럼 repr() 를 사용하는 건 `__repr__`를 호출하여 이 method에 의한 결과값을 반환하는 것이라 했다.
 
-&nbsp;
 
 ## 2.3 Special method 예시 3
 
-- boolean 함수도 그렇다.
+boolean 함수도 그렇다.
 
 ```yml
 > print(n.__bool__(), bool(n))
 True True
 ```
 
-- 파이썬에서는 많은 함수가 magic method를 호출하여 사용된다.
+파이썬에서는 많은 함수가 magic method를 호출하여 사용된다.
 
 &nbsp;
 
@@ -163,7 +162,7 @@ True True
 TypeError: unsupported operand type(s) for +: 'Airline' and 'Airline'
 ```
 
-- 즉, 피연산자의 type이 지원되지 않는 type이라는 의미다. 이처럼 클래스끼리의 연산은 가능하지 않다.
+- 피연산자의 type이 지원되지 않는 type이라는 의미다. 이처럼 클래스끼리의 연산은 가능하지 않다.
 - 그러면 이를 magic method를 customizing하여 사용해보자.
 
 ```yml
@@ -192,11 +191,13 @@ Called >> __add__
 14000
 ```
 
-- 동일한 결과다.
-- 하지만 이렇게 직접 값에 접근하는 건
-  - 위험하다.
+- 동일한 결과를 내지만, 이렇게 직접 값에 접근하는 건 다음 2가지 이유로 좋지 않다.
   - 코드 양이 많아지고, 가독성이 좋지않다.
+  - 위험하다.
+
 - 그래서 `magic method`를 잘 활용해야 한다.
+
+&nbsp;
 
 - 다른 magic method도 만들어보자.
 

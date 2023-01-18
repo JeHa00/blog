@@ -2,7 +2,7 @@
 title: "[TIL] Python basic 28: Namedtuple"
 date: 2022-03-22T09:00:37+09:00
 draft: false
-summary: Data Model의 한 종류인 namedtuple에 대해 알아보자.
+summary: Data Model의 한 종류인 namedtuple에 대해 알아보자. namedtuple을 사용하면 key 값이 생기면서 tuple의 특징이 유지되기 때문에 클래스보다도, 딕셔너리보다도 권장되는 데이터 타입이다.
 tags: ["TIL", "python"]
 categories: ["Python"]
 ---
@@ -14,7 +14,7 @@ categories: ["Python"]
 - 파이썬에서 모든 객체는 데이터에 대한 추상화로 표현될 수 있다.
 - 파이썬에서는 `namedtuple`외에도 많은 Container datatypes가 있다.
 - 이 종류들은 Collections library에서 찾을 수 있다.
-- 객체를 사용하기보다 튜플 활용을 공식 레퍼런스에서 추천하고 있다.
+- 클래스를 사용하기보다 튜플 활용을 공식 레퍼런스에서 추천하고 있다.
 
 &nbsp;
 

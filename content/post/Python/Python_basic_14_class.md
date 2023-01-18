@@ -28,13 +28,10 @@ categories: ["Python"]
 
 # 2. Class와 instatnce의 차이
 
-- 눈에 보이는 `실체`들 중에서 `소프트웨어로 구현할 대상`을 선정한다.
+- 눈에 보이는 '실체'들 중에서 '소프트웨어로 구현할 대상`'을 선정한다.
   - 소프트웨어로 구현할 대상을 `객체(Object)`라 한다.
-- 그리고, 이 **_객체(Object)_** 를 **_class라는 틀_** 을 통해서 소프트웨어적으로 묘사한 것을 **_instance_** 라 한다.
+- 이 **_객체(Object)_** 를 **_class라는 틀_** 을 통해서 소프트웨어적으로 묘사한 것을 **_instance_** 라 한다.
 
-&nbsp;
-
-&nbsp;
 
 ## 2.1 Class 만들고 호출하기
 
@@ -44,7 +41,6 @@ categories: ["Python"]
   - 개의 종은 매우 다양하기 때문에, 개의 종이 추가될 때마다 변수 입력한다면 그 양이 매우 많아지고, 가독성도 떨어진다.
   - 하지만, 클래스를 이용한다면 눈에 보이는 애완견 실체를 `클래스 형태`로 구성해서 `instance`로 만들 수 있다.
 
-&nbsp;
 
 - `class` 라는 예약어를 통해 클래스를 만들기 시작한다.
   - 모든 클래스는 object를 상속받기 때문에, 선언 방법은 자유롭다.
@@ -67,7 +63,7 @@ categories: ["Python"]
 >       self.age = age
 ```
 
-- `class` 정보를 호출해보자.
+- 클래스 정보를 호출해보자.
 
 ```yml
 ## class 정보 호출하기
@@ -101,7 +97,7 @@ False 2542532857088 2542532856992 2542532856560
 
 ## 2.3 namespace 확인하기
 
-> **_'namespace'란 python의 해당 객체와 관련된 attribute의 name들이 dictionary data type으로 구현 및 저장된 공간_** 으로서, dictionary가 python의 naming system에 사용하기 때문에, 각 name은 key로서 중복되지 않는다.
+> **_namespace란 python의 해당 객체와 관련된 attribute의 name들이 dictionary data type으로 구현 및 저장된 공간_** 으로서, dictionary가 python의 naming system에 사용하기 때문에, 각 name은 key로서 중복되지 않는다.
 
 - `dir()` 과 `.__dict__`를 통해서 namespace를 확인할 수 있는데, 그럼 이 두 가지의 차이는 무엇일까??
 
@@ -241,7 +237,6 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 
 # 4. class, instance variable
 
-&nbsp;
 
 - 다른 클래스를 만들어보자.
 
@@ -275,26 +270,24 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 
 > **_namespace에는 객체의 속성들이 있는 곳임을 확인했다. 그러면 class와 instance의 각 속성들을 한층 더 들어가 확인해보자._**
 
-- **Class variable(클래스 변수)** 는
+### Class variable(클래스 변수)
 
-  - class 내부 method를 정의하기 전인 enclosing-scope에 정의한 변수
-  - 직접 접근이 가능하다.
-  - 클래스 변수는 공유되기 때문에, 모든 인스턴스에서 공통으로 가지고 있는 변수
-  - instance의 namespace에 있지 않고, class의 namespace에 존재한다.
+- class 내부 method를 정의하기 전인 enclosing-scope에 정의한 변수
+- 직접 접근이 가능하다.
+- 클래스 변수는 공유되기 때문에, 모든 인스턴스에서 공통으로 가지고 있는 변수
+- instance의 namespace에 있지 않고, class의 namespace에 존재한다.
 
-- **instance variable(인스턴스 변수)** 는
+### instance variable(인스턴스 변수)
 
-  - `self`가 붙은 것들이 `instance varible(인스턴스 변수)`다.
-  - 직접 접근이 아닌, 인스턴스화된 변수로 접근이 가능하다.
-  - 객체마다 별도로 존재한다.
-  - `namespace` 라는 **_인스턴스만의 공간_** 을 별도로 갖고 있어서, namespace를 통해 인스턴스 변수를 확인한다.
+- `self`가 붙은 것들이 `instance varible(인스턴스 변수)`다.
+- 직접 접근이 아닌, 인스턴스화된 변수로 접근이 가능하다.
+- 객체마다 별도로 존재한다.
+- `namespace` 라는 **_인스턴스만의 공간_** 을 별도로 갖고 있어서, namespace를 통해 인스턴스 변수를 확인한다.
 
-&nbsp;
+### 클래스 변수에 접근하기
 
-- **클래스 변수에 접근하기**
-
-  - class name으로 접근하기
-  - 인스턴스화된 변수를 통해서 접근하기
+- class name으로 접근하기
+- 인스턴스화된 변수를 통해서 접근하기
 
   ```yml
   # 클래스로 직접 접근하기
@@ -308,7 +301,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 
   - 직접 접근이 가능하며, 모든 인스턴스가 공유한다는 걸 알 수 있다.
 
-- **인스턴스 변수에 접근하기**
+### 인스턴스 변수에 접근하기
 
   - 인스턴스화된 변수를 통해서 접근하기
 
@@ -320,7 +313,9 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
   Cho
   ```
 
-- class와 instance의 각 namespace에서 class 변수와 instance 변수를 확인해보자.
+### 클래스 변수와 인스턴스 변수 확인하기
+
+class와 instance의 각 namespace에서 class 변수와 instance 변수를 확인해보자.
 
   ```yml
   # instance의 namespace에서는 공통적으로 가지고 있는 클래스 변수를 찾을 수 없다.
@@ -344,7 +339,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
     - 클래스 변수는 인스턴스의 공통된 변수이지만, 인스턴스의 네임스페이스에서는 찾을 수 없다.
     - 클래스 변수는 클래스의 네임스페이스에서 찾을 수 있다.
 
-- 그리고 소멸자를 사용하여 instance를 삭제하면, 클래스 변수인 stock_num이 감소한 걸 확인할 수 있다.
+- 소멸자를 사용하여 instance를 삭제하면, 클래스 변수인 stock_num이 감소한 걸 확인할 수 있다.
 
   ```yml
   > del user1
@@ -360,9 +355,10 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 > _super class는 해당 class의 상위 class를 의미한다._  
 > _`instance`의 namespace -> `class`의 namespace -> `super`의 namespace_
 
-- **여기서 한 가지 의문이 있다.**
-  - instance의 namespace에서는 class 변수가 없다. 그러면 인스턴스화한 변수를 통해서 클래스 변수가 어떻게 출력되는걸까???
-  - 이는 python이 instance의 namespace에서 찾지 못하자, class의 namespace에서 찾아 출력하는 것이다.
+### 한 가지 의문
+instance의 namespace에서는 class 변수가 없다. 그러면 인스턴스화한 변수를 통해서 클래스 변수가 어떻게 출력되는걸까??? 
+
+이는 python이 instance의 namespace에서 찾지 못하자, class의 namespace에서 찾아 출력하는 것이다.
 
 &nbsp;
 
@@ -370,7 +366,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 
 # 5. Class의 장점
 
-- 마지막으로 또 다른 클래스를 만들어보면서 위 내용들을 음미해보자.
+마지막으로 또 다른 클래스를 만들어보면서 위 내용들을 음미해보자.
 
 ```yml
 ## Dog라는 class를 만든다.
@@ -420,6 +416,25 @@ Marry says Mung Mung!
   - 생산성이 향상되고, 성능도 코드에 따라 좋아진다.
 
 &nbsp;
+
+---
+
+# Summary
+
+- namespace: 파이썬의 객체들과 관련된 속성들이 dictionary 형태로 저장된 공간
+- dir과 `__dict__`의 차이점
+
+  |                    | dir( )                                             | .\_\_dict\_\_                                            |
+  | ------------------ | -------------------------------------------------- | -------------------------------------------------------- |
+  | function or method | built-in function(내장함수)                        | magic method(special method)                             |
+  | Data type          | list                                               | dictionary                                               |
+  | 호출 내용          | 객체가 가진 속성 name과 method 정보 ( key name만 ) | 객체의 속성 name과 name의 value까지 ( key name과 value ) |
+
+- method의 종류: class method, instance method, static method
+- 인스턴스의 namespace에는 class 변수는 존재하지 않지만, 인스턴스를 통해서 접근할 수 있다. 그 이유는 인스턴스의 namespace에서 찾지 못하면 class의 namespace에서 찾기 때문이다.
+- 인스턴스화된 변수를 통해서는 클래스 메서드에 접근할 수 없다.
+- 클래스 메서드에 접근하기 위해서는 클래스를 통해서 바로 접근해야 하며, 인스턴스 메서드에 접근하기 위해서는 인스턴스화된 변수를 통한 방법과 클래스로 접근하여 인자에 인스턴스를 넘겨주는 방법이 있다.
+
 
 ---
 

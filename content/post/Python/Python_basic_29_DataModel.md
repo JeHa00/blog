@@ -22,8 +22,6 @@ categories: ["Python"]
 
 Python의 data type은 **여러 기준**으로 분류될 수 있다.
 
-&nbsp;
-
 ### 1.1 무슨 형태의 자료형을 담을 수 있는가???
 
 - **Container 형**: 서로 다른 자료형을 담을 수 있다.  
@@ -84,7 +82,7 @@ Python의 data type은 **여러 기준**으로 분류될 수 있다.
 
 - immutable:
 
-  - 함수 안에서 매개변수의 값을 변경하면 **_다른 객체를 생성_** 하고, 그 객체에 대한 참조로 업데이트된다.
+  - 함수 안에서 매개변수 값을 변경하면 **_다른 객체를 생성_** 하고, 그 객체에 대한 참조로 업데이트된다.
   - 따라서 매개변수의 값을 변경해도 호출하는 쪽의 **_실제 인수에는 영향을 주지 않는다._**
   - 그 대신 id 값은 변경된다.
 
@@ -93,6 +91,9 @@ Python의 data type은 **여러 기준**으로 분류될 수 있다.
 | 매개변수 값 변경 시도 | 객체 자체를 업데이트 | 다른 객체를 생성 |
 | 실제 인수 영향        | 변경 O               | 변경 X           |
 | id 값                 | 변경 X               | 변경 O           |
+| call by | reference | value|
+
+- mutable과 immutable에 call by 방식 차이 출처: [Python study - call by reference value](https://jeha00.github.io/post/python/python_basic_40_callbyobjectreference/)
 
 &nbsp;
 
@@ -148,6 +149,7 @@ TypeError: 'str' object does not support item assignment
 ```
 
 - list는 `mutable`로 성분값을 수정할 수 있어서, `id` 값이 수정 전과 동일하다.
+
 
 &nbsp;
 
