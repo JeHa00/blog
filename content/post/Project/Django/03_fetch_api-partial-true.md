@@ -1,8 +1,8 @@
 ---
-title: "Project: fetch를 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정"
-date: 2022-11-17T16:23:16+09:00
+title: "Project: fetch를 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점, 해결과정 그리고 유효성 검증 흐름"
+date: 2022-11-30T16:23:16+09:00
 draft: true
-summary: Update serializer를 작성하면서 알게된 유효성 검증 흐름(자세히 적기)
+summary: fetch를 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정을 기록해본다. 그리고, Update serializer를 작성하면서 알게된 유효성 검증 흐름을 정리해본다.
 tags: [""]
 categories: ["Project"]
 ---

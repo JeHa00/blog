@@ -2,7 +2,7 @@
 title: "Django study: DRF의 직렬화(serialization)와 역직렬화(deserialization)"
 date: 2022-10-28T13:29:58+09:00
 draft: false
-summary: Django의 library인 Django-RestFramework의 직렬화, 역직렬화 개념과 이를 사용하기 위한 Serializer를 작성해본다.
+summary: RESTful API가 무엇인지, 이를 간편하게 수행하는 Django의 library인 Django-RestFramework를 소개하고, 직렬화와 역직렬화 개념을 학습한다. 마지막으로 이를 사용하기 위한 Serializer를 작성해본다.
 tags: ["Django"]
 categories: ["Django"]
 ---
@@ -31,13 +31,18 @@ categories: ["Django"]
 ### REST API
 
 - **REST란?**
-	- resource를 중심으로 디자인: 행위 부분은 HTTP method로 표현
+	- resource와 행위를 구분하고, 행위는 HTTP method를 사용하여 표현하는 방식
 	- 특정 리소스를 고유하게 식별하는 식별자  
 		- ex) id 
 	- 요청 및 응답 포맷으로는 JSON을 많이 사용
 	- 균일한 인터페이스를 적용
 
-- 이러한 REST 설계 원칙을 준수한 API를 준수한 REST API라 한다. 
+- 이러한 REST 설계 원칙을 준수한 API를 준수한 RESTful API라 한다. 
+	- 동사를 사용하지 않는다.
+	- 슬래시(/)로 계층 관계를 표현한다.
+	- URL 마지막 문자로 슬래시(/)를 포함하지 않는다.
+	- 밑줄(_)을 사용하지 않고, 하이픈(-)을 사용한다.
+	- 소문자로만 구성한다. 
 
 ```yml
 ## 나쁜 예시
@@ -48,20 +53,20 @@ categories: ["Django"]
 /groups/8SUE9E/courses/finance/lessons/
 
 ## 좋은 예시
-/lessons/  와 GET method 사용
-/lessons/  와 POST method 사용
-/lessons/1/ 와 DELETE method 사용
+/lessons  와 GET method 사용
+/lessons  와 POST method 사용
+/lessons/1 와 DELETE method 사용
 
-# 긴 api가 아니라, courses/로 이동한다. 
-/groups/8SUE9E/courses/ 
-courses/finance/lessons/
+# 긴 api가 아니라, courses로 이동한다. 
+/groups/8SUE9E/courses 
+courses/finance/lessons
 ```
 
 
 
 ### CRUD: HTTP method POST, GET, UPDATE & PATCH, DELETE
 
-위 HTTP 메서드에 해당되는 CRUD 수행을 간편하게 해주는 외부 라이브러리다.
+DRF는 위 HTTP 메서드에 해당되는 CRUD 수행을 간편하게 해주는 외부 라이브러리다.
 
 장고의 기본 모듈이 아닌 외부 라이브러리지만, 잘 만들어져서 다들 다양하게 사용한다.
 
@@ -273,9 +278,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
 &nbsp;
 
----
-
-&nbsp;
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Project: Payment 개발 과정에서의 고려사항들과 개발 이슈들"
-date: 2022-12-05T11:08:59+09:00
-draft: true
+date: 2022-12-06T11:08:59+09:00
+draft: false
 summary: Payment 1차 기능을 개발하는 과정에서의 고려사항들과 개발 이슈들에 대해 정리해본다.
 tags: ["payment"]
 categories: ["Project"]
@@ -20,47 +20,158 @@ categories: ["Project"]
 
 ---
 
-# Payment model에 대한 고려사항
+# 1. Payment model에 대한 고려사항
 
-# PaymentManager
+내가 구상하는 결제 모델은 배달, 장바구니, 할인 같은 모델과 연관이 되어 있지 않는 순수한 결제 자체의 정보만 담는 모델임을 고려하여 구성했다.
 
-# Iamport.py에서의 고려사항 
+## 1.1 User ForignKey
 
-# Payment id(merchant_id) 암호화
+결제를 할 때는 로그인이 된 후 진행되는 user story로 구성했기 때문에, User model을 foreignKey로 진행한다. 
 
-아임포트 결제 시, 겹쳐지지 않는 주문 번호가 필요하여 암호화 과정을 도입한다.
+&nbsp;
 
-https://docs.python.org/ko/3/library/hashlib.html
+## 1.2 merchant_id
 
-hexdigest 
-hash.hexdigest()
-digest()와 유사하지만, 요약은 16진수 숫자만 포함하는 두 배 길이의 문자열 객체로 반환됩니다. 전자 메일이나 기타 바이너리가 아닌 환경에서 값을 안전하게 교환하는 데 사용할 수 있습니다.
+### 필요 이유
+merchant_id 는 '주문 번호'를 의미한다. 이를 생성한 이유는 다음과 같다.  
+- 주문마다 독립적이고, 결제 정보를 보안의 관점에서 안전히 지킬 수 있기 위해서다. 
+- 아임포트를 사용할 때, 결제 금액을 위변하여 결제 진행 자체를 막기 위해 아임포트에 독립된 주문 번호를 전달해야하기 때문이다.
+
+&nbsp;
+
+### merchant_id 암호화
+
+위에 언급된 대로 독립적이고, 안전해야하기 때문에 '암호화' 하여 생성하기로 결정했다.
+
+**1) 기존 모듈 vs 외부 모듈 설치**
+
+'암호화' 하는 방법에는 기존 라이브러리를 사용하는 방식과 써드 파트를 설치하는 방식이 있지만, 추가 설치하여 무게를 늘리고 싶지 않기 때문에 기존에 존재하는 모듈인 `hashlib`를 사용하기로 결정했다. 만약 무게가 늘어나면 EC2에 배포 시에 비용이 더 들기 때문이고, 다른 요인들에 영향을 주지 않는다면 비용이 적은 걸 추구하는 게 엔지니어로서 맞다고 생각했다.
+- 고려 대상 모듈: `crytography`
+
+#
+
+**2) sha1 vs sha256**  
+
+기존 모듈로 고려한 대상은 `hashlib`를 선택했으며 이 안에서도 `sha-1`과 `sha-256`을 고민했다. `sha-2`에서 `sha-256`을 선택한 이유는 일반적으로 이 해쉬 알고리즘을 사용한다고 확인했기 때문이다. 일반적으로 사용하는 만큼 안전성과 접근성 등등 여러모로 이유가 있을거라 판단했기 때문이다. 그러면 결국 `sha-1`을 선택한 이유는 이 두 가지를 사용하여 해시값을 생성해보니 `sha-1`이 더 짧았기 때문이다. 현재 프로젝트 규모가 크지 않기 때문에 그리 긴 해시값은 필요없다고 판단했기 때문이다.
+
+❗️ 하지만 프로젝트 발표 후, 프로젝트 진행한 거를 회고하면서 다시 sha-1과 sha-2를 알아보면서 sha-1에 해독 가능성이 제시됭 이를 중단하여, 크롬 브라우저에서는 2019년부터는 SHA-1 인증서를 사용하는 사이트는 접속 못하도록 차단했다고 들어 프로젝트가 다시 착수할 때는 sha-256으로 바꿀 계획이다.
+
+- sha: Secure Hash Algorithm의 약어 
+- 참고 문서
+    - [hashlib - 보안 해시와 메시지 요약](https://docs.python.org/ko/3/library/hashlib.html)  
+    - [namu.wiki - SHA](https://namu.wiki/w/SHA)
+
+#
+
+**3) 암호화의 대상 구체화하기**
+
+이 다음으로는 사용자 id 외에 구체적으로 무엇을 암호화할지를 고민하기 시작했다. 
+
+사용자 id만 하기에는 안전하지 못하다는 생각이 들어, 지속적으로 변하여 그 값이 이전과 독립적인 게 무엇이 있을까 고민했다. 
+그건 바로 '시간' 이었다. 그리고, 사용자 한 명이 결제를 여러 번 시도할 때 시간을 지속적으로 흐르기 때문에 사용자 id(user.id)와 시간을 가지고 만든다면 계속해서 독립적인 주문 번호를 생성할 수 있을거라 판단했다.
+
+#
+
+**4) digest vs hexdigest**
+
+digest에 대해 먼저 알아보자. 
+
+원본 데이터가 해시함수를 통과하여 암호화된 데이터를 '다이제스트(digest)'라고 한다.
+
+`hashlib.sha1()`을 사용하는 코드들을 참고하니 digest와 hexdigest가 많이 언급되어 공식문서를 찾아보니 무엇보다 큰 차이는 digest는 해싱한 바이트 문자열을 반환하고, hexdigest는 바이트 문자열을 16진수로 변환한 문자열을 반환한다. `hashlib.sha1(<문자열>.encode()).digest() 또는 .hexdigest()`로 비교해보면 된다.
+
+출력 결과 16진수로 되어있는 hexdigest가 더 짧은 문자열을 가지기 때문에 DB에 저장되는 용량이 더 적어질거라 판단하여 digest를 선택했다.
+
+#
+
+**5) 해시하기 위한 encoding**
+
+파이썬에서의 문자열은 기본적으로 유니코드이므로, 해시하기 위해서는 바이트 형태가 필요하다. 그래서 해시 전에 반드시 인코딩되어야 하므로 `.encode('utf-8')`를 사용한다. 
+
+❗️encode의 기본값은 `'utf-8'`이므로 별도로 입력할 필요는 없다. 프로젝트가 다시 착수될 때 수정할 사항 중 하나다.
+
+#
+
+**6) merchant_id의 자릿수**
+
+merchant_id의 자릿수를 설계할 때 아임포트 API에 string(40)을 확인하지 못하고 다음과 같이 과하게 설계했다.
+
+```python
+merchant_id = models.CharField(verbose_name='주문번호' , max_length=120, unique=True)
+```
+
+그후 merchant_id를 암호화하여 자릿수를 생성할 때, 40을 20으로 착각했고, 현재 결제 건은 많지 않으니 '10'에 맞춰서 진행하기로 결정했다. 
+
+그후, 프로젝트 발표를 마치고 코드를 보면서 회고하는 과정에서 max_length와 암호화 후, 자릿수를 인덱싱하는 과정에서 설계 상 맞지 않는 걸 확인했고, 이 부분 또한 프로젝트가 다시 착수되면 수정 사항으로 확인되었다. 
+
+🔆 max_length는 DB의 VARCHAR 사이즈를 나타내는데, VARCHAR는 mysql에서 버전 4에서는 bytes 였다가 버전 5에서 글자수로 바뀌었다. 
+- a max_length argument which specifies the size of the VARCHAR database field used to store the data. 출처: [Field options](https://docs.djangoproject.com/en/4.1/topics/db/models/#field-options)
+
+#
+
+**7) 두 번 암호화하기**
+
+암호화를 할 때, user의 id와 시간만 합쳐서 암호화를 한 번 하는 것보다 부분적으로 인덱싱하여 가져와서 합친 후, 암호화를 한 번 더 실행하기로 했다. 
+
+```python
+user_hash = hashlib.sha1(str(user.id).encode('utf-8')).hexdigest()[:5]
+time_hash = hashlib.sha1(str(int(time.time())).encode('utf-8')).hexdigest()[-5:]
+merchant_id = hashlib.sha1((user_hash + time_hash).encode('utf-8')).hexdigest()[:10]
+```
+
+&nbsp;
+
+## 1.3 payment_id
+
+아임포트에 merchant_id와 amount를 전달하고, 결제 이후에 아임포트 내에서 merchant_id를 기준으로 결제내역을 확인할 때 `imp_id`를 받는다. 이 imp_id와 merchant_id로 정상 거래인지 아닌지를 판단한다.
+
+이 아임포트에서 전달한 imp_id가 DB에 payment_id로 저장됩니다. 즉 '결제 번호'를 의미한다. 이 결제 번호는 결제 오류로 아임포트에서 받지 못할 수도 있어 다음과 같이 `blank=True`로 설정한다.
+
+&nbsp;
+
+## 1.4 amount
+
+amount는 '결제 금액'을 의미한다. 이 결제는 테스트 결제이기 때문에, 테스트 결제를 위한 최소 결제 금액을 알고 있는 것이 중요했다. 최소 결제 금액은 [최소,최대 결제금액이 얼만지 궁금해요!](https://faq.iamport.kr/7e1f6e5f-5e36-4617-b509-c26602079561)에서 KG 이니시스를 확인하면 '신용카드'는 100원이라는 걸 알 수 있다. 그래서 다음과 같이 default 값으로 100을 입력해야 한다.
+
+```python
+amount = models.PositiveIntegerField(verbose_name='결제 금액', default=100)
+```
+
+만약 이 100원보다 낮은 금액으로 merchant_id와 amount를 아임포트에 전달할 경우, 아임포트에서는 받아들여지지 않아서 다음과 같은 에러가 발생된다.
+
+- 발생된 error: `거래건이 존재하지 않습니다.`
+
+그렇기 때문에 결제 외부 API를 사용한다면 반드시 테스트를 위한 최소 결제 금액을 확인해야 한다.
 
 
-이외에 https://ddolcat.tistory.com/713 에 참조하면 써드 파트를 설치하는 방식이 있지만, 라이브러리를 추가로 설치하고 싶지 않다. 
+&nbsp;
 
-기존에 있던 모듈을 사용하고 싶어서 이 방식은 택하지 않는다. 
+## 1.5 type
 
-sha256 과 sha1 중 후자를 택한 건 현재 사용자와 데이터 규모가 작기  때문에, 짧은 것을 선택했다.
+type은 결제 방식을 의미한다. 프로젝트의 클론 대상이 되는 사이트에서는 카드 결제만을 고려했기 때문에, 이번 프로젝트 또한 카드 결제만을 고려했다.
 
-.encode('utf-8')을 입력하지 않으면 sha1로 변환된 값을 확인할 수 없다. 
+&nbsp;
 
-user_hash = hashlib.sha1(str(user.id).encode('utf-8')).hexdigest()[:2]
-print(user_hash)
+---
+# 2. Iamport.py 작성 시 고려사항 
 
-user_hash = hashlib.sha1(str(user.id).encode('utf-8')).hexdigest()
-print(user_hash)
+iamport.py 는 아임포트 github에서 제공하는 함수를 그대로 가져온 게 아니라, 이를 참고로 나만의 방식으로 작성했다. 
 
-time_hash = hashlib.sha1(str(int(time.time())).encode('utf-8')).hexdigest()[-3:]
-print(time_hash)
+-  `IMP_KEY`와 `IMP_SECRET` 값을 가리키는 인스턴스 변수들을 생성자에 포함시켜서 해당 클래스를 가져와서 변수를 인스턴스화할 때, 별도의 KEY와 SECRET 값을 받지 않도록 설계했다.
 
-time_hash = hashlib.sha1(str(int(time.time())).encode('utf-8')).hexdigest()
-print(time_hash)
+- 아임포트 api url에서 protocol + host 부분은 클래스 변수로 만들어서 매 메서드마다 반복해서 입력되는 걸 방지한다.
 
-자리 수를 몇 으로 해야할까?
+- 아임포트에서 응답을 보낼 때 'code'라는 key의 대응되는 값이 0이므로 단지 0으로 두기보다는 `response_success`라는 변수가 가리키도록 하여 가독성 부분도 고려했다. 
+
+- 아임포트에 url에 데이터를 전달할 때는 `request` module을 사용했다.
+
+- status code 부분은 400번대가 존재하는데 아임포트 api 문서에서 실패 시 반환하는 status code를 그대로 가져왔기 때문이다.
 
 
-# models.Manager
+&nbsp;
+
+---
+# 3. models.Manager 작성 시 고려사항
 
 https://docs.djangoproject.com/en/4.0/topics/db/managers/
 
@@ -75,7 +186,9 @@ objects 가 아닌 objects_manager 라고 한다면 AsManager.objects 를 입력
 
 하지만, AsManager.objects_manager 라고 한다면 해당 Manager model에서 만든 쿼리 메서드를 사용할 수 있다. 
 
+&nbsp;
 
+---
 # 막힌 부분
 
 `PaymentCheckoutAjaxView`는 아임포트 js 파일이 실행될 시, js function인 `AjaxStoreTransaction`가 호출하는 뷰 클래스다. 
@@ -142,91 +255,166 @@ iamport api와 통신하기 위해서 Iamport class를 만들었다.
 이 클래스의 `prepare_payments` 메서드에서 오류가 발생했다.  
 
 
+&nbsp;
 
+---
 
 # 결제 정보를 html tag에 노출된 것을 서버 view class로 옮기는 과정에서 발생된 Error
 
-## ValueError: 거래건이 존재하지 않습니다.
+# 또 다시 발생된 Error
 
-- 아래 views.py 코드에서 payment.save()로부터 에러가 발생했다.
+PG사를 지정하지 않았다는 에러 안내문이 발생했다.  
+
+처음 아이포트를 진행할 때 https://classic-admin.iamport.kr/settings 이 사이트로 진행했으나, 기존 PG 사 설정을 할 수 없어서, 안해도 되는 걸로 판단했다. 
+
+하지만, 다시 아임포트 docs https://docs.iamport.kr/implementation/payment 를 읽어보면서 정할 수 있는 걸로 판단했다. 
+
+구글링을 하다가 https://github.com/iamport/iamport-react-native/issues/21 이 사이트에 들어오니, 가맹점 코드를 입력해야한다고 한다. 
+
+그리고, '구 메뉴얼' 과 '신 메뉴얼' 간에 차이가 존재한다는 걸 인지했고, 기존 pg 사 설정이 옛날 admin 사이트로만 다들 설명되어 있어서, 새로운 admin 사이트인 https://admin.iamport.kr/integration 에서 결제 연동 탭에서 웹 표준 모델인 KG이니시스를 선택하여 진행했다. 
+
+그리고 https://docs.iamport.kr/sdk/javascript-sdk?lang=ko#request_pay 을 참고하여 아임포트에서 제공하는 js 파일에 `pg: 'html5_inicis'` 를 입력했다. 이 페이지를 보면 무슨 값들이 입력되어야 하고, 각 값들의 기본 타입은 무엇인지 알 수 있다. 
+
+처음에 type을 choice 하기 위해서 사용된 field가 IntegerField였는데, 그래서 js에 'card'로 입력하여 필드 Error가 발생하여 우리 측에는 Integer로 발생했으니 1로 입력했으나, 이는 아임포트 측에서 받아들일 수 없던 값이었다. 그래서 CharField로 바꾼 후, choices 속성 값인 `PAYMENT_TYPE_CHOICES` 를 수정했다. 
+
+결제 모듈을 가져와 사용할 때는 입력된 기본값의 타입들이 무엇인지 확인하고 나서 모델 설계를 들어가야한다는 걸 알게 되었다.
+
+
+# 뜬 모달 결제창, 하지만 결제 완료 단계에서 발생된 문제
+
+PaymentImpAjaxView class 의 다음 부분에서 Error가 발생하여 500 Error가 발생했다.
 
 ```python
-# views.py 
-
-class MakeStatusFailed(APIView):
-    """
-    사용자 변심으로 결제 취소 시, payment의 status를 failed로 바꾸기
-    """
-
-    def post(self, request):
-        print('----- MakeStatusFailed -----')
-        imp_id                      = request.data['imp_id']
-        print('----- imp_id -----', imp_id)
-        merchant_id                 = request.data['merchant_id']
-        print('----- merchant_id -----', merchant_id)
-        payment                     = Payment.objects.get(merchant_id=merchant_id)
-        print('----- payment  -----', payment)
-        
-        if payment is not None: 
-            payment.payment_id      = imp_id
-            payment.status          = 'failed'
-            payment.save()
-            data                    = {'works': True}
-
-            return Response(data, status=status.HTTP_200_OK)
-        
-        else:
-            data                    = {'works': False}
-            
-            return Response(data, {'msg':"Can't find a payment object with merchant_id passed"}, status=status.HTTP_400_BAD_REQUEST)
+payment             = Payment.objects.get(
+                                user=user, 
+                                merchant_order_id=merchant_id, 
+                                amount=amount,
+                                )
 ```
 
+get에 들어가는 매개변수 명칭이 model이 가지고 있는 속성이 아니어서 발생된 문제였다. 
+merchant_order_id 는 Payment에서 존재하지 않는다. 
+**속성 값을 입력할 때도 정확하게 model이 가지고 있는 속성 값을 입력해야 한다.**
 
-- Error message
+그래서 `merchant_order_id`를 `merchant_id`로 수정했다. 
+
+# 4. DB에 저장되는 결제 정보 시간대 설정
+
+
+settings.py에서 설정을 변경하기
+
+DateTimeField로 결제 시간을 저장하고 있다. 
+DB에 저장되는 시간을 보면 한국 시간대가 아니다. 
+그래서 아래 2가지 설정을 `settings.py`에 추가한다.
+- `TIME_ZONE = 'Asia/Seoul'`
+- `USE_TZ = False`
+
+출처: https://docs.djangoproject.com/el/1.10/ref/settings/#std:setting-TIME_ZONE 
+USE_TZ가 True일 때는 templates, forms에서의 datetime에만 내가 설정한 TIME_ZONE이 적용된다. 따라서 models의 datetime에는 이 부분이 적용되지 않았기 때문에 원래의 default time zone인 'UTC' 값으로 계속 설정되었던 것이다.
+나는 models에서도 내가 설정한 TIME_ZONE 값을 적용하고 싶기 때문에 이 부분을 False로 바꾸어 주었다.
+
+
+
+## IMP.request_pay({})
+
+IMP.request_pay로 들어와서 데이터가 아임포트에 전달되고, 결제 모듈 창이 뜨고, 결제 완료 후 모달 창이 닫힌다. 
+
+- 위 과정에서 결제 버튼을 클릭하여 창이 닫히면서 function (rsp) {} 가 실행단계에 돌입.
+- 여기서 rsp는 PG사로부터 응답이다.
+- rsp에 담겨진 데이터를 알기 위해서 function (rsp)로 조건문으로 분기 전에 `console.log(rsp)`를 출력하면 다음과 같이 뜬다.
 
 ```yml
- File "/Users/jehakim/Desktop/Devket/pocket/models.py", line 218, in payment_validation
-    iamport_transaction = Payment.objects.get_transaction(merchant_id=instance.merchant_id)
-  File "/Users/jehakim/Desktop/Devket/pocket/models.py", line 170, in get_transaction
-    result = PaymentManager.imp.find_transaction(merchant_id)
-  File "/Users/jehakim/Desktop/Devket/pocket/iamport.py", line 86, in find_transaction
-    raise ValueError('거래건이 존재하지 않습니다.')
-ValueError: 거래건이 존재하지 않습니다.
+apply_num: "34987222"
+bank_name: null
+buyer_addr: ""
+buyer_email: "rudtls0611@naver.com"
+buyer_name: ""
+buyer_postcode: ""
+buyer_tel: ""
+card_name: "BC카드"
+card_number: "910020*********0"
+card_quota: 0
+currency: "KRW"
+custom_data: null
+imp_uid: "imp_989639118401"
+merchant_uid: "ada3f4dfcf"
+name: "Devket Premium 서비스"
+paid_amount: 100
+paid_at: 1669691757
+pay_method: "card"
+pg_provider: "html5_inicis"
+pg_tid: "StdpayCARDINIpayTest20221129121557395502"
+pg_type: "payment"
+receipt_url: "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid=StdpayCARDINIpayTest20221129121557395502&noMethod=1"
+status: "paid"
+success: true
+```
+
+위 값들에서 맨 마지막 success 값이 true이냐, false 냐에 따라서 이후 로직이 갈라진다. 
+
+그러고 success가 true일 때만 ImpTransaction 함수가 실행된다. 
+- Iamport에 해당 결제 내역이 있는지 조회가 성공되면 db에 'paid'로 결제완료 상태로 변한다. 
+
+
+### 사용자가 변심으로 인해 결제창을 끌 경우
+
+```python
+@api_view(['POST'])
+def make_status_failed(request): 
+    """
+    사용자 변심으로 인한 결제 취소 시, payment의 status를 failed 값으로 바꾸기
+    """
+    merchant_id                 = request.POST.get('merchant_id')
+    imp_id                      = request.POST.get('imp_id')
+    payment                     = Payment.objects.get(payment_id=merchant_id)
+
+    if payment is not None: 
+        payment.payment_id = imp_id
+        payment.status = 'failed'
+        payment.save()
+        data = {'work': True}
+        return Response(data)
+    
+    else:
+        data = {'work': False}
+        return Response(data)
 ```
 
 
-Error 발생 순서는 다음과 같다.
+ File "/Users/jehakim/Desktop/Devket/env-devket/lib/python3.10/site-packages/django/db/models/query.py", line 439, in get
+    raise self.model.MultipleObjectsReturned(
+pocket.models.Payment.MultipleObjectsReturned: get() returned more than one Payment -- it returned more than 20!
 
-MakeStatusFailed class -> payment.save() -> Payment model class 실행 -> post_save.connect 실행 -> payment_validation function 실행 -> find_transaction 실행 -> ValueError 발생 
+이와 같은 에러가 발생했다. 즉 위에서 Payment 객체를 조회할 때, 속성값을 `payment_id`로 했기 때문에, 조회되지 않는 값이 여러 개라서, 2개 이상이 조회되어 발생된 에러다. 
+이를 payment_id가 아닌 merchant_id로 수정해야 한다. 
+payment_id는 조회 후, 반영되기 때문이다.  
 
-왜 Error가 발생된 것일까? 왜 아임포트에서 해당 merchant_id를 찾지 못한 것일까? 
+```python
+# views.py
+payment                     = Payment.objects.get(merchant_id=merchant_id)
+```
 
-이는 먼저 prepare_payments 단계에서 아임포트에 정보를 제대로 전달하지 못 했기 때문이다. 
+그리고, 이 function에 request를 보내는 checkout.js의 CancelTransaction도 merchant_id를 받도록 매개변수 부분을 수정한다. 
 
-하지만, merchant_id와 amount는 확실하게 생성 및 입력되어 전달했는데 무엇이 문제일까? 
 
-아임포트 API 문서를 보면 이 단계에서 반드시 전해줘야하는 건 merchant_id와 amount 즉, 결제금액이다. 
+사용자 변심으로 인한 취소는 DB에 imp_id가 반영되지 않은 상황이다.
+이러한 상황에서 Payment 조회 후 자동적으로 payment_validation이 실행될 경우, imp_id가 filter의 속성으로도 들어가기 때문에 NoneType을 반환하여 
+`TypeError: 'NoneType' object is not subscriptable` 가 발생한다. 
 
-하지만 더 나아가서 amount의 최고 결제 금액은 100원임을 알 수 있다. 
-(출처: https://faq.iamport.kr/7e1f6e5f-5e36-4617-b509-c26602079561)
 
-print 문으로 전달된 amount 값을 확인해보면 '0'으로 확인된다. 
+PaymentManager 부분에서 아래 부분 때문에 failed 부분이 포함되지 않아서 생긴 문제였다. 
 
-PaymentPassAjaxView class에서 온 request로부터 amount 정보를 받아왔을텐데 왜 값이 다를까?
+```python
+def get_transaction(self, merchant_id):
+        result = PaymentManager.imp.find_transaction(merchant_id)
 
-html tag value로 입력된 100 수치는 클라이언트에게 노출되어 있기 때문에, 보안 상 좋지 않아 서버 단으로 입력되도록 바꾸는 과정에서 amount가 적힌 태그를 삭제했고, 값이 있는 태그를 읽어오는 함수도 js에서 삭제했다.
+        if result['status'] == 'paid' or 'failed':
+            return result
+        else:
+            return None
+```
 
-그런데 왜 '0'이 입력되었을까? 
-
-models.py 의 amount 속성의 default 값이 0이기 때문이다. 
-
-다시 한 번 default 값을 정할 때에도 공식 문서의 안내를 따라 설계를 해야한다는 걸 느꼈다.
-
-그 결과 '0'이 입력되어 결국 거래건이 존재하지 않는다는 결과가 뜬 것이다.
-
-그래서 default = 100으로 수정했고 amount 값을 view class에서 수정할 수 있도록 옮겼다. 
-
-Devket은 유료 무료로만 나눠진 거라 상품과 할인율이 없지만, 구독이란 개념이 들어가게 된다면 할인률에 따라 상품을 나눠서 운영한다면 model 속성으로서 값을 가져와서 입력되도록 설계한다.
+위 결과 소비자 변심으로 마지막 결제 창에서 취소한다는 건 DB data 상에서 imp_id 와 merchant_id가 존재하는데 status가 failed인 경우를 의미한다. 
 
 
 

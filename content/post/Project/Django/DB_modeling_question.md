@@ -28,7 +28,7 @@ models.py에서 Field로 선언되는 것들은 각 인스턴스 간에 값이 �
 
 # max_length
 a max_length argument which specifies the size of the VARCHAR database field used to store the data.
-https://docs.djangoproject.com/en/4.1/topics/db/models/#field-options 
+[Field options](https://docs.djangoproject.com/en/4.1/topics/db/models/#field-options)
 
 VARCHAR 는 mysql에서 bytes 였다가 글자수로 바뀌었다. 버전 4에서는 bytes였지만, 버전 5부터는 글자수로 바뀌었다. 
 
