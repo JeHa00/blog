@@ -24,6 +24,8 @@ categories: ["Project"]
 
 내가 구상하는 결제 모델은 배달, 장바구니, 할인 같은 모델과 연관이 되어 있지 않는 순수한 결제 자체의 정보만 담는 모델임을 고려하여 구성했다.
 
+이번 경험을 통해서 결제 api를 가져와 연동할 때에는 입력된 기본값의 타입들이 외부 api에서는 무엇인지 확인하고 나서 모델 설계를 들어가야한다는 걸 알게 되었다.
+
 ## 1.1 User ForignKey
 
 결제를 할 때는 로그인이 된 후 진행되는 user story로 구성했기 때문에, User model을 foreignKey로 진행한다. 
@@ -42,6 +44,8 @@ merchant_id 는 '주문 번호'를 의미한다. 이를 생성한 이유는 다�
 ### merchant_id 암호화
 
 위에 언급된 대로 독립적이고, 안전해야하기 때문에 '암호화' 하여 생성하기로 결정했다.
+
+암호화는 `class PaymentManager(models.Manager)`에서 선언한 메서드인 create_new 과정에서 user 정보를 받아 진행된다.
 
 **1) 기존 모듈 vs 외부 모듈 설치**
 
@@ -148,7 +152,63 @@ amount = models.PositiveIntegerField(verbose_name='결제 금액', default=100)
 
 ## 1.5 type
 
-type은 결제 방식을 의미한다. 프로젝트의 클론 대상이 되는 사이트에서는 카드 결제만을 고려했기 때문에, 이번 프로젝트 또한 카드 결제만을 고려했다.
+type은 결제 방식을 의미한다. 아임포트에서는 결제 수단을 'method'라 했지만 이는 다른 의미로 받아들여질 확률이 크다고 판단되어 type이란 명칭을 선택했다. 
+
+또한, 프로젝트의 클론 대상이 되는 사이트에서는 카드 결제만을 고려했기 때문에, 이번 프로젝트 또한 카드 결제만을 고려했다.  
+
+type의 choices 속성 값에 해당되는 PAYMENT_TYPE_CHOICES가 처음에는 IntegerField에 입력되기 위해서 
+다음과 같이 before case로 적혔지만, 이런 경우 type 정보를 아임포트에 전달하면 못 받아들였기 때문에 아임포트와의 호환을 위해서 after case로 수정했다.
+
+```python
+# before case
+PAYMENT_TYPE_CHOICES = [(1, '신용카드')]
+
+# after case
+PAYMENT_TYPE_CHOICES = [('card', '신용카드')]
+```
+
+❗️ type이란 명칭은 파이썬의 내장 함수 type()에 사용되는 예약어이기 때문에 수정사항에 해당된다.
+
+#
+
+
+# 1.6 status
+
+'결제 상태'를 말한다. 결제 객체를 생성 후 중간 중간 과정을 저장하는 게 중요하기 때문이다. 이 저장된 값에 따라서 결제가 어떻게 중단되었고, 어디서 중단되었는지 알 수 있기 때문이다. 또한, 결제가 정확하게 이뤄졌는지 판단할 수 있다. 
+
+처음에는 이 또한 IntegerField를 사용하여 choices를 다음과 같이 만들었다.
+
+```python
+# status choices
+IS_DONE = 2
+IS_AWAITING = 1
+IS_CANCELLED = 0
+
+STATUS_CHOICES =[
+        {IS_DONE, '결제완료'},
+        {IS_AWAITING, '결제대기'},
+        {IS_CANCELLED, '결제취소'}
+    ]
+
+status = models.IntegerField(choices=STATUS_CHOICES, default=IS_AWAITING, verbose_name='결제상태')
+```
+
+하지만 이럴 경우, 아임포트와 연동하는 과정에서 혼란스러웠기 때문에 아임포트에서 전달하는 상태 값을 최대한 그대로 사용하는 게 낫다는 판단을 하여 CharField를 사용했다.
+
+
+```python
+STATUS_CHOICES =[
+                 {'await', '결제대기'},
+                 {'paid', '결제성공'},
+                 {'failed', '결제실패'},
+                 {'cancelled', '결제취소'}
+                ]
+                
+status = models.CharField(verbose_name='결제상태', default='await', 
+choices=STATUS_CHOICES, max_length=10)
+```
+
+max_length는 cancelled 를 고려하여 10으로 설정했다.
 
 &nbsp;
 
@@ -157,13 +217,14 @@ type은 결제 방식을 의미한다. 프로젝트의 클론 대상이 되는 �
 
 iamport.py 는 아임포트 github에서 제공하는 함수를 그대로 가져온 게 아니라, 이를 참고로 나만의 방식으로 작성했다. 
 
--  `IMP_KEY`와 `IMP_SECRET` 값을 가리키는 인스턴스 변수들을 생성자에 포함시켜서 해당 클래스를 가져와서 변수를 인스턴스화할 때, 별도의 KEY와 SECRET 값을 받지 않도록 설계했다.
+- `IMP_KEY`와 `IMP_SECRET` 값을 가리키는 인스턴스 변수들을 생성자에 포함시켜서 해당 클래스를 가져와서 변수를 인스턴스화할 때, 별도의 KEY와 SECRET 값을 받지 않도록 설계했다.
 
 - 아임포트 api url에서 protocol + host 부분은 클래스 변수로 만들어서 매 메서드마다 반복해서 입력되는 걸 방지한다.
 
 - 아임포트에서 응답을 보낼 때 'code'라는 key의 대응되는 값이 0이므로 단지 0으로 두기보다는 `response_success`라는 변수가 가리키도록 하여 가독성 부분도 고려했다. 
 
-- 아임포트에 url에 데이터를 전달할 때는 `request` module을 사용했다.
+- 아임포트에 url에 데이터를 전달할 때는 `request` module을 사용했다. 
+    - ❗️ 이 부분이 계속해서 반복되기 때문에 프로젝트를 다시 착수할 때 별도의 메서드로 함수화할 예정이다.
 
 - status code 부분은 400번대가 존재하는데 아임포트 api 문서에서 실패 시 반환하는 status code를 그대로 가져왔기 때문이다.
 
@@ -173,131 +234,24 @@ iamport.py 는 아임포트 github에서 제공하는 함수를 그대로 가져
 ---
 # 3. models.Manager 작성 시 고려사항
 
-https://docs.djangoproject.com/en/4.0/topics/db/managers/
+models.Manager를 사용한 이유는 로직을 view에서 처리하면 너무 길어지기 때문에, 이보다는 해당 Manager model에서 만든 쿼리 메서드를 만들어서 사용하는 게 관리의 관점에서 낫다고 판단했기 때문이다.
+
+- [models.Manager 관련 django docs](https://docs.djangoproject.com/en/4.0/topics/db/managers/)
 
 
-models.Manager란 특정 모델이 사용하는 쿼리 명령어를 만들 때 사용하는 모델이다. 
+Manager의 이름은 `<이 모델 매니저를 사용할 모델명>Manager`로 작명한다. 그리고 이 Manager를 사용할 모델에 objects에 할당한다.
 
-이 모델의 모델명은 <이 모델 매니저를 사용할 모델명>Manager 로 작명한다. (예를 들어서 AsManager라고 하자.)
-
-그리고 이 Manager를 사용할 모델의 클래스 변수로 objects 에 할당하거나, 다른 이름으로 할당한다. 
-
-objects 가 아닌 objects_manager 라고 한다면 AsManager.objects 를 입력하면 django에서 제공하는 기본 쿼리 명령어(메서드)를 사용한다. 
-
-하지만, AsManager.objects_manager 라고 한다면 해당 Manager model에서 만든 쿼리 메서드를 사용할 수 있다. 
-
-&nbsp;
-
----
-# 막힌 부분
-
-`PaymentCheckoutAjaxView`는 아임포트 js 파일이 실행될 시, js function인 `AjaxStoreTransaction`가 호출하는 뷰 클래스다. 
-`AjaxStoreTransaction`가 보내는 request를 받아서 주문 고유 번호인 `merchant_id`를 반환하는 클래스다.  
-
-즉, `AjaxStoreTransaction`는 `PaymentCheckoutAjaxView`가 보낸 response에 담겨진 `merchant_id` 주문 고유번호를 아임포트에 전달하는 역할을 한다. 
-
-그래서 이 고유 번호와 다른 값들과 함께 정산 확인 및 환불을 진행할 수 있다.  
-
-`AjaxStoreTransaction`와 `merchant_id` 라는 명칭은 아임포트 안내사항에 따라 작명했다.  
-
-```python
-# views.py
-class PaymentCheckoutAjaxView(View):
-    ...
-    merchant_id = Payment.objects.create_new(
-                    user=user, 
-                    amount=amount,
-                    type=payment_type,
-                )
-```
-
-`create_new`는 `PaymentManager` 에서 만든 메서드다. 
-
-이 메서드에서 진행이 안되는 걸 print문을 통해 확인했다.
-
-나는 중간 중간 print 문을 찍어서 어디서 막혔는지를 확인하는 방식으로 디버깅을 한다. 
-
-`create_new` 는 다음과 같이 작성되어 있다.
-
-```python
-class PaymentManager(models.Manager):
-
-    imp = Iamport(IMP_KEY, IMP_SECRET)
-
-    def create_new(self, user, amount, type, success=None, transaction_status=1):
-        print('##### enter create_new #####')
-        if not user: 
-            raise ValueError("Can't find user")
-        
-        # merchant_id 암호화하기
-        user_hash = hashlib.sha1(str(user.id).encode('utf-8')).hexdigest()[:5]
-        time_hash = hashlib.sha1(str(int(time.time())).encode('utf-8')).hexdigest()[-5:]
-        merchant_id = hashlib.sha1((user_hash + time_hash).encode('utf-8')).hexdigest()[:10]
-
-        # 아임 포트에 통보
-        PaymentManager.imp.prepare_payments(merchant_id, amount)
-
-        print('after prepare_payments')
-
-        new_transaction = self.model(
-            user=user, 
-            merchant_id=merchant_id,
-            amount=amount,
-            type=type
-        )
-
-        print(new_transaction)
+    ```python
+    class Payments(models.Model):
         ...
-```
-
-iamport api와 통신하기 위해서 Iamport class를 만들었다. 
-
-이 클래스의 `prepare_payments` 메서드에서 오류가 발생했다.  
-
+        objects = PaymentsManager()
+        ...
+    ```
 
 &nbsp;
 
+
 ---
-
-# 결제 정보를 html tag에 노출된 것을 서버 view class로 옮기는 과정에서 발생된 Error
-
-# 또 다시 발생된 Error
-
-PG사를 지정하지 않았다는 에러 안내문이 발생했다.  
-
-처음 아이포트를 진행할 때 https://classic-admin.iamport.kr/settings 이 사이트로 진행했으나, 기존 PG 사 설정을 할 수 없어서, 안해도 되는 걸로 판단했다. 
-
-하지만, 다시 아임포트 docs https://docs.iamport.kr/implementation/payment 를 읽어보면서 정할 수 있는 걸로 판단했다. 
-
-구글링을 하다가 https://github.com/iamport/iamport-react-native/issues/21 이 사이트에 들어오니, 가맹점 코드를 입력해야한다고 한다. 
-
-그리고, '구 메뉴얼' 과 '신 메뉴얼' 간에 차이가 존재한다는 걸 인지했고, 기존 pg 사 설정이 옛날 admin 사이트로만 다들 설명되어 있어서, 새로운 admin 사이트인 https://admin.iamport.kr/integration 에서 결제 연동 탭에서 웹 표준 모델인 KG이니시스를 선택하여 진행했다. 
-
-그리고 https://docs.iamport.kr/sdk/javascript-sdk?lang=ko#request_pay 을 참고하여 아임포트에서 제공하는 js 파일에 `pg: 'html5_inicis'` 를 입력했다. 이 페이지를 보면 무슨 값들이 입력되어야 하고, 각 값들의 기본 타입은 무엇인지 알 수 있다. 
-
-처음에 type을 choice 하기 위해서 사용된 field가 IntegerField였는데, 그래서 js에 'card'로 입력하여 필드 Error가 발생하여 우리 측에는 Integer로 발생했으니 1로 입력했으나, 이는 아임포트 측에서 받아들일 수 없던 값이었다. 그래서 CharField로 바꾼 후, choices 속성 값인 `PAYMENT_TYPE_CHOICES` 를 수정했다. 
-
-결제 모듈을 가져와 사용할 때는 입력된 기본값의 타입들이 무엇인지 확인하고 나서 모델 설계를 들어가야한다는 걸 알게 되었다.
-
-
-# 뜬 모달 결제창, 하지만 결제 완료 단계에서 발생된 문제
-
-PaymentImpAjaxView class 의 다음 부분에서 Error가 발생하여 500 Error가 발생했다.
-
-```python
-payment             = Payment.objects.get(
-                                user=user, 
-                                merchant_order_id=merchant_id, 
-                                amount=amount,
-                                )
-```
-
-get에 들어가는 매개변수 명칭이 model이 가지고 있는 속성이 아니어서 발생된 문제였다. 
-merchant_order_id 는 Payment에서 존재하지 않는다. 
-**속성 값을 입력할 때도 정확하게 model이 가지고 있는 속성 값을 입력해야 한다.**
-
-그래서 `merchant_order_id`를 `merchant_id`로 수정했다. 
-
 # 4. DB에 저장되는 결제 정보 시간대 설정
 
 

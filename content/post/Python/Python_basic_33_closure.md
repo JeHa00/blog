@@ -90,6 +90,8 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 
 > **_Reference에 따른 closure 정의: 외부에서 호출된 함수의 변수값, 상태(레퍼런스)를 복사 후 저장한다. 그 후에 접근(액세스)이 가능하도록 하는 도구_**
 
+- 나만의 정의: 함수가 선언될 당시의 상황을 기억(closure: 포섭)했다가, 차후 호출될 때 기억한 환경을 사용하는 함수  
+
 - **scope을 기준으로 설명하자면**
 
   - **Closure란 enclosing scope에 있는 자유변수(free variable)를 이 scope의 실행이 종료되도 보유하고 있는 내부 함수 또는 중첩함수를 말한다.**
@@ -98,7 +100,7 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
     - 정의되지 않은 code block에 사용되는 변수
     - 여러 번 호출이 일어나도 상태 정보를 보유하기 위해 closure가 사용하는 원리
 
-- closure는 outer function을 호출해서 innter function을 return 했지만, outer function의 **_enclosing scope_** 에 있던 **_자유변수(free variable)를 계속해서 기억한다._**
+- closure는 outer function을 호출해서 inner function을 return 했지만, inner function의 **_enclosing scope_** 에 있던 **_자유변수(free variable)를 계속해서 기억한다._**
 
 - 그래서, 함수실행이 끝나도 그 시점의 변수를 이어서 작업할 수 있다.
 
