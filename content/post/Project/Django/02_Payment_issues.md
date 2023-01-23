@@ -115,7 +115,7 @@ merchant_id = models.CharField(verbose_name='주문번호' , max_length=120, uni
 
 **7) 두 번 암호화하기**
 
-암호화를 할 때, user의 id와 시간만 합쳐서 암호화를 한 번 하는 것보다 부분적으로 인덱싱하여 가져와서 합친 후, 암호화를 한 번 더 실행하기로 했다. 
+암호화를 할 때, user의 id와 시간만 합쳐서 암호화를 한 번 하는 것보다 부분적으로 인덱싱하여 가져와서 합친 후, 암호화를 한 번 더 실행하기로 했다. 그 이유는 구글링하여 해시에 대해 알아보다가 여러 번 해시함수를 거쳐서 다이제스트를 생성하는 방식을 보안적으로 사용한다는 글을 확인했기 때문이다.
 
 ```python
 user_hash = hashlib.sha1(str(user.id).encode('utf-8')).hexdigest()[:5]
@@ -208,7 +208,7 @@ status = models.CharField(verbose_name='결제상태', default='await',
 choices=STATUS_CHOICES, max_length=10)
 ```
 
-max_length는 cancelled 를 고려하여 10으로 설정했다.
+max_length는 `cancelled` 를 고려하여 10으로 설정했다.
 
 &nbsp;
 
@@ -217,16 +217,28 @@ max_length는 cancelled 를 고려하여 10으로 설정했다.
 
 iamport.py 는 아임포트 github에서 제공하는 함수를 그대로 가져온 게 아니라, 이를 참고로 나만의 방식으로 작성했다. 
 
-- `IMP_KEY`와 `IMP_SECRET` 값을 가리키는 인스턴스 변수들을 생성자에 포함시켜서 해당 클래스를 가져와서 변수를 인스턴스화할 때, 별도의 KEY와 SECRET 값을 받지 않도록 설계했다.
+### IMP_KEY와 IMP_SECRET
 
-- 아임포트 api url에서 protocol + host 부분은 클래스 변수로 만들어서 매 메서드마다 반복해서 입력되는 걸 방지한다.
+`IMP_KEY`와 `IMP_SECRET` 값을 가리키는 인스턴스 변수들을 생성자에 포함시켜서 해당 클래스를 가져와서 변수를 인스턴스화할 때, 별도의 KEY와 SECRET 값을 받지 않도록 설계했다. 
 
-- 아임포트에서 응답을 보낼 때 'code'라는 key의 대응되는 값이 0이므로 단지 0으로 두기보다는 `response_success`라는 변수가 가리키도록 하여 가독성 부분도 고려했다. 
 
-- 아임포트에 url에 데이터를 전달할 때는 `request` module을 사용했다. 
-    - ❗️ 이 부분이 계속해서 반복되기 때문에 프로젝트를 다시 착수할 때 별도의 메서드로 함수화할 예정이다.
+### 아임포트 api url을 클래스 변수로 만들기
+아임포트 api url에서 protocol + host 부분은 클래스 변수로 만들어서 복잡한 url을 보다 가독성 좋고 알아보기 쉽게 만들었다.
 
-- status code 부분은 400번대가 존재하는데 아임포트 api 문서에서 실패 시 반환하는 status code를 그대로 가져왔기 때문이다.
+
+### 아임포트 응답 성공일 때, 'code'의 값 
+아임포트에서 응답을 보낼 때 'code'라는 key의 대응되는 값이 0이므로 단지 0으로 두기보다는 `response_success`라는 변수가 가리키도록 하여 가독성 부분도 고려했다. 
+
+
+### request module
+아임포트에 url에 데이터를 전달할 때는 `request` module을 사용했다. 
+
+❗️ 위 부분이 반복되기 때문에 프로젝트를 다시 착수할 때 별도의 메서드로 함수화할 예정이다.
+
+
+### status code
+
+status code 부분은 400번대가 존재하는데 아임포트 api 문서에서 실패 시 반환하는 status code를 그대로 가져왔기 때문이다.
 
 
 &nbsp;
@@ -234,19 +246,22 @@ iamport.py 는 아임포트 github에서 제공하는 함수를 그대로 가져
 ---
 # 3. models.Manager 작성 시 고려사항
 
+### models.Manager를 사용한 이유
+
 models.Manager를 사용한 이유는 로직을 view에서 처리하면 너무 길어지기 때문에, 이보다는 해당 Manager model에서 만든 쿼리 메서드를 만들어서 사용하는 게 관리의 관점에서 낫다고 판단했기 때문이다.
 
 - [models.Manager 관련 django docs](https://docs.djangoproject.com/en/4.0/topics/db/managers/)
 
+### Manager name
+ 
+공식문서를 참고하여 Manager의 이름은 `<이 모델 매니저를 사용할 모델명>Manager`로 작명한다. 그리고 이 Manager를 사용할 모델에 objects에 할당한다.
 
-Manager의 이름은 `<이 모델 매니저를 사용할 모델명>Manager`로 작명한다. 그리고 이 Manager를 사용할 모델에 objects에 할당한다.
-
-    ```python
-    class Payments(models.Model):
-        ...
-        objects = PaymentsManager()
-        ...
-    ```
+```python
+class Payments(models.Model):
+    ...
+    objects = PaymentsManager()
+    ...
+```
 
 &nbsp;
 
@@ -254,123 +269,100 @@ Manager의 이름은 `<이 모델 매니저를 사용할 모델명>Manager`로 �
 ---
 # 4. DB에 저장되는 결제 정보 시간대 설정
 
+결제 시간을 저장하기 위해서 DateTimeField를 사용했다.
 
-settings.py에서 설정을 변경하기
+저장된 결제 시간을 보니 실제 결제 시간과 DB에 저장된 시간이 다른 issue가 발생했다. 
 
-DateTimeField로 결제 시간을 저장하고 있다. 
-DB에 저장되는 시간을 보면 한국 시간대가 아니다. 
-그래서 아래 2가지 설정을 `settings.py`에 추가한다.
-- `TIME_ZONE = 'Asia/Seoul'`
-- `USE_TZ = False`
+[Django docs - TIME_ZONE](https://docs.djangoproject.com/el/1.10/ref/settings/#std:setting-TIME_ZONE)를 보면 settings.py에 `TIME_ZONE`이 정의되어 있지않으면,  default 값으로 `America/Chicago` 로 설정되는 걸 알 수 있다. 
 
-출처: https://docs.djangoproject.com/el/1.10/ref/settings/#std:setting-TIME_ZONE 
-USE_TZ가 True일 때는 templates, forms에서의 datetime에만 내가 설정한 TIME_ZONE이 적용된다. 따라서 models의 datetime에는 이 부분이 적용되지 않았기 때문에 원래의 default time zone인 'UTC' 값으로 계속 설정되었던 것이다.
-나는 models에서도 내가 설정한 TIME_ZONE 값을 적용하고 싶기 때문에 이 부분을 False로 바꾸어 주었다.
-
-
-
-## IMP.request_pay({})
-
-IMP.request_pay로 들어와서 데이터가 아임포트에 전달되고, 결제 모듈 창이 뜨고, 결제 완료 후 모달 창이 닫힌다. 
-
-- 위 과정에서 결제 버튼을 클릭하여 창이 닫히면서 function (rsp) {} 가 실행단계에 돌입.
-- 여기서 rsp는 PG사로부터 응답이다.
-- rsp에 담겨진 데이터를 알기 위해서 function (rsp)로 조건문으로 분기 전에 `console.log(rsp)`를 출력하면 다음과 같이 뜬다.
-
-```yml
-apply_num: "34987222"
-bank_name: null
-buyer_addr: ""
-buyer_email: "rudtls0611@naver.com"
-buyer_name: ""
-buyer_postcode: ""
-buyer_tel: ""
-card_name: "BC카드"
-card_number: "910020*********0"
-card_quota: 0
-currency: "KRW"
-custom_data: null
-imp_uid: "imp_989639118401"
-merchant_uid: "ada3f4dfcf"
-name: "Devket Premium 서비스"
-paid_amount: 100
-paid_at: 1669691757
-pay_method: "card"
-pg_provider: "html5_inicis"
-pg_tid: "StdpayCARDINIpayTest20221129121557395502"
-pg_type: "payment"
-receipt_url: "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid=StdpayCARDINIpayTest20221129121557395502&noMethod=1"
-status: "paid"
-success: true
-```
-
-위 값들에서 맨 마지막 success 값이 true이냐, false 냐에 따라서 이후 로직이 갈라진다. 
-
-그러고 success가 true일 때만 ImpTransaction 함수가 실행된다. 
-- Iamport에 해당 결제 내역이 있는지 조회가 성공되면 db에 'paid'로 결제완료 상태로 변한다. 
-
-
-### 사용자가 변심으로 인해 결제창을 끌 경우
+그래서 다음 두 가지 설정을 추가해본다.
 
 ```python
-@api_view(['POST'])
-def make_status_failed(request): 
+# settings.py
+
+TIME_ZONE = 'Asia/Seoul
+USE_TZ = False
+```
+
+`USE_TZ` 가 True이면 default 값으로 time zone이 인식된다. 그래서 이 부분을 False로 변경한다.
+
+그리고, `TIME_ZONE`에 무슨 값을 세팅할지 알지 못해서 구글링을 통해 확인했다. 나중에 위 문서를 보니 
+[list of time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)에 목록들이 나와있는 걸 확인했다. 
+
+&nbsp;
+
+---
+# post_save.connect()
+
+```python
+from django.db.models.signals import post_save
+...
+post_save.connect(payment_validation, sender=Payment)
+```
+
+[docs Django - Signals](https://docs.djangoproject.com/en/4.1/ref/signals/)를 참고하면 post_save는 save() method를 실행하고 나서 보내진다. sender는 model class를 말한다.  
+
+위 코드를 사용하여 Payment model이 저장되면 payment_validation 함수를 실행하여 payment_id가 존재할 경우, 아임포트 내에서 찾은 결제 내역이 실제 모델에도 존재하는지를 확인합니다. 그리고, 한 곳이라도 없으면 '비정상 거래' 임을 알리는 코드입니다.  
+
+post_save는 다음과 같이 ModelSignal class의 인스턴스입니다. 
+
+```python
+# signals.py
+
+class ModelSignal(Signal):
     """
-    사용자 변심으로 인한 결제 취소 시, payment의 status를 failed 값으로 바꾸기
+    Signal subclass that allows the sender to be lazily specified as a string
+    of the `app_label.ModelName` form.
     """
-    merchant_id                 = request.POST.get('merchant_id')
-    imp_id                      = request.POST.get('imp_id')
-    payment                     = Payment.objects.get(payment_id=merchant_id)
+    def _lazy_method(self, method, apps, receiver, sender, **kwargs):
+        from django.db.models.options import Options
 
-    if payment is not None: 
-        payment.payment_id = imp_id
-        payment.status = 'failed'
-        payment.save()
-        data = {'work': True}
-        return Response(data)
-    
-    else:
-        data = {'work': False}
-        return Response(data)
-```
-
-
- File "/Users/jehakim/Desktop/Devket/env-devket/lib/python3.10/site-packages/django/db/models/query.py", line 439, in get
-    raise self.model.MultipleObjectsReturned(
-pocket.models.Payment.MultipleObjectsReturned: get() returned more than one Payment -- it returned more than 20!
-
-이와 같은 에러가 발생했다. 즉 위에서 Payment 객체를 조회할 때, 속성값을 `payment_id`로 했기 때문에, 조회되지 않는 값이 여러 개라서, 2개 이상이 조회되어 발생된 에러다. 
-이를 payment_id가 아닌 merchant_id로 수정해야 한다. 
-payment_id는 조회 후, 반영되기 때문이다.  
-
-```python
-# views.py
-payment                     = Payment.objects.get(merchant_id=merchant_id)
-```
-
-그리고, 이 function에 request를 보내는 checkout.js의 CancelTransaction도 merchant_id를 받도록 매개변수 부분을 수정한다. 
-
-
-사용자 변심으로 인한 취소는 DB에 imp_id가 반영되지 않은 상황이다.
-이러한 상황에서 Payment 조회 후 자동적으로 payment_validation이 실행될 경우, imp_id가 filter의 속성으로도 들어가기 때문에 NoneType을 반환하여 
-`TypeError: 'NoneType' object is not subscriptable` 가 발생한다. 
-
-
-PaymentManager 부분에서 아래 부분 때문에 failed 부분이 포함되지 않아서 생긴 문제였다. 
-
-```python
-def get_transaction(self, merchant_id):
-        result = PaymentManager.imp.find_transaction(merchant_id)
-
-        if result['status'] == 'paid' or 'failed':
-            return result
+        # This partial takes a single optional argument named "sender".
+        partial_method = partial(method, receiver, **kwargs)
+        if isinstance(sender, str):
+            apps = apps or Options.default_apps
+            apps.lazy_model_operation(partial_method, make_model_tuple(sender))
         else:
-            return None
+            return partial_method(sender)
+
+    def connect(self, receiver, sender=None, weak=True, dispatch_uid=None, apps=None):
+        self._lazy_method(
+            super().connect, apps, receiver, sender,
+            weak=weak, dispatch_uid=dispatch_uid,
+        )
+
+    def disconnect(self, receiver=None, sender=None, dispatch_uid=None, apps=None):
+        return self._lazy_method(
+            super().disconnect, apps, receiver, sender, dispatch_uid=dispatch_uid
+        )
+
+...
+
+post_save = ModelSignal(use_caching=True)
 ```
 
-위 결과 소비자 변심으로 마지막 결제 창에서 취소한다는 건 DB data 상에서 imp_id 와 merchant_id가 존재하는데 status가 failed인 경우를 의미한다. 
+[Signals](https://docs.djangoproject.com/en/4.1/ref/signals/)를 참고하면 post_save는 save() method를 실행하고 나서 보내진다. sender는 model class를 말한다.  
 
+```python
+post_save.connect(receiver=payment_validation, sender=Payment)
 
+# connect는 단지 _lazy_method로 연결시켜주는 역할이다.
+self._lazy_method(method=super().connect, apps=None, receiver=payment_validation, sender=Payment, ...)
+
+# ---> def _lazy_method
+
+# functools.py의 partial class 실행
+partial_method = partial(method=super().connect, receiver=payment_validation)
+
+만일 Payment 객체가 문자열 객체이면 lazy_model_operation(partial_method, make_model_tuple(sender=Payment))를 실행
+
+# lazy_model_operation은 무엇을 위한 것일까? 이 메서드는 어디에 있을까??
+# registry.py의 Apps class에서 lazy_model_operation 이 존재한다.
+
+문자열 객체가 아니면 partial_method(sender=Payment)를 실행
+
+- Payment의 type()은 str이 아니기 때문에, partial_method(Payment)를 실행한다.
+```
 
 &nbsp;
 
@@ -378,4 +370,9 @@ def get_transaction(self, merchant_id):
 
 # Reference 
 
-- []()
+- [hashlib - 보안 해시와 메시지 요약](https://docs.python.org/ko/3/library/hashlib.html)  
+- [namu.wiki - SHA](https://namu.wiki/w/SHA)  
+- [Field options](https://docs.djangoproject.com/en/4.1/topics/db/models/#field-options)  
+- [최소,최대 결제금액이 얼만지 궁금해요!](https://faq.iamport.kr/7e1f6e5f-5e36-4617-b509-c26602079561)  
+- [models.Manager 관련 django docs](https://docs.djangoproject.com/en/4.0/topics/db/managers/)  
+- [list of time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)  

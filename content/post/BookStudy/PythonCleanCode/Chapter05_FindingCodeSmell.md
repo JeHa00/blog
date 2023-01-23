@@ -237,7 +237,7 @@ def example_function():
 
 ## 숫자 접미사가 3개 이상인 경우
 
-이 때는 **각 데이터를 독립적인 변수에 담는 것이 아닌 list, set, dictionary 같은 collection으로 저장** 하자.
+**각 데이터를 독립적인 변수에 담는 것이 아닌 list, set, dictionary 같은 collection으로 저장** 하자.
 
 ```python
 # Bad case
