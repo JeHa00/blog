@@ -1,19 +1,12 @@
 ---
 title: "Book Study - 클린 코드, 이제는 파이썬이다: OOP and Class"
-date: 2023-01-02T20:17:13+09:00
-draft: false
+date: 2023-02-01T20:17:13+09:00
+draft: true
 summary: 클래스란 무엇이고, class에서 attribute란 무엇을 말하는 것이고, self란 무엇인지, 파이썬에서 언더바는 무엇을 의미하는지, type()은 어디에 사용되는지, 현실 세계의 객체를 클래스화할 때 문제점은 무엇인지 알아본다.
 tags: ["TIL", "Book Study"]
 categories: ["Book Study"]
 ---
 # 0. Introduction
-
-> 1. [실세계 비유: 온라인 양식 기입](#1-실세계-비유-온라인-양식-기입)    
-> 2. [클래스에서 객체 생성하기](#2-클래스에서-객체-생성하기)    
-> 3. [WizCoin이라는 간단한 클래스 생성하기](#3-wizcoin이라는-간단한-클래스-생성하기)    
-> 4. [Type() and __qualname__](#4-type-and-qualname)    
-> 5. [OOP vs Non-OOP program comparision: Titackto game](#5-oop-vs-non-oop-program-comparision-titackto-game)   
-> 6. [실세계를 위한 클래스 설계는 어렵다.](#6-실세계를-위한-클래스-설계는-어렵다)    
 
 - 아래 book study는 알 스웨이가트가 지었고, 박재호님이 번역하신 [클린 코드, 이제는 파이썬이다.](https://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=355096830&gclid=Cj0KCQjw166aBhDEARIsAMEyZh4ltxiM-nlGaj3yjPIW82A6l-hPlXjmjBCqtmw6xzqRX8dc8Rk6PFMaAjm9EALw_wcB) 를 읽고 진행한 book study 입니다. 영문 원본으로 온라인 공개된 자료가 있어서 영문으로 학습합니다.
 

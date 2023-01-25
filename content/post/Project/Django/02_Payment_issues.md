@@ -172,7 +172,7 @@ PAYMENT_TYPE_CHOICES = [('card', '신용카드')]
 #
 
 
-# 1.6 status
+## 1.6 status
 
 '결제 상태'를 말한다. 결제 객체를 생성 후 중간 중간 과정을 저장하는 게 중요하기 때문이다. 이 저장된 값에 따라서 결제가 어떻게 중단되었고, 어디서 중단되었는지 알 수 있기 때문이다. 또한, 결제가 정확하게 이뤄졌는지 판단할 수 있다. 
 
@@ -292,7 +292,15 @@ USE_TZ = False
 &nbsp;
 
 ---
-# post_save.connect()
+# 5. post_save.connect()
+
+
+## post_save.connect를 택한 이유와 역할
+
+### 이유
+post_save.connect()를 사용한 이유는 2가지다.
+- 첫 번째: Payment 모델 객체에 관한 것이기 때문에, models.py 에서 처리하길 원했다.
+- 두 번째: Payment 모델 save()가 실행되면 자동적으로 payment_validation을 체크하여 아임포트와 로컬 DB에 존재하는지 자동적으로 체크하길 원했다.
 
 ```python
 from django.db.models.signals import post_save
@@ -300,28 +308,35 @@ from django.db.models.signals import post_save
 post_save.connect(payment_validation, sender=Payment)
 ```
 
-[docs Django - Signals](https://docs.djangoproject.com/en/4.1/ref/signals/)를 참고하면 post_save는 save() method를 실행하고 나서 보내진다. sender는 model class를 말한다.  
+### 역할
+[docs Django - Signals](https://docs.djangoproject.com/en/4.1/ref/signals/)를 참고하면 post_save는 model 객체에 대해 save() method가 실행된 후, method가 실행되도록 신호를 보낸다.
 
-위 코드를 사용하여 Payment model이 저장되면 payment_validation 함수를 실행하여 payment_id가 존재할 경우, 아임포트 내에서 찾은 결제 내역이 실제 모델에도 존재하는지를 확인합니다. 그리고, 한 곳이라도 없으면 '비정상 거래' 임을 알리는 코드입니다.  
+Payment model이 저장되면 위 코드를 사용하여 payment_validation 함수를 실행한다. 만약 payment_id가 존재할 경우, 아임포트 내에서 찾은 결제 내역이 실제 모델에도 존재하는지를 확인한다. 한 곳이라도 없으면 '비정상 거래' 임을 알리는 역할을 수행한다.
 
-post_save는 다음과 같이 ModelSignal class의 인스턴스입니다. 
+&nbsp;
+
+## post_save.connect의 내부 원리
+
+
+### ModelSignal class and partial class
+
+> **_model 객체인 sender 그리고, receiver를 받아서 partial class를 통해 Signal.connect에 전달해주는 역할_**
+
+post_save는 다음과 같이 ModelSignal class의 인스턴스다. 그래서 이 인스턴스에 접근하여 인스턴스 메서드인 connect가 실행된다. connect에서 받은 인자들을 _lazy_method에 전달한다. 
+
 
 ```python
 # signals.py
 
 class ModelSignal(Signal):
-    """
-    Signal subclass that allows the sender to be lazily specified as a string
-    of the `app_label.ModelName` form.
-    """
-    def _lazy_method(self, method, apps, receiver, sender, **kwargs):
-        from django.db.models.options import Options
+   
+    ...
 
-        # This partial takes a single optional argument named "sender".
+    def _lazy_method(self, method, apps, receiver, sender, **kwargs):
+        ...
         partial_method = partial(method, receiver, **kwargs)
         if isinstance(sender, str):
-            apps = apps or Options.default_apps
-            apps.lazy_model_operation(partial_method, make_model_tuple(sender))
+            ...
         else:
             return partial_method(sender)
 
@@ -330,39 +345,94 @@ class ModelSignal(Signal):
             super().connect, apps, receiver, sender,
             weak=weak, dispatch_uid=dispatch_uid,
         )
-
-    def disconnect(self, receiver=None, sender=None, dispatch_uid=None, apps=None):
-        return self._lazy_method(
-            super().disconnect, apps, receiver, sender, dispatch_uid=dispatch_uid
-        )
-
+    ...
 ...
 
 post_save = ModelSignal(use_caching=True)
 ```
 
-[Signals](https://docs.djangoproject.com/en/4.1/ref/signals/)를 참고하면 post_save는 save() method를 실행하고 나서 보내진다. sender는 model class를 말한다.  
+받은 인자는 아래 코드대로 self를 사용하여 같은 클래스의 메서드를 호출하여 전달된다. 아래에서 super()는 Signal 상위 클래스를 말한다.
 
 ```python
-post_save.connect(receiver=payment_validation, sender=Payment)
-
-# connect는 단지 _lazy_method로 연결시켜주는 역할이다.
 self._lazy_method(method=super().connect, apps=None, receiver=payment_validation, sender=Payment, ...)
-
-# ---> def _lazy_method
-
-# functools.py의 partial class 실행
-partial_method = partial(method=super().connect, receiver=payment_validation)
-
-만일 Payment 객체가 문자열 객체이면 lazy_model_operation(partial_method, make_model_tuple(sender=Payment))를 실행
-
-# lazy_model_operation은 무엇을 위한 것일까? 이 메서드는 어디에 있을까??
-# registry.py의 Apps class에서 lazy_model_operation 이 존재한다.
-
-문자열 객체가 아니면 partial_method(sender=Payment)를 실행
-
-- Payment의 type()은 str이 아니기 때문에, partial_method(Payment)를 실행한다.
 ```
+
+그러면 partial_method 인스턴스 객체를 만든다. 이 때 partial class 내부의 `__new__` method가 실행되서 다음과 같이 func과 args 속성이 각각 method와 receiver를 가리킨다.
+
+```python
+partial_method = partial(method=super().connect, receiver=payment_validation)
+partial_method.func = super().connect
+partial_method.args = payment_validation
+```
+
+그 다음으로 `_lazy_method` method는 객체가 문자열 유무에 따라 분기가 되는데, Payment의 type()은 str이 아니고, `<class 'django.db.models.base.ModelBase'>` 이므로, `partial_method(sender=Payment)`를 실행한다. 
+
+`partial_method(sender=Payment)` 실행되면 'partial class'의 `__call__` method가 호출된다.
+
+```python
+def __call__(self, /, *args, **keywords):
+    keywords = {**self.keywords, **keywords}
+    return self.func(*self.args, *args, **keywords)
+```
+
+위의 각 매개변수는 다음을 의미한다.
+- self.func: super().connect -> Signal.connect
+- *self.args: payment_validation
+- *args: Payment
+
+
+### Signal.connect
+
+그러면 `self.func(*self.args, *args, **keywords)`가 어떻게 실행되는지 알아보자. 
+
+```python
+self.lock = threading.Lock()
+self.sender_receivers_cache = weakref.WeakKeyDictionary() if use_caching else {}
+
+def connect(self, receiver, sender=None, weak=True, ...):
+
+    if weak:
+        ...
+        weakref.finalize(receiver, self._remove_receiver)
+
+    with self.lock:
+        self._clear_dead_receivers()
+        if not any(r_key == lookup_key for r_key, _ in self.receivers):
+            self.receivers.append((lookup_key, receiver))
+        self.sender_receivers_cache.clear()
+
+# threading.py
+_allocate_lock = _thread.allocate_lock
+Lock = _allocate_lock
+```
+
+### weakref.finalize() class
+Signal class는 weak라는 변수로 약한 참조와 강한 참조를 구분한다. weak가 True이면 약한 참조를 의미하여, weakref.finalize() class를 통해 receiver가 garbage collector에 의해서 수거될 때 실행할 콜백함수를 등록한다. 여기서 콜백함수는 self._remove_receiver다.
+
+### dead_receivers
+receiver가 실행 및 완료되면 `self._remove_receiver`가 실행되어 `self._dead_receivers = True` 값으로 변경되어 self.receivers에 dead_receiver가 존재하는 걸 알린다. 
+
+이 dead_receiver는 self.lock이 유지되는 동안 _clear_dead_receivers에 의해서 
+- 1) 플래그 변수인 self._dead_receivers를 존재하지 않는다는 의미로 False로 바꾼 후,
+- 2) dead_receivers를 self.receivers에서 제외시킨다.
+
+### sender_receivers_cache
+
+
+&nbsp;
+
+## 🔆 참고: 약한 참조 vs 강한 참조
+
+- 약한 참조(Weak reference): 참조수(reference count)를 증가시키지 않는 reference 객체
+- 강한 참조(Strong reference): 참조수(reference count)를 증가시키는 reference 객체  
+
+- Garbage collector는 reference count가 0인 경우, 해당 reference 객체를 삭제하고 사용하지 않는 메모리라고 판단하여 해당 메모리를 반환한다. 
+    - 그렇다면 약한 참조는 언제든지 GC에 의해서 언제든지 제거될 수 있다. 
+    - 강한 참조는 reference count가 0이 되거나 메모리에서 해제될 때 제거된다.
+
+- Reference count 확인하기
+    - reference count는 `sys.getrefcount(value)`를 사용하면 value의 참조 수를 알 수 있다.
+
 
 &nbsp;
 
