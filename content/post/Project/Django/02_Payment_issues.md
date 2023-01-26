@@ -317,10 +317,20 @@ Payment model이 저장되면 위 코드를 사용하여 payment_validation 함�
 
 ## post_save.connect의 내부 원리
 
+### post_save.connect 실행 전체 순서 
+
+1) post_save.connect(receiver, sender)를 통해서 sender와 receiver를 Signal.connect()에 전달하여 sender와 receiver가 실행이 순차적으로 되도록 연결시키는 단계 
+2) model.save()가 실행되어 Signal.send(sender)가 실행 
+4) Signal.send(sender)에서 Signal._live_receiver(sender)가 호출된다. 그 결과 sender에 연결된 receiver들을 반환하고, 각 receiver들을 실행시킨다. 
+
 
 ### ModelSignal class and partial class
 
-> **_model 객체인 sender 그리고, receiver를 받아서 partial class를 통해 Signal.connect에 전달해주는 역할_**
+> **_model 객체인 sender 그리고, receiver를 받아서 partial class를 통해 Signal.connect에 전달하기_**
+
+model.save()가 실행되기 전에 receiver와 sender를 미리 연결하기 위해서 Signal.connect에 전달하는 단계다. 
+
+그러면 그후, model.save()가 실행되어 sender가 실행될 때, receiver가 실행된다. 
 
 post_save는 다음과 같이 ModelSignal class의 인스턴스다. 그래서 이 인스턴스에 접근하여 인스턴스 메서드인 connect가 실행된다. connect에서 받은 인자들을 _lazy_method에 전달한다. 
 
@@ -383,13 +393,21 @@ def __call__(self, /, *args, **keywords):
 
 ### Signal.connect
 
+> **_전달받은 sender와 receiver를 매핑하는 단계_**
+
 그러면 `self.func(*self.args, *args, **keywords)`가 어떻게 실행되는지 알아보자. 
 
 ```python
 self.lock = threading.Lock()
 self.sender_receivers_cache = weakref.WeakKeyDictionary() if use_caching else {}
+self._dead_receivers = False
 
-def connect(self, receiver, sender=None, weak=True, ...):
+def connect(self, receiver, sender=None, weak=True, dispatch_uid=None):
+
+    if dispatch_uid:
+            lookup_key = (dispatch_uid, _make_id(sender))
+        else:
+            lookup_key = (_make_id(receiver), _make_id(sender))
 
     if weak:
         ...
@@ -400,24 +418,41 @@ def connect(self, receiver, sender=None, weak=True, ...):
         if not any(r_key == lookup_key for r_key, _ in self.receivers):
             self.receivers.append((lookup_key, receiver))
         self.sender_receivers_cache.clear()
-
-# threading.py
-_allocate_lock = _thread.allocate_lock
-Lock = _allocate_lock
 ```
 
-### weakref.finalize() class
+**[weakref.finalize()]**
+
 Signal class는 weak라는 변수로 약한 참조와 강한 참조를 구분한다. weak가 True이면 약한 참조를 의미하여, weakref.finalize() class를 통해 receiver가 garbage collector에 의해서 수거될 때 실행할 콜백함수를 등록한다. 여기서 콜백함수는 self._remove_receiver다.
 
-### dead_receivers
-receiver가 실행 및 완료되면 `self._remove_receiver`가 실행되어 `self._dead_receivers = True` 값으로 변경되어 self.receivers에 dead_receiver가 존재하는 걸 알린다. 
+
+**[dead_receivers]**
+만약 receiver가 실행 및 완료되면 `self._remove_receiver`가 실행되어 `self._dead_receivers = True` 값으로 변경되어 self.receivers에 dead_receiver가 존재하는 걸 알린다. 
 
 이 dead_receiver는 self.lock이 유지되는 동안 _clear_dead_receivers에 의해서 
 - 1) 플래그 변수인 self._dead_receivers를 존재하지 않는다는 의미로 False로 바꾼 후,
 - 2) dead_receivers를 self.receivers에서 제외시킨다.
 
-### sender_receivers_cache
+**[sender_receivers_cache]**
+dead_receivers 를 clear 후, sender_receivers_cache도 clear 한다.
 
+### connect() -> send() -> _live_receivers()
+
+> **_model.save() 후, Signal.send(sender)를 통해 sender와 연결된 receiver들을 실행_**
+
+model인 sender가 model.save() 되면 send(self, sender)에 의해서 signal을 receiver한테 보내는 과정이 실행된다. 
+
+이 send(self, sender) 안에서 _live_receivers(self, sender)를 호출한다.
+
+이 `_live_receivers()`의 역할은 self.sender_receivers_cache에 sender에 대응되는 receiver를 `.get(sender)`를 사용하여 가져와 send()에 보내준다. 그러면 이 send()에서 sender에 대응되는 receiver를 실행시킨다. 
+
+```python
+sender: <class 'pocket.models.Payment'>
+
+# send()의 반환값: [(receiver, response)]
+[(<function payment_validation at 0x10547d510>, None)]
+```
+
+참고 문서: [docs Django - signals: sending signals](https://docs.djangoproject.com/en/4.0/topics/signals/#sending-signals)
 
 &nbsp;
 
@@ -446,3 +481,4 @@ receiver가 실행 및 완료되면 `self._remove_receiver`가 실행되어 `sel
 - [최소,최대 결제금액이 얼만지 궁금해요!](https://faq.iamport.kr/7e1f6e5f-5e36-4617-b509-c26602079561)  
 - [models.Manager 관련 django docs](https://docs.djangoproject.com/en/4.0/topics/db/managers/)  
 - [list of time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)  
+- [docs Django - Signals](https://docs.djangoproject.com/en/4.1/ref/signals/)  
