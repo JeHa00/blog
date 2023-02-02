@@ -16,7 +16,7 @@ categories: ["Book Study"]
 
 - 각 chapter를 읽고 내용 정리하는 식으로 진행합니다.
 
-- 이번에 학습하는 chapter의 주제는 **'Chapter 11: Common Python Gotchas - Writing effective functions'** 입니다.
+- 이번에 학습하는 chapter의 주제는 **'Chapter 10: Common Python Gotchas - Writing effective functions'** 입니다.
 
 <br>
 

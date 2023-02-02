@@ -87,6 +87,7 @@ docker host에서 만든 container 내부에서 bash shell을 실행한다는 �
         - 파일 D의 경로: ./while_loop.py
         - 컨테이너 ID: 26fcb671e9ef
         - 복사할 경로: /home 
+        - docker cp ./while_loop.py 26fcb671e9ef:/home
 
 5. 터미널 B: 위에 복사할 경로에 입력한 경로로 이동해서 `ls`로 확인
 
@@ -95,6 +96,11 @@ docker host에서 만든 container 내부에서 bash shell을 실행한다는 �
 <br>
 
 ## 6.2 container -> Docker host로 파일 전송
+
+위에 host에서 container로 파일 전송하는 것과 동일하다.  
+
+- 터미널 A: `docker cp <B에서 실행한 컨테이너 ID>:<복사할 경로> <파일 D의 경로>` 
+    - docker cp 26fcb671e9ef:/home ./while_loop.py  
 
 <br>
 

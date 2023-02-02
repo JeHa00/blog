@@ -489,6 +489,8 @@ location /static/ {
 
 ### S3 CORS issue
 
+S3 CORS issue는 해당 링크 [Project: deployment issue - S3 CORS](https://jeha00.github.io/post/project/deployment/02_deployment_cors/)를 참고한다.
+
 
 ---
 # 7. Django image size 줄이기: slim

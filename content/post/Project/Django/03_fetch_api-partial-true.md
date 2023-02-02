@@ -29,6 +29,8 @@ NaN 은 Not-A-Number(숫자가 아님) 를 의미한다.
 그래서 클래스에 더할 때는  맨 처음 클래스를 입력할 때는 className을 사용하고, 그 이후에 class 값을 변경하고자할 때는 classList.add(), classList.remove()를 하는 걸 알 수 있다. 
 
 
+https://www.django-rest-framework.org/api-guide/fields/#decimalfield
+
 ### fetch put 
 
 ```js
@@ -152,6 +154,9 @@ DB에 반영이 되었다. 하지만, 아이콘이 바로 활성화되지 않는
 새로고침 후에야 적용이 되었다. 
 
 
+&nbsp;
+
+---
 
 # 3. 유효성 검증 순서
 
@@ -164,3 +169,12 @@ DB에 반영이 되었다. 하지만, 아이콘이 바로 활성화되지 않는
 4. 거친 데이터는 validated_data로 받게 되고, 그 후, serializers.py의 def update를 거친다.
 
 5. 그러면서 instance의 속성을 업데이트한다.  
+
+
+
+&nbsp;
+
+---
+
+# Reference 
+- []()

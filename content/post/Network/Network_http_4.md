@@ -13,7 +13,6 @@ categories: ["Network"]
 - 강의를 듣고 정리한 내용과 모르는 부분에 대한 추가 내용을 합쳐 올린다.
 - 이 강의는 HTTP에 대한 웹 기본지식을 설명하는 강의이므로, 내용이 간략할 수 있다.
 
-&nbsp;
 
 - 학습 이유: 프레임워크를 사용하여 웹 개발을 배우기 전에, HTTP에 대해 기본적인 지식을 알고자 HTTP 공부를 시작한다. 이 강의에 대해 공부 후, 네트워크 전반에 대해 공부한다.
 
@@ -22,6 +21,9 @@ categories: ["Network"]
 ---
 
 # 1. HTTP API 설계해보기
+
+
+## 1.1 HTTP API 설계에서 중요한 것
 
 - API 설계에서 가장 중요한 것은 **_resource를 식별하는 게 중요하다._**
 - 그 다음으로 해야할 것이 **resource와 행위를 분리하는 것** 이다.
@@ -33,7 +35,9 @@ categories: ["Network"]
   - 회원 수정
   - 회원 삭제
 
-&nbsp;
+
+
+## 1.2 잘못된 API 설계 사례의 문제점
 
 - 그러면 초보 개발자인 경우, 다음과 같이 API URI 설계할 수 있다.
 
@@ -59,9 +63,9 @@ categories: ["Network"]
   - 회원을 등록하고, 수정하고, 조회하는 것을 모두 배제한 다음
   - _회원이라는 resource만 식별하면 된다 -> 회원 resource를 URI에 매핑한다._
 
-&nbsp;
 
----
+
+## 1.3 잘못된 API 개선하기  
 
 - 위 사항들을 반영하면 다음과 같다. (resource 식별, URI 계층 구조 활용)
 - 참고: 계층 구조상 상위를 컬렉션으로 보고 복수단어 사용 권장(member -> members)
@@ -78,25 +82,24 @@ categories: ["Network"]
   - 행위: 조회, 등록,삭제, 변경
   - resource는 명사, 행위는 동사
 
-&nbsp;
-
 - 행위는 어떻게 구분할 수 있을까??
   - **HTTP method**를 사용하여 구분한다.
   - HTTP method에 대해 알아보자.
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 # 2. HTTP method - GET, POST
 
-- HTTP 주요 method
+## 2.1 HTTP 주요 method
 
-  - GET: resource 조회
-  - POST: 요청 데이터 처리, 주로 등록에 사용
-  - PUT: 리소스를 대체, 해당 리소스가 없으면 생성
-  - PATCH: resource 부분 변경
-  - DELETE: resource 삭제
+- GET: resource 조회
+- POST: 요청 데이터 처리, 주로 등록에 사용
+- PUT: 리소스를 대체, 해당 리소스가 없으면 생성
+- PATCH: resource 부분 변경
+- DELETE: resource 삭제
 
 - HTTP 기타 method
   - HEAT: GET과 동일하지만 메시지 바디 부분을 제외하고, 상태 줄과 헤더만 반환
@@ -105,13 +108,10 @@ categories: ["Network"]
   - TRACE: 대상 리소스에 대한 경로를 따라 메시지 루프백 테스트를 수행
     - CONNECT 와 TRACE는 거의 사용안한다.
 
+
 &nbsp;
 
-- 이번 단원에서는 GET과 POST에 대해 자세히 알아보자.
-
----
-
-## 2.1 HTTP method - GET
+## 2.2 HTTP method - GET
 
 ```yml
 GET /search?q=hello&hl=ko HTTP/1.1
@@ -124,7 +124,7 @@ Host: www.google.com
 4.  하지만, 지원하지 않는 곳이 많아서 권장하지 않는다.
     - 실무에서는 GET에 메시지 바디를 안넣는다.
 
-- resource 조회 예시
+### resource 조회 예시
 
 ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ddf8c73-307f-4f5e-96f8-7f3a67a89eaf%2FUntitled.png&blockId=66457d66-3f42-46f0-ac0e-9715e547f825)
 
@@ -138,13 +138,10 @@ Host: www.google.com
 
 &nbsp;
 
----
+## 2.3 HTTP method - POST
 
-## 2.2 HTTP method - POST
 
-&nbsp;
-
-### 2.2.1 POST란?
+### 2.3.1 POST란?
 
 ```yml
 POST /members HTTP/1.1
@@ -162,39 +159,35 @@ Content-Type: application/json
    - 메시지 바디를 통해 들어온 데이터를 처리하는 모든 기능을 수행한다.
 4. 주로 전달된 데이터로 신규 resource 등록, 프로세스 처리에 사용
 
-&nbsp;
 
-### 2.2.2 POST를 사용한 resource 등록 과정
+### 2.3.2 POST를 사용한 resource 등록 과정
 
 - 첫 번째: 메세지 전달
 
-![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F68d1a191-f78c-41bb-81b2-b2841b0bfca3%2FUntitled.png&blockId=210ed0fb-8405-4fbd-bd2a-b0ea0b037b67)
+  ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F68d1a191-f78c-41bb-81b2-b2841b0bfca3%2FUntitled.png&blockId=210ed0fb-8405-4fbd-bd2a-b0ea0b037b67)
 
-1. 클라이언트는 메세지 바디에 등록할 회원 정보를 JSON형태로 만들어 담는다.
-2. 그리고 해당 정보를 서버로 전송한다.  
-   ( 정보를 전달하기 전에, 사전에 서버가 무엇을 할지 미리 약속이 되어 있어야 한다.)
+  - 1. 클라이언트는 메세지 바디에 등록할 회원 정보를 JSON형태로 만들어 담는다.
+  - 2. 그리고 해당 정보를 서버로 전송한다.  
+    ( 정보를 전달하기 전에, 사전에 서버가 무엇을 할지 미리 약속이 되어 있어야 한다.)
 
-&nbsp;
 
 - 두 번째: 신규 resource 생성
 
-![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F454628f3-768f-4854-a389-5cbee3a65e31%2FUntitled.png&blockId=50efcd8c-30b1-4b1d-af2b-c35c57e767be)
+  ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F454628f3-768f-4854-a389-5cbee3a65e31%2FUntitled.png&blockId=50efcd8c-30b1-4b1d-af2b-c35c57e767be)
 
-1. 서버에서 받는 메세지를 분석해 데이터베이스에 등록한다. 이 때 신규 아이디도 생성.
+  - 서버에서 받는 메세지를 분석해 데이터베이스에 등록한다. 이 때 신규 아이디도 생성.
 
-&nbsp;
 
 - 세 번째: 응답 데이터
 
-![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce94e163-cda9-4de9-98ff-35eb74e68e0b%2FUntitled.png&blockId=3076f1aa-a3b7-4e85-90c7-841c3748338b)
+  ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce94e163-cda9-4de9-98ff-35eb74e68e0b%2FUntitled.png&blockId=3076f1aa-a3b7-4e85-90c7-841c3748338b)
 
-1. Location이라는 헤더 정보로 회원이 생성된 경로를 첨부한다.
-2. 신규회원에 대한 데이터를 바디에 담아서 보내준다.
-3. 만들어졌기 때문에 Created라 뜬다. 그리고, 자원의 신규 생성된 URL을 보내준다.
+  - 1. Location이라는 헤더 정보로 회원이 생성된 경로를 첨부한다.
+  - 2. 신규회원에 대한 데이터를 바디에 담아서 보내준다.
+  - 3. 만들어졌기 때문에 Created라 뜬다. 그리고, 자원의 신규 생성된 URL을 보내준다.
 
-&nbsp;
 
-### 2.2.3 요청 데이터를 어떻게 처리한다는 뜻일까??
+### 2.3.3 요청 데이터를 어떻게 처리한다는 뜻일까??
 
 > **_리소스 URI에 POST 요청이 오면, 요청 데이터를 어떻게 처리할지 리소스마다 따로 정해야한다 -> 정해진 것이 없다._**
 
@@ -208,15 +201,14 @@ Content-Type: application/json
   - 기존 자원에 데이터 추가
     - 예) 한 문서 끝에 내용 추가하기
 
-&nbsp;
 
-### 2.2.4 POST method 정리
+### 2.3.4 POST method 정리
 
 **1. 새 resource 생성(등록)**
 
 - 서버가 아직 식별하지 않은 새 resource 생성
 
-**2. 중요! 요청 데이터 처리**
+**2. ❗️ 요청 데이터 처리**
 
 - 단순히 데이터를 생성하거나, 변경하는 것을 넘어서 `프로세스를 처리`해야 하는 경우
 - 상태가 변하기 위해서 POST를 사용하기 때문에, 새로운 리소스가 생성되지 않을 수 있다. 그렇다 할지라도, `서버에 큰 변화를 일으킬 때`는 POST를 생성해야 한다.
@@ -230,9 +222,10 @@ Content-Type: application/json
 - 예) JSON으로 조회 데이터를 넘겨야 하는데, GET 메서드를 사용하기 어려운 경우
 - **애매하면 POST**
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 # 3. HTTP method - PUT,PATCH,DELETE
 
@@ -247,7 +240,7 @@ Content-Type: application/json
 }
 ```
 
-- **resource resource**
+- **resource**
 
   - 리소스가 있으면 대체하고, 없으면 생성한다. (Overwirte)
 
@@ -255,39 +248,36 @@ Content-Type: application/json
 
   - 클라이언트가 resource 위치를 알고 URI 지정한다.
 
-&nbsp;
 
-- 예) 리소스가 없는 경우
-  - /members/100 이라는 신규 리소스를 생성한다.
-  - 신규 리소스의 내용은 다음과 같다.
+### 예) 리소스가 없는 경우
+- /members/100 이라는 신규 리소스를 생성한다.
+- 신규 리소스의 내용은 다음과 같다.
 
-```yml
-{ "username": "hello", "age": 20 }
-```
+  ```yml
+  { "username": "hello", "age": 20 }
+  ```
 
-- 예) 리소스가 있는 경우
-  - /members/100 경로에 아래 내용으로 리소스가 있다면
+### 예) 리소스가 있는 경우
+- /members/100 경로에 아래 내용으로 리소스가 있다면
 
-```yml
-{ "username": "young", "age": 50 }
-```
+  ```yml
+  { "username": "young", "age": 50 }
+  ```
 
 - PUT method로 보내면 다음과 같이 대체된다.
 
-```yml
-{ "username": "hello", "age": 20 }
-```
+  ```yml
+  { "username": "hello", "age": 20 }
+  ```
 
 - 하지만 아래 내용으로 리소스를 보낸다면 아래 내용으로 완전히 대체된다.
 - username 필드가 삭제된다.
 
-```yml
-{ "age": 50 }
-```
+  ```yml
+  { "age": 50 }
+  ```
 
-&nbsp;
 
----
 
 ## 3.2 HTTP method - PATCH
 
@@ -304,7 +294,7 @@ Content-Type: application/json
   - 만약 PATCH가 지원되지 않은 서버라면 POST를 사용한다.
 - PUT과 양식은 비슷하지만, 서버에서 PATCH로 전송된 경우 **_필요한 부분만_** 업데이트된다.
 
-![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0f50ed38-cf8a-4b89-b26d-cc6f008587ab%2FUntitled.png&blockId=304d1aae-0187-4285-a5b0-d1e03114deaf)
+  ![image](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0f50ed38-cf8a-4b89-b26d-cc6f008587ab%2FUntitled.png&blockId=304d1aae-0187-4285-a5b0-d1e03114deaf)
 
 - 그 결과, PUT과는 다르게 회원 정보에서 age만 변경된다.
 
@@ -312,7 +302,6 @@ Content-Type: application/json
 { "age": 50 }
 ```
 
----
 
 ## 3.3 HTTP method - DELETE
 
@@ -323,9 +312,10 @@ Host: localhost:8080
 
 - 클라이언트가 보내면 위 resource url에 해당되는 회원 정보를 서버에서 삭제한다.
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 # 4. HTTP method의 속성
 
@@ -337,10 +327,6 @@ Host: localhost:8080
   - 멱등(idempotent Methods)
   - 캐시가능(Cacheable Methods)
 
-&nbsp;
-
----
-
 ## 4.1 안전(Safe)
 
 > 호출해도 리소스를 변경하지 않는 속성
@@ -349,9 +335,7 @@ Host: localhost:8080
   - Q. 그래도 변경을 요청하면 변경되진 않아도, 로그에 계속 남게되어 터지지 않을까??
   - A: 안전은 해당 리소스만 고려한다. 그런 부분까지 고려하지 않는다.
 
-&nbsp;
 
----
 
 ## 4.2 멱등(Idempotent Methods)
 
@@ -364,13 +348,11 @@ Host: localhost:8080
   - **DELETE: 결과를 삭제한다. 같은 요청을 여러번 해도 결과는 동일.**
   - **_POST_ : 멱등이 아니다! 두 번 호출하면 같은 결제가 중복해서 발생할 수 있다.**
 
-&nbsp;
 
 - 활용
   - 자동 복구 메커니즘
   - 서버가 TIMEOUT 등으로 정상 응답을 못 주었을 때, 클라이언트가 같은 요청을 다시 해도 되는가?? 판단근거
 
-&nbsp;
 
 - 멱등은 외부 요인으로 인해 리소스가 변경되는 건 고려하지 않는다.
   - 내가 호출하는 것에 한정한다.
@@ -380,9 +362,6 @@ Host: localhost:8080
     - 사용자1: GET -> username:A, age:30 -> 사용자2의 영향으로 바뀐 데이터 조회
   - 이런 부분은 멱등하지 않다고 생각하자.
 
-&nbsp;
-
----
 
 ## 4.3 캐시가능(Cacheable Methods)
 
@@ -392,9 +371,10 @@ Host: localhost:8080
   - POST, PATCH는 본문 내용까지 캐시 키로 고려해야 하는데, 구현이 쉽지 않다.
   - GET은 URL만 캐시 키로 관리하면서 구현이 쉽기에 사용이 편하다.
 
+&nbsp;
+
 ---
 
-&nbsp;
 
 # Reference
 
