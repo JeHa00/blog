@@ -14,7 +14,6 @@ categories: ["Python"]
 ```yml
 > class Airline():
 
-
 >     """
 >     Airline class
 >     Author: Kim
@@ -22,10 +21,7 @@ categories: ["Python"]
 >     Description: Class, Static, Instance Method
 >     """
 
-
 >     price_per_raise = 1.0
-
-
 
 >     def __init__(self, company, details):
 >         self._company = company
@@ -39,7 +35,6 @@ categories: ["Python"]
 
 
 ### 코드 추가
-
 >     def __add__(self, x):
 >        print('Called >> __add__')
 >        return (self._details.get('price') + x._details.get('price'))

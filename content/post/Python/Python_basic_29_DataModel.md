@@ -157,7 +157,6 @@ TypeError: 'str' object does not support item assignment
 
 # 3. List comprehension
 
-&nbsp;
 
 ## 3.1 List comprehension의 의미와 구조
 
@@ -280,7 +279,7 @@ Classes(rank='D', number='1'), Classes(rank='D', number='2'), Classes(rank='D', 
 - 'marks1'
 
   - 'marks2' 와 달리 for문을 통해 **_다 새로 만들어졌다._**
-  - 그래서 **_각각 다른 객체를 참조_**한다.
+  - 그래서 **_각각 다른 객체를 참조_** 한다.
   - 이를 `깊은 복사(deepcopy)`라 한다.
 
 - 이를 `id`값으로 확인해보자.
@@ -361,7 +360,6 @@ TypeError: divmod expected 2 arguments, got 1
 
 # 5. Advanced dictionary
 
-&nbsp;
 
 ## 5.1 hash table이란??
 
@@ -457,7 +455,7 @@ k2 val5
 ```
 
 - `setdefault`를 사용하여 훨씬 짧은 코드로 key가 중복된 tuple을 dictionary로 구현했다.
-- `setdefault`를 사용하여 `[]` 가 아닌 `()`로 했다면 tuple이므로, 만들 수 없다.
+- `setdefault`를 사용하여 `[]` 가 아닌 `()`로 했다면 tuple이므로 만들 수 없다.
 
 &nbsp;
 
@@ -513,8 +511,6 @@ False True
 ---
 
 # 6. Advanced set
-
-&nbsp;
 
 ## 6.1 Immutable set
 

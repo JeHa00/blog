@@ -9,7 +9,7 @@ categories: ["Python"]
 
 # 0. Introudtion
 
-- Closure가 필요한 이유 그리고, 잘못 사용된 사례에 대해 알아보자.
+Closure가 필요한 이유 그리고, 잘못 사용된 사례에 대해 알아보자.
 
 &nbsp;
 
@@ -17,7 +17,7 @@ categories: ["Python"]
 
 # 1. UnboundLocalError
 
-- 전역 변수와 지역 변수에 대해 간단히 복습해보자.
+전역 변수와 지역 변수에 대해 간단히 복습해보자.
 
 ```yml
 # global (전역) 변수
@@ -84,7 +84,6 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
 
 # 2. Closure
 
-&nbsp;
 
 ## 2.1 What is closure ??
 
@@ -116,7 +115,7 @@ UnboundLocalError: local variable 'c' referenced before assignmnet
   - 한정된 메모리 공간에서 여러 자원이 접근하면 `교착상태(Dead lock)`에 부딪힌다.
   - 이를 해결하는 게 `동시성(Concurrency) 제어`다.
   - closure는 불변자료 (immutable, Read Only) 구조 및 atom, STM 이므로 multi-thread 프로그래밍에 강점을 가진다.
-  - multi-thread가 아닌 **_단일 thread_** 인데도 동시성을 갖도록 하는 기반이 되는 게 바로 이 closure다.
+  - multi-thread가 아닌 **_단일 thread_** 인데도 동시성을 갖도록 하는 기반이 되는 게 바로 closure다.
 
 - 또한, 이 클로저는 함수형 프로그래밍에도 연결된다.
 
@@ -155,7 +154,7 @@ inner >>> [15, 35, 40] / 3
 30.0
 ```
 
-- 위의 예시처럼 class 실행이 끝나서, 변수가 소멸되야하는데 유지되고 있다. 상태를 기억하고 있기 때문에 계속해서 누적된다. 그래서 중간부터 해도 이어서 할 수 있다.
+위의 예시처럼 class 실행이 끝나서, 변수가 소멸되야하는데 유지되고 있다. 상태를 기억하고 있기 때문에 계속해서 누적된다. 그래서 중간부터 해도 이어서 할 수 있다.
 
 &nbsp;
 
@@ -163,7 +162,7 @@ inner >>> [15, 35, 40] / 3
 
 # 3. Exercises for closure
 
-- closure는 pattern이 정해져 있다.
+closure는 pattern이 정해져 있다.
 
 ```yml
 # global scope

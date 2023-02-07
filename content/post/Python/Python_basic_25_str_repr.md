@@ -12,25 +12,25 @@ categories: ["Python"]
 - class에 대해 공부를 더 시작하면서 매직 메소드에 대해 알기 시작했다.
 - 매직 메소드의 종류인 `__str__` 과 `__repr__` 에 대해 각각 알아보고, 차이점도 알아보자.
 
+
 &nbsp;
+
+---
 
 # 1. Magic method 의 종류: str 과 repr
 
 > **_python에서 이미 만들어놓은 내장된 method로, special method라 한다._**
 
-- magic method의 종류 중 `__str__` 과 `__repr__`에 대해 알아보겠다.
+magic method의 종류 중 `__str__` 과 `__repr__`에 대해 알아보겠다.
+- `__repr__` 의 repr은 `representation`의 약어다.
 
-  - `__repr__` 의 repr은 `representation`의 약어다.
-
-- 예시코드는 Python basic 24에서 작성한 코드를 이어서 사용한다.
+예시코드는 Python basic 24에서 작성한 코드를 이어서 사용한다.
 
 ```yml
 > class Airline():
 >     def __init__(self, company, details):
 >         self._company = company
 >         self._details = details
->
->
 
 > Airline1 = Airline('Koreanair', {'uniform_color': 'skyblue', 'kind':'FSC', 'price': 8000})
 > Airline2 = Airline('Asiana', {'uniform_color': 'gray', 'kind':'FSC', 'price': 6000})
@@ -44,13 +44,13 @@ categories: ["Python"]
 <__main__.Airline object at 0x000002DFDFF06400>
 ```
 
-- Airline 클래스의 인스턴스를 보이기 위해서, `print()`을 사용하면 출력할 instance의 memory address를 보인다.
+Airline 클래스의 인스턴스를 보이기 위해서, `print()`을 사용하면 출력할 instance의 memory address를 보인다.
 
 &nbsp;
 
 ## 1.1 \_\_str\_\_ magic method
 
-- 그러면 Airline class 내부에 `__str__` instance method를 추가해보자.
+그러면 Airline class 내부에 `__str__` instance method를 추가해보자.
 
 ```yml
 > class Airline():
@@ -73,13 +73,13 @@ str : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 
 ```
 
-- `__str__` method 를 사용하니, memory address를 출력하는 것이 아닌, `__str__` method의 return 값을 출력한다.
+`__str__` method 를 사용하니, memory address를 출력하는 것이 아닌, `__str__` method의 return 값을 출력한다.
 
 &nbsp;
 
 ## 1.2 \_\_repr\_\_ magic method
 
-- 다음으로 `__repr__` method를 사용해보자.
+다음으로 `__repr__` method를 사용해보자.
 
 ```yml
 > class Airline():
@@ -100,8 +100,7 @@ repr : Asiana - {'uniform_color': 'gray', 'kind': 'FSC', 'price': 6000}
 repr : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 ```
 
-- `__repr__` method 를 사용하니, memory address를 출력하는 것이 아닌, `__repr__` method에서 return 값을 출력한다.
-- 그러면 `__str__` 와 `__repr__` 를 같이 사용해보자.
+`__repr__` method 를 사용하니, memory address를 출력하는 것이 아닌, `__repr__` method에서 return 값을 출력한다. 그러면 `__str__` 와 `__repr__` 를 같이 사용해보자. `__str__` method의 return 문을 출력했다.
 
 ```yml
 > class Airline():
@@ -125,13 +124,11 @@ str : Asiana - {'uniform_color': 'gray', 'kind': 'FSC', 'price': 6000}
 str : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 ```
 
-- `__str__` method의 return 문을 출력했다.
-
 &nbsp;
 
 ## 1.3. \_\_str\_\_ 과 \_\_repr\_\_ 의 공통점과 차이
 
-- 그러면 여태까지의 증명으로 다음과 같은 사실을 알 수 있다.
+그러면 여태까지의 증명으로 다음과 같은 사실을 알 수 있다.
 
 - \_\_str\_\_ 과 \_\_repr\_\_ 의 공통점
 
@@ -165,9 +162,7 @@ datetime.datetime(2022, 3, 13, 0, 0)
 
 > **_print( )는 object.\_\_str\_\_를 통해서 문자열로 반환된 걸 출력하는 function_**
 
-- `str(object)`를 통해 문자열로 변환할 때, `object.__str__`를 호출하여 이 메소드를 통해 변환된 것을 반환한다.
-
-- `print()`는 `str()`에게 출력할 arguments를 전달하여 문자열로 변환 후 출력한다.
+`str(object)`를 통해 문자열로 변환할 때, `object.__str__`를 호출하여 이 메소드를 통해 변환된 것을 반환한다. `print()`는 `str()`에게 출력할 arguments를 전달하여 문자열로 변환 후 출력한다.
 
 ```yml
 > class Airline():
@@ -184,7 +179,7 @@ str : Koreanair - {'uniform_color': 'skyblue', 'kind': 'FSC', 'price': 8000}
 
 &nbsp;
 
-- `repr()` 또한 `__repr__`을 통해서 변환된 것을 반환한다.
+`repr()` 또한 `__repr__`을 통해서 변환된 것을 반환한다.
 
 ```yml
 > class Airline():
@@ -204,7 +199,7 @@ repr : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 repr : t-wau - {'uniform_color': 'red', 'kind': 'LCC', 'price': 3000}
 ```
 
-- 또한, `__str__`이 별도로 정의되지 않았고 `__repr__`만 정의된 상황일지라도, `str()`을 실행하면 `__repr__`가 실행된다.
+`__str__`이 별도로 정의되지 않았고 `__repr__`만 정의된 상황일지라도, `str()`을 실행하면 `__repr__`가 실행된다.
 
 &nbsp;
 
