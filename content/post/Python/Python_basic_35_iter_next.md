@@ -36,7 +36,6 @@ categories: ["Python"]
 
 # 2. \_\_iter\_\_와 \_\_next\_\_
 
-&nbsp;
 
 ## 2.1 \_\_iter\_\_와 \_\_next\_\_ 용어 정리
 
@@ -259,7 +258,7 @@ True
 > class WordSplitter:
 >   def __init__(self, text):
 >       self._idx = 0
->       self._text = text.split('')
+>       self._text = text.split(' ')
 
 >   def __next__(self):
 >       print('Called __next__')
@@ -304,9 +303,9 @@ Stopped Iteration
 >   def __init__(self, text):
 
 # 인덱스를 기억하지 않아도 된다.
->       self._text = text.split('')
+>       self._text = text.split(' ')
 
->   def __next__(self):
+>   def __iter__(self):
 >       for word in self._text:
 
 # 이것이 제네레이터이며, 이 제네레이터가 위치 정보를 기억한다.
@@ -318,7 +317,7 @@ Stopped Iteration
 >       return 'WordSplit(%s)' % (self._text)
 
 
-> wi = WordSplitter('Do today what you could do tomorrow')
+> wg = WordSplitter('Do today what you could do tomorrow')
 
 > wt = iter(wg)
 

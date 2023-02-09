@@ -28,6 +28,11 @@ categories: ["Django"]
 3. 가상환경 생성: `virtualenv <가상환경 이름> --python=<python version 명>`
     - `virtualenv env-before --python=3.8.9`
 
+❗️ RuntimeError: failed to find interpreter for Builtin discover of python_spec='<python version>'
+
+
+
+
 4. 가상환경 실행: `source ./<가상환경 이름>/bin/activate`
     - ex) `source ./env-before/bin/activate`
 

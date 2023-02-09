@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 36: Generator"
 date: 2022-04-01T19:57:38+09:00
-draft: true
+draft: false
 summary: Generator 1에 이어서 본격적으로 Generator에 대해 알아본다. 그리고, Generator와 관련된 중요 함수들도 알아본다.
 tags: ["TIL", "python"]
 categories: ["Python"]
@@ -400,9 +400,9 @@ sleep 1s
 
 &nbsp;
 
-## 4.5 itertools.chanin(\*itertables)
+## 4.5 itertools.chain(\*iterables)
 
-- 다섯 번째는 `itertools.chanin(*itertables)`이다.
+- 다섯 번째는 `itertools.chain(*iterables)`이다.
 - 첫 번째 iterable에서 소진될 때까지 원소들을 반환한 후, 다음 이터러블로 넘어간다.
 - 이런 식으로 iterables의 모든 iterable이 소진될 때까지 진행하는 iterator를 만든다.
 

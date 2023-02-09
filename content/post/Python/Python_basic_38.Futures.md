@@ -47,7 +47,7 @@ categories: ["Python"]
 
 - blocking 현상으로 CPU 및 resource 낭비 하고 있을 때, `동시성` 활용 작업으로 낭비를 방지한다.
 - 파이썬은 단일 쓰레드로 해도 충분히 빠르다.
-- 특히, 비동기 작업과 적합한 프로그램일 경우, 압도적으로 성능이 향상된다.
+- 특히, 비동기 작업과 적합한 프로그램일 경우 압도적으로 성능이 향상된다.
 
 &nbsp;
 
@@ -57,7 +57,7 @@ categories: ["Python"]
 
 - GIL은 Python에만 존재하는 것으로, Global Interface Lock in CPython을 의미한다.
 - GIL은 두 개 이상의 thread가 동시에 실행될 때(context switching 상황) 하나의 자원에 액세스하는 경우, 문제점을 방지하기 위해 GIL을 실행하여 resource 전체에 lock을 건다.
-- 그래서 multi-thread할 때, GIL 때문에 single-thread보다 느린 경우가 많다.
+- 그래서 multi-thread할 때 GIL 때문에 single-thread보다 느린 경우가 많다.
 
 - GIL을 우회하기 위해서는 반드시 multi-processing을 사용하거나 CPython을 사용하면 GIL이 걸리지 않는다.
 - 하지만 이 때는 동기화를 직접해야 한다.

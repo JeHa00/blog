@@ -11,8 +11,8 @@ summary: about
 
 저는 `_________` 엔지니어입니다.
 - ‘기술은 세상을 이롭게 하기 위해 존재한다’는 가치관을 가진
-- 기록, 정리 그리고 공유를 통해 혼자보다 동료와 함께 성장하고 싶은
-- 커뮤니케이션을 잘하기 위해 재질문과 문서화를 사용하는
+- 기록, 정리 그리고 공유를 통해 혼자보다 동료와 '함께' 성장하고 싶은
+- 커뮤니케이션을 잘하기 위해 '재질문과 문서화' 를 사용하는
 - 학습 속도가 빠른
 
 
@@ -103,6 +103,17 @@ _프로젝트에 사용한 기술들입니다._
 
 # Education. 
 
+### [원티드 프리온보딩 백엔드 챌린지:  MySQL '잘' 사용하기🔗](https://www.wanted.co.kr/events/pre_challenge_be_4)
+
+- **_2023.02.06 - 2023.02.19 (2주)_** 
+- 학습내용
+    - CAT Theorem,  RDBMS와 NoSQL의 차이
+    - Transaction, ACID, Lock, Isolation level
+    - Query, Join, Subquery, SQL functions
+    - Indexing, Normalization, Partitioning, Cache
+
+&nbsp;
+
 ### [나노디그리 백엔드 코스 1기 🔗](https://learningspoons.com/course/detail/django-backend/)
 
 - **_2022.08 - 2022.12 (4.5개월)_** 
@@ -124,4 +135,4 @@ _감사합니다._
 
 _Backend Engineer,  김제하(jeha)_  
 
-_Latest updated    2023.01.16_  
+_Latest updated    2023.02.08_  
