@@ -33,7 +33,7 @@ categories: ["DB"]
 
 아래 3가지를 고려하여 DB를 정해야 한다.  
 
-## 무결성(data integrity)
+## 1.1 무결성(data integrity)
 
 > **_데이터가 전송, 저장, 처리되는 과정에서 변경되거나 손상되지 않아야한다는 원칙 -> 정확성(accuracy), 일관성(consistency)을 유지_**
 
@@ -52,7 +52,7 @@ integrity 단어는 말, 행동, 생각이 일치하여 일관되고, 이 생각
 
 &nbsp;
 
-## 안전성(data reliability)
+## 1.2 안전성(data reliability)
 
 > **_데이터를 보호해야한다는 원칙_**
 
@@ -60,7 +60,7 @@ db를 복제하든지, stand-by db를 대기해둔다든지, 인증/인가되지
 
 &nbsp;
 
-## 확장성(scalability)
+## 1.3 확장성(scalability)
 
 > **_데이터 양이나 사용자가 늘어날 때 대비하기 위해 확장되는 성질_**
 
