@@ -1,7 +1,7 @@
 ---
-title: "[TIL] DB Introduction"
+title: "[TIL] 데이터의 history"
 date: 2022-06-20T23:56:43+09:00
-draft: false
+draft: True
 summary: DB, SQL, RDBMS, NoSQL이란 각각 무엇이고, 앞으로 DB를 무엇부터 학습할지에 대한 이유를 서술했다.
 tags: ["TIL", "DB"]
 categories: ["DB"]
