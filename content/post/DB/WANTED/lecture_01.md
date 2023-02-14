@@ -3,7 +3,7 @@ title: "[DB]원티드 프리온보딩 백엔드 챌린지 MySQL: DB 원칙과 �
 date: 2023-02-13T21:54:56+09:00
 draft: false
 summary: 데이터베이스의 3가지 원칙 / 데이터베이스의 종류 RDBMS와 NoSQL의 비교 / 또 다른 분류 기준인 row oriented db와 column oriented db의 차이 / DB 선정 시 고려할 CAP Theorem 에 대해 알아본다. 
-tags: ["DB", "RDBMS", "NoSQL", "CAP Theorem"]
+tags: ["DB"]
 categories: ["DB"]
 ---
 # 0. Introduction
@@ -12,7 +12,7 @@ categories: ["DB"]
 
 - 해당 챌린지의 목표는 주니어 개발자 및 개발 준비생을 대상으로 하기 때문에, MySQL의 특징을 이해하여 효율적으로 사용하고, MySQL 기본 개념들을 학습하여 기술 면접에 대비하는 게 목적입니다.
 
-- 그래서 운영체제의 cache 운용도가 높은 storage engine을 최적화할 때 어떻게 해야하는가 또는 쿼리 효율 개선 같은 내용은 다루지 않는다.
+- 그래서 운영체제의 cache 운용도가 높은 storage engine을 최적화할 때 어떻게 해야하는가 또는 쿼리 효율 개선 같은 내용은 다루지 않습니다.
 
 ### 해당 포스팅의 주제와 키워드
 
@@ -88,7 +88,7 @@ MySQL, Redis는 확장성이 좋지 않다.
     - 여러 db를 서버에 나눠서 저장해도 table name이 중복될 수 없기 때문에 scale up을 해야 한다. 하지만 이 특성으로 인해 분산 저장을 하지 않기 때문에 데이터 일관성이 잘 유지된다.
 
 
-<br>
+&nbsp;
 
 
 
@@ -100,7 +100,6 @@ MySQL, Redis는 확장성이 좋지 않다.
 
 데이터가 저장되는 형태는 더 많지만 위 3가지가 대부분이므로 더 알아보지 않는다.  
 
-&nbsp;
 
 ### 2.2.1 key-value
 
@@ -157,18 +156,20 @@ MySQL과 비교하자면 Collections이 table이고, Documents가 table의 row�
 
 DB를 나누는 또 다른 기준이 row-oriented 와 column-oriented가 있다.  
 
+### row 와 column oriendtd에 따른 DB 종류
 - row-oriented DB: MySQL, PostgreSQL, hbase
 - column-oriented DB: CassandraDB, hbase, Bigquery
     - big query: 구글에서 만든 DB 엔진
 
-- db 종류에 따른 read와 insert 성능 차이
+### row와 column oriented에 따른 read, insert 성능 차이
 
-    | | row oriented db | column oriented db |
-    | ---- | ---- |---- |
-    |read|  느림|빠름|
-    |insert|빠름|느림|
+| | row oriented db | column oriented db |
+| ---- | ---- |---- |
+|read|  느림|빠름|
+|insert|빠름|느림|
 
 
+### 가정
 데이터가 아래 table처럼 저장되어 있다고 가정하자.  
 
 | Name | City | Age |
@@ -196,19 +197,19 @@ table의 각 row들이 disk에 저장될 때 한 줄로 저장된다.
 
 그리고 disk에는 다음과 같이 각 row 들로 저장된다. 
 
-- disk 1
+- block 1
 
     | Name | City | Age |
     | ---- | ---- | ---- |
     | James | Seoul | 29 | 
 
-- disk 2
+- block 2
 
     | Name | City | Age |
     | ---- | ---- | ---- |
     | Kang | London | 33 | 
 
-- disk 3
+- block 3
 
     | Name | City | Age |
     | ---- | ---- | ---- |
@@ -298,21 +299,21 @@ table의 각 row들이 disk에 저장될 때 한 줄로 저장된다.
 
 그리고, 디스크에는 다음과 같이 저장된다.
 
-- Disk 1
+- block 1
 
     | Name |  | |
     | ---- |---- | ---- |
     | James | Kang | Mac |
 
 
-- Disk 2
+- block 2
 
     |City| ||
     | ---- |---- | ---- |
     | Seoul | London | London |
 
 
-- Disk 3
+- block 3
 
     |Age|||
     | ---- |---- | ---- |
@@ -466,3 +467,4 @@ NoSQL: 인스타그램
 - [원티드 백엔드 챌린지 2월: MySQL '잘' 사용하기](https://www.wanted.co.kr/events/pre_challenge_be_4)
 - [Understanding NoSQL Databases by the CAP Theorem](https://data-science-blog.com/blog/2021/10/14/cap-theorem/)  
 - [What is MongoDB – Working and Features](https://www.geeksforgeeks.org/what-is-mongodb-working-and-features/)  
+- [How row oriented and column oriented db works?](https://www.youtube.com/watch?v=uMkVi4SDLbM)
