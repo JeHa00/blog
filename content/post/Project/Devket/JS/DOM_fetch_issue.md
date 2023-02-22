@@ -4,7 +4,7 @@ date: 2022-11-20T18:25:52+09:00
 draft: false
 summary: 첫 번째, DOM 생성과 fetch 사용을 위한 Javascript 학습 후기를 남겨본다. 두 번째, DOM을 조작하여 개발한 과정과 fetch를 사용하여 개발한 각 과정에서 일어난 여러 개발 issue들에 대해 정리해본다.
 tags: []
-categories: ["Project"]
+categories: ["Project: Devket"]
 ---
 
 # 1. DOM 생성과 fetch function 사용을 위한 Javascript 학습 후기

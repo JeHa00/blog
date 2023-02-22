@@ -4,7 +4,7 @@ date: 2022-12-08T14:43:44+09:00
 draft: false
 summary: docker compose를 사용하여 nginx, gunicorn, AWS S3, AWS RDS와 연결된 django application을 배포한다. 이때, AWS S3에 접근하기 위해서 AWS IAM을 사용한다. static files에 연결하는 방식으로 3가지를 사용했다.
 tags: ["deployment"]
-categories: ["Project"]
+categories: ["Project: Devket"]
 ---
 # 0. Introduction
 
