@@ -23,10 +23,11 @@ categories: ["Python"]
 
 # 1. Serialization(직렬화)
 
-[python docs-guide: Data Serialization](https://docs.python-guide.org/scenarios/serialization/)와 [stackoverflow - What is data serialization?](https://stackoverflow.com/questions/11817950/what-is-data-serialization)에 따르면 data serialiation의 정의를 다음과 같이 내린다. 
+[python docs-guide: Data Serialization](https://docs.python-guide.org/scenarios/serialization/)와 [stackoverflow - What is data serialization?](https://stackoverflow.com/questions/11817950/what-is-data-serialization)에 따르면 data serialization의 정의를 다음과 같이 내린다. 
 
-> **_'Data seirialization(직렬화)'란 구조화된 데이터를 저장되거나 공유될 수 있는 한 가지 형식으로 전환하는 것으로 즉, 저장되거나 네트워크를 통해 보내지기 위해서 다른 형식으로 객체를 인코딩하는 걸 말한다. 이 과정에서 데이터의 사이즈를 줄이는 효과도 가진다._**
+> **_'Data serialization의(직렬화)'란 구조화된 데이터를 저장되거나 공유될 수 있는 한 가지 형식으로 전환하는 것으로 즉, 저장되거나 네트워크를 통해 보내지기 위해서 다른 형식으로 객체를 인코딩하는 걸 말한다. 이 과정에서 데이터의 사이즈를 줄이는 효과도 가진다._**
 
+추가: [직렬화와 역직렬화](https://jeha00.github.io/post/django/drf/drf_study01/#2-%EC%A7%81%EB%A0%AC%ED%99%94%EC%99%80-%EC%97%AD%EC%A7%81%EB%A0%AC%ED%99%94) 문서에 정리한 것처럼 **직렬화** 란 **json을 string으로 바꾸는 것** 을 말하며, **역직렬화** 란 **string을 json으로 바꾸는 것** 을 의미한다.    
 
 <br>
 
@@ -78,15 +79,17 @@ Nested data의 종류에는 YAML, JSON, XML 등이 있다.
 # 2. json.loads 와 json.dump
 
 
-JSON이란 무엇인지 학습한 후, `json.loads()`와 `json.dump()`에 대해 알아본다. 
+JSON이란 무엇인지 학습한 후, `json.loads()`와 `json.dumps()`에 대해 알아본다. 
 
-먼저 두 함수에 대해 그림으로 간략히 표현하면 이와 같다.
+먼저 두 함수에 대해 그림으로 간략히 표현하면 이와 같다. 
 
 
 ![image](https://user-images.githubusercontent.com/78094972/182030027-6d2756d3-0e0f-42ec-a36e-14376bff605b.PNG)
 
 - 이미지 출처: [What is the difference between json.loads() and json.dumps() ?](https://www.educative.io/answers/what-is-the-difference-between-jsonloads-and-jsondumps) 
 
+
+즉, `json.dumps()` 는 직렬화를 하는 함수이고, `json.loads()`는 역직렬화를 하는 함수다.  
 
 
 ### JSON이란?
@@ -97,7 +100,7 @@ JSON이란 무엇인지 학습한 후, `json.loads()`와 `json.dump()`에 대해
 
 #### json.loads
 
-> string을 json Object 즉, dictionary 형태로 바꾼다.
+> **_string을 json Object 즉, dictionary 형태로 바꾼다. (역직렬화)_**
 
 ```python
 BASE_DIR = Path(__file__).resolve().parent
@@ -105,7 +108,8 @@ secrets_path = str(BASE_DIR / "secrets.json")
 with open(secrets_path) as f:
     secret = f.read()
     secret2 = json.loads(secret)
-    print(f"secret type: {type(secret)} \nsecret2 type: {type(secret2)}")
+    print(f"secret type: {type(secret)}") 
+    print(f"secret2 type: {type(secret2)}")
 ```
 
 출력 결과는 다음과 같다. 
@@ -123,7 +127,7 @@ secret2 type: <class 'dict'>
 
 #### json.dumps
 
-> json Object를 string으로 바꿔준다. 
+> **_json Object를 string으로 바꿔준다. (직렬화)_** 
 
 - 위에 코드를 이어서 사용해보자. 
 
