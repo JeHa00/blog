@@ -1,6 +1,6 @@
 baseURL: "http://jeha00.github.io/"
-title: Jeha00 DevLog
-paginate: 20
+title: "Jeha DevLog"
+paginate: 7
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -16,7 +16,7 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: JeHa00 DevLog
+  title: "JeHa00 DevLog"
   description: "선한 마음과 꾸준함이 비범함을 만든다"
   keywords: [Blog, Portfolio, PaperMod]
   # author: ["Me"] # multiple authors
@@ -48,7 +48,7 @@ params:
     safari_pinned_tab:  /safari-pinned-tab.svg
 
   label:
-    text: "Jeha00"
+    text: "@Jeha00"
     iconeUrl: /apple-touch-icon.png
     iconHeight: 35
 
@@ -72,16 +72,24 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Jeha00 DevLog"
-    Content: "
-  **' 선한 마음과 꾸준함이 비범함을 만든다 '**
+    Title: "Jeha DevLog"
+    Content: '
+  **선한 마음과 꾸준함이 비범함을 만든다**
+    
+    -   
 
-    - 함께 일하고 싶은 개발자를 향해 한 걸음
+    -  
+    
+    - 기술은 세상을 이롭게 하기 위해 존재한다. 
 
-    - Good Backend Engineer를 향해 한 걸음
+    - 기술을 사용하는데 제일 좋은 방법은 문제 해결에 사용하는 것이다.  
+    
+    - 문제 해결은 문제 정의에서, 문제 정의는 창의성에서, 창의성은 탄탄한 기본에서 시작된다.   
+    
+    -
 
-    - 한 걸음 한 걸음 꾸준히 👍 🌱
-    "
+    - 그리고 이 기본은 꾸준한 노력으로 형성된다. 🌱  🌳
+    '
     
 
   socialIcons:
