@@ -2,7 +2,7 @@
 title: "[TIL] Network OSI 7 layer: 2계층 데이터 링크 계층"
 date: 2023-05-14T21:14:44+09:00
 draft: false
-summary: OSI 7 layer에서 2계층에 대해 더 깊이 알아보자.   
+summary: OSI 7 layer에서 '네트워크 기기' 간의 데이터 전송과 물리 주소를 결정하는 계층인 2계층에 대해 더 알아보자.   
 tags: ["TIL", "Network"]
 categories: ["Network"]
 ---
@@ -183,7 +183,7 @@ CS(Carrier Sense)는 '반송파 감지', MA(Multiple Access)는  '다중 접속'
 
 ### CSMA/CD 알고리즘
 
-![image](https://private-user-images.githubusercontent.com/78094972/240264209-0edbabbb-117c-4654-a510-95ed634e6f22.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg0ODQzMDk0LCJuYmYiOjE2ODQ4NDI3OTQsInBhdGgiOiIvNzgwOTQ5NzIvMjQwMjY0MjA5LTBlZGJhYmJiLTExN2MtNDY1NC1hNTEwLTk1ZWQ2MzRlNmYyMi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNTIzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDUyM1QxMTUzMTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xOThlNTkzOTM4NDgzYTkwZGJkMTgwYjQ4YzMxMzFiYmQ0ZDMzYjdiY2FkZDk2NGM3NjUwNWU1YTBiYzFjNWMxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.cMFTSq3ladE15MZsxddP-Ra_5rS8tS1Qb4tZxvkKbq4)
+![image](https://github.com/JeHa00/image/assets/78094972/8b0c2dd9-1799-4168-9ee5-0ddf527f5501)
 
 &nbsp;
 
