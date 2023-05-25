@@ -25,10 +25,8 @@ summary: about
 
 _프로젝트에 사용한 기술들입니다._
 
-### Backend
-
-- Python, Django, Django DRF, PostgreSQL
-- Docker, Docker-compose, AWS EC2, AWS RDS, AWS S3, AWS IAM
+- Python 3.10.8, FastAPI, MySQL 8.0, Redis
+- Docker-compose
 
 ### Frontend
 
@@ -42,45 +40,54 @@ _프로젝트에 사용한 기술들입니다._
 
 # Projects
 
+## SNS 백엔드 개발 및 운영
+
+> **_고양이 사료 정보에 관한 오픈 sns (Front: 1명 / Backend: 1명)_**
+
+- **_기간: 2023.03 ~ (진행 중)_**
+
+- **Development**
+  - DDD layered architecture 적용  
+  - Pytest를 사용하여 41개의 unit test와 64개의 EndToEnd test 작성
+  - FastAPI의 background task를 사용하여 가입 인증 이메일, 임시 비밀번호 발급 이메일 전송 속도 1000배 향상 (2900ms -> 0.33ms)
+  - Oauth2를 사용하여 JWT authorization 적용  
+  - SSE(Server-Sent-Event)와 redis의 message queue를 사용하여 알림 기능 구현
+
+- **Deployment**
+  - docker-compose 적용
+  - Github Action을 통한 CI / CD  적용  
+
+&nbsp;
+
 ## [나노디그리 팀 프로젝트: Devket 🔗](https://github.com/backendnanodegree/Devket)
 >
 > **_실제 제품인 pocket 사이트를 클론 코딩 및 개선하기_**
 
-- **_기간 : 2022.11.15 - 2022.12.14 (1개월)_**
+- **_기간 : 2022.11.15 - 2022.12.14 (1개월 / 4명)_**
 
-### pocket 사이트 설명
+- **pocket 사이트 설명**
+  - 사용자가 보관 및 읽고 싶은 타 웹 사이트 컨텐츠를 크롤링으로 저장
+  - 크롤링한 컨텐츠에 하이라이트 표시로 원하는 부분을 강조하는 기능
+  - 결제에 따라 저장할 수 있는 컨텐츠 수와 하이라이트 수 제한
 
-- 사용자가 보관 및 읽고 싶은 타 웹 사이트 컨텐츠를 크롤링으로 저장
-- 크롤링한 컨텐츠에 하이라이트 표시로 원하는 부분을 강조하는 기능
-- 결제에 따라 저장할 수 있는 컨텐츠 수와 하이라이트 수 제한
+- [**Frontend: vanilla js만을 사용 🔗**](https://jeha00.github.io/post/project/devket/js/dom_fetch_issue/)
+  - 저장한 웹 사이트 목록 렌더링  
+  - 저장한 각 웹 사이트 하단에 뜨는 하단툴바 렌더링  
+  - 구축한 api로 하단툴바를 통한 즐겨찾기, 삭제 기능 구현  
+  - fetch를 사용하여 api로부터 데이터를 받아 아임포트에 전송  
 
-### Fast learning ability
+- **Backend**
+  - DB modeling 설계 및 ERD 작성
+  - 전체 목록 및 특정 조건을 만족하는 목록 조회 api 구축
+  - 하단 툴바를 통한 저장된 웹 사이트의 즐겨찾기 값 변경, 저장한 웹 사이트 삭제 api 구축
+  - 개발 기간과 확장성을 고려하여 결제 모듈로 아임포트를 선정하여 결제 기능 구현: 결제 api 구축
+    - [Project: Iamport 선정 이유, 그리고 아임포트 javascript SDK를 사용하여 구축한 결제 흐름 🔗](https://jeha00.github.io/post/project/devket/django/01_payment_overall_flow/)
+    - [Project: Payment 개발 과정에서의 고려사항들과 개발 이슈들 🔗](https://jeha00.github.io/post/project/devket/django/02_payment_issues/)
+  - [AWS EC2, RDS, S3와 docker-compose를 사용한 배포 🔗](https://jeha00.github.io/post/project/devket/deployment/01_deployment/)
 
-- 한 달보다 적은 기간 동안 JS와 DRF를 학습하여 다음과 같은 성과 성취
-
-### [Frontend : vanilla js만을 사용 🔗](https://jeha00.github.io/post/project/js/dom_fetch_issue/)
-
-- 저장한 웹 사이트 목록 렌더링  
-- 저장한 각 웹 사이트 하단에 뜨는 하단툴바 렌더링  
-- 구축한 api로 하단툴바를 통한 즐겨찾기, 삭제 기능 구현  
-- fetch를 사용하여 api로부터 데이터를 받아 아임포트에 전송  
-
-### Backend
-
-- DB modeling 설계 및 ERD 작성
-- 전체 목록 및 특정 조건을 만족하는 목록 조회를 위해 ORM filter와 Q를 사용하여 조회 api 구축
-- 하단 툴바를 통한 저장된 웹 사이트의 즐겨찾기 값 변경, 저장한 웹 사이트 삭제 api 구축
-  - Serializer를 통해 저장한 웹 사이트의 즐겨찾기 값 부분 수정
-- 개발 기간과 확장성을 고려하여 결제 모듈로 아임포트를 선정하여 결제 기능 구현: 결제 api 구축
-  - [Project: Iamport 선정 이유, 그리고 아임포트 javascript SDK를 사용하여 구축한 결제 흐름 🔗](https://jeha00.github.io/post/project/django/01_payment_overall_flow/)
-  - Payment만의 objects를 사용하기 위해 ModelManager를 사용
-  - 중복되지 않은 주문 번호를 생성하기 위해 hashlib 사용
-- AWS EC2, RDS, S3와 docker-compose를 사용한 배포
-
-### Team-mind and Communication
-
-- 팀 전체 성장과 커뮤니케이션 효율을 위해 주도적으로 PR template 도입 추진 및 제작
-  - [Project: Pull Request templates를 도입한 이유 🔗](https://jeha00.github.io/post/project/01_why-pr-template/)
+- **Team and Communication**
+  - 팀 전체 성장과 커뮤니케이션 효율을 위해 주도적으로 PR template 도입 추진 및 제작
+    - [Project: Pull Request templates를 도입한 이유 🔗](https://jeha00.github.io/post/project/devket/docs/why-pr-template/)
 
 &nbsp;
 
