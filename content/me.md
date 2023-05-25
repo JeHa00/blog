@@ -13,11 +13,9 @@ summary: about
 - 제가 가진 기술로 세상에 도움이 되고 싶은  
 - 기록, 정리 그리고 공유를 통해 혼자보다 동료와 '함께' 성장하고 싶은
 - 커뮤니케이션을 잘하기 위해 '재질문과 문서화' 를 사용하는
-- 학습 속도가 빠른
 
 ## Channel & Contact
 
-- Blog. 지금 보고 계신 블로그!
 - Github. [https://github.com/JeHa00 🔗](https://github.com/JeHa00)
 - Email. <rudtls0611@gmail.com>
 
