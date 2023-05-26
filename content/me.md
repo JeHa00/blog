@@ -23,7 +23,7 @@ summary: about
 
 # Skill
 
-_프로젝트에 사용한 기술들입니다._
+_최근 프로젝트에 사용한 기술들입니다._
 
 - Python 3.10.8, FastAPI, MySQL 8.0, Redis
 - Docker-compose
@@ -146,4 +146,4 @@ _감사합니다._
 
 _Backend Engineer,  김제하(jeha)_  
 
-_Latest updated    2023.02.08_  
+_Latest updated    2023.05.26_  
