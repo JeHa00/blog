@@ -1,10 +1,10 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: Write pythonic code"
+title: "클린 코드, 이제는 파이썬이다: Write pythonic code"
 date: 2022-12-25T14:09:38+09:00
 draft: false
 summary: 파이썬을 파이썬스럽게 쓰지 못하는 부분들에 대해 알아보고, 이를 어떻게 파이썬스럽게 작성할지 알아본다.
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

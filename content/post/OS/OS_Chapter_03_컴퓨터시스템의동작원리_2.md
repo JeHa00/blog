@@ -1,10 +1,10 @@
 ---
-title: "[TIL] OS Chapter 03: 컴퓨터 시스템의 동작원리 2"
+title: "[TIL] Chapter 03: 컴퓨터 시스템의 동작원리 2"
 date: 2022-04-14T14:54:58+09:00
 draft: false
 summary: 입출력 구조, DMA, 저장장치의 구조 그리고 계층구조에 대해 알아본다. 또한, 하드웨어, 메모리, CPU의 각 보안 방법에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["OS"]
+categories: "OS"
 ---
 
 # 0. Introduction

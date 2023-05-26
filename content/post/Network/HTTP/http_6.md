@@ -1,9 +1,9 @@
 ---
-title: "[TIL] Network HTTP status"
+title: "[TIL] HTTP status"
 date: 2022-03-15T10:14:50+09:00
 draft: false
 summary: HTTP status 2xx, 3xx, 4xx, 5xx에 대해 각각 알아본다.
-categories: ["Network"]
+categories: "Network"
 ---
 
 # Introduction

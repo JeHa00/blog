@@ -4,7 +4,7 @@ date: 2022-07-11T23:31:47+09:00
 draft: false
 summary: git cherry-pick 명령어를 사용하여 다른 브랜치에 있는 원하는 commit만 따오는 실습을 해본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

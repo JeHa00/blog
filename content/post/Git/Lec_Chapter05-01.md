@@ -4,7 +4,7 @@ date: 2022-06-27T21:39:43+09:00
 draft: false
 summary: 첫 번째 CVCS에 비해서 Git의 장점이 무엇인지, 두 번째 Git의 3가지 공간(Working directory, Staging area, Directory)이 무엇인지, 세 번째 git rm과 git mv 명령어로 파일이 어떤 영역으로 이동되는지, 네 번째 reset의 3가지 옵션에 대해 학습한다. 
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

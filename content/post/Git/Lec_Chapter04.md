@@ -4,7 +4,7 @@ date: 2022-06-27T11:29:38+09:00
 draft: false
 summary: GitHub에 원격 저장소를 만들고, 원격과 로컬에서 branch를 새롭게 만들어보면서 원격 저장소로부터 pull, push를 사용하여 프로젝트를 동기화 해본다. 마지막으로 이 과정을 소스트리로 실행해본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

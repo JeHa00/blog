@@ -1,10 +1,10 @@
 ---
-title: "[TIL] Network HTTP method use"
+title: "[TIL] HTTP method use"
 date: 2022-03-14T21:41:29+09:00
 draft: false
 summary: HTTP method를 가지고 클라이언트가 서버에 어떻게 데이터를 전송하는지, 그리고 API 설계에는 무슨 종류가 있는지 알아본다.
 tags: ["TIL", "Network", "HTTP"]
-categories: ["Network"]
+categories: "Network"
 ---
 
 # 0. Introduction

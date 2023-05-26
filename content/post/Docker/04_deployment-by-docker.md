@@ -1,10 +1,10 @@
 ---
-title: "Docker study: Docker-compose로 nginx, django, postgreSQL을 연결하고 배포하기"
+title: "Docker-compose로 nginx, django, postgreSQL을 연결하고 배포하기"
 date: 2022-12-08T13:42:28+09:00
 draft: false
 summary: docker만을 사용하여 django를 배포한 후, Dockerfile을 nginx와 djang application 에 대해 각각 만들어서 docker compose로 여러 컨테이너를 연결하여 배포하는 것을 학습해본다.
 tags: ["docker"]
-categories: ["docker"]
+categories: "Docker"
 ---
 # 0. Introduction
 

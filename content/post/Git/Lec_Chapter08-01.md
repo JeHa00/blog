@@ -4,7 +4,7 @@ date: 2022-07-04T23:31:28+09:00
 draft: false
 summary: 이번 단원에서는 git에 추적되지 않는 즉, 관리되지 않은 파일들(Untracked file)을 삭제하는 'git clean'에 대해 알아본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

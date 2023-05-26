@@ -4,7 +4,7 @@ date: 2022-07-21T18:24:57+09:00
 draft: false
 summary: CSS 입력방식인 inline과 external 방식이 각각 무엇인지, css 속성값을 입력하는 방식과 html tag의 속성인 id, class를 사용하여 css 속성 값을 입력하는 방식을 알아본다. 
 tags: ["TIL", "CSS"]
-categories: ["HTML_CSS"]
+categories: "HTML & CSS"
 ---
 # 0. Introduction
 

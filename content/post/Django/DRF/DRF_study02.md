@@ -4,7 +4,7 @@ date: 2022-11-05T13:36:56+09:00
 draft: false
 summary: API url을 만드는 방법으로 APIView, @api_view() 그리고 ModelViewSet을 사용한다. 이 방법들 중에서 자주 사용하는 방식은 APIView다. ModelViewSet은 중복을 방지하여 여러 url들을 만들어주지만, 최적화가 어렵기 때문이다. 
 tags: ["Django"]
-categories: ["Django"]
+categories: "Django"
 ---
 
 # 0. Introduction 

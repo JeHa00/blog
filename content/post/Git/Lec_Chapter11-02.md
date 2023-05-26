@@ -4,7 +4,7 @@ date: 2022-07-17T19:14:40+09:00
 draft: false
 summary: git diff 명령어를 통해서 현재 파일들의 변경사항, staging area에 올라간 파일들의 변경사항, 브랜치 간의 변경사항, 커밋 간의 변경사항들 여러 관계 사이의 변경사항을 알 수 있다.  
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 # 0. Introduction
 

@@ -4,7 +4,7 @@ date: 2022-08-12T22:35:43+09:00
 draft: false
 summary: Block와 Inline의 차이는 무엇이고, box의 속성 3가지인 border, padding, margin에 대해 학습한다. 
 tags: ["TIL", "CSS"]
-categories: ["HTML_CSS"]
+categories: "HTML & CSS"
 ---
 
 # 1. CSS의 속성: Block 과 Inline

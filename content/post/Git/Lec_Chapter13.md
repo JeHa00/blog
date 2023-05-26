@@ -4,7 +4,7 @@ date: 2022-07-24T00:12:33+09:00
 draft: false
 summary: 협업 시에 사용하는 GitHub pull request를 하는 방법과 GitHub issue에 대해 알아본다. 
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 # 0. Introduction
 

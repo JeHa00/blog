@@ -4,7 +4,7 @@ date: 2022-11-30T16:23:16+09:00
 draft: true
 summary: fetch를 사용하여 즐겨찾기 값 PUT으로 업데이트 과정에서 문제점과 해결과정을 기록해본다. 그리고, Update serializer를 작성하면서 알게된 유효성 검증 흐름을 정리해본다.
 tags: [""]
-categories: ["Project: Devket"]
+categories: "Project: Devket"
 ---
 # 0. Introduction
 

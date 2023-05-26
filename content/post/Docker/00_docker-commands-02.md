@@ -1,10 +1,10 @@
 ---
-title: "Docker study: Docker command list 02"
+title: "Docker command list 02"
 date: 2022-12-03T18:13:58+09:00
 draft: false
 summary: 2개의 터미널을 띄어넣고, 다른 터미널에서 실행 중인 컨테이너에 접속하거나, 종료시키기. 그리고, host와 container 간에 파일을 전송하는 명령어에 대해 알아본다.
 tags: ["docker"]
-categories: ["docker"]
+categories: "Docker"
 ---
 # 0. Introduction
 

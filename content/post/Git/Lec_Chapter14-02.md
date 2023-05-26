@@ -4,7 +4,7 @@ date: 2022-07-29T00:29:03+09:00
 draft: false
 summary: GitHub Action이 무엇인지 체험해보고, Github repository를 살펴보는데 좋은 확장 프로그램인 'Octotree'를 사용해본다. 마지막으로 GitHub CLI를 학습해본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 # 0. Introduction
 

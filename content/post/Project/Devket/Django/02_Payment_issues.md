@@ -4,7 +4,7 @@ date: 2022-12-06T11:08:59+09:00
 draft: false
 summary: Payment 1차 기능을 개발하는 과정에서의 고려사항들과 개발 이슈들에 대해 정리해본다.
 tags: ["payment"]
-categories: ["Project: Devket"]
+categories: "Project: Devket"
 ---
 # 0. Introduction
 

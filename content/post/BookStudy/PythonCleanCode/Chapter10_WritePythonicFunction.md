@@ -1,10 +1,10 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: 파이썬다운 함수 만들기(Writing effective functions)"
+title: "클린 코드, 이제는 파이썬이다: 파이썬다운 함수 만들기(Writing effective functions)"
 date: 2023-01-24T16:24:41+09:00
 draft: true
 summary: 함수명은 어떻게 작성해야 하는지 / 함수 크기에 따른 트레이트 오프 요소들 / 함수 파라미터와 인수 설계 / 함수형 프로그래밍 / 결과값은 항상 동일한 데이터 타입이어야하는 점 / 어느 상황에서 예외 발생과 에러 코드 반환 중 무엇을 선택해야하는지를 알아본다.  
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

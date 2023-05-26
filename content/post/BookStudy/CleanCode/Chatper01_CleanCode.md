@@ -1,10 +1,10 @@
 ---
-title: "Book Study - Clean Code: Chapter 01 클린 코드"
+title: "Clean Code: Chapter 01 클린 코드"
 date: 2022-10-06T21:14:50+09:00
 draft: false
 summary: 로버트 C. 마틴이 지은 클린 코드의 Chapter 01를 읽고 남긴 후기다. 왜 깨끗한 코드로 작성해야하는지, 이 태도를 가져야만 하는 이유에 대해 설명하는 소단원이었다. 보다 거시적인 관점으로 봤을 때, 깨끗한 코드가 시간을 절약한다.
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

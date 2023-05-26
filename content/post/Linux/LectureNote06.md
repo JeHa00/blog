@@ -4,7 +4,7 @@ date: 2022-09-12T15:00:46+09:00
 draft: false
 summary: 지난 내용에 이어서 linux의 기본 명령어로 shutdown과 이 명령어가 이뤄지는 과정에 대해 알아본다. 
 tags: ["TIL", "Linux"]
-categories: ["Linux"]
+categories: "Linux"
 ---
 # 0. Introduction
 

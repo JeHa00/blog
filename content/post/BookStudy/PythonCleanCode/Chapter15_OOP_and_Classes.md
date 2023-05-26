@@ -1,10 +1,10 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: OOP and Class"
+title: "클린 코드, 이제는 파이썬이다: OOP and Class"
 date: 2023-02-01T20:17:13+09:00
 draft: true
 summary: 클래스란 무엇이고, class에서 attribute란 무엇을 말하는 것이고, self란 무엇인지, 파이썬에서 언더바는 무엇을 의미하는지, type()은 어디에 사용되는지, 현실 세계의 객체를 클래스화할 때 문제점은 무엇인지 알아본다.
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

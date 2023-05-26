@@ -1,10 +1,10 @@
 ---
-title: "[DB]원티드 프리온보딩 백엔드 챌린지 MySQL: DB 원칙과 종류 비교(RDBMS vs NoSQL, Row vs Column oriented) 그리고 CAP Theorem"
+title: "DB 원칙과 종류 비교(RDBMS vs NoSQL, Row vs Column oriented) 그리고 CAP Theorem"
 date: 2023-02-13T21:54:56+09:00
 draft: false
 summary: 데이터베이스의 3가지 원칙 / 데이터베이스의 종류 RDBMS와 NoSQL의 비교 / 또 다른 분류 기준인 row oriented db와 column oriented db의 차이 / DB 선정 시 고려할 CAP Theorem 에 대해 알아본다. 
 tags: ["DB"]
-categories: ["DB"]
+categories: "DB"
 ---
 # 0. Introduction
 

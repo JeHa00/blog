@@ -4,7 +4,7 @@ date: 2022-02-17T21:49:13+09:00
 draft: false
 summary: SSG의 한 종류 'Hugo'와 'git remote, git submodule'로 Github page를 만든다. 그 후, 컨텐츠 생성과 업로드를 한다. 마지막으로 utterances로 댓글 기능 추가, deploy.sh를 사용하여 업로드하는 방법을 다룬다.
 tags: ["hugo"]
-categories: ["dev-contents"]
+categories: "dev-contents"
 ---
 # 0. Introduction
 

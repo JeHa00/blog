@@ -4,7 +4,7 @@ date: 2022-06-24T14:25:18+09:00
 draft: false
 summary: branch를 만든 후, 다른 branch로 이동해본다. 또한, 각 branch끼리 합치는 git merge와 git rebase를 실행하면서 CLI 와 Source tree로 branch 변화를 시각적으로 확인해본다. 마지막으로 병합 시 충돌을 해결해본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

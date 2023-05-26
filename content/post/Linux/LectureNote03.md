@@ -4,7 +4,7 @@ date: 2022-09-07T14:47:30+09:00
 draft: false
 summary: 지난 내용에 이어서 linux의 기본 명령어들 중 mkdir,rmdir, rm, alias, touch에 대해 학습해본다.
 tags: ["TIL", "Linux"]
-categories: ["Linux"]
+categories: "Linux"
 ---
 # 0. Introduction
 

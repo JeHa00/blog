@@ -1,10 +1,10 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: naming"
+title: "클린 코드, 이제는 파이썬이다: naming"
 date: 2022-11-28T18:22:05+09:00
 draft: false
 summary: 알 스웨이가트가 지었고, 박재호님이 번역하신  '클린코드, 이제는 파이썬이다'를 읽고 학습한 내용이다. 이번에는 naming에 대한 가이드 라인에 대해 학습해보자. 
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

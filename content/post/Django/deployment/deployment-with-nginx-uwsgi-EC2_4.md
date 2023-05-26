@@ -4,7 +4,7 @@ date: 2022-10-20T18:45:16+09:00
 draft: false
 summary: uwsgi, nginx 를 연결한 후, R3에 연결하여 static file을 적용했다. 그 다음으로 DB를 develop 단계와 product 단계로 나눠서 적용하기 위해 DB를 나누는 작업을 해본다. 
 tags: ["Django"]
-categories: ["Django"]
+categories: "Django"
 ---
 # 0. Introduction 
 

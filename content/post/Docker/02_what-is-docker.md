@@ -1,10 +1,10 @@
 ---
-title: "Docker study: What is a docker?"
+title: "What is a docker?"
 date: 2022-12-02T21:52:35+09:00
 draft: false
 summary: 첫 번째, PaaS란 무엇인지, 컨테이너 가상화란 무엇인지를 통해서 docker가 무엇인지 알아본다. 두 번째, docker의 build, pull, run은 무엇을 하는 건지 알아본다.
 tags: ["docker"]
-categories: ["docker"]
+categories: "Docker"
 ---
 # 0. Introduction
 

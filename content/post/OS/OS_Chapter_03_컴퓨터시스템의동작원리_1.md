@@ -1,10 +1,10 @@
 ---
-title: "[TIL] OS Chapter 03: 컴퓨터 시스템의 동작원리 1"
+title: "[TIL] Chapter 03: 컴퓨터 시스템의 동작원리 1"
 date: 2022-04-13T13:55:26+09:00
 draft: false
 summary: I/O 연산이 무엇이고, controller와 local buffer가 무엇이고, 입출력 연산이 Interrupt를 중심으로 어떻게 진행되는지를 알아본다.
 tags: ["TIL", "OS"]
-categories: ["OS"]
+categories: "OS"
 ---
 
 # 0. Introduction

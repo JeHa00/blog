@@ -4,7 +4,7 @@ date: 2022-07-01T20:59:54+09:00
 draft: false
 summary: v0.0.0 에서 각 자리가 무엇을 의미하는지, commit에 tag를 다는 명령어인 git tag, 그리고 여러 버전들 중 일부를 release하는 것을 배운다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

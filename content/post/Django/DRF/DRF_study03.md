@@ -4,7 +4,7 @@ date: 2022-11-09T04:31:43+09:00
 draft: false
 summary: DRF에는 많은 기능들이 존재한다. 그 중에서 자주 사용하는 throttle_scope, pagination, auththentication & permission에 대해 학습했다.
 tags: ["Django"]
-categories: ["Django"]
+categories: "Django"
 ---
 
 # 0. Introduction 

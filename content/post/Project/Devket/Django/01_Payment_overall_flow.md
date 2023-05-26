@@ -4,7 +4,7 @@ date: 2022-12-04T14:56:16+09:00
 draft: false
 summary: 기존 결제 과정과 iamport를 사용 시 변한 결제 과정을 정리하고, iamport 사용 시 얻는 장점들에 대해 정리해본다. 마지막으로 프로젝트에서 아임포트 javascript SDK를 사용한 결제 흐름을 정리해본다.
 tags: ["iamport"]
-categories: ["Project: Devket"]
+categories: "Project: Devket"
 ---
 
 # 0. Introduction

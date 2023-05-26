@@ -4,7 +4,7 @@ date: 2022-10-15T03:28:59+09:00
 draft: false
 summary: nginx와 uwsgi를 사용한 배포과정에서 발생한 502 Bad Gateway Error에 대한 해결과정과 해결책을 정리해본다.
 tags: ["Django"]
-categories: ["Django"]
+categories: "Django"
 ---
 
 # ❗️ 502 Bad Gateway Error 해결

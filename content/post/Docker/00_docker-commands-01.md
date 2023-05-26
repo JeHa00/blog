@@ -1,10 +1,10 @@
 ---
-title: "Docker study: Docker command list 01"
+title: "Docker command list 01"
 date: 2022-12-03T16:49:32+09:00
 draft: false
 summary: ec2를 활용한 server에 docker를 설치하고, docker image 파일 설치 및 실행 명령어부터 docker의 여러 명렁어를 정리해본다.
 tags: ["docker"]
-categories: ["docker"]
+categories: "Docker"
 ---
 # 0. Introduction
 

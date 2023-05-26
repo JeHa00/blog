@@ -4,7 +4,7 @@ date: 2022-07-26T00:28:58+09:00
 draft: false
 summary: SSH key를 생성하고, 계정에 등록하여 remote 추가 시 HTTP가 아닌 SSH를 사용하는 방법과 GPG key를 생성하고 계정에 등록하여 local에서 작업해도 'Verified'가 뜨는 것 실습해본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 # 0. Introduction
 

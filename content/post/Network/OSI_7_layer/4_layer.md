@@ -1,10 +1,10 @@
 ---
-title: "[TIL] Network OSI 7 layer: 4계층 전송 계층"
+title: "[TIL]OSI 7 layer: 4계층 전송 계층"
 date: 2023-05-24T15:50:44+09:00
 draft: true
 summary: OSI 7 layer에서 신뢰성 있는 통신을 구현하는 4계층에 대해 더 알아보자.     
 tags: ["TIL", "Network"]
-categories: ["Network"]
+categories: "Network"
 ---
 
 

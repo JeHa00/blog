@@ -1,10 +1,10 @@
 ---
-title: "Docker study: Docker 학습을 위한 OS background knowledge"
+title: "Docker 학습을 위한 OS background knowledge"
 date: 2022-10-31T01:00:56+09:00
 draft: false
 summary: Docker 학습을 시작하기에 앞서 Docker가 왜 필요한지, 컴퓨터 시스템의 핵심은 무엇이고, 운영체제는 무슨 역할을 하는지, process와 thread란 무엇인지, 메모리 구조는 어떻게 구성되어 있는지, 마지막으로 컨테이너에 대해 체험해본다. 
 tags: ["docker"]
-categories: ["docker"]
+categories: "Docker"
 ---
 # 0. Introduction
 

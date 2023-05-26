@@ -4,7 +4,7 @@ date: 2022-07-13T13:00:47+09:00
 draft: false
 summary: git merge --squash 명령어를 사용해서 다른 브랜치의 여러 커밋들을 rebase와 달리 하나의 커밋으로 묶어서 가져와본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

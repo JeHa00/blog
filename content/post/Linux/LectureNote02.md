@@ -4,7 +4,7 @@ date: 2022-09-06T14:43:45+09:00
 draft: false
 summary: linux의 기본 명령어들 중 pwd, cd, ls, cp, mv에 대해 학습해본다.
 tags: ["TIL", "Linux"]
-categories: ["Linux"]
+categories: "Linux"
 ---
 
 # 0. Introduction

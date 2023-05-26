@@ -4,7 +4,7 @@ date: 2022-06-21T11:31:23+09:00
 draft: false
 summary: Git이란 무엇이고, Git이 탄생하기까지의 VCS의 histroy에 대해 간략히 알아본다. 또한, Git의 3가지 상태와 3가지 단계를 학습한다. 마지막으로 Git의 사용자 등록 방법과 화인 방법을 알아본다. 
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

@@ -4,7 +4,7 @@ date: 2022-07-14T13:00:47+09:00
 draft: false
 summary: 협업 시 여러 branch를 생성하여 어떻게 활용하는지, 각 branch의 이름은 현업에서 주로 사용되는 이름이 있는지 Gitflow를 사용한 브랜치 활용법에 대해 알아본다.  
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 # 0. Introduction
 

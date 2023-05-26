@@ -1,10 +1,10 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: 파이썬에서 빠지기 쉬운 함정들(Common Python Gotchas)"
+title: "클린 코드, 이제는 파이썬이다: 파이썬에서 빠지기 쉬운 함정들(Common Python Gotchas)"
 date: 2023-01-06T19:14:21+09:00
 draft: false
 summary: 파이썬 코드를 작성하면서 빠지기 쉬운 함정들과 이에 대한 해결책을 파이썬스러운 코드를 통해 해결해본다.
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

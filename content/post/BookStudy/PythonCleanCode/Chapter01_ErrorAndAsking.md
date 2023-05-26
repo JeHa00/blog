@@ -1,10 +1,10 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: error and question"
+title: "클린 코드, 이제는 파이썬이다: error and question"
 date: 2022-10-17T16:52:19+09:00
 draft: false
 summary: 알 스웨이가트가 지었고, 박재호님이 번역하신  '클린코드, 이제는 파이썬이다'를 읽고 학습한 내용이다. 파이썬 에러 메세지가 어떤 내용들로 구성되어 있는지, 그리고 온라인 상에 질문을 할 때 어떻게 질문해야하는지 질문의 올바른 방법을 배운다.
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

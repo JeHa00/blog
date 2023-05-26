@@ -1,10 +1,10 @@
 ---
-title: "[TIL] OS Chapter 13: 웹캐싱 기법"
+title: "[TIL] Chapter 13: 웹캐싱 기법"
 date: 2022-05-31T20:20:17+09:00
 draft: false
 summary: 캐싱이란 무엇이고, 웹에서 사용되는 캐싱은 무엇을 목적으로 하는지, 웹캐싱이 전통적인 캐싱 기법과 무엇이 다른지, ICP는 무엇인지, 정적 웹과 동적 웹이란 무엇인지 등을 알아본다.
 tags: ["TIL", "OS"]
-categories: ["OS"]
+categories: "OS"
 ---
 
 # 0. Introduction

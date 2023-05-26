@@ -4,7 +4,7 @@ date: 2022-10-19T03:31:58+09:00
 draft: false
 summary: uwsgi, nginx 를 연결했으니, R3에 연결하여 static file을 적용해본다.
 tags: ["Django"]
-categories: ["Django"]
+categories: "Django"
 ---
 # 0. Introduction 
 

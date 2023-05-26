@@ -4,7 +4,7 @@ date: 2022-07-08T23:31:47+09:00
 draft: false
 summary: git의 merge 원리인 Fast-forward와 3-way merge에 대해 알아본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

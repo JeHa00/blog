@@ -1,10 +1,10 @@
 ---
-title: "[TIL] Network OSI 7 layer: 3계층 네트워크 계층"
+title: "[TIL]OSI 7 layer: 3계층 네트워크 계층"
 date: 2023-05-24T15:14:44+09:00
 draft: true
 summary: OSI 7 layer에서 한 네트워크에서 다른 네트워크와 통신하기 위한 IP 주소를 결정하는 3계층에 대해 더 알아보자.     
 tags: ["TIL", "Network"]
-categories: ["Network"]
+categories: "Network"
 ---
 
 

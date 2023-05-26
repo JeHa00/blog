@@ -4,7 +4,7 @@ date: 2022-07-12T23:31:47+09:00
 draft: false
 summary: git rebase --onto 명령어를 사용하여 다른 브랜치에서 파생된 브랜치를 현재 브랜치로 옮겨서 붙여본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

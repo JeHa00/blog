@@ -4,7 +4,7 @@ date: 2022-12-12T19:33:59+09:00
 draft: false
 summary: 배포 후 발생한 S3 CORS issue에 대해 알아본다. 이 과정에서 CORS란 무엇이고 이를 헤결하기 위해서 어떤 header를 어떻게 추가하는지 알아본다.
 tags: ["deployment", "CORS"]
-categories: ["Project: Devket"]
+categories: "Project: Devket"
 ---
 # 0. Introduction
 

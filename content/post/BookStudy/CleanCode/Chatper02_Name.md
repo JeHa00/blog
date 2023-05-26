@@ -1,10 +1,10 @@
 ---
-title: "Book Study - Clean Code: Chapter 02 변수"
+title: "Clean Code: Chapter 02 변수"
 date: 2022-10-08T21:15:08+09:00
 draft: false
 summary: 로버트 C. 마틴이 지은 클린 코드의 Chapter 02를 읽고 남긴 후기다. 변수를 지을 때 유의사항들에 알려줬고, 파이썬 코드로 코드 개선 작업을 직접 해보았다. 변수 작명에 사용자의 의도를 어떻게 명확히 드러내야하는지 알았다.
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

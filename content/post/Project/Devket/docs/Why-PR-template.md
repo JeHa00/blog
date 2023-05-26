@@ -4,7 +4,7 @@ date: 2022-11-03T13:37:52+09:00
 draft: false
 summary: 프로젝트 진행에 Pull Request templates를 사용하는 이유와 적절한 PR size는 얼만큼 정했는지에 대해 공유해본다.
 tags: ["github"]
-categories: ["Project: Devket"]
+categories: "Project: Devket"
 ---
 
 # Introduction

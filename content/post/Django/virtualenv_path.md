@@ -4,7 +4,7 @@ date: 2022-09-07T14:37:03+09:00
 draft: false
 summary: 경로에 들어오면 자동적으로 가상환경이 활성화되는 directory 구조에 대해 이전 방식과 비교하여 정리해놓는다.  
 tags: ["Django"]
-categories: ["Django"]
+categories: "Django"
 ---
 # 0. Introduction 
 

@@ -1,10 +1,10 @@
 ---
-title: "[TIL] OS Chapter 12: 파일 시스템 2"
+title: "[TIL] Chapter 12: 파일 시스템 2"
 date: 2022-05-29T18:16:18+09:00
 draft: false
 summary: Disk의 할당방식 3가지, FAT file system이란 무엇인지, disk의 빈 공간을 어떻게 관리하는지, page cache와 buffer cache와의 차이점과 마지막으로 통합 buffer cache에서의 Memory mapped 방식에 대해 알아본다.
 tags: ["TIL", "OS"]
-categories: ["OS"]
+categories: "OS"
 ---
 
 # 0. Introduction

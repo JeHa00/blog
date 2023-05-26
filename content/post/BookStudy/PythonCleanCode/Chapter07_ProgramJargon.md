@@ -1,10 +1,10 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: Program Jargon"
+title: "클린 코드, 이제는 파이썬이다: Program Jargon"
 date: 2022-12-27T17:07:28+09:00
 draft: false
 summary: 파이썬 세상의 프로그래밍 용어에 대해 알아본다.
 tags: ["TIL", "Book Study"]
-categories: ["Book Study"]
+categories: "Book Study"
 ---
 # 0. Introduction
 

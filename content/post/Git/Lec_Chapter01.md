@@ -4,7 +4,7 @@ date: 2022-06-22T11:33:54+09:00
 draft: false
 summary: Git을 배워야하는 이유, Git 최초 설정 방법 그리고, Git의 관리에서 벗어나는 .gitigonre에 대해 알아본다.
 tags: ["TIL", "git"]
-categories: ["git"]
+categories: "git"
 ---
 
 # 0. Introduction

@@ -4,7 +4,7 @@ date: 2022-10-28T13:29:58+09:00
 draft: false
 summary: RESTful API가 무엇인지, 이를 간편하게 수행하는 Django의 library인 Django-RestFramework를 소개하고, 직렬화와 역직렬화 개념을 학습한다. 마지막으로 이를 사용하기 위한 Serializer를 작성해본다.
 tags: ["Django"]
-categories: ["Django"]
+categories: "Django"
 ---
 # 0. Introduction 
 

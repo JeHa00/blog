@@ -1,10 +1,10 @@
 ---
-title: "[DB]원티드 프리온보딩 백엔드 챌린지 MySQL: MySQL storage engine의 종류들, Transaction, Database Lock, Isolation Level"
+title: "MySQL storage engine의 종류들, Transaction, Database Lock, Isolation Level"
 date: 2023-02-15T01:12:29+09:00
-draft: false
+draft: true
 summary: MySQL storage engine들의 종류들과 default engine인 InnoDB /  Transaction이란 무엇인지 / Database Lock의 종류에는 어떤 것들이 있고, 왜 필요한지 / Isolation level에 대해 알아본다.
 tags: ["DB"]
-categories: ["DB"]
+categories: "DB"
 ---
 # 0. Introduction
 

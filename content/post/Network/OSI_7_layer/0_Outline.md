@@ -4,7 +4,7 @@ date: 2022-08-30T18:50:58+09:00
 draft: false
 summary: OSI 7 layer는 전체적으로 무슨 층으로, 무슨 프로토콜로, 각 계층의 데이터 타입은 무엇이고, 각 주요 기기들은 무엇인지 통합적으로 알아본다.   
 tags: ["TIL", "Network"]
-categories: ["Network"]
+categories: "Network"
 ---
 # 0. Introduction: 웹 애플리케이션 기초
 
