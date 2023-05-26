@@ -4,7 +4,7 @@ date: 2022-07-18T18:24:51+09:00
 draft: false
 summary: HTML, CSS가 무엇이고, 브라우저에서 무슨 역할을 하는지, html의 tag란 무엇인지, semantic tag과 non-semantic tag란 무엇인지 학습한다. 그리고, tag의 다양한 속성 중 몇 가지를 학습해본다. 
 tags: ["TIL", "HTML"]
-categories: "HTML & CSS"
+categories: "HTML_CSS"
 ---
 
 

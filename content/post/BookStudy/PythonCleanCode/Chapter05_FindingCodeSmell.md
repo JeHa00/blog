@@ -1,5 +1,5 @@
 ---
-title: "Book Study - 클린 코드, 이제는 파이썬이다: Find code smell"
+title: "클린 코드, 이제는 파이썬이다: Find code smell"
 date: 2022-12-24T14:09:21+09:00
 draft: false
 summary: code smell(코드 악취)이 나는 부분들에는 무엇이 있고, 이를 어떻게 해결해야하는지에 대해 알아본다. 
