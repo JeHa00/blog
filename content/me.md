@@ -17,7 +17,7 @@ summary: about
 ## Channel & Contact
 
 - Github. [https://github.com/JeHa00 🔗](https://github.com/JeHa00)
-- Email. <rudtls0611@gmail.com>
+- Email. [rudtls0611@gmail.com 🔗](rudtls0611@gmail.com)
 
 ---
 
