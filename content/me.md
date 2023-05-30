@@ -6,7 +6,7 @@ summary: about
 ---
 
 
-# 서버 개발자 김제하
+## 서버 개발자 김제하
 
 저는 `_________` 엔지니어입니다.
 
@@ -14,16 +14,18 @@ summary: about
 - 기록, 정리 그리고 공유를 통해 혼자보다 동료와 '함께' 성장하고 싶은
 - 커뮤니케이션을 잘하기 위해 '재질문과 문서화' 를 사용하는
 
-## Channel & Contact
+### Channel & Contact
 
 - Github. [https://github.com/JeHa00 🔗](https://github.com/JeHa00)
 - Email. [rudtls0611@gmail.com 🔗](rudtls0611@gmail.com)
 
 ---
 
-# Skill
+## Skill
 
 _최근 프로젝트에 사용한 기술들입니다._
+
+### Backend  
 
 - Python 3.10.8, FastAPI, MySQL 8.0, Redis
 - Docker-compose
