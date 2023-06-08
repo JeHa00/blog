@@ -22,7 +22,7 @@ params:
   # author: ["Me"] # multiple authors
   images: /apple-touch-icon.png
   DateFormat: "January 2, 2006"
-  defaultTheme: dark # dark, light
+  defaultTheme: light # dark, light
   disableThemeToggle: false
 
   showCategory: True
