@@ -34,10 +34,6 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 - Javascript, HTML, CSS
 
-### Etc
-
-- jira, figma, notion
-
 ---
 
 # Projects
