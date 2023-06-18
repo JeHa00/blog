@@ -1,18 +1,27 @@
 ---
-title: "About Me."
+title: "About Me. 🌳"
 layout: "me"
 url: "/me/"
 summary: about
 ---
 
+#
 
-## 서버 개발자 김제하
+**SW backend engineer로 오기까지의 결정들과 그 이유**
 
-저는 `_________` 엔지니어입니다.
+대학교 입학 후 문제를 해결하는 직무인 `엔지니어`에 관심이 생겼습니다. 하지만 해당 domain은 제가 원하는 domain이 아니었고,  제가 원하는 `문제 해결 도메인`을 찾기 위해 편입에 도전했습니다. 편입 및 졸업 후 플랜트 엔지니어(Plant Engineer)로 `약 9개월 동안 3024시간`을 몰입했습니다. 하지만 근무하면서 제가 해결하고 싶은 문제는 `사용자의 생활에 밀첩하게 물려있는 문제`임을 깨달았습니다. 이를 알기까지 짧지 않은 시간이 걸렸지만 제가 원하는 문제를 푸는 엔지니어는 SW engineer임을 확신할 수 있었습니다.
 
-- 제가 가진 기술로 세상에 도움이 되고 싶은  
-- 기록, 정리 그리고 공유를 통해 혼자보다 동료와 '함께' 성장하고 싶은
-- 커뮤니케이션을 잘하기 위해 '재질문과 문서화' 를 사용하는
+#
+
+**저는  ‘`_________`’  엔지니어입니다.**
+
+- 코드 신뢰성을 위해 **`테스트 코드`** 를 중요하게 생각하는
+    - 현재 진행 중인 프로젝트의 테스트 코드 수: `105개`
+- 체계적인 기록과 커뮤니케이션을 위해 **`문서화`** 를 좋아하는
+    - 2022년 2월 ~ 2022년 12월: `141개`를 작성
+    - 2023년 1월 ~ 현재 : `5개`를 작성
+
+#
 
 ### Channel & Contact
 
@@ -27,7 +36,7 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 ### Backend  
 
-- Python 3.10.8, FastAPI, MySQL 8.0, Redis
+- Python 3.10.8, FastAPI, MySQL 8.0
 - Docker-compose
 
 ### Frontend
@@ -40,18 +49,21 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 ## SNS 백엔드 개발 및 운영
 
-> **_고양이 사료 정보에 관한 오픈 sns (Frontend: 1명 / Backend: 1명)_**
+> **_cat 사료 정보 특화 sns (Frontend: 1명 / Backend: 1명)_**
 
 - **_기간: 2023.03 ~ (진행 중)_**
 
 - **Development**
-  - DDD layered architecture 적용  
-  - Pytest를 사용하여 41개의 unit test와 64개의 EndToEnd test 작성
-  - FastAPI의 background task를 사용하여 가입 인증 이메일, 임시 비밀번호 발급 이메일 전송 속도 1000배 향상 (2900ms -> 0.33ms)
-  - Oauth2를 사용하여 JWT authorization 적용  
-  - SSE(Server-Sent-Event)와 redis의 message queue를 사용하여 알림 기능 구현
+  - 현재까지 완료된 요구사항
+    - `DDD` layered architecture 적용  
+    - Pytest를 사용하여 `41개`의 unit test와 `64개`의 EndToEnd test 작성
+    - FastAPI의 background task를 사용하여 가입 인증 이메일, 임시 비밀번호 발급 이메일 전송 속도 `100배 이상` 향상 (2900ms -> 0.33ms)
+    - Oauth2를 사용하여 `JWT` authorization 적용  
+  - 진행 중인 요구사항
+    - 비동기 통신 방법인 `SSE(Server Sent Event)`를 사용하여 알림 기능 구현
+    - Redis의 set 자료 구조를 사용한 포스트의 좋아요 기능 구현  
 
-- **Deployment**
+- **Deployment(예정)**
   - docker-compose 적용
   - Github Action을 통한 CI / CD  적용  
 
@@ -71,8 +83,7 @@ _최근 프로젝트에 사용한 기술들입니다._
 - [**Frontend: vanilla js만을 사용 🔗**](https://jeha00.github.io/post/project/devket/js/dom_fetch_issue/)
   - 저장한 웹 사이트 목록 렌더링  
   - 저장한 각 웹 사이트 하단에 뜨는 하단툴바 렌더링  
-  - 구축한 api로 하단툴바를 통한 즐겨찾기, 삭제 기능 구현  
-  - fetch를 사용하여 api로부터 데이터를 받아 아임포트에 전송  
+  - fetch를 사용하여 api로부터 데이터를 보내고 받기
 
 - **Backend**
   - DB modeling 설계 및 ERD 작성
@@ -123,15 +134,6 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 &nbsp;
 
-### [나노디그리 백엔드 코스 1기 🔗](https://learningspoons.com/course/detail/django-backend/)
-
-- **_2022.08 - 2022.12 (4.5개월)_**
-- 러닝스푼즈에서 진행한 백엔드 개발자 양성 교육 과정
-- Django, Docker, AWS  등 학습  
-- 팀 프로젝트를 통한 협업 경험  
-
-&nbsp;
-
 ### 한국항공대학교 항공우주 및 기계공학부
 
 - **_2017.03 - 2020.02 (졸업)_**
@@ -144,4 +146,4 @@ _감사합니다._
 
 _Backend Engineer,  김제하(jeha)_  
 
-_Latest updated    2023.05.26_  
+_Latest updated    2023.06.18_  
