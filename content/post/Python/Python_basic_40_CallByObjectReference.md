@@ -59,8 +59,9 @@ categories: ["Python"]
 
 - 다음으로 Python에서의 variable을 알아보자.
   - 파이썬에서는 선언하는 게 필요 없고, 바로 변수의 이름과 이 변수에 할당할 data type과 value만 정하면 된다.
+  - C, C++, JAVA의 경우에는 변수가 선언되고 그 변수 안에 값이 담겨지지만 파이썬은 그렇지 않다.  
 
-> 파이썬의 변수들은 객체들을 가리키고, 객체들은 임의의 data type을 가질 수 있다. 실제 데이터는 객체들 안에 포함되어 있다.
+> 파이썬의 변수들은 객체들을 가리키고, 객체들은 임의의 data type을 가질 수 있다. 그리고 실제 데이터는 객체들 안에 포함되어 있다.
 
 ```yml
 > x = 42
@@ -85,7 +86,7 @@ categories: ["Python"]
 # 2. Call by object reference
 
 - python은 공식문서에 따르면 **_call by object reference_** 방식으로 호출한다.
-- **_call by value_** 와 **_call by reference_** 의 중간 방식인데, 인수의 data type에 따라 달라진다.
+- 인수의 데이터 타입에 따라 **_call by value_** 와 **_call by reference_** 인지 결정하는 방식이다.  
 
   - 값에 의한 호출(call by value): immutable object
   - 참조에 의한 호출(call by reference): mutable object
@@ -121,9 +122,11 @@ msg =  Python 2072884335536
 msg =  Python 2072884335536
 ```
 
-- msg에 할당된 값만을 복사해서 foo의 매개변수로 넘어간다.
-- foo에서 처음 print가 실행되어 확인한 id 값은 동일하다.
-- 하지만, value가 수정됨에 따라 참조 객체가 달라진다.
+- 순서는 다음과 같다.
+  - "Python"이라는 문자열 인스턴스를 msg 라는 변수가 가리키고 있다.  
+  - foo의 매개변수 s 에 msg가 입력되면서 매개변수 s 또한 "Python"이라는 문자열 인스턴스를 가리키고 있다.  
+  - s += 연산을 통해 "Python is Best" 라는 문자열 인스턴스를 생성되어 참조 객체가 달라지기 때문에 메모리 주소가 다르다.
+  - 그리고 달라진 참조 객체를 변수 s가 가리킨다.  
 
 &nbsp;
 
@@ -143,21 +146,18 @@ msg =  Python 2072884335536
 
 > msg = [s for s in range(1,6)]
 > print('msg = ', msg, id(msg))
-msg =  [1, 2, 3, 4, 5] 2211845893440
+msg =  [1, 2, 3, 4, 5] 4310824192
 
 > foo(msg)
-[1, 2, 3, 4, 5] 1764496575680
-[1, 2, 3, 4, 5, 10] 1764496575680
+[1, 2, 3, 4, 5] 4310824192
+[1, 2, 3, 4, 5, 10] 4310824192
 
 > print('msg = ', msg, id(msg))
-msg =  [1, 2, 3, 4, 5, 10] 2211845893440
+msg =  [1, 2, 3, 4, 5, 10] 4310824192
 ```
 
 - `foo` function에서 수정했지만, 그것이 global scope에서 출력 시에도 영향을 준다.
 - 즉, 참조값이 수정된 걸 의미한다. 하지만, list의 성분인 integer가 값이 바뀌면 id 값은 바뀐다.
-
-
-
 
 &nbsp;
 
