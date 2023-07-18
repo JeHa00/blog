@@ -104,6 +104,23 @@ poetry 공식문서는 [여기](https://github.com/pyenv/pyenv#set-up-your-shell
 
 &nbsp;
 
+# 4. Poetry 설치 시 프로젝트 directory 구조  
+
+- pyproject.toml에서 name의 값이 project root directory가 기본적으로 들어가지는데 이를 기준으로 절대경로가 형성된다.
+
+- 그리고 Dockerfile 실행 시 pyproject.toml과 동일한 레벨에 해당 name을 가지고 있는 directory 와 README.md 가 poetry 설치가 가능하여 container 화가 가능하다.  
+
+```yml
+# directory 구조
+
+- <생성한 project name>
+  ㄴ config
+  ㄴ <app 또는 domain name>
+ㄴ pyproject.toml
+ㄴ poetry.lock
+ㄴ README.md
+```
+
 # Reference
 
 ---
