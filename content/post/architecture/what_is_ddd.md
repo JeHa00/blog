@@ -1,7 +1,7 @@
 ---
 title: "DDD basic concept"
 date: 2023-03-01T20:04:32+09:00
-draft: true
+draft: false
 summary: DDD란 무엇이고, layer 간 의존성은 어떻게 띄고 있고, 어떻게 구성하는지에 대해 정리해본다. 또한 이를 class를 사용하여 추상화하는 이유도 정리해본다.  
 tags: [""]
 categories: "architecture"
