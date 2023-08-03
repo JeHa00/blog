@@ -59,13 +59,13 @@ _최근 프로젝트에 사용한 기술들입니다._
     - Pytest를 사용하여 `41개`의 unit test와 `64개`의 EndToEnd test 작성
     - FastAPI의 background task를 사용하여 가입 인증 이메일, 임시 비밀번호 발급 이메일 전송 속도 `100배 이상` 향상 (2900ms -> 0.33ms)
     - Oauth2를 사용하여 `JWT` authorization 적용  
+    - Redis caching 을 적용하여 좋아요 갯수 조회 속도 `6배` 향상 (6ms -> 1ms)  
   - 진행 중인 요구사항
     - 비동기 통신 방법인 `SSE(Server Sent Event)`를 사용하여 알림 기능 구현
-    - Redis의 set 자료 구조를 사용한 포스트의 좋아요 기능 구현  
 
 - **Deployment(예정)**
   - docker-compose 적용
-  - Github Action을 통한 CI / CD  적용  
+  - Github Action을 통한 자동배포 적용  
 
 &nbsp;
 
