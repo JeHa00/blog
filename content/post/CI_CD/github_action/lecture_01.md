@@ -697,5 +697,3 @@ Events의 종류에는 매우 다양한데, 크게 분류하자면 repository와
 - [actions/setup-node](https://github.com/actions/setup-node)
 - [Github Actions context](https://docs.github.com/en/actions/learn-github-actions/contexts)
 - [Github Actions expressions](https://docs.github.com/en/actions/learn-github-actions/expressions)  
-
-<https://github.com/academind/github-actions-course-resources/tree/main/Code>
