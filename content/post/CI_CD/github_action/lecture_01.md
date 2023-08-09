@@ -1,5 +1,5 @@
 ---
-title: "CI/CD를 위한 github action basic study"
+title: "CI/CD를 위한 github action basic study 01"
 date: 2023-08-03T21:18:52+09:00
 draft: false
 summary: github actions의 core components인 workflow, jobs, steps에 대해 알아보고 실습을 진행하면서 github action의 내장 keyword도 알아본다.  
@@ -102,10 +102,12 @@ Github Action에서는 실행
 - Github repository에 부착된다  
 - 한 개 이상의 Job을 가진다  
 - Events를 기반으로 시작된다.  
+- `.github/workflows`  
 
 **Jobs**
 
-- 하나의 `Runner`를 정의한다.
+- 하나의 Job마다 하나의 `Runner`를 정의한다.
+  - **_`Runner`는 `runs-on`으로 지정한다. 그래서 job마다 `runs-on`을 입력해야 한다. 즉 job마다 자신만의 virtual machine을 가져서 다른 machine과 job으로부터 완전히 격리시켜야 한다는 의미다._**  
 - 1개 이상의 `Steps`를 포함한다.
 - 병렬적으로 또는 동기적으로 실행된다.
 - 실행 조건을 부여할 수 있다.
@@ -113,7 +115,8 @@ Github Action에서는 실행
 **Steps**
 
 - 하나의 `Action` 또는 하나의 `shell script`를 실행한다.  
-- 커스텀 또는 third party action을 사용할 수 있다.  
+  - `Action`은 workflow의 가장 작은 실행 단위
+  - 커스텀 또는 third party action을 사용할 수 있다.  
 - steps는 순서대로 실행된다.
 - 실행 조건을 부여할 수 있다.
 
@@ -145,6 +148,7 @@ workflow yml 파일을 작성해보자. 위에부터 아래 순으로 하나 하
 - `jobs`: job들을 정의한다.  
   - 첫 번째 job의 이름은 `first-job` 으로 명명한다. 'firstjob'으로 해도 되고, job의 이름을 짓는 건 자유롭다.  
   - `runs-on`: 해당 job이 실행될 환경을 말한다.  구체적인 환경 확인은 위에 언급된 runners에 대한 설명을 본다.  
+    - **_job마다 자신만의 runner를 가지고 있다. 즉 job마다 `runs-on`을 입력해야 한다. 이 말은 job마다 자신만의 virtual machine을 가져서 다른 machine과 job으로부터 완전히 격리시켜야 한다는 의미다._**
   - `steps`: 이제 여러 step들을 정의한다. 여기부터는 `-` 를 붙어서 key - value 형식으로 작성한다.  
   - 위에 Workflows, Jobs, Steps의 설명에 언급된 것처럼 step은 하나의 shell script를 실행하는데, 아래 step은 총 2개의 script를 실행하도록 정의했다.  
 
@@ -260,10 +264,7 @@ name을 작성했으니 그 다음으로 runs를 작성하면 될까?
 
 그렇지 않다.
 
-`runs`은
-
-- Action이 아닌 command를 실행할 때 사용하는 내장된 키워드다.
-- **_job마다 자신만의 runner를 가지고 있다. 즉 job마다 `runs-on`을 입력해야 한다. 이 말은 job마다 자신만의 virtual machine을 가져서 다른 machine과 job으로부터 완전히 격리시켜야 한다._**  
+`runs`은 Action이 아닌 command를 실행할 때 사용하는 내장된 키워드다.
 
 Action을 실행하기 위해서는 `uses`를 사용해야 한다. 그 다음으로 해당 Action의 식별자를 입력한다.
 
