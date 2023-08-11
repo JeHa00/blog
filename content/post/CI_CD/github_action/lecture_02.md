@@ -1,13 +1,15 @@
 ---
-title: "CI/CD를 위한 github action basic study 01"
-date: 2023-08-06T22:13:42+09:00
-draft: true
-summary: Activity type, filters, github actions caching을 학습해본다.  
+title: "CI/CD를 위한 github action study: Activity type, filters, caching, environment variables and secrets"
+date: 2023-08-10T22:13:42+09:00
+draft: false
+summary: 첫 번째, Activity type, filters가 뭔지 학습한다. 두 번째 Job artifacts, outputs 를 비교해보고 github actions caching을 어떻게 하면 적용할 수 있는지 알아본다. 세 번째, github action에서 환경 변수와 secrets 값을 어떻게 설정하는지 알아본다.   
 tags: ["ci/cd"]
 categories: "CI/CD"
 ---
 
 # 0. Introduction
+
+- [CI/CD를 위한 github action study basic](https://jeha00.github.io/post/ci_cd/github_action/lecture_01/)
 
 프로젝트를 진행하면서 새로 작성된 또는 수정된 코드를 repository에 push하면 자동적으로 테스트를 실행하고, 통과되면 합쳐지고 아니면 에러를 발생시키는 workflow를 적용하고 싶어서 예전부터 공부하고 싶었던 github action에 대해 study를 시작한다.
 
@@ -23,7 +25,7 @@ categories: "CI/CD"
 
 &nbsp;
 
-## 1. Activity type and Filters 학습하기  
+# 1. Activity type and Filters 학습하기  
 
 ---
 
@@ -38,8 +40,6 @@ Activity type에는 예를 들어서 event가 pull_request라면 activity type�
 Filters는 push event라고 한다면 target branch에 대해 조건을 걸 수 있다.  
 
 - [github actions events](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request)를 보면 여러 event와 activity type가 나와있다. 해당 event를 사용할 때는 `Note`를 반드시 읽어보도록 하자.  
-
-#
 
 ### types를 입력하는 3가지 방식과 types가 존재할 때 여러 event를 입력하는 방식  
 
@@ -84,8 +84,6 @@ jobs:
 
 이처럼 types를 무엇으로 지정하냐에 따라서 workflow 진행 유무 기준을 구체적으로 정할 수 있다.
 
-#
-
 ### push에 대한 filter 적용
 
 push를 할 때 내가 원하는 branch와 원하는 경로에 들어올 때만 실행하는 방법도 있다.  
@@ -110,8 +108,6 @@ on:
 위 3가지 branch에 push를 할 경우에만 workflow를 실행한다.
 
 만약 `feature/` 로 시작한다면 실행되지 않는다.  
-
-#
 
 ### workflow 경로에 따라 실행하기  
 
@@ -141,15 +137,11 @@ jobs:
 
 이 상황에서 만약 main branch로 push를 할 경우 Events Demo 1은 실행되지 않는다.  
 
-#
-
 ### Forked Pull Request Workflows
 
 만약 누군가 repository를 fork하고 main branch에 push할 경우, forked repository가 아닌 원래 repository에서 경고 표시로 workflow 가 뜨면서 진행되지 않는다.
 
 이렇게 된 이유는 모든 사람들이 repository를 fork할 수 있는데, 악의적으로 workflow를 실행시켜서 cost를 과도하게 유발시키 수 있기 때문에, forked repository에서 main으로 push한 경우에는 바로 workflow가 진행되지 않는다.  
-
-#
 
 ### 진행 중인 workflow 취소하기  
 
@@ -160,8 +152,6 @@ jobs:
 아래 이미지의 오른쪽 위를 보면 `Cancel workflow` button을 통해서 중지할 수 있다.  
 
 ![image](https://github.com/JeHa00/image/assets/78094972/891aa483-1cc9-4ad4-b90e-c61f33e334f8)  
-
-#
 
 ### workflow skip 하기  
 
@@ -179,7 +169,7 @@ jobs:
 
 &nbsp;
 
-# 2. Job Data & Outputs
+# 2. Job Data & Outputs & Caching
 
 ---
 
@@ -238,7 +228,7 @@ jobs:
 
 아래 이미지처럼 Artifacts가 생성된다. 이를 클릭하면 수동으로 다운 받을 수 있다.  
 
-![image](https://github.com/JeHa00/image/assets/78094972/79c4e698-656a-4688-af67-38d14ff18d41)
+  ![image](https://github.com/JeHa00/image/assets/78094972/79c4e698-656a-4688-af67-38d14ff18d41)
 
 자동으로 다운받아지기 위해서는 `deploy` job 단계에서 다운받는 step을 추가한다.  
 
@@ -276,11 +266,9 @@ jobs:
 
 아래 이미지를 보면 Output contents step 단계에서 ls를 실행하여 파일 목록을 확인했다.
 
-![image](https://github.com/JeHa00/image/assets/78094972/961cdee2-31d4-42e2-8e28-e61dfef6e182)
+  ![image](https://github.com/JeHa00/image/assets/78094972/961cdee2-31d4-42e2-8e28-e61dfef6e182)
 
 다운로드 시 Github에서 제공하는 Action을 사용하여 할 수 있다. 이 때 설정을 추가해야 한다. 업로드 했던 파일의 이름을 `name` key로 value를 입력한다. 그러면 deploy job이 실행되는 folder 안에 dist-files 내부 파일들이 바로 담겨진다.  
-
-#
 
 ## Artifacts와 Job Outputs
 
@@ -349,8 +337,6 @@ jobs:
   - $GITHUB_OUTPUT은 `outputs`에 선언된 key 값에 연결된다. `file-name` key의 value에 저장된다.  
   - `script-file`이 `file-name`을 가리키기 때문에 `script-file`에 저장된다.  
 
-#
-
 ## 다른 job의 output 이용하기  
 
 deploy job을 보면 여러 개의 환경 변수들을 출력하고 있다
@@ -359,15 +345,13 @@ deploy job을 보면 여러 개의 환경 변수들을 출력하고 있다
 
 아래 image를 보면 해당 step name 별로 출력된 결과를 볼 수 있다.
 
-![image](https://github.com/JeHa00/image/assets/78094972/43799a52-5703-42c8-b488-67acd3835d6f)
+  ![image](https://github.com/JeHa00/image/assets/78094972/43799a52-5703-42c8-b488-67acd3835d6f)
 
 `needs.build.outputs.script-file`로 적어뒀던 Output filename step만 다른 값을 출력한 걸 확인할 수 있다.  
 
 이처럼 github output에 값을 담아두면 다른 job에서도 꺼내서 사용할 수 있는 걸 알 수 있다.  
 
 그리고, **_Artifacts와 outputs의 차이_** 를 확실히 알게 되었다. Artifacts는 외부에서 다운받을 수 있는 결과물이지만, outputs는 단순한 값이라는 걸 확인했다.  
-
-#
 
 ## cache를 사용하여 Dependency 설치 시간을 단축시키기  
 
@@ -452,7 +436,7 @@ test job에 작성된 `Cache dependencies`를 다음 단계 job인 build에도 �
 
 그러면 실행 결과를 확인해보자. 아래 이미지는 `test` job에서의 이미지다.  
 
-![image](https://github.com/JeHa00/image/assets/78094972/5687fcc8-a0aa-462f-b043-f476da3066e3)
+  ![image](https://github.com/JeHa00/image/assets/78094972/5687fcc8-a0aa-462f-b043-f476da3066e3)
 
 Cache dependencies 단계에서는 해당 key를 발견할 수 없다고 떴지만 Post Cache dependencies 단계에서 해당 key 값으로 cache에 저장된 걸 알 수 있다.  
 
@@ -460,7 +444,7 @@ Cache dependencies 단계에서는 해당 key를 발견할 수 없다고 떴지�
 
 그러면 `test` 다음 job인 `build` job일 때 설치 시간, Cache dependencies를 확인해보자.
 
-![image](https://github.com/JeHa00/image/assets/78094972/a3e2a328-e38a-405b-ae99-8f2468a28f49)
+  ![image](https://github.com/JeHa00/image/assets/78094972/a3e2a328-e38a-405b-ae99-8f2468a28f49)
 
 - Cache dependencies 단계에서 다음 메세지를 확인할 수 있다.
 
@@ -471,8 +455,6 @@ Cache dependencies 단계에서는 해당 key를 발견할 수 없다고 떴지�
 - 그리고 그 다음 step인 Install dependencies 단계의 설치 시간은 '5s'로 줄어든 걸 확인할 수 있다.  
 
 다른 workflow에도 똑같은 Install dependencies step이 존재한다면 실행 시간이 짧아진 거를 확인할 수 있을 것이다.  
-
-#
 
 ## Summary
 
@@ -506,21 +488,222 @@ Cache dependencies 단계에서는 해당 key를 발견할 수 없다고 떴지�
 
 - 반복되고, 느린 step들의 속도를 증가시킬 수 있다.  
 - 전형적으로 사용되는 경우는 dependency 설치지만, 어느 파일과 폴더 모두 가능하다.  
-- ❗️ 하지만 artifacts를 caching
+- ❗️ 하지만 artifacts를 caching하여 사용하지 말자. 용량이 크다.  
 
 &nbsp;
 
-# Github actions with Docker container  
-
 ---
 
-### Docker container 안에서 github action을 실행하는 이유
+# 3. Enviroment variables & Secrets 사용하기
 
-github actions는 여러 개의 job을 가질 수 있는데, 하나의 job마다 실행 환경 runners를 입력해야만 한다. 이는 우분투, 윈도우, 리눅스, MacOS가 있지만 이는 이미 만들어져있는데 기성품 같은 것이기 때문에 우리가 모든 환경을 조절할 수 없다. 그래서 docker container 너를 각 job의 실행 머신 os로 지정한다면 docker image를 정의한 작성자가 훨씬 더 많은 걸 조절할 수 있기 때문에, docker container를 runners로 지정하는 걸 추천한다.  
+왜 github actions에 환경 변수가 필요할까? 왜냐하면 tesing 시 db와 production 시 db에 대한 password가 다른데 이를 환경 설정으로 다르게 해야 workflow를 진행 시 의도한 대로 정확하게 진행할 수 있기 때문이다.  
 
-기존에 제공하는 os를 사용하면 이에 따라 여러 가지 세팅들을 제공하기 때문에 충분할 수 있으나, 그렇지 않은 상황에서는 container를 추천한다.  
+## 3.1 Environments variables
 
-그리고 container를 사용하면 container를 재사용할 수 있다.  
+code 상에서 사용할 수 있는 동적 값으로 다음과 같이 workflow 전체 범위로도, 해당 Job에 대해서만으로도, step에 대해서만으로도 할 수 있다. 환경 변수를 사용하기 위해서는 `env` 라는 내장 키워드를 통해서 접근할 수 있다.
+
+### workflow, job, step에 대해서 환경 변수 선언하기  
+
+```yml
+name: Deployment
+on:
+  push:
+    branches:
+      - main
+
+# on과 같은 level에서 선언: workflow 전체 범위로 선언
+env:
+  DB_NAME: test
+  
+jobs:
+  test:
+    # 해당 job에 대해서만 선언  
+    env:
+      DB_USERNAME: project
+      DB_PASSWORD: 1234
+    runs-on: ubuntu-latest
+    steps:
+      - name:
+        # 해당 step에 대해서만 선언  
+        env:
+          APPLE: 1234
+        uses:
+```
+
+- 위 코드에서 'DB_NAME'은 workflow 전체 범위로 선언한 이유는 db name은 test이든 production이든 잘 변하지 않기 때문이다.
+
+### 환경 변수 사용하기  
+
+그러면 환경 변수를 사용하기 위해 workflow를 작성해보자.
+
+```yml
+name: Demo
+on:
+  push:
+    branches:
+      - main  
+env:
+  DB_NAME: test
+jobs:
+  test:
+    env:
+      DB_USERNAME: project
+      DB_PASSWORD: 1234
+    runs-on: ubuntu-latest
+    steps: 
+      ...
+      # 추가된 코드
+      - name: Check DB information
+        run: |
+          echo "DB_NAME: ${{ env.DB_NAME }}" 
+          echo "DB_USERNAME: $DB_USERNAME" 
+          echo "DB_PASSWORD: $DB_PASSWORD" 
+      #
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    outputs:
+      script-file:  ${{ steps.publish.outputs.file-name }}
+    steps:
+      ...
+      # 추가된 코드  
+      - name: Check DB information
+        run: |
+          echo "DB_NAME: ${{ env.DB_NAME }}" 
+          echo "DB_USERNAME: $DB_USERNAME" 
+          echo "DB_PASSWORD: $DB_PASSWORD" 
+      #
+
+```
+
+- DB_NAME은 workflow 전역으로 선언  
+- DB_USERNAME, DB_PASSWORD는 job 범위로 선언  
+
+위 코드를 실행한 결과 중 test job의 실행 결과는 다음과 같다.
+
+  ![image](https://github.com/JeHa00/image/assets/78094972/df6ed0aa-8b20-42b2-953c-be0f0c37861f)
+
+모든 값이 다 출력되었고, 일치한다.
+
+그러면 build job의 실행 결과를 확인해보자.  
+
+  ![image](https://github.com/JeHa00/image/assets/78094972/4a386553-ea05-48af-ad66-ef17552ea3b1)
+
+workflow level에서 선언한 DB_NAME만 출력되고 다른 job에서 선언했던 DB_USERNAME과 DB_PASSWORD는 출력되지 않은 걸 알 수 있다.
+
+위 결과 workflow level에서 선언한 환경 변수에 접근하기 위해서는 `${{env.{key name}}}`을 사용하여 접근하면 되고, job 내에서 선언한 환경변수는 `$key_name`을 통해 접근하면 된다는 걸 확인했다.  
+
+## 3.2 Secrets 사용하기
+
+Environment variables 처럼 동적 값이지만 노출되지 않아야 하는 값들은 Secrets으로 사용하면 된다. 예를 들어 API key, db 관련 정보들이 해당된다. 이 값을 사용하기 위해서는 `secrets` 라는 내장 키워드를 통해서 사용될 수 있다.  
+
+github에는 이러한 secrets를 저장할 공간이 존재한다. Github 해당 repository -> Settings tab -> Security 의 Actions에 접근하면 아래 이미지 화면을 확인할 수 있다.
+
+  ![image](https://github.com/JeHa00/image/assets/78094972/b214fbe9-0320-4e84-ae88-5bb15af8515a)
+
+위 화면을 확인했다면 secret을 추가하기 위해서 위 'New repository secret' 버튼을 클릭하여 추가한다.
+
+예를 들어 `DB_NAME: test` 를 추가하고 싶다면 위 버튼을 클릭 후 'Name'에는 'DB_NAME'을 입력하고, 'Secret'에 'test'를 입력한다. 추가하면 다음 이미지처럼 확인할 수 있다.
+
+  ![image](https://github.com/JeHa00/image/assets/78094972/bd6d1a0a-0f74-4e7a-922d-033f2720d9ce)
+
+그러면 `DB_USERNAME: project`와 `DB_PASSOWRD: 1234`도 다 추가해보자. 그 다음에 secrets으로부터 값을 가져오기 위해서 해당 workflow의 env를 다음과 같이 수정한다.
+
+```yml
+...
+env:
+  DB_NAME: ${{secrets.DB_NAME}}
+jobs:
+  test:
+    env:
+      DB_USERNAME: ${{secrets.DB_USERNAME}}
+      DB_PASSWORD: ${{secrets.DB_PASSOWRD}}
+        ...
+```
+
+위와 같이 수정된 후 실행 결과를 확인해보면 이전과 달리 '*' 라는 문자로 값이 드러나지 않는 걸 확인할 수 있다.
+
+  ![image](https://github.com/JeHa00/image/assets/78094972/43730534-a616-4f22-9fe2-a3839ecb5d77)
+
+### Job마다 같은 용도지만 다른 값을 가진 secret 사용하기
+
+위 소제목에 나온 대로 secret을 사용하고 싶다면 저장하는 secret name을 다르게 저장할 수 밖에 없다.  
+
+이를 job마다 동일한 이름으로 분류하고 싶다면 아래 내용인 Github Actions Environments를 보도록 하자.  
+
+## 3.3 Github Actions Environments
+
+github repository에 `code and automation` tab에 `Environments`를 사용하여 job마다 다른 github action environment를 참고할 수 있다. 즉, Environment마다 다른 secret 값을 가질 수 있다.
+
+github profile의 settings가 아닌 repository들어가 보이는 Settings 여야 한다.
+
+![image](https://github.com/JeHa00/image/assets/78094972/e80b3569-a43b-4975-a1c8-1f9a2551474c)  
+
+그러면 'testing'에 사용하는 secrets를 만들어보자.
+
+1. 위 이미지에서 'New environment'를 클릭하여 'testing' 을 입력하여 'testing'이란 이름의 environment를 생성해보자.
+
+    ![image](https://github.com/JeHa00/image/assets/78094972/fe8c4082-ba99-4ade-91e6-3af3808cabba)
+
+2. 생성 결과는 다음과 같다. 아래 이미지로 보면 타이틀 부분에 `Configure testing`이 생긴 걸 알 수 있다.  그리고 나서 DB_NAME, DB_USERNAME, DB_PASSWORD를 입력해보자.  
+    ![image](https://github.com/JeHa00/image/assets/78094972/58a01851-8d4f-4c60-85bb-c5351fc5d4bc)
+    ![image](https://github.com/JeHa00/image/assets/78094972/85565592-a5c1-421d-a104-27f6fddac2f8)
+
+3. 이번에는 'deploy'를 입력하여 'deploy'란 이름의 environment를 생성해보자.  
+4. 생성된 environment 목록은 다음과 같다. 이 목록을 확인하기 위해서는 side bar의 `Environments` tab을 입력하면 확인할 수 있다.
+    ![image](https://github.com/JeHa00/image/assets/78094972/9c0bc292-96bd-4068-80cc-4c4c19cc1697)
+
+5. Security tab의 Actions으로 가서 Repository secrets에 있는 모든 secret을 삭제한다.  
+
+### workflow에 입력하기
+
+```yml
+name: Demo
+on:
+  push:
+    branches:
+      - main 
+      - dev 
+env:
+  DB_NAME: ${{secrets.DB_NAME}}
+jobs:
+  test:
+    # 추가하기
+    environment: testing 
+    #
+    env:
+      DB_USERNAME: ${{secrets.DB_USERNAME}}
+      DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3  
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}  
+      - name: Install dependencies
+        run: npm ci
+      - name: Check DB information
+        run: |
+          echo "DB_NAME: ${{ env.DB_NAME }}" 
+          echo "DB_USERNAME: $DB_USERNAME" 
+          echo "DB_PASSWORD: $DB_PASSWORD" 
+
+```
+
+### 특정 브랜치에 한해서 workflow 실행되기
+
+'Selected branches'를 선택한 다음에 testing job을 실행할 branch를 입력한다.
+  
+  ![image](https://github.com/JeHa00/image/assets/78094972/4a2b5503-28c9-450a-bf06-95c38d467791)
+
+위 이미지에 따르면 main을 선택했다. 그러면 dev branch를 새로 파서 여기에 push를 해보자.  아래 이미지에 나온 것처럼 배포에 실패했다.
+
+  ![image](https://github.com/JeHa00/image/assets/78094972/ee591318-a04e-46fa-bce9-8384fdcbbdb2)
+
+&nbsp;
 
 ---
 
@@ -532,3 +715,4 @@ github actions는 여러 개의 job을 가질 수 있는데, 하나의 job마다
 - [Skipping workflow runs](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs)  
 - [github actions events](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request)  
 - [github actions cache](https://github.com/actions/cache)
+- [github actions - Default environment variables](https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables)

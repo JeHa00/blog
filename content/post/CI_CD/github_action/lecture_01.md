@@ -1,5 +1,5 @@
 ---
-title: "CI/CD를 위한 github action basic study 01"
+title: "CI/CD를 위한 github action study basic"
 date: 2023-08-03T21:18:52+09:00
 draft: false
 summary: github actions의 core components인 workflow, jobs, steps에 대해 알아보고 실습을 진행하면서 github action의 내장 keyword도 알아본다.  
