@@ -345,7 +345,7 @@ deploy job을 보면 여러 개의 환경 변수들을 출력하고 있다
 
 아래 image를 보면 해당 step name 별로 출력된 결과를 볼 수 있다.
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/43799a52-5703-42c8-b488-67acd3835d6f)
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/43799a52-5703-42c8-b488-67acd3835d6f#center" width="50%">}}
 
 `needs.build.outputs.script-file`로 적어뒀던 Output filename step만 다른 값을 출력한 걸 확인할 수 있다.  
 
@@ -436,7 +436,7 @@ test job에 작성된 `Cache dependencies`를 다음 단계 job인 build에도 �
 
 그러면 실행 결과를 확인해보자. 아래 이미지는 `test` job에서의 이미지다.  
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/5687fcc8-a0aa-462f-b043-f476da3066e3)
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/5687fcc8-a0aa-462f-b043-f476da3066e3#center" width="80%">}}
 
 Cache dependencies 단계에서는 해당 key를 발견할 수 없다고 떴지만 Post Cache dependencies 단계에서 해당 key 값으로 cache에 저장된 걸 알 수 있다.  
 
@@ -444,7 +444,7 @@ Cache dependencies 단계에서는 해당 key를 발견할 수 없다고 떴지�
 
 그러면 `test` 다음 job인 `build` job일 때 설치 시간, Cache dependencies를 확인해보자.
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/a3e2a328-e38a-405b-ae99-8f2468a28f49)
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/a3e2a328-e38a-405b-ae99-8f2468a28f49#center" width="90%">}}
 
 - Cache dependencies 단계에서 다음 메세지를 확인할 수 있다.
 
@@ -498,7 +498,7 @@ Cache dependencies 단계에서는 해당 key를 발견할 수 없다고 떴지�
 
 왜 github actions에 환경 변수가 필요할까? 왜냐하면 tesing 시 db와 production 시 db에 대한 password가 다른데 이를 환경 설정으로 다르게 해야 workflow를 진행 시 의도한 대로 정확하게 진행할 수 있기 때문이다.  
 
-## 3.1 Environments variables
+## Environments variables
 
 code 상에서 사용할 수 있는 동적 값으로 다음과 같이 workflow 전체 범위로도, 해당 Job에 대해서만으로도, step에 대해서만으로도 할 수 있다. 환경 변수를 사용하기 위해서는 `env` 라는 내장 키워드를 통해서 접근할 수 있다.
 
@@ -581,49 +581,49 @@ jobs:
 
 위 코드를 실행한 결과 중 test job의 실행 결과는 다음과 같다.
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/df6ed0aa-8b20-42b2-953c-be0f0c37861f)
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/df6ed0aa-8b20-42b2-953c-be0f0c37861f#center" width="60%">}}
 
 모든 값이 다 출력되었고, 일치한다.
 
 그러면 build job의 실행 결과를 확인해보자.  
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/4a386553-ea05-48af-ad66-ef17552ea3b1)
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/4a386553-ea05-48af-ad66-ef17552ea3b1#center" width="60%">}}
 
 workflow level에서 선언한 DB_NAME만 출력되고 다른 job에서 선언했던 DB_USERNAME과 DB_PASSWORD는 출력되지 않은 걸 알 수 있다.
 
 위 결과 workflow level에서 선언한 환경 변수에 접근하기 위해서는 `${{env.{key name}}}`을 사용하여 접근하면 되고, job 내에서 선언한 환경변수는 `$key_name`을 통해 접근하면 된다는 걸 확인했다.  
 
-## 3.2 Secrets 사용하기
+## Secrets 사용하기
 
 Environment variables 처럼 동적 값이지만 노출되지 않아야 하는 값들은 Secrets으로 사용하면 된다. 예를 들어 API key, db 관련 정보들이 해당된다. 이 값을 사용하기 위해서는 `secrets` 라는 내장 키워드를 통해서 사용될 수 있다.  
 
 github에는 이러한 secrets를 저장할 공간이 존재한다. Github 해당 repository -> Settings tab -> Security 의 Actions에 접근하면 아래 이미지 화면을 확인할 수 있다.
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/b214fbe9-0320-4e84-ae88-5bb15af8515a)
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/b214fbe9-0320-4e84-ae88-5bb15af8515a#center" width="80%">}}
 
 위 화면을 확인했다면 secret을 추가하기 위해서 위 'New repository secret' 버튼을 클릭하여 추가한다.
 
 예를 들어 `DB_NAME: test` 를 추가하고 싶다면 위 버튼을 클릭 후 'Name'에는 'DB_NAME'을 입력하고, 'Secret'에 'test'를 입력한다. 추가하면 다음 이미지처럼 확인할 수 있다.
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/bd6d1a0a-0f74-4e7a-922d-033f2720d9ce)
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/bd6d1a0a-0f74-4e7a-922d-033f2720d9ce#center" width="80%">}}
 
 그러면 `DB_USERNAME: project`와 `DB_PASSOWRD: 1234`도 다 추가해보자. 그 다음에 secrets으로부터 값을 가져오기 위해서 해당 workflow의 env를 다음과 같이 수정한다.
 
-```yml
-...
-env:
-  DB_NAME: ${{secrets.DB_NAME}}
-jobs:
-  test:
-    env:
-      DB_USERNAME: ${{secrets.DB_USERNAME}}
-      DB_PASSWORD: ${{secrets.DB_PASSOWRD}}
-        ...
-```
+  ```yml
+  ...
+  env:
+    DB_NAME: ${{secrets.DB_NAME}}
+  jobs:
+    test:
+      env:
+        DB_USERNAME: ${{secrets.DB_USERNAME}}
+        DB_PASSWORD: ${{secrets.DB_PASSOWRD}}
+          ...
+  ```
 
 위와 같이 수정된 후 실행 결과를 확인해보면 이전과 달리 '*' 라는 문자로 값이 드러나지 않는 걸 확인할 수 있다.
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/43730534-a616-4f22-9fe2-a3839ecb5d77)
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/43730534-a616-4f22-9fe2-a3839ecb5d77#center" width="80%">}}
 
 ### Job마다 같은 용도지만 다른 값을 가진 secret 사용하기
 
@@ -631,7 +631,7 @@ jobs:
 
 이를 job마다 동일한 이름으로 분류하고 싶다면 아래 내용인 Github Actions Environments를 보도록 하자.  
 
-## 3.3 Github Actions Environments
+## Github Actions Environments
 
 github repository에 `code and automation` tab에 `Environments`를 사용하여 job마다 다른 github action environment를 참고할 수 있다. 즉, Environment마다 다른 secret 값을 가질 수 있다.
 
@@ -643,15 +643,16 @@ github profile의 settings가 아닌 repository들어가 보이는 Settings 여�
 
 1. 위 이미지에서 'New environment'를 클릭하여 'testing' 을 입력하여 'testing'이란 이름의 environment를 생성해보자.
 
-    ![image](https://github.com/JeHa00/image/assets/78094972/fe8c4082-ba99-4ade-91e6-3af3808cabba)
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/fe8c4082-ba99-4ade-91e6-3af3808cabba#center" width="80%">}}
 
 2. 생성 결과는 다음과 같다. 아래 이미지로 보면 타이틀 부분에 `Configure testing`이 생긴 걸 알 수 있다.  그리고 나서 DB_NAME, DB_USERNAME, DB_PASSWORD를 입력해보자.  
-    ![image](https://github.com/JeHa00/image/assets/78094972/58a01851-8d4f-4c60-85bb-c5351fc5d4bc)
-    ![image](https://github.com/JeHa00/image/assets/78094972/85565592-a5c1-421d-a104-27f6fddac2f8)
+
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/58a01851-8d4f-4c60-85bb-c5351fc5d4bc#center" width="80%">}}
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/85565592-a5c1-421d-a104-27f6fddac2f8#center" width="80%">}}
 
 3. 이번에는 'deploy'를 입력하여 'deploy'란 이름의 environment를 생성해보자.  
 4. 생성된 environment 목록은 다음과 같다. 이 목록을 확인하기 위해서는 side bar의 `Environments` tab을 입력하면 확인할 수 있다.
-    ![image](https://github.com/JeHa00/image/assets/78094972/9c0bc292-96bd-4068-80cc-4c4c19cc1697)
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/9c0bc292-96bd-4068-80cc-4c4c19cc1697#center" width="80%">}}
 
 5. Security tab의 Actions으로 가서 Repository secrets에 있는 모든 secret을 삭제한다.  
 
@@ -697,11 +698,11 @@ jobs:
 
 'Selected branches'를 선택한 다음에 testing job을 실행할 branch를 입력한다.
   
-  ![image](https://github.com/JeHa00/image/assets/78094972/4a2b5503-28c9-450a-bf06-95c38d467791)
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/4a2b5503-28c9-450a-bf06-95c38d467791#center" width="80%">}}
 
 위 이미지에 따르면 main을 선택했다. 그러면 dev branch를 새로 파서 여기에 push를 해보자.  아래 이미지에 나온 것처럼 배포에 실패했다.
 
-  ![image](https://github.com/JeHa00/image/assets/78094972/ee591318-a04e-46fa-bce9-8384fdcbbdb2)
+  {{<figure src="https://github.com/JeHa00/image/assets/78094972/ee591318-a04e-46fa-bce9-8384fdcbbdb2#center" width="80%">}}
 
 &nbsp;
 
