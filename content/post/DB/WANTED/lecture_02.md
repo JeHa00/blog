@@ -107,7 +107,44 @@ MySQL 엔진은 크게 SQL 엔진과 Storage 엔진으로 나눠진다.
 
 🔆 서버 개발자들은 직접 db에 접근하지 않고 흔히들 ORM을 사용한다. 각 프레임워크에서는 각 ORM별로 트랜젝션을 지원하는 쿼리가 존재하기 때문에 사용해봐야 한다.
 
-## 3.1 트랜젝션을 지원하는 스토리지 엔진(InnoDB)와 트랜젝션을 지원하지 않는 스토리지 엔진(MyISAM) 비교  
+## 3.1 트랜잭션의 특징 ACID
+
+### Atomicity(원자성)
+
+**_한 트랜잭션의 연산들이 모두 성공하거나, 반대로 전부 실패되는 성질_**
+
+A 계좌에서 B 계좌로 돈 500만원을 입금한다고 하자. A 계좌의 현재 잔액은 1000만원, B 계좌의 현재 잔액은 0원이다.
+
+- 첫 번째, A 계좌의 잔액 1000만원을 500만원으로 수정한다.
+- 두 번째, B 계좌에 잔액 0원을 500만원으로 수정한다.
+
+성공적으로 수행된다면 A, B 각 계좌에는 500만원이 남는다.  
+
+하지만 일부만 적용된다면 예를 들어 만약 첫 번째 과정만 수행되고, 두 번째 과정이 실패된다면 A 계좌의 500만원은 세상에서 사라지는 돈이 된다. 그러므로 한 가지라도 실패한다면 모든 작업이 실패로 돌아가야 한다. 이것이 원자성이다.
+
+### Consistency(일관성)
+
+**_허용된 방식으로만 데이터를 수정해야 한다._**
+
+데이터베이스의 모든 데이터는 여러 가지 조건, 규칙에 따라 유효해야 한다.
+
+예를 들어 A한테 500만원이 있고, B는 0원을 가지고 있다. A는 B에게 최대 500만원을 송금할 수 있다. 하지만, B는 어떤 돈도 송금할 수 없다. 0원이기 떄문이다. 만약 돈을 송금할 수 있다면 해당 데이터는 유효하지 않다.  
+
+### Isolation(고립)
+
+**_트랜잭션 수행 시 서로 끼어들지 못한다._**  
+
+복수의 병렬 트랜잭션은 서로 격리되어 마치 순차적으로 실행되는 것처럼 작동되어야 하고, 여러 사용자가 같은 데이터에 접근할 수 있어야 한다.
+
+하지만 순차적으로 접근이 가능하다면 성능이 떨어진다.
+
+### Durability(지속성)
+
+**_성공적으로 수행된 트랜잭션은 영원히 반영되어야 한다._**
+
+&nbsp;
+
+## 3.2 트랜젝션을 지원하는 스토리지 엔진(InnoDB)와 트랜젝션을 지원하지 않는 스토리지 엔진(MyISAM) 비교  
 
 ### 1) Engine이 다른 table 생성하기
 
@@ -165,7 +202,7 @@ MySQL 엔진은 크게 SQL 엔진과 Storage 엔진으로 나눠진다.
 
 &nbsp;
 
-## 3.2 어떻게 가능한 걸까?
+## 3.3 어떻게 가능한 걸까?
 
 > **_'Buffer pool' 과  'Undo log' 를 사용한다._**  
 
@@ -184,7 +221,7 @@ MySQL 엔진은 크게 SQL 엔진과 Storage 엔진으로 나눠진다.
 
 &nbsp;
 
-## 3.3 Transaction - states
+## 3.4 Transaction - states
 
 ![image](https://user-images.githubusercontent.com/78094972/218648184-de64f4cd-4aa5-4376-90fb-db39359898e2.png)
 
@@ -369,13 +406,17 @@ transaction에도 상태(state)가 존재한다.
   - repeatable read: 나머지는 이런 게 있다는 정도로만 알고, 이를 자세히 알자.  
   - serializable
 
-❗️ 격리 기본 수준 값을 변경하려고 할 때, 트랜잭션이 진행 중이라 바꿀 수 없다는 Error가 발생했다면 `COMMIT`을 사용하라.  
+❗️ 격리 기본 수준 값을 변경 시, 트랜잭션이 진행 중이라 바꿀 수 없다는 Error가 발생했다면 `COMMIT`을 사용하라.  
 ❗️ autocommit = 1 이어도 start transcation으로 트랜잭션을 명시적으로 시작해주면 commit 명령어를 입력해야 DB에 적용이 된다.
 ❗️ mysql에서 나갔다가 다시 들어오면 autocommit은 다시 1로 세팅된다.  
 
-## 5.1 Read uncommitted (dirty read)
+## 격리수준 별 발생할 수 있는 문제점
 
-> **_COMMIT 되지 않은 데이터를 읽을 수 있는 격리 수준으로, 이런 데이터는 변경될 수 있기 때문에 'dirty read'라는 문제가 발생된다._**  
+![image](https://velog.velcdn.com/images/paki1019/post/6457bf85-c658-44c9-9d9a-d78a60ac44c7/image.png)
+
+## 5.1 Read uncommitted와 dirty read
+
+> **_COMMIT 되지 않은 데이터를 읽을 수 있는 격리 수준으로, 한 트랜잭션에서 다른 트랜잭션의  커밋되지 않은 데이터를 읽을 수 있기 때문에 이런 데이터는 변경될 수 있어서 'dirty read'라는 문제가 발생된다._**  
 
 ### Read uncommitted란?
 
@@ -413,9 +454,11 @@ A terminal에 트랜젝션 과정 중에 데이터를 추가한 6번을 기준�
 
 &nbsp;
 
-## 5.2 Read committed: Non repeatable read
+## 5.2 Read committed와 non repeatable read  
 
 > **_COMMIT된 것만 읽을 수 있는 격리 수준으로 트랜젝션이 완료된 데이터만 다른 트랜잭션에서 조회 가능하다._**
+
+발생되는 문제로 **_non repeatable read (반복 가능하지 않은 조회)_** 가 존재한다. 한 트랜잭션 내에 **같은 행에 두 번 이상의 조회** 가 발생했는데, 그 값이 다른 걸 말한다.
 
 ### Read committed란?
 
@@ -457,7 +500,7 @@ READ UNCOMMITED와의 차이점을 확인했고, 문제점도 확인했다.
 
 &nbsp;
 
-## 5.3 🔆 Repeatable read
+## 5.3 🔆 Repeatable read와 phantom read  
 
 > **_Isolation level의 default 값으로서 InnoDB가 사용하는 것_**
 
@@ -465,8 +508,12 @@ READ UNCOMMITED와의 차이점을 확인했고, 문제점도 확인했다.
 
 ### 문제점: phantom read
 
+ > **_한 트랜잭션 내에서 동일한 쿼리를 2번 이상 보냈을 때 해당 조회 결과가 다른 것을 의미_**
+
 - undo record에는 lock을 걸 수 없어서 같은 트랜잭션에서 조회 가능
-- 왔다갔다 해서 phantom read(유령)이라고 함
+- 귀신 같이 생겨버려서 이를 phantom 이라 한다.
+
+❗️ non repeatable read와 헷갈릴 수 있다. 하지만 repeatable read는 한 행에 대한 것이고 phantom read는 전체 데이터에 관한 현상을 말한다.
 
 ### 해결책
 
