@@ -554,7 +554,7 @@ InnoDB에서 repeatable read를 사용하면 serializable은 불필요하다.
 
 # 6. 알아두면 좋은 명령어
 
-### SHOW CREATE TABLE
+### SHOW CREATE TABLE {table name}
 
 > **_테이블이 어떻게 생성되었는지를 보여준다._**  
 
