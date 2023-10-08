@@ -80,6 +80,7 @@ pyenv 공식문서는 [여기](https://github.com/pyenv/pyenv#set-up-your-shell-
 
 - **실행 명령어:** `pyenv shell {python version installed}`
 - **설치된 버전들 확인:** `pyenv versions`
+- **설치할 수 있는 파이썬 버전들 확인:** `pyenv install --list`
 - **파이썬 특정 버전 설치하기:** `pyenv install {python version to install}`
 - **가상환경 생성하기:** `pyenv virtualenv {python_version to install} {virtualenv_name to install}`
 - **가상환경 지정하기(활성화하기):** `pyenv shell {virtual_name installed}`
