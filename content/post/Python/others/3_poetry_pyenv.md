@@ -76,7 +76,7 @@ poetry 공식문서는 [여기](https://python-poetry.org/docs/)를 클릭한다
 # 2. Pyenv 명령어 정리
 
 ---
-poetry 공식문서는 [여기](https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv )를 클릭한다.
+pyenv 공식문서는 [여기](https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv )를 클릭한다.
 
 - **실행 명령어:** `pyenv shell {python version installed}`
 - **설치된 버전들 확인:** `pyenv versions`
