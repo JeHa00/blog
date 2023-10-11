@@ -9,7 +9,7 @@ categories: ["Python"]
 
 # 0. Introduction
 
-- 예시코드는 [Python basic 24](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)에서 작성한 코드를 이어서 사용한다.
+- 예시코드는 [Python basic 24](https://jeha00.github.io/post/python/python_basic_24_oop/)에서 작성한 코드를 이어서 사용한다.
 
 ```yml
 > class Airline():
@@ -101,7 +101,7 @@ categories: ["Python"]
 
 - `dir()`은 인자로 들어간 클래스 객체에서 사용할 수 있는 `Special method` 속성을 보여주는데, 이를 통해서 많은 magic method가 class 하에 존재한다는 걸 알 수 있다.
 
-- [[TIL] Python basic 46: Metaclass](https://jeha00.github.io/post/python_basic/python_basic_46_metaclass/)를 참고하여 모든 객체가 클래스임을 확인하자.
+- [[TIL] Python basic 46: Metaclass](https://jeha00.github.io/post/python/python_basic_46_metaclass/)를 참고하여 모든 객체가 클래스임을 확인하자.
 
 ## 2.1 Special method 예시 1
 
@@ -254,7 +254,7 @@ Called >> __sub__
 - 이번 예제에서는 `packin` 과 `unpacking`을 사용한다.
 - `packin` 과 `unpacking`에 대한 기본 내용은 다음을 참고한다.
 
-  - [[TIL] Python basic 12: Method](https://jeha00.github.io/post/python_basic/python_basic_12/#3-packing-unpacking)
+  - [[TIL] Python basic 12: Method](https://jeha00.github.io/post/python/python_basic_12/#3-packing-unpacking)
 
 - 일반적인 덧셈 연산으로는 벡터 연산을 하지 못한다.
 - 그래서 벡터 연산에 맞게 magic method를 구현한다.

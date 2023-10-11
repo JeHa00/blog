@@ -183,7 +183,7 @@ categories: ["Python"]
 
 - 그래서 바로 실행되지 않도록 `if __name__ == "__main__"`놔둔다.
 
-- 더 자세한 내용은 [[TIL] Python basic 23: if \_ \_name \_ \_ == ' \_ \_main \_ \_'](https://jeha00.github.io/post/python_basic/python_basic_23_ifnamemain/) 을 참고한다.
+- 더 자세한 내용은 [[TIL] Python basic 23: if \_ \_name \_ \_ == ' \_ \_main \_ \_'](https://jeha00.github.io/post/python/python_basic_23_ifnamemain/) 을 참고한다.
 
 &nbsp;
 

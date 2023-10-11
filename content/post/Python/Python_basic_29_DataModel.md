@@ -243,7 +243,7 @@ Classes(rank='D', number='1'), Classes(rank='D', number='2'), Classes(rank='D', 
 
 ## 3.2 list comprehension의 주의사항
 
-> **_깊은 복사와 얕은 복사를 주의하라. 깊은 복사와 얕은 복사에 대한 자세한 내용은 [[TIL] Python basic 41: Shallow copy & Deep copy](https://jeha00.github.io/post/python_basic/python_basic_41_shallowdeepcopy/)을 참고한다._**
+> **_깊은 복사와 얕은 복사를 주의하라. 깊은 복사와 얕은 복사에 대한 자세한 내용은 [[TIL] Python basic 41: Shallow copy & Deep copy](https://jeha00.github.io/post/python/python_basic_41_shallowdeepcopy/)을 참고한다._**
 
 ```yml
 # 반복은 하지만 사용하지 않는 변수라면 '_' 로 표현한다.

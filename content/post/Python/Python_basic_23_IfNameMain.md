@@ -9,7 +9,7 @@ categories: ["Python"]
 
 ## 0. Introdction
 
-- [[TIL] Python basic 15: module](https://jeha00.github.io/post/python_basic/python_basic_15/)에서 학습했지만, 내용이 빈약하여 별도로 정리한다.
+- [[TIL] Python basic 15: module](https://jeha00.github.io/post/python/python_basic_15/)에서 학습했지만, 내용이 빈약하여 별도로 정리한다.
 
 ---
 
@@ -204,7 +204,7 @@ after __name__guard <-
 > `if __name__ == '__main__'` code는 의도치 않고 불필요한 코드를 호출하는걸 방지하기 위한 `guard`로서 사용한다.
 
 1. stack-over-flow [What does if\_\_name\_\_ == '\_\_main\_\_': do?](https://stackoverflow.com/questions/419163/what-does-if-name-main-do)
-2. [[TIL] Python basic 15: module](https://jeha00.github.io/post/python_basic/python_basic_15/)
+2. [[TIL] Python basic 15: module](https://jeha00.github.io/post/python/python_basic_15/)
 
 - 위 두 링크에 따르면 다음과 같은 이유로 작성한다.
 
@@ -219,7 +219,7 @@ after __name__guard <-
 
 ## Reference
 
-- [[TIL] Python basic 15: module](https://jeha00.github.io/post/python_basic/python_basic_15/)
+- [[TIL] Python basic 15: module](https://jeha00.github.io/post/python/python_basic_15/)
 - [[python] if \_\_name\_\_ == '\_\_main\_\_' : 의 정체](https://youngminieo1005.tistory.com/82)
 - [자료구조와 함께 배우는 알고리즘 입문 파이썬편](https://book.naver.com/bookdb/book_detail.nhn?bid=16419115)
 - [What does if\_\_name\_\_ == '\_\_main\_\_': do?](https://stackoverflow.com/questions/419163/what-does-if-name-main-do)

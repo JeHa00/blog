@@ -44,7 +44,7 @@ categories: ["Python"]
 - magic method 사용 시, double underscore를 사용한다.
 
   - magic method는 special method, Dunder(Double underscore) method와 동의어다.
-  - [[TIL] Python basic 27: Special Method](https://jeha00.github.io/post/python_basic/python_basic_27_specialmethod/)
+  - [[TIL] Python basic 27: Special Method](https://jeha00.github.io/post/python/python_basic_27_specialmethod/)
 
 - Access modifier 접근 지정자로 사용된다.
   - 이 접근 지정자 private에서 **_Naming Mangling_** 이 발생된다.

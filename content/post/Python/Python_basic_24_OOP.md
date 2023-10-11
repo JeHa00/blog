@@ -9,7 +9,7 @@ categories: ["Python"]
 
 # 0. Introduction
 
-- [[TIL] Python basic 14: class](https://jeha00.github.io/post/python_basic/python_basic_14_class/) 에서 언급한 `절차지향 프로그래밍`이 구체적으로 무엇인지 간단히 구현한다.
+- [[TIL] Python basic 14: class](https://jeha00.github.io/post/python/python_basic_14_class/) 에서 언급한 `절차지향 프로그래밍`이 구체적으로 무엇인지 간단히 구현한다.
 - 그 다음 클래스를 사용한 `객체지향 프로그래밍`에 대해 알아보겠다.
 
 - `절차지향 프로그래밍`은 일반적인 과거의 코딩방식으로, 함수 중심이기 때문에, 데이터가 방대하여 복잡하다는 단점이 있다.

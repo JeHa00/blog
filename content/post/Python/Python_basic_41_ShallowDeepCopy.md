@@ -9,7 +9,7 @@ categories: ["Python"]
 
 # Intro
 
-- [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)에서 간단히 다뤘던 shallow copy와 deep copy에 대해 깊이 알아보자.
+- [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)에서 간단히 다뤘던 shallow copy와 deep copy에 대해 깊이 알아보자.
 
 - 또한, 이번에 학습하는 개념은 Pointer의 개념과 연결되는 것으로 아래 링크들과 연결된다.
   - [[TIL] Python basic 40: Call by object reference](https://jeha00.github.io/post/python/python_basic_40_callbyobjectreference/)
@@ -188,4 +188,4 @@ True
 # Reference
 
 - [모두를 위한 파이썬 : 필수 문법 배우기 Feat. 오픈소스 패키지 배포 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89/dashboard)
-- [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)
+- [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)

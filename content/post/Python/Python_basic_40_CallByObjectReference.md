@@ -92,7 +92,7 @@ categories: ["Python"]
   - 참조에 의한 호출(call by reference): mutable object
 
 - 각 방식에 대해 code로 구현해보자.
-- data type에 따라 id 값이 변하는 것과 변하지 않는 것에 대한 설명은 [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)를 참조한다.
+- data type에 따라 id 값이 변하는 것과 변하지 않는 것에 대한 설명은 [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)를 참조한다.
 
 &nbsp;
 
@@ -166,6 +166,6 @@ msg =  [1, 2, 3, 4, 5, 10] 4310824192
 # Reference
 
 - [모두를 위한 파이썬 : 필수 문법 배우기 Feat. 오픈소스 패키지 배포 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89/dashboard)
-- [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)
+- [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)
 - [Python tutorials Data type](https://python-course.eu/python-tutorial/data-types-and-variables.php)
 - [call-by-value, call-by-reference](https://www.youtube.com/watch?v=IfVT3Cpdays&t=1144s)

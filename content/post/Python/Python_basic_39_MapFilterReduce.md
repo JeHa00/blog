@@ -9,7 +9,7 @@ categories: ["Python"]
 
 # 0. Introduction
 
-- [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python_basic/python_basic_31_firstclass/)에서 학습한 고위 함수(High-Order Function)의 대표적인 예인 map, filter, reduce function에 대해 집중적으로 학습하기 위해 작성한다.
+- [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python/python_basic_31_firstclass/)에서 학습한 고위 함수(High-Order Function)의 대표적인 예인 map, filter, reduce function에 대해 집중적으로 학습하기 위해 작성한다.
 - 그래서 고위 함수(High-Order Function)란 무엇인지 간단히 알아보고, 각 fuction에 대해 기존에 했던 예제에 추가하여 더 알아보자.
 
 &nbsp;
@@ -20,7 +20,7 @@ categories: ["Python"]
   - 일급 함수(first - class)의 특징이기도 한다.
 
 - 이번 예에서 lambda function을 사용할 것이다.
-  - [[TIL] Python basic 12: Method](https://jeha00.github.io/post/python_basic/python_basic_12/#5-%EB%9E%8C%EB%8B%A4lambda-%ED%95%A8%EC%88%98-%EC%9D%B5%EB%AA%85%ED%95%A8%EC%88%98) 에서 학습했으므로, 이를 참조한다.
+  - [[TIL] Python basic 12: Method](https://jeha00.github.io/post/python/python_basic_12/#5-%EB%9E%8C%EB%8B%A4lambda-%ED%95%A8%EC%88%98-%EC%9D%B5%EB%AA%85%ED%95%A8%EC%88%98) 에서 학습했으므로, 이를 참조한다.
 
 &nbsp;
 
@@ -154,4 +154,4 @@ Ex2-2 closure >  [1, 3, 5]
 # Reference
 
 - [모두를 위한 파이썬 : 필수 문법 배우기 Feat. 오픈소스 패키지 배포 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89/dashboard)
-- [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python_basic/python_basic_31_firstclass/)
+- [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python/python_basic_31_firstclass/)

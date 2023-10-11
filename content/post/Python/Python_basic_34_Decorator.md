@@ -13,10 +13,10 @@ categories: ["Python"]
 - 왜냐하면 여러가지 개념들이 합쳐져 있기 때문이다.
 - 파이썬의 전반적인 과정을 이해해야 가능하다.
 
-  1. Closure(클로저) -> [[TIL] Python basic 33: Closure](https://jeha00.github.io/post/python_basic/python_basic_33_closure/)
-  2. firt-class(일급 함수) -> [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python_basic/python_basi)
-  3. 가변 인자(\*args, \*\*args) ->[[TIL] Python basic 12: Method](https://jeha00.github.io/post/python_basic/python_basic_12/#3-packing-unpacking)
-  4. 인자 풀기(unpacking) ->[[TIL] Python basic 12: Method](https://jeha00.github.io/post/python_basic/python_basic_12/#3-packing-unpacking)
+  1. Closure(클로저) -> [[TIL] Python basic 33: Closure](https://jeha00.github.io/post/python/python_basic_33_closure/)
+  2. firt-class(일급 함수) -> [[TIL] Python basic 31: First-class](https://jeha00.github.io/post/python/python_basi)
+  3. 가변 인자(\*args, \*\*args) ->[[TIL] Python basic 12: Method](https://jeha00.github.io/post/python/python_basic_12/#3-packing-unpacking)
+  4. 인자 풀기(unpacking) ->[[TIL] Python basic 12: Method](https://jeha00.github.io/post/python/python_basic_12/#3-packing-unpacking)
   5. 파이썬이 소스 코드를 불러오는 자세한 과정
 
   - from [파이썬 데코레이터를 작성하는 법을 배워야 하는 5가지 이유](https://www.hanbit.co.kr/media/channel/view.html?cms_code=CMS5689111564)

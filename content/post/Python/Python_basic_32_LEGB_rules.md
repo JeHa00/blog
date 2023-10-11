@@ -57,7 +57,7 @@ categories: ["Python"]
 
 ## 1.4 Python scope와 namespace의 관계
 
-> **_Namespace_ 설명은 [[TIL] Python basic 14: class](https://jeha00.github.io/post/python_basic/python_basic_14_class/#23-namespace-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0)을 참고한다.**
+> **_Namespace_ 설명은 [[TIL] Python basic 14: class](https://jeha00.github.io/post/python/python_basic_14_class/#23-namespace-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0)을 참고한다.**
 
 - namespace는 각각 다른 지점에서 만들어지기 때문에, 다른 `수명 시간(life time)`을 가지고 있다. 어느 위치에서 사용할 수 있는 지가 결정되어 있다. (from [Python-course.eu: Namespaces](https://python-course.eu/python-tutorial/namespaces.php))
 
@@ -77,7 +77,7 @@ categories: ["Python"]
 | 확인 범위            | name이 정의된 function의 코드에서만 확인 가능 | name이 정의된 function의 코드에서만 확인 가능        | 어느 코드에서든지 확인 가능          | 어느 코드에서든지 확인 가능           |
 | 수명 시간(life time) | 정의한 function이 종료되면 소멸               | 중첩 함수가 있는 외부 function이 종료되면 소멸       | script가 끝날 때까지 지속            | 인터프리터가 시작되면 만들어져 소멸 X |
 
-- [Top level이란??](https://jeha00.github.io/post/python_basic/python_basic_23_ifnamemain/#22-top-level-%EC%9D%B4%EB%9E%80)
+- [Top level이란??](https://jeha00.github.io/post/python/python_basic_23_ifnamemain/#22-top-level-%EC%9D%B4%EB%9E%80)
 
 ![image](https://user-images.githubusercontent.com/78094972/160286468-2f395646-c83f-44ae-a5c9-b34f8c638d7d.PNG)
 

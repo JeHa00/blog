@@ -9,9 +9,9 @@ categories: ["Python"]
 
 # 0. Introduction
 
-- 이번 내용은 [Python basic 14: 파이썬 클래스(class)](https://jeha00.github.io/post/python_basic/python_basic_14/)에 이어 진행한다.
+- 이번 내용은 [Python basic 14: 파이썬 클래스(class)](https://jeha00.github.io/post/python/python_basic_14/)에 이어 진행한다.
 
-- 예시코드는 [Python basic 24](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)에서 작성한 코드를 이어서 사용한다.
+- 예시코드는 [Python basic 24](https://jeha00.github.io/post/python/python_basic_24_oop/)에서 작성한 코드를 이어서 사용한다.
 
 ```yml
 > class Airline():
@@ -92,7 +92,7 @@ categories: ["Python"]
 
 - `self._속성` 입력 시, 언더바(\_)를 사용하는 이유??
   - PEP에서 권장하기 때문에 인스턴스 변수를 만들 때 underbar를 사용한다.
-  - 언더바의 의미는 [[TIL] Python basic 43: Underscore](https://jeha00.github.io/post/python_basic/python_basic_43_underscore/)을 참고하라.
+  - 언더바의 의미는 [[TIL] Python basic 43: Underscore](https://jeha00.github.io/post/python/python_basic_43_underscore/)을 참고하라.
 
 ```yml
 ## Instance의 ID 확인
@@ -130,7 +130,7 @@ categories: ["Python"]
 
 ## 2.1 dir 과 \_\_dict\_\_
 
-> **_dir 과 \_\_dict\_\_의 차이는 [[TIL] Python basic 14: class](https://jeha00.github.io/post/python_basic/python_basic_14_class/#23-namespace-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0)을 참고하라_**
+> **_dir 과 \_\_dict\_\_의 차이는 [[TIL] Python basic 14: class](https://jeha00.github.io/post/python/python_basic_14_class/#23-namespace-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0)을 참고하라_**
 
 ```yml
 # `dir`을 통해서 namespace 안에 class Airline class에 작성된 속성들과 method들을 확인할 수 있다.
@@ -194,7 +194,7 @@ categories: ["Python"]
   | Purpose   | 클래스 변수를 사용하기 위해 | 인스턴스 변수를 사용하기 위해 | 옆 두 method에 대한 대책으로 사용 |
   | Decorator | @classmethod                | x                             | @staticmethod                     |
 
-- [[TIL] Python basic 14: class - class method, instance method](https://jeha00.github.io/post/python_basic/python_basic_14_class/#3-self-%EC%9D%98-%EC%9D%B4%ED%95%B4-class-method-instance-method/) 와 [[TIL] Python basic 14: class - class, instance variable](https://jeha00.github.io/post/python_basic/python_basic_14_class/#4-class-instance-variable) 를 참고하자
+- [[TIL] Python basic 14: class - class method, instance method](https://jeha00.github.io/post/python/python_basic_14_class/#3-self-%EC%9D%98-%EC%9D%B4%ED%95%B4-class-method-instance-method/) 와 [[TIL] Python basic 14: class - class, instance variable](https://jeha00.github.io/post/python/python_basic_14_class/#4-class-instance-variable) 를 참고하자
 
 ```yml
 ### Intro code에서 각 method는 다음과 같다.
@@ -280,5 +280,5 @@ OK! This car is Koreanair
 ## Reference
 
 - [인프런 파이썬 중급](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B8%89-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%98%A4%EB%A6%AC%EC%A7%80%EB%84%90)
-- [[TIL] Python basic 14: 파이썬 클래스(class)](https://jeha00.github.io/post/python_basic/python_basic_14/)
-- [[TIL] Python basic 43: Underscore](https://jeha00.github.io/post/python_basic/python_basic_43_underscore/)
+- [[TIL] Python basic 14: 파이썬 클래스(class)](https://jeha00.github.io/post/python/python_basic_14/)
+- [[TIL] Python basic 43: Underscore](https://jeha00.github.io/post/python/python_basic_43_underscore/)

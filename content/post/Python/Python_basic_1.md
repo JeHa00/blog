@@ -61,7 +61,7 @@ categories: ["Python"]
 
 **- 결론: 여러 변수에 똑같은 값을 할당하면 파이썬은 내부에서 하나만 만들어진다.**
 
-> 추가로 [[TIL] Python basic 41: Shallow copy & Deep copy](https://jeha00.github.io/post/python_basic/python_basic_41_shallowdeepcopy/) 을 참고하자.
+> 추가로 [[TIL] Python basic 41: Shallow copy & Deep copy](https://jeha00.github.io/post/python/python_basic_41_shallowdeepcopy/) 을 참고하자.
 
 &nbsp;
 
@@ -101,7 +101,7 @@ Change Value
 
 **- 결론: 동일한 명칭의 변수여도 할당된 값이 변하면 파이썬이 알아서 id 값을 바꾼다.**
 
-> 추가로 [[TIL] Python basic 40: Call by object reference](https://jeha00.github.io/post/python_basic/python_basic_40_callbyobjectreference/) 을 참고하자.
+> 추가로 [[TIL] Python basic 40: Call by object reference](https://jeha00.github.io/post/python/python_basic_40_callbyobjectreference/) 을 참고하자.
 
 &nbsp;
 

@@ -32,7 +32,7 @@ categories: ["Python"]
 
 - 이는 property의 getter, setter 확장판이라 생각하면 된다.
 - property는 function `proeprty()` 과 decorator `@property` 로서, 크게 2가지로 구현할 수 있는데,
-- 후자는 [[TIL] Python basic 44: Property](https://jeha00.github.io/post/python_basic/python_basic_44_property/) 를 참고한다.
+- 후자는 [[TIL] Python basic 44: Property](https://jeha00.github.io/post/python/python_basic_44_property/) 를 참고한다.
 - 전자의 경우, [Real Python - Python's property(): Add Mangaged Attributes to Your Classes](https://realpython.com/python-property/#getting-started-with-pythons-property)을 보면 알 수 있다.
 - 위 문서에 따르면 `property()` 의 signature는 다음과 같다.
   - signature: name, scope, parameters 같은 함수에 대한 일반적인 정보를 명시한 것

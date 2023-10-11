@@ -41,7 +41,7 @@ categories: ["Python"]
 
 - **객체**란 무엇인가???
 
-  - [[TIL] Python basic 14: class](https://jeha00.github.io/post/python_basic/python_basic_14_class/)에 따르면 소프트웨어로 구현할 대상이라 했다.
+  - [[TIL] Python basic 14: class](https://jeha00.github.io/post/python/python_basic_14_class/)에 따르면 소프트웨어로 구현할 대상이라 했다.
 
 - 하지만 파이썬 내부에서의 객체의 정의와 특징은 무엇일까???
 

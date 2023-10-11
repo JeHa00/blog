@@ -20,7 +20,7 @@ categories: ["Python"]
 - 하지만, 'OOP'가 항상 빠르진 않다. 경우에 따라서는 `객체 지향`보다 `절차 지향`이 더 빠른 퍼포먼스를 가질 수 있으므로, `객체 지향`과 `절차 지향`을 적절히 섞어 사용하자.
   - `절차 지향` : 위에서부터 아래로 실행하는 것
 
-> **_절차지향과 OOP 비교해보기_** : [[TIL] Python basic 24: Procedural Programming vs OOP](https://jeha00.github.io/post/python_basic/python_basic_24_oop/)
+> **_절차지향과 OOP 비교해보기_** : [[TIL] Python basic 24: Procedural Programming vs OOP](https://jeha00.github.io/post/python/python_basic_24_oop/)
 
 &nbsp;
 

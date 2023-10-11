@@ -10,7 +10,7 @@ categories: ["Python"]
 # 0. Introduction
 
 - `sort`와 `sorted`는 책 한 권으로 나올만큼 많은 내용이 있지만, 무엇보다 이 두가지의 기본적인 차이를 알아본다.
-- 그리고, [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/)에서 상세 분류에서 언급된 Array data type에 대해 알아본다.
+- 그리고, [[TIL] Python basic 29: Data Model](https://jeha00.github.io/post/python/python_basic_29_datamodel/)에서 상세 분류에서 언급된 Array data type에 대해 알아본다.
 
 ---
 
@@ -92,7 +92,7 @@ sorted - None ['strawberry', 'coconut', 'mango', 'lemon', 'orange', 'apple', 'pa
 
 # 2. Array data model
 
-- [1.Python data model 상세 분류](https://jeha00.github.io/post/python_basic/python_basic_29_datamodel/#1-python-data-type-%EC%83%81%EC%84%B8-%EB%B6%84%EB%A5%98)에서 꺼냈던 `Array` data model에 대해 알아보자.
+- [1.Python data model 상세 분류](https://jeha00.github.io/post/python/python_basic_29_datamodel/#1-python-data-type-%EC%83%81%EC%84%B8-%EB%B6%84%EB%A5%98)에서 꺼냈던 `Array` data model에 대해 알아보자.
 
 - `Array` 자료형에 대해 알아보자.
 

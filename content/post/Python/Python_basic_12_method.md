@@ -317,7 +317,7 @@ categories: ["Python"]
 - **부모 함수(외부 함수)와 하위 함수(내부 함수)**
 
   - 호출하는 함수는 부모 함수다. 하위 함수는 호출할 수 없다.
-    - 그 이유는 [[TIL] Python basic 32: LEGB rules and Memory structures](https://jeha00.github.io/post/python_basic/python_basic_32_legb_rules/) 을 참고하자.
+    - 그 이유는 [[TIL] Python basic 32: LEGB rules and Memory structures](https://jeha00.github.io/post/python/python_basic_32_legb_rules/) 을 참고하자.
   - 하위 함수는 부모 함수의 매개변수를 받아서 사용한다.
 
   ```python

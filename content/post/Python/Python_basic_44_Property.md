@@ -9,13 +9,13 @@ categories: ["Python"]
 
 # 0. Introduction
 
-- 지난 Chapter [Python basic 43: Underscore](https://jeha00.github.io/post/python_basic/python_basic_43_underscore/) 의 access modifier에 대한 개념을 먼저 이해해야 한다.
+- 지난 Chapter [Python basic 43: Underscore](https://jeha00.github.io/post/python/python_basic_43_underscore/) 의 access modifier에 대한 개념을 먼저 이해해야 한다.
 
 &nbsp;
 
 - class 내의 attribute를 관리하기 위해서 2가지 방법을 가진다.
 
-  - 첫 번째: 이 attribute data에 직접 접근하여 변경하기: [Python basic 43: Underscore](https://jeha00.github.io/post/python_basic/python_basic_43_underscore/)
+  - 첫 번째: 이 attribute data에 직접 접근하여 변경하기: [Python basic 43: Underscore](https://jeha00.github.io/post/python/python_basic_43_underscore/)
   - 두 번째: method를 통해 접근하여 변경하기: [Method 활용하여 Getter, Setter 작성](#1-method-활용하여-getter-setter-작성)
 
 - 이번 Chapter에서는 두 번째 방법에 대해 알아본 후, property로 이를 구현해본다.
