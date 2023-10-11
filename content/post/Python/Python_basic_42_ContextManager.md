@@ -222,7 +222,7 @@ Start! : 0.42099999997299165 s
 # Reference
 
 - [모두를 위한 파이썬 : 필수 문법 배우기 Feat. 오픈소스 패키지 배포 (Inflearn Original)](https://www.inflearn.com/course/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89/dashboard)
-- [[TIL] Python basic 20: with open as](https://jeha00.github.io/post/python_basic/python_basic_20_filewriteread_1/)
-- [[TIL] Python basic 21: csv.read, write](https://jeha00.github.io/post/python_basic/python_basic_21_filereadwrite_2/)
+- [[TIL] Python basic 20: with open as](https://jeha00.github.io/post/python_basic/python_basic_20_filewriteread_1)
+- [[TIL] Python basic 21: csv.read, write](https://jeha00.github.io/post/python_basic/python_basic_21_filereadwrite_2)
 - [What is a "runtime context?"](https://stackoverflow.com/questions/19652662/what-is-a-runtime-context)
 - [Python docs: Context Manager Types](https://docs.python.org/3/library/stdtypes.html?highlight=__enter__#context-manager-types)
