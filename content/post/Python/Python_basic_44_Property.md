@@ -1,7 +1,7 @@
 ---
 title: "[TIL] Python basic 44: Property"
 date: 2022-05-12T15:37:54+09:00
-draft: true
+draft: false
 summary: 첫 번째, method를 사용하여 getter와 setter를 구현한다. 두 번째, 첫 번째보다 pythonic way인 property를 사용하여 구현해보는데, property 방법 2가지 중 decorator를 사용하여 getter, setter, deleter를 구현해본다.
 tags: ["TIL", "python"]
 categories: ["Python"]
