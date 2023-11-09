@@ -193,7 +193,7 @@ Network 1과 Network 3 사이에는 Network 2가 존재한다. Router 1은 netwo
 
 &nbsp;
 
-# 6. Routing Protocols
+# 6. Routing Protocols (좀 더 학습 필요)
 
 ---
 
