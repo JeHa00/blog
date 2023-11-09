@@ -436,8 +436,8 @@ categories: "OS"
 
   - **_Message passing 방식 2가지_**
 
-    - 직접 통신 (direct communication)
-    - 간접 통신 (Indirect communication)
+    - 직접 통신 (direct communication): Web socket
+    - 간접 통신 (Indirect communication): Message queue, file 형식
 
     ![image](https://user-images.githubusercontent.com/78094972/163955059-05996ad0-a585-4b3c-975a-2608a4829d3a.png)
 
