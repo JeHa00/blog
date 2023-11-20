@@ -47,7 +47,7 @@ OSI 7 layer의 구성은 다음과 같다. 그리고, 이 **OSI 7 layer** 를 4�
 |전송 계층| 3. 전송 계층|TCP, UDP | 신뢰성 있는 통신 구현 | segment | - |
 |[네트워크 계층](https://jeha00.github.io/post/network/osi_7_layer/3_layer/)| 2. 인터넷 계층 | IP | 한 네트워크에서 다른 네트워크와 통신하기 위한 IP 주소 결정 | packet | 라우터 |
 |[데이터링크 계층](https://jeha00.github.io/post/network/osi_7_layer/2_layer/)| 1. 네트워크 인터페이스 계층 | 이더넷, CMSA/CD | '네트워크 기기' 간의 데이터 전송과 물리 주소 결정 | frame | 스위치 |
-|[물리 계층](https://jeha00.github.io/post/network/osi_7_layer/1_layer/)| 1. 네트워크 인터페이스 계층 | RS-232, RS-449 | 물리적 연결과 데이터를 전기 신호로 변환 | | 리피터, 허브 |
+|[물리 계층](https://jeha00.github.io/post/network/osi_7_layer/1_layer/)| 1. 네트워크 액세스 계층 | RS-232, RS-449 | 물리적 연결과 데이터를 전기 신호로 변환 | | 리피터, 허브 |
 
 ![image](https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/axm/image/lEbuexy5CZ5WK6Xq5yZuwg_8tR4.png)
 
