@@ -102,6 +102,7 @@ categories: "Network"
 
 # 3. Stateful, Stateless
 
+
 ## 3.1 Stateful
 
 ### 'Stateful' 이란??
@@ -213,6 +214,8 @@ categories: "Network"
 
 ## 3.3 🔆 정리
 
+- http는 stateful, stateless 두 상태를 모두 사용한다.    
+
 - Stateful (상태유지): 중간에 서버가 변경되면 안된다.
 
   - 만약 서버가 변경되야 한다면 상태 정보를 전부 다른 서버에게 미리 알려줘야 한다.
@@ -225,7 +228,11 @@ categories: "Network"
 
 ---
 
-# 4. 비연결성 (connectionless)
+# 4. 비연결성 (connectionless)과 지속 연결
+
+- HTTP/1.0 에서는 지속 연결(persistent connection) 기능이 없었지만, HTTP/2.0 부터는 추가되었다.  
+
+- 지속 연결을 사용하기 위해서는 `Connection: keep-alive` 을 HTTP 헤더에 추가한다.  
 
 ## 4.1 연결을 유지하는 모델
 
