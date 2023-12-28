@@ -327,7 +327,10 @@ Stop-and-Wait은 'TCP 에러 제어 챕터' 에서 설명한 것처럼 모든 �
 
 3. 그리고, B에서 확인 응답으로 'ACK 101' 과 수신측의 현재 윈도우 크기 150을 보낸다. 
 
+- 101인 이유는 100바이트 데이터를 수신했기 때문에 그 다음 시퀀스 번호를 나타내기 위해서다.  
+
 4. A에서 이 정보를 받아 동일하게 101부터 시작해서 윈도우 크기를 150에 맞추고, 시작 경계선을 101로 맞춘다.   
+
 - 송신지 윈도우의 크기는 수신지 윈도우 크기에 맞춰서 수신측이 받을 수 있도록 크기를 맞춘다.    
 
 5. 맞춘 후, A에서 다시 B에게 50 바이트를 전송한다.  
@@ -335,6 +338,8 @@ Stop-and-Wait은 'TCP 에러 제어 챕터' 에서 설명한 것처럼 모든 �
 6. B에서 50 바이트 데이터를 버퍼에 저장한다. 윈도우 크기는 100으로 줄어들고, 좌측 윈도우 경계선이 151로 이동된다.  (151 - 250)
 
 7. 하지만 응용 프로세스가 B의 윈도우에 저장된 50 바이트 데이터를 처리하여 윈도우는 (151 - 300) 으로 이동되어 윈도우 크기는 150으로 늘어난다.  
+
+- 이 때 응용 프로세스가 저장된 데이터를 사용할 때 FIFO 방식으로 처리하기도 하지만, 마지막으로 받은 데이터를 처리하기도 하므로 처리되는 데이터의 순서는 때에 따라 다르다.  
 
 8. B에서 A에게 확인 응답 ACK 151 과 window 크기는 150이라는 정보를 전달한다.  
 
@@ -362,9 +367,9 @@ TCP 혼잡 제어는 **_네트워크 내의 데이터를 조절하여 오버플�
     - Slow Start
     - Additive Increase
 - 혼잡 상황 발생 후 제어 방식: 혼잡 상황 해결    
-    - Multiplicative Decrease 방식  
+    - Multiplicative Decrease: ssthresh 값을 cwnd 1/2로 축소  
 
-### TCP가 혼잡 상황으로 인식하는 경우  
+## TCP가 혼잡 상황으로 인식하는 경우  
 
 TCP가 어떤 기준으로 '혼잡 상황'을 인식하냐면 다음과 같이 2가지 경우에 '혼잡 상황'으로 인식한다.
 
@@ -372,23 +377,38 @@ TCP가 어떤 기준으로 '혼잡 상황'을 인식하냐면 다음과 같이 2
 - 동일한 ACK을 3번 이상 수신하는 경우  
 
 
-### TCP가 혼잡 상황을 인식할 때 동작 
+### 1. 세그먼트를 송신하고 타임아웃되어 재전송하는 경우  
 
 1. TCP는 segment들을 slow start 방식으로 하나씩 전송한다. 이 때 cwnd의 값은 1이다.  
 
 2. 전송하기 시작할 때 cwnd의 값은 1이며, 1, 2, 4, 8 식으로 윈도우의 값을 지수적 증가 방식으로 윈도우 크기를 늘려 점점 세그먼트 수용량의 임계치를 늘려간다. (지수 그래프를 생각하자)
 
-- 이 때 임계값은 Slow Styled Threshold, ssthresh 라는 단어를 사용한다. 
-- 그래서 ssthresh = 1, 2, 4, 8, 16 으로 임계치를 늘려간다.  
+- 이 때 임계값은 Slow Styled Threshold, SSThresh 라는 단어를 사용한다. 
+- 그래서 SSThresh = 1, 2, 4, 8, 16 으로 임계치를 늘려간다.  
 
 
-3. cwnd가 점점 높은 임계값에 도달하게 되면 TCP는 혼잡 상황으로 갈 위험이 높다고 여겨져 'Additive Increase' 기법을 적용한다.
+3. cwnd가 점점 높아지면서 송신지가 설정한 임계값에 도달하여 혼잡 상황으로 갈 위험이 높다고 TCP가 판단하면 'Additive Increase' 기법을 적용한다.
 
 - Additive Increase 기법은 cwnd를 하나씩 증가하면서 혼잡을 회피하는 방식
 
-4. 이 방식을 사용하다가 결국 혼잡 상황을 감지하면 Multiplicative Decrease 방식을 수행한다. 
+4. 이 방식을 사용하다가 결국 혼잡 상황을 감지하면 cwnd를 다시 1로 수정하고, 송신지가 설정한 임계값의 수치를 혼잡이 감지된 SSThresh 값의 절반으로 설정한다. 즉, Multiplicative Decrease을 적용한다. 
 
-5. Multiplicative Decrease 방식은 임계값까지 올라간 cwnd를 다시 1로 낮추고, ssthresh 값도 절반으로 감소한 값으로 설정하여 다시 Slow Start 와 Additive Increase 방식을 적용한다.  
+5. 다시 Slow Start와 Additive Increase 방식을 적용한다. 
+
+
+![image](https://private-user-images.githubusercontent.com/78094972/292525746-f676be52-3087-4563-a8a1-672a49d1d9ac.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDM1ODIzOTAsIm5iZiI6MTcwMzU4MjA5MCwicGF0aCI6Ii83ODA5NDk3Mi8yOTI1MjU3NDYtZjY3NmJlNTItMzA4Ny00NTYzLWE4YTEtNjcyYTQ5ZDFkOWFjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzEyMjYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMjI2VDA5MTQ1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlNGI1MmVmOWRiNmQ0YTdlYjVkZDQzZjliN2JhYTllNjcyMDk1NjhjZDVlZjAwOTMyZTY0NmE3MzJkZGQ2NmYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.VHRzb7Usjabzf2E6PhFezXnwwFd35EBZfhlpEveCPOY)
+
+
+❗️ RTT(Round Trip Time): 네트워크 요청을 시작한 후 응답을 받는데 걸리는 시간 
+
+
+### 2. 동일한 ACK을 3번 이상 수신하는 경우 
+
+1. 이 상황에서는 Multiplicative Decrease을 적용한다.    
+
+2. 이후에는 Additive Increase 방식으로 slow start는 안하고, Additive Increase(혼접 회피)만 수행한다. 즉 cwnd가 지수적 증가를 하지 않는다.  
+
+
 
 &nbsp;
 
@@ -397,7 +417,24 @@ TCP가 어떤 기준으로 '혼잡 상황'을 인식하냐면 다음과 같이 2
 # 6. 포트 번호
 ---
 
+전송 계층(transport layer)는 연결 확립을 하고, 재전송도 가능하고, 버퍼를 통한 제어도 가능한 계층이다. 이 외에도 보내지는 데이터가 어느 어플리케이션에게 가야하는지 구분하는 기능도 가진다.
 
+포트 번호가 바로 데이터의 목적지가 **_어떤 어플리케이션인지 구분 하는 기능_** 을 가진다.  네트워크 계층인 3계층에서는 데이터를 전송하기 위해서 상대방의 IP 주소를 필요로 했다면 전송 계층의 포트 번호는 어떤 애플리케이션이 사용되고 있는지 구분해주는 역할을 한다.  
+
+3계층인 네트워크 계층에서의 IP 헤더에는 출발지 IP 주소와 목적지 IP 주소가 있다. 그리고 현재 학습 중인 4계층인 전송 계층에서의 헤더에는 '출발지 포트 번호' 와 '목적지 포트 번호' 정보를 가진다.  
+
+그러면 미리 알아두면 좋은 포트 번호에 대해 정리해보자.
+
+| 애플리케이션 | 포트 번호 | 설명 | 
+| ---- | ---- | ---- |
+| SSH | 22 | 파일전송 | 
+| TELNET | 23 | 파일 전송 | 
+| SMTP | 25 | 메일 전송 | 
+| DNS | 53 | 도메인 네임 서비스 |
+| POP3 | 110 | 메일 수신 | 
+| IMAP | 143 | 메일 수신 |
+| HTTP | 80 | 웹 서비스 | 
+| HTTPS | 443 | 웹 서비스(보안 강화) |
 
 
 &nbsp;
