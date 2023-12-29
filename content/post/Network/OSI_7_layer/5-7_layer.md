@@ -4,7 +4,7 @@ date: 2023-12-28T18:23:48+09:00
 draft: False
 summary: TCP/IP 4계층을 기준으로 맨 위 계층인 Application 계층에 대해 알아보자. 
 tags: ["TIL", "Network"]
-categories: "Network"
+categories: "Network - OSI 7 layer"
 ---
 
 # 네트워크 학습 내용 순서
@@ -131,25 +131,34 @@ DHCP 서버가 확인 응답을 보내면서 IP 주소 동적 할당 과정이 �
 
 DNS는 호스트를 식별하고 관리하기 위해서 domain name space(도메인 네임 공간)라는 계층 구조를 가진다. 이 계층 구조는 다음과 같이 **_트리형_** 이므로 여러 층 개념을 가진다. 그리고 이 계층은 DNS의 `.` 들이 계층을 구분한다.  예를 들어서 `www.lab.cyber.com` 이라고 하면 `com` 이라는 도메인 아래에 `cyber` 라는 도메인이 있고, 그 아래에 `lab` 이라는 도메인이 있다. 이 `lab` 도메인 안에 `www` 라는 도메인이 있는 것이다.  이처럼 계층적 구조를 가진다.  
 
-![image]()
+![image](https://github.com/JeHa00/image/assets/78094972/e4a292eb-147c-4f50-9caa-43b70b018a5fㄴ)
+
+### TLD, SLD 그리고 Sub domain
+
+맨 위 층에 최상위 도메인은 **_Top Level Domain(TLD)_** 이라 부른다. 'TLD' 바로 밑에는 **_SLD(Second Level Domain)_** 이라 하여 '2차 도메인' 이라 한다. 그 아래부터는 **_sub domain_** 이라 칭한다. 
 
 
-맨 위 층에 최상위 도메인은 **_Top Level Domain(TLD)_** 이라 부른다. 이 아래에는 여러 개의 sub domain이 존재한다. 이 서브 도메인은 주로 최상위 도메인의 등록 기관에서 관리하는 기관의 이름을 나타낸다. 
+### 국가 도메인과 일반 도메인
 
-그리고 국가마다 사용되는 도메인이 있다. 한국은 'korea'의 약어로 `kr`을 사용한다.  
+국가마다 가지고 있는 고유의 도메인이 존재한다. 이 도메인을 '국가 도메인'이라 하며 다음과 같이 구성되어 있다. [국가 코드 최상위 도메인](https://ko.wikipedia.org/wiki/%EA%B5%AD%EA%B0%80_%EC%BD%94%EB%93%9C_%EC%B5%9C%EC%83%81%EC%9C%84_%EB%8F%84%EB%A9%94%EC%9D%B8)을 확인하면 알 수 있다. 그래서 위 이미지에 'kr'은 국가 도메인에 속함을 알 수 있다. 
 
-## 반복적 질의와 재귀적 질의
+이외에도 국가 기관이 아닌 일반 플랫폼들은 '일반 도메인'에 속한다.
+
+
+
+## 반복적 쿼리와 재귀적 쿼리
 
 '이름 해석' 단계가 총 3단계인 것으로 확인했다. 그러면 트리 구조로 된 DNS가 어떻게 IP 주소를 알려줄 수 있는 것일까?!
 
-IP 주소를 알기 위해서 DNS client가 DNS 서버에 질의를 보낸다. 이 질의 방식에는 '재귀적 질의' 와 '반복적 질의'가 있다.  
+IP 주소를 알기 위해서 DNS client가 DNS 서버에 질의를 보낸다. 질의 방식에는 '재귀적 질의' 와 '반복적 질의'가 있다.  
 
 
 ### 반복적 질의
 
-> local DNS 서버가 루트 DNS 서버부터 순차적으로, 반복적으로 질의하고, 응답을 얻어가면서 점차 하위 DNS 서버의 IP 주소들을 얻어 원하는 IP 주소를 얻어내는 방식
+> local DNS 서버가 다른 DNS 서버에게 쿼리를 보내어, 쿼리를 받은 DNS 서버가 자신이 직접 관리하지 않는 질의 요청일 경우, 질의에 응답 가능한 DNS 서버 IP 주소 목록을 응답하는 방식   
 
 1. 브라우저의 url 창에  www.lab.glasscom.com 을 입력하여 로컬 DNS 서버에 먼저 질의
+
 - 로컬 dns server란 가장 가까운 dns 서버를 의미
 
 2. 로컬 DNS 서버에서 모를 경우, Root DNS 서버에 질의한다. (`www.lab.glasscom.com`의 IP 주소는?) 그러면 Root DNS 서버에서 `com` 의 IP 주소를 로컬 DNS 서버에 응답한다.
@@ -167,7 +176,9 @@ IP 주소를 알기 위해서 DNS client가 DNS 서버에 질의를 보낸다. �
 - 출처: 성공과 실패를 결정하는 1%의 네트워크 원리에서 그림 1-16
 
 
-### 재귀적 질의
+### 재귀적 쿼리
+
+> 반복적 쿼리와 달리 local DNS 서버가 아닌 상위 DNS 서버가 직접 하위 DNS 서버를 탐색하여 결과값을 반환하는 방식    
 
 재귀적 질의 동작은 다음과 같다. 
 
@@ -188,6 +199,33 @@ IP 주소를 알기 위해서 DNS client가 DNS 서버에 질의를 보낸다. �
 
 # 4. HTTP
 ---
+
+그러면 HTTP에 대해 간략히 알아보자. HTTP는 Hyper Text Transfer Protocol의 약어로, 웹에서 Hyper Text 문서를 요청하고 응답하기 위한 프로토콜이다. 
+Hyper Text 문서라 함은 HTML(Hyper Text Markup Language)로 작성된 웹 문서를 말한다. 그래서 HTTP 요청과 응답을 주고 받으며 웹 사이트를 구성하는 HTML 파일을 전송한다. 이 때 사용하는 포트 번호는 80번이다.  
+
+HTTP를 사용하기 위해서는 웹 url을 입력해야 한다. 이 url 구성은 간략하게 보자면 다음과 같다.
+
+예를 들어 `https://www.inflearn.com/roadmaps`을 입력한다고 하자. 
+
+- https: 어떤 프로토콜을 사용하는지
+- www.inflearn.com: 호스트 이름을 의미하며, 어떤 웹 서버를 필요로 하는지 나타낸다  
+- roadmaps: 경로명  
+
+
+그리고 HTML 문서는 HTTP request와 response를 통해 보내지므로 HTTP request와 response에 대해 알아보자.
+
+HTTP request 는 request line, message header, entity body 등의 부분으로 나눠지는데, 여기서 request line에 대해서 보자면 다음과 같다.
+
+- request line = 사용되는 메서드 + URL + HTTP 버전  
+- 메시지 헤더: 키 - 값 형식으로 여러 정보가 담겨져 있음  
+
+HTTP response 는 response line, message header, entity body 등으로 나눠지는데, 여기서 response line에 대해서 보자면 다음과 같다.
+
+- response line = HTTP 버전 + 상태 코드 + 상태 메세지  
+  - 상태 코드: 웹 서버의 처리 결과를 나타낸 세 자리 숫자  
+
+
+더 상세한 HTTP 내용은 내 블로그에서 학습한 HTTP 내용을 확인해보자.  
 
 
 &nbsp;

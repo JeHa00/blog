@@ -4,7 +4,7 @@ date: 2023-05-14T21:14:44+09:00
 draft: false
 summary: OSI 7 layer에서 '네트워크 기기' 간의 데이터 전송과 물리 주소를 결정하는 계층인 2계층에 대해 더 알아보자.   
 tags: ["TIL", "Network"]
-categories: "Network"
+categories: "Network - OSI 7 layer"
 ---
 
 # 네트워크 학습 내용 순서

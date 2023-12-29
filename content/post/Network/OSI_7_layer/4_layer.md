@@ -4,7 +4,7 @@ date: 2023-12-09T15:50:44+09:00
 draft: false
 summary: OSI 7 layer에서 신뢰성 있는 통신을 구현하는 4계층에 대해 더 알아보자.     
 tags: ["TIL", "Network"]
-categories: "Network"
+categories: "Network - OSI 7 layer"
 ---
 
 

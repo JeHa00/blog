@@ -4,7 +4,7 @@ date: 2022-03-10T20:32:24+09:00
 draft: false
 summary: HTTP method인 GET, POST, PUT, PATCH, DELETE 그리고 속성에 대해 알아본다.
 tags: ["TIL", "Network", "HTTP"]
-categories: "Network"
+categories: "Network - HTTP"
 ---
 
 # 0. Introduction
