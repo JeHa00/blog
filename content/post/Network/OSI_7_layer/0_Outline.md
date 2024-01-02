@@ -29,7 +29,14 @@ categories: "Network - OSI 7 layer"
 
 # 네트워크 기초
 
-서로 다른 컴퓨터 회사들의 컴퓨터들이 자유롭게 통신할 수 있도록, 그리고 네트워크 통신 중 어느 부분에서 문제가 발생했는지를 알 수 있도록 ISO(International Organization for Standardization, 국제표준화기구)에서 OSI 모델이라는 표준 규격을 만들었다.  이 모델이 바로 OSI 7 계층이다.  
+서로 다른 컴퓨터 회사들의 컴퓨터들이 자유롭게 통신할 수 있도록, 그리고 네트워크 통신 중 어느 부분에서 문제가 발생했는지를 알 수 있도록 ISO(International Organization for Standardization, 국제표준화기구)에서 OSI (Open System Interconnection) Model이라는 표준 규격을 만들었다. 이 모델이 바로 OSI 7 계층이다.  
+
+
+## 왜 표준 Model이 필요할까?
+
+그러면 왜 네트워크와 관련하여 표준 모델이 왜 필요했을까? 
+
+
 
 ## OSI 7 layer 개요
 
@@ -96,3 +103,4 @@ OSI 7 layer의 구성은 다음과 같다. 그리고, 이 **OSI 7 layer** 를 4�
 - [osi 7 layer](https://brunch.co.kr/@lars/1)
 - [네트워크 기초(1) - OSI 7계층이란?](https://losskatsu.github.io/os-kernel/network-basic01/#1-osi-7%EA%B3%84%EC%B8%B5%EC%9D%B4%EB%9E%80)  
 - [예술하는 개발자 - 캡슐화, 역캡슐화, PDU](https://www.youtube.com/watch?v=rBw_e7zQLMQ)  
+- [Udemy - Fundamentals of Networking](https://www.udemy.com/course/fundamentals-of-networking-for-effective-backend-design/)
