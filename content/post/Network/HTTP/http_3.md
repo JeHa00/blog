@@ -4,7 +4,7 @@ date: 2022-03-09T17:56:30+09:00
 draft: false
 summary: HTTP란 무엇이고, HTTP의 특징인 클라이언트 서버 구조, stateless, connectionless, HTTP mesage에 대해 알아본다.
 tags: ["TIL", "Network", "HTTP"]
-categories: "Network - HTTP"
+categories: "Network"
 ---
 
 # 0. Introduction

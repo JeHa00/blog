@@ -4,7 +4,7 @@ date: 2023-12-28T18:23:48+09:00
 draft: False
 summary: TCP/IP 4계층을 기준으로 맨 위 계층인 Application 계층에 대해 알아보자. 
 tags: ["TIL", "Network"]
-categories: "Network - OSI 7 layer"
+categories: "Network"
 ---
 
 # 네트워크 학습 내용 순서
@@ -225,7 +225,7 @@ HTTP response 는 response line, message header, entity body 등으로 나눠지
   - 상태 코드: 웹 서버의 처리 결과를 나타낸 세 자리 숫자  
 
 
-더 상세한 HTTP 내용은 [Network - HTTP](https://jeha00.github.io/categories/network-http/)에서 확인해보자.  
+더 상세한 HTTP 내용은 [Network](https://jeha00.github.io/categories/network-http/)에서 확인해보자.  
 
 
 &nbsp;

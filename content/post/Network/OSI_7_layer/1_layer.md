@@ -4,7 +4,7 @@ date: 2023-05-07T21:14:44+09:00
 draft: false
 summary: OSI 7 layer에서 데이터를 전기 신호로 변환하여 전송매체로 보내는 1계층에 대해 더 깊이 알아보자.  
 tags: ["TIL", "Network"]
-categories: "Network - OSI 7 layer"
+categories: "Network"
 ---
 
 # 네트워크 학습 내용 순서
