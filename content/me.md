@@ -74,7 +74,7 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 **Deployment**
 
-- 서비스 개발 및 배포 시 *‘격리’* 하기 위해 Docker compose를 사용
+- 서비스 개발 및 배포 시 _‘격리’_ 하기 위해 Docker compose를 사용
 
 &nbsp;
 
