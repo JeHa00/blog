@@ -43,7 +43,7 @@ SW engineer로 오기까지 짧지 않은 시간이 걸렸지만, 이 경험들�
 
 _최근 프로젝트에 사용한 기술들입니다._
 
-- Python 3.11.6, FastAPI, Django, DRF, MySQL 8.0, Redis, Docker
+- Python, FastAPI, Django, DRF, MySQL, Redis, Docker
 
 ---
 
