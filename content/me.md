@@ -25,7 +25,7 @@ SW engineer로 오기까지 짧지 않은 시간이 걸렸지만, 이 경험들�
     - 현재 진행 중인 프로젝트의 테스트 코드 수: **_108개_**  
 
 3. **_CS 과목_** 을 계속해서 학습하는 엔지니어
-    - 학습 포스팅 수: [31개 🔗](https://jeha00.github.io/me/#self-study-about-computer-science)  
+    - 학습 포스팅 수: [32개 🔗](https://jeha00.github.io/me/#self-study-about-computer-science)  
 
 #
 
@@ -64,28 +64,17 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 **Development**
 
-- **_RESTful API_** 방식으로 프로젝트 전체 CRUD 연산 구축
-  - 'resource와 행위'를 구분하여 '직관적인 api 설계'의 중요성을 알 수 있었습니다.
-- **_DDD_** layered architecture 적용
-  - '코드 계층화의 장점 및 단점' 그리고 '소통의 용이성'을 느낄 수 있었습니다.
-- Pytest를 사용하여 **_41개_** 의 unit test와 **_64개_** 의 EndToEnd test 작성
-  - '테스트 코드'를 통해 내가 '작성한 코드를 검증하는 것' 의 필요성을 확인할 수 있었습니다.  
-- 이메일 인증을 통한 회원 가입 기능 구현
-  - FastAPI의 background task를 통해 가입 인증 이메일 전송 속도 **_약 100배 이상_** 향상
-    - 미적용 시 **_2900ms_** → 적용 후 **_0.33ms_**
-  - background task를 통해 'non-blocking' 작업의 중요성을 확인할 수 있었습니다.
-- **_JWT_** 를 사용한 인증 및 인가 방식 적용
-  - 'JWT' 그리고 '인증' 및 '인가'의 개념을 이해할 수 있었습니다.
-- **_Redis caching_** 을 적용하여 좋아요 갯수 조회 속도 **_6배_**  향상: 미적용시 **_6ms_** → 적용 후 **_1ms_**
-  - 'Redis 장단점' 과 성능을 위한 'caching'의 필요성을 확인할 수 있었습니다.  
-- **_Redis message queue_** 와 **_SSE(Server Sent Event)_** 를 사용하여 알림 기능 구현  
-  - message queue의 'Producer - Consumer' 패턴을 이해할 수 있었습니다.
-  - ‘실시간 통신 기술’의 여러 종류를 알 수 있었고, ‘비동기 통신 ’을 이해할 수 있었습니다.
-  - python의  ‘Generator ‘ 의 이점을 알 수 있었습니다.  
+- _‘직관적인 api 설계’_ 를 위해 **RESTful API** 방식으로 프로젝트 전체 **CRUD** 구축
+- _‘코드 결합도에 따른 유지보수’_ 와 _‘소통의 용이성 ’_ 을 위해 **DDD** layered architecture 적용
+- _‘코드 신뢰성 ’_ 을 위해 **Pytest** 를 사용하여 **47개** unit test와 **74개** EndToEnd test 작성 (총 **121개** 테스트 코드 작성)
+- 사용자에게 _‘빠른 응답성 ’_ 을 주기 위해 background task로 non-blocking 작업을 구현
+- _‘생산성 ’_ 을 위해 FastAPI 내장 모듈을 사용하여 **JWT** 를 통한 **인증 및 인가** 방식 적용
+- _‘조회속도 향상 ’_ 을 위해 **Redis 를 사용하여**  좋아요 조회 속도 **6배**  향상 (미적용시 **6ms** → 적용 후 **1ms**)
+- _‘실시간성과 네트워크 비용 ’_ 을 고려하여 여러 통신 방법 중 **SSE(Server Sent Event)** 를 통해 알림 기능을 구현
 
 **Deployment**
 
-- Docker compose를 통한 배포
+- 서비스 개발 및 배포 시 *‘격리’* 하기 위해 Docker compose를 통한 배포
 
 &nbsp;
 
@@ -110,7 +99,6 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 - 저장한 웹 사이트 목록 렌더링
 - 저장한 각 웹 사이트 hover 시 하단에 뜨는 하단툴바 렌더링
-- fetch를 사용하여 api로부터 데이터를 받아 처리
 
 **Backend**
 
@@ -218,7 +206,7 @@ _최근 프로젝트에 사용한 기술들입니다._
 공대 출신으로 어느 공학 분야든지 기본 과목들의 중요성을 깊이 느끼고 있기 때문에 CS 과목을 꾸준히 학습하고 있습니다.
 
 - 운영체제 학습: [16개 🔗](https://jeha00.github.io/categories/os/)
-- 네트워크 학습:  [13개 🔗](https://jeha00.github.io/categories/network/)
+- 네트워크 학습:  [14개 🔗](https://jeha00.github.io/categories/network/)
 - 데이터 베이스 학습: [2개 🔗](https://jeha00.github.io/categories/db/)
 - 자료 구조 및 알고리즘 학습: [TIL study 🔗](https://github.com/JeHa00/TIL/tree/main/DataStructure_Algorithum)
 
@@ -239,4 +227,4 @@ _감사합니다._
 
 _Backend Engineer,  김제하(jeha)_  
 
-_Latest updated    2023.11.20_
+_Latest updated    2024.01.04_
