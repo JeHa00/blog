@@ -98,9 +98,6 @@ _최근 프로젝트에 사용한 기술들입니다._
 
 **[Frontend: vanilla js만을 사용하여 다음 내용을 개발 🔗](https://jeha00.github.io/post/project/devket/js/dom_fetch_issue/)**
 
-- 저장한 웹 사이트 목록 렌더링
-- 저장한 각 웹 사이트 hover 시 하단에 뜨는 하단툴바 렌더링
-
 **Backend**
 
 - 저장된 웹 사이트의 즐겨찾기 값 변경, 저장한 웹 사이트 삭제 api 구축
