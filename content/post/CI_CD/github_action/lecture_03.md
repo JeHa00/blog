@@ -1,8 +1,8 @@
 ---
 title: "CI/CD를 위한 github action study: workflow와 job 실행 제어하기 & Jobs 와 Docker containers"
 date: 2023-08-11T18:29:20+09:00
-draft: true
-summary: 
+draft: false
+summary: 계속 작업 중
 tags: ["ci/cd"]
 categories: "CI/CD"
 ---
