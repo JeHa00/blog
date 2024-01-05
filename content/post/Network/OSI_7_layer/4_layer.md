@@ -43,11 +43,13 @@ categories: "Network"
     - 신뢰성과 정확성
     - 연결 필요  
     - 사용되는 프로토콜: TCP (Transmission Control Protocol)
+    - stateful
 
 - 비연결형 통신
     - 효율성: 빠르게 
     - 일방적인 통신 (연결 불필요)
     - 사용되는 프로토콜: UDP  ex) 동영상 스트리핑 서비스  
+    - stateless  
 
 ### 3) 4계층의 캡슐화, 역캡슐화 그리고 데이터 단위
 

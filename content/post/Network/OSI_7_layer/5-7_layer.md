@@ -15,7 +15,9 @@ categories: "Network"
 4. [[TIL] Network OSI 7 layer: 3계층](<https://jeha00.github.io/post/network/osi_7_layer/3_layer/>)
 5. [[TIL] Network OSI 7 layer: 4계층](<https://jeha00.github.io/post/network/osi_7_layer/4_layer/>)
 
-이번 장에서는 OSI 7 계층에서 가장 최상위 계층에 속하며 이 챕터에서는 세션, 표현, 응용계층을 모두 포함한 것으로 통용하겠다.  
+이번 장에서는 OSI 7 계층에서 가장 최상위 계층에 속한다. 
+
+이 챕터에서는 세션, 표현, 응용계층을 모두 포함하여 설명한 후 OSI 7 layer model에 맞게 나눠서 설명하겠다.  
 
 
 
@@ -262,7 +264,31 @@ Proxy(프록시)는 '대리인', '대리자'라는 의미를 가진 용어로 pr
 &nbsp;
 
 
-# 7. 네트워크 실습
+# 7. ISO Model 기준
+
+---
+
+## 7 계층: Application layer - HTTP/FTP/gRPC
+
+실제 애플리케이션이 작동하는 layer로 서버 애플리케이션 또는 브라우저가 이에 해당된다.  
+
+## 6 계층: Presentation layer - Encoding, Serialization, Decoding, Deserialization
+
+'표현'이라는 단어의 의미와 연관지어서 생각해보면 데이터가 어떻게 '표현'되는지, 즉 어떠한 방식으로 인코딩되고 해석되는지를 관리하는 계층이다.  
+
+그래서 데이터의 압축이나 암호화가 이루어지는 계층이 이 표현 계층이다.  
+
+이 계층에 해당되는 예시로는 여러 언어에서 사용되는 json serialization library가 이 layer에 해당된다. 그래서 JSON을 byte strings으로 직렬화하거나, byte strings을 JSON으로 역직렬화하는 계층이다.  
+
+
+## 5 계층: Session layer - Connection establishment, TLS
+
+세션 계층은 '세션'이라는 단어의 의미와 연관지어서 생각해보면 편한데, 세션이라는 단어 자체가 컴퓨터 과학에서는 대화나 연결 상태를 의미하기 때문에 응용 프로그램 간의 세션(대화)을 관리하는 계층이다.
+그래서 TCP 연결을 수립하기 위해 요청하는 단계다. 하지만 handshake 단계가 여기서 이뤄지는 게 아니다. handshake 단계는 4계층에서 이뤄진다.  
+
+&nbsp;
+
+# 8. 네트워크 실습
 
 ---
 
