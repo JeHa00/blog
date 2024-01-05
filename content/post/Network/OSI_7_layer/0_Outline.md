@@ -70,23 +70,23 @@ OSI 7 layer의 구성은 다음과 같다. 그리고, 이 **OSI 7 layer** 를 4�
 
 | OSI 7 layer | TCP/IP 4 layer | 사용되는 프로토콜 | 설명 | PDU(Protocol Data Unit) | 주요 네트워크 기기 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-|응용 계층| 4. 응용 계층| HTTP, FTP, SMTP, DNS | 애플리케이션 서비스 제공 | 메시지 혹은 데이터 | - |
-|표현 계층| 4. 응용 계층| HTTP, FTP, SMTP, DNS | 문자코드, 압축, 암호화 방식으로 데이터 변환 | 메시지 혹은 데이터  | -  |
-|세션 계층| 4. 응용 계층| HTTP, FTP, SMTP, DNS | 세션 연결/설정/해제와 통신 방식 결정 | 메시지 혹은 데이터  | - |
-|[전송 계층](https://jeha00.github.io/post/network/osi_7_layer/4_layer/)| 3. 전송 계층|TCP, UDP | 신뢰성 있는 통신 구현 | segment | - |
+|[응용 계층](https://jeha00.github.io/post/network/osi_7_layer/5-7_layer/)| 4. 응용 계층| HTTP, FTP, SMTP, DNS | 애플리케이션 서비스 제공 | 메시지 혹은 데이터 | - |
+|[표현 계층](https://jeha00.github.io/post/network/osi_7_layer/5-7_layer/)| 4. 응용 계층| HTTP, FTP, SMTP, DNS | 암호화, 직렬화, 복호화, 역직렬화 등으로 데이터 변환 | 메시지 혹은 데이터  | -  |
+|[세션 계층](https://jeha00.github.io/post/network/osi_7_layer/5-7_layer/)| 4. 응용 계층| HTTP, FTP, SMTP, DNS | 세션 연결/설정/해제와 통신 방식 결정 | 메시지 혹은 데이터  | - |
+|[전송 계층](https://jeha00.github.io/post/network/osi_7_layer/4_layer/)| 3. 전송 계층|TCP, UDP | 신뢰성 있는 통신 구축 및 PORT를 통해 특정 프로세스 명시 | segment | - |
 |[네트워크 계층](https://jeha00.github.io/post/network/osi_7_layer/3_layer/)| 2. 인터넷 계층 | IP | 한 네트워크에서 다른 네트워크와 통신하기 위한 IP 주소 결정 | packet | 라우터 |
-|[데이터링크 계층](https://jeha00.github.io/post/network/osi_7_layer/2_layer/)| 1. 네트워크 인터페이스 계층 | 이더넷, CMSA/CD | '네트워크 기기' 간의 데이터 전송과 물리 주소 결정 | frame | 스위치 |
-|[물리 계층](https://jeha00.github.io/post/network/osi_7_layer/1_layer/)| 1. 네트워크 액세스 계층 | RS-232, RS-449 | 물리적 연결과 데이터를 전기 신호로 변환 | | 리피터, 허브 |
+|[데이터링크 계층](https://jeha00.github.io/post/network/osi_7_layer/2_layer/)| 1. 네트워크 인터페이스 계층 | 이더넷, CMSA/CD | MAC 주소를 통해 '네트워크 기기' 간의 데이터 전송과 물리 주소 결정 | frame | 스위치 |
+|[물리 계층](https://jeha00.github.io/post/network/osi_7_layer/1_layer/)| 1. 네트워크 액세스 계층 | RS-232, RS-449 | 디지털 신호와 전기 신호 간 변환 | | 리피터, 허브 |
 
 ![image](https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/axm/image/lEbuexy5CZ5WK6Xq5yZuwg_8tR4.png)
 
 - 위 각 계층에 대한 설명에 추가 설명  
 
-  - 1계층 ~ 2계층: 한 네트워크 내에서 데이터를 주고 받는 과정
+  - 1계층: 전기적 신호와 디지털 신호 bit가 상호 변환되는 계층  
   - 3계층부터는 네트워크 간 데이터를 주고 받는 과정  
   - 3계층: 여러 네트워크 간 데이터 전송을 위해 타 네트워크 주소 결정
   - 4계층: 3계층에서 데이터가 유실되거나 더 정확하게 데이터를 전송하기 위한 정보 추가  
-  - 5 ~ 7 계층: 특정 애플리케이션까지 도달하기 위한 데이터 정보 추가  
+  - 5 ~ 7 계층 설명은 위 설명으로 충분하다.  
 
 &nbsp;
 

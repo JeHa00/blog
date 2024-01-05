@@ -2,7 +2,7 @@
 title: "[TIL]OSI 7 layer: 5 ~ 7계층"
 date: 2023-12-28T18:23:48+09:00
 draft: False
-summary: TCP/IP 4계층을 기준으로 맨 위 계층인 Application 계층에 대해 알아보자. 
+summary: OSI 7 layer의 5, 6, 7계층에 대해 알아보자.
 tags: ["TIL", "Network"]
 categories: "Network"
 ---
@@ -285,6 +285,8 @@ Proxy(프록시)는 '대리인', '대리자'라는 의미를 가진 용어로 pr
 
 세션 계층은 '세션'이라는 단어의 의미와 연관지어서 생각해보면 편한데, 세션이라는 단어 자체가 컴퓨터 과학에서는 대화나 연결 상태를 의미하기 때문에 응용 프로그램 간의 세션(대화)을 관리하는 계층이다.
 그래서 TCP 연결을 수립하기 위해 요청하는 단계다. 하지만 handshake 단계가 여기서 이뤄지는 게 아니다. handshake 단계는 4계층에서 이뤄진다.  
+
+그리고 이 session layer의 담당자는 OS kernel, file descriptor 가 그 예다.  
 
 &nbsp;
 
