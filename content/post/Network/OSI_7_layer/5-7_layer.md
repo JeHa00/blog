@@ -15,11 +15,7 @@ categories: "Network"
 4. [[TIL] Network OSI 7 layer: 3계층](<https://jeha00.github.io/post/network/osi_7_layer/3_layer/>)
 5. [[TIL] Network OSI 7 layer: 4계층](<https://jeha00.github.io/post/network/osi_7_layer/4_layer/>)
 
-이번 장에서는 OSI 7 계층에서 가장 최상위 계층에 속한다. 
-
-이 챕터에서는 세션, 표현, 응용계층을 모두 포함하여 설명한 후 OSI 7 layer model에 맞게 나눠서 설명하겠다.  
-
-
+이번 장에서는 OSI 7 계층에서 5, 6, 7 계층이며, TCP/IP model로는 제일 윗 계층인 application layer를 학습해본다.
 
 
 &nbsp;
@@ -27,6 +23,45 @@ categories: "Network"
 
 # 1. Application 응용 계층 개요
 ---
+
+이번 장에서 학습하는 계층은 OSI 7 layer에서는 3개의 계층이지만, TCP/IP model 로는 한 개의 계층이다. 
+
+3개의 계층이 묶여서 TCP/IP 모델에서 하나의 계층으로 표현되는 이유는 OSI 7 layer의  session layer, presentation layer, application layer가 대체로 하나로 묶여서 작동되는 경우가 많기 때문이다. 
+
+그러면 먼저 OSI model을 기준으로 5, 6, 7계층의 역할을 각각 알아본 후, 하나로 엮어서 학습해보자.
+
+## OSI model 기준 5, 6, 7 계층
+
+### 7 계층 Application layer: HTTP/FTP/gRPC
+
+실제 애플리케이션이 작동하는 layer로 서버 애플리케이션 또는 브라우저가 이에 해당된다.  
+
+여기서 사용하는 프로토콜은 HTTP, FTP, gRPC가 이에 해당된다.  
+
+### 6 계층 Presentation layer: Encoding, Serialization, Decoding, Deserialization
+
+'표현'이라는 단어의 의미와 연관지어서 생각해보면 데이터가 어떻게 '표현'되는지, 즉 어떠한 방식으로 인코딩되고 해석되는지를 관리하는 계층이다. 또한, 데이터의 압축이나 암호화가 이루어지는 계층이 이 표현 계층이다.  
+
+이 계층의 예시로는 여러 언어에서 사용되는 json serialization library가 이 layer에 해당된다. 그래서 JSON을 byte strings으로 직렬화하거나, byte strings을 JSON으로 역직렬화하는 계층이다.  
+
+
+### 5 계층 Session layer: Connection establishment, TLS
+
+세션 계층은 '세션'이라는 단어의 의미와 연관지어서 생각해보면 편한데, 세션이라는 단어 자체가 컴퓨터 과학에서는 대화나 연결 상태를 의미하기 때문에 응용 프로그램 간의 세션(대화)을 관리하는 계층이다. 그래서 TCP/IP 연결을 만들고 없애는 
+
+이 계층의 역할을 수행하는 것은 OS kernel, file descriptor가 그 예시다.
+
+하지만 이는 3-way handshake와는 다르다. handshake는 '데이터 전송 준비'를 하는 단계이고, session layer는 '어플리케이션 간 연결'을 수립하는 단계다.  
+
+그렇다면 이 단계는 어떻게 이뤄지는 걸까? 
+
+Application에는 Socket 라이브러리가 있는데, 이 라이브러리를 통해서 OS 내부에 프로토콜 스택을 사용해서 어플리케이션 간 연결을 관리한다.  
+
+&nbsp;
+
+## TCP/IP model 기준 application layer
+
+그러면 이제 TCP/IP model을 기준으로 학습해보자.  
 
 응용 계층은 애플리케이션에 대한 서비스를 제공하기 위해서 클라이언트가 요청한 서비스를 통신 대상인 서버가 인식하도록 데이터를 변환하는 계층이다.  
 
@@ -264,33 +299,7 @@ Proxy(프록시)는 '대리인', '대리자'라는 의미를 가진 용어로 pr
 &nbsp;
 
 
-# 7. ISO Model 기준
-
----
-
-## 7 계층: Application layer - HTTP/FTP/gRPC
-
-실제 애플리케이션이 작동하는 layer로 서버 애플리케이션 또는 브라우저가 이에 해당된다.  
-
-## 6 계층: Presentation layer - Encoding, Serialization, Decoding, Deserialization
-
-'표현'이라는 단어의 의미와 연관지어서 생각해보면 데이터가 어떻게 '표현'되는지, 즉 어떠한 방식으로 인코딩되고 해석되는지를 관리하는 계층이다.  
-
-그래서 데이터의 압축이나 암호화가 이루어지는 계층이 이 표현 계층이다.  
-
-이 계층에 해당되는 예시로는 여러 언어에서 사용되는 json serialization library가 이 layer에 해당된다. 그래서 JSON을 byte strings으로 직렬화하거나, byte strings을 JSON으로 역직렬화하는 계층이다.  
-
-
-## 5 계층: Session layer - Connection establishment, TLS
-
-세션 계층은 '세션'이라는 단어의 의미와 연관지어서 생각해보면 편한데, 세션이라는 단어 자체가 컴퓨터 과학에서는 대화나 연결 상태를 의미하기 때문에 응용 프로그램 간의 세션(대화)을 관리하는 계층이다.
-그래서 TCP 연결을 수립하기 위해 요청하는 단계다. 하지만 handshake 단계가 여기서 이뤄지는 게 아니다. handshake 단계는 4계층에서 이뤄진다.  
-
-그리고 이 session layer의 담당자는 OS kernel, file descriptor 가 그 예다.  
-
-&nbsp;
-
-# 8. 네트워크 실습
+# 7. 네트워크 실습
 
 ---
 
