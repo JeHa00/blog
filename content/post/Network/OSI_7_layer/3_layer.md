@@ -251,9 +251,9 @@ Network 1과 Network 3 사이에는 Network 2가 존재한다. Router 1은 netwo
 
 # 6. Routing Protocols (좀 더 학습 필요)
 
----
 
-### 개요
+## 6.1 개요
+---
 
 라우팅 과정에서 사용되는 프로토콜들에 대해 알아보자. 라우팅 프로토콜은 라우팅 정보를 교환하기 위한 프로토콜이다.  
 
@@ -278,8 +278,9 @@ Network 1과 Network 3 사이에는 Network 2가 존재한다. Router 1은 netwo
 
 그러면 IGP에 대해 알아보자.
 
-#
 
+## 6.2 IGP
+---
 
 ### IGP: RIP(Routing Information Protocol)
 
@@ -315,7 +316,8 @@ OSPF는 가장 많이 사용하는 IGP(내부 게이트웨이 프로토콜)의 �
 
 그리고 OSPF는 라우팅을 효과적으로 수행하기 위해서 네트워크를 영역 단위로 나누어 관리하는데, AS 내에 **여러 개의 영역으로 나눈 다음** 내부의 라우터들끼리 각 영역에서 라우팅 정보를 교환하는 **계층적 구조** 를 가진다.
 
-### NAT(Network Address port Translation)
+## NAT(Network Address port Translation)
+---
 
 IP 주소는 이용하는 범위에 따라서 공인과 사설로 나눌 수 있다. 공인은 인터넷을 시용할 때 반드시 필요한 것이고, 사설은 가정 내 네트워크 또는 사내 네트워크 처럼 사설로 사용하는 네트워크다.  
 
@@ -335,13 +337,13 @@ IP 패킷에는 출발지 IP 주소와 도착지 IP 주소가 있는지를 기�
 ![image](https://github.com/JeHa00/image/assets/78094972/3328b55b-3206-4c14-872a-884969c484c9)
 
 
-#
+## 6.3 ARP
 
-### ARP
+---
 
-#
+## 6.4 ICMP
 
-### ICMP
+---
 
 &nbsp;
 
