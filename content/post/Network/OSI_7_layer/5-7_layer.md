@@ -315,27 +315,6 @@ Proxy(프록시)는 '대리인', '대리자'라는 의미를 가진 용어로 pr
 ---
 
 
-## ifconfig
-
-> **_IP 주소를 확인하는 명령어_**
-
-- terminal에 `ifconfig`를 입력해보고, 뜨는 것을 분석해보자.
-- 이것이 네트워크의 전부다.  
-
-- `lo0`: loop back을 의미하는데, 자기 자신에게 보내는 데이터를 처리하기 위한 가상 인터페이스 장치 이름
-  - `inet 127.0.0.1`: localhost로 자신의 컴퓨터를 의미한다.
-  - `netmask 0xff000000`: 255.0.0.0 /8
-    - 11111111 00000000 000000000 00000000
-
-- `en0`: ethernet을 의미한다
-  - `inet6 fe80::1872:9ed:4de7:e8c`: IPv6 주소
-  - `inet 172.30.1.1`: IPv4 주소로 내부 IP
-  - `broadcast 172.30.1.255`: broadcast address
-  - `netmask 0xffffff00`: 255.255.255.192 /26
-    - 11111111 11111111 1111111 11000000
-
-&nbsp;
-
 ## DNS server
 
 > **_DNS(Domain Name System)이란? 웹 사이트의 IP 주소와 도메인 주소를 이어주는 시스템_**
@@ -361,36 +340,6 @@ Proxy(프록시)는 '대리인', '대리자'라는 의미를 가진 용어로 pr
 - `127.0.0.1`은 localhost다.  
 - `broadcasthost` 는 `255.255.255.255` 다.
 - DNS에다가 추가하고 싶은 IP 주소를 추가할 수 있다는 것
-
-&nbsp;
-
-## ping
-
-> **_Ping(Packet INternet Groper)의 약자로, 네트워크 상태를 점검 및 진단하는 명령어_**
-
-- 나중에 서버를 구출할 때, 그 서버에 ping을 날려보면 데이터를 보내고 받을 수 있는지 확인할 수 있다.
-
-- 터미널 실행 후,  `ping google.co.kr`를 입력해보자.  
-
-```yml
-> ping google.co.kr
-PING google.co.kr (172.217.26.227): 56 data bytes
-64 bytes from 172.217.26.227: icmp_seq=0 ttl=114 time=45.149 ms
-64 bytes from 172.217.26.227: icmp_seq=1 ttl=114 time=36.573 ms
-64 bytes from 172.217.26.227: icmp_seq=2 ttl=114 time=44.751 ms
-64 bytes from 172.217.26.227: icmp_seq=3 ttl=114 time=44.796 ms
-64 bytes from 172.217.26.227: icmp_seq=4 ttl=114 time=40.381 ms
-64 bytes from 172.217.26.227: icmp_seq=5 ttl=114 time=45.104 ms
-64 bytes from 172.217.26.227: icmp_seq=6 ttl=114 time=37.562 ms
-64 bytes from 172.217.26.227: icmp_seq=7 ttl=114 time=36.680 ms
-^C
---- google.co.kr ping statistics ---
-8 packets transmitted, 8 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 36.573/41.375/45.149/3.740 ms
-```
-
-- 총 8개의 packet을 보내고, 받았다는 걸 알 수 있다.  
-- 이렇게 Ping을 보내어 해당 서버와 통신 유무를 확인할 수 있다.  
 
 &nbsp;
 
