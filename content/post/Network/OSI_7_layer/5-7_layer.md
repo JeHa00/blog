@@ -179,7 +179,7 @@ DHCP 서버가 확인 응답을 보내면서 IP 주소 동적 할당 과정이 �
 
 DNS는 호스트를 식별하고 관리하기 위해서 domain name space(도메인 네임 공간)라는 계층 구조를 가진다. 이 계층 구조는 다음과 같이 **_트리형_** 이므로 여러 층 개념을 가진다. 그리고 이 계층은 DNS의 `.` 들이 계층을 구분한다.  예를 들어서 `www.lab.cyber.com` 이라고 하면 `com` 이라는 도메인 아래에 `cyber` 라는 도메인이 있고, 그 아래에 `lab` 이라는 도메인이 있다. 이 `lab` 도메인 안에 `www` 라는 도메인이 있는 것이다.  이처럼 계층적 구조를 가진다.  
 
-![image](https://github.com/JeHa00/image/assets/78094972/e4a292eb-147c-4f50-9caa-43b70b018a5fㄴ)
+![image](https://github.com/JeHa00/image/assets/78094972/e4a292eb-147c-4f50-9caa-43b70b018a5f)
 
 ### TLD, SLD 그리고 Sub domain
 
