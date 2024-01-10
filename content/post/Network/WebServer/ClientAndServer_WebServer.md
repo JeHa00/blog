@@ -149,15 +149,19 @@ categories: "Network"
 
 ### WSGI의 종류
 
-> **_gunicorn 과 uwsgi_**
+> **_gunicorn, uwsgi, uvicorn_**
 
 - **gunicorn**: 프로그래밍하는 건 gunicorn이 더 쉽기 때문에, 입문자에게는 이를 권장한다.
 
 - **uwsgi**: gunicorn보다는 어렵지만, 디테일하게 직접 설계하여 성능을 최대로 높일 수 있다.
 
+- **uvicorn**: WSGI가 아닌 ASGI로 Asynchronous Server Gateway Interface로, 동기 기반 프레임워크에느 사용할 수 없다. 그래서 FastAPI의 경우 gunicorn과 사용할 수 없다.  
+
+하지만 uvicorn만 사용하던가, gunicorn + uvicorn으로 함께 사용할 수도 있다. FastAPI 공식 문서인 [Server Workers - Gunicorn with Uvicorn](https://fastapi.tiangolo.com/deployment/server-workers/)를 보면 확인할 수 있다.  
+
 &nbsp;
 
-## 2.3 웹 애플리케이션
+## 2.3 WAS(Web Application Server, 웹 애플리케이션 서버)
 
 > **_동적 페이지(dynamic page)를 처리하는 서버로, 데이터베이스와 연결되어 필요한 데이터를 주고 받는다._**
 
@@ -189,6 +193,7 @@ categories: "Network"
 - 클라이언트 <=> 서버
 
 - 예시로서 서버 안에서는 다음과 같은 구조를 가진다.
+  - web server - WSGI - WAS (application server + db server...)
   - NGiNX <=> gunicorn <=> Django <=> PostgreSQL  
   - 서버개발자는 위 모든 것을 다 설치해야 하며, 장고 외의 것들도 어떻게 구성할지 고려해야한다.  
 
