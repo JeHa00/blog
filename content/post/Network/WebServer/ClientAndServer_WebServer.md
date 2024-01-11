@@ -155,9 +155,7 @@ categories: "Network"
 
 - **uwsgi**: gunicorn보다는 어렵지만, 디테일하게 직접 설계하여 성능을 최대로 높일 수 있다.
 
-- **uvicorn**: WSGI가 아닌 ASGI로 Asynchronous Server Gateway Interface로, 동기 기반 프레임워크에느 사용할 수 없다. 그래서 FastAPI의 경우 gunicorn과 사용할 수 없다.  
-
-하지만 uvicorn만 사용하던가, gunicorn + uvicorn으로 함께 사용할 수도 있다. FastAPI 공식 문서인 [Server Workers - Gunicorn with Uvicorn](https://fastapi.tiangolo.com/deployment/server-workers/)를 보면 확인할 수 있다.  
+- **uvicorn**: WSGI가 아닌 ASGI로 Asynchronous Server Gateway Interface로, 동기 기반 프레임워크에느 사용할 수 없다. 그래서 FastAPI의 경우 gunicorn과 사용할 수 없다. 그래서 uvicorn만 사용하던가, gunicorn + uvicorn으로 함께 사용할 수도 있다. FastAPI 공식 문서인 [Server Workers - Gunicorn with Uvicorn](https://fastapi.tiangolo.com/deployment/server-workers/)를 보면 확인할 수 있다.  
 
 &nbsp;
 
