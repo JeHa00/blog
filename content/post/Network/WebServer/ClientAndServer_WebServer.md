@@ -169,8 +169,6 @@ categories: "Network"
 - 웹 애플리케이션의 종류
   - Django(파이썬), Flask(파이썬), Ruby on Rails(루비), Spring(java) 등등
   - Django로 만들면 나중에 ML 을 적용할려면 호환이 좋다. 하지만 루비는 그렇지 않다.
-  - 대기업에서 Spring이 많은 이유는 선점효과다.  
-  - 일본에서는 django보다 Ruby가 많다.
 
 &nbsp;
 
