@@ -484,10 +484,10 @@ categories: ["Python"]
 
 - 그러면 위 두 가지 코드를 통해서 function과 method의 차이는 무엇일까??
 
-  - function과 달리 method는 object와 관련하여 호출된다. 위 코드를 보자면 "cat" 객체에 관련된 "my_methd" 를 호출했다. 하지만, function "sum" 은 객체 없이 호출된다.
-  - 또한, method는 객체에 관련하여 호출되기 때문에, 객체 안에 있는 data에 접근할 수 있다. 그래서 객체의 상태를 바꿀 수 있지만, function은 할 수 없다.
+  - function과 달리 method는 class object와 관련하여 호출된다. 위 코드를 보자면 "cat" 인스턴스 객체에 관련된 "my_method" 를 호출했다. 하지만, function "sum" 은 객체 없이 호출된다.
+  - 또한, method는 클래스 객체에 관련하여 호출되기 때문에, 객체 안에 있는 data에 접근할 수 있다. 그래서 객체의 상태를 바꿀 수 있지만, function은 할 수 없다.
 
-- 즉, method는 객체에 속한 function임을 알 수 있다.
+- 즉, method는 클래스 객체에 속한 function임을 알 수 있다.
   - **_function과 method의 호출 방법 차이_**: 그래서 method는 `.` dot annotation을 통해 사용된다.
 
 - 이를 보다 깊이 들어가자면 [Docs.python - Functions and methods](https://docs.python.org/3/howto/descriptor.html#functions-and-methods) 이 공식 문서를 참고해보자.

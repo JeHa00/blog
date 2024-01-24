@@ -46,7 +46,7 @@ categories: ["Python"]
 > whlie z:
 # z 변수 안에 데이터가 존재하므로 True 상태이기 때문에 무한 반복문이다.
 # 위험한 코드이므로, 조건의 변화를 일으켜 무한 반복문을 방지한다.
->   print(a.pop())
+>   print(z.pop())
 # pop으로 성분의 갯수가 0이 되면 False가 되므로 중단된다.
 
 ```

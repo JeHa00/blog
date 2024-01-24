@@ -121,11 +121,11 @@ v is : 10
 
 # 2. Iterable 자료형 활용과 Iterable 함수
 
+
+- iterable 리턴 함수 : range, reversed, enumerate, filter, map, zip
+  - 이런 것들 다 for 문에서 사용할 수 있다.
+
 ```yml
-
-# iterable 리턴 함수 : range, reversed, enumerate, filter, map, zip
-# (이런 것들 다 for 문에서 사용할 수 있다.)
-
 # 예제1
 
 # Iterable: string으로 구성된 list
