@@ -41,8 +41,7 @@ categories: ["Python"]
 
 > - \_\_iter\_\_
 >   - \_\_iter\_\_: iter() built-in function이 호출하는 메소드
->   - iter(): 호출된 \_\_iter\_\_의 return 값을 반환한다.
->   - 즉, iterator는 \_\_iter\_\_ method가 만든다.
+>   - iter(): 호출된 \_\_iter\_\_의 return 값인 iterator를 반환한다.
 > - \_\_next\_\_
 >   - \_\_next\_\_: next() built-in function이 호출하는 메소드
 
@@ -53,11 +52,15 @@ categories: ["Python"]
 ### iteration이란?
 
 - The process of looping through the objects or items in a collection
+  - 번역하자면 하나의 여러 값들이 담겨진 목록에서 객체들 또는 값들을 '순회'하는 과정
 
   - 그러면 파이썬에서 **iteration** 상황은 무엇이 있을까??
 
   - **Definite** iteration 상황: 미리 반복 횟수를 명백하게 정한 상황. ex) for 문
   - **Indefinite** iteration 상황: 몇 가지 조건이 만족될 때까지 code block을 실행하는 상황. ex) while 문
+
+
+iteration이란 게 뭔지 알았으니, `__iter__`를 사용하는 'iterable' 과  'iterator'의 차이에 대해 알아보자.  
 
 &nbsp;
 
@@ -65,7 +68,7 @@ categories: ["Python"]
 ### iterable
 
 - An object(or the adjective used to describe an object) that can be iterated over
-- `dir()`로 확인했을 때, `__iter__`을 가지고 있는 객체
+- `dir()`로 확인했을 때, `__iter__` 또는 `__getitem__` 을 가지고 있는 객체  
 
 &nbsp;
 
@@ -78,9 +81,9 @@ categories: ["Python"]
 - 즉, **iterator**의 의미는
 
   - The object that produces successive items or values from its associated iterable
-    - iterable object로부터 연속적인 값을 낳는(yield) 값 생성기
+    - iterable object로부터 연속적인 값을 낳는(yield) 값 생성기로 '반복자'라고 한다.  
   - `iter()`이 반환하는 **객체의 type**  
-  - `next()` function의 기준으로 보자면, `__next__`을 가지고 있는 객체
+  - `next()` function의 기준으로 보자면, `__next__`을 가지고 있는 객체로서 최종적으로 iterator가 갖고 있는 매직메서드는 `__iter__` 와 `__next__` 라고 볼 수 있다.  
 
 
 &nbsp;
@@ -213,6 +216,8 @@ categories: ["Python"]
 
   - `__iter__` 과 `__next__` 와 연결시켜보자.
   - iterable을 입력하면 for문에서 `iter()`을 호출하여 iterable객체를 `iterator`로 바꾼 후, `__next__` method를 통해 하나씩 출력된는 원리라는 걸 이해할 수 있다.
+
+  - 하지만 iterator를 입력해도 for문에서 알아서 `__next__` method를 통해 하나씩 출력한다.  
 
 - 위에 for문을 while문으로 만들어서 구체적으로 이해해보자.
 

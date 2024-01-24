@@ -12,15 +12,23 @@ categories: ["Python"]
 - for 문은 코딩에서 중요하다.
 - 파이썬의 for 문은 다른 for 문과 달리 독자적인 특징이 있다.
 - if else 처럼 for else도 가능하나, 자주 사용하지 않는다.
-- 파이썬 공식 사이트에서는 다음과 같은 구조로 설명한다.
-  - `<collection>` 이란 반복 가능한 객체, `iterable object (= interator)`를 말한다.
-  - 그러면 어떤 게 `iterator` 인가?? `dir()`를 사용했을 때 `__iter__` 을 확인할 수 있으면 `iterator`다.
-  - 예를 들어서 string, list, tuple, dictionary, set을 말한다.
+
+### iterable과 iterator
 
 ```yml
 > for i in <collection>:
 >   <loop body>
 ```
+
+- 파이썬 공식 사이트에서는 다음과 같은 구조로 설명한다.
+
+  - `<collection>` 이란 반복 가능한 객체, `iterable object (= interator)`를 말한다.
+
+  - 그래서 collection 위치에는 iterator를 입력하면 된다.
+  - 그러면 어떤 게 `iterator` 인가?
+  - 예를 들어서 string, list, tuple, dictionary, set을 말한다.
+
+iterable과 iterator에 대한 더 자세한 설명은 [\_\_iter\_\_와 \_\_next\_\_](https://jeha00.github.io/post/python/python_basic_35_iter_next/#2-__iter__%EC%99%80-__next__)를 확인해보자.  
 
 &nbsp;
 

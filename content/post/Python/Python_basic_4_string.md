@@ -337,7 +337,7 @@ th
 
 # index를 역으로 해도 가능하다.
 > print(sl[-5:])
-Python
+ython
 
 # index를 역으로 하는 것과 정방향으로 하는 것을 같이 해도 가능하다.
 > print(sl[1:-2])
