@@ -109,7 +109,7 @@ False 2542532857088 2542532856992 2542532856560
   | ------------------ | -------------------------------------------------- | -------------------------------------------------------- |
   | function or method | built-in function(내장함수)                        | magic method(special method)                             |
   | Data type          | list                                               | dictionary                                               |
-  | 호출 내용          | 객체가 가진 attribute와 method 정보 ( key name만 ) | 객체의 attribute와 value ( key name과 value ) |
+  | 호출 내용          | 객체를 만든 class가 가진 attribute와 method 정보 ( key name만 ) | 인스턴스 객체만의 attribute와 value ( key name과 value ) |  
 
 ```yml
 # dict로 instance의 namespace 확인하기
