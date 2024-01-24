@@ -38,13 +38,17 @@ categories: ["Python"]
 - **class 만들기 위한 상황**
 
   - 애완견 용품에서 사용하는 소프트웨어를 개발한다고 가정하자.
-  - 개의 종은 매우 다양하기 때문에, 개의 종이 추가될 때마다 변수 입력한다면 그 양이 매우 많아지고, 가독성도 떨어진다.
+  - 개의 종은 매우 다양해서 개의 종이 추가될 때마다 변수 입력한다면 그 양이 매우 많아지고 가독성도 떨어진다.
   - 하지만, 클래스를 이용한다면 눈에 보이는 애완견 실체를 `클래스 형태`로 구성해서 `instance`로 만들 수 있다.
+  - 즉 클래스는 설계도라고 생각하면 되고, 인스턴스(instance)는 이 설계도를 토대로 만들어진 것이라 생각하자.  
 
 
 - `class` 라는 예약어를 통해 클래스를 만들기 시작한다.
   - 모든 클래스는 object를 상속받기 때문에, 선언 방법은 자유롭다.
-  - `__init__`은 파이썬에서 클래스가 초기화될 때, 반드시 호출되는 함수다.
+  - `__init__`에 대해서 
+    - 파이썬에서 클래스가 초기화될 때 반드시 호출되는 함수다. 반드시 호출되는 이유는 개발자가 초기화 작업을 잊을 경우, 예상치 못한 오류가 발생할 수 있다. 예를 들어 의도한 대로라면 특정 정보를 가지고 있어야 하는데 아무런 정보를 가지고 있지 않아 오류가 발생할 수 있다.  그래서 '반드시' 초기화 작업을 해야 한다.  
+  - 사용자가 스스로 '\_\_init\_\_' 사용자 정의 생성자를 만들지 않아도 '\_\_init\_\_' 이 없으면 파이썬이 알아서 클래스를 만들 때 내부적으로 실행한다.  
+
 
 ```yml
 # Dog라는 class를 생성한다.
@@ -76,7 +80,7 @@ categories: ["Python"]
 
 ## 2.2 인스턴스화하기
 
-> **_'인스턴스화'란 class를 통해 구현된 instance를 할당하는 것을 말한다. 인스턴스화한 것은 모두 다 다른 id값을 가진다._**
+> **_'인스턴스화'란 class를 통해 구현된 instance에 변수를 할당하는 걸 말한다. 인스턴스화한 것은 모두 다 다른 id값을 가진다._**
 
 - `instance`는 변수에 할당하여 활용되며, 이는 메모리에 올라가서 각각의 다른 `id`값을 가진다. 전혀 다른 객체로 간주된다.
 - 또한, 각 instance는 동일한 속성값을 가져도, 파이썬에게는 전혀 다른 객체로 간주된다.
@@ -105,7 +109,7 @@ False 2542532857088 2542532856992 2542532856560
   | ------------------ | -------------------------------------------------- | -------------------------------------------------------- |
   | function or method | built-in function(내장함수)                        | magic method(special method)                             |
   | Data type          | list                                               | dictionary                                               |
-  | 호출 내용          | 객체가 가진 속성 name과 method 정보 ( key name만 ) | 객체의 속성 name과 name의 value까지 ( key name과 value ) |
+  | 호출 내용          | 객체가 가진 attribute와 method 정보 ( key name만 ) | 객체의 attribute와 value ( key name과 value ) |
 
 ```yml
 # dict로 instance의 namespace 확인하기
@@ -144,7 +148,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 > - **_instance method_** : 인스턴스 변수를 인자로 받는 method
 > - **_self_** : instance를 인자로 받는 매개변수
 
-- **method 호출방법**
+### method 호출방법
 
   - **_class method 1가지 방법_**
     - ❗️ _주의 사항: 인스턴스화한 변수를 통해서 **class method** 를 호출하면 error가 뜬다._
@@ -153,38 +157,41 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
     - 첫 번째: 인스턴스화 변수를 통해서 **_instance method_** 를 호출하는 방법 (2-1 방법)
     - 두 번째: 클래스로 접근하여 인자에 인스턴스를 넘겨주는 방법 (2-2 방법)
 
-- instance 변수를 만들지 않고 사용할 것이기 때문에, '\_\_init\_\_' 생성자를 만들지 않는다.
+###
 
-  - '\_\_init\_\_' 이 없으면 파이썬이 알아서 클래스를 만들 때 내부적으로 실행한다.
+instance 변수를 만들지 않고 사용할 것이기 때문에, '\_\_init\_\_' 사용자 정의 생성자를 만들지 않는다 '\_\_init\_\_' 이 없으면 파이썬이 알아서 클래스를 만들 때 내부적으로 실행한다.
 
-  ```yml
-  > class SelfTest:
-  >   def func1():
-  >       print('Func1 called')
-  >   def func2(self):
-  >       print(id(self))
-  >       print('Func2 called')
+```yml
+> class SelfTest:
+>   def func1():
+>       print('Func1 called')
+>   def func2(self):
+>       print(id(self))
+>       print('Func2 called')
 
-  # 변수를 인스턴스화 한다.
-  > f = SelfTest()
+# 변수를 인스턴스화 한다.
+> f = SelfTest()
 
-  # dir로 변수 내부를 확인한다.
-  > print(dir(f))
-  ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',..., 'func1', 'func2']
-  ```
+# dir로 변수 내부를 확인한다.
+> print(dir(f))
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',..., 'func1', 'func2']
+```
   
-  - 인스턴스화된 f를 통해서 func1을 호출해보자.
-  - func1에는 매개변수가 없는데, 1개가 넘어갔다는 걸 알 수 있다.
-  
-  ```python
-  > f.func1()
-  TypeError: func1() takes 0 positional arguments but 1 was given
-  ```
+인스턴스화된 f를 통해서 func1을 호출해보자.
+func1에는 매개변수가 없는데, 1개가 넘어갔다는 걸 알 수 있다.
 
-  - func1은 매개변수가 없는데, 왜 매개변수로 1개가 넘어간 것일까? 넘어간 매개변수는 무엇일까??
-    - 바로 인스턴스가 인자로 넘어간 것이다. 인스턴스에 dot operator로 class의 method에 접근하면 인스턴스가 인자로 넘어가기 때문에, 위와 같은 TypeError가 발생했다.
+```python
+> f.func1()
+TypeError: func1() takes 0 positional arguments but 1 was given
+```
 
-- 2-1 방법으로 인스턴스화된 f를 통해서 func2를 호출해보자.
+func1은 매개변수가 없는데, 왜 매개변수로 1개가 넘어간 것일까? 넘어간 매개변수는 무엇일까??
+
+- 바로 인스턴스가 인자로 넘어간 것이다. 인스턴스에 dot operator로 class의 method에 접근하면 인스턴스가 인자로 넘어가기 때문에, 위와 같은 TypeError가 발생했다.
+
+### 인스턴스 메서드 호출 방법: 2-1
+
+2-1 방법으로 인스턴스화된 f를 통해서 func2를 호출해보자.
 
   ```yml
   > f.func2()
@@ -200,36 +207,40 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
     - 첫 번째, func1을 호출한 방법과 동일한 방법으로 self가 매개변수로 있는 func2를 호출하니 Error가 뜨지 않았다.
     - 두 번째, `f.func2()` 에 의해서 출력된 `id` 와 `id(f)`의 값이 동일하다.
 
-- 1-1 방법으로 class method를 호출해보자.
+### 클래스 메서드 호출 방법: 1-1
 
-  ```yml
-  ## class method 호출하기 (1-1 방법)
-  > SelfTest.func1()
-  Func1 called
-  ```
+1-1 방법으로 class method를 호출해보자.
 
-  - 위 결과를 통해서 다음과 같은 이유로 **self가 없는 method** 는 **class method**인 걸 알 수 있다.
-    - `func1`을 인스턴스로 접근하여 호출했을 때는 TypeError가 떴었다.
-    - 하지만, class로 직접 접근하여 호출하니, 정상적으로 출력된 걸 알 수 있다.
+```yml
+## class method 호출하기 (1-1 방법)
+> SelfTest.func1()
+Func1 called
+```
 
-- 만약 class로 접근하여 func2를 호출한다면 어떻게 될까???
+- 위 결과를 통해서 다음과 같은 이유로 **self가 없는 method** 는 **class method**인 걸 알 수 있다.
+  - `func1`을 인스턴스로 접근하여 호출했을 때는 TypeError가 떴었다.
+  - 하지만, class로 직접 접근하여 호출하니, 정상적으로 출력된 걸 알 수 있다.
 
-  ```yml
-  > SelfTest.func2()
-  Typeerror: func2() missing 1 required positional argument: 'self'
-  ```
+만약 class로 접근하여 func2를 호출한다면 어떻게 될까???
 
-  - func2가 요구하는 매개변수 1개를 놓쳤다는 TypeError를 확인할 수 있다.
+```yml
+> SelfTest.func2()
+Typeerror: func2() missing 1 required positional argument: 'self'
+```
 
-- 그러면 2-2 방법으로 매개변수 1개를 입력해보자.
+func2가 요구하는 매개변수 1개를 놓쳤다는 TypeError를 확인할 수 있다.
 
-  ```yml
-  > SelfTest.func2(f)
-  2332370018256
-  Func2 called
-  ```
+### 인스턴스 메서드 호출 방법: 2-2
 
-  - 그래서 클래스로 접근해도 instance method에 인스턴스화한 변수를 인자로 넘기니 정상적으로 작동됨을 알 수 있다.
+그러면 2-2 방법으로 매개변수 1개를 입력해보자.
+
+```yml
+> SelfTest.func2(f)
+2332370018256
+Func2 called
+```
+
+그래서 클래스로 접근해도 instance method에 인스턴스화한 변수를 인자로 넘기니 정상적으로 작동됨을 알 수 있다.
 
 &nbsp;
 
@@ -238,11 +249,12 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 # 4. class, instance variable
 
 
-- 다른 클래스를 만들어보자.
+다른 클래스를 만들어보자.
 
-  - `instance attribute`를 만들어서 사용할 것이기 때문에 `__init__` 생성자를 사용한다.
-  - 그리고 `생성자`와는 반대로 `소멸자`를 사용했다.
-    - `소멸자`: 객체가 소멸될 때 즉, 메모리에서 지워질 때 자동으로 호출되는 함수
+- `instance attribute`를 만들어서 사용할 것이기 때문에 사용자 정의 생성자를 위해 `__init__` 를 사용한다.  
+
+- 그리고 `생성자`와는 반대로 `소멸자`를 사용했다.
+  - `소멸자`: 객체가 소멸될 때 즉, 메모리에서 지워질 때 자동으로 호출되는 함수
 
 ```yml
 > class Warehouse():
@@ -273,7 +285,7 @@ class dir >  ['__class__', '__delattr__', '__dict__', '__dir__',..., 'species']
 ### Class variable(클래스 변수)
 
 - class 내부 method를 정의하기 전인 enclosing-scope에 정의한 변수
-- 직접 접근이 가능하다.
+- 현재 상태로는 직접 접근이 가능하다. 접근 제어자라는 개념을 나중에 학습하면 접근 권한을 차등적으로 변수마다 부여할 수 있다.  
 - 클래스 변수는 공유되기 때문에, 모든 인스턴스에서 공통으로 가지고 있는 변수
 - instance의 namespace에 있지 않고, class의 namespace에 존재한다.
 
@@ -356,9 +368,12 @@ class와 instance의 각 namespace에서 class 변수와 instance 변수를 확�
 > _`instance`의 namespace -> `class`의 namespace -> `super`의 namespace_
 
 ### 한 가지 의문
-instance의 namespace에서는 class 변수가 없다. 그러면 인스턴스화한 변수를 통해서 클래스 변수가 어떻게 출력되는걸까??? 
 
-이는 python이 instance의 namespace에서 찾지 못하자, class의 namespace에서 찾아 출력하는 것이다.
+instance의 namespace에서는 class 변수가 없다. 
+
+그러면 인스턴스화한 변수를 통해서 클래스 변수가 어떻게 출력되는걸까??? 
+
+이는 python이 instance의 namespace에서 찾지 못하면 class의 namespace에서 찾아 출력한다.  
 
 &nbsp;
 
