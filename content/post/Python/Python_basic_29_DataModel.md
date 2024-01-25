@@ -424,6 +424,7 @@ TypeError: unhashable type: 'list'
     # new_dict1 에 k1 이나 k2가 있다면, 이에 대한 value 값으로 v를 끝에 추가한다.
 >   if k in new_dict1:
 >       print(k, v)
+>       new_dict1[k] = []
 >       new_dict1[k].append(v)
 
     # new_dict1 에 k1 이나 k2가 없다면 k를 추가하고, 이 k에 대한 value로 v를 추가한다.

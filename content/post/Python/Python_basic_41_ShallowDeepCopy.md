@@ -79,7 +79,7 @@ True
   > c_list = [1, 2, 3, [4, 5, 6], [7, 8, 9]]
   > d_list = copy.copy(c_list)
 
-  # 위에 call by reference로 복사한 것과 달리  id 값이 다른 걸 확인할 수 있다.
+  # 위에 call by reference로 복사한 것과 달리 id 값이 다른 걸 확인할 수 있다.
   > print(id(c_list), id(d_list))
   1892474493824  1892474493568
 
@@ -127,6 +127,8 @@ True
 
 - 중첩된 data 까지는 독립된 reference를 가지지 않는 걸 확인했다.
 
+
+
 &nbsp;
 
 ---
@@ -160,8 +162,14 @@ True
 &nbsp;
 
 ---
+# 4. list comprehension에서를 통한 깊은 복사
 
-# 4. Summary
+[list comprehension의 주의사항](https://jeha00.github.io/post/python/python_basic_29_datamodel/#32-list-comprehension%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD) 글을 보면 리스트를 곱셈 연산을 사용하여 늘리는 것과 list comprehension으로 늘리는 것은 다르다는 걸 알 수 있는데, 곱셈 연산은 똑같은 참조값을 참조하는 값을 늘리는 것으로 얕은 복사(shallow copy)다.  하지만 list comprehension으로 늘리는 것은 동일한 값이지만 다른 참조값을 가지는 걸 통해 '객체를 새로 생성하는 것'으로 늘리므로 깊은 복사(deep copy)임을 알 수 있다.  
+
+
+---
+
+# 5. Summary
 
 - 다음 image로 shallow copy와 deep copy 복사 정도를 비교하면 쉽게 알 수 있다.
 - 같은 색상의 block이 동일한 id를 가지고 있다.

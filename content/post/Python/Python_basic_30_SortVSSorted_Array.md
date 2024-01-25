@@ -19,10 +19,13 @@ categories: ["Python"]
 > **_- sort: sort the list in ascending order and return None._**  
 > **_- sorted: Return a new list containing all items from the iterable in ascending order._**
 
-| function  | sort() | sorted()        |
+|   | sort() | sorted()        |
 | --------- | ------ | --------------- |
+| function/method | method | function | 
 | 원본 수정 | O      | X               |
 | 반환값    | None   | New list object |
+
+- reverse와 reversed도 `.reverse()`는 메서드로 원본 수정하고 반환값은 None, `reversed()`는 함수로 원본 수정하지 않고 수정된 값을 반환한다.  
 
 - list data model에서 자주 사용하는 함수인 `sort` 와 `sorted`에 대해 알아보자.
 

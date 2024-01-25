@@ -121,18 +121,18 @@ True
 > p3 = Point(45, y=20)
 
 # 여러 개로도 가능하다.
-> p4 = Point(10, 20, 30, 40)
+> p4 = Point(10, 20)
 
 ## unpacking을 통해 만들기
 > temp_dict = {'x':75, 'y':55}
 > p5 = Point(**temp_dict)
 
-> temp_dict = (2.0, 4.0, 5.0)
+> temp_dict = (2.0, 4.0)
 > p5 = Point(*temp_dict)
 
 ## 출력해보기
 > print(p1, p2, p3, p4, p5)
-Point(x=10, y=35) Point(x=20, y=40) Point(x=45, y=20) Point(x=10, y=20, _2=30, _3=40) Point(x=75, y=55)
+Point(x=10, y=35) Point(x=20, y=40) Point(x=45, y=20) Point(x=10, y=20) Point(x=75, y=55)
 ```
 
 &nbsp;
