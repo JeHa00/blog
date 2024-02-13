@@ -49,10 +49,13 @@ public class Student {
 
 설계도에 비유한다면 집의 설계도를 생각해보자. 설계도는 실제 집이 아니다. 이 설계도를 토대로 지어진 집이 실제다.  
 
+#
 
 ### 객체
 
 **_객체는 클래스에서 정의한 속성과 기능을 가진 구현체다._**  붕어빵 틀에 의해 생성된 붕어빵, 설계도에 의해 건설된 집이다.  
+
+#
 
 ### 인스턴스
 
@@ -138,6 +141,8 @@ public class Student {
 ### 인스턴스 변수
 
 위 `Car` 클래스에서 선언된 멤버변수 `brand`, `name`, `price` 들은 인스턴스 변수이다.
+
+#
 
 ### 클래스 변수, 정적(static) 변수
 
@@ -248,6 +253,8 @@ car1.name
 car1.price
 ```
 
+#
+
 ### 클래스 변수, 정적(static) 변수
 
 
@@ -312,7 +319,7 @@ public static int getFoodTotalPrice(int count, int price) {
 
 메서드를 포함하여 함수를 호출하는 부분인지, 함수를 선언하는 부분인지에 따라 결정된다.  
 
-
+#
 
 ### 메서드의 매개변수와 반환값 
 
@@ -360,6 +367,8 @@ public static String returnString() {
 
 반환값이 있으면 반드시 `return`을 써서 메서드 선언부에 일치하는 값을 반환해야 한다. 
 
+
+#
 
 ### 메서드의 return 문  
 
@@ -421,6 +430,10 @@ public static boolean isAdult() {
 }
 ```
 
+작성하려는 메서드의 목적에 따라 하나를 골라 작성하면 된다.
+
+#
+
 ### 메서드 시그니처(method signature)
 
 메서드 오버로딩에 대해 알아보기 전에 '메서드 시그니처'에 대해 알아보자. 
@@ -429,7 +442,7 @@ public static boolean isAdult() {
 
 그래서 이 메서드 시그니처가 다르면 메서드 이름이 같아도 다른 메서드로 간주한다. 
 
-
+#
 
 ### 메서드 오버로딩(method overloading)
 
@@ -582,9 +595,13 @@ non-static method getName() cannot be referenced from a static context
 
 클래스를 통한 메서드 호출은 static 예약어가 붙은 것만 가능하다는 의미다. 왜 그런건지는 클래스와 인스턴스가 생성되는 메모리 영역에 대해 알면 쉽게 이해할 수 있다. **_클래스에 대해 생성되는 메모리 영역과 인스턴스가 생성되는 메모리 영역이 다르기 때문이다._** 더 자세한 내용은 이 부분을 참고하자.  
 
+#
+
 ### 클래스 메서드, 정적(static) 메서드 호출
 
 위 코드에서 확인할 수 있듯이 인스턴스 메서드와 달리 정적 메서드는 클래스 이름과 인스턴스 이름을 통한 접근 모두 가능하다. 
+
+#
 
 ### 메서드 간 호출
 
@@ -626,6 +643,7 @@ non-static method getName() cannot be referenced from a static context
 ### 절차 지향 프로그래밍
 절차 지향 프로그래밍은 명칭 그대로 '절차'를 중요하게 여기는 방식이라서 프로그램의 흐름을 작성한 코드 순서대로 따르면서 처리하는 방식이다. 그래서 **_'어떻게 '_** 를 중심으로 프로그래밍한다.
 
+#
 
 ### 객체 지향 프로그래밍
 객체 지향 프로그래밍은 명칭 그대로 '객체'를 중요하게 여긴다. 우리가 살아가는 세상에서 존재하는 사물이나 사건을 객체로 보고, 이 객체들 간의 상호작용을 중심으로 프로그래밍하는 방식이다.  그래서 **_'무엇 '_** 을 중심으로 프로그래밍한다.
@@ -871,9 +889,13 @@ public class FoodMain {
 
 출력 결과로 `null`이 나온다.  
 
-```
+```java
 null
 ```
+
+멤버변수에 할당되지 못한 걸 확인할 수 있다.  
+
+#
 
 
 ### this 키워드가 있는 이유  
@@ -912,6 +934,8 @@ public class Food {
     }
 }
 ```
+
+#
 
 ### 생성자의 정의와 장점  
 
@@ -952,12 +976,15 @@ public class Food {
 > - 나머지는 메서드와 동일하다.         
 
 
+#
+
 ### 생성자 호출 시점  
 
 그러면 생성자는 언제 호출되는 걸까?
 
 `new 클래스명()` 을 사용하여 인스턴스를 생성하자마자 바로 생성자가 실행된다. 이게 인스턴스 생성 시 클래스명에 호출자 연산을 사용하는 이유다. `new 생성자명()`으로 이해하면 된다.      
 
+#
 
 ### 기본 생성자  
 
@@ -1019,6 +1046,7 @@ public class Food {
 
 파이썬으로 보자면 `__init__` 를 자동적으로 생성 및 호출하여 인스턴스를 생성하는 것과 같다.  
 
+#
 
 ### 생성자 오버로딩
 
@@ -1111,6 +1139,7 @@ public class FoodMain {
 
 원하는 대로 `this()`가 잘 작동되는 걸 알 수 있다.  
 
+#
 
 ### this() 유의사항
 
@@ -1118,7 +1147,7 @@ public class FoodMain {
 
 > _생성자 코드의 첫 줄에만 작성할 수 있다._  
 
-다음 코드는 실행되지 않는다.
+위 유의사항으로 다음 코드는 실행되지 않고 컴파일 에러가 발생된다.  
 
 ```java
 public Food(String name) {
@@ -1127,12 +1156,13 @@ public Food(String name) {
 }
 ```
 
-위 코드를 실행하면 다음과 같은 컴파일 에러를 확인할 수 있다. 
+발생된 컴파일 에러 내용이다.
 
 ```
 Call to 'this()' must be first statement in constructor body
 ```
 
+`this()`는 반드시 생성자의 첫 줄에만 작성해야 한다. 다른 코드를 먼저 실행했다가 에러가 발생하면 인스턴스를 생성할 수 없기 때문에 이런 조치를 취한 것으로 이해된다. 좋은 코드는 제약이 없는 코드가 아닌 제약이 어느 정도 있는 코드라고 생각되기 때문에, 이와 같은 제약은 개인적으로 좋다고 생각된다.  
 
 
 &nbsp;
@@ -1333,7 +1363,7 @@ java: cannot assign a value to final variable count
 
 ### 상수의 이점
 
-애플리케이션 안에는 다양한 상수가 존재할 수 있다. 수학, 시간 등등 실생활에서 사용하는 상수부터, 애플리케이션의 다양한 설정을 위한 상수들도 있다.
+위에서 알아본 대로 `final` 키워드를 사용해서 변하지 않는 값을 만들 수 있다. 이 수를 **_'상수'_** 라고 한다. 애플리케이션 안에는 다양한 상수가 존재할 수 있다. 수학, 시간 등등 실생활에서 사용하는 상수부터, 애플리케이션의 다양한 설정을 위한 상수들도 있다. 아래 코드를 통해 여러 예시들을 확인해보자.  
 
 ```java
 public class Constant {
@@ -1388,6 +1418,7 @@ public class Constant {
 
 이번에는 참조값을 저장하는 참조형에 대해 `final`을 사용해보자.  
 
+#
 
 ### 참조형은 참조값을 변경할 수 없다
 
@@ -1421,27 +1452,27 @@ public class Constant {
 
 하지만 `bundle1.count = 5` 로 수정 가능하다.  
 
-    ```java
-    package practice;
+```java
+public class FishShapedBunMain {
+    public static void main(String[] args) {
+        final FishShapedBun bun1 = new FishShapedBun();
+        // bun1 = new FishShapedBun();
 
-    public class FishShapedBunMain {
-        public static void main(String[] args) {
-            final FishShapedBun bun1 = new FishShapedBun();
-            // bun1 = new FishShapedBun();
-
-            System.out.println(bun1.count);
-            bun1.count = 5;
-            System.out.println(bun1.count);
-        }
+        System.out.println(bun1.count);
+        bun1.count = 5;
+        System.out.println(bun1.count);
     }
-    ```
+}
+```
 
-    - 실행 결과
+실행 결과는 다음과 같다.
 
-    ```java
-    3
-    5
-    ```
+```java
+3
+5
+```
+
+
 
 **_참조값 주소를 담은 변수에 final 선언을 하면 참조값 주소는 변경할 수 없다. 그리고 이 final 선언이 이 주소가 가리킨 객체의 속성까지 영향을 주지 않는다._** 
 
@@ -1459,9 +1490,14 @@ public class Constant {
 
 자바에서는 메서드의 매개변수의 타입과 반환값 타입을 반드시 입력해야 한다. '강제성'이 존재하지만 파이썬에서는 그렇지 않다. 자바가 엄격하다가 느낄 수 있지만 사람이기에 이런 엄격함은 필요하다고 생각한다. 
 
+#
+
 ### 메서드 오버로딩
 
 파이썬은 오버로딩 개념이 없다. 하지만 팩킹과 언팩킹을 사용하여 받은 변수의 갯수를 가변적으로 받아서 한 메서드에서 여러 개의 변수를 받을 수 있다.  
+
+
+#
 
 ### 멤버 변수와 메서드 구분 방식
 
@@ -1477,6 +1513,8 @@ public class Constant {
 |클래스 메서드 키워드 | cls, @classmethod | static | 
 | 정적 메서드 키워드 | @staticmethod | 클래스 메서드와 정적 메서드가 같음|
  
+#
+
 ### 메서드 간 호출  
 
 인스턴스와 클래스에서 클래스 메서드 그리고 인스턴스 메서드를 호출하는 것도 다르다.
