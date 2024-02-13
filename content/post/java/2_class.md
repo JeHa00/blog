@@ -2,7 +2,7 @@
 title: "자바의 클래스에 대해 알아보자"
 date: 2024-01-23T00:32:07+09:00
 draft: false
-summary: 클래스가 필요한 이유, 클래스의 멤버 변수 그리고 메서드, 절차 지향과 객체 지향의 차이점, 생성자, 접근 제어자, 상수 변환 예약어에 대해 알아본다.  
+summary: 클래스가 필요한 이유, 클래스 멤버 변수 그리고 메서드, 절차 지향과 객체 지향의 차이점, 생성자, 접근 제어자, 상수 변환 예약어에 대해 알아본다.  
 tags: ["java"]
 categories: "java"
 ---
@@ -19,7 +19,9 @@ String [] names = {"jeha", "seo", "kim", "hoho"}
 
 한 종류의 데이터 타입으로 모을 수 있지만, 한 학생의 데이터가 두 개의 배열에 나누어져 있기 때문에 데이터를 관리하기가 어렵다. 만약 배열에서 값을 얻고자 했다면 각 배열마다 인덱싱으로 얻어내야하는 번거로움이 있다. 학생의 수가 적을 때는 문제가 안되지만 많아지면 문제가 된다. 한 학생의 데이터를 수정해야 한다면 각 배열마다 정확하게 그 학생 정보가 있는 인덱스로 접근하여 수정해야 한다. 이런 방식은 실수할 가능성이 매우 높다.  
 
-이럴 때 사용해야하는 게 바로 클래스다. 한 학생과 관련된 데이터를 한 곳에 모아놓는 방식이다. 아래 코드와 같이 클래스 안에 관련된 데이터를 모아놓기 때문에 관리하기 좋다.   
+**_이럴 때 사용해야하는 게 바로 클래스다. 한 객체와 관련된 데이터를 타입이 달라도 한 곳에 모아놓는 방식이다._**
+
+한 학생과 관련된 데이터를 한 곳에 모아놓는 방식이다. 아래 코드와 같이 클래스 안에 관련된 데이터를 모아놓기 때문에 관리하기 좋다.   
 
 ```java
 public class Student {
@@ -41,7 +43,7 @@ public class Student {
 
 ### 클래스
 
-클래스는 `class` 예약어로 선언된 코드를 의미하는데, 코드 문자적인 의미 말고 실제 설계할 의미로 보자면 인스턴스(또는 객체)를 생성하기 위한 '설계도' 또는 '틀'이다. 그래서 객체 또는 인스턴스가 가져야할 속성(변수)과 기능(메서드)을 정의한다. 
+클래스는 `class` 예약어로 선언된 코드를 의미하는데, 코드 문자적인 의미 말고 실제 설계할 의미로 보자면 인스턴스(또는 객체)를 생성하기 위한 '설계도' 또는 '틀'이다. 그래서 **_객체 또는 인스턴스가 가져야할 속성(변수)과 기능(메서드)을 정의한다._** 
 
 흔히들 클래스를 붕어빵 틀에 비유한다. 붕어빵 틀은 먹을 수 있는 붕어빵과는 다르다. 하지만 붕어빵이라 부를 수 있는 특징들을 잡아준다.  
 
@@ -50,13 +52,13 @@ public class Student {
 
 ### 객체
 
-객체는 클래스에서 정의한 속성과 기능을 가진 구현체다. 붕어빵 틀에 의해 생성된 붕어빵, 설계도에 의해 건설된 집이다.  
+**_객체는 클래스에서 정의한 속성과 기능을 가진 구현체다._**  붕어빵 틀에 의해 생성된 붕어빵, 설계도에 의해 건설된 집이다.  
 
 ### 인스턴스
 
 그렇다면 이 인스턴스는 무엇인가? 무엇을 중점으로 두고 말하냐에 따라 객체냐 인스턴스냐가 결정된다.
 
-객체와 동일한 구현체지만 설명할 때 '클래스와의 관계'에 초점을 둔다면 인스턴스, '생성된 구현체'에 초점을 둔다면 객체로 언급한다.  
+**_객체와 동일한 구현체지만 설명할 때 '클래스와의 관계'에 초점을 둔다면 인스턴스, '생성된 구현체'에 초점을 둔다면 객체로 언급한다._**  
 
 관점을 어디에 중점으로 두냐의 차이이므로 객체와 인스턴스를 같은 의미로 생각하자.    
 
@@ -118,11 +120,15 @@ public class Student {
 
 # 멤버 변수
 
-이번에는 '멤버 변수'에 대해서 알아본다. **_멤버 변수는 클래스 안에 선언되었고, 메서드 밖에 선언된 변수를 말한다. 멤버 변수를 다른 말로 '필드(Field)' 라고도 한다._** 위 `Car` 클래스의 `brand`, `name`, `price`가 멤버 변수에 속한다.  
+이번에는 '멤버 변수'에 대해서 알아본다. 
+
+**_멤버 변수는 클래스 안에 선언되고, 메서드 밖에 선언된 변수를 말한다. 멤버 변수를 다른 말로 '필드(Field)' 라고도 한다._** 
+
+위 `Car` 클래스의 `brand`, `name`, `price`가 멤버 변수에 속한다.  
 
 변수 챕터에서도 언급했지만 변수는 멤버 변수와 지역 변수로 나눠지고 이에 따라 자동 초기화 유무가 결정된다. 어떻게 결정되는지는 [자바에서의 변수는 어떨까? - 항상 초기화를 직접 해줘야 하나?](https://jeha00.github.io/post/java/variable/#%ED%95%AD%EC%83%81-%EC%B4%88%EA%B8%B0%ED%99%94%EB%A5%BC-%EC%A7%81%EC%A0%91-%ED%95%B4%EC%A4%98%EC%95%BC-%ED%95%98%EB%82%98)을 확인하자.  
 
-메모리의 관점에서 보자면 **_인스턴스가 생성될 때 이 멤버 변수를 사용하는데 필요한 메모리 공간도 함께 확보한다._**
+**_메모리의 관점에서 보자면 인스턴스가 생성될 때 이 멤버 변수를 사용하는데 필요한 메모리 공간도 함께 확보한다._**
 
 이 멤버 변수는 인스턴스 변수와 정적 변수(클래스 변수)로 나눠지는데 어떻게 해서 구분할 수 있는지 알아보자.  
 
@@ -135,7 +141,9 @@ public class Student {
 
 ### 클래스 변수, 정적(static) 변수
 
-`static` 이라는 키워드가 있어야 정적 변수 또는 클래스 변수로 인식된다. 이 변수가 필요한 이유는 인스턴스마다 다른 값을 가지고 있는 게 아니라 공통된 값으로 가지고 있기를 원하거나 독립적인 인스턴스 변수와는 달리 모든 인스턴스에서 공유하고 싶은 변수가 필요하다면 클래스 변수(정적 변수)를 사용한다.
+`static` 이라는 키워드가 있어야 정적 변수 또는 클래스 변수로 인식된다. 
+
+**_정적 변수가 필요한 이유는 인스턴스마다 다른 값을 가지고 있는 독립적인 인스턴스 변수보다, 모든 인스턴스에서 동일한 값을 공유하기 위해 클래스 변수(정적 변수)를 사용한다. 그리고 메모리 사용 관점에서도 효율적이기 때문이다._**
 
 그러면 이를 코드로 확인해보자. 생성된 차가 총 몇 대인지를 알고 싶다. 
 
@@ -249,7 +257,7 @@ car1.price
 Car.count
 ```
 
-클래스 변수의 메모리 주소 관점 설명은 이 부분을 참고하라.  
+클래스 변수의 메모리 사용과 주소 관점의 설명은 이 부분을 참고하라.  
 
 &nbsp;
 
@@ -911,11 +919,11 @@ public class Food {
 
 그러면 생성자는 무엇이라 정의를 내릴 수 있을까? 생성자로 얻을 수 있는 더 다양한 장점들이 있을까?
 
-**_생성자는 인스턴스 생성 직후 초기화를 포함한 여러 작업을 한 번에 할 수 있는 도구다. 이 생성자를 통해 다음 이점 3가지를 얻을 수 있다._**
-
-- 1) 중복 호출 제거 
-- 2) 생성자 호출 필수 - 개발자 실수로 초기화 작업을 놓칠 수 없음
-- 3) 2번으로 필수값 입력 보장   
+> **_생성자는 인스턴스 생성 직후 초기화를 포함한 여러 작업을 한 번에 할 수 있는 도구다. 이 생성자를 통해 3가지 장점을 얻을 수 있다._**
+>  
+> - 중복 호출 제거   
+> - 생성자 호출 필수 - 개발자 실수로 초기화 작업을 놓칠 수 없음  
+> - 2번으로 필수값 입력 보장     
 
 
 특히 2번의 장점이 크다. 생성자 호출을 필수로 하기 때문에 예를 들어 회원 정보가 미입력되는 일이 없다. 
@@ -937,11 +945,11 @@ public class Food {
 }
 ```
 
-위 작성한 코드를 보면 **_메서드와 비슷하지만 다음과 같은 차이가 있다._**
-
-- 1) 생성자의 이름은 클래스 이름과 같아야 한다. 따라서 첫 글자도 대문자로 시작한다.  
-- 2) 생성자는 반환 타입이 없다. 비워둬야 한다. void도 없어야 한다.  
-- 3) 나머지는 메서드와 동일하다.  
+> **_위 작성한 코드를 보면 메서드와 비슷하지만 다음과 같은 차이가 있다._**    
+>  
+> - 생성자의 이름은 클래스 이름과 같아야 한다. 따라서 첫 글자도 대문자로 시작한다.       
+> - 생성자는 반환 타입이 없다. 비워둬야 한다. void도 없어야 한다.        
+> - 나머지는 메서드와 동일하다.         
 
 
 ### 생성자 호출 시점  
@@ -1014,7 +1022,9 @@ public class Food {
 
 ### 생성자 오버로딩
 
-자바에서는 메서드 오버로딩처럼 생성자 또한 오버로딩이 가능한데, `this`를 통해서 할 수 있다. `this`를 단지 자기 자신 인스턴스의 참조값을 참조하는 키워드로만 학습했지만 `this()`로 호출 연산자를 사용하면 해당 매개변수 갯수와 타입에 맞는 생성자에게 전달된다.  
+_자바에서는 메서드 오버로딩처럼 생성자 또한 오버로딩이 가능한데, `this`를 통해서 할 수 있다._ 
+
+`this`를 단지 자기 자신 인스턴스의 참조값을 참조하는 키워드로만 학습했지만 `this()`로 호출 연산자를 사용하면 해당 매개변수 갯수와 타입에 맞는 생성자에게 전달된다.  
 
 위 예시에서 든 생성자를 1번 생성자라 하자.  
 
@@ -1104,7 +1114,11 @@ public class FoodMain {
 
 ### this() 유의사항
 
-단 `this()`를 사용하는데 있어서 유의사항이 있다. _생성자 코드의 첫 줄에만 작성할 수 있다._ 다음 코드는 실행되지 않는다.
+`this()`를 사용하는데 있어서 유의사항이 있다. 
+
+> _생성자 코드의 첫 줄에만 작성할 수 있다._  
+
+다음 코드는 실행되지 않는다.
 
 ```java
 public Food(String name) {
@@ -1137,10 +1151,299 @@ Call to 'this()' must be first statement in constructor body
 
 ---
 
-# 상수 변환: final
+# final 키워드
+
+이 `final` 키워드는 '초기화 후 값 변경 불가능'을 의미한다. 그리고 이 키워드는 `variable`에 붙일 수 있다.
+
+`final` 키워드는 멤버 변수에 사용할 수 있다.  
+
+결론부터 말하자면 멤버 변수가 초기화가 안된 경우라면 초기화된 후 값 변경이 불가능하다. 초기화가 이미 된 경우라면 상수로 취급되어 생성자를 통해서 초기화가 될 수 없다. 
+
+### 초기화가 안된 경우
+
+음식점을 개업하면서 '김밥' 메뉴의 가격은 물가가 올라도 안올리겠다는 다짐으로 가격을 나타내는 멤버 변수에 `final`을 추가했다. 메뉴 이름은 초기화되면 변경할 필요가 없다.  
+
+- 클래스
+    ```java
+    public class Food {
+        int cost;
+        final int price;
+        final String name;
+
+        public Food(String name, int price, int cost) {
+            this.name = name;
+            this.price = price;
+            this.cost = cost;
+        }
+    }
+    ```
+
+- 인스턴스 생성
+    ```java
+    public class FoodMain {
+        public static void main(String[] args) {
+            Food food1 = new Food("김밥", 8000, 4000);
+
+            System.out.println("food1.name: " + food1.name);
+            System.out.println("food1.price: " + food1.price);
+            }
+    }
+    ```
+
+    - 출력 결과
+
+    ```java
+    food1.name: 김밥
+    food1.price: 8000
+    ```
+
+
+하지만 인플레이션과 금리 인상으로 판매가를 높일려고 했으나 수정할 수가 없다. 
+
+```java
+food1.price = 10000;
+```
+
+다음과 같은 에러가 발생된다.
+
+```java
+java: cannot assign a value to final variable price
+```
+
+**_`final` 키워드가 붙은 변수는 초기화되면 수정할 수가 없다._**  
+
+### 초기화가 된 경우
+
+이번에는 이미 변수가 초기화 후 수정하려는 경우를 확인해보자.  
+
+장사가 안되서 폐업을 결정했다. 남은 재료들을 빨리 소진하기 위해 모든 메뉴 5000원을 결정하여 다음과 같이 코드를 작성했다.
+
+- 클래스
+    ```java
+    public class Food {
+        int cost;
+        final int price = 5000;
+        final String name;
+
+        public Food(String name, int cost) {
+            this.name = name;
+            this.cost = cost;
+        }
+    }
+    ```
+
+- 인스턴스
+    
+    ```java
+    public class FoodMain {
+        public static void main(String[] args) {
+            Food food1 = new Food("김밥",4000);
+
+            System.out.println("food1.price: " + food1.price);
+
+        }
+    }
+    ```
+
+    - 출력 결과
+    
+    ```java
+    food1.price: 5000
+    ```
+
+그러다가 갑자기 폐업하지 말라는 시민들의 요청이 있어서 메뉴 가격을 다시 수정하려고 한다.
+
+```java
+food1.price = 10000;
+```
+
+위 코드를 실행하면 다음과 같은 결과를 또 확인할 수 있다. 
+
+```java
+java: cannot assign a value to final variable price
+```
+
+**_`final` 예약어로 선언된 변수가 한 번 초기화되면 수정될 수 없다._**
+
+
+### static 사용 시 final 고려하기
+
+만약 인스턴스 변수이고, 인스턴스마다 동일한 값으로 초기화가 되면 이는 `static` 변수로 만드는 낫다. 모든 인스턴스가 같은 값을 사용하기 때문에 메모리 낭비다. 또한 같은 값이 계속 생성되는 건 명확한 중복이기 때문이다.
+
+아래 코드를 보면 한 묶음에 붕어빵 2000원 어치에 3개 정보라는 인스턴스를 생성했다. 붕어빵 2000원 어치에 3개는 고정된 정보다. 무조건 한 묶음만 판다고할 때 굳이 인스턴스를 생성할 때마다 정보를 입력받는 건 중복된 값을 사용하기에 메모리 낭비다. 이런 경우 `static` 과 `final` 을 사용하는게 현명하다.
+
+- 클래스
+    ```java
+    public class FishShapedBun {
+
+        public int price;
+        public int count;
+
+        public FishShapedBun(int price, int count) {
+            this.price = price;
+            this.count = count;
+        }
+    }
+    ```
+
+- 인스턴스
+
+    ```java
+    public class FishShapedBunMain {
+        public static void main(String[] args) {
+            FishShapedBun bundle1 = new FishShapedBun(2000, 3); // price, count
+            FishShapedBun bundle2 = new FishShapedBun(2000, 3);
+            FishShapedBun bundle3 = new FishShapedBun(2000, 3);
+        }
+    }
+    ```
+
+그래서 다음과 같이 클래스 코드를 수정해보자.
+
+```java
+    public class FishShapedBun {
+
+    public static final int price = 2000;
+    public static final int count = 3;
+
+    }
+```
+
+아래의 값을 확인하면 2000, 300을 확인할 수 있고 변경할 수 없다.  
+
+```java
+package practice;
+
+public class FishShapedBunMain {
+    public static void main(String[] args) {
+        FishShapedBun bundle1 = new FishShapedBun();
+        System.out.println(bundle1.count);
+        System.out.println(bundle1.price);
+
+        bundle1.price = 2; // 에러 발생
+    }
+}
+```
+
+발생한 에러 내용은 다음과 같다.
+    
+```java
+java: cannot assign a value to final variable count
+```
+
+### 상수의 이점
+
+애플리케이션 안에는 다양한 상수가 존재할 수 있다. 수학, 시간 등등 실생활에서 사용하는 상수부터, 애플리케이션의 다양한 설정을 위한 상수들도 있다.
+
+```java
+public class Constant {
+    
+    // 애플리케이션 설정 상수
+    public static final int MAX_COUNTS = 500;
+
+    // 수학 상수
+    public static final double PI = 3.14;
+
+    // 시간 상수
+    public static final int DAYS_IN_WEEK = 7;
+    public static final int HOURS_IN_DAY = 24; 
+    public static final int MINUTES_IN_HOUR = 60;
+    public static final int SECONDS_IN_MINUTE = 60;
+}
+```
+
+이런 상수들은 애플리케이션 전반에서 사용되기 때문에 `public`을 자주 사용한다.  반드시 이래야하는 건 아니고, 특정 위치에서만 접근된다면 이에 맞는 접근 제어자를 사용하면 된다.  
+
+그러면 애플리케이션 설정 상수를 사용하는 장점에 대해 알아보자. 
+
+```java
+public static void make(int currentCount) {
+    if (currentCount < 500) {
+        System.out.println("붕어빵을 만듭니다.");
+    } else {
+        System.out.println("붕어빵이 소진되었습니다.");
+    }
+}
+```
+
+위와 같이 코드를 작성하면 500이란 숫자가 뭘 의미하는지 모른다. 이럴 때 상수를 사용하면 무슨 의미인지 바로 알 수 있다. 
+
+상수를 사용하여 또 다른 상수를 표현할 수도 있다.
+
+```java
+public class Constant {
+    
+    ...
+    public static final int MINUTES_IN_HOUR = 60;
+    public static final int SECONDS_IN_MINUTE = 60;
+    public static final int SECONDS_IN_HOUR = SECONDS_IN_MINUTE * MINUTES_IN_HOUR;
+}
+```
 
 
 
+## 기본형과 참조형의 관점에서
+
+기본형의 경우, 기본형의 값을 변경할 수 없다는 건 위 예시들을 통해서 알았다.  
+
+이번에는 참조값을 저장하는 참조형에 대해 `final`을 사용해보자.  
+
+
+### 참조형은 참조값을 변경할 수 없다
+
+참조형은 변수 선언 시점에 참조값을 할당했으므로 더는 참조값을 변경할 수 없다. 다른 객체를 참조할 수 없다. 하지만 참조 대상의 객체 값은 변경할 수 있다. 
+
+- 클래스
+
+    ```java
+    public class FishShapedBun {
+        public int price = 2000;
+        public int count = 3;
+    }
+    ```
+
+- 인스턴스
+
+    ```java
+    public class FishShapedBunMain {
+        public static void main(String[] args) {
+            final FishShapedBun bundle1 = new FishShapedBun();
+            bundle1 = new FishShapedBun();
+        }
+    }
+    ```
+
+- 실행 결과
+
+    ```java
+    java: cannot assign a value to final variable bundle1
+    ```
+
+하지만 `bundle1.count = 5` 로 수정 가능하다.  
+
+    ```java
+    package practice;
+
+    public class FishShapedBunMain {
+        public static void main(String[] args) {
+            final FishShapedBun bun1 = new FishShapedBun();
+            // bun1 = new FishShapedBun();
+
+            System.out.println(bun1.count);
+            bun1.count = 5;
+            System.out.println(bun1.count);
+        }
+    }
+    ```
+
+    - 실행 결과
+
+    ```java
+    3
+    5
+    ```
+
+**_참조값 주소를 담은 변수에 final 선언을 하면 참조값 주소는 변경할 수 없다. 그리고 이 final 선언이 이 주소가 가리킨 객체의 속성까지 영향을 주지 않는다._** 
 
 &nbsp;
 
@@ -1152,15 +1455,15 @@ Call to 'this()' must be first statement in constructor body
 
 ## 멤버 변수와 메서드  
 
-### [타입 강제]
+### 타입 강제
 
 자바에서는 메서드의 매개변수의 타입과 반환값 타입을 반드시 입력해야 한다. '강제성'이 존재하지만 파이썬에서는 그렇지 않다. 자바가 엄격하다가 느낄 수 있지만 사람이기에 이런 엄격함은 필요하다고 생각한다. 
 
-### [메서드 오버로딩]
+### 메서드 오버로딩
 
 파이썬은 오버로딩 개념이 없다. 하지만 팩킹과 언팩킹을 사용하여 받은 변수의 갯수를 가변적으로 받아서 한 메서드에서 여러 개의 변수를 받을 수 있다.  
 
-### [멤버 변수와 메서드 구분 방식]
+### 멤버 변수와 메서드 구분 방식
 
 파이썬에서 클래스의 멤버 변수는 자바와 동일하게 클래스와 인스턴스 변수로 나눠졌다. 하지만 메서드의 경우, `self` 인자를 받는 메서드는 인스턴스 메서드, `cls` 인자와 `@classmethod` 데코레이터를 받는 클래스 메서드, 아무런 인자를 받지 않고 `@staticmethod`라는 데코레이터를 받은 메서드는 정적 메서드라 한다.
 
@@ -1173,8 +1476,8 @@ Call to 'this()' must be first statement in constructor body
 | 인스턴스 메서드 키워드 | self | x | 
 |클래스 메서드 키워드 | cls, @classmethod | static | 
 | 정적 메서드 키워드 | @staticmethod | 클래스 메서드와 정적 메서드가 같음|
-
-### [메서드 간 호출]  
+ 
+### 메서드 간 호출  
 
 인스턴스와 클래스에서 클래스 메서드 그리고 인스턴스 메서드를 호출하는 것도 다르다.
 
@@ -1203,5 +1506,10 @@ Call to 'this()' must be first statement in constructor body
 | 생성자 오버로딩 유무 | X | O | 
 
 파이썬에는 기본적으로 오버로딩이 내장되어 있지 않다. 하지만 packing, unpacking 개념을 사용해서 이 부분을 구현할 수 있다. 
+
+
+## 상수
+
+파이썬은 별도의 상수 선언을 위한 키워드는 존재하지 않고, 상수 취급하는 변수의 네임 컨벤션만 존재한다.  
 
 &nbsp;
