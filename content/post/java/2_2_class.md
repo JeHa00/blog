@@ -390,21 +390,348 @@ Call to 'this()' must be first statement in constructor body
 # 접근 제어자
 
 ## 접근 제어자란?
-- 접근 제어자가 필요한 이유: 캡슐화
+
+**_해당 클래스 외부에서 특정 필드나 메서드에 접근하는 것을 허용하거나 제한하는 예약어_** 를 말한다. 
+
+이 예약어가 필요한 첫 번째 이유는 '보안'이다. 필드에 직접 접근하여 값을 수정하는 걸 막기 위해서다. 
+
+예를 들어 빵을 하루 최대 공장에서 100개만 생성하도록 했다. 그래야 기계가 망가지지 않는다. 그런데 다른 직원이 이를 모르고 최대 150개로 생성하도록 설정했을 경우, 공장 기계는 망가진다.  
+
+이런 비지니스 로직이 아래 코드와 같이 메서드에 담겨져 있어서, 직접 수정이 아닌 메서드를 통해서만 주문이 가능하다. 
+
+```java
+public class BreadFactory {
+
+    public int count;
+
+    public void order(int orderCount){
+        if (orderCount < count) {
+            System.out.println("빵을 주문합니다.");
+            count += orderCount;
+        } else {
+            System.out.println("빵을 주문할 수 없습니다.");
+        }
+    }
+}
+```
+
+하지만 아래 코드와 같이 어느 직원이 임의의로 직접 수정하면 주문은 들어갔으니 기계는 돌아가고 아무도 모른다. 
+
+```java
+public class BreadFactoryMain {
+    public static void main(String[] args) {
+        BreadFactory breadFactory = new BreadFactory();
+
+        breadFactory.order(50); // 이 방식으로는 가능
+
+        breadFactory.count = 150; // 이렇게 직접 수정하면 문제 발생
+    }
+}
+```
+
+그러면 `count` 필드를 접근 제어자 `private`을 사용하여 직접 접근을 막아보자. 
+
+```java
+package practice.a;
+
+public class BreadFactory {
+
+    private int count; // public int 에서 private int로 수정
+
+    ...
+}
+```
+
+다시 main 코드를 실행하보면 다음 컴파일 에러가 발생된다.  
+
+```java
+java: count has private access in practice.BreadFactory
+```
+
+그래서 직접 특정 필드나 메서드에 접근하는 걸 제한하고자 필요한 게 '접근 제어자'다. 이보다 더 중요한 이유인 **_캡슐화_** 가 있는데, 이는 접근 제어자의 마지막 소챕터에서 나눠보도록 한다.  
 
 ## 접근 제어자의 종류
 
-## 접근 제어자가 사용되는 곳: 멤버 변수(Field), method
+접근 제어자의 종류에는 4종류가 있다.
 
-### 멤버 변수
+- `private`: 모든 외부 호출을 막는다. 
+- `default`: 같은 패키지 안에서 호출은 허용한다. (아무것도 적지 않는 게 default)
+- `protected`: 같은 패키지 안에서 호출과 다른 패키지여도 상속 관계의 호출을 허용한다. 
+- `public`: 모든 외부 호출을 허용한다.  
+
+차단 정도는 `private` > `default` > `protected` > `public` 순서로 오면서 줄어든다. `private`이 가장 많이 차단하고, `public`이 가장 많이 허용한다. `proteced`를 설명하기 위해서는 '상속' 개념을 알아야하기 때문에 상속에 대해 학습할 때 같이 설명한다.  
+
+
+## 접근 제어자가 사용되는 곳: 멤버 변수(Field), 메서드
+
+접근 제어자는 멤버 변수 그리고 메서드에 사용된다. 지역 변수에는 사용되지 못한다.  
+
+그럼 아래 코드로 알아보자!
+
+접근 제어자를 학습할 때는 아래 코드로 학습하는 게 개인적으로 제일 낫다고 생각된다.  
+
+- 각기 다른 접근 제어자가 입력된 멤버변수와 메서드가 있다. 
+- 그리고 모든 메서드들을 호출하는 하나의 메서드가 존재한다.  
+
+```java
+package practice.a;
+
+public class AccessData {
+
+    public int publicField;
+    int defaultField;
+    private int privateField;
+
+    public void publicMethod() {
+        System.out.println("==== publicMethod 호출: " + publicField);
+    }
+
+    void defaultMethod() {
+        System.out.println("==== defaultMethod 호출: " + defaultField);
+    }
+
+    private void privateMethod() {
+        System.out.println("==== privateMethod 호출: " + privateField);
+    }
+
+    public void innerAccess() {
+        System.out.println("내부 호출");
+        publicField = 100;
+        defaultField = 200;
+        privateField = 300;
+        publicMethod();
+        defaultMethod();
+        privateMethod();
+    }
+}
+```
+
+### 같은 패키지에서 호출 
+
+그러면 외부에서 위 코드를 호출해보자. 패키지 위치는 같은 패키지로 'practice.a'다.
+
+```java
+package practice.a;
+
+public class AccessMain {
+    public static void main(String[] args) {
+        AccessData data = new AccessData();
+
+        data.publicField = 1;
+        data.publicMethod();
+
+        data.defaultField = 2;
+        data.defaultMethod();
+
+        // private은 호출 불가능
+        data.privateField = 3;
+        data.privateMethod();
+
+        data.innerAccess();
+    }
+}
+```
+
+위 코드의 다음 2가지 부분에서 에러가 발생한다. 
+
+- `data.privateField`
+- `data.privateMethod()`
+
+발생된 에러는 다음과 같다.
+
+```java
+java: privateField has private access in practice.AccessData
+```
+
+그러면 에러가 난 부분을 주석처리하고 다시 컴파일한 후 결과는 다음과 같다.
+
+```java
+==== publicMethod 호출: 1
+==== defaultMethod 호출: 2
+==== 내부 호출
+==== publicMethod 호출: 100
+==== defaultMethod 호출: 200
+==== privateMethod 호출: 300
+```
+
+위 결과를 통해서 다음 내용들을 확인할 수 있다.  
+
+- `public`은 어디서든지 접근할 수 있어서 `public` member 변수와 method가 모두 접근 가능했다.  
+
+- `default`는 같은 패키지에서만 접근 가능하다. 위 두 코드는 같은 패키지이기 때문에 접근 가능하다.
+
+- 그래서 `public`과 `default`로 설정한 메서드와 변수 모두 직접 접근하여 수정이 가능했고, 메서드를 통해서 수정이 가능했다.  
+
+- `private`의 경우 클래스 내부에서만 접근이 가능하기 때문에, 클래스 내부 메서드에서 `private` 멤버 변수와 메서드에 접근할 수 있다. 그래서 외부에서 직접 접근할 수 없다는 걸 에러로 확인했고, `innerMethod()`를 통해서 호출된 `privateMethod()`를 확인할 수 있다.  
+
+
+### 다른 패키지에서 호출
+
+패키지 위치는 다른 패키지로 'practice.b'다.
+
+```java
+package practice.b;
+
+import practice.a.AccessData;
+
+public class AccessMain {
+    public static void main(String[] args) {
+        AccessData data = new AccessData();
+
+        data.publicField = 1;
+        data.publicMethod();
+
+        // default 호출 불가능  
+        // data.defaultField = 2;
+        // data.defaultMethod();
+
+        // private은 호출 불가능
+        //  data.privateField = 3;
+        //  data.privateMethod();
+
+        data.innerAccess();
+    }
+}
+```
+
+`private`은 이전과 동일한 에러가 발생된다. 다른 패키지에서 호출하니 다음과 같은 다른 에러가 발생했다.
+
+```java
+java: defaultField is not public in practice.a.AccessData; cannot be accessed from outside package
+```
+
+`default` 키워드에서 발생된 에러다. 동일한 패키지가 아니어서 접근할 수 없다는 내용이다. 위 에러를 바탕으로 `default`는 동일한 패키지 내에서만 접근할 수 있는 걸 확인했다.  
 
 #
 
-### Field
+## 클래스에도 사용되는 접근 제어자  
+
+접근 제어자는 멤버 변수, 메서드 그리고 클래스에도 사용된다.  
+
+아래 코드를 실행하면 같은 패키지이기 때문에 에러가 발생되지 않는다.  
+
+```java
+package practice.a;
+
+public class PublicClass {
+    public static void main(String[] args) {
+        PublicClass publicClass = new PublicClass();
+        DefaultClass1 class1 = new DefaultClass1();
+        DefaultClass2 class2 = new DefaultClass2();
+    }
+}
+
+// 접근 제어자: default
+class DefaultClass1 {
+}
+
+// 접근 제어자: default
+class DefaultClass2 {
+}
+```
+
+하지만 위 코드 내용을 `package practice.b`로 위치시켜서 호출하면 다음 에러가 발생한다.
+
+```java
+java: practice.a.DefaultClass1 is not public in practice.a; cannot be accessed from outside package
+```
+
+동일한 패키지가 아니어서 접근할 수 없다는 내용이다. 이처럼 클래스에도 적용된다.  
 
 
 ## 그래서 이게 왜 필요한 건데?
 
+객체 지향 프로그래밍을 적용하면서 객체 중심으로 데이터와 해당 데이터를 처리하는 메서드를 하나로 묶은다. 
+
+여기서 한 가지 더 나아가는 게 '캡슐화'다. 보안과 편리한 인터페이스 제공하기 위해 데이터는 모두 숨기고, 외부에 노출시킬 필요가 있는 기능(메서드)만을 드러낸다. 이를 위해 필요한 게 바로 **_'접근 제어자'_** 다.  
+
+**_그래서 캡슐화는 다음과 같이 3가지로 정리할 수 있다._**
+
+- 객체의 속성(데이터)은 가장 필수로 숨긴다.  
+- 객체의 내부에서만 사용하는 기능도 숨긴다.  
+- 외부에 노출시킬 필요가 기능(메서드)만 드러낸다.  
+
+**_반드시 객체의 데이터는 객체가 제공하는 기능인 메서드를 통해서만 접근해야 한다._**
+
+캡슐화가 잘된 코드를 하나 확인해보자.
+
+- `Food` 클래스
+
+    ```java
+    package practice;
+
+    public class Food {
+        private String name;
+        private int price;
+        private int quantity;
+
+        public Food(String name, int price, int quantity) {
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getTotalPrice() {
+            return calculateTotalPrice();
+        }
+
+        private int calculateTotalPrice() {
+            return price * quantity;
+        }
+    }
+    ```
+
+
+- `FoodCart` 클래스
+
+    ```java
+    package practice;
+
+    public class FoodCart {
+        private Food[] foods = new Food[5];
+        private int foodCount;
+
+        public void addFood(Food food) {
+            if (foodCount >= foods.length) {
+                System.out.println("음식을 더 담을 수 없습니다.");
+                return;
+            }
+
+            foods[foodCount] = food;
+            foodCount++;
+        }
+
+        public void displayItems() {
+            System.out.println("장바구니 음식 출력");
+            for (int i = 0; i < foodCount; i++) {
+                Food food = foods[i];
+                System.out.println("음식명: " + food.getName() + ", 합계: " + food.getTotalPrice());
+            }
+
+            System.out.println("전체 가격 합: " + calculateTotalOrderPrice());
+        }
+
+        public int calculateTotalOrderPrice() {
+            int totalPrice = 0;
+            for (int i = 0; i < foodCount;  i++) {
+                Food food = foods[i];
+                totalPrice += food.getTotalPrice();
+            }
+            return totalPrice;
+        }
+
+    }
+    ```
+
+## 캡슐화의 최종 장점
+
+> **_클라이언트에게 좋다._**
+
+만든 수 백개의 메서드를 그대로 노출시키면 클라이언트의 사용성이 좋지 않다. 그래서 좋은 캡슐화 설계는 클라이언트의 사용 경험을 높인다.  
 
 
 &nbsp;

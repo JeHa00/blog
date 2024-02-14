@@ -8,3 +8,6 @@ categories: "java"
 ---
 
 작성하기 전 pdf를 보고 summary가 알맞게 요약되었는지 확인하기  
+
+인터페이스, 추상클래스 
+
