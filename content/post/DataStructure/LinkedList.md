@@ -66,14 +66,70 @@ categories: "data structure"
 
 ---
 
-## Linked List의 단/양방향
+# Linked List의 단/양방향
 
 각 노드는 다음 위치 정보만을 가지고 있기 때문에 _'단방향'_ 이다. 위에서 언급한 linked list는 단방향을 가정으로 설명했다.  
 
 하지만 첫 번째 노드를 제외한 그 중간에 있는 노드들이 앞 뒤 데이터 위치를 모두 가지고 있는 경우 _'양방향'_ 이다. 양방향의 경우에도 데이터를 추가 및 삭제한다면 양방향이기 때문에 추가 및 삭제하려는 데이터의 전후 노드가 가지고 있는 위치 데이터를 각각 다 수정하면 된다. 이 때 위에서 학습한 것처럼 참조되지 않는다면 gc에 의해 데이터는 삭제된다.   
 
+&nbsp;
+
+---
+
+# Linked List 자바로 구현하기 
+
+```java
+package practice;
+
+public class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+    }
+
+    // 추가하기
+    public void append(int data) {
+        Node newNode = new Node(data);
+        Node currentNode = this;
+
+        // 제일 마지막 노드로 이동하기 
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+
+        currentNode.next = newNode;
+    }
+
+    // 동일 값 삭제하기
+    public void delete(int data) {
+        Node currentNode = this;
+        
+        // 마지막 노드 방향으로 이동하기
+        while (currentNode.next != null) {
+
+            // 동일한 값을 가진 노드 찾기 
+            if (currentNode.next.data == data) {
+                currentNode.next = currentNode.next.next;
+            }
+            currentNode = currentNode.next;
+        }
+    }
+
+    // 하나씩 다 조회하기 
+    public void retrieve() {
+        Node currentNode = this;
+        while (currentNode.next != null) {
+            System.out.print(currentNode.data + " --> ");
+            currentNode = currentNode.next;
+        }
+        System.out.println(currentNode.data);
+    }
+}
 
 
+```
 
 ----
 
