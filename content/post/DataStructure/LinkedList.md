@@ -76,7 +76,7 @@ categories: "data structure"
 
 ---
 
-# Linked List 자바로 구현하기 
+# Singly Linked List 자바로 구현하기 
 
 ```java
 package practice;
@@ -127,9 +127,16 @@ public class Node {
         System.out.println(currentNode.data);
     }
 }
-
-
 ```
+
+---
+
+# Linked List Node
+
+위 코드는 첫 번째 노드가 linked list의 헤더이면서 대표다. 이런 경우 만약 헤더를 삭제하면 이 헤더를 참조하는 데이터들부터 다 찾을 수 없다.  
+
+그래서 이번에는 위 문제점을 해결하는 방식으로 만든다.  
+
 
 ----
 
