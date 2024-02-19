@@ -282,7 +282,43 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
 ---
 # null과 GC
 
-null은 참조형 변수에는 
+이번 챕터에서는 null에 대해서 알아보자. **_null 값은 참조형 변수에서 아직 가리키는 대상이 없으면 넣는 값으로, 값이 존재하지 않다는 걸 말한다._** 비유하자면 택배를 보내기 위해서 주소지에 주소를 입력해야하는데, 아직 결정되지 않아서 주소지를 공란으로 냅둔 상태로 볼 수 있다.  
+
+코드로 확인해보자.
+
+- 클래스
+    ```java
+    public class Data {
+        int value;
+    }
+    ```
+
+- 인스턴스 및 main
+    ```java
+    public class DataMain {
+        public static void main(String args[]) {
+            Data data = null;
+            System.out.println("1. data = " + data);
+            data = new Data();
+            System.out.println("2. data = " + data);
+            data = null;
+            System.out.println("3. data = " + data);
+        }
+    }
+    ```
+
+- 실행 결과
+    ```java
+    1. data = null
+    2. data = Week5.Data@17f6480
+    3. data = null
+    ```
+
+위 코드에서 확인한 것처럼 인스턴스 참조값을 받은 변수에 다시 null을 할당받을 경우, 기존에 생성한 인스턴스는 어떻게 될까?
+
+이 인스턴스를 참조하는 변수는 존재하지 않는다. 아무도 참조하지 않는 상황이다. 이런 상황이 되면 이 인스턴스의 참조값을 다시 구할 방법은 없다. **_해당 인스턴스에 다시 접근할 방법이 존재하지 않는다. 이런 경우 메모리의 입장에서는 사용되지 않고 메모리 공간만 차지하기 때문에 불필요하다. 그래서 JVM의 GC(Garbage Collector)가 더 이상 사용하지 않는 인스턴스라고 판단되면 자동으로 메모리에서 제거해준다. 힙 영역에 생성되었다가 제거된다._**    
+
+하지만, 어딘가에서 한 군데라도 계속 참조하고 있다면 계속 힙 영역에서 계속 생존한다.  
 
 
 &nbsp;
@@ -290,6 +326,17 @@ null은 참조형 변수에는
 ---
 
 # NullPointerException
+
+다음으로 Null과 관련된 에러인 `NullPointerException`에 대해 알아보자. 
+
+참조값이 존재한다고 판단하여 참조값을 통해 특정 값에 접근했는데, 사실 그 참조값은 존재하지 않는 `null`이어서 발생되는 에러다. 
+
+코드로 화인해보자.  
+
+<코드>
+
+코드에서 알 수 있듯이 `null`은 참조할 주소가 존재하지 않는다는 뜻이다.
+
 
 &nbsp;
 
