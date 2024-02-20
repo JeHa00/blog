@@ -287,6 +287,7 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
 코드로 확인해보자.
 
 - 클래스
+    
     ```java
     public class Data {
         int value;
@@ -294,6 +295,7 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
     ```
 
 - 인스턴스 및 main
+    
     ```java
     public class DataMain {
         public static void main(String args[]) {
@@ -308,6 +310,7 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
     ```
 
 - 실행 결과
+    
     ```java
     1. data = null
     2. data = Week5.Data@17f6480
@@ -333,15 +336,42 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
 
 코드로 화인해보자.  
 
-<코드>
+- 클래스
 
-코드에서 알 수 있듯이 `null`은 참조할 주소가 존재하지 않는다는 뜻이다.
+    ```java
+    public class Data {
+        int value;
+    }
+    ```
+
+- 인스턴스 및 main
+
+    ```java
+    public class DataMain {
+        public static void main(String args[]) {
+            Data data = null;
+            System.out.println("1. data = " + data);
+            data.value = 1;
+        }
+    }
+    ```
+
+- 결과
+
+    ```java
+    1. data = null
+    Exception in thread "main" java.lang.NullPointerException
+        at Week5.DataMain.main(DataMain.java:7)
+    ```
+
+
+코드에서 알 수 있듯이 `null`은 참조할 주소가 존재하지 않는다는 뜻이다. 이 null에 접근하여 `value` 값에 값을 할당하려고 했으니 위와 같은 결과가 발생했다.  
+
+단지 변수에 `null` 을 할당하는 것까지는 문제가 발생되지 않는다. **_null을 할당받은 변수를 통해 속성과 행위에 접근하려고할 때 에러가 발생된다._**
+
 
 
 &nbsp;
 
 ---
-
-
-# 
 
