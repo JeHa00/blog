@@ -179,7 +179,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 # 메서드 영역까지 합쳐서 이해하기
 
-스택 영역과 힙 영역에 대해 이해했으니 메서드 영역까지 합쳐서 이해해보자. [클래스 메서드(정적, static 메서드)와 인스턴스 메서드](https://jeha00.github.io/post/java/2_1_class/#%ED%81%B4%EB%9E%98%EC%8A%A4-%EB%A9%94%EC%84%9C%EB%93%9C%EC%A0%95%EC%A0%81-static-%EB%A9%94%EC%84%9C%EB%93%9C%EC%99%80-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%A9%94%EC%84%9C%EB%93%9C)에서 사용한 코드 중 일부를 가져와 메모리 관점에서 이해해보자.
+이제는 [클래스 메서드(정적, static 메서드)와 인스턴스 메서드](https://jeha00.github.io/post/java/2_1_class/#%ED%81%B4%EB%9E%98%EC%8A%A4-%EB%A9%94%EC%84%9C%EB%93%9C%EC%A0%95%EC%A0%81-static-%EB%A9%94%EC%84%9C%EB%93%9C%EC%99%80-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%A9%94%EC%84%9C%EB%93%9C)에서 사용한 코드 중 일부를 가져와 메서드 영역까지 합쳐서 이해해보자.
 
 - 클래스 
 
@@ -240,23 +240,23 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
             System.out.println("========== method1 start ==========");
             Car car2 = new Car("k5", 20000);
             System.out.println("Car price = " + car2.getPrice());
-            method2();
+            method2(car2);
             System.out.println("========== method1 end ==========");
         }
 
-        public static void method2() {
+        public static void method2(Car car) {
             System.out.println("========== method2 start ==========");
-            Car car3 = new Car("k7", 30000);
             Car.callClassMethod();
-            System.out.println("Car price = " + car3.getPrice());
-            System.out.println("Car name = " + car3.getName());
+            System.out.println("Car price = " + car.getPrice());
+            System.out.println("Car name = " + car.getName());
             System.out.println("========== method2 end ==========");
         }
     }
     ```
 
+그러면 위 코드가 `main` -> `method1` -> `method2`로 실행되면서 각 영역마다 어떻게 진행되는지 확인해보자.
 
-
+```
 main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 인스턴스 생성 + callInstanceMethod 호출 -> getName, getCost 호출로 코드를 작성하자.
 
 그래서 왼쪽부터 오른쪽으로 스택 프레임 쌓이면서 중간 중간 힙 영역에 메서드 생성되는 것 설명
@@ -270,17 +270,179 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
 - 특정 인스턴스의 기능을 사용하려면 참조값을 알아야 하는데, 정적 메서드는 참조값 없이 호출한다.
 
 클래스 변수는 프로그램이 시작될 때 클래스 변수마다 1개씩만 생성된다. 클래스 변수 A, B가 있다면 A 하나, B 하나만 생성된다.  
+```
 
-코드가 실행되면서 메서드 영역에 클래스 정보들이 다 올라간다. 
-main이 실행되고 스택 영역에 main 스택 프레임이 생성된다.  
--> heap 영역에 Car 인스턴스가 생성된다. 즉, 이 인스턴스의 참조값이 생긴다. car1의 name은 'k3' 이고, price는 10000이다.
--> car1.getName 호출 -> getName 스택 프레임이 스택 영역에 쌓인다. 이 때 스택 영역에 해당 인스턴스의 참조값이 저장된다. 
-이 메서드가 실행되는 과정에서 `getCount()` 클래스 메서드가 호출되어 스택 프레임에 쌓인다.
-메서드 영역에서 `getCount()`를 실행하여 정적 변수인 `count`의 값을 반환한다. 
+## 1) main 메서드 시작
 
-그래서 메서드의 인스턴스 메서드가 호출되면서 스택 프레임에 있는 참조값을 통해 힙 영역에 생성된 인스턴스에 접근하여 실행된다.  
 
-메서드에 대한 정보는 메서드 영역에 있기 때문에, 스택 영역에 스택 프레임이 쌓인 후, 메서드 영역에서 getName을 호출한다.  
+### main 스택 프레임 생성 후, heap 영역에 인스턴스 생성
+
+![image](https://github.com/JeHa00/image/assets/78094972/36e62986-dfda-43ff-82d0-ca9f71a7e842")
+
+1. 코드가 실행되면서 메서드 영역에 클래스 정보들이 다 올라간다. 
+2. main이 실행되고 스택 영역에 main 스택 프레임이 생성된다.  
+3. heap 영역에 Car 인스턴스가 생성된다. 즉, 이 인스턴스의 참조값이 생긴다. car1의 name은 'k3' 이고, price는 10000이다.
+
+- 출력 코드
+
+    ```java
+    =========== main start ===========
+    ```
+
+### getName 스택 프레임 생성
+
+![image](https://github.com/JeHa00/image/assets/78094972/bb71ddba-87d0-430e-91bc-de00f79c0419)
+
+4. `car1.getName` 호출 
+5. `getName` 스택 프레임이 스택 영역에 쌓인다. 이 때 getName 호출에 사용한 해당 인스턴스의 참조값이 `getName` 스택 프레임에 저장된다.  
+6. `getName()` 메서드를 실행하기 위해 메서드 영역에 있는 `getName()` 인스턴스 메서드 코드를 읽고, `println` 출력문부터 실행된다.
+
+
+- 출력 코드
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    ```
+
+### getCount 스택 프레임 생성 및 제거 
+
+![image](https://github.com/JeHa00/image/assets/78094972/695ef74b-f091-40b5-9c8b-12ca78649b0b)
+
+7. `getName()` 메서드 코드를 읽는 과정에서 `getCount()` 클래스 메서드가 호출되어 스택 프레임에 쌓인다.
+8. 메서드 영역에서 `getCount()`를 실행하여 정적 변수인 `count`의 값을 반환한다. 
+
+- 출력 코드
+
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    ```
+
+9. 그러면 `getCount()`에 대한 실행이 끝나므로 아래 이미지처럼 이 클래스 메서드에 대한 스택 프레임은 사라진다. 
+
+![image](https://github.com/JeHa00/image/assets/78094972/60cdedd0-b830-422a-a061-1c9ac9cda86b)
+
+### getName 스택 프레임 제거  
+
+![image](https://github.com/JeHa00/image/assets/78094972/5e62d0ca-376b-47da-91ff-5d31ce414bb0)
+
+10. `getCount()` 메서드가 종료되었기 때문에 `getName()` 메서드는 인스턴스의 `name`을 반환하면서 종료된다. 
+11. 이에 따라 스택 영역의 해당되는 스택 프레임이 사라진다.  
+12. `name`을 반환했기 때문에 `main` 메서드에서 `println`이 다음과 같이 출력된다.  
+
+- 출력 코드
+
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ```
+
+
+### 힙 영역에서 Car 인스턴스 제거  
+
+그리고 `car1` 참조 변수가 가리키는 인스턴스를 아무도 참조하고 있지 않으므로 GC에 의해서 삭제된다.  
+
+![image](https://github.com/JeHa00/image/assets/78094972/5ff663fb-edfe-4f83-add8-d2cac658dbd9)
+
+&nbsp;
+
+## 2) method1 시작
+
+### method1 스택 프레임 생성
+
+
+그리고 코드가 작성된 순서 따라서 `method1()`이 호출되면서 `method1()`에 대한 스택 프레임이 스택 영역에 쌓인다.  
+
+![image]()
+
+### 힙 영역에서 인스턴스 생성
+
+method1이 실행되면서 `new` 예약어를 사용하여 Car 클래스의 인스턴스가 heap 영역에 생성된다. 그리고 인스턴스 객체에 대한 참조값이 `car2` 변수에 담겨진다.  
+
+![image]()
+
+### getPrice 스택 프레임 생성 및 제거  
+
+`car2.getPrice()`가 호출되면서 이 인스턴스 메서드에 대한 스택 프레임이 생성된다. 이 스택 프레임에는 `car2`에 담겨진 인스턴스 참조값이 담겨있다. 그래서 메서드 영역에 있는 `getPrice()` 메서드 코드가 이 메서드의 스택 프레임에 있는 인스턴스 참조값을 사용하여 해당 인스턴스에게 접근하여 인스턴스 변수의 정보들을 얻어 실행된다.  `getPrice()` 메서드의 실행이 끝나면 이 메서드에 대한 스택 프레임이 스택 영역에서 사라진다.  
+
+![image]()
+
+&nbsp;
+
+## 3) method2 시작 
+
+### method2 스택 프레임 생성
+
+그 다음으로 `method2()` 가 호출되면서 스택 영역에 이 메서드에 대한 스택 프레임이 생성된다. 이 스택 프레임에는 car 매개변수에 대한 정보가 저장되어 있다. `method1()`에서 생성된 인스턴스 정보가 car 매개변수에 가지고 있다. 그래서 `car1`과 달리 GC에 의해서 삭제되지 않는다.  
+
+![image]()
+
+### callClassMethod 스택 프레임 생성
+
+메서드 영역에서 정적 메서드인 `callClassMethod()` 코드를 찾아 실행한다.
+스택 영역에 `callClassMethod()` 스택 프레임이 스택 영역에 쌓이고,
+
+![image]()
+
+### getCount 스택 프레임 생성 및 제거
+
+`getCount()` 정적 메서드가 또한 호출되면서 `getCount()` 스택 프레임이 스택 영역에 쌓인다. `getCount()` 메서드가 실행되기 위해 메서드 영역에서 이 메서드의 코드 정보를 읽어오고, 정적 변수인 `count` 정보를 출력한다. `getCount()` 메서드 실행이 끝나서 
+
+![image]()
+
+### callClassMethod 스택 프레임 제거  
+
+스택 프레임에서 `getCount()` 스택 프레임이 사라진 후 `callClassMethod()` 스택 프레임이 사라진다. 
+
+![image]()
+
+### getPrice 스택 프레임 생성 및 제거  
+
+그 다음에 `method2()` 스택 프레임이 가지고 있는 car 참조 변수를 통해서 힙 영역에 있는 인스턴스에 접근하여 `getPrice()` 호출 -> `getPrice()` 스택 프레임이 스택 영역에 쌓이고, 실행이 끝나면 다시 사라진다. 
+
+![image]()
+
+### getName 스택 프레임 생성 및 제거  
+
+그 다음으로 `getName()` 호출되어 스택 영역에 스택 프레임이 쌓이고, 실행이 끝나면 사라진다.
+
+![image]()
+
+&nbsp;
+
+## 4) 각 메서드 종료
+
+### method2 스택 프레임 제거
+`method2()` 실행이 다 끝났기 때문에 `method2()` 스택 프레임이 사라진다. 
+
+![image]()
+
+### method1 스택 프레임 제거  
+
+그 다음으로 `method1()` 종료되면서 `method1()`의 스택 프레임도 사라진다.  
+
+![image]()
+
+### 힙 영역에 인스턴스 제거  
+
+이에 따라 `car2` 참조 변수가 가지고 있는 참조값의 대상인 인스턴스가 힙 영역에서 GC에 의해 삭제된다. 이 인스턴스를 참조하는 게 이제 아무도 없기 때문이다.  
+
+![image]()
+
+### main 스택 프레임 제거  
+
+그 다음 `main` 메서드 실행도 종료되면서 `main` 스택 프레임도 스택 영역에서 사라진다.
+
+![image]()
+
+### 프로그램 종료  
+
+프로그램이 종료된다.  
+
+
 
 &nbsp;
 
