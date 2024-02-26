@@ -357,7 +357,7 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
 
 ### 힙 영역에서 Car 인스턴스 제거  
 
-- `car1` 참조 변수가 가리키는 인스턴스를 아무도 참조하고 있지 않으므로 GC에 의해서 삭제된다.  
+13. `car1` 참조 변수가 가리키는 인스턴스를 아무도 참조하고 있지 않으므로 GC에 의해서 삭제된다.  
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/5ff663fb-edfe-4f83-add8-d2cac658dbd9" width="90%">}}
 
@@ -368,116 +368,211 @@ main frame -> CarMain의 method1 호출: 인스턴스 생성 -> method2 호출: 
 
 ### method1 스택 프레임 생성
 
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/c136fbd3-bf85-4e94-a9c1-fbebd5f65e20" width="90%">}}
 
-그리고 코드가 작성된 순서 따라서 `method1()`이 호출되면서 `method1()`에 대한 스택 프레임이 스택 영역에 쌓인다.  
+14. 그리고 코드가 작성된 순서 따라서 `method1()`이 호출되면서 `method1()`에 대한 스택 프레임이 스택 영역에 쌓인다.  
 
-![image]()
+- 출력 코드
+
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ========== method1 start ==========
+    ```
 
 &nbsp;
 
 ### 힙 영역에서 인스턴스 생성
 
-method1이 실행되면서 `new` 예약어를 사용하여 Car 클래스의 인스턴스가 heap 영역에 생성된다. 그리고 인스턴스 객체에 대한 참조값이 `car2` 변수에 담겨진다.  
+15. method1이 실행되면서 `new` 예약어를 사용하여 Car 클래스의 인스턴스가 heap 영역에 생성된다.   
+16. 인스턴스 객체에 대한 참조값이 `car2` 변수에 담겨진다.  
 
-![image]()
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/fbae1c96-e2b2-4f2d-8040-241b4697890e" width="90%">}}
 
 &nbsp;
 
-### getPrice 스택 프레임 생성 및 제거  
+### getPrice 스택 프레임 생성
 
-`car2.getPrice()`가 호출되면서 이 인스턴스 메서드에 대한 스택 프레임이 생성된다. 이 스택 프레임에는 `car2`에 담겨진 인스턴스 참조값이 담겨있다. 그래서 메서드 영역에 있는 `getPrice()` 메서드 코드가 이 메서드의 스택 프레임에 있는 인스턴스 참조값을 사용하여 해당 인스턴스에게 접근하여 인스턴스 변수의 정보들을 얻어 실행된다.  `getPrice()` 메서드의 실행이 끝나면 이 메서드에 대한 스택 프레임이 스택 영역에서 사라진다.  
+17. `car2.getPrice()`가 호출되면서 이 인스턴스 메서드에 대한 스택 프레임이 생성된다. 이 스택 프레임에는 `car2`에 담겨진 인스턴스 참조값이 담겨있다. 그래서 메서드 영역에 있는 `getPrice()` 코드가 이 메서드의 스택 프레임에 있는 인스턴스 참조값을 사용하여 해당 인스턴스에게 접근하여 인스턴스 변수의 정보들을 얻어 실행된다. 
 
-![image]()
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/498710ba-a1f7-46ec-8878-66c523ef7b11" width="90%">}}
+
+- 출력 코드
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ========== method1 start ==========
+    --- Enter in getPrice ---
+    ```
+
+&nbsp;
+
+### getCount 스택 프레임 생성 및 제거 
+
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/1d398e46-f9ae-4935-985f-c6e65f524a22" width="90%">}}
+
+18. `getPrice()` 메서드 코드를 읽는 과정에서 `getCount()` 클래스 메서드가 호출되어 스택 프레임에 쌓인다.
+
+19. 메서드 영역에서 `getCount()`를 실행하여 정적 변수인 `count`의 값을 반환한다. 
+
+- 출력 코드
+
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ========== method1 start ==========
+    --- Enter in getPrice ---
+    생성된 총 차 댓수: 2
+    ```
+
+20. 그러면 `getCount()`에 대한 실행이 끝나므로 아래 이미지처럼 이 클래스 메서드에 대한 스택 프레임은 사라진다. 
+
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/be5af219-665f-4161-8c76-a0cf0290f425" width="90%">}}
+
+&nbsp;
+
+### getPrice 스택 프레임 제거
+
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/a7f110f9-1462-4ccc-89e3-8d8a46b8547b" width="90%">}}
+
+21. `getCount()` 호출이 종료되었으므로 `price` 값을 반환하면서 실행이 종료되어 이 메서드에 대한 스택 프레임이 스택 영역에서 사라진다.
+
+
+- 출력 코드
+
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ========== method1 start ==========
+    --- Enter in getPrice ---
+    생성된 총 차 댓수: 2
+    Car price = 20000
+    ```
 
 &nbsp;
 
 ## 3) method2 시작 
 
-### method2 스택 프레임 생성
+### method2와 callClassMethod 스택 프레임 생성
 
-그 다음으로 `method2()` 가 호출되면서 스택 영역에 이 메서드에 대한 스택 프레임이 생성된다. 이 스택 프레임에는 car 매개변수에 대한 정보가 저장되어 있다. `method1()`에서 생성된 인스턴스 정보가 car 매개변수에 가지고 있다. 그래서 `car1`과 달리 GC에 의해서 삭제되지 않는다.  
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/bacbbae5-4eac-4c6f-a09e-9d20785543c2" width="90%">}}
 
-![image]()
+22. 그 다음으로 `method2()` 가 호출되면서 스택 영역에 이 메서드에 대한 스택 프레임이 생성된다. 이 스택 프레임에는 car 매개변수에 대한 정보가 저장되어 있다. `method1()`에서 생성된 인스턴스 정보가 car 매개변수에 가지고 있다. 그래서 `car1`과 달리 GC에 의해서 삭제되지 않는다.  
+
+
+23. 메서드 영역에서 정적 메서드인 `callClassMethod()` 코드를 찾아 실행한다.
+스택 영역에 `callClassMethod()` 스택 프레임이 스택 영역에 쌓인다.  
+
+- 출력
+
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ========== method1 start ==========
+    --- Enter in getPrice ---
+    생성된 총 차 댓수: 2
+    Car price = 20000
+    ========== method2 start ==========
+    --- Enter in callClassMethod ---
+    ```
 
 &nbsp;
 
-### callClassMethod 스택 프레임 생성
+### getCount 스택 프레임 생성 및 제거 후, callClassMethod 스택 프레임 제거  
 
-메서드 영역에서 정적 메서드인 `callClassMethod()` 코드를 찾아 실행한다.
-스택 영역에 `callClassMethod()` 스택 프레임이 스택 영역에 쌓이고,
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/02be3d5c-112c-4fb3-9899-fd73a4d4dcd6" width="90%">}}
 
-![image]()
+24. `callClassMethod` 안에서 `getCount()` 정적 메서드가 또한 호출되면서 `getCount()` 스택 프레임이 스택 영역에 쌓인다. 
 
-&nbsp;
+25. `getCount()` 메서드가 실행되기 위해 메서드 영역에서 이 메서드의 코드 정보를 읽어오고, 정적 변수인 `count` 정보를 반환한다. 
 
-### getCount 스택 프레임 생성 및 제거
+- 출력
+    ```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ========== method1 start ==========
+    --- Enter in getPrice ---
+    생성된 총 차 댓수: 2
+    Car price = 20000
+    ========== method2 start ==========
+    --- Enter in callClassMethod ---
+    생성된 총 차 댓수: 2
+    ```
 
-`getCount()` 정적 메서드가 또한 호출되면서 `getCount()` 스택 프레임이 스택 영역에 쌓인다. `getCount()` 메서드가 실행되기 위해 메서드 영역에서 이 메서드의 코드 정보를 읽어오고, 정적 변수인 `count` 정보를 출력한다. `getCount()` 메서드 실행이 끝나서 
+26. `getCount()` 메서드 실행이 끝나서 `getCount()`의 스택 프레임이 제거된다.  
 
-![image]()
+27. 스택 프레임에서 `getCount()` 스택 프레임이 사라진 후 `callClassMethod()` 스택 프레임이 사라진다. 
 
-&nbsp;
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/69277716-a0bc-4f85-84e8-a9bd6572b721" width="90%">}}
 
-### callClassMethod 스택 프레임 제거  
-
-스택 프레임에서 `getCount()` 스택 프레임이 사라진 후 `callClassMethod()` 스택 프레임이 사라진다. 
-
-![image]()
 
 &nbsp;
 
 ### getPrice 스택 프레임 생성 및 제거  
 
-그 다음에 `method2()` 스택 프레임이 가지고 있는 car 참조 변수를 통해서 힙 영역에 있는 인스턴스에 접근하여 `getPrice()` 호출 -> `getPrice()` 스택 프레임이 스택 영역에 쌓이고, 실행이 끝나면 다시 사라진다. 
+28. 그 다음에 `method2()` 스택 프레임이 가지고 있는 car 참조 변수를 통해서 힙 영역에 있는 인스턴스에 접근하여 `getPrice()` 호출한다.
 
-![image]()
+29. `getPrice()` 메서드 안에 진입하면서 `getCount()`를 호출하여, `getCount()` 스택 프레임이 스택 영역에 쌓인다.  
+
+30. 그러면 여태 했던 것처럼 똑같이 메서드 영역에 있는 `getCount()` 코드가 실행되고, 종료되면 스택 영역에서 `getCount()`의 스택 프레임은 사라진다.  
+
+29. `getPrice()` 스택 프레임이 스택 영역에 쌓이고, 실행이 끝나면 다시 사라진다. 
+
+{{<figure src="" width="90%">}}
 
 &nbsp;
 
 ### getName 스택 프레임 생성 및 제거  
 
-그 다음으로 `getName()` 호출되어 스택 영역에 스택 프레임이 쌓이고, 실행이 끝나면 사라진다.
+30. 그 다음으로 `getName()` 호출되어 스택 영역에 스택 프레임이 쌓이고, 실행이 끝나면 사라진다.
 
-![image]()
+{{<figure src="" width="90%">}}
 
 &nbsp;
 
 ## 4) 각 메서드 종료
 
-### method2 스택 프레임 제거
-`method2()` 실행이 다 끝났기 때문에 `method2()` 스택 프레임이 사라진다. 
+### method2 스택 프레임 제거 후, method1 스택 프레임 제거
 
-![image]()
+31. `method2()` 실행이 다 끝났기 때문에 `method2()` 스택 프레임이 사라진다. 
 
-&nbsp;
+{{<figure src="" width="90%">}}
 
-### method1 스택 프레임 제거  
 
-그 다음으로 `method1()` 종료되면서 `method1()`의 스택 프레임도 사라진다.  
+32. `method1()` 종료되면서 `method1()`의 스택 프레임도 사라진다.  
 
-![image]()
+{{<figure src="" width="90%">}}
 
 &nbsp;
 
 ### 힙 영역에 인스턴스 제거  
 
-이에 따라 `car2` 참조 변수가 가지고 있는 참조값의 대상인 인스턴스가 힙 영역에서 GC에 의해 삭제된다. 이 인스턴스를 참조하는 게 이제 아무도 없기 때문이다.  
+33. 이에 따라 `car2` 참조 변수가 가지고 있는 참조값의 대상인 인스턴스가 힙 영역에서 GC에 의해 삭제된다. 이 인스턴스를 참조하는 게 이제 아무도 없기 때문이다.  
 
-![image]()
-
-&nbsp;
-
-### main 스택 프레임 제거  
-
-그 다음 `main` 메서드 실행도 종료되면서 `main` 스택 프레임도 스택 영역에서 사라진다.
-
-![image]()
+{{<figure src="" width="90%">}}
 
 &nbsp;
 
-### 프로그램 종료  
+### main 스택 프레임 제거 그리고, 프로그램 종료  
 
-프로그램이 종료된다.  
+34. 마지막으로 `main` 메서드 실행도 종료되면서 `main` 스택 프레임도 스택 영역에서 사라진다.
+
+{{<figure src="" width="90%">}}
+
+35. 프로그램이 종료된다.  
+
 
 
 
