@@ -645,7 +645,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 38. 이에 따라 `car2` 참조 변수가 가지고 있는 참조값의 대상인 인스턴스가 힙 영역에서 GC에 의해 삭제된다. 이 인스턴스를 참조하는 게 이제 아무도 없기 때문이다.  
 
-{{<figure src="" width="90%">}}
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/ba74bcaf-d7df-41ed-85b3-67cc323f1121" width="90%">}}
 
 &nbsp;
 
