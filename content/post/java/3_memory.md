@@ -505,7 +505,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 &nbsp;
 
-### getPrice 스택 프레임 생성 및 제거  
+### getPrice 스택 프레임 생성 및 제거  그리고 getCount 스택 프레임 생성 및 제거  
 
 28. 그 다음에 `method2()` 스택 프레임이 가지고 있는 car 참조 변수를 통해서 힙 영역에 있는 인스턴스에 접근하여 `getPrice()` 호출한다.`getPrice()` 스택 프레임이 스택 영역에 쌓인다.  
 
