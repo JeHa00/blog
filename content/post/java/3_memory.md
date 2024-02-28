@@ -233,7 +233,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
             Car car1 = new Car("k3", 10000);
             System.out.println("Car name = " + car1.getName());
             method1();
-            System.out.println(" ========== main end ==========");
+            System.out.println("=========== main end ============");
         }
 
         public static void method1() {
@@ -652,6 +652,31 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 ### main 스택 프레임 제거 그리고, 프로그램 종료  
 
 39. 마지막으로 `main` 메서드 실행도 종료되면서 `main` 스택 프레임도 스택 영역에서 사라진다.
+
+- 출력
+
+```java
+    =========== main start ===========
+    --- Enter in getName ---
+    생성된 총 차 댓수: 1
+    Car name = k3
+    ========== method1 start ==========
+    --- Enter in getPrice ---
+    생성된 총 차 댓수: 2
+    Car price = 20000
+    ========== method2 start ==========
+    --- Enter in callClassMethod ---
+    생성된 총 차 댓수: 2
+    --- Enter in getPrice ---
+    생성된 총 차 댓수: 2
+    Car price = 20000
+    --- Enter in getName ---
+    생성된 총 차 댓수: 2
+    Car name = k5
+    ========== method2 end ==========
+    ========== method1 end ==========
+    =========== main end ============
+```
 
 40. 프로그램이 종료된다.  
 
