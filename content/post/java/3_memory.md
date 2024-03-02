@@ -142,7 +142,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 ### 과정 1 ~ 3
 
-![image](https://github.com/JeHa00/image/assets/78094972/dd8dc573-59ae-4f2e-8624-343d6644caa1)
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/dd8dc573-59ae-4f2e-8624-343d6644caa1" width="90%">}}
 
 - 과정 1: 처음 `main()` 메서드를 실행하여, `main()` 스택 프레임이 생성된다.
 - 과정 2: `main()`에서 `method1()`을 호출하여 `method1()`의 스택 프레임이 생성된다.
@@ -153,7 +153,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 ### 과정 4 ~ 6
 
-![image](https://github.com/JeHa00/image/assets/78094972/1d39cf1d-ca56-4fd5-99b9-1b4b4b5d6592)
+{{<figure src="https://github.com/JeHa00/image/assets/78094972/1d39cf1d-ca56-4fd5-99b9-1b4b4b5d6592" width="90%">}}
 
 - 과정 4: `method2()` 가 종료된다. `method2()` 스택 프레임이 제거되면서 `car`도 제거된다. `Car` 인스턴스를 참조하지 않게 되었다.  
 - 과정 5: `method1()` 이 종료된다.  `method1()` 스택 프레임이 제거되면 `car1`도 제거된다. `Car` 인스턴스를 참조하지 않게 되었다. 
