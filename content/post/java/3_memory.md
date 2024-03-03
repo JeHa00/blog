@@ -29,7 +29,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 아래 내용이 어려우면 내가 만든 코드 예시를 보면서 이해해보자. 
 
-- 스택 영역부터 이해하고 싶으면 [여기]()부터, 메서드 영역까지 포함해서 이해하고 싶으면 [여기]()부터 보자.  
+- 스택 영역부터 이해하고 싶으면 [여기](https://jeha00.github.io/post/java/3_memory/#%EC%8A%A4%ED%83%9D-%EC%98%81%EC%97%AD%EA%B3%BC-%ED%9E%99-%EC%98%81%EC%97%AD-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)부터, 메서드 영역까지 포함해서 이해하고 싶으면 [여기](https://jeha00.github.io/post/java/3_memory/#%EB%A9%94%EC%84%9C%EB%93%9C-%EC%98%81%EC%97%AD%EA%B9%8C%EC%A7%80-%ED%95%A9%EC%B3%90%EC%84%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)부터 보자.  
 
 
 ### 메서드 영역 또는 정적 영역 (method 또는 static area)
