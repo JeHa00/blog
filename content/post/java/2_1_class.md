@@ -505,7 +505,7 @@ public static String introduce(String member) {
     내 팀원은 홍길동 1 입니다.  
     ```
 
-모두 다 한 번에 실행이 가능하다. 하지만 완전히 동일한 메서드가 2개 존재하면 에러가 발생된다. 만약 `(int memeber)`를 `(String member)`로 수정할 경우 다음과 같은 에러가 발생한다.  
+모두 다 한 번에 실행이 가능하다. 하지만 완전히 동일한 메서드가 2개 존재하면 에러가 발생된다. 만약 세 번째 `introduce`의 매개변수 `int memeber`를 `String member`로 수정할 경우 다음과 같은 에러가 발생한다.  
 
 ```
 Ambiguous method call: both 'CarMain.introduce(String)' and 'CarMain.introduce(String)' match

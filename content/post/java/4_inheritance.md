@@ -1,7 +1,7 @@
 ---
 title: "상속과 오버라이딩이 메모리 영역에서 어떻게 이뤄지지?"
 date: 2024-01-30T00:35:20+09:00
-draft: true
+draft: false
 summary: 자바에서는 상속과 오버라이딩을 어떻게 만드는지와 메모리 영역에서 어떻게 작동되는지 알아본다.  
 tags: ["java"]
 categories: "java"
@@ -380,7 +380,7 @@ java: cannot find symbol
     - `static`: 클래스 레벨에서 작동하므로 인스턴스 레벨에서 사용하는 오버라이딩은 의미가 없다. 클래스 이름으로 접근하면 되기 때문이다. 
     - `final`: 이 키워드를 사용하면 메서드 오버라이딩을 금지한다.  
     - `private`: 해당 클래스에서만 접근 가능하기 때문에, 하위 클래스에서 보이지 않아 오버라이딩을 할 수 없다.  
-- 생성자: 생성자는 오버라이딩할 수 없다.  
+- 생성자: 생성자는 오버라이딩할 수 없다. `super()`를 통해 부모 클래스의 생성자로 값을 전달해야 한다.  
 
 조건들이 위와 같이 많지만 이해하면 크게 어려운 게 없다.  
 
@@ -388,36 +388,290 @@ java: cannot find symbol
 
 # super
 
+위 생성자 오버라이딩 관련해서 `super` 키워드를 언급했다. 이 키워드는 상속 개념과 관련하여 많이 사용되고, 언급되는 키워드다. 이 키워드에 대해 정리해보자.  
+
+`super` 키워드를 통해서 2가지를 사용할 수 있다. '부모 참조'와 '부모 생성자'다. 
+
+
+
 ### 부모 참조
 
-부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없다.
-이때 `super` 키워드를 사용하면 부모를 참조할 수 있다. `super` 는 이름 그대로 부모 클래스에 대한 참조를 나타낸다.
-다음 예를 보자. 부모의 필드명과 자식의 필드명이 둘다 `value` 로 똑같다. 메서드도 `hello()` 로 자식에서 오버라이 딩 되어 있다. 이때 자식 클래스에서 부모 클래스의 `value` 와 `hello()` 를 호출하고 싶다면 `super` 키워드를 사용하 면 된다.
+'부모 참조'부터 알아보자.
+
+상속과 오버라이딩을 사용한다고 해도 오버라이딩되지 않은 부모의 메서드를 사용하고 싶거나, 부모의 필드값을 사용하고 싶을 때에는 어떻게 해야할까?
+
+부모와 자식의 필드명이 같거나 메서드가 오버라이딩 되어 있으면, 자식에서 부모의 필드나 메서드를 호출할 수 없다. 필드명이 같으면 자식의 필드명으로 먼저 인식되어 부모의 필드를 사용할 수 없고, 메서드가 오버라이딩 되어 있으면 부모의 메서드가 아닌 오버라이딩한 자식의 메서드를 사용한다.  
+
+이럴 때 `this` 처럼 자기 자신 인스턴스를 참조할 때 사용하듯이 부모 클래스를 참조할 때 `super` 키워드를 사용하면 부모를 참조할 수 있다. `super` 는 이름 그대로 부모 클래스에 대한 참조를 나타낸다.
+
+
+아래 코드를 보자. 부모 클래스의 필드명과 자식 클래스의 필드명 모두에 `name`이 있다.   
+메서드도 `serve()` 로 자식 클래스에서 오버라이딩 되어 있다. 이때 자식 클래스에서 부모 클래스의 `name` 과 `serve()` 를 호출하고 싶다면 `super` 키워드를 사용하면 된다.
+
+- `Pasta` 클래스
+
+```java
+package extends1.pra;
+
+public class Pasta {
+
+    String name = "Pasta";
+
+    ...
+
+    public void serve() {
+        System.out.println("완료된 음식을 서빙합니다.");
+    }
+}
+
+```
+
+- `TomatoPasta` 클래스
+
+    ```java
+    package extends1.pra;
+
+    public class TomatoPasta extends Pasta {
+
+        String name = "TomatoPasta";
+
+        String tomatoOrigin = "Korea";
+
+        ...
+    
+        @Override
+        public void serve() {
+            System.out.println("완료된 토마토 파스타를 바질 잎과 함께 서빙합니다.");
+        }
+
+        public void call() {
+            System.out.println("자식 클래스: " + this.name);
+            System.out.println("부모 클래스: " + super.name);
+        }
+        this.serve();
+        super.serve();
+    }
+    ```
+
+`TomatoPasta pasta1 = new TomatoPasta();` 를 통해서 인스턴스 생성 후, `pasta1.call()`를 실행하면 다음과 결과를 확인할 수 있다.
+
+- 결과
+
+    ```java
+    자식 클래스: TomatoPasta
+    부모 클래스: Pasta
+    완료된 토마토 파스타를 바질 잎과 함께 서빙합니다.
+    완료된 음식을 서빙합니다.
+    ```
+
+`super`를 통해서 '부모 참조'로 자식 클래스에서 부모 클래스 안에 선언된 것들에 접근할 수 있다는 걸 확인할 수 있다.  하지만 이는 정확히 말하자면 접근 제어자로 허용했기 때문이다. 이에 대해서는 이 포스팅의 맨 마지막 단원에서 확인해본다.  
 
 &nbsp;
 
 ### 생성자  
 
-상속 관계의 인스턴스를 생성하면 결국 메모리 내부에는 자식과 부모 클래스가 각각 다 만들어진다. `Child` 를 만들면
-부모인 `Parent` 까지 함께 만들어지는 것이다. 따라서 각각의 생성자도 모두 호출되어야 한다.
-**상속 관계를 사용하면 자식 클래스의 생성자에서 부모 클래스의 생성자를 반드시 호출해야 한다.(규칙)**
-상속 관계에서 부모의 생성자를 호출할 때는 `super(...)` 를 사용하면 된다. 예제를 통해 상속 관계에서 생성자를 어떻게 사용하는지 알아보자.
+그 다음으로 `super` 키워드를 사용하여 자식 클래스에서 부모 클래스의 생성자를 호출해보자.  
 
-`ClassB` 는 `ClassA` 를 상속 받았다. 상속을 받으면 **생성자의 첫줄**에 `super(...)` 를 사용해서 부모 클래스의 생성자를 호출해야 한다.
-예외로 생성자 첫줄에 `this(...)` 를 사용할 수는 있다. 하지만 `super(...)` 는 자식의 생성자 안에서
-언젠가는 반드시 호출해야 한다.
-부모 클래스의 생성자가 기본 생성자(파라미터가 없는 생성자)인 경우에는 `super()` 를 생략할 수 있다.
-상속 관계에서 첫줄에 `super(...)` 를 생략하면 자바는 부모의 기본 생성자를 호출하는 `super()` 를 자 동으로 만들어준다.
-참고로 기본 생성자를 많이 사용하기 때문에 편의상 이런 기능을 제공한다.
+상속과 메모리 구조 단원에서 상속 관계의 인스턴스를 생성하면 메모리의 힙 영역에는 부모와 자식 클래스의 인스턴스 정보가 모두 생성된다는 걸 확인했다. 위 코드 예시를 보자면 `TomatoPasta`를 생성하면 부모인 `Pasta`까지 함께 만들어진다는 것이다. **_따라서 부모와 자식 각각의 생성자가 모두 반드시 호출되어야 한다. 이를 위해서는 자식 클래스의 생성자에서 반드시 부모 클래스의 생성자를 호출해야 한다._**  이럴 때 사용하는 게 바로 `super(...)`다. 
+
+아래 코드를 보자.
 
 
-<예시 코드>
+- `Pasta` 클래스
+
+    ```java
+    public class Pasta {
+
+        ...
+
+        public Pasta() {
+            System.out.println("부모 클래스 Pasta 생성자 호출");
+        }
+        
+        ...
+    }
+    ```
+
+- `TomatoPasta` 클래스
+
+    ```java
+    public class TomatoPasta extends Pasta {
+
+        String name;
+
+        public TomatoPasta(String name) {
+            super();
+            this.name = name;
+            System.out.println("자식 클래스 TomatoPasta 호출");
+        }
+    }
+    ```
+
+- `PastaMain` 클래스
+
+    ```java
+    public class PastaMain {
+        public static void main(String[] args) {
+            TomatoPasta pasta1 = new TomatoPasta("TomatoPasta");
+        }
+    }
+    ```
+
+위 `PastaMain` 클래스를 실행하면 다음 결과를 확인할 수 있다.
+
+- 결과
+
+    ```java
+    부모 클래스 Pasta 생성자 호출
+    자식 클래스 TomatoPasta 호출
+    ```
+
+자식 클래스의 생성자 안에 부모 클래스의 생성자를 `super()`를 사용해서 호출한 걸 확인할 수 있다. 
+
+그러면 이번에는 `super()`를 빼고 실행해보자.  
+
+- `TomatoPasta` 클래스
+
+    ```java
+    public class TomatoPasta extends Pasta {
+
+        String name;
+
+        public TomatoPasta(String name) {
+            // super() 를 주석처리 했다. 
+            this.name = name;
+            System.out.println("자식 클래스 TomatoPasta 호출");
+        }
+    }
+    ```
+
+다시 `PastaMain`을 실행하면 동일한 결과를 확인할 수 있다. 어째서일까? **_매개변수가 없는 기본 생성자는 생략이 가능하기 때문에 super()를 입력하지 않아도 자동적으로 부모 클래스의 생성자가 호출된다. 기본 생성자를 많이 사용하기 때문에 이런 기능이 추가되었다._**  
+
+그 다음으로 부모의 기본 생성자 호출을 자식 생성자 안에서 첫 줄에 하는 게 아닌 두 번째 줄에다가 해보자.  
+
+- `TomatoPasta` 클래스
+
+    ```java
+    public class TomatoPasta extends Pasta {
+
+        String name;
+
+        public TomatoPasta(String name) {
+            this.name = name;
+            super();
+            System.out.println("자식 클래스 TomatoPasta 호출");
+        }
+    }
+    ```
+
+위 코드 상태로 다시 `PastaMain`을 실행하면 다음과 같은 에러를 확인할 수 있다. 
+
+- 결과
+
+    ```java
+    java: call to super must be first statement in constructor
+    ```
+
+위 결과를 통해서 **_부모 클래스의 생성자를 호출하는 건 자식 클래스 생성자의 첫 번째 줄에 선언해야 한다_** 는 걸 확인할 수 있다. 
+
+그러면 다음으로 기본 생성자가 아닌 사용자 정의 생성자를 사용해보자. 이를 위해서 새로운 코드를 사용하려고 한다. `ClassA`, `ClassB`, `ClassC`를 만들려고 한다. `ClassA`는 `ClassB`의 부모 클래스이고, `ClassB`는 `ClassC`의 부모 클래스다. `super()`를 사용해서 `ClassC`의 생성자에서 `ClassB`의 생성자를, `ClassB`의 생성자에서 `ClassA`의 생성자를 호출할 것이다.  
 
 
+- `ClassA` 클래스
+    
+    ```java
+    public class ClassA {
 
-<호출 그림>
+        public ClassA(int firstValue) {
+            System.out.println("===== ClassA 생성자 호출 =====");
+            System.out.println("ClassA 생성자의 firstValue: " + firstValue);
+            System.out.println("===== ClassA 생성자 호출 끝 =====");
+        }
+    }
+    ```
 
-this와 함께 사용  
+- `ClassB` 클래스
+    
+    ```java
+    public class ClassB extends ClassA{
+
+
+        public ClassB(int firstValue) {
+            super(firstValue);
+            System.out.println("===== ClassB 생성자 1 호출 =====");
+            System.out.println("ClassB 생성자 1의 firstValue: " + firstValue);
+            System.out.println("===== ClassB 생성자 1 호출 끝 =====");
+        }
+
+        public ClassB(int firstValue, int secondValue) {
+            this(firstValue);
+            System.out.println("===== ClassB 생성자 2 호출 =====");
+            System.out.println("ClassB 생성자 2의 firstValue: " + firstValue);
+            System.out.println("ClassB 생성자 2의 secondValue: " + secondValue);
+            System.out.println("===== ClassB 생성자 2 호출 끝 =====");
+        }
+    }
+    ```
+
+
+- `ClassC` 클래스
+
+    ```java
+    public class ClassC extends ClassB{
+
+        public ClassC() {
+            super(1, 2);
+            System.out.println("===== ClassC 생성자 호출 =====");
+        }
+    }
+    ```
+
+- `Main` 클래스
+
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            ClassC instance = new ClassC();
+        }
+    }
+    ```
+
+위 코드를 보면 다음 사항을 다시 알 수 있다.
+
+- `extends`를 사용하여 부모 클래스로 무엇을 받을지 지정했다.
+- 생성자의 첫 줄에 `super()`를 사용하여 부모 클래스의 생성자를 반드시 첫 번째로 호출했다. 
+- `this()`를 사용하여 생성자 오버로딩을 했다.  
+
+
+위 코드를 실행하면 결과는 다음과 같다.
+
+- 결과
+
+    ```java
+    ===== ClassA 생성자 호출 =====
+    ClassA 생성자의 firstValue: 1
+    ===== ClassA 생성자 호출 끝 =====
+    ===== ClassB 생성자 1 호출 =====
+    ClassB 생성자 1의 firstValue: 1
+    ===== ClassB 생성자 1 호출 끝 =====
+    ===== ClassB 생성자 2 호출 =====
+    ClassB 생성자 2의 firstValue: 1
+    ClassB 생성자 2의 secondValue: 2
+    ===== ClassB 생성자 2 호출 끝 =====
+    ===== ClassC 생성자 호출 =====
+    ```
+
+메서드 호출마다 스택 영역에 해당 메서드의 스택 프레임이 쌓인다.
+
+그리고, 스택이므로 후입선출 구조임을 다시 기억하면서 위 결과를 분석해보자.  
+
+생성자 호출 순서는 다음과 같다.
+
+- ClassC 생성자 진입 -> ClassB 생성자 2 호출 -> ClassB 생성자 1 호출 -> ClassA 생성자 호출
+
+그래서 호출 후 출력 순서는 위 결과처럼 ClassA부터 시작해서 ClasB 생성자 1 -> ClassB 생성자 2 -> ClassC 생성자 순서로 출력되는 것이다.    
+
+
 
 &nbsp;
 
@@ -431,3 +685,4 @@ this와 함께 사용
 &nbsp;
 
 ---
+
