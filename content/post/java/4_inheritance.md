@@ -681,6 +681,80 @@ public class Pasta {
 
 # 상속과 접근 제어  
 
+이번에는 상속 관계의 두 클래스에 접근 제어자를 적용해보자. 개인적으로 접근 제어를 설명하기 위한 예시 코드로 다음 코드가 제일 좋다고 생각한다.
+
+아래 두 클래스는 서로 다른 패키지에 존재한다.
+
+- `Parent` 클래스
+
+    ```java
+    package example.parent;
+
+    public class ParentClass {
+
+        private int privateValue;
+        int defaultValue;
+        protected int protectedValue;
+        public int publicValue;
+
+
+        private void privateMethod() {
+            System.out.println("ParentClass privateMethod");
+        }
+
+        void defaultMethod() {
+            System.out.println("ParentClass defaultMethod");
+        }
+
+        protected void protectedMethod() {
+            System.out.println("ParentClass protectedMethod");
+        }
+
+        public void publicMethod() {
+            System.out.println("Enter in ParentClass publicMethod");
+            System.out.println("publicValue = " + publicValue);
+            System.out.println("protectedValue = " + protectedValue);
+            System.out.println("defaultValue = " + defaultValue);
+            System.out.println("privateValue = " + privateValue);
+        }
+    }
+    ```
+
+
+- `Child` 클래스
+
+    ```java
+    package example.child;
+
+    import example.parent.ParentClass;
+
+    public class ChildClass extends ParentClass {
+
+        public void call() {
+            publicMethod();
+            protectedMethod();
+        }
+    }
+    ```
+
+- `ChildMain` 클래스
+
+    ```java
+    package example;
+
+    import example.child.ChildClass;
+
+    public class ChildMain {
+        public static void main(String[] args) {
+            ChildClass child = new ChildClass();
+
+            child.call();
+            child.defaultMethod();
+            child.privateMethod();
+            child.protectedMethod();
+        }
+    }
+    ```
 
 &nbsp;
 
