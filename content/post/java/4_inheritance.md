@@ -688,7 +688,7 @@ public class Pasta {
 - `Parent` 클래스
 
     ```java
-    package example.parent;
+    package example.parent; // 패키지 위치
 
     public class ParentClass {
 
@@ -724,7 +724,7 @@ public class Pasta {
 - `Child` 클래스
 
     ```java
-    package example.child;
+    package example.child;  // 패키지 위치
 
     import example.parent.ParentClass;
 
@@ -740,7 +740,7 @@ public class Pasta {
 - `ChildMain` 클래스
 
     ```java
-    package example;
+    package example;  // 패키지 위치
 
     import example.child.ChildClass;
 
