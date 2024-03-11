@@ -139,6 +139,60 @@ public class Node {
 
 헤더를 별도로 만들어서 linked list의 시작을 알리는 용도로 사용해보자.  
 
+Node 클래스와 LinkedList 클래스 2개를 만든다.
+
+```java
+package example;
+
+public class LinkedList {
+    Node header;
+
+    static class Node {
+        int data;
+        Node next;
+
+    }
+
+    LinkedList() {
+        header = new Node();
+    }
+
+    void append(int newData) {
+        Node newNode = new Node(); // 추가할 새로운 node 생성
+        newNode.data = newData;
+        
+        Node currentNode = header;
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        } // next가 없는 노드 찾기  
+        currentNode.next = newNode;
+    }
+
+    void delete(int dataToBeDeleted) {
+        Node currentNode = header;
+
+        while (currentNode.next != null) {
+            if (currentNode.next.data == dataToBeDeleted) {
+                currentNode.next = currentNode.next.next;
+                continue;
+            }
+            currentNode = currentNode.next; // 다음 노드로 이동하기  
+        }
+    }
+
+    void retrieve() {
+        Node currentNode = header.next;
+        while (currentNode.next != null) {
+            System.out.print(currentNode.data + " -> ");
+            currentNode = currentNode.next;
+        }
+
+        System.out.println(currentNode.data);
+    }
+}
+```
+
+이전 코드와 달리 `LinkedList` 클래스를 사용해서 노드들을 연결했다. `header`에 추가하여 노드 정보에 계속 접근할 수 있도록 했다. 이에 따라 `this`를 사용하지 않고 `header` 부터 접근을 시작한다.  
 
 ----
 
