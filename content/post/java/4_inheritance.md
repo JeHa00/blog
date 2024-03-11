@@ -711,7 +711,7 @@ public class Pasta {
         }
 
         public void publicMethod() {
-            System.out.println("Enter in ParentClass publicMethod");
+            System.out.println("ParentClass publicMethod");
             System.out.println("publicValue = " + publicValue);
             System.out.println("protectedValue = " + protectedValue);
             System.out.println("defaultValue = " + defaultValue);
@@ -748,13 +748,64 @@ public class Pasta {
         public static void main(String[] args) {
             ChildClass child = new ChildClass();
 
-            child.call();
             child.defaultMethod();
             child.privateMethod();
             child.protectedMethod();
+            child.call();
         }
     }
     ```
+
+그러면 위 `ChildMain` 클래스를 실행해보자. 
+
+- 결과
+
+    ```java
+    java: cannot find symbol
+    symbol:   method defaultMethod()
+    location: variable child of type example.child.ChildClass
+    ```
+
+`defaultMethod()`를 찾을 수 없다고 끈다. `default` 이기 때문에 같은 패키지가 아니면 접근할 수 없기 때문이다. 
+
+다음으로 `child.defaultMethod()`를 주석처리한 후, 실행해보자.  
+
+
+- 결과
+
+    ```java
+    java: cannot find symbol
+    symbol:   method privateMethod()
+    location: variable child of type example.child.ChildClass
+    ```
+
+`private`이기 때문에 클래스 외부에서는 접근이 불가능하다는 걸 알 수 있다. 주석처리한 후, 다시 실행해보자. 그러면 인스턴스 생성 후, 첫 번째로 실행되는 코드는 `child.protectedMethod()`다.  
+
+
+- 결과
+
+    ```java
+    java: protectedMethod() has protected access in example.parent.ParentClass
+    ```
+
+`protected`이기 때문에 같은 패키지 또는 상속 받은 클래스에서만 실행할 수 있기 때문에 위와 같은 에러가 발생했다. 그러면 이 코드도 주석처리를 한 후 실행해보자. 그러면 인스턴스 생성 후, 첫 번째로 실행되는 코드는 `child.call()`이다.  
+
+- 결과
+
+    ```java
+    ParentClass publicMethod
+    publicValue = 0
+    protectedValue = 0
+    defaultValue = 0
+    privateValue = 0
+    ParentClass protectedMethod
+    ```
+
+그러면 코드가 잘 실행되는 거 확인할 수 있다. 
+
+- 부모의 `publicMethod` 메서드는 `public`이기 때문에 호출이 가능하다.  
+- 자식 클래스이므로 다른 패키지여도 부모의 `protectedMethod()`를 호출할 수 있다. 
+- 그리고 부모의 `publicMethod`를 통해 부모의 `private`, `defaul` 값도 접근할 수 있다.    
 
 &nbsp;
 
