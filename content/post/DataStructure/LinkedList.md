@@ -161,7 +161,7 @@ public class LinkedList {
         Node newNode = new Node(); // 추가할 새로운 node 생성
         newNode.data = newData;
         
-        Node currentNode = header;
+        Node currentNode = header; // 현재 노드를 this가 아닌 header로 지정  
         while (currentNode.next != null) {
             currentNode = currentNode.next;
         } // next가 없는 노드 찾기  
@@ -169,7 +169,7 @@ public class LinkedList {
     }
 
     void delete(int dataToBeDeleted) {
-        Node currentNode = header;
+        Node currentNode = header; // 현재 노드를 this가 아닌 header로 지정  
 
         while (currentNode.next != null) {
             if (currentNode.next.data == dataToBeDeleted) {
@@ -181,7 +181,7 @@ public class LinkedList {
     }
 
     void retrieve() {
-        Node currentNode = header.next;
+        Node currentNode = header.next; // 현재 노드를 this가 아닌 header로 지정
         while (currentNode.next != null) {
             System.out.print(currentNode.data + " -> ");
             currentNode = currentNode.next;
@@ -193,6 +193,83 @@ public class LinkedList {
 ```
 
 이전 코드와 달리 `LinkedList` 클래스를 사용해서 노드들을 연결했다. `header`에 추가하여 노드 정보에 계속 접근할 수 있도록 했다. 이에 따라 `this`를 사용하지 않고 `header` 부터 접근을 시작한다.  
+
+
+### 중복값 삭제하기
+
+중복값을 삭제하는 기능을 추가해보자. 이 기능은 buffer를 사용하는 기능이 있고, 없는 기능이 있다. buffer를 사용하는 기능으로 만든다면 hast set에다가 노드를 진행하면서 발견한 값이 없으면 넣어놓고, 있으면 노드의 값을 삭제하는 방식으로 진행할 수 있다. 하지만, buffer를 사용하지 않으면 다음과 같이 포인터를 사용하여 해결할 수 있다.  
+
+```java
+    void removeDuplicatesWithPointer() {
+        Node startPoint = header;
+        while (startPoint != null && startPoint.next != null) {
+            Node runner = startPoint;
+            while (runner.next != null) {
+                if (runner.next.data == startPoint.data) {
+                    runner.next = runner.next.next;
+                } else {
+                    runner = runner.next;
+                }
+            }
+            startPoint = startPoint.next;
+        }}
+```
+
+첫 번째 `while`문의 조건을 위와 같이 한 이유는 `startPoint` 노드가 뒤에서 두 번째 노드이고, 
+`runner.next.data == startPoint.data` 조건을 만족하여 `runner.next`를 삭제했고, 삭제된 `runner.next`가 마지막이였으면 `startPoint.next`는 `null`이 되기 때문에 `null.next` 로 `NullPointerException`이 발생되기 때문이다.  
+
+또한, `while`문의 조건이 `.next` 가 `null`이 아닌 조건으로 한 이유는 만약 현재 노드의 값이 `startPoint.data`와 동일하다면 `runner`의 이전 노드의 `next` 값을 `runner.next` 가 가리키는 노드로 수정해야 하는데, 이전 노드의 값을 참조할 수 없기 때문이다.  
+
+만약 이전 노드를 조회할 수 있다면 다음과 같이 수정할 수 있다. 
+
+
+```java
+    void removeDuplicatesWithPointer() {
+        Node startPoint = header;
+        while (startPoint != null) { // 수정된 부분
+            Node runner = startPoint;
+            while (runner != null) { // 수정된 부분
+
+                if (runner.data == startPoint.data) { // 수정된 부분
+                    runner.prev = runner.next; // 수정된 부분  
+                } else {
+                    runner = runner.next;
+                }
+            }
+            startPoint = startPoint.next;
+        }
+    }
+```
+
+위 코드를 실행하는 클래스를 만든 후 실행하면 다음과 같다.  
+
+```java
+public class RemoveDumps {
+    public static void main(String[] args) {
+        LinkedList ll = new LinkedList();
+        ll.append(2);
+        ll.append(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+        ll.append(3);
+        ll.append(2);
+        ll.append(2);
+        ll.retrieve();
+        ll.removeDuplicatesWithPointer();
+        ll.retrieve();
+    }
+}
+```
+
+- 실행 결과
+
+```java
+2 -> 1 -> 2 -> 3 -> 4 -> 3 -> 2 -> 2
+2 -> 1 -> 3 -> 4
+```
+
+위 코드를 공간 복잡도와 시간 복잡도 관점에서 바라보면 버퍼를 사용하지 않기 때문에 공간복잡도는 O(1)이고, 시간복잡도는 `while` 문을 2번 사용하기 때문에 O(n^2) 이라고 볼 수 있다.  
 
 ----
 
