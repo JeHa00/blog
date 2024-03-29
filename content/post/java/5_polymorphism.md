@@ -1,7 +1,7 @@
 ---
 title: "자바의 다형적 참조, 추상 클래스 그리고 인터페이스"
-date: 2024-02-03T00:34:19+09:00
-draft: true
+date: 2024-03-15T00:34:19+09:00
+draft: false
 summary: 자바의 메모리 영역과 상속을 토대로 어떻게 다형성이 구현되는지, 다형성을 구현하는 방법 중 하나인 캐스팅, 그리고 효과적으로 다형성을 구현하기 위한 추상 클래스와 인터페이스에 대해 알아본다.  
 tags: ["java"]
 categories: "java"
@@ -172,7 +172,13 @@ java: incompatible types: example.Parent cannot be converted to example.Child
 
 ## 다운 캐스팅(Down casting)
 
+다운 캐스팅은 위에서 설명한 대로 **_부모 클래스 타입에 속한 참조 변수를 자식 클래스 타입으로 변경하는 것_** 을 말한다.  
+
+영구적으로 다운 캐스팅을 하는 방식이 있고, 일시적으로 하는 방식이 있다. 각 방식에 대해 알아보자.  
+
 ### 영구적 다운 캐스팅  
+
+어떻게 해서 영구적으로 가능한 것일까? **_바로 다운 캐스팅한 결과를 자식 클래스 타입으로 선언한 새로운 참조 변수에 담는 것이다._**
 
 `Parent` 타입을 `Child` 타입으로 다운 캐스팅하기 위해서는 생성된 인스턴스에 `Child` 인스턴스가 있어야 가능하다. 즉, `Child` 클래스의 인스턴스로 생성한 후, `Parent` 타입으로 참조 변수를 초기화해야 가능하다. 
 
@@ -226,6 +232,7 @@ Child child = x111; //
 
 **_그래서 동일한 참조값을 가지고 있어도, 인스턴스에 변환할 타입 정보가 존재한다면 가능하다는 걸 알 수 있다._** 
 
+### 다운 캐스팅 시도 시 오류 발생   
 
 만약 정보가 없다면 어떻게 될까?
 
@@ -283,18 +290,75 @@ public class ChildMain {
 
 ## 업 캐스팅(Up casting)  
 
-업 캐스팅은 생략할 수 있다.  
+이제는 반대로 업 캐스팅(up casting)에 대해 알아보자. 업 캐스팅은 **_자식 클래스 타입을 부모 타입으로 변경하는 것_** 을 말한다. 아래 업 캐스팅 코드를 확인해보자.  
 
-왜?
+```java
+package example;
+
+public class ChildMain {
+    public static void main(String[] args) {
+        // 자식 인스턴스를 자식 타입의 변수가 참조하는 경우
+        System.out.println("Child instance with Child type");
+        Child child1 = new Child();
+        Parent parent1_casted = (Parent) child1;
+        Parent parent2_casted = child1;
+        parent1_casted.parentMethod();
+        parent2_casted.parentMethod();
+
+        ...
+    }
+}
+```
+
+`parent1_casted` 와 `parent2_casted`가 업 캐스팅에 의해 생성된 참조 변수다. 이 참조 변수를 보면 `parent1_casted`는 `(Parent)`를 명시했고, `parent2_casted`는 `(Parent)`를 생략했다. **_업캐스팅은 (타입)을 생략할 수 있다. 다운캐스팅은 생략할 수 없다. 업캐스팅은 매우 자주 사용하기 때문에 생략을 권장한다.**_**
 
 
 ## 안전한 업캐스팅, 위험한 다운 캐스팅 그리고 주의사항 
 
+그러면 왜 업 캐스팅은 생략할 수 있고, 다운 캐스팅은 생략할 수 없을까?
 
-### 컴파일 오류 vs 런타임 오류  
+업 캐스팅의 경우 인스턴스를 생성하면 해당 타입의 상위 부모 타입은 함께 생성된다. 따라서 **_상위 타입으로만 변경하는 업캐스팅은 메모리 상에 인스턴스가 모두 존재하기 때문에 캐스팅을 생략할 수 있다._**
+
+하지만 다운 캐스팅의 경우, 인스턴스에 존재하지 않는 하위 타입으로 캐스팅할 경우 컴파일 오류와 런타임 오류 발생할 수 있다. 따라서 **_개발자가 이런 문제를 인지하고 사용해야 한다는 의미로 명시적으로 캐스팅을 해야한다._**
 
 
+### 컴파일 오류(compile error) vs 런타임 오류(runtime error)
 
+다운 캐스팅 시 발생하는 컴파일 오류와 런타임 오류에 대해 확인하기 전에 먼저 이 두 오류 간 차이에 대해 정리해보자.  
+
+컴파일 오류는 변수명 오타, 잘못된 클래스 이름, 변수 이름 등 자바 프로그램을 실행하기 전 컴파일 단계에서 발생하는 오류다. 그래서 오류지만 IDE에서 즉시 확인할 수 있기 때문에 안전하고 좋은 오류라고 볼 수 있다.  
+
+하지만 런타임 오류는 오류 이름대로 프로그램이 실행되고 있는 시점에 발생하는 오류다. 그래서 오류 중에서도 매우 안좋은 오류다. 왜냐하면 고객이 프로그램을 사용하는 중에 발생하기 때문이다. 이 오류는 IDE에서 즉시 확인할 수 없다.  
+
+&nbsp;
+
+### 다운 캐스팅의 컴파일 오류와 런타임 오류  
+
+다운 캐스팅 시 런타임 오류가 발생하는 경우는 [다운 캐스팅 시도 시 오류 발생](http://jeha00.github.io/post/java/5_polymorphism/#%EB%8B%A4%EC%9A%B4-%EC%BA%90%EC%8A%A4%ED%8C%85-%EC%8B%9C%EB%8F%84-%EC%8B%9C-%EC%98%A4%EB%A5%98-%EB%B0%9C%EC%83%9D) 경우를 확인하면 된다. 부모 클래스의 인스턴스를 생성한 후 자식 클래스 타입의 참조 변수에 담을려고 할 때 발생한다. 왜냐하면 부모 클래스의 인스턴스에는 자식 클래스의 인스턴스 정보가 없기 때문이다.  
+
+그렇다면 다운 캐스팅 시도 시 발생할 수 있는 컴파일 오류는 무엇이 있을까?
+
+이 포스팅 시작 시 언급했던 4가지 경우 중 한 가지인 '부모 인스턴스를 자식 타입의 변수가 참조하는 경우'의 코드를 보면 알 수 있다. 
+
+```java
+public class ChildMain {
+    public static void main(String[] args) {
+        ...
+
+        // 4) 부모 인스턴스를 자식 타입의 변수가 참조하는 경우
+        System.out.println("Parent instance with Child type");
+        Child child2 = new Parent(); // 컴파일 오류 발생
+    }
+}
+```
+
+그러면 `Child child2 = new Parent();` 코드에 빨간 밑줄이 생기면서 IDE에 아래 내용의 에러 내용이 생긴다.
+
+```java
+Incompatible types. Found: 'example.Parent', required: 'example.Child'
+```
+
+이 또한 `Parent` 인스턴스에는 `Child` 인스턴스 내용이 없기 때문에 발생하는 에러다.  
 
 
 &nbsp;
@@ -303,7 +367,75 @@ public class ChildMain {
 
 # instanceof
 
+### instanceof dmfh
 
+그러면 다운 캐스팅 시 위 에러들을 피하기 위해서는 **_참조 변수가 내가 원하는 클래스의 인스턴스 정보를 가지고 있는지 확인하는 게 필요하다. 이럴 때 사용하는게 `instanceof`다._**  
+
+`instanceof`를 사용하기 위한 매개변수는 다음과 같으며, `boolean` 값을 반환한다.  
+
+```java
+<인스턴스 참조값> instanceof <확인하려는 타입명>
+```
+
+아래 예시 코드를 보자. 
+
+```java
+package example;
+
+public class ChildMain {
+    public static void main(String[] args) {
+        // 자식 인스턴스를 자식 타입의 변수가 참조하는 경우
+        System.out.println("---- Child instance with Child type ----");
+        Child child1 = new Child();
+        System.out.println(child1 instanceof Child);
+        System.out.println(new Child() instanceof Child);
+
+        // 부모 인스턴스를 부모 타입의 변수가 참조하는 경우
+        System.out.println("\n---- Parent instance with Parent type ----");
+        Parent parent1 = new Parent();
+        System.out.println(parent1 instanceof Parent);
+        System.out.println(new Parent() instanceof Parent);
+
+        // 자식 인스턴스를 부모 타입의 변수가 참조하는 경우
+        System.out.println("\n---- Child instance with Parent type ----");
+        Parent parent2 = new Child();
+        System.out.println(parent2 instanceof Parent);
+        System.out.println(parent2 instanceof Child);
+        System.out.println(new Child() instanceof Parent);
+    }
+}
+```
+
+위 코드를 실행하면 아래와 같다.  
+
+```java
+---- Child instance with Child type ----
+true  // child1 instanceof Child 의 결과
+true  // new Child() instanceof Child 의 결과
+
+---- Parent instance with Parent type ----
+true  // parent1 instanceof Parent 의 결과
+true  // new Parent instanceof Parent 의 결과
+
+---- Child instance with Parent type ----
+true  // parent2 instanceof Parent 의 결과
+true  // new Child() instanceof Parent 의 결과
+true  // parent2 instanceof Child 의 결과
+```
+
+- `child1` 참조 변수는 `Child` 클래스의 인스턴스 정보를 가지고 있으므로 `true`다. 그리고 `new Child()`도 당연히 `True`다.
+
+- `parent1` 참조 변수는 `Parent` 클래스의 인스턴스 정보를 가지고 있으므로 `true`다. 그리고, `new Parent()`도 당연히 `True`다.
+
+- `parent2` 참조 변수는 `Parent` 클래스의 인스턴스 정보를 가지고 있으므로 `true`다. 
+
+아직 언급하지 않은 2가지가 있다. `new Child() instanceof Parent`와 `parent2 instanceof Child` 다. 이 2가지의 출력 결과는 `true`다. 
+
+- `Child` 클래스는 `Parent` 클래스를 상속받고 있고, 상속받는 클래스의 인스턴스를 생성한다는 걸 확인했다.
+
+- `parent2` 참조 변수는 타입이 `Parent`이지만 `Child`의 인스턴스 정보를 가지고 있는 걸 확인했다. 왜냐하면 `parent2`는 `Child` 인스턴스의 참조값을 가지고 있기 때문이다.  
+
+그래서 `instanceof`를 통해 상속하는 클래스의 인스턴스 정보를 가지고 있는 걸 확인했다.  
 
 &nbsp;
 
