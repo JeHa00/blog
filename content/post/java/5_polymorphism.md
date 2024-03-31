@@ -441,12 +441,59 @@ true  // parent2 instanceof Child 의 결과
 
 ---
 
-
 # 다형성과 메서드 오버라이딩  
 
-다형성을 이루는 이론에는 '다형적 참조'와 '메서드 오버라이딩'이 있다고 했다. 메서드 오버라이딩에서 꼭 기억해야할 점은 **_오버라이딩 된 메서드가 항상 우선권을 가진다_** 는 점이다.  
+다형성을 이루는 이론에는 '다형적 참조'와 '메서드 오버라이딩'이 있다고 했다. 이번 단원에서 다룰 내용이 바로 '메서드 오버라이딩'이다. 다형성과 메서드 오버라이딩에서 꼭 기억해야할 점은 **_오버라이딩된 메서드가 항상 우선권을 가진다_** 는 점이다. 오버라이딩(Overriding)은 단어의 의미처럼 기존 기능을 덮어 새로운 기능을 재정의하는 것이다. 이것이 다형성과 어떻게 연결되냐면 _자식의 메서드를 정의할 때 부모 메서드를 오버라이딩하여 정의했고, 자식 인스턴스 참조값을 가지고 있는 부모 타입의 참조 변수를 생성한 후, 이 참조 변수로 오버라이딩된 메서드를 실행하면 부모 타입이어도 오버라이딩된 자식 메서드가 실행된다는 것이다._  
+
+그러면 코드를 통해 이 내용을 확인해보자.
 
 
+- 부모 클래스
+
+    ```java
+    public class Parent {
+        public void method() {
+            System.out.println("I am a parent");
+        }
+    }
+    ```
+
+- 자식 클래스
+
+    ```java
+    public class Child extends Parent {
+        
+        @Override
+        public void method() {
+            System.out.println("I am a child");
+        }
+    }
+    ```
+
+- 인스턴스 생성
+
+    ```java
+    public class ChildMain {
+        public static void main(String[] args) {
+            Parent parent1 = new Parent();
+            parent1.introduce();
+
+            Parent parent2 = new Child();
+            parent2.introduce();
+        }
+    }
+    ```
+
+- 실행 결과
+
+```java
+I am a parent
+I am a child
+```
+
+
+
+실행 결과를 보면 `parent1`를 통해 `introduce` 메서드를 실행할 때와 `parent2`를 통해 `introduce`를 실행한 결과가 다른 걸 확인할 수 있다. **_위 결과를 통해서 생성된 인스턴스에 부모의 메서드를 오버라이딩한 자식의 메서드가 있다면 참조 변수가 부모 타입이어도 오버라이딩한 자식의 메서드가 실행된다는 걸 알 수 있다._**  
 
 
 &nbsp;
@@ -456,6 +503,7 @@ true  // parent2 instanceof Child 의 결과
 
 # 다형성 활용
 
+이번 단원에서는 다형성의 두 가지 중요한 이론인 '다형적 참조'와 '메서드 오버라이딩'을 활용하여 코드를 수정해가며 그 필요성을 느껴보자. 
 
 &nbsp;
 
@@ -464,6 +512,7 @@ true  // parent2 instanceof Child 의 결과
 
 # 추상 클래스
 
+이전 단원에서 언급한 문제를 해결하기 위해서 사용하는 방법이 '추상 클래스'다.  **_부모 클래스로 제공하지만, 실제로 생성되면 안되는 클래스_** 가 추상 클래스(abstract class)라 한다. 그래서 **_추상적인 개념만 제공하기 때문에 실체인 인스턴스가 존재하지 않는다._**
 
 &nbsp;
 
