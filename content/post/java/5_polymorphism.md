@@ -505,14 +505,250 @@ I am a child
 
 이번 단원에서는 다형성의 두 가지 중요한 이론인 '다형적 참조'와 '메서드 오버라이딩'을 활용하여 코드를 수정해가며 그 필요성을 느껴보자. 
 
+예시 코드로 4개의 클래스를 만들었다. 
+
+- PotatoPizza
+
+    ```java
+    package pizza;
+
+    public class PotatoPizza {
+
+        public void addIngredient() {
+            System.out.println("감자 재료를 추가합니다.");
+        }
+    }
+    ```
+
+- SweetPotatoPizza
+
+    ```java
+    package pizza;
+
+    public class SweetPotatoPizza {
+
+        public void addIngredient() {
+            System.out.println("고구마 무스 재료를 추가합니다.");
+        }
+    }
+    ```
+
+- AllMeatPizza
+
+    ```java
+    package pizza;
+
+    public class AllMeatPizza {
+
+        public void addIngredient() {
+            System.out.println("고기 6종류 재료를 추가합니다.");
+        }
+    }
+    ```
+
+- BaconCheddarCheesePizza
+
+    ```java
+    package pizza;
+
+    public class BaconCheddarCheesePizza {
+
+        public void addIngredient() {
+            System.out.println("베이컨과 체다 치즈를 추가합니다.");
+        }
+    }
+    ```
+
+그리고 각 클래스의 인스턴스를 생성한 후, 메인 재료를 추가하는 작업을 수행한다. 
+
+
+- PizzaMain
+
+    ```java
+    package pizza;
+
+    public class PizzaMain {
+
+        public static void main(String[] args) {
+            PotatoPizza potatoPizza = new PotatoPizza();
+            SweetPotatoPizza sweetPotatoPizza = new SweetPotatoPizza();
+            BaconCheddarCheesePizza baconCheddarCheesePizza = new BaconCheddarCheesePizza();
+            AllMeatPizza allMeatPizza = new AllMeatPizza();
+
+            potatoPizza.addIngredient();
+            sweetPotatoPizza.addIngredient();
+            baconCheddarCheesePizza.addIngredient();
+            allMeatPizza.addIngredient();
+        }
+    }
+    ```
+
+- 실행 결과
+
+    ```java
+    감자 재료를 추가합니다.
+    고구마 무스 재료를 추가합니다.
+    베이컨과 체다 치즈를 추가합니다.
+    고기 6종류 재료를 추가합니다.
+    ```
+
+하지만 각 피자마다 새로운 피자를 만든다는 작업 안내와 종료 안내를 하고 싶습니다. 그래서 아래와 같이 코드를 추가했습니다. `.ingredient()` 메서드를 실행하기 전과 후 출력문을 추가했습니다.
+
+```java
+System.out.println("새로운 피자를 만듭니다.");
+potatoPizza.addIngredient();
+System.out.println("새로운 피자를 만들었습니다.");
+
+System.out.println("새로운 피자를 만듭니다.");
+sweetPotatoPizza.addIngredient();
+System.out.println("새로운 피자를 만들었습니다.");
+
+System.out.println("새로운 피자를 만듭니다.");
+baconCheddarCheesePizza.addIngredient();
+System.out.println("새로운 피자를 만들었습니다.");
+
+System.out.println("새로운 피자를 만듭니다.");
+allMeatPizza.addIngredient();
+System.out.println("새로운 피자를 만들었습니다.");
+```
+
+위 코드는 계속 반복된다는 문제점이 있다. 이 반복을 줄이기 위해서 어떤 방법들을 사용할 수 있을까?
+
+1) `addIngredient()`에 시작 및 종료 가이드문을 추가한다.  
+2) 위 인스턴스들을 매개변수로 받으면서, 시작 및 종료 가이드문까지 포함하는 새로운 메서드를 생성한다.
+3) 인스턴스들을 한 배열에 담아 반복문을 통해 호출한다.  
+
+1번 방법의 경우, `addIngredient()` 메서드의 역할을 넘어버리기 때문에 1번 방법은 제외한다. 그러면 2번과 3번 방법만을 생각할 수 밖에 없는데, 매개변수를 선언할 때 이 매개변수의 타입을 어떻게 해야하며, 배열 선언 시에도 타입을 어떻게 해야할까? 위 피자 종류들의 타입은 다 다르기 때문에 현재 코드로는 불가능하다. 코드로 확인해보자.  
+
+```java
+package pizza;
+
+public class PizzaMain {
+
+    public static void main(String[] args) {
+        ...
+        makeNewPizza(SweetPotatoPizza); // 타입이 다른 피자를 makeNewPizza에 넘겼다.
+    }
+
+    public static void makeNewPizza(PotatoPizza pizza) {
+        System.out.println("새로운 피자를 만듭니다.");
+        pizza.addIngredient();
+        System.out.println("새로운 피자를 만들었습니다.");
+    }
+}
+```
+
+위와 같이 코드를 작성하면 컴파일 에러가 발생한다. 그 이유는 타입이 다르기 때문이다. 이는 다른 피자 타입도 마찬가지다.  
+
+```java
+'makeNewPizza(pizza.PotatoPizza)' in 'pizza.PizzaMain' cannot be applied to '(pizza.SweetPotatoPizza)'
+```
+
+
+**_이렇게 타입이 다른 것들을 하나의 타입으로 취급하여 특정 작업을 수행할 필요가 있을 때 '다형적 참조'를 사용하면 된다._**
+
+위 클래스들을 자식 클래스로 만들도록 부모 클래스 `Pizza`를 만들어보자.  
+
+```java
+package pizza;
+
+public class Pizza {
+
+    public void addIngredient() {}
+}
+```
+
+그러면 자식 클래스로 만들기 위해 예를 들어 `PotatoPizza`만 예시로 나타낸다. `extends` 예약어를 사용하여 `Pizza` 부모 클래스를 상속받고, `@Override`를 사용해서 부모 메서드를 오버라이딩한다. 다른 피자 타입들도 상속받는다.
+
+```java
+package pizza;
+
+public class PotatoPizza extends Pizza {
+
+    @Override
+    public void addIngredient() {
+        System.out.println("감자 재료를 추가합니다.");
+    }
+}
+```
+
+그러면 `makeNewPizza` 메서드의 파라미터 타입을 `Pizza`로 수정하여 다음과 같이 코드 반복을 줄여보자.  
+
+- 수정된 코드
+    ```java
+    package pizza;
+
+    public class PizzaMain {
+
+        public static void main(String[] args) {
+            ...
+            makeNewPizza(potatoPizza);
+            makeNewPizza(sweetPotatoPizza);
+            makeNewPizza(baconCheddarCheesePizza);
+            makeNewPizza(allMeatPizza);
+        }
+
+        public static void makeNewPizza(Pizza pizza) { // 매개변수 타입 수정  
+            System.out.println("새로운 피자를 만듭니다.");
+            pizza.addIngredient();
+            System.out.println("새로운 피자를 만들었습니다.");
+        }
+    }
+    ```
+
+- 실행 결과  
+
+    ```java
+    새로운 피자를 만듭니다.
+    감자 재료를 추가합니다.
+    새로운 피자를 만들었습니다.
+    ...
+    새로운 피자를 만듭니다.
+    고기 6종류 재료를 추가합니다.
+    새로운 피자를 만들었습니다.
+    ```
+
+이렇게 해서 2번 방법을 적용했다. 아직 메서드가 인스턴스 갯수만큼 반복되는 걸 확인했다. 이를 줄이기 위해서 3번 방법인 배열을 적용해보자. 배열도 선언 시 타입을 입력해야하기 때문에 파이썬의 리스트와 달리 동일한 타입들로만 담을 수 있다. 
+
+```java
+Pizza[] pizzaList = {potatoPizza, sweetPotatoPizza, baconCheddarCheesePizza, allMeatPizza};
+
+for (Pizza pizza : pizzaList) {
+    makeNewPizza(pizza);
+}
+```
+
+동일한 결과를 얻을 수 있고, 반복횟수가 줄어들고, 가독성이 더 향상된 걸 확인할 수 있다!
+
+
+### 문제점
+
+하지만 위 코드들로는 메서드 오버라이딩에 대해 강제성이 없기 때문에, 놓칠 경우 자식의 메서드가 아닌 부모의 메서드가 호출되어 실행되는 문제점이 존재한다. 
+
+그래서 나온 게 '추상 클래스'다. 이에 대해 다음 단원에서 알아보자.  
+
+
+
 &nbsp;
 
 ---
 
-
 # 추상 클래스
 
-이전 단원에서 언급한 문제를 해결하기 위해서 사용하는 방법이 '추상 클래스'다.  **_부모 클래스로 제공하지만, 실제로 생성되면 안되는 클래스_** 가 추상 클래스(abstract class)라 한다. 그래서 **_추상적인 개념만 제공하기 때문에 실체인 인스턴스가 존재하지 않는다._**
+이전 단원에서 언급한 문제를 해결하기 위해서 사용하는 방법이 '추상 클래스(abstract class)'다. **_추상적인 개념만 제공하기 때문에 실체인 인스턴스가 존재하지 않고, 오직 상속을 목적으로만 사용되기 때문에 부모 클래스 역할을 한다._** 그래서 반드시 오버라이딩해야 하는 메서드를 이 부모 클래스에 정의할 수 있다.  
+
+**_추상 클래스를 만들 때는 반드시 수행해야하는 규칙 3가지_** 가 있다.
+
+- 추상 클래스, 추상 메서드를 정의할 때 '추상'이 들어가는 뭐든지 `abstract` 키워드를 붙여야 한다.  
+- 추상 메서드가 하나라도 있는 클래스는 추상 클래스로 선언해야 한다.  
+    - 그렇지 않으면 컴파일 오류가 발생한다.  
+    - 추상 메서드는 메서드 바디가 없어서 불완전한 메서드다.  
+- 추상 메서드는 자식 클래스가 반드시 오버라이딩해서 사용해야 한다.
+
+
+## 순수 추상 클래스
+
+위 코드들에서는 추상 메서드가 하나인 경우만을 확인했다. 이번에는 모든 메서드가 추상 메서드인 '순수 추상 클래스' 경우를 확인해보자.  
 
 &nbsp;
 
