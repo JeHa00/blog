@@ -259,8 +259,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 ## 1) main 메서드 시작
 
-
-### main 스택 프레임 생성 후, heap 영역에 인스턴스 생성
+#### main 스택 프레임 생성 후, heap 영역에 인스턴스 생성
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/36e62986-dfda-43ff-82d0-ca9f71a7e842" width="90%">}}
 
@@ -273,8 +272,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     ```java
     =========== main start ===========
     ```
-
-&nbsp;
 
 ### getName 스택 프레임 생성
 
@@ -291,8 +288,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     =========== main start ===========
     --- Enter in getName ---
     ```
-
-&nbsp;
 
 ### getCount 스택 프레임 생성 및 제거 
 
@@ -317,8 +312,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/60cdedd0-b830-422a-a061-1c9ac9cda86b" width="90%">}}
 
-&nbsp;
-
 ### getName 스택 프레임 제거  
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/5e62d0ca-376b-47da-91ff-5d31ce414bb0" width="90%">}}
@@ -337,7 +330,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     Car name = k3
     ```
 
-&nbsp;
 
 
 ### 힙 영역에서 Car 인스턴스 제거  
@@ -347,11 +339,9 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/5ff663fb-edfe-4f83-add8-d2cac658dbd9" width="90%">}}
 
 
-&nbsp;
-
 ## 2) method1 시작
 
-### method1 스택 프레임 생성
+#### method1 스택 프레임 생성
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/c136fbd3-bf85-4e94-a9c1-fbebd5f65e20" width="90%">}}
 
@@ -367,16 +357,12 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     ========== method1 start ==========
     ```
 
-&nbsp;
-
 ### 힙 영역에서 인스턴스 생성
 
 15. method1이 실행되면서 `new` 예약어를 사용하여 Car 클래스의 인스턴스가 heap 영역에 생성된다.   
 16. 인스턴스 객체에 대한 참조값이 `car2` 변수에 담겨진다.  
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/fbae1c96-e2b2-4f2d-8040-241b4697890e" width="90%">}}
-
-&nbsp;
 
 ### getPrice 스택 프레임 생성
 
@@ -393,8 +379,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     ========== method1 start ==========
     --- Enter in getPrice ---
     ```
-
-&nbsp;
 
 ### getCount 스택 프레임 생성 및 제거 
 
@@ -420,8 +404,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/be5af219-665f-4161-8c76-a0cf0290f425" width="90%">}}
 
-&nbsp;
-
 ### getPrice 스택 프레임 제거
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/a7f110f9-1462-4ccc-89e3-8d8a46b8547b" width="90%">}}
@@ -442,11 +424,9 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     Car price = 20000
     ```
 
-&nbsp;
-
 ## 3) method2 시작 
 
-### method2와 callClassMethod 스택 프레임 생성
+#### method2와 callClassMethod 스택 프레임 생성
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/bacbbae5-4eac-4c6f-a09e-9d20785543c2" width="90%">}}
 
@@ -470,8 +450,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     ========== method2 start ==========
     --- Enter in callClassMethod ---
     ```
-
-&nbsp;
 
 ### getCount 스택 프레임 생성 및 제거 후, callClassMethod 스택 프레임 제거  
 
@@ -501,9 +479,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 27. 스택 프레임에서 `getCount()` 스택 프레임이 사라진 후 `callClassMethod()` 스택 프레임이 사라진다. 
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/69277716-a0bc-4f85-84e8-a9bd6572b721" width="90%">}}
-
-
-&nbsp;
 
 ### getPrice 스택 프레임 생성 및 제거  그리고 getCount 스택 프레임 생성 및 제거  
 
@@ -539,8 +514,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     생성된 총 차 댓수: 2
     Car price = 20000
     ```
-
-&nbsp;
 
 ### getName 스택 프레임 생성 그리고 getCount 스택 프레임 생성 및 제거
 
@@ -579,11 +552,10 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/2f904c31-4788-4a2b-9566-b8949d5296ce" width="90%">}}
 
-&nbsp;
 
 ## 4) 각 메서드 종료
 
-### method2 스택 프레임 제거 후, method1 스택 프레임 제거
+#### method2 스택 프레임 제거 후, method1 스택 프레임 제거
 
 36. `method2()` 실행이 다 끝났기 때문에 `method2()` 스택 프레임이 사라진다. 
 
@@ -639,15 +611,12 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
     ========== method1 end ==========
     ```
 
-&nbsp;
 
 ### 힙 영역에 인스턴스 제거  
 
 38. 이에 따라 `car2` 참조 변수가 가지고 있는 참조값의 대상인 인스턴스가 힙 영역에서 GC에 의해 삭제된다. 이 인스턴스를 참조하는 게 이제 아무도 없기 때문이다.  
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/ba74bcaf-d7df-41ed-85b3-67cc323f1121" width="90%">}}
-
-&nbsp;
 
 ### main 스택 프레임 제거 그리고, 프로그램 종료  
 
@@ -681,8 +650,6 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 40. 프로그램이 종료된다.  
 
 
-
-
 &nbsp;
 
 ---
@@ -691,7 +658,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 그러면 위 학습한 내용을 변수의 관점에서 정리해보자.  
 
-### 지역변수(매개변수 포함)
+#### 지역변수(매개변수 포함)
 위 내용에서 학습한 대로 지역 변수는 스택 영역에 있는 스택 프레임 안에 보관된다. 호출된 메서드가 종료되면 스택 프레임도 제거 되는데 이때 해당 스택 프레임에 포함된 지역 변수도 함께 제거된다. 따라서 지역 변수는 생존 주기가 짧다.
 
 ### 인스턴스 변수

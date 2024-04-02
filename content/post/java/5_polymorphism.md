@@ -114,13 +114,11 @@ java: incompatible types: example.Parent cannot be converted to example.Child
 
 메서드 실행의 경우 `child1.parentMethod()`의 실행은 `Child` 클래스에서 `parentMethod()`를 찾지 못하자, 부모인 `Parent` 클래스로 올라가서 찾아 실행한 경우다.
 
-#
 
 ### 2) 부모 인스턴스를 부모 타입의 변수가 참조하는 경우
 
 인스턴스를 생성할 때 `Parent`의 인스턴스만 생성되고, `Child`의 인스턴스는 생성되지 않은 경우다. 여기서 `parent1.childMethod()`를 실행하면 `childMethod()`를 찾을 수 없다는 에러가 발생한다. 
 
-#
 
 ### 3) 자식 인스턴스를 부모 타입의 변수가 참조하는 경우
 
@@ -136,7 +134,6 @@ java: incompatible types: example.Parent cannot be converted to example.Child
 
 `Parent` 클래스가 만약 `GrandParent` 라는 클래스를 상속받으면 `Parent` 클래스에서 `GrandParent` 클래스 방향으로 조회한다. 하지만 현재 위 코드에 따르면 `Parent`가 끝이기 때문에 위로 올라갈 클래스는 없다. 
 
-#
 
 ### 4) 부모 인스턴스를 자식 타입의 변수가 참조하는 경우
 
@@ -176,8 +173,6 @@ java: incompatible types: example.Parent cannot be converted to example.Child
 다운 캐스팅은 위에서 설명한 대로 **_부모 클래스 타입에 속한 참조 변수를 자식 클래스 타입으로 변경하는 것_** 을 말한다.  
 
 영구적으로 다운 캐스팅을 하는 방식이 있고, 일시적으로 하는 방식이 있다. 각 방식에 대해 알아보자.  
-
-&nbsp;
 
 
 ### 영구적 다운 캐스팅  
@@ -236,8 +231,6 @@ Child child = x111; //
 
 **_그래서 동일한 참조값을 가지고 있어도, 인스턴스에 변환할 타입 정보가 존재한다면 가능하다는 걸 알 수 있다._** 
 
-&nbsp;
-
 ### 영구적 다운 캐스팅 시도 시 오류 발생   
 
 만약 정보가 없다면 어떻게 될까?
@@ -260,8 +253,6 @@ class example.Parent cannot be cast to class example.Child
 변환할 수 없다고 뜬다.
 
 **_항상 다운 캐스팅을 할 때에는 인스턴스에 변환하려는 타입의 인스턴스 정보가 있는지 먼저 확인하자._**
-
-&nbsp;
 
 ### 일시적 다운 캐스팅
 
@@ -292,9 +283,6 @@ public class ChildMain {
 **_이렇게 일시적 다운 캐스팅을 사용하면 별도의 변수 없이 인스턴스의 자식 타입의 기능을 사용할 수 있다._**
 
 
-&nbsp;
-
-
 ### 업 캐스팅(Up casting)  
 
 이제는 반대로 업 캐스팅(up casting)에 대해 알아보자. 업 캐스팅은 **_자식 클래스 타입을 부모 타입으로 변경하는 것_** 을 말한다. 아래 업 캐스팅 코드를 확인해보자.  
@@ -319,9 +307,6 @@ public class ChildMain {
 
 `parent1_casted` 와 `parent2_casted`가 업 캐스팅에 의해 생성된 참조 변수다. 이 참조 변수를 보면 `parent1_casted`는 `(Parent)`를 명시했고, `parent2_casted`는 `(Parent)`를 생략했다. **_업캐스팅은 (타입)을 생략할 수 있다. 다운캐스팅은 생략할 수 없다. 업캐스팅은 매우 자주 사용하기 때문에 생략을 권장한다.**_**
 
-
-&nbsp;
-
 ### 안전한 업캐스팅, 위험한 다운 캐스팅 그리고 주의사항 
 
 그러면 왜 업 캐스팅은 생략할 수 있고, 다운 캐스팅은 생략할 수 없을까?
@@ -330,8 +315,6 @@ public class ChildMain {
 
 하지만 다운 캐스팅의 경우, 인스턴스에 존재하지 않는 하위 타입으로 캐스팅할 경우 컴파일 오류와 런타임 오류 발생할 수 있다. 따라서 **_개발자가 이런 문제를 인지하고 사용해야 한다는 의미로 명시적으로 캐스팅을 해야한다._**
 
-&nbsp;
-
 ### 컴파일 오류(compile error) vs 런타임 오류(runtime error)
 
 다운 캐스팅 시 발생하는 컴파일 오류와 런타임 오류에 대해 확인하기 전에 먼저 이 두 오류 간 차이에 대해 정리해보자.  
@@ -339,8 +322,6 @@ public class ChildMain {
 컴파일 오류는 변수명 오타, 잘못된 클래스 이름, 변수 이름 등 자바 프로그램을 실행하기 전 컴파일 단계에서 발생하는 오류다. 그래서 오류지만 IDE에서 즉시 확인할 수 있기 때문에 안전하고 좋은 오류라고 볼 수 있다.  
 
 하지만 런타임 오류는 오류 이름대로 프로그램이 실행되고 있는 시점에 발생하는 오류다. 그래서 오류 중에서도 매우 안좋은 오류다. 왜냐하면 고객이 프로그램을 사용하는 중에 발생하기 때문이다. 이 오류는 IDE에서 즉시 확인할 수 없다.  
-
-&nbsp;
 
 ### 다운 캐스팅의 컴파일 오류와 런타임 오류  
 
@@ -790,8 +771,6 @@ for (Pizza pizza : pizzaList) {
 }
 ```
 
-&nbsp;
-
 ### 문제점 두 가지
 
 **_첫 번째, 추상적인 개념에 불과한 `Pizza` 클래스로 인스턴스 생성이 가능하다._** 내가 정의한 `Pizza`는 실제로 존재하는 물체가 아닌 '추상적인 개념'에 불과하다. 실제로 존재하는 건 베이컨 피자, 고구마 피자 등등이 있는 것이다. 더 예시를 들자면 `Animal`이라는 클래스를 만들었다고 하자. 이 동물 클래스는 실체로 존재하는 게 아닌 추상적인 개념으로만 존재한다. 이 동물의 예시들인 개, 고양이, 소가 존재하는 것이다. 그런데 이 `Animal`로 실제로 존재하는 인스턴스를 생성한다면 사용할 일이 없기 때문에, 메모리만 낭비하게 된다. _누군가 실수로 `new` 키워드로 인스턴스를 생성하는 걸 막을 수 없다._
@@ -841,7 +820,6 @@ for (Pizza pizza : pizzaList) {
 public abstract void addIngredient();
 ```
 
-&nbsp;
 
 ### 컴파일 에러: Abstract methods cannot have a body
 
@@ -857,7 +835,6 @@ public abstract void addIngredient() {};
     Abstract methods cannot have a body
     ```
 
-&nbsp;
 
 ### 컴파일 에러: 자식 클래스가 추상 메서드를 오버라이딩하지 않는 경우  
 
@@ -891,9 +868,6 @@ public class PotatoPizza extends Pizza {
     ```
 
 그리고 추상 메서드를 사용한다면 굳이 `@Override`를 사용할 필요가 없는 것 같다.  
-
-
-&nbsp;
 
 
 ### 컴파일 에러: 일반 클래스 안에 추상 메서드 선언하기
