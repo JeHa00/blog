@@ -43,7 +43,7 @@ a = 1
 자바는 특정 이름을 가진 그릇을 먼저 만든 후 값을 담는다면 파이썬은 먼저 만들어진 값을 가진 그릇에 특정 이름으로 라벨링한다는 그림이다. [[TIL] Python basic 40: Call by object reference](https://jeha00.github.io/post/python/python_basic_40_callbyobjectreference/#1-object-reference)을 참고하자.
 
 
-&nbsp;
+---
 
 ## 초기화 작업이 필요한 이유?
 
@@ -72,7 +72,8 @@ public class Variable {
 
 그래서 이걸 학습한 관점에서 파이썬을 봤을 때 파이썬에서는 별도의 초기화 작업이 없는 이유가 내 셍긱이지만 어차피 초기화를 반드시 해야해서 그런 게 아닌가 싶다.
 
-&nbsp;
+
+---
 
 ## 항상 초기화를 직접 해줘야 하나?
 
@@ -140,8 +141,7 @@ graduated: false
 - `String`: null
 - `boolean`: false
 
-
-&nbsp;
+---
 
 
 ## 변수 명명법
@@ -157,7 +157,7 @@ graduated: false
 - 상수의 경우 snake case처럼 언더바(_)를 사용하지만 대문자로만 입력한다.  
 - 패키지는 모두 소문자를 사용한다.  
 
-&nbsp;
+---
 
 ## 변수의 종류
 
@@ -200,7 +200,7 @@ graduated: false
 
 모든 변수 종류를 모두 암기하기는 어렵다. 하지만 자주 사용하는 변수 종류들의 범위만이라도 외워두자.  
 
-&nbsp;
+---
 
 ## 자바는 변수를 어떻게 전달할까?
 
@@ -259,11 +259,6 @@ public class StudentMain {
     }
 }
 ```
-
-&nbsp;
-
-
-&nbsp;
 
 ### 기본형과 참조형의 변수 대입 🔆
 
@@ -449,6 +444,3 @@ student3.grade: 0.0
 
 
 > 🫡 **_자바는 항상 변수의 값을 복사해서 대입한다._**
-
-
-&nbsp;
