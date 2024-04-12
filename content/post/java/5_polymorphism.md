@@ -897,24 +897,136 @@ public class PotatoPizza extends Pizza {
 - 추상 클래스, 추상 메서드를 정의할 때 '추상'이 들어가는 뭐든지 `abstract` 키워드를 붙여야 한다.  
 - 추상 메서드가 하나라도 있는 클래스는 추상 클래스로 선언해야 한다.  
     - 추상 메서드는 메서드 바디가 없는 메서드로, 불완전한 메서드다. 
+    - 추상 클래스에는 추상 메서드와 추상이 아닌 메서드 모두 존재할 수 있다.  
 - 추상 메서드는 메서드 바디가 없기 때문에 자식 클래스가 반드시 오버라이딩해서 사용해야 한다.
 
 위 사항들을 지키지 않으면 앞선 에러 코드 사례처럼 컴파일 오류가 발생한다.  
 
 
-## 순수 추상 클래스
-
-위 코드들에서는 추상 메서드가 하나인 경우만을 확인했다. 이번에는 모든 메서드가 추상 메서드인 '순수 추상 클래스' 경우를 확인해보자.  
-
 &nbsp;
 
 ---
 
+# 순수 추상 클래스
 
-# 인터페이스  
+위 코드들에서는 추상 메서드가 하나인 경우만을 확인했다. 이번에는 모든 메서드가 추상 메서드인 '순수 추상 클래스' 경우를 확인해보자.  
+
+```java
+package pizza;
+
+public abstract class Pizza {
+
+    public abstract void addIngredient();
+    public abstract void bake();
+}
+```
+
+이 `Pizza` 추상 클래스를 상속받는 자식 클래스는 부모 메서드를 모두 오버라이딩해야 한다.  
+
+### 순수 추상 클래스의 특징
+
+- 인스턴스 생성 불가능  
+- 상속 시 모든 메서드를 오버라이딩해야 한다.  
+- 주로 다형성을 위해 사용된다.  
 
 
+### 인터페이스  
 
+하지만, 자바에서는 이 순수 추상 클래스를 더 편리하게 사용할 수 있도록 '인터페이스'라는 개념을 제공한다. '인터페이스'는 클래스명 앞에 예약어로 `abstract class`가 아니라 `interface` 키워드를 사용하면 된다. 
+
+메서드는 `public abstract` 키워드를 생략할 수 있다.  
+
+```java
+package pizza;
+
+public interface Pizza {
+
+    void addIngredient();
+    void bake();
+}
+```
+
+인터페이스는 위 순수 추상 클래스의 특징에 몇 가지 편의 기능이 추가된다.  
+
+- 인터페이스의 메서드는 모두 `public`, `abstract`이다. 즉 모두 추상 메서드다.  
+- 메서드는 `public abstract`를 생략할 수 있다. 생략이 권장된다.  
+- 인터페이스는 다중 상속(구현)을 지원한다.  
+
+**_클래스, 추상 클래스, 인터페이스는 프로그램 코드, 메모리 구조상 모두 동일하다._**  
+
+### 인터페이스는 상속이 아닌 구현이라 한다.  
+
+부모 자식 관계에 있는 클래스들을 설명할 때는 부모 클래스를 상속받는 클래스를 자식 클래스라고 한다. 하지만, 인터페이스라면 이 인터페이스를 구현한 클래스라고 한다.  '상속'이라는 단어 대신 '구현'이라는 단어를 사용한다. 상속은 이름 그대로 부모의 기능을 물려받는 것이 목적이다. 하지만, 인터페이스는 모든 메서드가 추상 메서드이기 때문에, 물려받을 수 있는 기능이 없고, 오히려 모든 메서드를 자식이 오버라이딩해서 기능을 구현해야 한다. 따라서 인터페이스는 메서드 이름만 있는 설계도이고, 이 설계도를 토대로 하위 클래스에서 구현해야 한다.  
+
+그래서 보면 '상속'과 '구현' 단어만 다를 뿐 일반 상속 구조와 동일하게 작동한다.  
+
+
+### 인터페이스의 구현  
+
+그래서 부모 자식 관계에 있는 클래스를 규정 짓는 예약어는 `extends` 였지만, 인터페이스를 구현하는 클래스 관계를 규정 짓는 예약어는 `implements`다.  
+
+
+- `Pizza` 인터페이스
+
+    ```java
+    package pizza;
+
+    public interface InterfacePizza {
+        public abstract void addIngredient();
+
+        public abstract void bake();
+    }
+    ```
+
+- `PotatoPizza` 
+
+    ```java
+    package pizza;
+
+    public class PotatoPizza implements InterfacePizza {
+
+        public void addIngredient() {
+            System.out.println("감자 재료를 추가합니다.");
+        }
+
+        @Override
+        public void bake() {
+            System.out.println("피자를 굽습니다.");
+        }
+    }
+    ```
+
+그리고 인터페이스의 인스턴스를 생성하려고 한다면?
+
+- `PizzaMain` 클래스
+
+    ```java
+    package pizza;
+
+    public class PizzaMain {
+
+    public static void main(String[] args) {
+        InterfacePizza interfacePizza = new InterfacePizza();
+        }
+    }
+    ```
+
+- 컴파일 에러
+
+    ```java
+    'InterfacePizza' is abstract; cannot be instantiated
+    ```
+
+위와 같이 컴파일 에러가 발생하고, 인스턴스를 생성할 수 없다는 에러가 발생한다.  
+
+
+### 인터페이스를 사용하는 이유  
+
+추상 클래스는 추상 메서드가 아닌 메서드도 존재할 수 있으므로 나중에 메서드를 끼어넣을 수 있다. 
+
+하지만, 인터페이스에 있는 모든 메서드는 추상 메서드이기 때문에, 이 인터페이스를 구현하는 클래스들은 반드시 추상 메서드를 오버라이딩해야 하는 강제성을 부여한다(제약).  (첫 번째 이유)
+
+자바에서는 부모 클래스로 하나만 가질 수 있지만 인터페이스를 사용하면 부모를 다중 구현(다중 상속)이 가능하다. (두 번째 이유)  
 
 &nbsp;
 
