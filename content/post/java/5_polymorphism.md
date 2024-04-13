@@ -1117,3 +1117,89 @@ public interface Pizza {
 
 # 인터페이스와 추상 클래스 함께 사용하기  
 
+- `AbstractAnimal` 추상 클래스  
+
+    ```java
+    public abstract class AbstractAnimal {
+        public abstract void sound();
+        public void move() {
+            System.out.println("동물이 이동합니다.");
+        }
+    }
+    ```
+
+- `Fly` 인터페이스
+
+    ```java
+    public interface Fly {
+        void fly();
+    }
+    ```
+
+- `Cat` 자식 클래스: 추상 클래스만 받음
+
+    ```java
+    public class Cat extends AbstractAnimal{
+
+        @Override
+        public void sound() {
+            System.out.println("냐옹~");
+        }
+    }
+    ```
+
+- `Crow` 자식 클래스: 추상 클래스와 인터페이스 모두 받음  
+
+    ```java
+    public class Crow extends AbstractAnimal implements Fly{
+        @Override
+        public void sound() {
+            System.out.println("까악 까악");
+        }
+
+        @Override
+        public void fly() {
+            System.out.println("날개짓");
+        }
+    }
+    ```
+
+- `AnimalMain`: 자식 클래스들의 인스턴스를 생성하고, 메서드를 추가로 만들어 메서드 매개변수 타입을 추상 클래스와 인터페이스로 지정  
+
+    ```java
+    public class AnimalMain {
+        public static void main(String[] args) {
+            Cat cat = new Cat();
+            Crow crow = new Crow();
+
+            soundAnimal(cat);
+            soundAnimal(crow);
+
+            flyAnimal(crow);
+        }
+
+        public static void soundAnimal(AbstractAnimal animal) {
+            System.out.println("===== Enter in soundAnimal =====");
+            animal.sound();
+        }
+
+        public static void flyAnimal(Fly animal) {
+            System.out.println("===== Enter in flyAnimal =====");
+            animal.fly();
+        }
+    }
+    ```
+
+- 실행 결과
+
+    ```java
+    ===== Enter in soundAnimal =====
+    냐옹~
+    ===== Enter in soundAnimal =====
+    까악 까악
+    ===== Enter in flyAnimal =====
+    날개짓
+    ```
+
+
+위 실행 결과를 보면 매개변수의 타입은 추상 클래스와 인터페이스지만, 메서드 오버라이딩으로 인스턴스의 메서드가 실행되는 걸 알 수 있다.  
