@@ -1026,8 +1026,94 @@ public interface Pizza {
 
 하지만, 인터페이스에 있는 모든 메서드는 추상 메서드이기 때문에, 이 인터페이스를 구현하는 클래스들은 반드시 추상 메서드를 오버라이딩해야 하는 강제성을 부여한다(제약).  (첫 번째 이유)
 
-자바에서는 부모 클래스로 하나만 가질 수 있지만 인터페이스를 사용하면 부모를 다중 구현(다중 상속)이 가능하다. (두 번째 이유)  
+그리고, 자바에서는 부모 클래스로 하나만 가질 수 있지만 인터페이스를 사용하면 부모를 다중 구현(다중 상속)이 가능하다. 인터페이스는 다중 상속을 허용하는 이유는 모두 다 추상 메서드이기 때문이다. 인터페이스가 아닌 클래스이고, 다중 상속되는 상황이고, 두 부모 클래스 모두 각각 동일한 메서드 시그니처를 가진다면 상속 받는 자식 클래스는 어떤 것을 상속받는 것일지 결정하기 어렵다. 그리고 클래스 계층 구조가 매우 복잡해지기 때문에, 클래스의 다중 상속을 허용하지 않다. 하지만 인터페이스는 모두 다 메서드 바디가 없기 때문에 어떤 인터페이스의 메서드를 구현해도 문제가 되지 않는다.  (두 번째 이유)  
+
+파이썬에서는 인터페이스가 존재하지 않고, 여러 개의 클래스를 다중 상속 가능하다.  
 
 &nbsp;
 
 ---
+
+# 다중 구현 예시  
+
+그러면 인터페이스를 사용할 때 두 번째 장점인 '다중 구현'에 대해 알아보자!
+
+- `InterfaceA` 인터페이스
+
+    ```java
+    public interface InterfaceA {
+        void methodA();
+        void methodCommon();
+    }
+    ```
+
+- `InterfaceB` 인터페이스
+
+    ```java
+    public interface InterfaceB {
+        void methodB();
+        void methodCommon();
+    }
+    ```
+
+위 코드를 보면 `interface`를 사용하여 인터페이스를 정의한다. 이 안에 정의한 메서드들은 다 추상 메서드 이므로 `public abstract`는 생략한다.
+
+- `Child` 클래스
+
+    ```java
+    public class Child implements InterfaceA, InterfaceB{
+
+        @Override
+        public void methodA() {
+            System.out.println("Child.methodA");
+        }
+
+        @Override
+        public void methodB() {
+            System.out.println("Child.methodB");
+        }
+
+        @Override
+        public void methodCommon() {
+            System.out.println("methodCommon");
+        }
+    }
+    ```
+
+인터페이스이므로 다중 구현이 가능하다. 
+
+- `ChildMain` 클래스  
+    ```java
+    public class ChildMain {
+        public static void main(String[] args) {
+            InterfaceA interfaceA = new Child();
+            interfaceA.methodA();
+            interfaceA.methodCommon();
+
+            InterfaceB interfaceB = new Child();
+            interfaceB.methodB();
+            interfaceB.methodCommon();
+        }
+    }
+    ```
+
+인터페이스 또한 생성된 인스턴스 안에 정보가 생성되기 때문에 자식 클래스의 인스턴스를 인터페이스 타입으로 지정할 수 있다.  
+
+- 실행 결과
+
+    ```java
+    Child.methodA
+    methodCommon
+    Child.methodB
+    methodCommon
+    ```
+그리고 인터페이스 안에 정의한 추상 메서드들 모두 오버라이딩 되었기 때문에 위와 같은 출력 결과를 확인할 수 있다. 
+
+
+
+&nbsp;
+
+---
+
+# 인터페이스와 추상 클래스 함께 사용하기  
+
