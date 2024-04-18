@@ -121,7 +121,7 @@ categories: "java"
 
 자바에서는 `interface` 키워드를 사용한 인터페이스를 통해 역할을 정의하고, 이 `interface`를 받아서 `implements` 키워드를 사용하여 구현한 클래스를 구현체로 사용한다.  
 
-❗️ 역할을 정의할 때 반드시 인터페이스를 사용하지 않아도 되지만, 여태 학습한 것처럼 인터페이스를 권장한다.
+❗️ **_역할을 정의할 때 반드시 인터페이스를 사용하지 않아도 되지만, 여태 학습한 것처럼 인터페이스를 권장한다._**
 
 
 ### 그러면 역할과 구현을 분리하여 생기는 단점은?
@@ -132,14 +132,14 @@ categories: "java"
 - 컴퓨터의 입출력 장치들의 연결 및 사용 방법이 바뀐다면?  
 - 대본 자체가 변경된다면? 
 
-**_그래서 실제 세계에 있는 것들을 역할과 구현 관점에서 분석한 후, 다형성을 사용해서 소프트웨어 세계에 추상화한다. 이때 인터페이스 변경이 일어나지 않도록 안정적으로 잘 설계하는 게 중요하다❗️❗️_**
+**_그래서 실제 세계에 있는 것을 역할과 구현 관점에서 분석한 후, 다형성을 사용해서 소프트웨어 세계에 추상화한다. 이때 인터페이스 변경이 일어나지 않도록 안정적으로 잘 설계하는 게 중요하다❗️❗️_**
 
 
 ### 협렵이라는 관점에서
 
 이전 포스팅과 위 내용에서는 클라이언트와 하나의 역할 간 관계에 대해서만 고려했다. 이번에는 여러 개의 역할 간 관계에 대해서 고려해보자.
 
-제공하는 서비스를 이용하는 역할에 속하면 클라이언트, 서비스를 제공하는 역할에 속하면 서버라 생각할 수 있다. 그런데, 이 서버 또한 다른 서버로부터 제공하는 서비스를 이용할 수 있기 때문에 서버이자 클라이언트가 된다. 
+제공하는 서비스를 이용하는 역할(요청하는 역할)에 속하면 클라이언트, 서비스를 제공하는 역할(응답하는 역할)에 속하면 서버라 생각할 수 있다. 그런데, 이 서버 또한 다른 서버로부터 제공하는 서비스를 이용할 수 있기 때문에 서버이자 클라이언트가 된다. 
 
 - 클라이언트 -> 서버 
 
@@ -153,23 +153,110 @@ categories: "java"
 
 # 코드 예시
 
-### 클라이언트가 역할이 아닌 구현에 의존한다면?
-
 그러면 이제 코드를 통해 이해해보자. 처음에는 역할과 구현을 나누지 않고 코드를 작성해본 후, 다형성을 활용하여 역할과 구현을 분리해본다.  
 
-```java
+### 클라이언트가 역할이 아닌 구현에 의존한다면?
 
-```
+포테이토 피자와 주문자(클라이언트) 클래스를 만든다. 
+
+- `Order` 클래스
+
+    ```java
+    package pizza;
+
+    public class OrderClient {
+
+        private PotatoPizza potatoPizza;
+
+        public void order(PotatoPizza potatoPizza) {
+            System.out.println("포테이토 피자를 주문합니다.");
+            this.potatoPizza = potatoPizza;
+        }
+
+        public void delivery() {
+            potatoPizza.startDelivery();
+            potatoPizza.onDelivery();
+            potatoPizza.arrive();
+        }
+    }
+    ```
+
+- `PotatoPizza` 클래스
+
+    ```java
+    package pizza;
+
+    public class PotatoPizza {
+        public void addIngredient() {
+            System.out.println("감자 재료를 추가합니다.");
+        }
+
+        public void startDelivery() {
+            System.out.println("배달을 시작합니다.");
+        }
+
+        public void onDelivery() {
+            System.out.println("배달 중입니다.");
+        }
+
+        public void arrive() {
+            System.out.println("배달이 도착했습니다.");
+            System.out.println("주문자가 피자를 받았습니다");
+        }
+    }
+    ```
+
+- `OrderMain` 클래스
+
+    ```java
+    package pizza;
+
+    public class OrderMain {
+        public static void main(String[] args) {
+            OrderClient orderClient = new OrderClient();
+            PotatoPizza potatoPizza = new PotatoPizza();
+
+            orderClient.order(potatoPizza);
+            orderClient.delivery();
+        }
+    }
+    ```
+
+- 실행 결과
+
+    ```java
+    포테이토 피자를 주문합니다.
+    배달을 시작합니다.
+    배달 중입니다.
+    배달이 도착했습니다.
+    주문자가 피자를 받았습니다
+    ```
+
+위와 같이 설계를 한다면 `PotatoPizza` 외 피자를 주문할 수가 없다. 유연한 설계가 불가능하다.  
 
 ### 다형성을 적용한다면?
 
-```java
+이제 다형성을 적용한다면 코드를 어떻게 변경해야할지 생각해보자.  
 
-```
+먼저 다형성을 적용하기 위해 역할과 구현 단계를 나눠야 한다. 역할은 자바에서 인터페이스를 통해 만들고, 구현은 이 인터페이스를 받아 만든다. 
 
-이제 다형성을 적용해보자. 
+- 인터페이스로 `Pizza` 인터페이스를 만든다. 
 
-다형성을 적용해보니 새로운 객체 종류가 추가되어도 코드에서 수정되는 게 없다. 왜냐하면 인터페이스인 역할만 유지하면 되기 때문이다. 
+- 위 `PotatoPizza` 클래스에서 만들었던 메서드들을 `Pizza` 인터페이스 내부에 추상 메서드로 각각 선언한다.
+
+- 이 인터페이스를 상속받아 `PotatoPizza` 를 만든다.  
+
+- `PotatoPizza` 내부에 인터페이스 내부의 추상 메서드를 오버라이딩한다. 
+
+- `orderClient` 클래스의 인스턴스 변수와 인스턴스 메서드의 타입을 `PotatoPizza`에서 `Pizza` 인터페이스로 수정한다. 
+
+- `OrderMain`에서 `PotatoPizza` 구현체의 인스턴스를 생성하고, 이 인스턴스의 타입은 `Pizza` 인터페이스로 한다.
+
+- 이후에 생성하는 피자 클래스들의 인스턴스 타입도 `Pizza` 인터페이스로 한다. 그러면 `order` 메서드에서 매개변수로 받을 때 타입에러가 발생하지 않고, 메서드 오버라이딩에 의해서 인스턴스의 메서드가 실행된다. 
+
+- `Pizza` 타입의 인스턴스 변수에 담겨진 참조값을 통해 heap 영역에 생성된 인스턴스를 참조한다. 
+
+위 수정들을 통해 '역할'과 '구현'이 분리되어 유연한 설계가 가능해진다.
 
 &nbsp;
 
