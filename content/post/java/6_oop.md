@@ -241,20 +241,88 @@ categories: "java"
 먼저 다형성을 적용하기 위해 역할과 구현 단계를 나눠야 한다. 역할은 자바에서 인터페이스를 통해 만들고, 구현은 이 인터페이스를 받아 만든다. 
 
 - 인터페이스로 `Pizza` 인터페이스를 만든다. 
-
 - 위 `PotatoPizza` 클래스에서 만들었던 메서드들을 `Pizza` 인터페이스 내부에 추상 메서드로 각각 선언한다.
 
-- 이 인터페이스를 상속받아 `PotatoPizza` 를 만든다.  
+    ```java
+    package pizza;
 
+    public interface Pizza {
+
+        void startDelivery();
+
+        void onDelivery() ;
+
+        void arrive();
+    }
+
+    ```
+
+- 이 인터페이스를 상속받아 `PotatoPizza` 를 만든다.  
 - `PotatoPizza` 내부에 인터페이스 내부의 추상 메서드를 오버라이딩한다. 
+
+    ```java
+    package pizza;
+
+    public class PotatoPizza implements Pizza{
+
+        public void startDelivery() {
+            System.out.println("배달을 시작합니다.");
+        }
+
+        public void onDelivery() {
+            System.out.println("배달 중입니다.");
+        }
+
+        public void arrive() {
+            System.out.println("배달이 도착했습니다.");
+            System.out.println("주문자가 피자를 받았습니다");
+        }
+    }
+    ```
+
 
 - `orderClient` 클래스의 인스턴스 변수와 인스턴스 메서드의 타입을 `PotatoPizza`에서 `Pizza` 인터페이스로 수정한다. 
 
 - `OrderMain`에서 `PotatoPizza` 구현체의 인스턴스를 생성하고, 이 인스턴스의 타입은 `Pizza` 인터페이스로 한다.
 
+    ```java
+    package pizza;
+
+    public class OrderClient {
+
+        private Pizza pizza;
+
+        public void order(Pizza pizza) {
+            System.out.println("포테이토 피자를 주문합니다.");
+            this.pizza = pizza;
+        }
+
+        public void delivery() {
+            pizza.startDelivery();
+            pizza.onDelivery();
+            pizza.arrive();
+        }
+    }
+    ```
+
 - 이후에 생성하는 피자 클래스들의 인스턴스 타입도 `Pizza` 인터페이스로 한다. 그러면 `order` 메서드에서 매개변수로 받을 때 타입에러가 발생하지 않고, 메서드 오버라이딩에 의해서 인스턴스의 메서드가 실행된다. 
 
-- `Pizza` 타입의 인스턴스 변수에 담겨진 참조값을 통해 heap 영역에 생성된 인스턴스를 참조한다. 
+- `Pizza` 타입의 인스턴스 변수에 담겨진 참조값을 통해 heap 영역에 생성된 인스턴스를 참조한다. 이 인스턴스의 참조값에 접근하여 인스턴스 메서드의 메모리 위치를 확인 후, 인스턴스 메서드를 실행한다. 
+
+    ```java
+    package pizza;
+
+    public class OrderMain {
+        public static void main(String[] args) {
+            OrderClient order = new OrderClient();
+            Pizza potatoPizza = new PotatoPizza();
+
+            order.order(potatoPizza);
+            order.delivery();
+        }
+    }
+
+    ```
 
 위 수정들을 통해 '역할'과 '구현'이 분리되어 유연한 설계가 가능해진다.
 
@@ -264,12 +332,16 @@ categories: "java"
 
 # OCP(Open-Closed Principle) 원칙
 
+강의를 들으면서 OCP 원칙에 대해 처음 들었는데, 객체 지향 설계 원칙 중 하나다. 
 
+- Open for extension: 새로운 기능의 추가나 변경 사항이 생겼을 때, 기존 코드는 확장할 수 있어야 한다.  
+- Closed for modification: 기존의 코드는 수정되지 않아야 한다. 
 
+위 두 가지 내용을 상충되는 걸로 보인다. 이렇게 상충되는 내용을 발견하면 관점이 다르다는 걸 기억하자. 
 
-## 코드 예시  
+**_첫 번째 'Open for extenstion'은 새로운 객체가 추가될 수 있어야 한다는 걸 의미한다._** 위에 pizza 예시처럼 새로운 피자 종류를 언제든지 추가할 수 있어야 한다. 어떻게? **_바로 인터페이스를 통해서 추가한다는 의미다._** 
 
-### 예시 1
+그 다음으로 **_두 번째 'Closed for modification'은 첫 번째 원칙에 따라 기존 코드는 확장할 수 있지만, 이 기존 코드에 클라이언트 코드는 포함되어 있지 않아서 클라이언트 코드는 수정하지 않는다._** 단, 새로운 객체를 생성하여 클라이언트에게 전달하는 부분은 수정될 수 밖에 없다.
 
+위 두 가지 모두 '다형성'을 활용하여 '역할'과 '구현'을 잘 분리하면 위 원칙을 준수할 수 있다. 대부분의 코드를 유지할 수 있고, 새로운 객체가 필요하면 구현 부분을 늘리면 된다.   
 
-### 예시 2 

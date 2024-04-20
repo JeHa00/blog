@@ -279,7 +279,7 @@ JVM의 `Runtime Data Area`는 아래와 같은 메모리 영역을 가지고 실
 
 {{<figure src="https://github.com/JeHa00/image/assets/78094972/bb71ddba-87d0-430e-91bc-de00f79c0419" width="90%">}}
 
-4. `car1.getName` 호출한다. `car1`에 담겨진 참조값을 통해 힙 영역에 있는 인스턴스에 접근하고, 이 인스턴스 안에서 `getName` 메서드의 메모리 위치 정보를 얻어 접근한다. 
+4. `car1.getName` 호출한다. `car1`에 담겨진 참조값을 통해 힙 영역에 있는 인스턴스에 접근하고, 이 인스턴스 안에서 `getName` 메서드의 메모리 위치 정보를 얻어 접근한다. 이후 인스턴스 메서드 호출하는 순서는 생략한다.
 5. `getName` 스택 프레임이 스택 영역에 쌓인다. 이 때 getName 호출에 사용한 해당 인스턴스의 참조값이 `getName` 스택 프레임에 저장된다.  
 6. `getName()` 메서드를 실행하기 위해 메서드 영역에 있는 `getName()` 인스턴스 메서드 코드를 읽고, `println` 출력문부터 실행된다.
 
