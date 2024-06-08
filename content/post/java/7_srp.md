@@ -1,6 +1,6 @@
 ---
 title: "객체 지향 5원칙 중 단일 책임 원칙(SRP)을 예제 코드에 적용해보자"
-date: 2024-02-08T01:28:04+09:00
+date: 2024-04-15T01:28:04+09:00
 draft: false
 summary: 객체 지향 5원칙인 SOLID 중 단일 책임 원칙인 Single Responsibility principle을 자바 코드에 적용해보자.
 tags: ["java"]
