@@ -11,7 +11,9 @@ categories: "java"
 
 이번 포스팅에서는 자바의 JVM(Java Virtual Machine) 메모리 구조가 어떤 영역으로 구성되어 있고, 자바의 메서드와 변수들이 이 메모리에 어떻게 생성되고 사라지는지 알아본다.  
 
-JAVA 프로그램을 실행하면 컴퓨터 메모리에는 OS, JVM, other applications 들이 올라간다. 그러면  `.java` 파일을 `javac` 컴파일러에 의해서 `.class` 파일로 컴파일된다. 그러면 JVM의 `Class Loader System`에 의해서 이 `.class` 파일을 읽어 `Runtime Data Area` 에 여러 값들이 올라가고, 생성되면서 실행된다. 
+JAVA 프로그램을 실행하면 컴퓨터 메모리에는 OS, JVM, other applications 들이 올라간다. 그러면  `.java` 파일을 `javac` 컴파일러에 의해서 `.class` 파일로 컴파일된다. `.class`는 바이트 코드다. 그러면 JVM의 `Class Loader System`에 의해서 이 `.class` 파일을 읽어 `Runtime Data Area` 에 여러 값들이 올라가고, 생성되면서 실행된다. 
+
+> .java ---(javac compiler)---> .class (byte code) --- 
 
 그래서 오늘 배울려고 하는 자바의 메모리 구조가 JVM의 이 `Runtime Data Area` 메모리 공간 구조에 대해 이야기하려는 것이다.
 
