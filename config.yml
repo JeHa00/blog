@@ -64,8 +64,8 @@ params:
     imageHeight: 120
     imageTitle: my image
     buttons:
-      - name: About
-        url: /me/
+      # - name: About
+      #   url: /me/
       - name: Github
         url: https://github.com/jeha00/
       - name: Archive
@@ -129,9 +129,9 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - name: About
-      url: /me/
-      weight: 10
+    # - name: About
+    #   url: /me/
+    #   weight: 10
     - name: Archive
       url: /archives/
       weight: 30
