@@ -7,8 +7,6 @@ tags: ["java"]
 categories: "java"
 ---
 
-# 1. 불변객체
----
 
 ### 기본형과 참조형 리뷰
 
