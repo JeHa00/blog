@@ -1,8 +1,8 @@
 ---
-title: "Object 클래스가 있어야 하는 이유"
+title: "모든 객체가 Object를 상속받아야 하는 이유"
 date: 2024-06-18T22:50:08+09:00
 draft: false
-summary: Object 클래스가 왜 있어야 하는지를 정리해 보자.
+summary: Object 클래스가 있어야 하는 이유를 정리해보자.
 tags: ["java"]
 categories: "java"
 ---
