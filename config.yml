@@ -19,7 +19,7 @@ params:
   title: "JeHa00 DevLog"
   description: "선한 마음과 꾸준함이 비범함을 만든다"
   keywords: [Blog, Portfolio, PaperMod]
-  # author: ["Me"] # multiple authors
+  author: ["Me"] # multiple authors
   images: /apple-touch-icon.png
   DateFormat: "January 2, 2006"
   defaultTheme: light # dark, light
@@ -64,8 +64,8 @@ params:
     imageHeight: 120
     imageTitle: my image
     buttons:
-      # - name: About
-      #   url: /me/
+      - name: About
+        url: /me/
       - name: Github
         url: https://github.com/jeha00/
       - name: Archive
@@ -109,7 +109,7 @@ params:
 
   cover:
     hidden: true # hide everywhere but not in structured data
-    hiddenInList: true # hide on list pages and home
+    hiddenInList: false # hide on list pages and home
     hiddenInSingle: true # hide on single page
 
   # editPost:
@@ -129,9 +129,9 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    # - name: About
-    #   url: /me/
-    #   weight: 10
+    - name: About
+      url: /me/
+      weight: 10
     - name: Archive
       url: /archives/
       weight: 30
@@ -157,6 +157,7 @@ markup:
         codeFences: true 
         guessSyntax: false
         lineNos: true
-        style: dracula
+        style: monokai
+
 
 

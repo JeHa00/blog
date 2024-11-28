@@ -1,6 +1,6 @@
 ---
 title: "[Data structure] ArrayList를 설명해줄게!"
-date: 2024-09-14T12:56:04+09:00
+date: 2024-08-14T12:56:04+09:00
 draft: true
 summary: 
 tags: ["java", "datastructure"]
@@ -27,11 +27,11 @@ categories: "data structure"
 &nbsp;
 
 
-# 배열(array)의 특징
+# 1. 배열(array)의 특징
 ---
 
 
-## 인덱스 
+## 1.1 인덱스 
 
 배열의 가장 큰 특징을 꼽자면 '인덱스'라 생각한다. 배열은 인덱스를 사용할 수 있다. 인덱스를 사용하면 시간복잡도 O(1)로 여러 작업을 수행할 수 있다. 원하는 자료를 바로 찾을 수 있고, 찾아서 수정할 수 있고, 입력할 수 있다. 
 
@@ -57,13 +57,13 @@ categories: "data structure"
 이런 식으로 **한 번의 연산을 통해 바로 필요한 위치를 구할 수 있어서** 시간 복잡도 O(1)이다.
 
 
-## 배열의 검색 
+## 1.2 배열의 검색 
 
 하지만, 인덱스가 있어도 배열에서 필요한 값을 찾을 때는 각 위치에 접근해 데이터를 확인해야 한다. 배열의 크기에 비례해서 오래 걸리므로 시간 복잡도 O(n)이다.
 
 
 
-## 배열의 데이터 추가 
+## 1.3 배열의 데이터 추가 
 
 또한, 인덱스가 있어서 데이터를 추가할 때 오래 걸리기도 한다. 배열에서 데이터를 추가하는 경우는 아래 3가지로 분류할 수 있다. 
 
@@ -181,14 +181,14 @@ void addFirst(int[] arr, int newValue) {
 
 
 
-## 배열의 제일 큰 단점 
+## 1.4 배열의 제일 큰 단점 
 
 무엇보다 배열의 큰 단점은 크기를 바꿀 수 없다는 점이다. 미리 여유있게 큰 크기로 지정할 수 있지만, 더 데이터가 필요하면 이후 새로 생기는 데이터를 추가할 수 없다는 문제점이 생긴다. 그렇다고 너무 큰 배열을 처음부터 확보하면 메모리가 많이 낭비된다. 
 
 그래서 배열처럼 처음부터 정적으로 크기가 정해져 있는 것이 아니라, 언제든지 길이를 늘릴 수 있는 자료구조인 리스트(list)가 필요하다.
 
 
-## 배열 정리
+## 1.5 배열 정리
 - 배열의 장점
     - 순서가 있어서 인덱스를 사용할 수 있다. 
     - 값을 중복으로 저장할 수 있다.  
@@ -201,11 +201,11 @@ void addFirst(int[] arr, int newValue) {
 
 &nbsp;
 
-# 배열리스트(ArrayList)
+# 2. 배열리스트(ArrayList)
 
 ---
 
-## 배열과 리스트
+## 2.1 배열과 리스트
 
 ### 배열과 리스트의 차이
 
@@ -233,20 +233,24 @@ void addFirst(int[] arr, int newValue) {
     - 인덱스 조회: 인덱스를 사용하므로 O(1)
     - 데이터 검색: 모든 배열을 순회하며 일치 여부를 확인하기 때문에 O(n)
 
+&nbsp;
 
-## 배열리스트 구현해보기
+# 3. 배열리스트 구현해보기
+
+---
 
 그러면 배열리스트를 직접 간략히 구현해보자. 직접 만드는 배열리스트를 `MyArrayList` 라고 명명하겠다. 
 
 `MyArrayList`의 전체 코드는 이 포스팅 제일 마지막에 둔다.
 
 
-### 필드 속성 정의하기 
+## 3.1 필드 속성 정의하기 
 
 ```java
-    private static final int DEFAULT_CAPACITY = 10;
-    private Object[] elementData;
-    private int size;
+private static final int DEFAULT_CAPACITY = 5;
+private Object[] elementData;
+private static final Object[] EMPTY_ELEMENTDATA = {};
+private int size;
 ```
 
 1. 내부 속성에 외부에서 접근하지 못하도록 모두 `private`으로 지정한다. 
@@ -259,17 +263,222 @@ void addFirst(int[] arr, int newValue) {
     - 제네릭을 사용한 `E[]`로 선언이 불가능하다. 
 4. `size`: 현재 `elementData` 저장된 요소의 총개수
 
+여기서 주목할 것은 `size` 변수다. size는 실제 elementData의 크기와 다르다는 것이다. 다음과 같은 `Object[] elementData`가 있다고 하자.
 
 
-### 생성자
+||||||
+|---|---|---|---|---|---|---|---|---|---|
+|index| 0 | 1 | 2 | 3 | 4 | 5| 6 | 7 | 8 |
+| value | x100 | x104 | x108 | x112 | null| null | null | null | null |
+
+위 배열의 크기는 9이지만, 실제로 값이 있는 개수는 4개다. 그래서 `size`의 값은 4다. 현재 보유하고 있는 요소의 개수 정보를 알면 좋은 이유는 리스트는 여유 있게 배열 크기를 증가시키기 때문에, 정확한 수량을 알 수 없다는 문제가 있는데 이 변수를 사용해 실제 요소 개수를 알 수 있다.
+- 이 `size` 값으로 배열의 크기를 늘릴 지를 이 값을 기준으로 판단한다.
+- null 값이 있는 위치를 피해서 접근할 수 있으므로 `NullPointerException` 발생을 막을 수 있다는 것이다. 값을 추가할 때나 삭제할 때 배열은 한 방향으로 밀어내는 작업이 필요한데, 이 `size`를 사용해서 작업을 수행할 수 있다.
+- 새로 추가할 값의 인덱스를 의미하기도 하다.
 
 
-### grow() 메서드 
+## 3.2 생성자
+
+```java
+public MyArrayList() {
+    elementData = new Object[DEFAULT_CAPACITY];
+};
+
+public MyArrayList(int initialCapacity) {
+    if (initialCapacity > 0) {
+        this.elementData = new Object[initialCapacity];
+    } else if (initialCapacity == 0) {
+        this.elementData = EMPTY_ELEMENTDATA;
+    } else {
+        throw new IllegalArgumentException("Illegal Capacity: "+
+                                            initialCapacity);
+    }
+}
+```
+
+자바의 ArrayList를 보면 오버로딩을 사용해 생성자에 인자가 있는 경우와 없는 경우 모두 존재한다. 인자가 있으면 정수형 인자 값만큼 배열의 크기를 결정하지만, 없으면 기본으로 설정된 크기(DEFAULT_CAPACITY)로 결정된다. 만약 음수면 예외를 발생시키도록 설계한다.
+
+### 유의사항: 제네릭 기반 배열 생성을 하지 않는 이유 
+
+여기서 유의해야할 사항은 `new Object[]` 다. `new E[]`를 하는게 나중에 타입 캐스팅을 하지 않아도 된다' 라고 생각할 수 있지만, 제네릭에는 `new` 예약어를 사용할 수 없다. 그 이유는 _제네릭은 런타임 시, 이레이저에 의해 타입 정보가 사라지므로 런타임에 타입 정보가 필요한 생성자에는 사용할 수 없다._ 만약 제네릭 기반으로 생성하는 코드를 작동하면 컴파일 오류가 발생한다. 그래서 모든 데이터를 담을 수 있는 `Object`를 그대로 사용해야 한다.
+
+
+## 3.3 grow() 메서드 
+
+```java
+private void grow() {
+    elementData = Arrays.copyOf(elementData, elementData.length * 2);
+}
+```
+
+이 메서드가 배열과 리스트의 가장 큰 차이점인 동적 크기 변화를 만든다. 이 메서드는 다음과 같은 조건일 때 실행된다.
+
+```java
+if (elementData == size) {
+    grow()
+}
+```
+
+현재 보유하고 있는 요소 개수가 배열 크기와 동일하면 실행해 크기를 동적으로 늘린다. 
+
+
+## 3.4 add 구현하기
+
+add는 자료를 추가하는데 사용하는데 `add(E e)`와 `add(int index, E e)` 메서드가 존재한다.
+
+```java
+public void add(E e) {
+    add(size, e)
+}
+
+
+public void add(int index, E e) {
+    if (size == elementData.length) {
+        grow();
+    }
+
+    shiftFromLeftToRight(index);
+    elementData[index] = e;
+    size++;
+}
+
+
+public void shiftFromLeftToRight(int index) {
+    for (int i = size; i > index; i--) {
+        elementData[i] = elementData[i - 1];
+    }
+}
+```
+
+### add(int index, E e) 메서드 
+
+- index 위치에 e를 추가하는 메서드다.
+- `shiftFromLeftToRight()` 메서드
+    - index 위치에 빈 공간을 만들어 값을 추가하려면 요소를 뒷쪽으로 이동시켜야 한다. 
+    - 그림으로 보면 왼쪽에서 오른쪽으로 이동시켜야 할 때 이 메서드를 사용한다.
+    - 옮기기 전 요소의 최대 인덱스는 'size - 1'이고 오른쪽으로 이동하므로 `int i = size`에서 시작한다.
+- size의 값이 elementData의 길이와 동일하면 grow() 메서드를 실행한다. 
+- 여기서 주목할 점은 size를 인덱스로 사용해서 새로 추가하는 데이터가 들어갈 인덱스를 의미한다.
+- 데이터가 새로 추가되어 size의 값을 증가시키면 이후 다시 새로 추가되는 데이터의 인덱스를 의미한다.
+- 아래 배열 상태에서 인덱스 1에 값을 추가한다고 하자. (length: 5, size: 3)
+    ||||||
+    |---|---|---|---|---|---|
+    |index| 0 | 1 | 2 | 3 | 4 |
+    | value | 'A' | 'B' | 'C' | null | null|
+    - `shiftFromLeftToRight()`에 의해서 값이 오른쪽으로 밀린다.
+    ||||||
+    |---|---|---|---|---|---|
+    |index| 0 | 1 | 2 | 3 | 4 |
+    | value | 'A' | 'B' | 'C' -> 'B' | null -> 'C' | null|
+    - 그 다음 값을 추가한다. (length:5, size: 4)
+    ||||||
+    |---|---|---|---|---|---|
+    |index| 0 | 1 | 2 | 3 | 4 |
+    | value | 'A' | 'D' | 'B' | 'C' | null|
+
+### add(E e) 메서드 
+index를 입력받지 않으면 제일 마지막에 데이터를 넣는다.
+
+위 상태에서 add(E e) 메서드를 실행하면 size가 3을 의미하므로 인덱스 3에 새로운 요소가 추가된다.
+(length: 5, size: 4)
+||||||
+|---|---|---|---|---|---|
+|index| 0 | 1 | 2 | 3 | 4 |
+| value | 'A' | 'B' | 'C' | null -> 'D' | null|
 
 
 
+## 3.5 remove 구현하기 
 
-## 배열리스트 전체 코드
+```java
+public E remove(int index) {
+    E oldValue = get(index);
+
+    shiftFromRightToLeft(index);
+    elementData[--size] = null;
+    return oldValue;
+}
+
+public boolean remove(E e) {
+    int index  = indexOf(e);
+
+    if (index == -1) return false;
+
+    remove(index);
+
+    return true;
+
+}
+
+public void shiftFromRightToLeft(int index) {
+    for (int i = index; i < size; i++) {
+        elementData[i] = elementData[i + 1];
+    }
+}
+
+public int indexOf(E e) {
+    for (int i = 0; i < size; i++) {
+        if (e.equals(elementData[i])) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
+remove는 요소를 삭제하는데 사용하며, `remove(int index)` 와 `remove(E e)` 가 있다. 
+
+### remove(int index) 메서드
+
+이 메서드는 특정 인덱스의 요소를 삭제합니다. add() 메서드 방식을 거꾸로 구현하면 된다.
+
+삭제의 경우, 삭제한 인덱스 이후 요소들을 앞으로 댕겨야 하므로 `shiftFromRightToLeft()` 메서드를 사용한다. 이 메서드도 size 변수를 사용한다. 단 `shiftFromLeftToRight()`와 달리 인덱스가 커지는 방향으로 진행한다.
+
+사용 예시를 보자.
+
+||||||
+|---|---|---|---|---|---|
+|index| 0 | 1 | 2 | 3 | 4 |
+| value | 'A' | 'B' | 'C' | 'D' | null|
+
+- 위 상태(크기: 5, size: 4)에서 remove(1)을 실행한다.
+
+    ||||||
+    |---|---|---|---|---|---|
+    |index| 0 | 1 | 2 | 3 | 4 |
+    | value | 'A' | 'B' -> 'C' | 'C' -> 'D' | 'D' -> null | null|
+
+
+- 결과 (크기: 5, size: 3)
+
+    ||||||
+    |---|---|---|---|---|---|
+    |index| 0 | 1 | 2 | 3 | 4 |
+    | value | 'A' | 'C' | 'D' | null | null|
+
+
+
+### remove(E e) 메서드
+
+이 메서드는 특정 요소의 값을 기준으로 삭제한다. 하지만 내부 코드를 보면 다음 순서로 진행된다.
+- `indexOf()` 메서드를 사용해 `E e`가 위치한 인덱스 값을 얻는다.
+- 얻은 인덱스 값을 `remove(int index)`에 전달해 삭제하고 `true`를 반환한다.
+- 만약 얻은 인덱스 값이 -1이면 `false`를 반환한다.
+
+
+### indexOf(E e) 메서드 
+
+- indexOf() 메서드는 전달한 인자와 제일 첫 번째로 일치하는 요소의 인덱스를 반환한다. 
+- 일치 여부는 `equals()` 메서드를 사용하는데, 이 메서드의 기준은 `e` 객체 내부에서 오버라이딩한 것을 기준으로 사용한다. 
+- 여기서 `equals()`를 사용하는 이유는 논리적으로 같은 것을 찾기 때문이다(동등성). 논리적으로 같아도 동일하지 않을 수 있기 때문이다. 바로 동일한 것을 찾고 싶다면 `==`을 사용한다.
+
+## getter / setter
+
+
+&nbsp;
+
+# 배열리스트 전체 코드
+---
 
 ```java
 public class MyArrayList<E> {
@@ -315,16 +524,6 @@ public class MyArrayList<E> {
         }
     }
 
-    public E get(int index) {
-        return (E) elementData[index];
-    }
-
-    public E set(int index, E e) {
-        E oldValue = get(index);
-        elementData[index] = e; 
-        return oldValue;
-    }
-
     public E remove(int index) {
         E oldValue = get(index);
 
@@ -359,7 +558,15 @@ public class MyArrayList<E> {
         return -1;
     }
 
-    public Object[] toArray() {return Arrays.copyOf(elementData, size);}
+    public E get(int index) {
+        return (E) elementData[index];
+    }
+
+    public E set(int index, E e) {
+        E oldValue = get(index);
+        elementData[index] = e; 
+        return oldValue;
+    }
 
     public int size(){
         return size;
@@ -369,14 +576,17 @@ public class MyArrayList<E> {
         return size == 0;
     }
 
+    public boolean contains(E e) {
+        return indexOf(e) >= 0 ? true : false;
+    }
+
     public void clear() {
         elementData = new Object[DEFAULT_CAPACITY];
         size = 0;
     }
 
-    public boolean contains(E e) {
-        return indexOf(e) >= 0 ? true : false;
-    }
+
+    public Object[] toArray() {return Arrays.copyOf(elementData, size);}
 
     @Override
     public String toString() {
