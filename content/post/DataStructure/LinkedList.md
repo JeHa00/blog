@@ -1,7 +1,7 @@
 ---
 title: "Array와 LinkedList의 차이, LinkedList의 여러 기능들을 Java로 구현하기"
 date: 2024-02-13T22:20:21+09:00
-draft: false
+draft: true
 summary: Array와 Linked list의 차이, Linked list의 종류에 대해 알아본다.  
 tags: [""]
 categories: "data structure"

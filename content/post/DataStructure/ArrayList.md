@@ -2,7 +2,7 @@
 title: "[Data structure] ArrayList를 설명해 줄게!"
 date: 2024-08-14T12:56:04+09:00
 draft: false
-summary: 
+summary: 배열과 리스트의 차이를 학습한 후 배열기반 리스트인 ArrayList를 학습한다.
 tags: ["java", "datastructure"]
 categories: "data structure"
 ---
@@ -13,7 +13,7 @@ categories: "data structure"
 
 자바를 사용해 여러 자료 구조를 구현해  보며 해당 자료구조의 기능별 시간 복잡도가 어떻게 그렇게 나오는지 '설명해 줄게!' 시리즈를 연재한다. 
 
-1. [[Data structure] ArrayList를 설명해 줄게!]()
+1. [[Data structure] ArrayList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/arraylist/)
 2. [Data structure] LinkedList를 설명해 줄게!
 3. [Data structure] List를 설명해 줄게!
 4. [Data structure] Hash를 설명해 줄게!
