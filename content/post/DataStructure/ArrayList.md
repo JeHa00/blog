@@ -223,7 +223,7 @@ void addFirst(int[] arr, int newValue) {
 - 내부적으로 `Object[]` 배열을 이용해 요소를 저장  
 - 배열을 사용하므로 인덱스로 '요소에 빠르게 접근'할 수 있다. 
 - 크기가 고정된 배열과 달리 데이터양에 따라 동적으로 늘릴 수 있다. 이때, 현재 배열보다 더 큰 크기의 배열에 복사하기 대문에 지연이 발생할 수 있다. 
-- 시간 복잡도: 데이터를 맨 뒤에 추가 및 삭제할 때 성능이 좋다. 
+- **시간 복잡도: 데이터를 맨 뒤에 추가 및 삭제할 때 성능이 좋고, 앞이나 중간에 데이터를 추가 삭제할 때 비효율적이다.** 
     - 데이터 추가
         - 마지막 추가: 제일 마지막으로 인덱스를 통한 접근이 가능해 O(1)
         - 앞, 중간 삭제: 데이터 추가를 위해 요소를 뒤로 밀어내기 때문에 O(n)
@@ -236,7 +236,6 @@ void addFirst(int[] arr, int newValue) {
 &nbsp;
 
 # 3. 배열리스트 구현해보기
-
 ---
 
 그러면 배열리스트를 직접 간략히 구현해보자. 직접 만드는 배열리스트를 `MyArrayList` 라고 명명하겠다. 
@@ -254,7 +253,7 @@ private int size;
 ```
 
 1. 내부 속성에 외부에서 접근하지 못하도록 모두 `private`으로 지정한다. 
-2. `DEFAULT_CAPACITY`: 배열 생성 시, 기본 할당 용량
+2. `DEFAULT_CAPACITY`: 리스트 생성 시, 기본 할당 용량
     - 10으로 지정한다. 
     - 기본 생성자를 통해 객체 생성 시 위 변수에 접근할 수 있도록 `static` 으로 클래스 변수로 선언한다.
     - 변경되지 않도록 `final`로 선언한다. 
@@ -323,7 +322,6 @@ if (elementData == size) {
 
 
 ## 3.4 add 구현하기
-
 add는 자료를 추가하는데 사용하는데 `add(E e)`와 `add(int index, E e)` 메서드가 존재한다.
 
 ```java
@@ -351,7 +349,6 @@ public void shiftFromLeftToRight(int index) {
 ```
 
 ### add(int index, E e) 메서드 
-
 - index 위치에 e를 추가하는 메서드다.
 - `shiftFromLeftToRight()` 메서드
     - index 위치에 빈 공간을 만들어 값을 추가하려면 요소를 뒷쪽으로 이동시켜야 한다. 
@@ -360,7 +357,7 @@ public void shiftFromLeftToRight(int index) {
 - size의 값이 elementData의 길이와 동일하면 grow() 메서드를 실행한다. 
 - 여기서 주목할 점은 size를 인덱스로 사용해서 새로 추가하는 데이터가 들어갈 인덱스를 의미한다.
 - 데이터가 새로 추가되어 size의 값을 증가시키면 이후 다시 새로 추가되는 데이터의 인덱스를 의미한다.
-- 아래 배열 상태에서 인덱스 1에 값을 추가한다고 하자. (length: 5, size: 3)
+- 아래 리스트 상태에서 인덱스 1에 값을 추가한다고 하자. (length: 5, size: 3)
     ||||||
     |---|---|---|---|---|---|
     |index| 0 | 1 | 2 | 3 | 4 |
@@ -407,7 +404,6 @@ public boolean remove(E e) {
     remove(index);
 
     return true;
-
 }
 
 public void shiftFromRightToLeft(int index) {
@@ -472,7 +468,95 @@ remove는 요소를 삭제하는데 사용하며, `remove(int index)` 와 `remov
 - 일치 여부는 `equals()` 메서드를 사용하는데, 이 메서드의 기준은 `e` 객체 내부에서 오버라이딩한 것을 기준으로 사용한다. 
 - 여기서 `equals()`를 사용하는 이유는 논리적으로 같은 것을 찾기 때문이다(동등성). 논리적으로 같아도 동일하지 않을 수 있기 때문이다. 바로 동일한 것을 찾고 싶다면 `==`을 사용한다.
 
-## getter / setter
+## get / set 구현하기
+
+```java
+public E get(int index) {
+    return (E) elementData[index];
+}
+
+public E set(int index, E e) {
+    E oldValue = get(index);
+    elementData[index] = e; 
+    return oldValue;
+}
+```
+
+- get() 메서드로 가져올 때는 Object로 저장했기 때문에 E로 형 변환을 한 후 가져와야 한다. 
+- set() 메서드는 get() 메서드로 이전 값을 가져온 후 설정한다. 
+
+
+## 기타 요소 구현하기 
+
+```java
+public void clear() {
+    elementData = new Object[DEFAULT_CAPACITY];
+    size = 0;
+}
+
+public Object[] toArray() {return Arrays.copyOf(elementData, size);}
+
+@Override
+public String toString() {
+    return Arrays.toString(Arrays.copyOf(elementData, size)) + " size=" + size + ", capacity=" + elementData.length;
+}
+```
+### size 구현하기
+
+```java
+public int size(){
+    return size;
+}
+```
+
+size 필드는 private이므로 별도의 메서드를 만들어야 클라이언트에서 접근이 가능하다. size가 public이면 외부에서 수정할 경우, 내부 데이터 수와 일치하지 않을 수 있어서 MyArrayList 동작이 이상해버릴 수 있다.
+
+
+### isEmpty 구현하기
+
+```java
+public boolean isEmpty() {
+    return size == 0;
+}
+```
+
+size의 값이 0과 일치하는지 확인해서 리스트가 비어있는지, 아닌지를 확인하는 메서드다. 
+
+### contains 구현하기
+
+```java
+public boolean contains(E e) {
+    return indexOf(e) >= 0 ? true : false;
+}
+```
+
+특정 요소의 존재 유무를 확인하는 메서드다. indexOf는 특정 요소의 인덱스 값을 확인하는 것이므로 다르다. 하지만,indexOf 메서드를 사용해 존재 유무를 확인할 수 있다. indexOf는 값이 존재하면 0 이상의 인덱스를 반환하므로 이에 따라 삼항 연산자를 사용해 true를, 0 미만은 false를 반환하면 된다.
+
+
+
+### clear 구현하기
+
+```java
+public void clear() {
+    elementData = new Object[DEFAULT_CAPACITY];
+    size = 0;
+}
+```
+
+모든 요소들을 지우기 위해 반복문으로 순회하며 null을 대입할 수도 있지만, 새로운 배열을 넣어주면 훨씬 간단하다. size도 0으로 수정한다.
+
+
+### toString 구현하기
+
+```java
+@Override
+public String toString() {
+    return Arrays.toString(Arrays.copyOf(elementData, size)) + " size=" + size + ", capacity=" + elementData.length;
+}
+```
+
+toString 메서드를 만들지 않으면 객체를 출력할 때 리스트와 관련된 내부 값 정보를 확인할 수 없다. 다만, elementData의 모든 값을 보여줄 필요 없이 실제 있는 값만 보여주면 되기 때문에 `Arrays.copyOf(elementData, size)`를 실행하면 된다. 
+
 
 
 &nbsp;
