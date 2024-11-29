@@ -1,7 +1,7 @@
 ---
 title: "[Data structure] ArrayList를 설명해줄게!"
 date: 2024-08-14T12:56:04+09:00
-draft: true
+draft: false
 summary: 
 tags: ["java", "datastructure"]
 categories: "data structure"
