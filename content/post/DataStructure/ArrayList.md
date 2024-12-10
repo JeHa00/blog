@@ -4,7 +4,7 @@ date: 2024-08-14T12:56:04+09:00
 draft: false
 summary: 배열과 리스트의 차이를 학습한 후 배열기반 리스트인 ArrayList를 학습한다.
 tags: ["java", "datastructure"]
-categories: "data structure"
+categories: "Data Structure"
 ---
 # Introduction
 ---
