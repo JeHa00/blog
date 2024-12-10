@@ -14,8 +14,8 @@ categories: "Data Structure"
 자바를 사용해 여러 자료 구조를 구현해  보며 해당 자료구조의 기능별 시간 복잡도가 어떻게 그렇게 나오는지 '설명해 줄게!' 시리즈를 연재한다. 
 
 1. [[Data structure] ArrayList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/arraylist/)
-2. [Data structure] LinkedList를 설명해 줄게!
-3. [Data structure] List를 설명해 줄게!
+2. [[Data structure] Singly LinkedList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/linkedlist/)
+3. [[Data structure] List를 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/)
 4. [Data structure] Hash를 설명해 줄게!
 5. [Data structure] HashSet을 설명해 줄게!
 6. [Data structure] Set을 설명해 줄게! 
