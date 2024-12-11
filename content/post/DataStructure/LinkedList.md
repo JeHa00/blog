@@ -160,14 +160,14 @@ public class MyLinkedList <E> {
         if (size == 0) {
             first = newNode;
         } else {
-            Node<E> x = getLast();
+            Node<E> x = getLastNode();
             x.next = newNode;
         }
         size++;
     }
 ```
 
-add(E element) 메서드는 맨 마지막에 새로운 노드를 추가하는 메서드다. size가 0이면 새로 추가하는 노드는 first이므로 first 필드에 새로운 노드 참조값을 저장한다. 만약 size가 0이 아니면 getLast 메서드를 사용해 제일 마지막 노드를 조회한 후, 해당 노드의 next 필드에 저장한다. 
+add(E element) 메서드는 맨 마지막에 새로운 노드를 추가하는 메서드다. size가 0이면 새로 추가하는 노드는 first이므로 first 필드에 새로운 노드 참조값을 저장한다. 만약 size가 0이 아니면 getLastNode 메서드를 사용해 제일 마지막 노드를 조회한 후, 해당 노드의 next 필드에 저장한다. 
 
 add 메서드에 size에 따라 분기 처리를 한 이유는 이 메서드의 역할의 응집도를 높이기 위해서다. `addFirst`로 나눌 수 있으나, 이런 경우 함수를 호출할 때 size의 값을 조회한 후 사용해야 하므로 위와 같이 메서드 내에서 분기 처리를 하는 게 더 좋다.
 
@@ -212,7 +212,7 @@ add 메서드에 size에 따라 분기 처리를 한 이유는 이 메서드의 
             newNode.next = first;
             first = newNode;
         } else {
-            Node<E> prev = get(index - 1);
+            Node<E> prev = getNode(index - 1);
             Node<E> next = prev.next;
 
             prev.next = newNode;
@@ -231,7 +231,7 @@ index가 0이 아니면 중간에 노드를 추가해야 한다. 참조값만 �
 
 배열 리스트보다 요소를 추가하는 것이 매우 쉬운 것을 알 수 있다! 
 
-하지만, get() 메서드를 볼 때 알 수 있지만 index까지 순차 접근하므로 O(n)이 걸린다.
+하지만, getNode() 메서드를 볼 때 알 수 있지만 index까지 순차 접근하므로 O(n)이 걸린다.
 
 마지막으로 노드를 추가하는 것이기 때문에 size의 값을 증가시킨다.
 
@@ -263,13 +263,13 @@ index가 0이 아니면 중간에 노드를 추가해야 한다. 참조값만 �
 ```java
 
     public E remove(int index) {
-        Node<E> removedNode = get(index);
+        Node<E> removedNode = getNode(index);
         E removedItem = removedNode.item;
 
         if (index == 0) {
             first = removedNode.next;
         } else {
-            Node<E> prev = get(index - 1);
+            Node<E> prev = getNode(index - 1);
             prev.next = removedNode.next;
         }
 
@@ -288,13 +288,11 @@ index가 0이 아니면 중간에 노드를 추가해야 한다. 참조값만 �
 
 LinkedList의 상황이 다음과 같다고 하자.
 
-
-
 `remove(2)`를 수행한다면 어떻게 될까?
-- `get(2)`가 실행되어 `removedNode`에는 x003이 할당된다.
+- `getNode(2)`가 실행되어 `removedNode`에는 x003이 할당된다.
 - `removedItem`에는 e가 할당된다.
 - index의 값이 0이 아니므로 else 문에 진입한다.
-- index가 2이므로 `get(1)`이 실행되어 `prev`에는 x005가 할당된다. 
+- index가 2이므로 `getNode(1)`이 실행되어 `prev`에는 x005가 할당된다. 
 - `prev.next`는 x003 노드의 다음 노드인 x004가 할당된다. 
 - x003 노드의 item과 next에는 null이 할당된다. 
 - size의 값은 5에서 4로 감소된다.
@@ -368,22 +366,27 @@ item을 기준으로 Node를 삭제할 수 있다.
 
 ### ❗️ Node 삭제 시 item과 next에 null을 할당하는 이유 
 
+첫 번째, A 객체가 다른 객체(B)를 참조하고 있으면 GC(Garbage Collector)는 A가 다른 객체를 강하게 참조한다고 간주해서 메모리 회수를 조금 늦게 한다. 그래서 만약 item이나 next의 값에 null을 할당하면 다른 객체 참조를 하지 않기 때문에 메모리 회수를 더 빠르게 할 수 있다. 
+
+두 번째, LinkedList 같이 노드 기반인 자료 구조는 노드를 삭제해도 삭제된 노드를 다른 노드나 외부에서 참조될 수 있는 가능성이 존재한다. 그러면 계속 메모리에 남아 메모리 누수(Memory Leak)가 발생할 수 있으므로 삭제 시 참조를 끊고 불필요한 객체를 메모리에서 안전하게 제거하기 위해 할당한다. 
+
+세 번째, 데이터 유출 방지 목적도 있다. 메모리에 남으면 삭제되어야 하는 데이터가 유출될 수 있기 때문이다.
 
 ## 2.5 연결 리스트에서 노드 조회하기 
 
-### 인덱스로 조회하기
+### 인덱스로 해당 노드의 값 조회하기
 
 ```java
-    public Node<E> get(int index) {
+    public E get(int index) {
         Node<E> x = first;
         for (int i = 0; i < index; i++) {
             x = x.next;
         }
-        return x;
+        return x.item;
     }
 ```
 
-for 문을 사용해 index만큼 반복을 수행한다. 반복을 수행해 나온 x값이 index 번째에 위치한 Node 값이다. 
+for 문을 사용해 index만큼 반복을 수행한다. 반복을 수행해 나온 x값이 index 번째에 위치한 Node의 item 값이다.
 
 ### 마지막 노드 조회하기
 
@@ -397,12 +400,12 @@ for 문을 사용해 index만큼 반복을 수행한다. 반복을 수행해 나
     }
 ```
 
-이 메서드는 get() 메서드와 size를 사용해 대신할 수 있지만 이와 같이 마지막 노드를 위한 메서드를 만들면 편리하다.
+이 메서드는 getNode() 메서드와 size를 사용해 대신할 수 있지만 이와 같이 마지막 노드를 위한 메서드를 만들면 굳이 size 조회를 위한 메서드를 사용할 필요 없이 바로 알 수 있다.
 
 ### 첫 번째 노드 조회하기 
 
 ```java
-    public Node<E> getFirst() {
+    public Node<E> getFirstNode() {
         return first;
     }
 ```
@@ -457,6 +460,22 @@ while 반복문을 사용해도 되고 for 반복문을 사용해도 된다. 반
 
 LinkedList의 size 값을 알기 위해서 필요하다. 필드는 private으로 선언했기 때문이다. 보안을 위해 이 size를 변경하기 위한 별도의 메서드는 존재하지 않는다. 
 
+### clear
+
+```java
+    public void clear() {
+        for (Node<E> x = first; x != null; ) {
+            Node<E> next = x.next;
+            x.item = null;
+            x.next = null;
+            x = next;
+        }
+        first = null;
+        size = 0;
+    }
+```
+
+LinkedList 인스턴스에 속한 모든 노드를 삭제한다. 삭제하려면 GC에 의해서 삭제되어야 하므로 각 노드에 접근해 null로 초기화한다. 마지막으로 size도 0으로 초기화한다.
 
 ### toString
 
@@ -490,7 +509,6 @@ LinkedList의 size 값을 알기 위해서 필요하다. 필드는 private으로
 # 3. 단일 연결 리스트 전체 코드 
 
 ---
-
 ```java
 public class MyLinkedList <E> {
 
@@ -502,7 +520,7 @@ public class MyLinkedList <E> {
         if (size == 0) {
             first = newNode;
         } else {
-            Node<E> x = getLast();
+            Node<E> x = getLastNode();
             x.next = newNode;
         }
         size++;
@@ -514,7 +532,7 @@ public class MyLinkedList <E> {
             newNode.next = first;
             first = newNode;
         } else {
-            Node<E> prev = get(index - 1);
+            Node<E> prev = getNode(index - 1);
             Node<E> next = prev.next;
 
             prev.next = newNode;
@@ -524,13 +542,13 @@ public class MyLinkedList <E> {
     }
 
     public E remove(int index) {
-        Node<E> removedNode = get(index);
+        Node<E> removedNode = getNode(index);
         E removedItem = removedNode.item;
 
         if (index == 0) {
             first = removedNode.next;
         } else {
-            Node<E> prev = get(index - 1);
+            Node<E> prev = getNode(index - 1);
             prev.next = removedNode.next;
         }
 
@@ -569,27 +587,6 @@ public class MyLinkedList <E> {
         return true;
     }
 
-    public Node<E> get(int index) {
-        Node<E> x = first;
-        for (int i = 0; i < index; i++) {
-            x = x.next;
-        }
-        return x;
-    }
-
-    public Node<E> getLast() {
-        Node<E> x = first;
-        while (x.next != null) {
-            x = x.next;
-        }
-        return x;
-    }
-
-    public Node<E> getFirst() {
-        return first;
-    }
-
-
     public int indexOf(E element) {
         Node<E> x = first;
         int index = 0;
@@ -603,17 +600,56 @@ public class MyLinkedList <E> {
         return -1;
     }
 
-    public E set(int index, E item) {
-        Node<E> node = get(index);
-        E oldValue = node.item;
-        node.item = item;
-        return oldValue;
+    public E get(int index) {
+        Node<E> x = first;
+        for (int i = 0; i < index; i++) {
+            x = x.next;
+        }
+        return x.item;
+    }
+
+    public Node<E> getLastNode() {
+        Node<E> x = first;
+        while (x.next != null) {
+            x = x.next;
+        }
+        return x;
+    }
+
+    public Node<E> getNode(int index) {
+        Node<E> x = first;
+        for (int i = 0; i < index; i++) {
+            x = x.next;
+        }
+        return x;
+    }
+
+    public Node<E> getFirstNode() {
+        return first;
     }
 
     public int size() {
         return size;
     }
 
+    public E set(int index, E item) {
+        Node<E> node = getNode(index);
+        E oldValue = node.item;
+        node.item = item;
+        return oldValue;
+    }
+
+
+    public void clear() {
+        for (Node<E> x = first; x != null; ) {
+            Node<E> next = x.next;
+            x.item = null;
+            x.next = null;
+            x = next;
+        }
+        first = null;
+        size = 0;
+    }
 
     @Override
     public String toString() {
@@ -642,6 +678,7 @@ public class MyLinkedList <E> {
         }
     }
 }
+
 ```
 
 

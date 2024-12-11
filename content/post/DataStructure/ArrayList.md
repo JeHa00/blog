@@ -669,7 +669,6 @@ public class MyArrayList<E> {
         size = 0;
     }
 
-
     public Object[] toArray() {return Arrays.copyOf(elementData, size);}
 
     @Override
