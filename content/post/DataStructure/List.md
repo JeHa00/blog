@@ -31,6 +31,10 @@ categories: "Data Structure"
 ---
 자료 구조는 다형성과 OCP 원칙을 잘 활용할 수 있다. 어떻게 적용되는지 알아보자.
 
+
+**_자바에서 ArrayList와 LinkedList는 List 라는 인터페이스를 구현한다. 역할이 List이고, 구현이 ArrayList와 LinkedList다. 그리고 List는 Collection이라는 인터페이스를 상속 받는다._**
+
+
 리스트는 [[Data structure] ArrayList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/arraylist/)에서 언급한 것처럼 순서가 있고, 중복이 가능한 자료구조라 했다. 내가 직접 만든 자료 구조 ArrayList와 LinkedList는 내부 구현만 다를 뿐 동일한 기능을 제공하는 리스트다. 이 둘의 공통 기능을 인터페이스로 뽑아서 추상화하면 다형성을 사용할 수 있다. 인터페이스로 뽑아보자.
 
 ```java
@@ -269,9 +273,70 @@ ArrayList의 CAPCITY를 넘으면 배열을 다시 만들고 복사하는 과정
 
 ### 직접 만든 List와 차이점
 
+- ArrayList
+    - 기본 CAPACITY는 10이다.
+    - 기본 크기 값을 넘어가면 배열을 1.5배 증가시킨다.
+        - 10 -> 15 -> 22 -> 33 -> 49 
+    - 메모리 고속 복사 연산을 사용한다. 배열은 값을 추가 및 삭제 시 모든 요소를 한 칸씩 뒤로 이동시켜야 한다. 
+    - 이 부분을 최적화하기 위해 `System.arraycopy()`를 사용해 시스템 레벨에서 메모리 고속 복사 연산을 수행한다.
+
+- LinkedList
+
+    - last 필드가 존재해서 첫 번째 노드와 마지막 노드 둘 다 참조할 수 있다. 
+    - 이중 연결 리스트로 prev 뿐만 아니라 next도 있어서 다음 노드와 이전 노드 모두 이동할 수 있다.  
+
 
 ### 성능 비교 
 
+그러면 이번에는 자바에서 제공하는 ArrayList와 LinkedList를 사용해 성능 비교를 해보자. 
+
+직접 만든 MyList, MyArrayList, MyLinkedList 대신에 아래 콜렉션을 import 해서 사용하면 된다.
+
+```java
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+```
+
+다음은 위 콜렉션을 가져와 사용한 성능 결과다. 
+
+
+- 추가: 
+    - 배열 리스트가 직접 만든 리스트보다 앞에 추가 시 빠른 이유는 '고속 복사'를 사용하기 때문이다. 하지만 데이터가 많아지면 느려진다.
+    - **_이론적으로 중간에 추가하는 것이 연결 리스트가 빠를 것 같지만, 실제는 배열 리스트가 더 빠르다. 고속 복사를 사용하고 메모리가 연속적이서, CPU 캐시 효율이 좋고 메모리 접근 속도가 빠르기 때문이다._**
+
+    | 기능 | 배열 리스트 | 연결 리스트 |
+    | --- | --- | --- |
+    | 앞에 추가 | 153ms | 12ms |
+    | 중간에 추가 | **_74ms_** |  **_1647ms_**|
+    | 뒤에 추가 | 4ms |4ms |
+
+- 삭제
+    | 기능 | 배열 리스트 | 연결 리스트 |
+    | --- | --- | --- |
+    | 앞에서 삭제 | 56ms | 1ms |
+    | 평균에서 삭제 | 24ms |  505ms|
+    | 뒤에서 삭제 | 3ms |1ms |
+
+
+- 조회
+
+    | 기능 | 배열 리스트 | 연결 리스트 |
+    | --- | --- | --- |
+    | 앞에서 조회 | 2ms | 2ms |
+    | 중간에서 조회 | 0ms | 569ms |
+    | 뒤에서 조회 | 1ms | 0ms |
+
+
+- 검색 
+    | 기능 | 배열 리스트 | 연결 리스트 |
+    | --- | --- | --- |
+    | 맨 앞 값 검색 | 3ms | 0ms |
+    | 중간 값 검색 | 166ms | 703ms |
+    | 맨 뒤 값 검색  | 314ms | 1399ms |
+
+
+그래서 앞에서 추가, 삭제가 엄청 많은 경우가 아니라면 ArrayList를 사용하는 것이 훨씬 효율적이다.
 
 
 &nbsp;
@@ -279,314 +344,313 @@ ArrayList의 CAPCITY를 넘으면 배열을 다시 만들고 복사하는 과정
 # 4. 전체 코드
 ---
 
+## MyArrayList
+```java
+import java.util.Arrays;
 
-- MyArrayList
-    ```java
-    import java.util.Arrays;
+public class MyArrayList<E> implements MyList<E>{
+    private static final int DEFAULT_CAPACITY = 10;
+    private Object[] elementData;
+    private int size;
 
-    public class MyArrayList<E> implements MyList<E>{
-        private static final int DEFAULT_CAPACITY = 10;
-        private Object[] elementData;
-        private int size;
+    public MyArrayList() {
+        elementData = new Object[DEFAULT_CAPACITY];
+    };
 
-        public MyArrayList() {
-            elementData = new Object[DEFAULT_CAPACITY];
-        };
+    public MyArrayList(int initialCapacity) {
+        elementData = new Object[initialCapacity];
+    }
 
-        public MyArrayList(int initialCapacity) {
-            elementData = new Object[initialCapacity];
+    private void grow() {
+        elementData = Arrays.copyOf(elementData, elementData.length * 2);
+    }
+
+
+    @Override
+    public void add(E e) {
+        if (size == elementData.length) {
+            grow();
         }
 
-        private void grow() {
-            elementData = Arrays.copyOf(elementData, elementData.length * 2);
+        elementData[size] = e;
+        size++;
+    }
+
+    @Override
+    public void add(int index, E e) {
+        if (size == elementData.length) {
+            grow();
         }
 
+        shiftFromLeftToRight(index);
+        elementData[index] = e;
+        size++;
+    }
 
-        @Override
-        public void add(E e) {
-            if (size == elementData.length) {
-                grow();
-            }
-
-            elementData[size] = e;
-            size++;
-        }
-
-        @Override
-        public void add(int index, E e) {
-            if (size == elementData.length) {
-                grow();
-            }
-
-            shiftFromLeftToRight(index);
-            elementData[index] = e;
-            size++;
-        }
-
-        public void shiftFromLeftToRight(int index) {
-            for (int i = size; i > index; i--) {
-                elementData[i] = elementData[i - 1];
-            }
-        }
-
-        @Override
-        public E remove(int index) {
-            E oldValue = get(index);
-
-            shiftFromRightToLeft(index);
-            elementData[--size] = null;
-            return oldValue;
-        }
-
-        @Override
-        public boolean remove(E e) {
-            int index  = indexOf(e);
-
-            if (index == -1) return false;
-
-            remove(index);
-
-            return true;
-
-        }
-
-        public void shiftFromRightToLeft(int index) {
-            for (int i = index; i < size; i++) {
-                elementData[i] = elementData[i + 1];
-            }
-        }
-
-        @Override
-        public int indexOf(E e) {
-            for (int i = 0; i < size; i++) {
-                if (e.equals(elementData[i])) {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        @Override
-        public E get(int index) {
-            return (E) elementData[index];
-        }
-
-        @Override
-        public E set(int index, E e) {
-            E oldValue = get(index);
-            elementData[index] = e;
-            return oldValue;
-        }
-
-        @Override
-        public int size(){
-            return size;
-        }
-
-        public boolean isEmpty() {
-            return size == 0;
-        }
-
-        public boolean contains(E e) {
-            return indexOf(e) >= 0 ? true : false;
-        }
-
-        @Override
-        public void clear() {
-            elementData = new Object[DEFAULT_CAPACITY];
-            size = 0;
-        }
-
-        public Object[] toArray() {return Arrays.copyOf(elementData, size);}
-
-        @Override
-        public String toString() {
-            return Arrays.toString(Arrays.copyOf(elementData, size)) + " size=" + size + ", capacity=" + elementData.length;
+    public void shiftFromLeftToRight(int index) {
+        for (int i = size; i > index; i--) {
+            elementData[i] = elementData[i - 1];
         }
     }
-    ```
 
-- MyLinkedList
+    @Override
+    public E remove(int index) {
+        E oldValue = get(index);
 
-    ```java
-    import java.util.LinkedList;
+        shiftFromRightToLeft(index);
+        elementData[--size] = null;
+        return oldValue;
+    }
 
-    public class MyLinkedList <E> implements MyList<E>{
+    @Override
+    public boolean remove(E e) {
+        int index  = indexOf(e);
 
-        private Node<E> first;
-        private int size;
+        if (index == -1) return false;
 
-        @Override
-        public void add(E element) {
-            Node<E> newNode = new Node<>(element);
-            if (size == 0) {
-                first = newNode;
-            } else {
-                Node<E> x = getLastNode();
-                x.next = newNode;
+        remove(index);
+
+        return true;
+
+    }
+
+    public void shiftFromRightToLeft(int index) {
+        for (int i = index; i < size; i++) {
+            elementData[i] = elementData[i + 1];
+        }
+    }
+
+    @Override
+    public int indexOf(E e) {
+        for (int i = 0; i < size; i++) {
+            if (e.equals(elementData[i])) {
+                return i;
             }
-            size++;
+        }
+        return -1;
+    }
+
+    @Override
+    public E get(int index) {
+        return (E) elementData[index];
+    }
+
+    @Override
+    public E set(int index, E e) {
+        E oldValue = get(index);
+        elementData[index] = e;
+        return oldValue;
+    }
+
+    @Override
+    public int size(){
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean contains(E e) {
+        return indexOf(e) >= 0 ? true : false;
+    }
+
+    @Override
+    public void clear() {
+        elementData = new Object[DEFAULT_CAPACITY];
+        size = 0;
+    }
+
+    public Object[] toArray() {return Arrays.copyOf(elementData, size);}
+
+    @Override
+    public String toString() {
+        return Arrays.toString(Arrays.copyOf(elementData, size)) + " size=" + size + ", capacity=" + elementData.length;
+    }
+}
+```
+
+## MyLinkedList
+
+```java
+import java.util.LinkedList;
+
+public class MyLinkedList <E> implements MyList<E>{
+
+    private Node<E> first;
+    private int size;
+
+    @Override
+    public void add(E element) {
+        Node<E> newNode = new Node<>(element);
+        if (size == 0) {
+            first = newNode;
+        } else {
+            Node<E> x = getLastNode();
+            x.next = newNode;
+        }
+        size++;
+    }
+
+    @Override
+    public void add(int index, E element) {
+        Node<E> newNode = new Node<>(element);
+        if (index == 0) {
+            newNode.next = first;
+            first = newNode;
+        } else {
+            Node<E> prev = getNode(index - 1);
+            Node<E> next = prev.next;
+
+            prev.next = newNode;
+            newNode.next = next;
+        }
+        size++;
+    }
+
+    @Override
+    public E remove(int index) {
+        Node<E> removedNode = getNode(index);
+        E removedItem = removedNode.item;
+
+        if (index == 0) {
+            first = removedNode.next;
+        } else {
+            Node<E> prev = getNode(index - 1);
+            prev.next = removedNode.next;
         }
 
-        @Override
-        public void add(int index, E element) {
-            Node<E> newNode = new Node<>(element);
-            if (index == 0) {
-                newNode.next = first;
-                first = newNode;
-            } else {
-                Node<E> prev = getNode(index - 1);
-                Node<E> next = prev.next;
+        removedNode.item = null;
+        removedNode.next = null;
+        size--;
+        return removedItem;
+    }
 
-                prev.next = newNode;
-                newNode.next = next;
+    @Override
+    public boolean remove(E item) {
+        Node<E> x = first;
+        Node<E> prev = null;
+
+        while (x != null) {
+            if (x.item.equals(item)) {
+                break;
             }
-            size++;
+
+            prev = x;
+            x = x.next;
         }
 
-        @Override
-        public E remove(int index) {
-            Node<E> removedNode = getNode(index);
-            E removedItem = removedNode.item;
-
-            if (index == 0) {
-                first = removedNode.next;
-            } else {
-                Node<E> prev = getNode(index - 1);
-                prev.next = removedNode.next;
-            }
-
-            removedNode.item = null;
-            removedNode.next = null;
-            size--;
-            return removedItem;
+        if (x == first) {
+            remove(0);
+            return true;
         }
 
-        @Override
-        public boolean remove(E item) {
-            Node<E> x = first;
-            Node<E> prev = null;
+        if (x == null) {
+            return false;
+        }
 
-            while (x != null) {
-                if (x.item.equals(item)) {
-                    break;
-                }
+        prev.next = x.next;
+        x.next = null;
+        x.item = null;
+        size--;
+        return true;
+    }
 
-                prev = x;
-                x = x.next;
+    @Override
+    public int indexOf(E element) {
+        Node<E> x = first;
+        int index = 0;
+        while (x != null) {
+            if (x.item.equals(element)) {
+                return index;
             }
+            x = x.next;
+            index++;
+        }
+        return -1;
+    }
 
-            if (x == first) {
-                remove(0);
-                return true;
+    @Override
+    public E get(int index) {
+        Node<E> x = first;
+        for (int i = 0; i < index; i++) {
+            x = x.next;
+        }
+        return x.item;
+    }
+
+    public Node<E> getLastNode() {
+        Node<E> x = first;
+        while (x.next != null) {
+            x = x.next;
+        }
+        return x;
+    }
+
+    public Node<E> getNode(int index) {
+        Node<E> x = first;
+        for (int i = 0; i < index; i++) {
+            x = x.next;
+        }
+        return x;
+    }
+
+    public Node<E> getFirstNode() {
+        return first;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    public E set(int index, E item) {
+        Node<E> node = getNode(index);
+        E oldValue = node.item;
+        node.item = item;
+        return oldValue;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
+        Node<E> x = first;
+        for (int i = 0; i < size; i++) {
+            sb.append(x.item);
+            if (x.next != null) {
+                sb.append(" -> ");
             }
+            x = x.next;
+        }
 
-            if (x == null) {
-                return false;
-            }
+        sb.append("]");
+        return sb.toString();
+    }
 
-            prev.next = x.next;
-            x.next = null;
+    @Override
+    public void clear() {
+        for (Node<E> x = first; x != null; ) {
+            Node<E> next = x.next;
             x.item = null;
-            size--;
-            return true;
+            x.next = null;
+            x = next;
         }
+        first = null;
+        size = 0;
+    }
 
-        @Override
-        public int indexOf(E element) {
-            Node<E> x = first;
-            int index = 0;
-            while (x != null) {
-                if (x.item.equals(element)) {
-                    return index;
-                }
-                x = x.next;
-                index++;
-            }
-            return -1;
-        }
+    private static class Node<E> {
+        E item;
+        Node<E> next;
 
-        @Override
-        public E get(int index) {
-            Node<E> x = first;
-            for (int i = 0; i < index; i++) {
-                x = x.next;
-            }
-            return x.item;
-        }
-
-        public Node<E> getLastNode() {
-            Node<E> x = first;
-            while (x.next != null) {
-                x = x.next;
-            }
-            return x;
-        }
-
-        public Node<E> getNode(int index) {
-            Node<E> x = first;
-            for (int i = 0; i < index; i++) {
-                x = x.next;
-            }
-            return x;
-        }
-
-        public Node<E> getFirstNode() {
-            return first;
-        }
-
-        @Override
-        public int size() {
-            return size;
-        }
-
-        public E set(int index, E item) {
-            Node<E> node = getNode(index);
-            E oldValue = node.item;
-            node.item = item;
-            return oldValue;
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append("[");
-
-            Node<E> x = first;
-            for (int i = 0; i < size; i++) {
-                sb.append(x.item);
-                if (x.next != null) {
-                    sb.append(" -> ");
-                }
-                x = x.next;
-            }
-
-            sb.append("]");
-            return sb.toString();
-        }
-
-        @Override
-        public void clear() {
-            for (Node<E> x = first; x != null; ) {
-                Node<E> next = x.next;
-                x.item = null;
-                x.next = null;
-                x = next;
-            }
-            first = null;
-            size = 0;
-        }
-
-        private static class Node<E> {
-            E item;
-            Node<E> next;
-
-            Node(E item) {
-                this.item = item;
-            }
+        Node(E item) {
+            this.item = item;
         }
     }
-    ```
+}
+```
 
 
 
@@ -639,29 +703,29 @@ public class PerformanceTest {
         search(linkedList, loop, size - 1);
 
 
-        System.out.println("\n----- MyArrayList 삭제 -----");
-        remove(arrayList, loop, 0); // 맨 앞의 값을 삭제할 때
+        System.out.println("\n----- ArrayList 삭제 -----");
+        removeFirst(arrayList, loop); // 맨 앞의 값을 삭제할 때
 
         arrayList.clear();
         add(arrayList, size); // 데이터 재추가
-        remove(arrayList, loop, size / 2); // 중간 값을 삭제할 때
+        removeMid(arrayList, loop); // 중간 값을 삭제할 때
 
         arrayList.clear();
         add(arrayList, size); // 데이터 재추가
-        remove(arrayList, loop, size - 1); // 맨 뒷 값을 삭제할 때
+        removeLast(arrayList, loop); // 맨 뒷 값을 삭제할 때
 
-        System.out.println("\n----- MyLinkedList 삭제 -----");
+        System.out.println("\n----- LinkedList 삭제 -----");
         linkedList.clear();
         add(linkedList, size); // 데이터 재추가
-        remove(linkedList, loop, 0); // 맨 앞의 값을 삭제할 때
-
-        linkedList.clear();
-        add(linkedList, size); // 데이터 재추가
-        remove(linkedList, loop, size / 2); // 중간 값을 삭제할 때
+        removeFirst(linkedList, loop); // 맨 앞의 값을 삭제할 때
 
         linkedList.clear();
         add(linkedList, size); // 데이터 재추가
-        remove(linkedList, loop, size - 1); // 맨 뒷 값을 삭제할 때
+        removeMid(linkedList, loop); // 중간 값을 삭제할 때
+
+        linkedList.clear();
+        add(linkedList, size); // 데이터 재추가
+        removeLast(linkedList, loop); // 맨 뒷 값을 삭제할 때
     }
 
     private static void addFirst(MyList<Integer> list,  int size) {
@@ -686,7 +750,7 @@ public class PerformanceTest {
     private static void addMid(MyList<Integer> list,  int size) {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < size; i++) {
-            list.add(i / 2);
+            list.add(i / 2, i);
         }
         long endTime = System.currentTimeMillis();
         System.out.println("중간에 추가 - 크기: " + size + " 시간: " + (endTime - startTime) + "ms");
@@ -717,13 +781,31 @@ public class PerformanceTest {
         System.out.println("검색 - valueToFind: " + valueToFind + ", 반복 횟수: " + loop + ", 시간: " + (endTime - startTime) + "ms");
     }
 
-    private static void remove(MyList<Integer> list, int loop, int index) {
+      private static void removeFirst(List<Integer> list, int loop) {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < loop; i++) {
-            list.remove(index);
+            list.remove(0);
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("삭제 - index: " + index + ", 반복 횟수: " + loop + ", 시간: " + (endTime - startTime) + "ms");
+        System.out.println("첫 번째 삭제 - 반복 횟수: " + loop + ", 시간: " + (endTime - startTime) + "ms");
+    }
+
+    private static void removeMid(List<Integer> list, int loop) {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < loop; i++) {
+            list.remove(list.size() / 2 - 1);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("중간 삭제 - 반복 횟수: " + loop + ", 시간: " + (endTime - startTime) + "ms");
+    }
+
+    private static void removeLast(List<Integer> list, int loop) {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < loop; i++) {
+            list.remove(list.size() - 1);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("마지막 삭제 - 반복 횟수: " + loop + ", 시간: " + (endTime - startTime) + "ms");
     }
 }
 ```
