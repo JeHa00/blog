@@ -271,7 +271,7 @@ ArrayList의 CAPCITY를 넘으면 배열을 다시 만들고 복사하는 과정
 # 3. 자바 Collection 인터페이스 리스트의 성능 비교 
 ---
 
-### 직접 만든 List와 차이점
+## 직접 만든 List와 차이점
 
 - ArrayList
     - 기본 CAPACITY는 10이다.
@@ -286,7 +286,7 @@ ArrayList의 CAPCITY를 넘으면 배열을 다시 만들고 복사하는 과정
     - 이중 연결 리스트로 prev 뿐만 아니라 next도 있어서 다음 노드와 이전 노드 모두 이동할 수 있다.  
 
 
-### 성능 비교 
+## 성능 비교 
 
 그러면 이번에는 자바에서 제공하는 ArrayList와 LinkedList를 사용해 성능 비교를 해보자. 
 
