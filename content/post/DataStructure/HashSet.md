@@ -17,11 +17,32 @@ categories: "Data Structure"
 1. [[Data structure] ArrayList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/arraylist/)
 2. [[Data structure] Singly LinkedList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/linkedlist/)
 3. [[Data structure] List를 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/)
-4. [Data structure] Hash를 설명해 줄게!
-5. [Data structure] HashSet을 설명해 줄게!
-6. [Data structure] Set을 설명해 줄게! 
+4. [[Data structure] Hash를 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/hash)
+5. [[Data structure] HashSet을 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/hashset)
+6. [[Data structure] Set을 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/set)
 7. [Data structure] Map을 설명해 줄게! 
 8. [Data structure] Stack을 설명해 줄게!
 9. [Data structure] Queue를 설명해 줄게!
 
 &nbsp;
+
+# 1. HashSet 구현하기 
+
+---
+
+
+
+
+
+
+
+&nbsp;
+
+# 2. 전체 코드
+
+---
+
+
+```java
+
+```

@@ -17,9 +17,9 @@ categories: "Data Structure"
 1. [[Data structure] ArrayList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/arraylist/)
 2. [[Data structure] Singly LinkedList를 설명해 줄게!](https://jeha00.github.io/post/datastructure/linkedlist/)
 3. [[Data structure] List를 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/)
-4. [[Data structure] Hash를 설명해 줄게!](https://jeha00.github.io/post/datastructure/hash/)
-5. [Data structure] HashSet을 설명해 줄게!
-6. [Data structure] Set을 설명해 줄게! 
+4. [[Data structure] Hash를 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/hash)
+5. [[Data structure] HashSet을 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/hashset)
+6. [[Data structure] Set을 설명해 줄게!](https://jeha00.github.io/post/datastructure/list/set)
 7. [Data structure] Map을 설명해 줄게! 
 8. [Data structure] Stack을 설명해 줄게!
 9. [Data structure] Queue를 설명해 줄게!
@@ -238,4 +238,41 @@ System.out.println(array[9]);
 
 
 
-이처럼 Set 자료 구조에서 hash는 매우 중요한 핵심이다. 이제 Set의 종류 중 하나인 HashSet을 구현해 보자. 
+&nbsp;
+
+# 3. 여러 객체의 해시 인덱스 구하기
+
+----
+
+위와 같이 Integer와 int의 경우 나머지 연산을 통해 해시 인덱스를 계산할 수 있다.
+
+하지만 String은 어떻고, class를 사용해 직접 정의한 사용자 정의 자료형 객체들은 어떻게 해시 인덱스를 구할까? 
+
+**_모든 객체는 Object를 상속 받는다. Object 객체는 `hashcode()` 라는 '해시 함수'를 통해 해시 코드를 얻는다. 이 해시 코드는 고유한 정수 숫자 값이므로 이 코드를 사용해 해시 인덱스를 구한다. 해시 인덱스는 보통 해시 코드에 배열의 크기를 나눠 계산된 값이다._** 
+
+
+Object.java에서 이 메서드에 대한 설명은 다음과 같다.  
+
+
+> _Returns a hash code value for the object. This method is supported for the benefit of hash tables such as those provided by java.util.HashMap_
+...
+
+- 이 메서드는 해당 객체에 대한 정수형의 hash code 값을 반환한다.
+
+
+> _If two objects are equal according to the equals(Object) method, then calling the hashCode method on each of the two objects must produce the same integer result_ ...
+
+- Object 객체의 equals() 메서드에 따라 두 객체가 동등하면 hash code 값이 같다는 것을 말한다.
+
+
+> _It is not required that if two objects are unequal according to the equals(Object) method, then calling the hashCode method on each of the two objects must produce distinct integer results_ ...
+
+- Object 객체의 equals() 메서드에 따라 두 객체가 동등하지 않으면 hash code 값이 다르다는 것을 말한다.
+
+
+이미 자바에서 정의해놓은 자료형은 모두 내부에서 hashcode()와 equals() 메서드를 재정의했기 때문에 객체의 값에 따라 해시 코드가 생성되도록 되어 있다. equals도 객체의 정보를 바탕으로 판단되도록 재정의된다. 
+
+그래서 **_만약 hashcode()와 equals()를 재정의하지 않으면 객체의 참조값을 기준으로 하기 때문에 동등성이 아닌 동일성 비교를 하게 된다. 그래서 반드시 hashcode()와 equals()를 재정의해야 한다._**
+
+
+이처럼 Set 자료 구조에서 해시는 매우 중요한 핵심이다. 다음 포스팅에서 배운 내용을 바탕으로 직접 HashSet을 구현해보자.
