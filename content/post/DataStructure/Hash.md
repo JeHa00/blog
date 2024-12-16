@@ -33,7 +33,7 @@ categories: "Data Structure"
 
 리스트는 앞서 **_요소들에 순서가 있고 중복이 있는 자료구조_** 라 했다. 순서가 있어서 '인덱스'를 사용할 수 있다. 
 
-하지만 셋(Set)은 리스트와 정반대로 **_요소들에 순서가 없고 중복이 없는 자료구조_**다. 순서가 없으므로 인덱스가 없다. 중복이 없다는 건 예를 들어 'a'라는 문자열이 있으면 동일한 값의 'a'가 있지 않다는 의미다. 
+하지만 셋(Set)은 리스트와 정반대로 **_요소들에 순서가 없고 중복이 없는 자료구조_** 다. 순서가 없으므로 인덱스가 없다. 중복이 없다는 건 예를 들어 'a'라는 문자열이 있으면 동일한 값의 'a'가 있지 않다는 의미다. 
 
 그래서 리스트의 용도는 다음과 같다.
 1. 리스트에 추가된 순서대로 요소의 순서가 유지해야 할 때  
@@ -61,11 +61,15 @@ categories: "Data Structure"
 ## 해시 인덱스란?
 
 
-기존 리스트에 정수형 값 1부터 10까지 추가한 후 원하는 값을 찾으려면 모든 값을 탐색해야 한다. 이는 이전에 학습한 대로 O(n)이 걸린다. 하지만 집합은 값을 찾는 데 배열 인덱스를 사용하지 않아도 O(1)이 걸려야 한다. 이를 어떻게 구현할 수 있을까? 
+기존 리스트에 정수형 값 1부터 10까지 추가한 후 원하는 값을 찾으려면 모든 값을 탐색해야 한다. 이는 이전에 학습한 대로 O(n)이 걸린다. 하지만 집합은 값을 찾는 데 배열 인덱스를 사용하지 않아도 O(1)이 걸려야 한다. 
+
+이를 어떻게 구현할 수 있을까? 
 
 ### 데이터의 값을 배열 인덱스와 맞추어 저장하기
 
 만약 값의 크기를 인덱스로 사용한다면 크기를 통해 O(1)로 바로 접근할 수 있을 것이다.
+
+- 예시 코드 
 
 ```java
 Integer array[] = new Integer[10];
@@ -125,14 +129,16 @@ System.out.println(array[9]);
 
 이런 식으로 인덱스를 구한다면 배열의 크기를 많이 크게 잡지 않아도 된다.
 
-```java
-Integer array[] = new Integer[50];
-int[] values = {1, 3, 22, 40, 94};
-for (int value : values) {
-    array[value % 10] = value;
-}
-System.out.println(Arrays.toString(array));
-```
+- 예시 코드
+
+    ```java
+    Integer array[] = new Integer[50];
+    int[] values = {1, 3, 22, 40, 94};
+    for (int value : values) {
+        array[value % 10] = value;
+    }
+    System.out.println(Arrays.toString(array));
+    ```
 
 - 실행 결과 
 
@@ -165,23 +171,28 @@ System.out.println(Arrays.toString(array));
 
 예를 들어 9, 19, 29, 39, 99 를 통해 나머지 연산 방식의 해시 인덱스를 얻으면 다 '9'를 얻는다. 그러면 이 값을 저장할 때마다 인덱스 9의 배열에 값이 이미 있는지 탐색해야 하므로 O(n)이 걸린다. 
 
-```java
-LinkedList<Integer>[] buckets = new LinkedList[10];
-for (int i = 0; i < buckets.length; i++) {
-    buckets[i] = new LinkedList<>();
-}
+- 예시 코드 
 
-int[] values = {1, 3, 22, 40, 9, 19, 99};
-for (int value : values) {
-    int hashIndex = value % 10;
-    LinkedList<Integer> bucket = buckets[hashIndex];
-    if (!bucket.contains(value)) {
-        buckets[hashIndex].add(value);
+    ```java
+    // buckets 생성 및 초기화
+    LinkedList<Integer>[] buckets = new LinkedList[10];
+    for (int i = 0; i < buckets.length; i++) {
+        buckets[i] = new LinkedList<>();
     }
-}
 
-System.out.println(Arrays.toString(buckets));
-```
+    // 데이터 추가 
+    int[] values = {1, 3, 22, 40, 9, 19, 99};
+    for (int value : values) {
+        int hashIndex = value % 10;
+        LinkedList<Integer> bucket = buckets[hashIndex];
+        
+        if (!bucket.contains(value)) {
+            buckets[hashIndex].add(value);
+        }
+    }
+
+    System.out.println(Arrays.toString(buckets));
+    ```
 
 - 출력 결과
     ```java
