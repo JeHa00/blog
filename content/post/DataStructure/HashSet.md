@@ -91,7 +91,7 @@ Set 인터페이스를 구현한 메서드들도 사실 HashSet의 메서드를 
         Node<K, V>[] tables
         ```
         - tables는 ArrayList의 elementData처럼 값을 보관하는 장소라고 생각하자.
-        - 그래서 초기 크기 16에서 75% 정도 차면 이 tables의 크기를 조정한다. 
+        - 그래서 초기 크기 16에서 75% 정도 차면 이 tables의 크기를 2배로 늘린 후, 재해싱(rehashing)한다.
 - size: 현재 가지고 있는 요소의 개수  
 - capacity: DEFAULT_INITIAL_CAPACITY가 기본값이지만 생성자를 통해 원하는 값으로 변경할 수 있다. 
 
@@ -228,15 +228,35 @@ tab[index = (n - 1) & hash]
 contains도 동일하다.
 
 
-### getSize
+### getSize & isEmpty()
 
 ```java
     public int getSize() {
         return size;
     }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
 ```
 
-size의 필드가 private이므로 이를 얻으려면 getter를 정의해야 한다.
+- size의 필드가 private이므로 이를 얻으려면 getter를 정의해야 한다.
+- 현재 셋이 비어있는지 확인하기 위해 isEmpty()를 정의한다.
+
+### clear
+
+```java
+    public void clear() {
+        for (int i = 0; i < capacity; i++) {
+            buckets[i].clear();
+        }
+        size = 0;
+    }
+```
+
+- LinkedList의 clear() 메서드를 사용해 초기화한다. 
+- 각 bucket 초기화를 완료하면 size 를 0으로 초기화한다.
+
 
 &nbsp;
 
@@ -469,6 +489,17 @@ public class MyHashSet<E> {
 
     public int getSize() {
         return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public void clear() {
+        for (int i = 0; i < capacity; i++) {
+            buckets[i].clear();
+        }
+        size = 0;
     }
 
     @Override

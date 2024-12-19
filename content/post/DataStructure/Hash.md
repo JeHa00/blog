@@ -237,6 +237,8 @@ System.out.println(array[9]);
 > This implementation provides constant-time performance for the basic operations (get and put), assuming the hash function disperses the elements properly among the buckets. Iteration over collection views requires time proportional to the "capacity" of the HashMap instance (the number of buckets) plus its size (the number of key-value mappings). **_Thus, it's very important not to set the initial capacity too high (or the load factor too low) if iteration performance is important._**
 
 
+데이터가 75%를 차면 데이터를 보관하는 크기가 2배 증가하고, 커진 크기에 맞춰서 재해싱(rehashing)이 일어난다.  
+
 
 &nbsp;
 
