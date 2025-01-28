@@ -81,7 +81,9 @@ BeanFactory 인터페이스는 이 인터페이스를 상속받는 다른 인터
 - ResourceLoader: 외부 리소스 조회  
 
 
-그리고 스프링의 설정 정보는 java외에도 Xml 형식으로도 가능하고, 그 외 다양한 형식으로 전달할 수 있다. `@Configuration` 처럼 어노테이션 방식으로 전달할 때는 `AnnotationConfigApplicationContext`를 통해서 전달받는다. 그러면 `AnnotatedBeanDefinitionReader`에 의해 설정 정보를 읽고, 빈의 메타 정보인 `BeanDefinition`을 생성한다. 
+그리고 스프링의 설정 정보는 java외에도 Xml 형식으로도 가능하고, 그 외 다양한 형식으로 전달할 수 있다. 
+`@Configuration` 처럼 어노테이션 방식으로 전달할 때는 `AnnotationConfigApplicationContext`를 통해서 전달받는다. 
+그러면 `AnnotatedBeanDefinitionReader`에 의해 설정 정보를 읽고, 빈의 메타 정보인 `BeanDefinition`을 생성한다. 
 
 `AnnotationConfigApplicationContext` 객체의 소스 코드다.
 
@@ -111,7 +113,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 ```java
 // 소스 코드
 public class AnnotatedBeanDefinitionReader {
-    private final BeanDefinitionRegistry registry;
+    private final BeanDefinitionRegistry registry; // Bean 메타 정보 저장소
 
 	...
 
@@ -363,9 +365,9 @@ public class AppConfig {
 - OrderService에서 한 번
 - 마지막 memberRepository에서 한 번 
 
-memberRepository가 총 3번이 호출되어 다음 순서로 호출될 것이라 예상했다.
+memberRepository가 총 3번이 호출되어 나는 다음 순서로 호출될 것이라 예상했다.
 
-```java
+```text
 call AppConfig.memberSerivce -> memberService에 의한 호출
 call AppConfig.memberRepository -> memberService에 의한 호출
 call AppConfig.orderService -> orderService에 의한 호출
@@ -377,22 +379,39 @@ call AppConfig.discountPoilcy -> discountPoilcy 의한 호출
 
 하지만 바로 밑의 결과처럼 다른 결과를 확인할 수 있다.
 
-```java
+```text
 call AppConfig.memberService
 call AppConfig.memberRepository
 call AppConfig.orderService
 call AppConfig.discountPoilcy
 ```
 
-어째서 그런 것일까?
+어째서 그런 것일까? 아래 코드를 확인해보자.
 
-@Configuration 을 추가하면 AppConfig도 스프링 빈이 된다. 하지만 순수한 자바 객체로서의 스프링 빈이 아닌, 'CGLIB'라는 바이트코드 조작 라이브러리를 사용해 @Configuration이 붙은 클래스를 상속받는 클래스를 만들고, 이 클래스 객체를 스프링 빈으로 등록한 것이다. 
 
-```java
+- 테스트 코드
+    ```java
+    @Test
+    void configurationTest() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
-```
+        AppConfig appConfig = ac.getBean(AppConfig.class);
+        System.out.println("AppConfig를 getBean으로 가져온 경우: " + appConfig);
+        System.out.println("AppConfig를 바로 조회한 경우: " + AppConfig.class);
+    }
+    ```
+
 
 - 결과
+
+    ```text
+    AppConfig를 getBean으로 가져온 경우: SpringBasic.core.AppConfig$$SpringCGLIB$$0@7a55af6b
+    AppConfig를 바로 조회한 경우: class SpringBasic.core.AppConfig
+    ```
+
+ac는 `@Configuration`을 추가해 스프링 빈으로 등록된 객체다. 하지만 순수한 자바 객체로서의 스프링 빈이 아니다.
+'CGLIB'라는 바이트코드 조작 라이브러리를 사용해 `@Configuration`이 붙은 클래스를 상속받는 클래스를 만들고, 이 클래스 객체를 등록한 것이다.
+그래서 `CGLIB` 라는 문자를 확인할 수 있다. 
 
 
 이 바이트코드 조작 라이브러리가 스프링 빈을 싱글톤으로 작동되도록 보장한다. 
@@ -409,14 +428,6 @@ call AppConfig.memberRepository
 call AppConfig.orderService
 call AppConfig.memberRepository
 call AppConfig.memberRepository
-```
-
-```
-memberService -> memberRepository =
-hello.core.member.MemoryMemberRepository@6239aba6
-orderService -> memberRepository  =
-hello.core.member.MemoryMemberRepository@3e6104fc
-memberRepository = hello.core.member.MemoryMemberRepository@12359a82
 ```
 
 그래서 항상 스프링 설정 정보는 @Configuration을 사용하자.
