@@ -3,8 +3,8 @@ title: "[Data structure] Set에 대해 설명해 줄게!"
 date: 2024-12-13T10:46:27+09:00
 draft: true
 summary: 
-tags: ["java", "datastructure"]
-categories: "Data Structure"
+tags: ["java", "datastructure", "algorithum"]
+categories: "Data Structure & Algorithum"
 ---
 
 # Introduction

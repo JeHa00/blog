@@ -3,8 +3,8 @@ title: "[Data structure] Singly LinkedList 설명해 줄게!"
 date: 2024-09-20T23:31:24+09:00
 draft: false
 summary: 이번에는 LinkedList에 대해 학습한다!
-tags: ["java", "datastructure"]
-categories: "Data Structure"
+tags: ["java", "datastructure", "algorithum"]
+categories: "Data Structure & Algorithum"
 ---
 
 # Introduction

@@ -3,8 +3,8 @@ title: "[Data structure] List에 대해 설명해 줄게!"
 date: 2024-09-30T08:24:59+09:00
 draft: false
 summary: ArrayList와 LinkedList를 비교해 성능 차이를 확인한다.
-tags: ["java", "datastructure"]
-categories: "Data Structure"
+tags: ["java", "datastructure", "algorithum"]
+categories: "Data Structure & Algorithum"
 ---
 
 # Introduction

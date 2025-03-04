@@ -3,8 +3,8 @@ title: "[Data structure] HashSet에 대해 설명해 줄게!"
 date: 2024-11-10T10:45:35+09:00
 draft: false
 summary: 해시를 사용해 만든 자료구조 HashSet을 알아보자.
-tags: ["java", "datastructure"]
-categories: "Data Structure"
+tags: ["java", "datastructure", "algorithum"]
+categories: "Data Structure & Algorithum"
 ---
 
 # Introduction
