@@ -479,8 +479,7 @@ public class NetworkClient {
 }
 ```
 
-다음으로 위 코드에 대한 테스트 코드다. 아래 코드에서는 스프링 컨테이너로 `ApplicationContext` 대신에 `ConfigurableApplicationContext`을 사용했다. 후자는 전자와 Lifecycle을 상속받은 인터페이스라서, Bean의 생명주기를 직접 제어할 수 있다.
-예를 들어 `ConfigurableApplicationContext`의 close() 메서드는 `@PreDestory`를 호출한다. 그래서 빈의 생명주기에 관련된 작업을 하려면 이 인터페이스를 사용해야 한다.
+다음으로 위 코드에 대한 테스트 코드다.
 
 ```java
 package SpringBasic.core.lifecycle;
@@ -495,10 +494,10 @@ public class BeanLifeCycleTest {
 
     @Test
     public void lifeCycleTest() {
-        ConfigurableApplicationContext ac = new
+        AnnotationConfigApplicationContext ac = new
                 AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient client = ac.getBean(NetworkClient.class);
-        ac.close(); //스프링 컨테이너를 종료, ConfigurableApplicationContext 필요
+        ac.close();
     }
 
     @Configuration
